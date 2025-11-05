@@ -1,0 +1,110 @@
+[
+  {
+    "line_index_1": 41,
+    "line_index_2": 3,
+    "heRef_2": "סוכה",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 61,
+    "end": 74
+  },
+  {
+    "line_index_1": 41,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 215,
+    "end": 229
+  },
+  {
+    "line_index_1": 47,
+    "line_index_2": 3,
+    "heRef_2": "חגיגה",
+    "path_2": "חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 1165,
+    "end": 1177
+  },
+  {
+    "line_index_1": 48,
+    "line_index_2": 3,
+    "heRef_2": "חגיגה",
+    "path_2": "חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 6
+  },
+  {
+    "line_index_1": 87,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 453,
+    "end": 465
+  },
+  {
+    "line_index_1": 90,
+    "line_index_2": 3,
+    "heRef_2": "מגילה",
+    "path_2": "מגילה.txt",
+    "Conection Type": "reference",
+    "start": 1252,
+    "end": 1263
+  },
+  {
+    "line_index_1": 91,
+    "line_index_2": 3,
+    "heRef_2": "מגילה",
+    "path_2": "מגילה.txt",
+    "Conection Type": "reference",
+    "start": 661,
+    "end": 677
+  },
+  {
+    "line_index_1": 111,
+    "line_index_2": 3,
+    "heRef_2": "ברכות",
+    "path_2": "ברכות.txt",
+    "Conection Type": "reference",
+    "start": 1039,
+    "end": 1049
+  },
+  {
+    "line_index_1": 136,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על חולין",
+    "path_2": "תוספות על חולין.txt",
+    "Conection Type": "reference",
+    "start": 1259,
+    "end": 1277
+  },
+  {
+    "line_index_1": 141,
+    "line_index_2": 2146,
+    "heRef_2": "בבא בתרא צב., א",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4343,
+    "end": 4362
+  },
+  {
+    "line_index_1": 141,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 7120,
+    "end": 7133
+  },
+  {
+    "line_index_1": 141,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 7591,
+    "end": 7602
+  }
+]

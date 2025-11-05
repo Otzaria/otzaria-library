@@ -1,0 +1,92 @@
+[
+  {
+    "line_index_1": 4,
+    "line_index_2": 732,
+    "heRef_2": "חולין כז., א",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 549,
+    "end": 559
+  },
+  {
+    "line_index_1": 4,
+    "line_index_2": 712,
+    "heRef_2": "נדה כא., ד",
+    "path_2": "נדה.txt",
+    "Conection Type": "reference",
+    "start": 1669,
+    "end": 1683
+  },
+  {
+    "line_index_1": 4,
+    "line_index_2": 5,
+    "heRef_2": "כסף משנה על משנה תורה",
+    "path_2": "כסף משנה על משנה תורה, הלכות איסורי ביאה.txt",
+    "Conection Type": "reference",
+    "start": 2013,
+    "end": 2038
+  },
+  {
+    "line_index_1": 4,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על זבחים",
+    "path_2": "תוספות על זבחים.txt",
+    "Conection Type": "reference",
+    "start": 3734,
+    "end": 3753
+  },
+  {
+    "line_index_1": 4,
+    "line_index_2": 448,
+    "heRef_2": "תוספות על מנחות לח., ד, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "reference",
+    "start": 3953,
+    "end": 3975
+  },
+  {
+    "line_index_1": 7,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 45,
+    "end": 64
+  },
+  {
+    "line_index_1": 14,
+    "line_index_2": 732,
+    "heRef_2": "חולין כז., א",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 570,
+    "end": 579
+  },
+  {
+    "line_index_1": 27,
+    "line_index_2": 1763,
+    "heRef_2": "יבמות נג:, ח",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 210,
+    "end": 233
+  },
+  {
+    "line_index_1": 29,
+    "line_index_2": 3,
+    "heRef_2": "בכורות",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 4138,
+    "end": 4152
+  },
+  {
+    "line_index_1": 44,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 16
+  }
+]

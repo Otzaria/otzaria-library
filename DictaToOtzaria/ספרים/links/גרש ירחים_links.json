@@ -1,0 +1,6599 @@
+[
+  {
+    "line_index_1": 5,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 11,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 48,
+    "end": 73
+  },
+  {
+    "line_index_1": 11,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 456,
+    "end": 475
+  },
+  {
+    "line_index_1": 29,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 8
+  },
+  {
+    "line_index_1": 50,
+    "line_index_2": 3,
+    "heRef_2": "משנה כתובות",
+    "path_2": "משנה כתובות.txt",
+    "Conection Type": "reference",
+    "start": 298,
+    "end": 316
+  },
+  {
+    "line_index_1": 64,
+    "line_index_2": 281,
+    "heRef_2": "תוספות על סוטה לא., יד, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "reference",
+    "start": 218,
+    "end": 241
+  },
+  {
+    "line_index_1": 80,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 165,
+    "end": 185
+  },
+  {
+    "line_index_1": 94,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 667,
+    "end": 694
+  },
+  {
+    "line_index_1": 103,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 307,
+    "end": 319
+  },
+  {
+    "line_index_1": 121,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 36,
+    "end": 59
+  },
+  {
+    "line_index_1": 124,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 820,
+    "end": 831
+  },
+  {
+    "line_index_1": 126,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 303,
+    "end": 315
+  },
+  {
+    "line_index_1": 133,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 63,
+    "end": 71
+  },
+  {
+    "line_index_1": 137,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 279,
+    "end": 294
+  },
+  {
+    "line_index_1": 143,
+    "line_index_2": 905,
+    "heRef_2": "רש\"י על סוכה כ:, י, א",
+    "path_2": "רשי על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 263,
+    "end": 280
+  },
+  {
+    "line_index_1": 162,
+    "line_index_2": 905,
+    "heRef_2": "רש\"י על סוכה כ:, י, א",
+    "path_2": "רשי על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 683,
+    "end": 702
+  },
+  {
+    "line_index_1": 163,
+    "line_index_2": 4,
+    "heRef_2": "רשי על סוכה",
+    "path_2": "רשי על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 5
+  },
+  {
+    "line_index_1": 165,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 385,
+    "end": 400
+  },
+  {
+    "line_index_1": 176,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 293,
+    "end": 308
+  },
+  {
+    "line_index_1": 177,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 177,
+    "line_index_2": 4,
+    "heRef_2": "ריף כתובות",
+    "path_2": "ריף כתובות.txt",
+    "Conection Type": "reference",
+    "start": 38,
+    "end": 44
+  },
+  {
+    "line_index_1": 181,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 606,
+    "end": 617
+  },
+  {
+    "line_index_1": 182,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 182,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 521,
+    "end": 534
+  },
+  {
+    "line_index_1": 211,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 715,
+    "end": 729
+  },
+  {
+    "line_index_1": 211,
+    "line_index_2": 4,
+    "heRef_2": "פני יהושע על קידושין",
+    "path_2": "פני יהושע על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 752,
+    "end": 764
+  },
+  {
+    "line_index_1": 212,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 101,
+    "end": 118
+  },
+  {
+    "line_index_1": 212,
+    "line_index_2": 4,
+    "heRef_2": "רשי על יבמות",
+    "path_2": "רשי על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 221,
+    "end": 230
+  },
+  {
+    "line_index_1": 215,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 124,
+    "end": 137
+  },
+  {
+    "line_index_1": 221,
+    "line_index_2": 3,
+    "heRef_2": "שבת",
+    "path_2": "שבת.txt",
+    "Conection Type": "reference",
+    "start": 57,
+    "end": 69
+  },
+  {
+    "line_index_1": 221,
+    "line_index_2": 4,
+    "heRef_2": "רשי על שבת",
+    "path_2": "רשי על שבת.txt",
+    "Conection Type": "reference",
+    "start": 216,
+    "end": 223
+  },
+  {
+    "line_index_1": 229,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 239,
+    "end": 251
+  },
+  {
+    "line_index_1": 230,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 8
+  },
+  {
+    "line_index_1": 240,
+    "line_index_2": 3,
+    "heRef_2": "איוב",
+    "path_2": "איוב.txt",
+    "Conection Type": "reference",
+    "start": 344,
+    "end": 353
+  },
+  {
+    "line_index_1": 242,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 78,
+    "end": 90
+  },
+  {
+    "line_index_1": 244,
+    "line_index_2": 552,
+    "heRef_2": "סוכה כ:, י",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 639,
+    "end": 652
+  },
+  {
+    "line_index_1": 246,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות טומאת מת.txt",
+    "Conection Type": "reference",
+    "start": 13,
+    "end": 34
+  },
+  {
+    "line_index_1": 247,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 556,
+    "end": 575
+  },
+  {
+    "line_index_1": 249,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 173,
+    "end": 195
+  },
+  {
+    "line_index_1": 249,
+    "line_index_2": 3,
+    "heRef_2": "משנה תרומות",
+    "path_2": "משנה תרומות.txt",
+    "Conection Type": "reference",
+    "start": 316,
+    "end": 328
+  },
+  {
+    "line_index_1": 250,
+    "line_index_2": 5,
+    "heRef_2": "כסף משנה על משנה תורה",
+    "path_2": "כסף משנה על משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 69,
+    "end": 76
+  },
+  {
+    "line_index_1": 251,
+    "line_index_2": 3,
+    "heRef_2": "משנה דמאי",
+    "path_2": "משנה דמאי.txt",
+    "Conection Type": "reference",
+    "start": 463,
+    "end": 480
+  },
+  {
+    "line_index_1": 254,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 264,
+    "end": 275
+  },
+  {
+    "line_index_1": 254,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 1007,
+    "end": 1018
+  },
+  {
+    "line_index_1": 254,
+    "line_index_2": 5,
+    "heRef_2": "כסף משנה על משנה תורה",
+    "path_2": "כסף משנה על משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 1102,
+    "end": 1119
+  },
+  {
+    "line_index_1": 261,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 161,
+    "end": 174
+  },
+  {
+    "line_index_1": 261,
+    "line_index_2": 3,
+    "heRef_2": "כריתות",
+    "path_2": "כריתות.txt",
+    "Conection Type": "reference",
+    "start": 430,
+    "end": 444
+  },
+  {
+    "line_index_1": 269,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 314,
+    "end": 324
+  },
+  {
+    "line_index_1": 270,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 277,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 254,
+    "end": 267
+  },
+  {
+    "line_index_1": 280,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 194,
+    "end": 204
+  },
+  {
+    "line_index_1": 281,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 35,
+    "end": 52
+  },
+  {
+    "line_index_1": 289,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 16,
+    "end": 34
+  },
+  {
+    "line_index_1": 296,
+    "line_index_2": 2131,
+    "heRef_2": "קידושין סט., יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 512,
+    "end": 532
+  },
+  {
+    "line_index_1": 297,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 20
+  },
+  {
+    "line_index_1": 301,
+    "line_index_2": 2236,
+    "heRef_2": "טור, אבן העזר",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 197,
+    "end": 216
+  },
+  {
+    "line_index_1": 305,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 136,
+    "end": 154
+  },
+  {
+    "line_index_1": 311,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 521,
+    "end": 536
+  },
+  {
+    "line_index_1": 319,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 52,
+    "end": 66
+  },
+  {
+    "line_index_1": 326,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 54,
+    "end": 73
+  },
+  {
+    "line_index_1": 329,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 106,
+    "end": 121
+  },
+  {
+    "line_index_1": 330,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 332,
+    "line_index_2": 3,
+    "heRef_2": "משנה שביעית",
+    "path_2": "משנה שביעית.txt",
+    "Conection Type": "reference",
+    "start": 112,
+    "end": 123
+  },
+  {
+    "line_index_1": 334,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 249
+  },
+  {
+    "line_index_1": 337,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 710,
+    "end": 731
+  },
+  {
+    "line_index_1": 347,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 168,
+    "end": 181
+  },
+  {
+    "line_index_1": 353,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1763,
+    "end": 1774
+  },
+  {
+    "line_index_1": 353,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 2520,
+    "end": 2532
+  },
+  {
+    "line_index_1": 354,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 76,
+    "end": 89
+  },
+  {
+    "line_index_1": 362,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 329,
+    "end": 350
+  },
+  {
+    "line_index_1": 365,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 389,
+    "end": 401
+  },
+  {
+    "line_index_1": 369,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עדות.txt",
+    "Conection Type": "reference",
+    "start": 299,
+    "end": 321
+  },
+  {
+    "line_index_1": 370,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 536,
+    "end": 548
+  },
+  {
+    "line_index_1": 377,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 32,
+    "end": 53
+  },
+  {
+    "line_index_1": 381,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 27,
+    "end": 42
+  },
+  {
+    "line_index_1": 382,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 102,
+    "end": 116
+  },
+  {
+    "line_index_1": 390,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 872,
+    "end": 892
+  },
+  {
+    "line_index_1": 416,
+    "line_index_2": 1077,
+    "heRef_2": "יבמות לה:, א",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 795,
+    "end": 810
+  },
+  {
+    "line_index_1": 423,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 214,
+    "end": 228
+  },
+  {
+    "line_index_1": 424,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 42,
+    "end": 55
+  },
+  {
+    "line_index_1": 426,
+    "line_index_2": 3846,
+    "heRef_2": "יבמות קיד:, יא",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 327,
+    "end": 348
+  },
+  {
+    "line_index_1": 429,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 150,
+    "end": 162
+  },
+  {
+    "line_index_1": 432,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 287,
+    "end": 300
+  },
+  {
+    "line_index_1": 439,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 243,
+    "end": 257
+  },
+  {
+    "line_index_1": 448,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 341,
+    "end": 359
+  },
+  {
+    "line_index_1": 449,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 449,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 63,
+    "end": 77
+  },
+  {
+    "line_index_1": 450,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 89,
+    "end": 100
+  },
+  {
+    "line_index_1": 450,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות רוצח ושמירת נפש.txt",
+    "Conection Type": "reference",
+    "start": 101,
+    "end": 125
+  },
+  {
+    "line_index_1": 454,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 261,
+    "end": 290
+  },
+  {
+    "line_index_1": 455,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 148,
+    "end": 162
+  },
+  {
+    "line_index_1": 479,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 217,
+    "end": 232
+  },
+  {
+    "line_index_1": 484,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 100,
+    "end": 120
+  },
+  {
+    "line_index_1": 484,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 214,
+    "end": 216
+  },
+  {
+    "line_index_1": 484,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 217,
+    "end": 222
+  },
+  {
+    "line_index_1": 486,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 309,
+    "end": 325
+  },
+  {
+    "line_index_1": 494,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 108,
+    "end": 123
+  },
+  {
+    "line_index_1": 497,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 374,
+    "end": 394
+  },
+  {
+    "line_index_1": 497,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 424,
+    "end": 438
+  },
+  {
+    "line_index_1": 501,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 84,
+    "end": 96
+  },
+  {
+    "line_index_1": 501,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 579,
+    "end": 590
+  },
+  {
+    "line_index_1": 503,
+    "line_index_2": 5,
+    "heRef_2": "פסקי הראש על פסחים",
+    "path_2": "פסקי הראש על פסחים.txt",
+    "Conection Type": "reference",
+    "start": 25,
+    "end": 42
+  },
+  {
+    "line_index_1": 503,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות מכירה.txt",
+    "Conection Type": "reference",
+    "start": 1223,
+    "end": 1242
+  },
+  {
+    "line_index_1": 513,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 408,
+    "end": 424
+  },
+  {
+    "line_index_1": 515,
+    "line_index_2": 1280,
+    "heRef_2": "קידושין מא., ג",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 595,
+    "end": 616
+  },
+  {
+    "line_index_1": 526,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 278,
+    "end": 293
+  },
+  {
+    "line_index_1": 527,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 89,
+    "end": 104
+  },
+  {
+    "line_index_1": 527,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 118,
+    "end": 129
+  },
+  {
+    "line_index_1": 529,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 58,
+    "end": 73
+  },
+  {
+    "line_index_1": 531,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא קמא",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 128,
+    "end": 144
+  },
+  {
+    "line_index_1": 533,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 621,
+    "end": 635
+  },
+  {
+    "line_index_1": 538,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 392,
+    "end": 409
+  },
+  {
+    "line_index_1": 539,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 206,
+    "end": 217
+  },
+  {
+    "line_index_1": 551,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 307,
+    "end": 319
+  },
+  {
+    "line_index_1": 552,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 58,
+    "end": 76
+  },
+  {
+    "line_index_1": 554,
+    "line_index_2": 2606,
+    "heRef_2": "טור, חושן משפט",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 1008,
+    "end": 1026
+  },
+  {
+    "line_index_1": 564,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 264,
+    "end": 278
+  },
+  {
+    "line_index_1": 574,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 640,
+    "end": 655
+  },
+  {
+    "line_index_1": 578,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על חגיגה",
+    "path_2": "תוספות על חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 1302,
+    "end": 1320
+  },
+  {
+    "line_index_1": 581,
+    "line_index_2": 3,
+    "heRef_2": "משנה מקואות",
+    "path_2": "משנה מקואות.txt",
+    "Conection Type": "reference",
+    "start": 149,
+    "end": 168
+  },
+  {
+    "line_index_1": 581,
+    "line_index_2": 4,
+    "heRef_2": "רשי על עבודה זרה",
+    "path_2": "רשי על עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 311,
+    "end": 327
+  },
+  {
+    "line_index_1": 581,
+    "line_index_2": 4,
+    "heRef_2": "רשי על חגיגה",
+    "path_2": "רשי על חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 482,
+    "end": 502
+  },
+  {
+    "line_index_1": 583,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות מקואות.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 254
+  },
+  {
+    "line_index_1": 585,
+    "line_index_2": 3,
+    "heRef_2": "משנה מקואות",
+    "path_2": "משנה מקואות.txt",
+    "Conection Type": "reference",
+    "start": 375,
+    "end": 387
+  },
+  {
+    "line_index_1": 585,
+    "line_index_2": 3,
+    "heRef_2": "משנה מקואות",
+    "path_2": "משנה מקואות.txt",
+    "Conection Type": "reference",
+    "start": 960,
+    "end": 964
+  },
+  {
+    "line_index_1": 585,
+    "line_index_2": 3,
+    "heRef_2": "משנה מקואות",
+    "path_2": "משנה מקואות.txt",
+    "Conection Type": "reference",
+    "start": 1078,
+    "end": 1090
+  },
+  {
+    "line_index_1": 612,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 525,
+    "end": 538
+  },
+  {
+    "line_index_1": 612,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 773,
+    "end": 786
+  },
+  {
+    "line_index_1": 618,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 447,
+    "end": 467
+  },
+  {
+    "line_index_1": 628,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 180,
+    "end": 194
+  },
+  {
+    "line_index_1": 629,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 27,
+    "end": 48
+  },
+  {
+    "line_index_1": 630,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 113,
+    "end": 126
+  },
+  {
+    "line_index_1": 633,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 823,
+    "end": 834
+  },
+  {
+    "line_index_1": 633,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 845,
+    "end": 859
+  },
+  {
+    "line_index_1": 634,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 77,
+    "end": 96
+  },
+  {
+    "line_index_1": 634,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 176,
+    "end": 189
+  },
+  {
+    "line_index_1": 636,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 104,
+    "end": 117
+  },
+  {
+    "line_index_1": 636,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 502,
+    "end": 522
+  },
+  {
+    "line_index_1": 647,
+    "line_index_2": 5,
+    "heRef_2": "פסקי הראש על בבא מציעא",
+    "path_2": "פסקי הראש על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 6059,
+    "end": 6074
+  },
+  {
+    "line_index_1": 653,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 944,
+    "end": 961
+  },
+  {
+    "line_index_1": 653,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 1186,
+    "end": 1202
+  },
+  {
+    "line_index_1": 653,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1525,
+    "end": 1542
+  },
+  {
+    "line_index_1": 653,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1543,
+    "end": 1557
+  },
+  {
+    "line_index_1": 653,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1702,
+    "end": 1710
+  },
+  {
+    "line_index_1": 666,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 25,
+    "end": 40
+  },
+  {
+    "line_index_1": 684,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 185,
+    "end": 205
+  },
+  {
+    "line_index_1": 685,
+    "line_index_2": 3,
+    "heRef_2": "עירובין",
+    "path_2": "עירובין.txt",
+    "Conection Type": "reference",
+    "start": 175,
+    "end": 190
+  },
+  {
+    "line_index_1": 701,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 128,
+    "end": 142
+  },
+  {
+    "line_index_1": 701,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 215,
+    "end": 217
+  },
+  {
+    "line_index_1": 701,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 721,
+    "end": 732
+  },
+  {
+    "line_index_1": 719,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 743,
+    "end": 756
+  },
+  {
+    "line_index_1": 720,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עדות.txt",
+    "Conection Type": "reference",
+    "start": 1593,
+    "end": 1616
+  },
+  {
+    "line_index_1": 720,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עדות.txt",
+    "Conection Type": "reference",
+    "start": 1703,
+    "end": 1720
+  },
+  {
+    "line_index_1": 725,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 78,
+    "end": 89
+  },
+  {
+    "line_index_1": 727,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 53,
+    "end": 68
+  },
+  {
+    "line_index_1": 728,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 158,
+    "end": 176
+  },
+  {
+    "line_index_1": 730,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 67,
+    "end": 81
+  },
+  {
+    "line_index_1": 734,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 197,
+    "end": 212
+  },
+  {
+    "line_index_1": 736,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 32,
+    "end": 43
+  },
+  {
+    "line_index_1": 737,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 45,
+    "end": 65
+  },
+  {
+    "line_index_1": 740,
+    "line_index_2": 1786,
+    "heRef_2": "קידושין נח:, יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 92,
+    "end": 110
+  },
+  {
+    "line_index_1": 741,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 13,
+    "end": 28
+  },
+  {
+    "line_index_1": 741,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 756,
+    "end": 773
+  },
+  {
+    "line_index_1": 741,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על סוטה",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "reference",
+    "start": 871,
+    "end": 901
+  },
+  {
+    "line_index_1": 742,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 532,
+    "end": 552
+  },
+  {
+    "line_index_1": 743,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 131,
+    "end": 144
+  },
+  {
+    "line_index_1": 744,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 763,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 195,
+    "end": 209
+  },
+  {
+    "line_index_1": 764,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 406,
+    "end": 423
+  },
+  {
+    "line_index_1": 765,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 65,
+    "end": 100
+  },
+  {
+    "line_index_1": 765,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 320,
+    "end": 337
+  },
+  {
+    "line_index_1": 781,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 72,
+    "end": 88
+  },
+  {
+    "line_index_1": 783,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 912,
+    "end": 924
+  },
+  {
+    "line_index_1": 784,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 52,
+    "end": 57
+  },
+  {
+    "line_index_1": 791,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 363,
+    "end": 373
+  },
+  {
+    "line_index_1": 792,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 70,
+    "end": 85
+  },
+  {
+    "line_index_1": 800,
+    "line_index_2": 1667,
+    "heRef_2": "יבמות נ., ו",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 61,
+    "end": 74
+  },
+  {
+    "line_index_1": 800,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 413,
+    "end": 424
+  },
+  {
+    "line_index_1": 800,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 425,
+    "end": 447
+  },
+  {
+    "line_index_1": 800,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 520,
+    "end": 527
+  },
+  {
+    "line_index_1": 803,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 187,
+    "end": 207
+  },
+  {
+    "line_index_1": 816,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 818,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 796,
+    "end": 808
+  },
+  {
+    "line_index_1": 839,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 722,
+    "end": 733
+  },
+  {
+    "line_index_1": 847,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 259,
+    "end": 272
+  },
+  {
+    "line_index_1": 852,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 131,
+    "end": 144
+  },
+  {
+    "line_index_1": 856,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 1537,
+    "end": 1552
+  },
+  {
+    "line_index_1": 870,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 871,
+    "line_index_2": 3,
+    "heRef_2": "משנה עדיות",
+    "path_2": "משנה עדיות.txt",
+    "Conection Type": "reference",
+    "start": 394,
+    "end": 405
+  },
+  {
+    "line_index_1": 873,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 229,
+    "end": 242
+  },
+  {
+    "line_index_1": 873,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 803,
+    "end": 817
+  },
+  {
+    "line_index_1": 887,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 186,
+    "end": 200
+  },
+  {
+    "line_index_1": 887,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 293,
+    "end": 301
+  },
+  {
+    "line_index_1": 887,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 410,
+    "end": 418
+  },
+  {
+    "line_index_1": 888,
+    "line_index_2": 3,
+    "heRef_2": "ברכות",
+    "path_2": "ברכות.txt",
+    "Conection Type": "reference",
+    "start": 82,
+    "end": 96
+  },
+  {
+    "line_index_1": 888,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 619,
+    "end": 636
+  },
+  {
+    "line_index_1": 890,
+    "line_index_2": 2757,
+    "heRef_2": "פסחים פז., א",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 198,
+    "end": 212
+  },
+  {
+    "line_index_1": 890,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 255,
+    "end": 276
+  },
+  {
+    "line_index_1": 893,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 66,
+    "end": 87
+  },
+  {
+    "line_index_1": 903,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 255,
+    "end": 267
+  },
+  {
+    "line_index_1": 903,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 268,
+    "end": 284
+  },
+  {
+    "line_index_1": 903,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 285,
+    "end": 302
+  },
+  {
+    "line_index_1": 924,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 289,
+    "end": 303
+  },
+  {
+    "line_index_1": 931,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 98,
+    "end": 108
+  },
+  {
+    "line_index_1": 931,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 109,
+    "end": 121
+  },
+  {
+    "line_index_1": 931,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא קמא",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 837,
+    "end": 853
+  },
+  {
+    "line_index_1": 931,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 1003,
+    "end": 1015
+  },
+  {
+    "line_index_1": 931,
+    "line_index_2": 1440,
+    "heRef_2": "תוספות על בבא קמא קיא:, א, א",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1023,
+    "end": 1027
+  },
+  {
+    "line_index_1": 932,
+    "line_index_2": 3,
+    "heRef_2": "בכורות",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 457,
+    "end": 471
+  },
+  {
+    "line_index_1": 932,
+    "line_index_2": 3,
+    "heRef_2": "בכורות",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 695,
+    "end": 700
+  },
+  {
+    "line_index_1": 937,
+    "line_index_2": 3,
+    "heRef_2": "בכורות",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 354,
+    "end": 372
+  },
+  {
+    "line_index_1": 937,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1050,
+    "end": 1063
+  },
+  {
+    "line_index_1": 939,
+    "line_index_2": 3,
+    "heRef_2": "עירובין",
+    "path_2": "עירובין.txt",
+    "Conection Type": "reference",
+    "start": 89,
+    "end": 104
+  },
+  {
+    "line_index_1": 939,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 507,
+    "end": 524
+  },
+  {
+    "line_index_1": 941,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 63,
+    "end": 75
+  },
+  {
+    "line_index_1": 942,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 943,
+    "line_index_2": 1606,
+    "heRef_2": "בכורות מו., ה",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 41,
+    "end": 52
+  },
+  {
+    "line_index_1": 943,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 836,
+    "end": 848
+  },
+  {
+    "line_index_1": 960,
+    "line_index_2": 4,
+    "heRef_2": "רן על נדרים",
+    "path_2": "רן על נדרים.txt",
+    "Conection Type": "reference",
+    "start": 71,
+    "end": 94
+  },
+  {
+    "line_index_1": 964,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות נדרים.txt",
+    "Conection Type": "reference",
+    "start": 28,
+    "end": 46
+  },
+  {
+    "line_index_1": 972,
+    "line_index_2": 3,
+    "heRef_2": "משנה עדיות",
+    "path_2": "משנה עדיות.txt",
+    "Conection Type": "reference",
+    "start": 73,
+    "end": 85
+  },
+  {
+    "line_index_1": 972,
+    "line_index_2": 3,
+    "heRef_2": "משנה עדיות",
+    "path_2": "משנה עדיות.txt",
+    "Conection Type": "reference",
+    "start": 458,
+    "end": 469
+  },
+  {
+    "line_index_1": 976,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 271,
+    "end": 285
+  },
+  {
+    "line_index_1": 985,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 680,
+    "end": 692
+  },
+  {
+    "line_index_1": 985,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 872,
+    "end": 882
+  },
+  {
+    "line_index_1": 989,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 469,
+    "end": 491
+  },
+  {
+    "line_index_1": 989,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא מציעא",
+    "path_2": "רשי על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 1393,
+    "end": 1415
+  },
+  {
+    "line_index_1": 992,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 554,
+    "end": 570
+  },
+  {
+    "line_index_1": 997,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 298,
+    "end": 324
+  },
+  {
+    "line_index_1": 1010,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 199,
+    "end": 211
+  },
+  {
+    "line_index_1": 1029,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 433,
+    "end": 448
+  },
+  {
+    "line_index_1": 1032,
+    "line_index_2": 4,
+    "heRef_2": "טורי זהב על שולחן ערוך יורה דעה",
+    "path_2": "טורי זהב על שולחן ערוך יורה דעה.txt",
+    "Conection Type": "reference",
+    "start": 170,
+    "end": 187
+  },
+  {
+    "line_index_1": 1033,
+    "line_index_2": 3978,
+    "heRef_2": "יבמות קיט., א",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 380,
+    "end": 399
+  },
+  {
+    "line_index_1": 1037,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 426,
+    "end": 444
+  },
+  {
+    "line_index_1": 1038,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 138,
+    "end": 153
+  },
+  {
+    "line_index_1": 1039,
+    "line_index_2": 3978,
+    "heRef_2": "יבמות קיט., א",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 352,
+    "end": 367
+  },
+  {
+    "line_index_1": 1045,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 215,
+    "end": 228
+  },
+  {
+    "line_index_1": 1047,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יומא",
+    "path_2": "תוספות על יומא.txt",
+    "Conection Type": "reference",
+    "start": 57,
+    "end": 79
+  },
+  {
+    "line_index_1": 1048,
+    "line_index_2": 3,
+    "heRef_2": "משנה תרומות",
+    "path_2": "משנה תרומות.txt",
+    "Conection Type": "reference",
+    "start": 747,
+    "end": 760
+  },
+  {
+    "line_index_1": 1049,
+    "line_index_2": 3,
+    "heRef_2": "משנה תרומות",
+    "path_2": "משנה תרומות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 1049,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות נחלות.txt",
+    "Conection Type": "reference",
+    "start": 948,
+    "end": 972
+  },
+  {
+    "line_index_1": 1052,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 2032,
+    "end": 2051
+  },
+  {
+    "line_index_1": 1052,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על עבודה זרה",
+    "path_2": "תוספות על עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 2113,
+    "end": 2129
+  },
+  {
+    "line_index_1": 1052,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 2454,
+    "end": 2459
+  },
+  {
+    "line_index_1": 1054,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 143,
+    "end": 166
+  },
+  {
+    "line_index_1": 1059,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 99,
+    "end": 118
+  },
+  {
+    "line_index_1": 1073,
+    "line_index_2": 2914,
+    "heRef_2": "יבמות פז:, ט",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 537,
+    "end": 557
+  },
+  {
+    "line_index_1": 1078,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 378,
+    "end": 404
+  },
+  {
+    "line_index_1": 1096,
+    "line_index_2": 3,
+    "heRef_2": "משנה פאה",
+    "path_2": "משנה פאה.txt",
+    "Conection Type": "reference",
+    "start": 301,
+    "end": 316
+  },
+  {
+    "line_index_1": 1099,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 421,
+    "end": 435
+  },
+  {
+    "line_index_1": 1100,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 831,
+    "end": 849
+  },
+  {
+    "line_index_1": 1114,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 219,
+    "end": 235
+  },
+  {
+    "line_index_1": 1119,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 568,
+    "end": 587
+  },
+  {
+    "line_index_1": 1133,
+    "line_index_2": 2606,
+    "heRef_2": "טור, חושן משפט",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 3653,
+    "end": 3671
+  },
+  {
+    "line_index_1": 1133,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 4190,
+    "end": 4204
+  },
+  {
+    "line_index_1": 1133,
+    "line_index_2": 719,
+    "heRef_2": "תוספות על בבא מציעא ס:, ח, א",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 5391,
+    "end": 5411
+  },
+  {
+    "line_index_1": 1133,
+    "line_index_2": 1428,
+    "heRef_2": "כתובות נד:, ו",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 6018,
+    "end": 6033
+  },
+  {
+    "line_index_1": 1140,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 190,
+    "end": 203
+  },
+  {
+    "line_index_1": 1140,
+    "line_index_2": 4,
+    "heRef_2": "רשבם על בבא בתרא",
+    "path_2": "רשבם על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1937,
+    "end": 1955
+  },
+  {
+    "line_index_1": 1142,
+    "line_index_2": 2606,
+    "heRef_2": "טור, חושן משפט",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 645,
+    "end": 664
+  },
+  {
+    "line_index_1": 1146,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 719,
+    "end": 732
+  },
+  {
+    "line_index_1": 1149,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1157,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 320,
+    "end": 332
+  },
+  {
+    "line_index_1": 1157,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על נזיר",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "reference",
+    "start": 467,
+    "end": 475
+  },
+  {
+    "line_index_1": 1178,
+    "line_index_2": 1786,
+    "heRef_2": "קידושין נח:, יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 1472,
+    "end": 1489
+  },
+  {
+    "line_index_1": 1180,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 13,
+    "end": 33
+  },
+  {
+    "line_index_1": 1190,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1039,
+    "end": 1050
+  },
+  {
+    "line_index_1": 1190,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1051,
+    "end": 1066
+  },
+  {
+    "line_index_1": 1190,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 1119,
+    "end": 1134
+  },
+  {
+    "line_index_1": 1190,
+    "line_index_2": 3,
+    "heRef_2": "משנה כתובות",
+    "path_2": "משנה כתובות.txt",
+    "Conection Type": "reference",
+    "start": 3120,
+    "end": 3126
+  },
+  {
+    "line_index_1": 1193,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1510,
+    "end": 1529
+  },
+  {
+    "line_index_1": 1193,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1530,
+    "end": 1545
+  },
+  {
+    "line_index_1": 1198,
+    "line_index_2": 452,
+    "heRef_2": "תוספות על גיטין לב., ג, א",
+    "path_2": "תוספות על גיטין.txt",
+    "Conection Type": "reference",
+    "start": 293,
+    "end": 308
+  },
+  {
+    "line_index_1": 1199,
+    "line_index_2": 1786,
+    "heRef_2": "קידושין נח:, יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 364,
+    "end": 381
+  },
+  {
+    "line_index_1": 1204,
+    "line_index_2": 2236,
+    "heRef_2": "טור, אבן העזר",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 485,
+    "end": 504
+  },
+  {
+    "line_index_1": 1221,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 74,
+    "end": 86
+  },
+  {
+    "line_index_1": 1221,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 616,
+    "end": 631
+  },
+  {
+    "line_index_1": 1225,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 321,
+    "end": 333
+  },
+  {
+    "line_index_1": 1226,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 104,
+    "end": 110
+  },
+  {
+    "line_index_1": 1234,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 220,
+    "end": 235
+  },
+  {
+    "line_index_1": 1240,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 56,
+    "end": 76
+  },
+  {
+    "line_index_1": 1247,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 132,
+    "end": 149
+  },
+  {
+    "line_index_1": 1247,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 261,
+    "end": 281
+  },
+  {
+    "line_index_1": 1254,
+    "line_index_2": 5,
+    "heRef_2": "פסקי הראש על בבא מציעא",
+    "path_2": "פסקי הראש על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 363,
+    "end": 378
+  },
+  {
+    "line_index_1": 1254,
+    "line_index_2": 3,
+    "heRef_2": "שבועות",
+    "path_2": "שבועות.txt",
+    "Conection Type": "reference",
+    "start": 782,
+    "end": 796
+  },
+  {
+    "line_index_1": 1260,
+    "line_index_2": 3,
+    "heRef_2": "תמורה",
+    "path_2": "תמורה.txt",
+    "Conection Type": "reference",
+    "start": 883,
+    "end": 896
+  },
+  {
+    "line_index_1": 1260,
+    "line_index_2": 3,
+    "heRef_2": "יומא",
+    "path_2": "יומא.txt",
+    "Conection Type": "reference",
+    "start": 976,
+    "end": 988
+  },
+  {
+    "line_index_1": 1263,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 353,
+    "end": 365
+  },
+  {
+    "line_index_1": 1265,
+    "line_index_2": 5,
+    "heRef_2": "פסקי הראש על בבא מציעא",
+    "path_2": "פסקי הראש על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 980,
+    "end": 995
+  },
+  {
+    "line_index_1": 1266,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 850,
+    "end": 863
+  },
+  {
+    "line_index_1": 1267,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 242,
+    "end": 255
+  },
+  {
+    "line_index_1": 1269,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 109,
+    "end": 122
+  },
+  {
+    "line_index_1": 1269,
+    "line_index_2": 4,
+    "heRef_2": "רן על נדרים",
+    "path_2": "רן על נדרים.txt",
+    "Conection Type": "reference",
+    "start": 209,
+    "end": 216
+  },
+  {
+    "line_index_1": 1275,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, יורה דעה.txt",
+    "Conection Type": "reference",
+    "start": 875,
+    "end": 897
+  },
+  {
+    "line_index_1": 1277,
+    "line_index_2": 778,
+    "heRef_2": "ערכין כא:, יג",
+    "path_2": "ערכין.txt",
+    "Conection Type": "reference",
+    "start": 26,
+    "end": 41
+  },
+  {
+    "line_index_1": 1279,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 232,
+    "end": 247
+  },
+  {
+    "line_index_1": 1279,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, יורה דעה.txt",
+    "Conection Type": "reference",
+    "start": 634,
+    "end": 657
+  },
+  {
+    "line_index_1": 1279,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 1023,
+    "end": 1036
+  },
+  {
+    "line_index_1": 1279,
+    "line_index_2": 4,
+    "heRef_2": "רן על נדרים",
+    "path_2": "רן על נדרים.txt",
+    "Conection Type": "reference",
+    "start": 1037,
+    "end": 1045
+  },
+  {
+    "line_index_1": 1280,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 59,
+    "end": 71
+  },
+  {
+    "line_index_1": 1280,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 384,
+    "end": 401
+  },
+  {
+    "line_index_1": 1280,
+    "line_index_2": 4,
+    "heRef_2": "רן על נדרים",
+    "path_2": "רן על נדרים.txt",
+    "Conection Type": "reference",
+    "start": 433,
+    "end": 440
+  },
+  {
+    "line_index_1": 1290,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 1598,
+    "end": 1614
+  },
+  {
+    "line_index_1": 1291,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 721,
+    "end": 734
+  },
+  {
+    "line_index_1": 1293,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1300,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 41,
+    "end": 55
+  },
+  {
+    "line_index_1": 1307,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 961,
+    "end": 973
+  },
+  {
+    "line_index_1": 1313,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1314,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 441,
+    "end": 455
+  },
+  {
+    "line_index_1": 1315,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 1315,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 49,
+    "end": 54
+  },
+  {
+    "line_index_1": 1316,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות ממרים.txt",
+    "Conection Type": "reference",
+    "start": 103,
+    "end": 127
+  },
+  {
+    "line_index_1": 1316,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 1125,
+    "end": 1149
+  },
+  {
+    "line_index_1": 1319,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 929,
+    "end": 952
+  },
+  {
+    "line_index_1": 1320,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 5
+  },
+  {
+    "line_index_1": 1320,
+    "line_index_2": 3,
+    "heRef_2": "מגילה",
+    "path_2": "מגילה.txt",
+    "Conection Type": "reference",
+    "start": 787,
+    "end": 800
+  },
+  {
+    "line_index_1": 1336,
+    "line_index_2": 4,
+    "heRef_2": "רשי על מכות",
+    "path_2": "רשי על מכות.txt",
+    "Conection Type": "reference",
+    "start": 1199,
+    "end": 1217
+  },
+  {
+    "line_index_1": 1337,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 761,
+    "end": 773
+  },
+  {
+    "line_index_1": 1338,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבועות",
+    "path_2": "תוספות על שבועות.txt",
+    "Conection Type": "reference",
+    "start": 13,
+    "end": 37
+  },
+  {
+    "line_index_1": 1341,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 297,
+    "end": 314
+  },
+  {
+    "line_index_1": 1341,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 399,
+    "end": 401
+  },
+  {
+    "line_index_1": 1343,
+    "line_index_2": 3,
+    "heRef_2": "מכות ב., א",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 14
+  },
+  {
+    "line_index_1": 1343,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 273,
+    "end": 283
+  },
+  {
+    "line_index_1": 1343,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 284,
+    "end": 295
+  },
+  {
+    "line_index_1": 1344,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 20
+  },
+  {
+    "line_index_1": 1360,
+    "line_index_2": 3,
+    "heRef_2": "מכות",
+    "path_2": "מכות.txt",
+    "Conection Type": "reference",
+    "start": 28,
+    "end": 43
+  },
+  {
+    "line_index_1": 1362,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עבדים.txt",
+    "Conection Type": "reference",
+    "start": 33,
+    "end": 51
+  },
+  {
+    "line_index_1": 1365,
+    "line_index_2": 287,
+    "heRef_2": "תוספות על סוכה כט:, ד, א",
+    "path_2": "תוספות על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 31,
+    "end": 51
+  },
+  {
+    "line_index_1": 1366,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 350,
+    "end": 365
+  },
+  {
+    "line_index_1": 1366,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עבדים.txt",
+    "Conection Type": "reference",
+    "start": 375,
+    "end": 399
+  },
+  {
+    "line_index_1": 1366,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1321,
+    "end": 1334
+  },
+  {
+    "line_index_1": 1367,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא קמא",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 478,
+    "end": 503
+  },
+  {
+    "line_index_1": 1370,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 310,
+    "end": 321
+  },
+  {
+    "line_index_1": 1388,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 46,
+    "end": 73
+  },
+  {
+    "line_index_1": 1388,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 366,
+    "end": 381
+  },
+  {
+    "line_index_1": 1389,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 67,
+    "end": 77
+  },
+  {
+    "line_index_1": 1390,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 662,
+    "end": 684
+  },
+  {
+    "line_index_1": 1391,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1731,
+    "end": 1742
+  },
+  {
+    "line_index_1": 1391,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא קמא",
+    "path_2": "רשי על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 2896,
+    "end": 2903
+  },
+  {
+    "line_index_1": 1392,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 830,
+    "end": 845
+  },
+  {
+    "line_index_1": 1392,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1085,
+    "end": 1099
+  },
+  {
+    "line_index_1": 1392,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 1486,
+    "end": 1501
+  },
+  {
+    "line_index_1": 1393,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 148,
+    "end": 168
+  },
+  {
+    "line_index_1": 1395,
+    "line_index_2": 3,
+    "heRef_2": "משנה ביכורים",
+    "path_2": "משנה ביכורים.txt",
+    "Conection Type": "reference",
+    "start": 687,
+    "end": 700
+  },
+  {
+    "line_index_1": 1405,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 491,
+    "end": 515
+  },
+  {
+    "line_index_1": 1406,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1508,
+    "end": 1522
+  },
+  {
+    "line_index_1": 1406,
+    "line_index_2": 4,
+    "heRef_2": "רשבא על כתובות",
+    "path_2": "רשבא על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1586,
+    "end": 1601
+  },
+  {
+    "line_index_1": 1409,
+    "line_index_2": 3,
+    "heRef_2": "ברכות",
+    "path_2": "ברכות.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1412,
+    "line_index_2": 3,
+    "heRef_2": "ברכות",
+    "path_2": "ברכות.txt",
+    "Conection Type": "reference",
+    "start": 21,
+    "end": 34
+  },
+  {
+    "line_index_1": 1412,
+    "line_index_2": 3,
+    "heRef_2": "שבת",
+    "path_2": "שבת.txt",
+    "Conection Type": "reference",
+    "start": 1094,
+    "end": 1105
+  },
+  {
+    "line_index_1": 1412,
+    "line_index_2": 3,
+    "heRef_2": "שבת",
+    "path_2": "שבת.txt",
+    "Conection Type": "reference",
+    "start": 1132,
+    "end": 1139
+  },
+  {
+    "line_index_1": 1424,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 590,
+    "end": 604
+  },
+  {
+    "line_index_1": 1432,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 904,
+    "end": 918
+  },
+  {
+    "line_index_1": 1433,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 230,
+    "end": 252
+  },
+  {
+    "line_index_1": 1436,
+    "line_index_2": 1290,
+    "heRef_2": "נזיר סא., ו",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 25,
+    "end": 41
+  },
+  {
+    "line_index_1": 1439,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1445,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 92,
+    "end": 109
+  },
+  {
+    "line_index_1": 1445,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 110,
+    "end": 114
+  },
+  {
+    "line_index_1": 1446,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 1261,
+    "end": 1273
+  },
+  {
+    "line_index_1": 1448,
+    "line_index_2": 938,
+    "heRef_2": "נדרים מח:, א",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 192,
+    "end": 221
+  },
+  {
+    "line_index_1": 1448,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 276,
+    "end": 290
+  },
+  {
+    "line_index_1": 1448,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 591,
+    "end": 611
+  },
+  {
+    "line_index_1": 1454,
+    "line_index_2": 3,
+    "heRef_2": "נזיר",
+    "path_2": "נזיר.txt",
+    "Conection Type": "reference",
+    "start": 363,
+    "end": 375
+  },
+  {
+    "line_index_1": 1454,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1538,
+    "end": 1549
+  },
+  {
+    "line_index_1": 1455,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 58,
+    "end": 74
+  },
+  {
+    "line_index_1": 1456,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עבדים.txt",
+    "Conection Type": "reference",
+    "start": 81,
+    "end": 98
+  },
+  {
+    "line_index_1": 1456,
+    "line_index_2": 3,
+    "heRef_2": "מנחות",
+    "path_2": "מנחות.txt",
+    "Conection Type": "reference",
+    "start": 778,
+    "end": 792
+  },
+  {
+    "line_index_1": 1459,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עבדים.txt",
+    "Conection Type": "reference",
+    "start": 57,
+    "end": 75
+  },
+  {
+    "line_index_1": 1459,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1508,
+    "end": 1522
+  },
+  {
+    "line_index_1": 1459,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 1694,
+    "end": 1714
+  },
+  {
+    "line_index_1": 1461,
+    "line_index_2": 3,
+    "heRef_2": "תמורה",
+    "path_2": "תמורה.txt",
+    "Conection Type": "reference",
+    "start": 145,
+    "end": 158
+  },
+  {
+    "line_index_1": 1462,
+    "line_index_2": 3,
+    "heRef_2": "תמורה",
+    "path_2": "תמורה.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 1463,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 161,
+    "end": 172
+  },
+  {
+    "line_index_1": 1463,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 696,
+    "end": 709
+  },
+  {
+    "line_index_1": 1475,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 134,
+    "end": 148
+  },
+  {
+    "line_index_1": 1477,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 190,
+    "end": 207
+  },
+  {
+    "line_index_1": 1477,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 357,
+    "end": 369
+  },
+  {
+    "line_index_1": 1478,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 1000,
+    "end": 1022
+  },
+  {
+    "line_index_1": 1491,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 937,
+    "end": 949
+  },
+  {
+    "line_index_1": 1492,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 559,
+    "end": 574
+  },
+  {
+    "line_index_1": 1493,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 133,
+    "end": 152
+  },
+  {
+    "line_index_1": 1495,
+    "line_index_2": 3037,
+    "heRef_2": "רש\"י על בבא מציעא ס:, ח, א",
+    "path_2": "רשי על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 466,
+    "end": 486
+  },
+  {
+    "line_index_1": 1496,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא מציעא",
+    "path_2": "רשי על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 16
+  },
+  {
+    "line_index_1": 1496,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 309,
+    "end": 323
+  },
+  {
+    "line_index_1": 1508,
+    "line_index_2": 3,
+    "heRef_2": "תמורה",
+    "path_2": "תמורה.txt",
+    "Conection Type": "reference",
+    "start": 144,
+    "end": 157
+  },
+  {
+    "line_index_1": 1512,
+    "line_index_2": 3,
+    "heRef_2": "כריתות",
+    "path_2": "כריתות.txt",
+    "Conection Type": "reference",
+    "start": 229,
+    "end": 243
+  },
+  {
+    "line_index_1": 1513,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1524,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על חגיגה",
+    "path_2": "תוספות על חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 52,
+    "end": 70
+  },
+  {
+    "line_index_1": 1527,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1048,
+    "end": 1059
+  },
+  {
+    "line_index_1": 1527,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1177,
+    "end": 1188
+  },
+  {
+    "line_index_1": 1528,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 463,
+    "end": 475
+  },
+  {
+    "line_index_1": 1531,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 151,
+    "end": 183
+  },
+  {
+    "line_index_1": 1532,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 74,
+    "end": 88
+  },
+  {
+    "line_index_1": 1533,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1536,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 74,
+    "end": 88
+  },
+  {
+    "line_index_1": 1537,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 25,
+    "end": 37
+  },
+  {
+    "line_index_1": 1539,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 75,
+    "end": 90
+  },
+  {
+    "line_index_1": 1540,
+    "line_index_2": 4,
+    "heRef_2": "פלתי על שולחן ערוך יורה דעה",
+    "path_2": "פלתי על שולחן ערוך יורה דעה.txt",
+    "Conection Type": "reference",
+    "start": 289,
+    "end": 312
+  },
+  {
+    "line_index_1": 1541,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות נזקי ממון.txt",
+    "Conection Type": "reference",
+    "start": 50,
+    "end": 73
+  },
+  {
+    "line_index_1": 1541,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 540,
+    "end": 555
+  },
+  {
+    "line_index_1": 1541,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1024,
+    "end": 1035
+  },
+  {
+    "line_index_1": 1562,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על חגיגה",
+    "path_2": "תוספות על חגיגה.txt",
+    "Conection Type": "reference",
+    "start": 234,
+    "end": 253
+  },
+  {
+    "line_index_1": 1571,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 445,
+    "end": 459
+  },
+  {
+    "line_index_1": 1573,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 249
+  },
+  {
+    "line_index_1": 1574,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות עבודה זרה וחוקות הגויים.txt",
+    "Conection Type": "reference",
+    "start": 571,
+    "end": 588
+  },
+  {
+    "line_index_1": 1575,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 83,
+    "end": 96
+  },
+  {
+    "line_index_1": 1575,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 97,
+    "end": 113
+  },
+  {
+    "line_index_1": 1576,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 111,
+    "end": 125
+  },
+  {
+    "line_index_1": 1583,
+    "line_index_2": 631,
+    "heRef_2": "עבודה זרה כב., יא",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 699,
+    "end": 719
+  },
+  {
+    "line_index_1": 1585,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על מנחות",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "reference",
+    "start": 14,
+    "end": 43
+  },
+  {
+    "line_index_1": 1586,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תפילין ומזוזה וספר תורה.txt",
+    "Conection Type": "reference",
+    "start": 40,
+    "end": 58
+  },
+  {
+    "line_index_1": 1589,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 114,
+    "end": 132
+  },
+  {
+    "line_index_1": 1590,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1596,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 237,
+    "end": 261
+  },
+  {
+    "line_index_1": 1600,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 113,
+    "end": 132
+  },
+  {
+    "line_index_1": 1602,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 298,
+    "end": 311
+  },
+  {
+    "line_index_1": 1604,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1605,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 1015,
+    "end": 1028
+  },
+  {
+    "line_index_1": 1606,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 375,
+    "end": 393
+  },
+  {
+    "line_index_1": 1609,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות אישות.txt",
+    "Conection Type": "reference",
+    "start": 338,
+    "end": 356
+  },
+  {
+    "line_index_1": 1613,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 558,
+    "end": 571
+  },
+  {
+    "line_index_1": 1614,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 60,
+    "end": 73
+  },
+  {
+    "line_index_1": 1614,
+    "line_index_2": 3978,
+    "heRef_2": "יבמות קיט., א",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 756,
+    "end": 770
+  },
+  {
+    "line_index_1": 1616,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 1783,
+    "end": 1796
+  },
+  {
+    "line_index_1": 1618,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 180,
+    "end": 193
+  },
+  {
+    "line_index_1": 1619,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 62,
+    "end": 82
+  },
+  {
+    "line_index_1": 1623,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 555,
+    "end": 579
+  },
+  {
+    "line_index_1": 1627,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 32,
+    "end": 52
+  },
+  {
+    "line_index_1": 1630,
+    "line_index_2": 3,
+    "heRef_2": "משנה ביכורים",
+    "path_2": "משנה ביכורים.txt",
+    "Conection Type": "reference",
+    "start": 127,
+    "end": 139
+  },
+  {
+    "line_index_1": 1630,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על ראש השנה",
+    "path_2": "תוספות על ראש השנה.txt",
+    "Conection Type": "reference",
+    "start": 362,
+    "end": 384
+  },
+  {
+    "line_index_1": 1630,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על ראש השנה",
+    "path_2": "תוספות על ראש השנה.txt",
+    "Conection Type": "reference",
+    "start": 822,
+    "end": 827
+  },
+  {
+    "line_index_1": 1632,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על עבודה זרה",
+    "path_2": "תוספות על עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 945,
+    "end": 960
+  },
+  {
+    "line_index_1": 1633,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 282,
+    "end": 294
+  },
+  {
+    "line_index_1": 1633,
+    "line_index_2": 772,
+    "heRef_2": "סוכה כט:, ד",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 486,
+    "end": 507
+  },
+  {
+    "line_index_1": 1635,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 127,
+    "end": 137
+  },
+  {
+    "line_index_1": 1635,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 391,
+    "end": 410
+  },
+  {
+    "line_index_1": 1638,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על ראש השנה",
+    "path_2": "תוספות על ראש השנה.txt",
+    "Conection Type": "reference",
+    "start": 299,
+    "end": 316
+  },
+  {
+    "line_index_1": 1650,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 156,
+    "end": 174
+  },
+  {
+    "line_index_1": 1651,
+    "line_index_2": 3,
+    "heRef_2": "שבועות",
+    "path_2": "שבועות.txt",
+    "Conection Type": "reference",
+    "start": 284,
+    "end": 298
+  },
+  {
+    "line_index_1": 1651,
+    "line_index_2": 287,
+    "heRef_2": "תוספות על סוכה כט:, ד, א",
+    "path_2": "תוספות על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 427,
+    "end": 448
+  },
+  {
+    "line_index_1": 1655,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 56,
+    "end": 67
+  },
+  {
+    "line_index_1": 1661,
+    "line_index_2": 3,
+    "heRef_2": "סוכה",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 515,
+    "end": 525
+  },
+  {
+    "line_index_1": 1661,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1422,
+    "end": 1434
+  },
+  {
+    "line_index_1": 1662,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 19,
+    "end": 30
+  },
+  {
+    "line_index_1": 1662,
+    "line_index_2": 287,
+    "heRef_2": "תוספות על סוכה כט:, ד, א",
+    "path_2": "תוספות על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 772,
+    "end": 791
+  },
+  {
+    "line_index_1": 1663,
+    "line_index_2": 1786,
+    "heRef_2": "קידושין נח:, יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 239,
+    "end": 257
+  },
+  {
+    "line_index_1": 1663,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 501,
+    "end": 513
+  },
+  {
+    "line_index_1": 1666,
+    "line_index_2": 3,
+    "heRef_2": "עירובין",
+    "path_2": "עירובין.txt",
+    "Conection Type": "reference",
+    "start": 214,
+    "end": 229
+  },
+  {
+    "line_index_1": 1666,
+    "line_index_2": 5,
+    "heRef_2": "משנה למלך על משנה תורה",
+    "path_2": "משנה למלך על משנה תורה, הלכות שמיטה ויובל.txt",
+    "Conection Type": "reference",
+    "start": 586,
+    "end": 616
+  },
+  {
+    "line_index_1": 1666,
+    "line_index_2": 5,
+    "heRef_2": "משנה למלך על משנה תורה",
+    "path_2": "משנה למלך על משנה תורה, הלכות שמיטה ויובל.txt",
+    "Conection Type": "reference",
+    "start": 739,
+    "end": 750
+  },
+  {
+    "line_index_1": 1669,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 250,
+    "end": 264
+  },
+  {
+    "line_index_1": 1670,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 453,
+    "end": 464
+  },
+  {
+    "line_index_1": 1679,
+    "line_index_2": 1691,
+    "heRef_2": "בבא בתרא עג., ג",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 101,
+    "end": 117
+  },
+  {
+    "line_index_1": 1680,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1130,
+    "end": 1141
+  },
+  {
+    "line_index_1": 1681,
+    "line_index_2": 4,
+    "heRef_2": "רשי על סוכה",
+    "path_2": "רשי על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 1428,
+    "end": 1447
+  },
+  {
+    "line_index_1": 1681,
+    "line_index_2": 2394,
+    "heRef_2": "זבחים ע:, טו",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 1655,
+    "end": 1672
+  },
+  {
+    "line_index_1": 1681,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 2110,
+    "end": 2121
+  },
+  {
+    "line_index_1": 1682,
+    "line_index_2": 1606,
+    "heRef_2": "בכורות מו., ה",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 438,
+    "end": 449
+  },
+  {
+    "line_index_1": 1682,
+    "line_index_2": 4168,
+    "heRef_2": "חולין קל., א",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 1751,
+    "end": 1767
+  },
+  {
+    "line_index_1": 1683,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 832,
+    "end": 844
+  },
+  {
+    "line_index_1": 1690,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 319,
+    "end": 329
+  },
+  {
+    "line_index_1": 1692,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 141,
+    "end": 152
+  },
+  {
+    "line_index_1": 1692,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 764,
+    "end": 778
+  },
+  {
+    "line_index_1": 1693,
+    "line_index_2": 3707,
+    "heRef_2": "בבא בתרא קס., א",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 302,
+    "end": 315
+  },
+  {
+    "line_index_1": 1693,
+    "line_index_2": 3,
+    "heRef_2": "ערכין",
+    "path_2": "ערכין.txt",
+    "Conection Type": "reference",
+    "start": 316,
+    "end": 330
+  },
+  {
+    "line_index_1": 1694,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 111,
+    "end": 130
+  },
+  {
+    "line_index_1": 1694,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 220,
+    "end": 234
+  },
+  {
+    "line_index_1": 1695,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 1002,
+    "end": 1013
+  },
+  {
+    "line_index_1": 1705,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על ביצה",
+    "path_2": "תוספות על ביצה.txt",
+    "Conection Type": "reference",
+    "start": 186,
+    "end": 204
+  },
+  {
+    "line_index_1": 1705,
+    "line_index_2": 3,
+    "heRef_2": "ביצה",
+    "path_2": "ביצה.txt",
+    "Conection Type": "reference",
+    "start": 694,
+    "end": 706
+  },
+  {
+    "line_index_1": 1705,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1034,
+    "end": 1061
+  },
+  {
+    "line_index_1": 1707,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 549,
+    "end": 567
+  },
+  {
+    "line_index_1": 1708,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 123,
+    "end": 134
+  },
+  {
+    "line_index_1": 1708,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 265,
+    "end": 276
+  },
+  {
+    "line_index_1": 1712,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 50,
+    "end": 63
+  },
+  {
+    "line_index_1": 1712,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 531,
+    "end": 543
+  },
+  {
+    "line_index_1": 1713,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בכורות",
+    "path_2": "תוספות על בכורות.txt",
+    "Conection Type": "reference",
+    "start": 731,
+    "end": 751
+  },
+  {
+    "line_index_1": 1716,
+    "line_index_2": 3,
+    "heRef_2": "ראש השנה",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "reference",
+    "start": 215,
+    "end": 226
+  },
+  {
+    "line_index_1": 1717,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 167,
+    "end": 188
+  },
+  {
+    "line_index_1": 1720,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 40,
+    "end": 71
+  },
+  {
+    "line_index_1": 1724,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 231,
+    "end": 245
+  },
+  {
+    "line_index_1": 1725,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1195,
+    "end": 1207
+  },
+  {
+    "line_index_1": 1740,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 894,
+    "end": 918
+  },
+  {
+    "line_index_1": 1743,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 168,
+    "end": 180
+  },
+  {
+    "line_index_1": 1754,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 561,
+    "end": 572
+  },
+  {
+    "line_index_1": 1755,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 1756,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 8
+  },
+  {
+    "line_index_1": 1757,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 445,
+    "end": 457
+  },
+  {
+    "line_index_1": 1765,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 282,
+    "end": 296
+  },
+  {
+    "line_index_1": 1773,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 53,
+    "end": 68
+  },
+  {
+    "line_index_1": 1773,
+    "line_index_2": 5,
+    "heRef_2": "השגות הראב\"ד על משנה תורה",
+    "path_2": "השגות הראבד על משנה תורה, הלכות מכירה.txt",
+    "Conection Type": "reference",
+    "start": 303,
+    "end": 322
+  },
+  {
+    "line_index_1": 1779,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 2861,
+    "end": 2880
+  },
+  {
+    "line_index_1": 1781,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 223,
+    "end": 243
+  },
+  {
+    "line_index_1": 1788,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 371,
+    "end": 382
+  },
+  {
+    "line_index_1": 1791,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1021,
+    "end": 1035
+  },
+  {
+    "line_index_1": 1794,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 249,
+    "end": 258
+  },
+  {
+    "line_index_1": 1795,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 1810,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 71,
+    "end": 87
+  },
+  {
+    "line_index_1": 1811,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 321,
+    "end": 331
+  },
+  {
+    "line_index_1": 1811,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 780,
+    "end": 791
+  },
+  {
+    "line_index_1": 1814,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 258,
+    "end": 274
+  },
+  {
+    "line_index_1": 1814,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1159,
+    "end": 1170
+  },
+  {
+    "line_index_1": 1823,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 377,
+    "end": 398
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות חובל ומזיק.txt",
+    "Conection Type": "reference",
+    "start": 78,
+    "end": 99
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 346,
+    "end": 370
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 1468,
+    "end": 1483
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3022,
+    "heRef_2": "שבת קכו:, יא",
+    "path_2": "שבת.txt",
+    "Conection Type": "reference",
+    "start": 2305,
+    "end": 2318
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 2684,
+    "end": 2696
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 7599,
+    "end": 7610
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא קמא",
+    "path_2": "רשי על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 9899,
+    "end": 9918
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 10877,
+    "end": 10891
+  },
+  {
+    "line_index_1": 1829,
+    "line_index_2": 3,
+    "heRef_2": "עבודה זרה",
+    "path_2": "עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 11623,
+    "end": 11634
+  },
+  {
+    "line_index_1": 1831,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 17,
+    "end": 36
+  },
+  {
+    "line_index_1": 1833,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא קמא",
+    "path_2": "רשי על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1834,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 618,
+    "end": 631
+  },
+  {
+    "line_index_1": 1839,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על חולין",
+    "path_2": "תוספות על חולין.txt",
+    "Conection Type": "reference",
+    "start": 383,
+    "end": 401
+  },
+  {
+    "line_index_1": 1841,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 400,
+    "end": 418
+  },
+  {
+    "line_index_1": 1845,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 318,
+    "end": 329
+  },
+  {
+    "line_index_1": 1847,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 781,
+    "end": 795
+  },
+  {
+    "line_index_1": 1850,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 116,
+    "end": 131
+  },
+  {
+    "line_index_1": 1852,
+    "line_index_2": 3,
+    "heRef_2": "בכורות",
+    "path_2": "בכורות.txt",
+    "Conection Type": "reference",
+    "start": 597,
+    "end": 611
+  },
+  {
+    "line_index_1": 1867,
+    "line_index_2": 3,
+    "heRef_2": "משנה תרומות",
+    "path_2": "משנה תרומות.txt",
+    "Conection Type": "reference",
+    "start": 83,
+    "end": 94
+  },
+  {
+    "line_index_1": 1871,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על מנחות",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "reference",
+    "start": 214,
+    "end": 233
+  },
+  {
+    "line_index_1": 1871,
+    "line_index_2": 3,
+    "heRef_2": "יומא",
+    "path_2": "יומא.txt",
+    "Conection Type": "reference",
+    "start": 285,
+    "end": 296
+  },
+  {
+    "line_index_1": 1871,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 575,
+    "end": 587
+  },
+  {
+    "line_index_1": 1875,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 101,
+    "end": 118
+  },
+  {
+    "line_index_1": 1875,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 254,
+    "end": 268
+  },
+  {
+    "line_index_1": 1880,
+    "line_index_2": 732,
+    "heRef_2": "חולין כז., א",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 861,
+    "end": 871
+  },
+  {
+    "line_index_1": 1880,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות ביאת מקדש.txt",
+    "Conection Type": "reference",
+    "start": 1663,
+    "end": 1691
+  },
+  {
+    "line_index_1": 1880,
+    "line_index_2": 5,
+    "heRef_2": "כסף משנה על משנה תורה",
+    "path_2": "כסף משנה על משנה תורה, הלכות ביאת מקדש.txt",
+    "Conection Type": "reference",
+    "start": 1692,
+    "end": 1700
+  },
+  {
+    "line_index_1": 1881,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות פסולי המוקדשין.txt",
+    "Conection Type": "reference",
+    "start": 13,
+    "end": 47
+  },
+  {
+    "line_index_1": 1887,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 111,
+    "end": 123
+  },
+  {
+    "line_index_1": 1889,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 427,
+    "end": 440
+  },
+  {
+    "line_index_1": 1893,
+    "line_index_2": 772,
+    "heRef_2": "סוכה כט:, ד",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 524,
+    "end": 543
+  },
+  {
+    "line_index_1": 1896,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 330,
+    "end": 342
+  },
+  {
+    "line_index_1": 1896,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 629,
+    "end": 641
+  },
+  {
+    "line_index_1": 1899,
+    "line_index_2": 3,
+    "heRef_2": "סוכה",
+    "path_2": "סוכה.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1900,
+    "line_index_2": 4,
+    "heRef_2": "רשבם על בבא בתרא",
+    "path_2": "רשבם על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 184,
+    "end": 205
+  },
+  {
+    "line_index_1": 1900,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 444,
+    "end": 457
+  },
+  {
+    "line_index_1": 1904,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 90,
+    "end": 102
+  },
+  {
+    "line_index_1": 1904,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 103,
+    "end": 112
+  },
+  {
+    "line_index_1": 1904,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות איסורי המזבח.txt",
+    "Conection Type": "reference",
+    "start": 239,
+    "end": 261
+  },
+  {
+    "line_index_1": 1904,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גניבה.txt",
+    "Conection Type": "reference",
+    "start": 591,
+    "end": 607
+  },
+  {
+    "line_index_1": 1906,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 95,
+    "end": 106
+  },
+  {
+    "line_index_1": 1906,
+    "line_index_2": 4,
+    "heRef_2": "רשי על בבא קמא",
+    "path_2": "רשי על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 372,
+    "end": 399
+  },
+  {
+    "line_index_1": 1908,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 251
+  },
+  {
+    "line_index_1": 1908,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 363,
+    "end": 376
+  },
+  {
+    "line_index_1": 1909,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות מעשה הקרבנות.txt",
+    "Conection Type": "reference",
+    "start": 29,
+    "end": 55
+  },
+  {
+    "line_index_1": 1912,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות איסורי המזבח.txt",
+    "Conection Type": "reference",
+    "start": 77,
+    "end": 101
+  },
+  {
+    "line_index_1": 1912,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 399,
+    "end": 410
+  },
+  {
+    "line_index_1": 1912,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 537,
+    "end": 542
+  },
+  {
+    "line_index_1": 1921,
+    "line_index_2": 3,
+    "heRef_2": "בבא קמא",
+    "path_2": "בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 58,
+    "end": 69
+  },
+  {
+    "line_index_1": 1921,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא קמא",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 1644,
+    "end": 1666
+  },
+  {
+    "line_index_1": 1923,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 104,
+    "end": 114
+  },
+  {
+    "line_index_1": 1925,
+    "line_index_2": 3,
+    "heRef_2": "ברכות",
+    "path_2": "ברכות.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1928,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות סנהדרין והעונשין המסורין להם.txt",
+    "Conection Type": "reference",
+    "start": 277,
+    "end": 301
+  },
+  {
+    "line_index_1": 1928,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות סנהדרין והעונשין המסורין להם.txt",
+    "Conection Type": "reference",
+    "start": 463,
+    "end": 472
+  },
+  {
+    "line_index_1": 1929,
+    "line_index_2": 1232,
+    "heRef_2": "נדרים סד., א",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 255
+  },
+  {
+    "line_index_1": 1935,
+    "line_index_2": 489,
+    "heRef_2": "תוספות על עבודה זרה מ:, יב, א",
+    "path_2": "תוספות על עבודה זרה.txt",
+    "Conection Type": "reference",
+    "start": 106,
+    "end": 125
+  },
+  {
+    "line_index_1": 1937,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 136,
+    "end": 151
+  },
+  {
+    "line_index_1": 1938,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 5
+  },
+  {
+    "line_index_1": 1939,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1942,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 514,
+    "end": 532
+  },
+  {
+    "line_index_1": 1947,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 45,
+    "end": 60
+  },
+  {
+    "line_index_1": 1949,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 48,
+    "end": 59
+  },
+  {
+    "line_index_1": 1950,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 130,
+    "end": 144
+  },
+  {
+    "line_index_1": 1951,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 93,
+    "end": 109
+  },
+  {
+    "line_index_1": 1952,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 1961,
+    "line_index_2": 3,
+    "heRef_2": "סנהדרין",
+    "path_2": "סנהדרין.txt",
+    "Conection Type": "reference",
+    "start": 526,
+    "end": 540
+  },
+  {
+    "line_index_1": 1964,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 64,
+    "end": 80
+  },
+  {
+    "line_index_1": 1966,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 242,
+    "end": 255
+  },
+  {
+    "line_index_1": 1972,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 851,
+    "end": 864
+  },
+  {
+    "line_index_1": 1973,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 118,
+    "end": 137
+  },
+  {
+    "line_index_1": 1973,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 484,
+    "end": 499
+  },
+  {
+    "line_index_1": 1977,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 1284,
+    "end": 1298
+  },
+  {
+    "line_index_1": 1982,
+    "line_index_2": 474,
+    "heRef_2": "ויקרא טז, א",
+    "path_2": "ויקרא.txt",
+    "Conection Type": "reference",
+    "start": 466,
+    "end": 480
+  },
+  {
+    "line_index_1": 1994,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 57,
+    "end": 71
+  },
+  {
+    "line_index_1": 1998,
+    "line_index_2": 3,
+    "heRef_2": "שבת",
+    "path_2": "שבת.txt",
+    "Conection Type": "reference",
+    "start": 144,
+    "end": 155
+  },
+  {
+    "line_index_1": 1998,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 778,
+    "end": 783
+  },
+  {
+    "line_index_1": 1999,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 20
+  },
+  {
+    "line_index_1": 2001,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 256,
+    "end": 268
+  },
+  {
+    "line_index_1": 2001,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 899,
+    "end": 919
+  },
+  {
+    "line_index_1": 2006,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות תרומות.txt",
+    "Conection Type": "reference",
+    "start": 1226,
+    "end": 1246
+  },
+  {
+    "line_index_1": 2011,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 408,
+    "end": 421
+  },
+  {
+    "line_index_1": 2012,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2016,
+    "line_index_2": 1428,
+    "heRef_2": "כתובות נד:, ו",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 110,
+    "end": 125
+  },
+  {
+    "line_index_1": 2017,
+    "line_index_2": 3,
+    "heRef_2": "משנה תרומות",
+    "path_2": "משנה תרומות.txt",
+    "Conection Type": "reference",
+    "start": 172,
+    "end": 183
+  },
+  {
+    "line_index_1": 2027,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2028,
+    "line_index_2": 1786,
+    "heRef_2": "קידושין נח:, יב",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 417,
+    "end": 436
+  },
+  {
+    "line_index_1": 2031,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 1172,
+    "end": 1191
+  },
+  {
+    "line_index_1": 2049,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 107,
+    "end": 121
+  },
+  {
+    "line_index_1": 2049,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 596,
+    "end": 609
+  },
+  {
+    "line_index_1": 2066,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא קמא",
+    "path_2": "תוספות על בבא קמא.txt",
+    "Conection Type": "reference",
+    "start": 32,
+    "end": 48
+  },
+  {
+    "line_index_1": 2073,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 1014,
+    "end": 1035
+  },
+  {
+    "line_index_1": 2074,
+    "line_index_2": 2236,
+    "heRef_2": "טור, אבן העזר",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 150,
+    "end": 168
+  },
+  {
+    "line_index_1": 2106,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1414,
+    "end": 1426
+  },
+  {
+    "line_index_1": 2106,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1555,
+    "end": 1562
+  },
+  {
+    "line_index_1": 2111,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 1269,
+    "end": 1282
+  },
+  {
+    "line_index_1": 2115,
+    "line_index_2": 1963,
+    "heRef_2": "רש\"י על סוכה מב:, ה, א",
+    "path_2": "רשי על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 701,
+    "end": 723
+  },
+  {
+    "line_index_1": 2117,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 630,
+    "end": 645
+  },
+  {
+    "line_index_1": 2120,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 257,
+    "end": 269
+  },
+  {
+    "line_index_1": 2123,
+    "line_index_2": 4,
+    "heRef_2": "רשי על יבמות",
+    "path_2": "רשי על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 60,
+    "end": 80
+  },
+  {
+    "line_index_1": 2133,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 254,
+    "end": 267
+  },
+  {
+    "line_index_1": 2139,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 106,
+    "end": 120
+  },
+  {
+    "line_index_1": 2139,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 180,
+    "end": 198
+  },
+  {
+    "line_index_1": 2144,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 645,
+    "end": 665
+  },
+  {
+    "line_index_1": 2147,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2148,
+    "line_index_2": 3,
+    "heRef_2": "עירובין",
+    "path_2": "עירובין.txt",
+    "Conection Type": "reference",
+    "start": 293,
+    "end": 314
+  },
+  {
+    "line_index_1": 2149,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 204,
+    "end": 214
+  },
+  {
+    "line_index_1": 2149,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 992,
+    "end": 1005
+  },
+  {
+    "line_index_1": 2158,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 598,
+    "end": 609
+  },
+  {
+    "line_index_1": 2161,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 99,
+    "end": 113
+  },
+  {
+    "line_index_1": 2162,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 60,
+    "end": 74
+  },
+  {
+    "line_index_1": 2162,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 431,
+    "end": 448
+  },
+  {
+    "line_index_1": 2163,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1091,
+    "end": 1105
+  },
+  {
+    "line_index_1": 2170,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 204,
+    "end": 224
+  },
+  {
+    "line_index_1": 2184,
+    "line_index_2": 1428,
+    "heRef_2": "כתובות נד:, ו",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 18,
+    "end": 35
+  },
+  {
+    "line_index_1": 2184,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 139,
+    "end": 161
+  },
+  {
+    "line_index_1": 2184,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 753,
+    "end": 769
+  },
+  {
+    "line_index_1": 2186,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 2519,
+    "end": 2531
+  },
+  {
+    "line_index_1": 2188,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 8
+  },
+  {
+    "line_index_1": 2190,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 853,
+    "end": 865
+  },
+  {
+    "line_index_1": 2191,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 86,
+    "end": 98
+  },
+  {
+    "line_index_1": 2193,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 471,
+    "end": 483
+  },
+  {
+    "line_index_1": 2194,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 231,
+    "end": 254
+  },
+  {
+    "line_index_1": 2195,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא בתרא",
+    "path_2": "תוספות על בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 160,
+    "end": 179
+  },
+  {
+    "line_index_1": 2196,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 611,
+    "end": 634
+  },
+  {
+    "line_index_1": 2204,
+    "line_index_2": 3,
+    "heRef_2": "חולין",
+    "path_2": "חולין.txt",
+    "Conection Type": "reference",
+    "start": 860,
+    "end": 882
+  },
+  {
+    "line_index_1": 2211,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 140,
+    "end": 153
+  },
+  {
+    "line_index_1": 2248,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 161,
+    "end": 179
+  },
+  {
+    "line_index_1": 2251,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 842,
+    "end": 848
+  },
+  {
+    "line_index_1": 2255,
+    "line_index_2": 2606,
+    "heRef_2": "טור, חושן משפט",
+    "path_2": "טור.txt",
+    "Conection Type": "reference",
+    "start": 28,
+    "end": 45
+  },
+  {
+    "line_index_1": 2262,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 295,
+    "end": 312
+  },
+  {
+    "line_index_1": 2262,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 790,
+    "end": 808
+  },
+  {
+    "line_index_1": 2262,
+    "line_index_2": 3,
+    "heRef_2": "גיטין",
+    "path_2": "גיטין.txt",
+    "Conection Type": "reference",
+    "start": 849,
+    "end": 854
+  },
+  {
+    "line_index_1": 2262,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 1172,
+    "end": 1186
+  },
+  {
+    "line_index_1": 2269,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 633,
+    "end": 647
+  },
+  {
+    "line_index_1": 2271,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 506,
+    "end": 522
+  },
+  {
+    "line_index_1": 2273,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 258,
+    "end": 271
+  },
+  {
+    "line_index_1": 2310,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 141,
+    "end": 154
+  },
+  {
+    "line_index_1": 2310,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על סוכה",
+    "path_2": "תוספות על סוכה.txt",
+    "Conection Type": "reference",
+    "start": 345,
+    "end": 363
+  },
+  {
+    "line_index_1": 2331,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 63,
+    "end": 85
+  },
+  {
+    "line_index_1": 2336,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 247,
+    "end": 263
+  },
+  {
+    "line_index_1": 2336,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 264,
+    "end": 279
+  },
+  {
+    "line_index_1": 2337,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2347,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 1031,
+    "end": 1051
+  },
+  {
+    "line_index_1": 2356,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 448,
+    "end": 471
+  },
+  {
+    "line_index_1": 2370,
+    "line_index_2": 5,
+    "heRef_2": "כסף משנה על משנה תורה",
+    "path_2": "כסף משנה על משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 296,
+    "end": 315
+  },
+  {
+    "line_index_1": 2373,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 573,
+    "end": 595
+  },
+  {
+    "line_index_1": 2374,
+    "line_index_2": 719,
+    "heRef_2": "תוספות על בבא מציעא ס:, ח, א",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 31,
+    "end": 49
+  },
+  {
+    "line_index_1": 2378,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 129,
+    "end": 145
+  },
+  {
+    "line_index_1": 2380,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2388,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, יורה דעה.txt",
+    "Conection Type": "reference",
+    "start": 68,
+    "end": 86
+  },
+  {
+    "line_index_1": 2390,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 778,
+    "end": 794
+  },
+  {
+    "line_index_1": 2390,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 1376,
+    "end": 1381
+  },
+  {
+    "line_index_1": 2391,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2393,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 509,
+    "end": 523
+  },
+  {
+    "line_index_1": 2394,
+    "line_index_2": 4,
+    "heRef_2": "רשי על כתובות",
+    "path_2": "רשי על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 22
+  },
+  {
+    "line_index_1": 2394,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 465,
+    "end": 485
+  },
+  {
+    "line_index_1": 2404,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 367,
+    "end": 379
+  },
+  {
+    "line_index_1": 2406,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 128,
+    "end": 142
+  },
+  {
+    "line_index_1": 2408,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 402,
+    "end": 419
+  },
+  {
+    "line_index_1": 2409,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2411,
+    "line_index_2": 4,
+    "heRef_2": "רשי על שבת",
+    "path_2": "רשי על שבת.txt",
+    "Conection Type": "reference",
+    "start": 130,
+    "end": 148
+  },
+  {
+    "line_index_1": 2412,
+    "line_index_2": 4,
+    "heRef_2": "רשי על שבת",
+    "path_2": "רשי על שבת.txt",
+    "Conection Type": "reference",
+    "start": 50,
+    "end": 68
+  },
+  {
+    "line_index_1": 2413,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 20,
+    "end": 40
+  },
+  {
+    "line_index_1": 2415,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 572,
+    "end": 585
+  },
+  {
+    "line_index_1": 2416,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 214,
+    "end": 230
+  },
+  {
+    "line_index_1": 2416,
+    "line_index_2": 1153,
+    "heRef_2": "תוספות על שבת צ:, ז, א",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 847,
+    "end": 851
+  },
+  {
+    "line_index_1": 2418,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 142,
+    "end": 162
+  },
+  {
+    "line_index_1": 2419,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 2472,
+    "end": 2491
+  },
+  {
+    "line_index_1": 2424,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 636,
+    "end": 649
+  },
+  {
+    "line_index_1": 2429,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על קידושין",
+    "path_2": "תוספות על קידושין.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2433,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 359,
+    "end": 372
+  },
+  {
+    "line_index_1": 2433,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 573,
+    "end": 584
+  },
+  {
+    "line_index_1": 2438,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 1553,
+    "end": 1565
+  },
+  {
+    "line_index_1": 2444,
+    "line_index_2": 3,
+    "heRef_2": "כתובות",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 4260,
+    "end": 4273
+  },
+  {
+    "line_index_1": 2444,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 4651,
+    "end": 4664
+  },
+  {
+    "line_index_1": 2448,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, אבן העזר.txt",
+    "Conection Type": "reference",
+    "start": 191,
+    "end": 205
+  },
+  {
+    "line_index_1": 2459,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 58,
+    "end": 72
+  },
+  {
+    "line_index_1": 2461,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 390,
+    "end": 410
+  },
+  {
+    "line_index_1": 2462,
+    "line_index_2": 1887,
+    "heRef_2": "כתובות ע., ז",
+    "path_2": "כתובות.txt",
+    "Conection Type": "reference",
+    "start": 174,
+    "end": 191
+  },
+  {
+    "line_index_1": 2465,
+    "line_index_2": 3,
+    "heRef_2": "זבחים",
+    "path_2": "זבחים.txt",
+    "Conection Type": "reference",
+    "start": 102,
+    "end": 115
+  },
+  {
+    "line_index_1": 2470,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 74,
+    "end": 86
+  },
+  {
+    "line_index_1": 2470,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 197,
+    "end": 211
+  },
+  {
+    "line_index_1": 2470,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 472,
+    "end": 483
+  },
+  {
+    "line_index_1": 2476,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 28,
+    "end": 43
+  },
+  {
+    "line_index_1": 2477,
+    "line_index_2": 1122,
+    "heRef_2": "תוספות על יבמות פז:, ט, א",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 608,
+    "end": 626
+  },
+  {
+    "line_index_1": 2479,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 63,
+    "end": 80
+  },
+  {
+    "line_index_1": 2479,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 589,
+    "end": 604
+  },
+  {
+    "line_index_1": 2492,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2493,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על בבא מציעא",
+    "path_2": "תוספות על בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 20
+  },
+  {
+    "line_index_1": 2493,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 144,
+    "end": 165
+  },
+  {
+    "line_index_1": 2495,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 235,
+    "end": 248
+  },
+  {
+    "line_index_1": 2500,
+    "line_index_2": 3,
+    "heRef_2": "בבא מציעא",
+    "path_2": "בבא מציעא.txt",
+    "Conection Type": "reference",
+    "start": 160,
+    "end": 171
+  },
+  {
+    "line_index_1": 2502,
+    "line_index_2": 5,
+    "heRef_2": "שפתי כהן על שולחן ערוך חושן משפט",
+    "path_2": "שפתי כהן על שולחן ערוך חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 174,
+    "end": 192
+  },
+  {
+    "line_index_1": 2504,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על שבת",
+    "path_2": "תוספות על שבת.txt",
+    "Conection Type": "reference",
+    "start": 218,
+    "end": 247
+  },
+  {
+    "line_index_1": 2505,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות שבת.txt",
+    "Conection Type": "reference",
+    "start": 302,
+    "end": 319
+  },
+  {
+    "line_index_1": 2515,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 1234,
+    "end": 1247
+  },
+  {
+    "line_index_1": 2518,
+    "line_index_2": 3,
+    "heRef_2": "ראש השנה",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "reference",
+    "start": 336,
+    "end": 347
+  },
+  {
+    "line_index_1": 2520,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 238,
+    "end": 254
+  },
+  {
+    "line_index_1": 2523,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 268,
+    "end": 286
+  },
+  {
+    "line_index_1": 2523,
+    "line_index_2": 4,
+    "heRef_2": "רשי על יבמות",
+    "path_2": "רשי על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 852,
+    "end": 856
+  },
+  {
+    "line_index_1": 2524,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 4,
+    "end": 9
+  },
+  {
+    "line_index_1": 2526,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 3,
+    "end": 28
+  },
+  {
+    "line_index_1": 2532,
+    "line_index_2": 3,
+    "heRef_2": "משנה מעשרות",
+    "path_2": "משנה מעשרות.txt",
+    "Conection Type": "reference",
+    "start": 123,
+    "end": 135
+  },
+  {
+    "line_index_1": 2532,
+    "line_index_2": 3,
+    "heRef_2": "משנה מעשרות",
+    "path_2": "משנה מעשרות.txt",
+    "Conection Type": "reference",
+    "start": 284,
+    "end": 309
+  },
+  {
+    "line_index_1": 2536,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 102,
+    "end": 122
+  },
+  {
+    "line_index_1": 2545,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על עירובין",
+    "path_2": "תוספות על עירובין.txt",
+    "Conection Type": "reference",
+    "start": 162,
+    "end": 194
+  },
+  {
+    "line_index_1": 2554,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 341,
+    "end": 359
+  },
+  {
+    "line_index_1": 2554,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על יבמות",
+    "path_2": "תוספות על יבמות.txt",
+    "Conection Type": "reference",
+    "start": 399,
+    "end": 401
+  },
+  {
+    "line_index_1": 2558,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 124,
+    "end": 136
+  },
+  {
+    "line_index_1": 2559,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 457,
+    "end": 470
+  },
+  {
+    "line_index_1": 2570,
+    "line_index_2": 3,
+    "heRef_2": "נדרים",
+    "path_2": "נדרים.txt",
+    "Conection Type": "reference",
+    "start": 925,
+    "end": 938
+  },
+  {
+    "line_index_1": 2572,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 319,
+    "end": 336
+  },
+  {
+    "line_index_1": 2572,
+    "line_index_2": 3,
+    "heRef_2": "פסחים",
+    "path_2": "פסחים.txt",
+    "Conection Type": "reference",
+    "start": 411,
+    "end": 427
+  },
+  {
+    "line_index_1": 2572,
+    "line_index_2": 3,
+    "heRef_2": "יומא",
+    "path_2": "יומא.txt",
+    "Conection Type": "reference",
+    "start": 1525,
+    "end": 1537
+  },
+  {
+    "line_index_1": 2574,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 1555,
+    "end": 1568
+  },
+  {
+    "line_index_1": 2575,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 26,
+    "end": 46
+  },
+  {
+    "line_index_1": 2583,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 1071,
+    "end": 1084
+  },
+  {
+    "line_index_1": 2587,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 1525,
+    "end": 1538
+  },
+  {
+    "line_index_1": 2606,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 1438,
+    "end": 1453
+  },
+  {
+    "line_index_1": 2606,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 2052,
+    "end": 2068
+  },
+  {
+    "line_index_1": 2606,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 2291,
+    "end": 2304
+  },
+  {
+    "line_index_1": 2610,
+    "line_index_2": 3,
+    "heRef_2": "סוטה",
+    "path_2": "סוטה.txt",
+    "Conection Type": "reference",
+    "start": 1720,
+    "end": 1737
+  },
+  {
+    "line_index_1": 2628,
+    "line_index_2": 4,
+    "heRef_2": "משנה תורה",
+    "path_2": "משנה תורה, הלכות גירושין.txt",
+    "Conection Type": "reference",
+    "start": 313,
+    "end": 333
+  },
+  {
+    "line_index_1": 2651,
+    "line_index_2": 4,
+    "heRef_2": "שולחן ערוך",
+    "path_2": "שולחן ערוך, חושן משפט.txt",
+    "Conection Type": "reference",
+    "start": 481,
+    "end": 492
+  },
+  {
+    "line_index_1": 2664,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על כתובות",
+    "path_2": "תוספות על כתובות.txt",
+    "Conection Type": "reference",
+    "start": 269,
+    "end": 292
+  },
+  {
+    "line_index_1": 2666,
+    "line_index_2": 487,
+    "heRef_2": "שמות יח, א",
+    "path_2": "שמות.txt",
+    "Conection Type": "reference",
+    "start": 83,
+    "end": 93
+  },
+  {
+    "line_index_1": 2667,
+    "line_index_2": 3,
+    "heRef_2": "בבא בתרא",
+    "path_2": "בבא בתרא.txt",
+    "Conection Type": "reference",
+    "start": 143,
+    "end": 160
+  },
+  {
+    "line_index_1": 2667,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 161,
+    "end": 177
+  },
+  {
+    "line_index_1": 2695,
+    "line_index_2": 3,
+    "heRef_2": "קידושין",
+    "path_2": "קידושין.txt",
+    "Conection Type": "reference",
+    "start": 1396,
+    "end": 1414
+  },
+  {
+    "line_index_1": 2701,
+    "line_index_2": 3,
+    "heRef_2": "יבמות",
+    "path_2": "יבמות.txt",
+    "Conection Type": "reference",
+    "start": 1363,
+    "end": 1376
+  }
+]
