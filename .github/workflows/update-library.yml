@@ -11,6 +11,7 @@ on:
       - "sefariaToOtzaria/sefaria_export/ספרים/אוצריא/**"
       - "sefariaToOtzaria/sefaria_api/ספרים/אוצריא/**"
       - "MoreBooks/ספרים/אוצריא/**"
+      - "ToratEmetToOtzaria/ספרים/אוצריא/**"
       - "wiki_jewish_books/ספרים/אוצריא/**"
       - "Ben-YehudaToOtzaria/ספרים/links/**"
       - "DictaToOtzaria/ספרים/links/**"
@@ -20,6 +21,7 @@ on:
       - "sefariaToOtzaria/sefaria_export/ספרים/links/**"
       - "sefariaToOtzaria/sefaria_api/ספרים/links/**"
       - "MoreBooks/ספרים/links/**"
+      - "ToratEmetToOtzaria/ספרים/links/**"
       - "wiki_jewish_books/ספרים/links/**"
   workflow_dispatch:
 permissions:
