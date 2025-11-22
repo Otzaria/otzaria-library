@@ -13,6 +13,8 @@ on:
       - "MoreBooks/ספרים/אוצריא/**"
       - "ToratEmetToOtzaria/ספרים/אוצריא/**"
       - "wiki_jewish_books/ספרים/אוצריא/**"
+      - "wiki_text/ספרים/אוצריא/**"
+
       - "Ben-YehudaToOtzaria/ספרים/links/**"
       - "DictaToOtzaria/ספרים/links/**"
       - "OnYourWayToOtzaria/ספרים/links/**"
@@ -23,8 +25,10 @@ on:
       - "MoreBooks/ספרים/links/**"
       - "ToratEmetToOtzaria/ספרים/links/**"
       - "wiki_jewish_books/ספרים/links/**"
+      - "wiki_text/ספרים/links/**"
       - "DictaToOtzaria/ספרים/לא ערוך/אוצריא/**"
       - "DictaToOtzaria/ספרים/לא ערוך/links/**"
+      
   workflow_dispatch:
 permissions:
   contents: write
