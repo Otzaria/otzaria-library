@@ -211,7 +211,7 @@ jobs:
         run: |
           echo "Creating Dicta ZIP archive (flattening 'לא ערוך' folder)..."
 
-          SRC="DictaToOtzaria/לא ערוך/ספרים/אוצריא"
+          SRC="DictaToOtzaria/לא ערוך/ספרים"
           if [ -d "$SRC" ]; then
             (cd "$SRC" && zip -qr "$GITHUB_WORKSPACE/otzaria_dicta_latest.zip" *)
           else
