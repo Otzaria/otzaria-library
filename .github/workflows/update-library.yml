@@ -225,27 +225,38 @@ jobs:
 
 
 
-      - name: Delete existing 'latest' release and tag
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release delete latest --yes || true
-          git push --delete origin latest || true
-      
-      - name: Create and push new tag  # יצירת תגית חדשה
-        run: |
-          git tag -f latest
-          git push origin latest --force
-
-      - name: Create Release
+      - name: Create Release for this run
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create latest \
+          set -e
+
+          # שם תג ייחודי לכל ריצה של ה־workflow
+          TAG_NAME="library-${GITHUB_RUN_NUMBER}"
+
+          echo "Creating release with tag: $TAG_NAME"
+
+          gh release create "$TAG_NAME" \
+            --latest \
             --title "Latest Otzaria Files" \
             --notes "Latest version of Otzaria files" \
-            otzaria_latest.zip\
+            otzaria_latest.zip \
             otzaria_dicta_latest.zip
+
           rm otzaria_latest.zip otzaria_dicta_latest.zip
+
+      - name: Delete previous release to save space
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # חישוב מספר הריצה הקודמת
+          PREV_RUN=$((GITHUB_RUN_NUMBER - 1))
+          PREV_TAG="library-${PREV_RUN}"
+
+          echo "Attempting to delete previous release: $PREV_TAG"
+
+          # מחיקת ה-release והתג הקודם
+          gh release delete "$PREV_TAG" --yes 2>/dev/null || echo "Previous release $PREV_TAG not found (OK)"
+          git push --delete origin "$PREV_TAG" 2>/dev/null || echo "Previous tag $PREV_TAG not found (OK)"
