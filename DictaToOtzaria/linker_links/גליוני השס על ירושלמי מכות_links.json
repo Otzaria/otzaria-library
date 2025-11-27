@@ -1,0 +1,102 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Makkot 1": "תלמוד ירושלמי מכות א׳",
+                "Jerusalem Talmud Makkot 1:1:2-8:3": "תלמוד ירושלמי מכות א׳:א׳:ב׳-ח׳:ג׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Makkot 1:3": "תלמוד ירושלמי מכות א׳:ג׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 81,
+            "end": 101,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 9:8": "תלמוד ירושלמי בבא קמא ט׳:ח׳"
+            }
+        },
+        {
+            "start": 180,
+            "end": 188,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Bava Kamma 9:8": "פני משה על תלמוד ירושלמי בבא קמא ט׳:ח׳",
+                "Penei Moshe on Jerusalem Talmud Makkot": "פני משה על תלמוד ירושלמי מכות"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Nedarim 2": "משנה נדרים ב׳",
+                "Nedarim 13b:7-20b:13": "נדרים י״ג ב:ז׳-כ׳ ב:י״ג",
+                "Jerusalem Talmud Makkot 2": "תלמוד ירושלמי מכות ב׳",
+                "Penei Moshe on Jerusalem Talmud Bava Kamma 2": "פני משה על תלמוד ירושלמי בבא קמא ב׳",
+                "Penei Moshe on Jerusalem Talmud Makkot 2": "פני משה על תלמוד ירושלמי מכות ב׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Makkot 2:5": "תלמוד ירושלמי מכות ב׳:ה׳",
+                "Penei Moshe on Jerusalem Talmud Bava Kamma 2:5": "פני משה על תלמוד ירושלמי בבא קמא ב׳:ה׳",
+                "Penei Moshe on Jerusalem Talmud Makkot 2:5": "פני משה על תלמוד ירושלמי מכות ב׳:ה׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 366,
+            "end": 390,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 8:8": "תלמוד ירושלמי סנהדרין ח׳:ח׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 3": "תלמוד ירושלמי סנהדרין ג׳",
+                "Jerusalem Talmud Makkot 3": "תלמוד ירושלמי מכות ג׳",
+                "Penei Moshe on Jerusalem Talmud Bava Kamma 3": "פני משה על תלמוד ירושלמי בבא קמא ג׳",
+                "Penei Moshe on Jerusalem Talmud Makkot 3": "פני משה על תלמוד ירושלמי מכות ג׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Jerusalem Talmud Makkot 3:12": "תלמוד ירושלמי מכות ג׳:י״ב",
+                "Penei Moshe on Jerusalem Talmud Makkot 3:12": "פני משה על תלמוד ירושלמי מכות ג׳:י״ב"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 57,
+            "end": 78,
+            "refs": {
+                "Jerusalem Talmud Sotah 2:1": "תלמוד ירושלמי סוטה ב׳:א׳"
+            }
+        }
+    ]
+}

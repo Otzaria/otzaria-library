@@ -1,0 +1,519 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Yevamot 1": "תלמוד ירושלמי יבמות א׳",
+                "Jerusalem Talmud Yevamot 1:1:2-6:9": "תלמוד ירושלמי יבמות א׳:א׳:ב׳-ו׳:ט׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 1:1": "תלמוד ירושלמי יבמות א׳:א׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 906,
+            "end": 927,
+            "refs": {
+                "Jerusalem Talmud Sotah 2:6": "תלמוד ירושלמי סוטה ב׳:ו׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 124,
+            "end": 143,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 9:6": "תלמוד ירושלמי בבא בתרא ט׳:ו׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 9:6": "תלמוד ירושלמי בבא בתרא ט׳:ו׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 71,
+            "end": 99,
+            "refs": {
+                "Tosafot on Ketubot 105a:3:1": "תוספות על כתובות ק״ה א:ג׳:א׳"
+            }
+        },
+        {
+            "start": 151,
+            "end": 160,
+            "refs": {
+                "Shabbat 40a": "שבת מ׳ א"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Shabbat 2": "משנה שבת ב׳",
+                "Shabbat 20b:5-36b:2": "שבת כ׳ ב:ה׳-ל״ו ב:ב׳",
+                "Jerusalem Talmud Yevamot 2": "תלמוד ירושלמי יבמות ב׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Jerusalem Talmud Yevamot 2:11": "תלמוד ירושלמי יבמות ב׳:י״א"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Yevamot 3": "תלמוד ירושלמי יבמות ג׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 3:10": "תלמוד ירושלמי יבמות ג׳:י׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 58,
+            "end": 71,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:5": "תלמוד ירושלמי יבמות ט״ו:ה׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Yevamot 4": "תלמוד ירושלמי יבמות ד׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 3:2": "תלמוד ירושלמי יבמות ג׳:ב׳",
+                "Jerusalem Talmud Yevamot 4:2": "תלמוד ירושלמי יבמות ד׳:ב׳",
+                "Jerusalem Talmud Yevamot 15:2": "תלמוד ירושלמי יבמות ט״ו:ב׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Jerusalem Talmud Yevamot 3:11": "תלמוד ירושלמי יבמות ג׳:י״א",
+                "Jerusalem Talmud Yevamot 4:11": "תלמוד ירושלמי יבמות ד׳:י״א"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 58,
+            "end": 74,
+            "refs": {
+                "Shabbat 65b": "שבת ס״ה ב"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 127,
+            "end": 140,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:1": "תלמוד ירושלמי יבמות ט״ו:א׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Shabbat 6": "משנה שבת ו׳",
+                "Shabbat 57a:1-67b:16": "שבת נ״ז א:א׳-ס״ז ב:ט״ז",
+                "Jerusalem Talmud Yevamot 6": "תלמוד ירושלמי יבמות ו׳"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 6:5": "תלמוד ירושלמי יבמות ו׳:ה׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Yevamot 7": "תלמוד ירושלמי יבמות ז׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 7:3": "תלמוד ירושלמי יבמות ז׳:ג׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 50,
+            "end": 69,
+            "refs": {
+                "Jerusalem Talmud Peah 7:5": "תלמוד ירושלמי פאה ז׳:ה׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 104,
+            "end": 112,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Peah 7:5": "פני משה על תלמוד ירושלמי פאה ז׳:ה׳",
+                "Penei Moshe on Jerusalem Talmud Yevamot": "פני משה על תלמוד ירושלמי יבמות",
+                "Penei Moshe on Jerusalem Talmud Yevamot 7": "פני משה על תלמוד ירושלמי יבמות ז׳",
+                "Penei Moshe on Jerusalem Talmud Yevamot 7:3": "פני משה על תלמוד ירושלמי יבמות ז׳:ג׳"
+            }
+        },
+        {
+            "start": 173,
+            "end": 195,
+            "refs": {
+                "Jerusalem Talmud Yevamot 16:1": "תלמוד ירושלמי יבמות ט״ז:א׳"
+            }
+        },
+        {
+            "start": 218,
+            "end": 237,
+            "refs": {
+                "Jerusalem Talmud Niddah 1:1": "תלמוד ירושלמי נדה א׳:א׳"
+            }
+        },
+        {
+            "start": 326,
+            "end": 348,
+            "refs": {
+                "Jerusalem Talmud Terumot 3:1": "תלמוד ירושלמי תרומות ג׳:א׳"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Terumot 8": "תלמוד ירושלמי תרומות ח׳",
+                "Jerusalem Talmud Yevamot 8": "תלמוד ירושלמי יבמות ח׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Terumot 3:1": "תלמוד ירושלמי תרומות ג׳:א׳",
+                "Jerusalem Talmud Terumot 8:1": "תלמוד ירושלמי תרומות ח׳:א׳",
+                "Jerusalem Talmud Yevamot 8:1": "תלמוד ירושלמי יבמות ח׳:א׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 121,
+            "end": 134,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:4": "תלמוד ירושלמי יבמות ט״ו:ד׳"
+            }
+        },
+        {
+            "start": 233,
+            "end": 257,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3:12": "תלמוד ירושלמי קידושין ג׳:י״ב"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:3": "תלמוד ירושלמי יבמות ט״ו:ג׳",
+                "Jerusalem Talmud Kiddushin 3:3": "תלמוד ירושלמי קידושין ג׳:ג׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 63,
+            "end": 83,
+            "refs": {
+                "Jerusalem Talmud Sotah 8:9": "תלמוד ירושלמי סוטה ח׳:ט׳"
+            }
+        },
+        {
+            "start": 403,
+            "end": 414,
+            "refs": {
+                "Mishnah Zevachim 1": "משנה זבחים א׳",
+                "Zevachim 2a:1-15b:8": "זבחים ב׳ א:א׳-ט״ו ב:ח׳"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Yevamot 10": "משנה יבמות י׳",
+                "Mishnah Zevachim 10": "משנה זבחים י׳",
+                "Yevamot 87b:9-97a:8": "יבמות פ״ז ב:ט׳-צ״ז א:ח׳",
+                "Zevachim 89a:1-92a:5": "זבחים פ״ט א:א׳-צ״ב א:ה׳",
+                "Jerusalem Talmud Yevamot 10": "תלמוד ירושלמי יבמות י׳"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 10:2": "תלמוד ירושלמי יבמות י׳:ב׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 38,
+            "end": 61,
+            "refs": {
+                "Jerusalem Talmud Horayot 2:5": "תלמוד ירושלמי הוריות ב׳:ה׳"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 74,
+            "end": 87,
+            "refs": {
+                "Jerusalem Talmud Yevamot 2:11": "תלמוד ירושלמי יבמות ב׳:י״א"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 11": "תלמוד ירושלמי יבמות י״א"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 11:1": "תלמוד ירושלמי יבמות י״א:א׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 68,
+            "end": 88,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 5:12": "תלמוד ירושלמי עבודה זרה ה׳:י״ב"
+            }
+        }
+    ],
+    "45": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 5:5": "תלמוד ירושלמי עבודה זרה ה׳:ה׳"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 119,
+            "end": 143,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 5:1": "תלמוד ירושלמי סנהדרין ה׳:א׳"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 12": "תלמוד ירושלמי יבמות י״ב"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 12:2": "תלמוד ירושלמי יבמות י״ב:ב׳",
+                "Jerusalem Talmud Sanhedrin 5:2": "תלמוד ירושלמי סנהדרין ה׳:ב׳",
+                "Jerusalem Talmud Avodah Zarah 5:2": "תלמוד ירושלמי עבודה זרה ה׳:ב׳"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 317,
+            "end": 341,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 8:5": "תלמוד ירושלמי סנהדרין ח׳:ה׳"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishnah Yevamot 13": "משנה יבמות י״ג",
+                "Yevamot 107a:1-112b:4": "יבמות ק״ז א:א׳-קי״ב ב:ד׳",
+                "Jerusalem Talmud Yevamot 13": "תלמוד ירושלמי יבמות י״ג"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 13:1": "תלמוד ירושלמי יבמות י״ג:א׳"
+            }
+        }
+    ],
+    "52": [
+        {
+            "start": 1869,
+            "end": 1893,
+            "refs": {
+                "Tosafot on Beitzah 8a:4:1": "תוספות על ביצה ח׳ א:ד׳:א׳"
+            }
+        }
+    ],
+    "53": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15": "תלמוד ירושלמי יבמות ט״ו"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:9": "תלמוד ירושלמי יבמות ט״ו:ט׳"
+            }
+        }
+    ],
+    "56": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 16": "תלמוד ירושלמי יבמות ט״ז"
+            }
+        }
+    ],
+    "57": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yevamot 15:3": "תלמוד ירושלמי יבמות ט״ו:ג׳",
+                "Jerusalem Talmud Yevamot 16:3": "תלמוד ירושלמי יבמות ט״ז:ג׳"
+            }
+        }
+    ],
+    "58": [
+        {
+            "start": 89,
+            "end": 112,
+            "refs": {
+                "Jerusalem Talmud Sheviit 9:1": "תלמוד ירושלמי שביעית ט׳:א׳"
+            }
+        },
+        {
+            "start": 212,
+            "end": 234,
+            "refs": {
+                "Jerusalem Talmud Sotah 9:3": "תלמוד ירושלמי סוטה ט׳:ג׳"
+            }
+        }
+    ],
+    "59": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sheviit 9:4": "תלמוד ירושלמי שביעית ט׳:ד׳",
+                "Jerusalem Talmud Yevamot 16:4": "תלמוד ירושלמי יבמות ט״ז:ד׳",
+                "Jerusalem Talmud Sotah 9:4": "תלמוד ירושלמי סוטה ט׳:ד׳"
+            }
+        }
+    ],
+    "60": [
+        {
+            "start": 28,
+            "end": 51,
+            "refs": {
+                "Jerusalem Talmud Eruvin 4:1": "תלמוד ירושלמי עירובין ד׳:א׳"
+            }
+        }
+    ]
+}

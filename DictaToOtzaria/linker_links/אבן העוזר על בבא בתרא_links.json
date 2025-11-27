@@ -1,0 +1,36 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Bava Batra 29": "בבא בתרא כ״ט"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 495,
+            "end": 508,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 146": "שולחן ערוך, חושן משפט קמ״ו"
+            }
+        },
+        {
+            "start": 534,
+            "end": 547,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 222": "שולחן ערוך, חושן משפט רכ״ב"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 115,
+            "end": 126,
+            "refs": {
+                "Avodah Zarah 72": "עבודה זרה ע״ב"
+            }
+        }
+    ]
+}

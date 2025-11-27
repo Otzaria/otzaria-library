@@ -1,0 +1,38 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kutim 1": "מסכת כותים א׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 132,
+            "end": 156,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Yoreh De'ah 159:105": "שפתי כהן על שולחן ערוך יורה דעה קנ״ט:ק״ה"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kutim 2": "מסכת כותים ב׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 299,
+            "end": 312,
+            "refs": {
+                "Makkot 8b": "מכות ח׳ ב"
+            }
+        }
+    ]
+}

@@ -1,0 +1,171 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sukkah 1": "תלמוד ירושלמי סוכה א׳",
+                "Jerusalem Talmud Sukkah 1:1:2-12:3": "תלמוד ירושלמי סוכה א׳:א׳:ב׳-י״ב:ג׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sukkah 1:5": "תלמוד ירושלמי סוכה א׳:ה׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 40,
+            "end": 62,
+            "refs": {
+                "Jerusalem Talmud Terumot 10:3": "תלמוד ירושלמי תרומות י׳:ג׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Terumot 3": "תלמוד ירושלמי תרומות ג׳",
+                "Jerusalem Talmud Sukkah 3": "תלמוד ירושלמי סוכה ג׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Terumot 3:1": "תלמוד ירושלמי תרומות ג׳:א׳",
+                "Jerusalem Talmud Terumot 10:1": "תלמוד ירושלמי תרומות י׳:א׳",
+                "Jerusalem Talmud Sukkah 3:1": "תלמוד ירושלמי סוכה ג׳:א׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 78,
+            "end": 99,
+            "refs": {
+                "Jerusalem Talmud Gittin 5:6": "תלמוד ירושלמי גיטין ה׳:ו׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Terumot 4": "תלמוד ירושלמי תרומות ד׳",
+                "Jerusalem Talmud Sukkah 4": "תלמוד ירושלמי סוכה ד׳",
+                "Jerusalem Talmud Gittin 4": "תלמוד ירושלמי גיטין ד׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Terumot 4:2": "תלמוד ירושלמי תרומות ד׳:ב׳",
+                "Jerusalem Talmud Sukkah 4:2": "תלמוד ירושלמי סוכה ד׳:ב׳",
+                "Jerusalem Talmud Gittin 4:2": "תלמוד ירושלמי גיטין ד׳:ב׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 134,
+            "end": 155,
+            "refs": {
+                "Jerusalem Talmud Pesachim 2:2": "תלמוד ירושלמי פסחים ב׳:ב׳"
+            }
+        },
+        {
+            "start": 690,
+            "end": 708,
+            "refs": {
+                "Bekhorot 51b": "בכורות נ״א ב"
+            }
+        },
+        {
+            "start": 752,
+            "end": 774,
+            "refs": {
+                "Jerusalem Talmud Kilayim 2:3": "תלמוד ירושלמי כלאים ב׳:ג׳"
+            }
+        },
+        {
+            "start": 835,
+            "end": 859,
+            "refs": {
+                "Tosafot on Pesachim 88b:15:1": "תוספות על פסחים פ״ח ב:ט״ו:א׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kilayim 2:7": "תלמוד ירושלמי כלאים ב׳:ז׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 56,
+            "end": 76,
+            "refs": {
+                "Jerusalem Talmud Sotah 2:2": "תלמוד ירושלמי סוטה ב׳:ב׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tosafot on Pesachim 58a:1-65b:9": "תוספות על פסחים נ״ח א:א׳-ס״ה ב:ט׳",
+                "Jerusalem Talmud Kilayim 5": "תלמוד ירושלמי כלאים ה׳",
+                "Jerusalem Talmud Sukkah 5": "תלמוד ירושלמי סוכה ה׳",
+                "Jerusalem Talmud Sotah 5": "תלמוד ירושלמי סוטה ה׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kilayim 5:6": "תלמוד ירושלמי כלאים ה׳:ו׳",
+                "Jerusalem Talmud Sukkah 5:6": "תלמוד ירושלמי סוכה ה׳:ו׳",
+                "Jerusalem Talmud Sotah 5:6": "תלמוד ירושלמי סוטה ה׳:ו׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 330,
+            "end": 350,
+            "refs": {
+                "Eruvin 19b": "עירובין י״ט ב"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 36,
+            "end": 58,
+            "refs": {
+                "Jerusalem Talmud Terumot 10:5": "תלמוד ירושלמי תרומות י׳:ה׳"
+            }
+        }
+    ]
+}

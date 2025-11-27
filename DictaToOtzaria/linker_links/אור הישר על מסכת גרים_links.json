@@ -1,0 +1,201 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Gerim 1": "מסכת גרים א׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 123,
+            "end": 137,
+            "refs": {
+                "Yevamot 24b": "יבמות כ״ד ב"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 12,
+            "end": 28,
+            "refs": {
+                "Kiddushin 62a": "קידושין ס״ב א"
+            }
+        },
+        {
+            "start": 305,
+            "end": 317,
+            "refs": {
+                "Shabbat 46b": "שבת מ״ו ב"
+            }
+        },
+        {
+            "start": 778,
+            "end": 789,
+            "refs": {
+                "Yevamot 47": "יבמות מ״ז"
+            }
+        },
+        {
+            "start": 1005,
+            "end": 1019,
+            "refs": {
+                "Menachot 44a": "מנחות מ״ד א"
+            }
+        },
+        {
+            "start": 1081,
+            "end": 1100,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 268:12": "שולחן ערוך, יורה דעה רס״ח:י״ב"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Gerim 2": "מסכת גרים ב׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 279,
+            "end": 305,
+            "refs": {
+                "Tosafot on Shabbat 135a:3:1": "תוספות על שבת קל״ה א:ג׳:א׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 72,
+            "end": 84,
+            "refs": {
+                "Rosh Hashanah 31b": "ראש השנה ל״א ב"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Gerim 3": "מסכת גרים ג׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 330,
+            "end": 343,
+            "refs": {
+                "Kiddushin 26": "קידושין כ״ו"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 146,
+            "end": 154,
+            "refs": {
+                "Bava Batra 150": "בבא בתרא ק״נ"
+            }
+        },
+        {
+            "start": 155,
+            "end": 163,
+            "refs": {
+                "Bava Batra 151": "בבא בתרא קנ״א"
+            }
+        },
+        {
+            "start": 341,
+            "end": 359,
+            "refs": {
+                "Tosafot on Bava Batra 54a": "תוספות על בבא בתרא נ״ד א"
+            }
+        },
+        {
+            "start": 853,
+            "end": 865,
+            "refs": {
+                "Kiddushin 22": "קידושין כ״ב"
+            }
+        },
+        {
+            "start": 1289,
+            "end": 1300,
+            "refs": {
+                "Kiddushin 22a": "קידושין כ״ב א"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 12,
+            "end": 27,
+            "refs": {
+                "Kiddushin 22b": "קידושין כ״ב ב"
+            }
+        },
+        {
+            "start": 274,
+            "end": 282,
+            "refs": {
+                "Tosafot on Kiddushin 22a": "תוספות על קידושין כ״ב א",
+                "Tosafot on Kiddushin 22b": "תוספות על קידושין כ״ב ב"
+            }
+        },
+        {
+            "start": 303,
+            "end": 308,
+            "refs": {
+                "Kiddushin 22a": "קידושין כ״ב א",
+                "Kiddushin 22b": "קידושין כ״ב ב"
+            }
+        },
+        {
+            "start": 466,
+            "end": 476,
+            "refs": {
+                "Kiddushin 17b": "קידושין י״ז ב",
+                "Tosafot on Kiddushin 17b": "תוספות על קידושין י״ז ב"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 170,
+            "end": 184,
+            "refs": {
+                "Yevamot 62a": "יבמות ס״ב א"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Yevamot 4": "משנה יבמות ד׳",
+                "Yevamot 35b:1-50a:5": "יבמות ל״ה ב:א׳-נ׳ א:ה׳",
+                "Tractate Gerim 4": "מסכת גרים ד׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 111,
+            "end": 123,
+            "refs": {
+                "Bava Metzia 59b": "בבא מציעא נ״ט ב"
+            }
+        }
+    ]
+}

@@ -1,0 +1,4133 @@
+{
+    "8": [
+        {
+            "start": 98,
+            "end": 110,
+            "refs": {
+                "Chullin 4": "חולין ד׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 11,
+            "end": 12,
+            "refs": {
+                "Rashi on Gittin 5": "רש\"י על גיטין ה׳",
+                "Rashi on Gittin 48b:6-62a:17": "רש\"י על גיטין מ״ח ב:ו׳-ס״ב א:י״ז"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Mishnah Chullin 8": "משנה חולין ח׳",
+                "Chullin 8": "חולין ח׳",
+                "Chullin 103b:16-117b:5": "חולין ק״ג ב:ט״ז-קי״ז ב:ה׳"
+            }
+        },
+        {
+            "start": 17,
+            "end": 42,
+            "refs": {
+                "Jerusalem Talmud Sheviit 10:1:1-4:6": "תלמוד ירושלמי שביעית י׳:א׳:א׳-ד׳:ו׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 585,
+            "end": 606,
+            "refs": {
+                "Tosafot on Kiddushin 38": "תוספות על קידושין ל״ח"
+            }
+        },
+        {
+            "start": 1395,
+            "end": 1408,
+            "refs": {
+                "Arakhin 32": "ערכין ל״ב"
+            }
+        },
+        {
+            "start": 1744,
+            "end": 1760,
+            "refs": {
+                "Sanhedrin 27": "סנהדרין כ״ז"
+            }
+        },
+        {
+            "start": 2001,
+            "end": 2019,
+            "refs": {
+                "Tur, Yoreh De'ah 331": "טור, יורה דעה של״א"
+            }
+        },
+        {
+            "start": 2154,
+            "end": 2166,
+            "refs": {
+                "Bava Kamma 114": "בבא קמא קי״ד"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 30,
+            "end": 45,
+            "refs": {
+                "Ketubot 25": "כתובות כ״ה"
+            }
+        },
+        {
+            "start": 477,
+            "end": 492,
+            "refs": {
+                "Shita Mekubetzet on Ketubot 25a": "שיטה מקובצת על כתובות כ״ה א"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 296,
+            "end": 311,
+            "refs": {
+                "Kiddushin 38": "קידושין ל״ח"
+            }
+        },
+        {
+            "start": 718,
+            "end": 726,
+            "refs": {
+                "Kiddushin 38a": "קידושין ל״ח א"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 554,
+            "end": 573,
+            "refs": {
+                "Tosafot on Arakhin 32": "תוספות על ערכין ל״ב"
+            }
+        },
+        {
+            "start": 626,
+            "end": 642,
+            "refs": {
+                "Kiddushin 58": "קידושין נ״ח"
+            }
+        },
+        {
+            "start": 1578,
+            "end": 1597,
+            "refs": {
+                "Tosafot on Yevamot 83": "תוספות על יבמות פ״ג"
+            }
+        },
+        {
+            "start": 2478,
+            "end": 2492,
+            "refs": {
+                "Arakhin 32": "ערכין ל״ב"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 1063,
+            "end": 1069,
+            "refs": {
+                "Gittin 32a:3-48b:5": "גיטין ל״ב א:ג׳-מ״ח ב:ה׳",
+                "Jerusalem Talmud Gittin 4:1:1-9:5": "תלמוד ירושלמי גיטין ד׳:א׳:א׳-ט׳:ה׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 1016,
+            "end": 1031,
+            "refs": {
+                "Kiddushin 38": "קידושין ל״ח"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 675,
+            "end": 689,
+            "refs": {
+                "Gittin 57": "גיטין נ״ז"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 915,
+            "end": 932,
+            "refs": {
+                "Arakhin 29": "ערכין כ״ט"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 539,
+            "end": 552,
+            "refs": {
+                "Arakhin 32": "ערכין ל״ב"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 62,
+            "end": 76,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 67": "שולחן ערוך, חושן משפט ס״ז"
+            }
+        },
+        {
+            "start": 257,
+            "end": 272,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 331": "שולחן ערוך, יורה דעה של״א"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 462,
+            "end": 477,
+            "refs": {
+                "Kiddushin 28": "קידושין כ״ח"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 407,
+            "end": 425,
+            "refs": {
+                "Tur, Yoreh De'ah 331": "טור, יורה דעה של״א"
+            }
+        },
+        {
+            "start": 523,
+            "end": 541,
+            "refs": {
+                "Ketubot 27": "כתובות כ״ז"
+            }
+        },
+        {
+            "start": 2359,
+            "end": 2386,
+            "refs": {
+                "Jerusalem Talmud Sheviit 6:1:1-4:7": "תלמוד ירושלמי שביעית ו׳:א׳:א׳-ד׳:ז׳"
+            }
+        },
+        {
+            "start": 6293,
+            "end": 6321,
+            "refs": {
+                "Mishneh Torah, The Chosen Temple 6": "משנה תורה, הלכות בית הבחירה ו׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 247,
+            "end": 261,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 1": "משנה תורה, הלכות תרומות א׳"
+            }
+        },
+        {
+            "start": 553,
+            "end": 561,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 3": "משנה תורה, הלכות תרומות ג׳"
+            }
+        },
+        {
+            "start": 2029,
+            "end": 2051,
+            "refs": {
+                "Mishneh Torah, The Chosen Temple 6": "משנה תורה, הלכות בית הבחירה ו׳"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 763,
+            "end": 782,
+            "refs": {
+                "Tosafot on Gittin 62": "תוספות על גיטין ס״ב"
+            }
+        },
+        {
+            "start": 1256,
+            "end": 1276,
+            "refs": {
+                "Rosh on Makkot 1": "פסקי הרא\"ש על מכות א׳"
+            }
+        },
+        {
+            "start": 1423,
+            "end": 1442,
+            "refs": {
+                "Tur, Yoreh De'ah 331": "טור, יורה דעה של״א"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 454,
+            "end": 474,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 331": "שולחן ערוך, יורה דעה של״א"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 466,
+            "end": 483,
+            "refs": {
+                "Gittin 75": "גיטין ע״ה"
+            }
+        },
+        {
+            "start": 584,
+            "end": 599,
+            "refs": {
+                "Moed Katan 3": "מועד קטן ג׳"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 161,
+            "end": 174,
+            "refs": {
+                "Gittin 37": "גיטין ל״ז"
+            }
+        },
+        {
+            "start": 555,
+            "end": 568,
+            "refs": {
+                "Gittin 53": "גיטין נ״ג"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 135,
+            "end": 149,
+            "refs": {
+                "Yevamot 81": "יבמות פ״א"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 1045,
+            "end": 1055,
+            "refs": {
+                "Jeremiah 31": "ירמיהו ל״א"
+            }
+        },
+        {
+            "start": 1303,
+            "end": 1312,
+            "refs": {
+                "Deuteronomy 7:12-11:25": "דברים ז׳:י״ב-י״א:כ״ה"
+            }
+        },
+        {
+            "start": 1398,
+            "end": 1400,
+            "refs": {
+                "Deuteronomy 7:12": "דברים ז׳:י״ב",
+                "Jeremiah 31": "ירמיהו ל״א"
+            }
+        }
+    ],
+    "58": [
+        {
+            "start": 1754,
+            "end": 1765,
+            "refs": {
+                "Bava Metzia 75": "בבא מציעא ע״ה"
+            }
+        }
+    ],
+    "59": [
+        {
+            "start": 244,
+            "end": 250,
+            "refs": {
+                "Bava Metzia 75a:3": "בבא מציעא ע״ה א:ג׳",
+                "Bava Metzia 75a:11-75b:4": "בבא מציעא ע״ה א:י״א-ע״ה ב:ד׳"
+            }
+        },
+        {
+            "start": 345,
+            "end": 350,
+            "refs": {
+                "Bava Metzia 75a:3": "בבא מציעא ע״ה א:ג׳",
+                "Bava Metzia 75a:11-75b:4": "בבא מציעא ע״ה א:י״א-ע״ה ב:ד׳"
+            }
+        }
+    ],
+    "60": [
+        {
+            "start": 413,
+            "end": 427,
+            "refs": {
+                "Gittin 62": "גיטין ס״ב"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 522,
+            "end": 533,
+            "refs": {
+                "Shabbat 74": "שבת ע״ד"
+            }
+        },
+        {
+            "start": 820,
+            "end": 827,
+            "refs": {
+                "Shabbat 74a": "שבת ע״ד א"
+            }
+        }
+    ],
+    "63": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Pesachim 108": "פסחים ק״ח"
+            }
+        }
+    ],
+    "64": [
+        {
+            "start": 84,
+            "end": 102,
+            "refs": {
+                "Tosafot on Beitzah 14": "תוספות על ביצה י״ד"
+            }
+        },
+        {
+            "start": 382,
+            "end": 400,
+            "refs": {
+                "Tosafot on Shabbat 141": "תוספות על שבת קמ״א"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 135,
+            "end": 156,
+            "refs": {
+                "Yevamot 104": "יבמות ק״ד"
+            }
+        },
+        {
+            "start": 1228,
+            "end": 1241,
+            "refs": {
+                "Yevamot 96": "יבמות צ״ו"
+            }
+        },
+        {
+            "start": 1426,
+            "end": 1436,
+            "refs": {
+                "Gittin 24a:16-32a:2": "גיטין כ״ד א:ט״ז-ל״ב א:ב׳",
+                "Jerusalem Talmud Gittin 3:1:1-8:5": "תלמוד ירושלמי גיטין ג׳:א׳:א׳-ח׳:ה׳"
+            }
+        },
+        {
+            "start": 1796,
+            "end": 1815,
+            "refs": {
+                "Tosafot on Yevamot 96": "תוספות על יבמות צ״ו"
+            }
+        },
+        {
+            "start": 2169,
+            "end": 2174,
+            "refs": {
+                "Yevamot 96a:4-8": "יבמות צ״ו א:ד׳-ח׳"
+            }
+        },
+        {
+            "start": 2188,
+            "end": 2193,
+            "refs": {
+                "Yevamot 96a:4-8": "יבמות צ״ו א:ד׳-ח׳"
+            }
+        },
+        {
+            "start": 2235,
+            "end": 2240,
+            "refs": {
+                "Yevamot 96a:4-8": "יבמות צ״ו א:ד׳-ח׳"
+            }
+        }
+    ],
+    "75": [
+        {
+            "start": 1096,
+            "end": 1115,
+            "refs": {
+                "Mishnah Terumot 1": "משנה תרומות א׳"
+            }
+        },
+        {
+            "start": 1244,
+            "end": 1257,
+            "refs": {
+                "Gittin 71": "גיטין ע״א"
+            }
+        }
+    ],
+    "80": [
+        {
+            "start": 230,
+            "end": 244,
+            "refs": {
+                "Yevamot 114": "יבמות קי״ד"
+            }
+        }
+    ],
+    "81": [
+        {
+            "start": 1711,
+            "end": 1723,
+            "refs": {
+                "Sotah 35": "סוטה ל״ה"
+            }
+        },
+        {
+            "start": 2085,
+            "end": 2097,
+            "refs": {
+                "Sotah 32": "סוטה ל״ב"
+            }
+        }
+    ],
+    "83": [
+        {
+            "start": 1005,
+            "end": 1025,
+            "refs": {
+                "Jerusalem Talmud Terumot 1": "תלמוד ירושלמי תרומות א׳",
+                "Jerusalem Talmud Terumot 1:1:2-5:9": "תלמוד ירושלמי תרומות א׳:א׳:ב׳-ה׳:ט׳"
+            }
+        },
+        {
+            "start": 1026,
+            "end": 1037,
+            "refs": {
+                "Mishnah Chagigah 1": "משנה חגיגה א׳",
+                "Chagigah 2a:1-11b:5": "חגיגה ב׳ א:א׳-י״א ב:ה׳"
+            }
+        }
+    ],
+    "89": [
+        {
+            "start": 11,
+            "end": 22,
+            "refs": {
+                "Bava Kamma 110": "בבא קמא ק״י"
+            }
+        }
+    ],
+    "90": [
+        {
+            "start": 1335,
+            "end": 1347,
+            "refs": {
+                "Sotah 32": "סוטה ל״ב"
+            }
+        }
+    ],
+    "95": [
+        {
+            "start": 2016,
+            "end": 2030,
+            "refs": {
+                "Kiddushin 50": "קידושין נ׳"
+            }
+        },
+        {
+            "start": 2841,
+            "end": 2855,
+            "refs": {
+                "Ketubot 77": "כתובות ע״ז"
+            }
+        }
+    ],
+    "97": [
+        {
+            "start": 33,
+            "end": 47,
+            "refs": {
+                "Ketubot 57": "כתובות נ״ז"
+            }
+        },
+        {
+            "start": 1321,
+            "end": 1335,
+            "refs": {
+                "Ketubot 72": "כתובות ע״ב"
+            }
+        },
+        {
+            "start": 1945,
+            "end": 1959,
+            "refs": {
+                "Ketubot 75": "כתובות ע״ה"
+            }
+        }
+    ],
+    "98": [
+        {
+            "start": 149,
+            "end": 169,
+            "refs": {
+                "Tosafot on Ketubot 47": "תוספות על כתובות מ״ז"
+            }
+        },
+        {
+            "start": 955,
+            "end": 963,
+            "refs": {
+                "Tosafot on Ketubot 47a": "תוספות על כתובות מ״ז א"
+            }
+        },
+        {
+            "start": 1175,
+            "end": 1187,
+            "refs": {
+                "Chullin 50": "חולין נ׳"
+            }
+        }
+    ],
+    "99": [
+        {
+            "start": 13,
+            "end": 27,
+            "refs": {
+                "Ketubot 77": "כתובות ע״ז"
+            }
+        }
+    ],
+    "102": [
+        {
+            "start": 73,
+            "end": 90,
+            "refs": {
+                "Ketubot 73": "כתובות ע״ג"
+            }
+        }
+    ],
+    "104": [
+        {
+            "start": 30,
+            "end": 44,
+            "refs": {
+                "Gittin 47": "גיטין מ״ז"
+            }
+        },
+        {
+            "start": 447,
+            "end": 452,
+            "refs": {
+                "Gittin 47a:7": "גיטין מ״ז א:ז׳"
+            }
+        }
+    ],
+    "105": [
+        {
+            "start": 1372,
+            "end": 1385,
+            "refs": {
+                "Yevamot 12": "יבמות י״ב"
+            }
+        },
+        {
+            "start": 2041,
+            "end": 2054,
+            "refs": {
+                "Yevamot 12": "יבמות י״ב"
+            }
+        }
+    ],
+    "111": [
+        {
+            "start": 33,
+            "end": 47,
+            "refs": {
+                "Gittin 46": "גיטין מ״ו"
+            }
+        },
+        {
+            "start": 426,
+            "end": 440,
+            "refs": {
+                "Ketubot 57": "כתובות נ״ז"
+            }
+        },
+        {
+            "start": 945,
+            "end": 959,
+            "refs": {
+                "Ketubot 74": "כתובות ע״ד"
+            }
+        }
+    ],
+    "117": [
+        {
+            "start": 523,
+            "end": 538,
+            "refs": {
+                "Sanhedrin 32": "סנהדרין ל״ב"
+            }
+        }
+    ],
+    "119": [
+        {
+            "start": 135,
+            "end": 151,
+            "refs": {
+                "Makkot 6": "מכות ו׳"
+            }
+        }
+    ],
+    "120": [
+        {
+            "start": 376,
+            "end": 399,
+            "refs": {
+                "Mishneh Torah, Testimony 5": "משנה תורה, הלכות עדות ה׳"
+            }
+        }
+    ],
+    "121": [
+        {
+            "start": 11,
+            "end": 12,
+            "refs": {
+                "Mishneh Torah, Testimony 5": "משנה תורה, הלכות עדות ה׳",
+                "Mishneh Torah, Testimony 5:5": "משנה תורה, הלכות עדות ה׳:ה׳"
+            }
+        },
+        {
+            "start": 56,
+            "end": 76,
+            "refs": {
+                "Sanhedrin 31": "סנהדרין ל״א"
+            }
+        },
+        {
+            "start": 250,
+            "end": 258,
+            "refs": {
+                "Sanhedrin 31a": "סנהדרין ל״א א"
+            }
+        }
+    ],
+    "122": [
+        {
+            "start": 58,
+            "end": 81,
+            "refs": {
+                "Mishneh Torah, Testimony 4": "משנה תורה, הלכות עדות ד׳"
+            }
+        },
+        {
+            "start": 631,
+            "end": 644,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 15": "שולחן ערוך, חושן משפט ט״ו"
+            }
+        },
+        {
+            "start": 1153,
+            "end": 1169,
+            "refs": {
+                "Mishneh Torah, Testimony 3": "משנה תורה, הלכות עדות ג׳"
+            }
+        }
+    ],
+    "123": [
+        {
+            "start": 42,
+            "end": 57,
+            "refs": {
+                "Makkot 3": "מכות ג׳"
+            }
+        }
+    ],
+    "125": [
+        {
+            "start": 440,
+            "end": 458,
+            "refs": {
+                "Tosafot on Bava Batra 34a": "תוספות על בבא בתרא ל״ד א"
+            }
+        }
+    ],
+    "126": [
+        {
+            "start": 2335,
+            "end": 2357,
+            "refs": {
+                "Tosafot on Shevuot 40a": "תוספות על שבועות מ׳ א"
+            }
+        },
+        {
+            "start": 2618,
+            "end": 2633,
+            "refs": {
+                "Makkot 6b": "מכות ו׳ ב"
+            }
+        }
+    ],
+    "128": [
+        {
+            "start": 485,
+            "end": 509,
+            "refs": {
+                "Sanhedrin 41b": "סנהדרין מ״א ב"
+            }
+        },
+        {
+            "start": 991,
+            "end": 1012,
+            "refs": {
+                "Teshuvot HaRivash 266": "תשובות הריב\"ש רס״ו"
+            }
+        },
+        {
+            "start": 1223,
+            "end": 1257,
+            "refs": {
+                "Tosafot on Sanhedrin 8b:2:1": "תוספות על סנהדרין ח׳ ב:ב׳:א׳"
+            }
+        }
+    ],
+    "129": [
+        {
+            "start": 183,
+            "end": 198,
+            "refs": {
+                "Sanhedrin 40": "סנהדרין מ׳"
+            }
+        }
+    ],
+    "130": [
+        {
+            "start": 1068,
+            "end": 1082,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 38": "שולחן ערוך, חושן משפט ל״ח"
+            }
+        }
+    ],
+    "131": [
+        {
+            "start": 189,
+            "end": 213,
+            "refs": {
+                "Mishneh Torah, Testimony 21": "משנה תורה, הלכות עדות כ״א"
+            }
+        },
+        {
+            "start": 270,
+            "end": 291,
+            "refs": {
+                "Jerusalem Talmud Sotah 1": "תלמוד ירושלמי סוטה א׳",
+                "Jerusalem Talmud Sotah 1:1:2-10:6": "תלמוד ירושלמי סוטה א׳:א׳:ב׳-י׳:ו׳"
+            }
+        },
+        {
+            "start": 1028,
+            "end": 1039,
+            "refs": {
+                "Makkot 5": "מכות ה׳"
+            }
+        },
+        {
+            "start": 1184,
+            "end": 1195,
+            "refs": {
+                "Bava Kamma 74": "בבא קמא ע״ד"
+            }
+        },
+        {
+            "start": 1985,
+            "end": 1992,
+            "refs": {
+                "Bava Kamma 74a": "בבא קמא ע״ד א"
+            }
+        }
+    ],
+    "132": [
+        {
+            "start": 12,
+            "end": 32,
+            "refs": {
+                "Sanhedrin 28a": "סנהדרין כ״ח א"
+            }
+        },
+        {
+            "start": 152,
+            "end": 174,
+            "refs": {
+                "Tosafot on Ketubot 21b": "תוספות על כתובות כ״א ב"
+            }
+        },
+        {
+            "start": 355,
+            "end": 370,
+            "refs": {
+                "Rosh Hashanah 22a": "ראש השנה כ״ב א"
+            }
+        },
+        {
+            "start": 543,
+            "end": 556,
+            "refs": {
+                "Rosh Hashanah 25b": "ראש השנה כ״ה ב",
+                "Sanhedrin 25b": "סנהדרין כ״ה ב",
+                "Tosafot on Ketubot 25b": "תוספות על כתובות כ״ה ב"
+            }
+        },
+        {
+            "start": 875,
+            "end": 889,
+            "refs": {
+                "Rosh Hashanah 25b": "ראש השנה כ״ה ב"
+            }
+        }
+    ],
+    "136": [
+        {
+            "start": 473,
+            "end": 503,
+            "refs": {
+                "Tosafot on Sanhedrin 8b:2:1": "תוספות על סנהדרין ח׳ ב:ב׳:א׳"
+            }
+        },
+        {
+            "start": 598,
+            "end": 616,
+            "refs": {
+                "Beit Yosef, Even HaEzer 11": "בית יוסף, אבן העזר י״א"
+            }
+        },
+        {
+            "start": 1131,
+            "end": 1145,
+            "refs": {
+                "Mishnah Sanhedrin 1": "משנה סנהדרין א׳",
+                "Sanhedrin 2a:1-18a:4": "סנהדרין ב׳ א:א׳-י״ח א:ד׳"
+            }
+        }
+    ],
+    "138": [
+        {
+            "start": 3,
+            "end": 23,
+            "refs": {
+                "Shulchan Arukh, Even HaEzer 42:4": "שולחן ערוך, אבן העזר מ״ב:ד׳"
+            }
+        },
+        {
+            "start": 1173,
+            "end": 1197,
+            "refs": {
+                "Rashi on Sanhedrin 32b": "רש\"י על סנהדרין ל״ב ב"
+            }
+        },
+        {
+            "start": 1680,
+            "end": 1693,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 15": "שולחן ערוך, חושן משפט ט״ו"
+            }
+        }
+    ],
+    "143": [
+        {
+            "start": 763,
+            "end": 778,
+            "refs": {
+                "Kiddushin 66": "קידושין ס״ו"
+            }
+        }
+    ],
+    "145": [
+        {
+            "start": 3,
+            "end": 23,
+            "refs": {
+                "Teshuvot HaRivash 266": "תשובות הריב\"ש רס״ו"
+            }
+        }
+    ],
+    "148": [
+        {
+            "start": 128,
+            "end": 149,
+            "refs": {
+                "Tur, Even HaEzer 33": "טור, אבן העזר ל״ג"
+            }
+        },
+        {
+            "start": 206,
+            "end": 224,
+            "refs": {
+                "Kiddushin 9": "קידושין ט׳"
+            }
+        },
+        {
+            "start": 590,
+            "end": 604,
+            "refs": {
+                "Yevamot 55": "יבמות נ״ה"
+            }
+        }
+    ],
+    "151": [
+        {
+            "start": 12,
+            "end": 27,
+            "refs": {
+                "Kiddushin 59": "קידושין נ״ט"
+            }
+        }
+    ],
+    "152": [
+        {
+            "start": 12,
+            "end": 25,
+            "refs": {
+                "Yevamot 56": "יבמות נ״ו"
+            }
+        },
+        {
+            "start": 136,
+            "end": 143,
+            "refs": {
+                "Yevamot 55": "יבמות נ״ה"
+            }
+        },
+        {
+            "start": 483,
+            "end": 499,
+            "refs": {
+                "Kiddushin 22": "קידושין כ״ב"
+            }
+        },
+        {
+            "start": 1479,
+            "end": 1494,
+            "refs": {
+                "Sanhedrin 66": "סנהדרין ס״ו"
+            }
+        },
+        {
+            "start": 2190,
+            "end": 2203,
+            "refs": {
+                "Yevamot 55": "יבמות נ״ה"
+            }
+        },
+        {
+            "start": 2680,
+            "end": 2693,
+            "refs": {
+                "Yevamot 56": "יבמות נ״ו"
+            }
+        }
+    ],
+    "153": [
+        {
+            "start": 37,
+            "end": 50,
+            "refs": {
+                "Yevamot 56": "יבמות נ״ו"
+            }
+        }
+    ],
+    "156": [
+        {
+            "start": 3,
+            "end": 25,
+            "refs": {
+                "Kiddushin 5": "קידושין ה׳"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Yevamot 55": "יבמות נ״ה"
+            }
+        },
+        {
+            "start": 62,
+            "end": 81,
+            "refs": {
+                "Kiddushin 5": "קידושין ה׳"
+            }
+        }
+    ],
+    "164": [
+        {
+            "start": 28,
+            "end": 113,
+            "refs": {
+                "Yevamot 114b:11-19": "יבמות קי״ד ב:י״א-י״ט"
+            }
+        }
+    ],
+    "167": [
+        {
+            "start": 1236,
+            "end": 1256,
+            "refs": {
+                "Tosafot on Ketubot 87": "תוספות על כתובות פ״ז"
+            }
+        }
+    ],
+    "180": [
+        {
+            "start": 1380,
+            "end": 1393,
+            "refs": {
+                "Gittin 28": "גיטין כ״ח"
+            }
+        },
+        {
+            "start": 1769,
+            "end": 1796,
+            "refs": {
+                "Mishneh Torah, Divorce 13": "משנה תורה, הלכות גירושין י״ג"
+            }
+        }
+    ],
+    "182": [
+        {
+            "start": 441,
+            "end": 457,
+            "refs": {
+                "Shabbat 145": "שבת קמ״ה"
+            }
+        }
+    ],
+    "186": [
+        {
+            "start": 418,
+            "end": 434,
+            "refs": {
+                "Teshuvot HaRivash 378": "תשובות הריב\"ש שע״ח"
+            }
+        }
+    ],
+    "187": [
+        {
+            "start": 13,
+            "end": 25,
+            "refs": {
+                "Gittin 2": "גיטין ב׳"
+            }
+        }
+    ],
+    "198": [
+        {
+            "start": 3559,
+            "end": 3572,
+            "refs": {
+                "Gittin 28": "גיטין כ״ח"
+            }
+        },
+        {
+            "start": 3617,
+            "end": 3629,
+            "refs": {
+                "Bava Batra 136": "בבא בתרא קל״ו"
+            }
+        }
+    ],
+    "203": [
+        {
+            "start": 2683,
+            "end": 2699,
+            "refs": {
+                "Teshuvot HaRivash 379": "תשובות הריב\"ש שע״ט"
+            }
+        }
+    ],
+    "209": [
+        {
+            "start": 299,
+            "end": 315,
+            "refs": {
+                "Teshuvot HaRivash 378": "תשובות הריב\"ש שע״ח"
+            }
+        }
+    ],
+    "228": [
+        {
+            "start": 73,
+            "end": 91,
+            "refs": {
+                "Mishneh Torah, Marriage 16": "משנה תורה, הלכות אישות ט״ז"
+            }
+        },
+        {
+            "start": 278,
+            "end": 295,
+            "refs": {
+                "Gittin 62b:1-67b:8": "גיטין ס״ב ב:א׳-ס״ז ב:ח׳"
+            }
+        }
+    ],
+    "230": [
+        {
+            "start": 1488,
+            "end": 1502,
+            "refs": {
+                "Ketubot 22": "כתובות כ״ב"
+            }
+        }
+    ],
+    "243": [
+        {
+            "start": 125,
+            "end": 141,
+            "refs": {
+                "Bava Batra 153b": "בבא בתרא קנ״ג ב"
+            }
+        }
+    ],
+    "256": [
+        {
+            "start": 740,
+            "end": 765,
+            "refs": {
+                "Tur, Choshen Mishpat 284": "טור, חושן משפט רפ״ד"
+            }
+        },
+        {
+            "start": 1823,
+            "end": 1836,
+            "refs": {
+                "Yevamot 36": "יבמות ל״ו"
+            }
+        },
+        {
+            "start": 4760,
+            "end": 4776,
+            "refs": {
+                "Tosafot on Bava Metzia 20": "תוספות על בבא מציעא כ׳"
+            }
+        }
+    ],
+    "260": [
+        {
+            "start": 176,
+            "end": 190,
+            "refs": {
+                "Bekhorot 46": "בכורות מ״ו"
+            }
+        },
+        {
+            "start": 1450,
+            "end": 1466,
+            "refs": {
+                "Tosafot on Bava Metzia 20": "תוספות על בבא מציעא כ׳"
+            }
+        },
+        {
+            "start": 2072,
+            "end": 2086,
+            "refs": {
+                "Yevamot 114": "יבמות קי״ד"
+            }
+        }
+    ],
+    "262": [
+        {
+            "start": 85,
+            "end": 97,
+            "refs": {
+                "Beitzah 10": "ביצה י׳"
+            }
+        }
+    ],
+    "278": [
+        {
+            "start": 780,
+            "end": 794,
+            "refs": {
+                "Yevamot 119": "יבמות קי״ט"
+            }
+        }
+    ],
+    "280": [
+        {
+            "start": 152,
+            "end": 165,
+            "refs": {
+                "Yevamot 32": "יבמות ל״ב"
+            }
+        }
+    ],
+    "286": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Gittin 27": "גיטין כ״ז"
+            }
+        },
+        {
+            "start": 427,
+            "end": 454,
+            "refs": {
+                "Mishneh Torah, Divorce 3": "משנה תורה, הלכות גירושין ג׳"
+            }
+        },
+        {
+            "start": 2048,
+            "end": 2062,
+            "refs": {
+                "Yevamot 116": "יבמות קט״ז"
+            }
+        }
+    ],
+    "291": [
+        {
+            "start": 1421,
+            "end": 1436,
+            "refs": {
+                "Kiddushin 49": "קידושין מ״ט"
+            }
+        }
+    ],
+    "292": [
+        {
+            "start": 79,
+            "end": 92,
+            "refs": {
+                "Gittin 78": "גיטין ע״ח"
+            }
+        },
+        {
+            "start": 1242,
+            "end": 1254,
+            "refs": {
+                "Yevamot 26a:15-35a:11": "יבמות כ״ו א:ט״ו-ל״ה א:י״א",
+                "Jerusalem Talmud Yevamot 3:1:1-12:5": "תלמוד ירושלמי יבמות ג׳:א׳:א׳-י״ב:ה׳"
+            }
+        }
+    ],
+    "293": [
+        {
+            "start": 297,
+            "end": 320,
+            "refs": {
+                "Penei Yehoshua on Gittin 28": "פני יהושע על גיטין כ״ח"
+            }
+        }
+    ],
+    "295": [
+        {
+            "start": 3,
+            "end": 41,
+            "refs": {
+                "Ketubot 12": "כתובות י״ב"
+            }
+        }
+    ],
+    "305": [
+        {
+            "start": 661,
+            "end": 674,
+            "refs": {
+                "Yevamot 32": "יבמות ל״ב"
+            }
+        },
+        {
+            "start": 776,
+            "end": 790,
+            "refs": {
+                "Chullin 43": "חולין מ״ג"
+            }
+        }
+    ],
+    "306": [
+        {
+            "start": 115,
+            "end": 133,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Yoreh De'ah 50": "שפתי כהן על שולחן ערוך יורה דעה נ׳"
+            }
+        },
+        {
+            "start": 208,
+            "end": 215,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Yoreh De'ah 50": "שפתי כהן על שולחן ערוך יורה דעה נ׳"
+            }
+        },
+        {
+            "start": 433,
+            "end": 440,
+            "refs": {
+                "Yevamot 11": "יבמות י״א"
+            }
+        },
+        {
+            "start": 620,
+            "end": 632,
+            "refs": {
+                "Bava Batra 134": "בבא בתרא קל״ד"
+            }
+        },
+        {
+            "start": 1050,
+            "end": 1060,
+            "refs": {
+                "Mishnah Chullin 1": "משנה חולין א׳",
+                "Chullin 2a:1-26b:19": "חולין ב׳ א:א׳-כ״ו ב:י״ט",
+                "Chullin 81": "חולין פ״א"
+            }
+        }
+    ],
+    "313": [
+        {
+            "start": 27,
+            "end": 49,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 75:12": "שולחן ערוך, חושן משפט ע״ה:י״ב"
+            }
+        }
+    ],
+    "314": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 19": "שולחן ערוך, חושן משפט י״ט"
+            }
+        }
+    ],
+    "315": [
+        {
+            "start": 332,
+            "end": 346,
+            "refs": {
+                "Shevuot 43": "שבועות מ״ג"
+            }
+        },
+        {
+            "start": 373,
+            "end": 378,
+            "refs": {
+                "Shevuot 43a:17-20": "שבועות מ״ג א:י״ז-כ׳"
+            }
+        }
+    ],
+    "316": [
+        {
+            "start": 25,
+            "end": 40,
+            "refs": {
+                "Shevuot 41": "שבועות מ״א"
+            }
+        },
+        {
+            "start": 177,
+            "end": 191,
+            "refs": {
+                "Shevuot 45": "שבועות מ״ה"
+            }
+        },
+        {
+            "start": 413,
+            "end": 421,
+            "refs": {
+                "Shevuot 41a": "שבועות מ״א א",
+                "Shevuot 45a": "שבועות מ״ה א"
+            }
+        },
+        {
+            "start": 783,
+            "end": 794,
+            "refs": {
+                "Bava Metzia 98": "בבא מציעא צ״ח"
+            }
+        }
+    ],
+    "317": [
+        {
+            "start": 405,
+            "end": 417,
+            "refs": {
+                "Bava Kamma 107": "בבא קמא ק״ז"
+            }
+        }
+    ],
+    "319": [
+        {
+            "start": 3,
+            "end": 24,
+            "refs": {
+                "Ketubot 18": "כתובות י״ח"
+            }
+        }
+    ],
+    "321": [
+        {
+            "start": 2746,
+            "end": 2757,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        },
+        {
+            "start": 3568,
+            "end": 3575,
+            "refs": {
+                "Bava Metzia 5a": "בבא מציעא ה׳ א"
+            }
+        },
+        {
+            "start": 3844,
+            "end": 3863,
+            "refs": {
+                "Shevuot 39": "שבועות ל״ט"
+            }
+        },
+        {
+            "start": 3949,
+            "end": 3965,
+            "refs": {
+                "Bava Metzia 55": "בבא מציעא נ״ה"
+            }
+        }
+    ],
+    "323": [
+        {
+            "start": 3,
+            "end": 21,
+            "refs": {
+                "Bava Kamma 99": "בבא קמא צ״ט"
+            }
+        },
+        {
+            "start": 1352,
+            "end": 1366,
+            "refs": {
+                "Ketubot 16": "כתובות ט״ז"
+            }
+        },
+        {
+            "start": 1566,
+            "end": 1568,
+            "refs": {
+                "Ketubot 20": "כתובות כ׳"
+            }
+        },
+        {
+            "start": 1661,
+            "end": 1675,
+            "refs": {
+                "Ketubot 12": "כתובות י״ב"
+            }
+        },
+        {
+            "start": 2777,
+            "end": 2804,
+            "refs": {
+                "Bava Batra 92a:1-102b:8": "בבא בתרא צ״ב א:א׳-ק״ב ב:ח׳"
+            }
+        },
+        {
+            "start": 3055,
+            "end": 3067,
+            "refs": {
+                "Bava Batra 92a:1-102b:8": "בבא בתרא צ״ב א:א׳-ק״ב ב:ח׳",
+                "Jerusalem Talmud Bava Batra 6:1:1-4:2": "תלמוד ירושלמי בבא בתרא ו׳:א׳:א׳-ד׳:ב׳"
+            }
+        },
+        {
+            "start": 4440,
+            "end": 4451,
+            "refs": {
+                "Bava Metzia 83": "בבא מציעא פ״ג"
+            }
+        },
+        {
+            "start": 5219,
+            "end": 5233,
+            "refs": {
+                "Shulchan Arukh, Even HaEzer 68": "שולחן ערוך, אבן העזר ס״ח"
+            }
+        }
+    ],
+    "326": [
+        {
+            "start": 3,
+            "end": 22,
+            "refs": {
+                "Chullin 3": "חולין ג׳"
+            }
+        },
+        {
+            "start": 818,
+            "end": 831,
+            "refs": {
+                "Berakhot 47": "ברכות מ״ז"
+            }
+        }
+    ],
+    "329": [
+        {
+            "start": 169,
+            "end": 184,
+            "refs": {
+                "Avodah Zarah 31": "עבודה זרה ל״א"
+            }
+        }
+    ],
+    "330": [
+        {
+            "start": 354,
+            "end": 371,
+            "refs": {
+                "Nazir 29": "נזיר כ״ט"
+            }
+        },
+        {
+            "start": 1037,
+            "end": 1057,
+            "refs": {
+                "Eruvin 35": "עירובין ל״ה"
+            }
+        },
+        {
+            "start": 1345,
+            "end": 1351,
+            "refs": {
+                "Eruvin 4": "עירובין ד׳",
+                "Nazir 4": "נזיר ד׳"
+            }
+        }
+    ],
+    "335": [
+        {
+            "start": 1037,
+            "end": 1050,
+            "refs": {
+                "Chullin 86": "חולין פ״ו"
+            }
+        }
+    ],
+    "336": [
+        {
+            "start": 111,
+            "end": 142,
+            "refs": {
+                "Mishneh Torah, Sacrifices Rendered Unfit 1": "משנה תורה, הלכות פסולי המוקדשין א׳"
+            }
+        }
+    ],
+    "338": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Chullin 12": "חולין י״ב"
+            }
+        },
+        {
+            "start": 233,
+            "end": 244,
+            "refs": {
+                "Bava Metzia 24": "בבא מציעא כ״ד"
+            }
+        }
+    ],
+    "339": [
+        {
+            "start": 3,
+            "end": 29,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 2:11": "שולחן ערוך, יורה דעה ב׳:י״א"
+            }
+        }
+    ],
+    "342": [
+        {
+            "start": 78,
+            "end": 93,
+            "refs": {
+                "Chullin 20": "חולין כ׳"
+            }
+        },
+        {
+            "start": 1159,
+            "end": 1180,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 24:8": "שולחן ערוך, יורה דעה כ״ד:ח׳"
+            }
+        },
+        {
+            "start": 1343,
+            "end": 1364,
+            "refs": {
+                "Mishneh Torah, Ritual Slaughter 3": "משנה תורה, הלכות שחיטה ג׳"
+            }
+        },
+        {
+            "start": 1597,
+            "end": 1610,
+            "refs": {
+                "Zevachim 68": "זבחים ס״ח"
+            }
+        },
+        {
+            "start": 1842,
+            "end": 1847,
+            "refs": {
+                "Zevachim 68a:7-68b:2": "זבחים ס״ח א:ז׳-ס״ח ב:ב׳"
+            }
+        }
+    ],
+    "346": [
+        {
+            "start": 74,
+            "end": 89,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 3": "שולחן ערוך, יורה דעה ג׳"
+            }
+        }
+    ],
+    "348": [
+        {
+            "start": 1526,
+            "end": 1537,
+            "refs": {
+                "Bava Kamma 22": "בבא קמא כ״ב"
+            }
+        }
+    ],
+    "358": [
+        {
+            "start": 3,
+            "end": 20,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 31": "שולחן ערוך, יורה דעה ל״א"
+            }
+        }
+    ],
+    "369": [
+        {
+            "start": 3,
+            "end": 28,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 42:6": "שולחן ערוך, יורה דעה מ״ב:ו׳"
+            }
+        },
+        {
+            "start": 168,
+            "end": 177,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 47": "שולחן ערוך, יורה דעה מ״ז"
+            }
+        },
+        {
+            "start": 228,
+            "end": 237,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 42:7": "שולחן ערוך, יורה דעה מ״ב:ז׳"
+            }
+        },
+        {
+            "start": 429,
+            "end": 437,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 42:6": "שולחן ערוך, יורה דעה מ״ב:ו׳"
+            }
+        }
+    ],
+    "377": [
+        {
+            "start": 403,
+            "end": 416,
+            "refs": {
+                "Chullin 42": "חולין מ״ב"
+            }
+        }
+    ],
+    "378": [
+        {
+            "start": 241,
+            "end": 254,
+            "refs": {
+                "Chullin 19": "חולין י״ט"
+            }
+        },
+        {
+            "start": 1435,
+            "end": 1448,
+            "refs": {
+                "Chullin 32": "חולין ל״ב"
+            }
+        }
+    ],
+    "381": [
+        {
+            "start": 3,
+            "end": 23,
+            "refs": {
+                "Chullin 32b": "חולין ל״ב ב"
+            }
+        }
+    ],
+    "384": [
+        {
+            "start": 3,
+            "end": 23,
+            "refs": {
+                "Yoma 37": "יומא ל״ז"
+            }
+        },
+        {
+            "start": 127,
+            "end": 141,
+            "refs": {
+                "Chullin 37": "חולין ל״ז"
+            }
+        },
+        {
+            "start": 546,
+            "end": 558,
+            "refs": {
+                "Pesachim 23": "פסחים כ״ג"
+            }
+        },
+        {
+            "start": 2187,
+            "end": 2200,
+            "refs": {
+                "Chullin 101": "חולין ק״א"
+            }
+        },
+        {
+            "start": 3411,
+            "end": 3430,
+            "refs": {
+                "Tosafot on Yevamot 33": "תוספות על יבמות ל״ג"
+            }
+        }
+    ],
+    "388": [
+        {
+            "start": 3,
+            "end": 27,
+            "refs": {
+                "Sanhedrin 112": "סנהדרין קי״ב"
+            }
+        },
+        {
+            "start": 324,
+            "end": 336,
+            "refs": {
+                "Chullin 140": "חולין ק״מ"
+            }
+        },
+        {
+            "start": 559,
+            "end": 574,
+            "refs": {
+                "Kiddushin 57": "קידושין נ״ז"
+            }
+        },
+        {
+            "start": 760,
+            "end": 777,
+            "refs": {
+                "Chullin 81": "חולין פ״א"
+            }
+        },
+        {
+            "start": 795,
+            "end": 807,
+            "refs": {
+                "Bava Kamma 77": "בבא קמא ע״ז"
+            }
+        }
+    ],
+    "389": [
+        {
+            "start": 163,
+            "end": 177,
+            "refs": {
+                "Chullin 140": "חולין ק״מ"
+            }
+        },
+        {
+            "start": 999,
+            "end": 1011,
+            "refs": {
+                "Yoma 62": "יומא ס״ב"
+            }
+        }
+    ],
+    "391": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Chullin 2": "חולין ב׳"
+            }
+        }
+    ],
+    "394": [
+        {
+            "start": 73,
+            "end": 89,
+            "refs": {
+                "Temurah 13": "תמורה י״ג"
+            }
+        }
+    ],
+    "395": [
+        {
+            "start": 1801,
+            "end": 1818,
+            "refs": {
+                "Chullin 29": "חולין כ״ט"
+            }
+        }
+    ],
+    "403": [
+        {
+            "start": 391,
+            "end": 404,
+            "refs": {
+                "Temurah 7": "תמורה ז׳"
+            }
+        },
+        {
+            "start": 733,
+            "end": 739,
+            "refs": {
+                "Temurah 7b": "תמורה ז׳ ב"
+            }
+        },
+        {
+            "start": 1763,
+            "end": 1783,
+            "refs": {
+                "Mishneh Torah, Things Forbidden on the Altar 1": "משנה תורה, הלכות איסורי המזבח א׳"
+            }
+        }
+    ],
+    "406": [
+        {
+            "start": 3,
+            "end": 28,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 122:2": "שולחן ערוך, יורה דעה קכ״ב:ב׳"
+            }
+        },
+        {
+            "start": 439,
+            "end": 472,
+            "refs": {
+                "Mishneh Torah, Forbidden Foods 16": "משנה תורה, הלכות מאכלות אסורות ט״ז"
+            }
+        }
+    ],
+    "407": [
+        {
+            "start": 12,
+            "end": 26,
+            "refs": {
+                "Chullin 111": "חולין קי״א"
+            }
+        },
+        {
+            "start": 346,
+            "end": 361,
+            "refs": {
+                "Avodah Zarah 59": "עבודה זרה נ״ט"
+            }
+        },
+        {
+            "start": 974,
+            "end": 992,
+            "refs": {
+                "Teshuvot HaRan 69": "שו\"ת הר\"ן ס״ט"
+            }
+        }
+    ],
+    "409": [
+        {
+            "start": 631,
+            "end": 642,
+            "refs": {
+                "Avodah Zarah 66": "עבודה זרה ס״ו"
+            }
+        }
+    ],
+    "410": [
+        {
+            "start": 310,
+            "end": 324,
+            "refs": {
+                "Pesachim 43": "פסחים מ״ג"
+            }
+        },
+        {
+            "start": 719,
+            "end": 732,
+            "refs": {
+                "Chullin 98": "חולין צ״ח"
+            }
+        }
+    ],
+    "413": [
+        {
+            "start": 803,
+            "end": 814,
+            "refs": {
+                "Avodah Zarah 36": "עבודה זרה ל״ו"
+            }
+        },
+        {
+            "start": 867,
+            "end": 874,
+            "refs": {
+                "Avodah Zarah 38": "עבודה זרה ל״ח"
+            }
+        }
+    ],
+    "417": [
+        {
+            "start": 3,
+            "end": 19,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 10": "שולחן ערוך, יורה דעה י׳"
+            }
+        },
+        {
+            "start": 901,
+            "end": 914,
+            "refs": {
+                "Bekhorot 3": "בכורות ג׳"
+            }
+        }
+    ],
+    "418": [
+        {
+            "start": 3,
+            "end": 23,
+            "refs": {
+                "Chullin 8": "חולין ח׳"
+            }
+        }
+    ],
+    "422": [
+        {
+            "start": 95,
+            "end": 118,
+            "refs": {
+                "Beit Yosef, Yoreh De'ah 373": "בית יוסף, יורה דעה שע״ג"
+            }
+        },
+        {
+            "start": 264,
+            "end": 281,
+            "refs": {
+                "Nazir 43": "נזיר מ״ג"
+            }
+        },
+        {
+            "start": 467,
+            "end": 488,
+            "refs": {
+                "Yevamot 120b": "יבמות ק״כ ב"
+            }
+        },
+        {
+            "start": 838,
+            "end": 856,
+            "refs": {
+                "Yevamot 91": "יבמות צ״א"
+            }
+        }
+    ],
+    "424": [
+        {
+            "start": 313,
+            "end": 326,
+            "refs": {
+                "Nedarim 58": "נדרים נ״ח"
+            }
+        },
+        {
+            "start": 726,
+            "end": 740,
+            "refs": {
+                "Shevuot 26": "שבועות כ״ו"
+            }
+        },
+        {
+            "start": 1284,
+            "end": 1297,
+            "refs": {
+                "Nedarim 12": "נדרים י״ב"
+            }
+        },
+        {
+            "start": 1461,
+            "end": 1469,
+            "refs": {
+                "Nedarim 45b:1-48b:8": "נדרים מ״ה ב:א׳-מ״ח ב:ח׳",
+                "Mishneh Torah, Vows": "משנה תורה, הלכות נדרים"
+            }
+        }
+    ],
+    "425": [
+        {
+            "start": 430,
+            "end": 443,
+            "refs": {
+                "Nedarim 58": "נדרים נ״ח"
+            }
+        },
+        {
+            "start": 719,
+            "end": 732,
+            "refs": {
+                "Menachot 31": "מנחות ל״א"
+            }
+        }
+    ],
+    "427": [
+        {
+            "start": 139,
+            "end": 152,
+            "refs": {
+                "Nedarim 58": "נדרים נ״ח"
+            }
+        },
+        {
+            "start": 188,
+            "end": 197,
+            "refs": {
+                "Nedarim 58a": "נדרים נ״ח א"
+            }
+        },
+        {
+            "start": 512,
+            "end": 529,
+            "refs": {
+                "Ran on Nedarim 52": "ר\"ן על נדרים נ״ב"
+            }
+        }
+    ],
+    "428": [
+        {
+            "start": 3,
+            "end": 29,
+            "refs": {
+                "Nedarim 47b:5-48a:2": "נדרים מ״ז ב:ה׳-מ״ח א:ב׳",
+                "Nedarim 48a:6-7": "נדרים מ״ח א:ו׳-ז׳"
+            }
+        },
+        {
+            "start": 69,
+            "end": 74,
+            "refs": {
+                "Nedarim 47b:5-48a:2": "נדרים מ״ז ב:ה׳-מ״ח א:ב׳"
+            }
+        },
+        {
+            "start": 168,
+            "end": 174,
+            "refs": {
+                "Nedarim 47b:5-48a:2": "נדרים מ״ז ב:ה׳-מ״ח א:ב׳"
+            }
+        },
+        {
+            "start": 252,
+            "end": 268,
+            "refs": {
+                "Beitzah 39b": "ביצה ל״ט ב"
+            }
+        }
+    ],
+    "430": [
+        {
+            "start": 93,
+            "end": 104,
+            "refs": {
+                "Beitzah 4": "ביצה ד׳"
+            }
+        },
+        {
+            "start": 194,
+            "end": 209,
+            "refs": {
+                "Eruvin 39": "עירובין ל״ט"
+            }
+        }
+    ],
+    "432": [
+        {
+            "start": 73,
+            "end": 91,
+            "refs": {
+                "Shabbat 71": "שבת ע״א"
+            }
+        },
+        {
+            "start": 379,
+            "end": 392,
+            "refs": {
+                "Menachot 21": "מנחות כ״א"
+            }
+        },
+        {
+            "start": 454,
+            "end": 468,
+            "refs": {
+                "Pesachim 24": "פסחים כ״ד"
+            }
+        },
+        {
+            "start": 804,
+            "end": 813,
+            "refs": {
+                "Menachot 21a": "מנחות כ״א א"
+            }
+        }
+    ],
+    "434": [
+        {
+            "start": 3,
+            "end": 28,
+            "refs": {
+                "Chullin 35b": "חולין ל״ה ב"
+            }
+        },
+        {
+            "start": 495,
+            "end": 508,
+            "refs": {
+                "Pesachim 22": "פסחים כ״ב"
+            }
+        }
+    ],
+    "436": [
+        {
+            "start": 311,
+            "end": 331,
+            "refs": {
+                "Shabbat 42b": "שבת מ״ב ב"
+            }
+        }
+    ],
+    "439": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Rashi on Bava Metzia 2a:1-21a:6": "רש\"י על בבא מציעא ב׳ א:א׳-כ״א א:ו׳"
+            }
+        },
+        {
+            "start": 3,
+            "end": 4,
+            "refs": {
+                "Rashi on Bava Metzia 5": "רש\"י על בבא מציעא ה׳",
+                "Rashi on Bava Metzia 60b:8-75b:14": "רש\"י על בבא מציעא ס׳ ב:ח׳-ע״ה ב:י״ד"
+            }
+        }
+    ],
+    "443": [
+        {
+            "start": 1187,
+            "end": 1197,
+            "refs": {
+                "Bava Batra 33": "בבא בתרא ל״ג"
+            }
+        }
+    ],
+    "450": [
+        {
+            "start": 99,
+            "end": 117,
+            "refs": {
+                "Bava Batra 32b": "בבא בתרא ל״ב ב"
+            }
+        },
+        {
+            "start": 1224,
+            "end": 1236,
+            "refs": {
+                "Sotah 25": "סוטה כ״ה"
+            }
+        }
+    ],
+    "452": [
+        {
+            "start": 73,
+            "end": 84,
+            "refs": {
+                "Bava Metzia 110": "בבא מציעא ק״י"
+            }
+        },
+        {
+            "start": 637,
+            "end": 648,
+            "refs": {
+                "Bava Metzia 102": "בבא מציעא ק״ב"
+            }
+        },
+        {
+            "start": 2245,
+            "end": 2257,
+            "refs": {
+                "Mishnah Ketubot 2": "משנה כתובות ב׳",
+                "Ketubot 15b:12-28b:14": "כתובות ט״ו ב:י״ב-כ״ח ב:י״ד"
+            }
+        }
+    ],
+    "453": [
+        {
+            "start": 339,
+            "end": 350,
+            "refs": {
+                "Bava Metzia 110": "בבא מציעא ק״י"
+            }
+        }
+    ],
+    "455": [
+        {
+            "start": 790,
+            "end": 801,
+            "refs": {
+                "Bava Batra 28a:1-60b:22": "בבא בתרא כ״ח א:א׳-ס׳ ב:כ״ב",
+                "Jerusalem Talmud Bava Batra 3:1:1-11:2": "תלמוד ירושלמי בבא בתרא ג׳:א׳:א׳-י״א:ב׳"
+            }
+        }
+    ],
+    "456": [
+        {
+            "start": 348,
+            "end": 365,
+            "refs": {
+                "Bava Batra 154a": "בבא בתרא קנ״ד א"
+            }
+        }
+    ],
+    "457": [
+        {
+            "start": 232,
+            "end": 243,
+            "refs": {
+                "Bava Batra 32": "בבא בתרא ל״ב"
+            }
+        }
+    ],
+    "460": [
+        {
+            "start": 3,
+            "end": 20,
+            "refs": {
+                "Bava Metzia 2b": "בבא מציעא ב׳ ב"
+            }
+        }
+    ],
+    "465": [
+        {
+            "start": 1273,
+            "end": 1287,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 133": "שולחן ערוך, חושן משפט קל״ג"
+            }
+        },
+        {
+            "start": 1292,
+            "end": 1299,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 133": "שפתי כהן על שולחן ערוך חושן משפט קל״ג"
+            }
+        }
+    ],
+    "467": [
+        {
+            "start": 3,
+            "end": 21,
+            "refs": {
+                "Kiddushin 73": "קידושין ע״ג"
+            }
+        }
+    ],
+    "472": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Bava Batra 29": "בבא בתרא כ״ט"
+            }
+        },
+        {
+            "start": 1109,
+            "end": 1127,
+            "refs": {
+                "Kiddushin 43b": "קידושין מ״ג ב"
+            }
+        }
+    ],
+    "474": [
+        {
+            "start": 115,
+            "end": 130,
+            "refs": {
+                "Rosh on Bava Metzia 1": "פסקי הרא\"ש על בבא מציעא א׳"
+            }
+        }
+    ],
+    "478": [
+        {
+            "start": 3,
+            "end": 21,
+            "refs": {
+                "Bava Kamma 11": "בבא קמא י״א"
+            }
+        },
+        {
+            "start": 81,
+            "end": 99,
+            "refs": {
+                "Tosafot on Bava Metzia 83": "תוספות על בבא מציעא פ״ג"
+            }
+        }
+    ],
+    "481": [
+        {
+            "start": 546,
+            "end": 560,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 94": "שולחן ערוך, חושן משפט צ״ד"
+            }
+        },
+        {
+            "start": 679,
+            "end": 688,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 294": "שולחן ערוך, חושן משפט רצ״ד"
+            }
+        }
+    ],
+    "485": [
+        {
+            "start": 381,
+            "end": 403,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 82:13": "שולחן ערוך, חושן משפט פ״ב:י״ג"
+            }
+        }
+    ],
+    "486": [
+        {
+            "start": 2196,
+            "end": 2217,
+            "refs": {
+                "Tosafot on Kiddushin 73": "תוספות על קידושין ע״ג"
+            }
+        }
+    ],
+    "491": [
+        {
+            "start": 90,
+            "end": 115,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 140:1": "שולחן ערוך, חושן משפט ק״מ:א׳"
+            }
+        },
+        {
+            "start": 300,
+            "end": 314,
+            "refs": {
+                "Mishnah Ketubot 2": "משנה כתובות ב׳",
+                "Ketubot 15b:12-28b:14": "כתובות ט״ו ב:י״ב-כ״ח ב:י״ד"
+            }
+        }
+    ],
+    "492": [
+        {
+            "start": 1808,
+            "end": 1823,
+            "refs": {
+                "Ketubot 17": "כתובות י״ז"
+            }
+        },
+        {
+            "start": 2071,
+            "end": 2086,
+            "refs": {
+                "Ketubot 17a": "כתובות י״ז א"
+            }
+        },
+        {
+            "start": 2399,
+            "end": 2406,
+            "refs": {
+                "Ketubot 39": "כתובות ל״ט"
+            }
+        },
+        {
+            "start": 2502,
+            "end": 2524,
+            "refs": {
+                "Tosafot on Ketubot 17b:12:1": "תוספות על כתובות י״ז ב:י״ב:א׳"
+            }
+        },
+        {
+            "start": 2937,
+            "end": 2948,
+            "refs": {
+                "Bava Metzia 110": "בבא מציעא ק״י"
+            }
+        }
+    ],
+    "504": [
+        {
+            "start": 73,
+            "end": 105,
+            "refs": {
+                "Tosafot on Bava Metzia 3a:18:1": "תוספות על בבא מציעא ג׳ א:י״ח:א׳"
+            }
+        },
+        {
+            "start": 1685,
+            "end": 1699,
+            "refs": {
+                "Shevuot 39": "שבועות ל״ט"
+            }
+        },
+        {
+            "start": 2504,
+            "end": 2517,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        },
+        {
+            "start": 3454,
+            "end": 3467,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        }
+    ],
+    "505": [
+        {
+            "start": 714,
+            "end": 728,
+            "refs": {
+                "Shevuot 41": "שבועות מ״א"
+            }
+        },
+        {
+            "start": 1158,
+            "end": 1177,
+            "refs": {
+                "Rashi on Ketubot 18": "רש\"י על כתובות י״ח"
+            }
+        },
+        {
+            "start": 1191,
+            "end": 1209,
+            "refs": {
+                "Shevuot 39b": "שבועות ל״ט ב"
+            }
+        }
+    ],
+    "507": [
+        {
+            "start": 177,
+            "end": 189,
+            "refs": {
+                "Bava Batra 135": "בבא בתרא קל״ה"
+            }
+        }
+    ],
+    "511": [
+        {
+            "start": 1931,
+            "end": 1943,
+            "refs": {
+                "Bava Batra 135": "בבא בתרא קל״ה"
+            }
+        },
+        {
+            "start": 3250,
+            "end": 3268,
+            "refs": {
+                "Shevuot 46": "שבועות מ״ו"
+            }
+        }
+    ],
+    "513": [
+        {
+            "start": 19,
+            "end": 33,
+            "refs": {
+                "Shevuot 43": "שבועות מ״ג"
+            }
+        }
+    ],
+    "514": [
+        {
+            "start": 614,
+            "end": 624,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        },
+        {
+            "start": 1772,
+            "end": 1783,
+            "refs": {
+                "Mishnah Bava Metzia 1": "משנה בבא מציעא א׳",
+                "Bava Metzia 2a:1-21a:6": "בבא מציעא ב׳ א:א׳-כ״א א:ו׳"
+            }
+        }
+    ],
+    "516": [
+        {
+            "start": 540,
+            "end": 560,
+            "refs": {
+                "Tosafot on Ketubot 18": "תוספות על כתובות י״ח"
+            }
+        },
+        {
+            "start": 691,
+            "end": 703,
+            "refs": {
+                "Bava Kamma 106": "בבא קמא ק״ו"
+            }
+        }
+    ],
+    "517": [
+        {
+            "start": 2358,
+            "end": 2378,
+            "refs": {
+                "Tosafot on Ketubot 18": "תוספות על כתובות י״ח"
+            }
+        },
+        {
+            "start": 2618,
+            "end": 2632,
+            "refs": {
+                "Shevuot 38": "שבועות ל״ח"
+            }
+        },
+        {
+            "start": 3040,
+            "end": 3051,
+            "refs": {
+                "Bava Kamma 108": "בבא קמא ק״ח"
+            }
+        }
+    ],
+    "518": [
+        {
+            "start": 254,
+            "end": 284,
+            "refs": {
+                "Rashi on Bava Metzia 5b:13:1": "רש\"י על בבא מציעא ה׳ ב:י״ג:א׳"
+            }
+        },
+        {
+            "start": 454,
+            "end": 473,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 294": "שפתי כהן על שולחן ערוך חושן משפט רצ״ד"
+            }
+        },
+        {
+            "start": 584,
+            "end": 595,
+            "refs": {
+                "Bava Metzia 2a:1-21a:6": "בבא מציעא ב׳ א:א׳-כ״א א:ו׳",
+                "Jerusalem Talmud Bava Metzia 1:1:1-8:4": "תלמוד ירושלמי בבא מציעא א׳:א׳:א׳-ח׳:ד׳",
+                "Jerusalem Talmud Bava Metzia 1:1:2-8:4": "תלמוד ירושלמי בבא מציעא א׳:א׳:ב׳-ח׳:ד׳"
+            }
+        },
+        {
+            "start": 1008,
+            "end": 1019,
+            "refs": {
+                "Bava Metzia 2a:1-21a:6": "בבא מציעא ב׳ א:א׳-כ״א א:ו׳",
+                "Jerusalem Talmud Bava Metzia 1:1:1-8:4": "תלמוד ירושלמי בבא מציעא א׳:א׳:א׳-ח׳:ד׳",
+                "Jerusalem Talmud Bava Metzia 1:1:2-8:4": "תלמוד ירושלמי בבא מציעא א׳:א׳:ב׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "519": [
+        {
+            "start": 8,
+            "end": 9,
+            "refs": {
+                "Rashi on Bava Kamma 5": "רש\"י על בבא קמא ה׳",
+                "Rashi on Bava Kamma 46a:7-55a:16": "רש\"י על בבא קמא מ״ו א:ז׳-נ״ה א:ט״ז",
+                "Rashi on Bava Metzia 5": "רש\"י על בבא מציעא ה׳",
+                "Rashi on Bava Metzia 60b:8-75b:14": "רש\"י על בבא מציעא ס׳ ב:ח׳-ע״ה ב:י״ד",
+                "Tosafot on Ketubot 5": "תוספות על כתובות ה׳",
+                "Tosafot on Ketubot 54b:6-65b:12": "תוספות על כתובות נ״ד ב:ו׳-ס״ה ב:י״ב"
+            }
+        }
+    ],
+    "520": [
+        {
+            "start": 2451,
+            "end": 2469,
+            "refs": {
+                "Tosafot on Ketubot 18": "תוספות על כתובות י״ח"
+            }
+        }
+    ],
+    "522": [
+        {
+            "start": 869,
+            "end": 880,
+            "refs": {
+                "Bava Kamma 107": "בבא קמא ק״ז"
+            }
+        }
+    ],
+    "527": [
+        {
+            "start": 1268,
+            "end": 1282,
+            "refs": {
+                "Ketubot 18": "כתובות י״ח"
+            }
+        }
+    ],
+    "529": [
+        {
+            "start": 35,
+            "end": 49,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        }
+    ],
+    "531": [
+        {
+            "start": 40,
+            "end": 64,
+            "refs": {
+                "Bava Metzia 4": "בבא מציעא ד׳"
+            }
+        },
+        {
+            "start": 106,
+            "end": 120,
+            "refs": {
+                "Bava Metzia 4": "בבא מציעא ד׳"
+            }
+        },
+        {
+            "start": 346,
+            "end": 367,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 94:7": "שולחן ערוך, חושן משפט צ״ד:ז׳"
+            }
+        }
+    ],
+    "532": [
+        {
+            "start": 1424,
+            "end": 1435,
+            "refs": {
+                "Bava Metzia 98": "בבא מציעא צ״ח"
+            }
+        },
+        {
+            "start": 1436,
+            "end": 1453,
+            "refs": {
+                "Bava Batra 61a:1-73a:2": "בבא בתרא ס״א א:א׳-ע״ג א:ב׳",
+                "Jerusalem Talmud Bava Batra 4:1:1-8:4": "תלמוד ירושלמי בבא בתרא ד׳:א׳:א׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "534": [
+        {
+            "start": 2032,
+            "end": 2042,
+            "refs": {
+                "Bava Kamma 3": "בבא קמא ג׳"
+            }
+        }
+    ],
+    "537": [
+        {
+            "start": 369,
+            "end": 380,
+            "refs": {
+                "Bava Metzia 98": "בבא מציעא צ״ח"
+            }
+        },
+        {
+            "start": 429,
+            "end": 448,
+            "refs": {
+                "Tosafot on Shevuot 47": "תוספות על שבועות מ״ז"
+            }
+        },
+        {
+            "start": 493,
+            "end": 506,
+            "refs": {
+                "Ketubot 80": "כתובות פ׳"
+            }
+        },
+        {
+            "start": 668,
+            "end": 682,
+            "refs": {
+                "Ketubot 87": "כתובות פ״ז"
+            }
+        },
+        {
+            "start": 702,
+            "end": 707,
+            "refs": {
+                "Ketubot 87a:11-87b:1": "כתובות פ״ז א:י״א-פ״ז ב:א׳"
+            }
+        }
+    ],
+    "538": [
+        {
+            "start": 36,
+            "end": 50,
+            "refs": {
+                "Shevuot 32": "שבועות ל״ב"
+            }
+        },
+        {
+            "start": 250,
+            "end": 257,
+            "refs": {
+                "Shevuot 31": "שבועות ל״א"
+            }
+        }
+    ],
+    "545": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Bava Metzia 4": "בבא מציעא ד׳"
+            }
+        },
+        {
+            "start": 368,
+            "end": 379,
+            "refs": {
+                "Bava Kamma 107": "בבא קמא ק״ז"
+            }
+        }
+    ],
+    "546": [
+        {
+            "start": 1152,
+            "end": 1174,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 72:17": "שולחן ערוך, חושן משפט ע״ב:י״ז"
+            }
+        }
+    ],
+    "547": [
+        {
+            "start": 19,
+            "end": 29,
+            "refs": {
+                "Bava Metzia 100": "בבא מציעא ק׳"
+            }
+        },
+        {
+            "start": 936,
+            "end": 960,
+            "refs": {
+                "Mishneh Torah, Sales 20": "משנה תורה, הלכות מכירה כ׳"
+            }
+        },
+        {
+            "start": 1483,
+            "end": 1493,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        }
+    ],
+    "548": [
+        {
+            "start": 328,
+            "end": 349,
+            "refs": {
+                "Mishneh Torah, Damages to Property 9": "משנה תורה, הלכות נזקי ממון ט׳"
+            }
+        }
+    ],
+    "549": [
+        {
+            "start": 192,
+            "end": 210,
+            "refs": {
+                "Shevuot 38b:8-44b:7": "שבועות ל״ח ב:ח׳-מ״ד ב:ז׳",
+                "Jerusalem Talmud Shevuot 6:1:1-8:4": "תלמוד ירושלמי שבועות ו׳:א׳:א׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "551": [
+        {
+            "start": 501,
+            "end": 520,
+            "refs": {
+                "Tosafot on Ketubot 18": "תוספות על כתובות י״ח"
+            }
+        }
+    ],
+    "553": [
+        {
+            "start": 80,
+            "end": 94,
+            "refs": {
+                "Chullin 114": "חולין קי״ד"
+            }
+        }
+    ],
+    "555": [
+        {
+            "start": 12,
+            "end": 18,
+            "refs": {
+                "Chullin 4": "חולין ד׳"
+            }
+        }
+    ],
+    "556": [
+        {
+            "start": 544,
+            "end": 560,
+            "refs": {
+                "Tosafot on Bava Metzia 96": "תוספות על בבא מציעא צ״ו"
+            }
+        }
+    ],
+    "562": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        }
+    ],
+    "565": [
+        {
+            "start": 238,
+            "end": 252,
+            "refs": {
+                "Shevuot 44b:8-49a:3": "שבועות מ״ד ב:ח׳-מ״ט א:ג׳",
+                "Jerusalem Talmud Shevuot 7:1:1-8:3": "תלמוד ירושלמי שבועות ז׳:א׳:א׳-ח׳:ג׳"
+            }
+        }
+    ],
+    "568": [
+        {
+            "start": 25,
+            "end": 41,
+            "refs": {
+                "Tosafot on Bava Metzia 4": "תוספות על בבא מציעא ד׳"
+            }
+        }
+    ],
+    "570": [
+        {
+            "start": 1043,
+            "end": 1061,
+            "refs": {
+                "Tosafot on Shevuot 40": "תוספות על שבועות מ׳"
+            }
+        }
+    ],
+    "572": [
+        {
+            "start": 834,
+            "end": 847,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        }
+    ],
+    "574": [
+        {
+            "start": 998,
+            "end": 1011,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        }
+    ],
+    "578": [
+        {
+            "start": 69,
+            "end": 93,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        }
+    ],
+    "579": [
+        {
+            "start": 791,
+            "end": 803,
+            "refs": {
+                "Bava Kamma 35": "בבא קמא ל״ה"
+            }
+        },
+        {
+            "start": 2514,
+            "end": 2525,
+            "refs": {
+                "Bava Kamma 35": "בבא קמא ל״ה"
+            }
+        },
+        {
+            "start": 3255,
+            "end": 3266,
+            "refs": {
+                "Bava Metzia 5": "בבא מציעא ה׳"
+            }
+        }
+    ],
+    "580": [
+        {
+            "start": 1252,
+            "end": 1272,
+            "refs": {
+                "Tosafot on Shevuot 46": "תוספות על שבועות מ״ו"
+            }
+        }
+    ],
+    "583": [
+        {
+            "start": 674,
+            "end": 688,
+            "refs": {
+                "Ketubot 18": "כתובות י״ח"
+            }
+        },
+        {
+            "start": 981,
+            "end": 991,
+            "refs": {
+                "Bava Metzia 100": "בבא מציעא ק׳"
+            }
+        }
+    ],
+    "584": [
+        {
+            "start": 3,
+            "end": 20,
+            "refs": {
+                "Shevuot 40": "שבועות מ׳"
+            }
+        }
+    ],
+    "587": [
+        {
+            "start": 81,
+            "end": 99,
+            "refs": {
+                "Bava Metzia 100a": "בבא מציעא ק׳ א"
+            }
+        }
+    ],
+    "589": [
+        {
+            "start": 946,
+            "end": 961,
+            "refs": {
+                "Sanhedrin 31": "סנהדרין ל״א"
+            }
+        }
+    ],
+    "593": [
+        {
+            "start": 746,
+            "end": 761,
+            "refs": {
+                "Bava Batra 33": "בבא בתרא ל״ג"
+            }
+        },
+        {
+            "start": 2417,
+            "end": 2430,
+            "refs": {
+                "Shulchan Arukh, Even HaEzer 54": "שולחן ערוך, אבן העזר נ״ד"
+            }
+        },
+        {
+            "start": 2996,
+            "end": 3016,
+            "refs": {
+                "Tosafot on Ketubot 19": "תוספות על כתובות י״ט"
+            }
+        }
+    ],
+    "597": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Bava Metzia 7": "בבא מציעא ז׳"
+            }
+        },
+        {
+            "start": 1313,
+            "end": 1333,
+            "refs": {
+                "Tosafot on Ketubot 19": "תוספות על כתובות י״ט"
+            }
+        },
+        {
+            "start": 2935,
+            "end": 2946,
+            "refs": {
+                "Bava Batra 170": "בבא בתרא ק״ע"
+            }
+        }
+    ],
+    "600": [
+        {
+            "start": 3,
+            "end": 35,
+            "refs": {
+                "Tosafot on Bava Metzia 8b:3:1": "תוספות על בבא מציעא ח׳ ב:ג׳:א׳"
+            }
+        }
+    ],
+    "604": [
+        {
+            "start": 114,
+            "end": 131,
+            "refs": {
+                "Bava Metzia 10a": "בבא מציעא י׳ א"
+            }
+        },
+        {
+            "start": 293,
+            "end": 307,
+            "refs": {
+                "Ketubot 84": "כתובות פ״ד"
+            }
+        },
+        {
+            "start": 412,
+            "end": 418,
+            "refs": {
+                "Ketubot 84a:12-13": "כתובות פ״ד א:י״ב-י״ג",
+                "Bava Metzia 10a:13": "בבא מציעא י׳ א:י״ג"
+            }
+        },
+        {
+            "start": 727,
+            "end": 733,
+            "refs": {
+                "Ketubot 84a:12-13": "כתובות פ״ד א:י״ב-י״ג"
+            }
+        }
+    ],
+    "605": [
+        {
+            "start": 869,
+            "end": 881,
+            "refs": {
+                "Beitzah 39": "ביצה ל״ט"
+            }
+        }
+    ],
+    "609": [
+        {
+            "start": 1601,
+            "end": 1614,
+            "refs": {
+                "Gittin 11": "גיטין י״א"
+            }
+        }
+    ],
+    "614": [
+        {
+            "start": 3,
+            "end": 21,
+            "refs": {
+                "Bava Metzia 9b": "בבא מציעא ט׳ ב"
+            }
+        }
+    ],
+    "616": [
+        {
+            "start": 493,
+            "end": 505,
+            "refs": {
+                "Beitzah 39": "ביצה ל״ט"
+            }
+        },
+        {
+            "start": 704,
+            "end": 712,
+            "refs": {
+                "Beitzah 39a": "ביצה ל״ט א"
+            }
+        }
+    ],
+    "618": [
+        {
+            "start": 8,
+            "end": 9,
+            "refs": {
+                "Mishnah Bava Metzia 5": "משנה בבא מציעא ה׳",
+                "Bava Metzia 5": "בבא מציעא ה׳",
+                "Bava Metzia 60b:8-75b:14": "בבא מציעא ס׳ ב:ח׳-ע״ה ב:י״ד"
+            }
+        }
+    ],
+    "619": [
+        {
+            "start": 362,
+            "end": 377,
+            "refs": {
+                "Ketubot 85": "כתובות פ״ה"
+            }
+        }
+    ],
+    "621": [
+        {
+            "start": 117,
+            "end": 134,
+            "refs": {
+                "Gittin 78": "גיטין ע״ח"
+            }
+        }
+    ],
+    "622": [
+        {
+            "start": 305,
+            "end": 320,
+            "refs": {
+                "Bava Metzia 10b": "בבא מציעא י׳ ב"
+            }
+        },
+        {
+            "start": 1800,
+            "end": 1818,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 243": "שפתי כהן על שולחן ערוך חושן משפט רמ״ג"
+            }
+        }
+    ],
+    "624": [
+        {
+            "start": 1023,
+            "end": 1047,
+            "refs": {
+                "Mishneh Torah, Robbery and Lost Property 15": "משנה תורה, הלכות גזילה ואבידה ט״ו"
+            }
+        }
+    ],
+    "630": [
+        {
+            "start": 529,
+            "end": 543,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 243": "שולחן ערוך, חושן משפט רמ״ג"
+            }
+        }
+    ],
+    "634": [
+        {
+            "start": 3,
+            "end": 26,
+            "refs": {
+                "Bava Metzia 10b": "בבא מציעא י׳ ב"
+            }
+        }
+    ],
+    "636": [
+        {
+            "start": 1208,
+            "end": 1217,
+            "refs": {
+                "Bava Metzia 9": "בבא מציעא ט׳"
+            }
+        }
+    ],
+    "638": [
+        {
+            "start": 184,
+            "end": 200,
+            "refs": {
+                "Bava Batra 61a:1-73a:2": "בבא בתרא ס״א א:א׳-ע״ג א:ב׳",
+                "Jerusalem Talmud Bava Batra 4:1:1-8:4": "תלמוד ירושלמי בבא בתרא ד׳:א׳:א׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "645": [
+        {
+            "start": 1884,
+            "end": 1894,
+            "refs": {
+                "Bava Kamma 100": "בבא קמא ק׳"
+            }
+        }
+    ],
+    "646": [
+        {
+            "start": 321,
+            "end": 328,
+            "refs": {
+                "Bava Kamma 11": "בבא קמא י״א"
+            }
+        }
+    ],
+    "648": [
+        {
+            "start": 138,
+            "end": 153,
+            "refs": {
+                "Bava Metzia 11": "בבא מציעא י״א"
+            }
+        },
+        {
+            "start": 510,
+            "end": 523,
+            "refs": {
+                "Nedarim 86": "נדרים פ״ו"
+            }
+        },
+        {
+            "start": 1390,
+            "end": 1407,
+            "refs": {
+                "Tosafot on Bava Kamma 12": "תוספות על בבא קמא י״ב"
+            }
+        },
+        {
+            "start": 2939,
+            "end": 2956,
+            "refs": {
+                "Beit Yosef, Even HaEzer 28": "בית יוסף, אבן העזר כ״ח"
+            }
+        },
+        {
+            "start": 3085,
+            "end": 3096,
+            "refs": {
+                "Bava Metzia 46": "בבא מציעא מ״ו"
+            }
+        }
+    ],
+    "649": [
+        {
+            "start": 147,
+            "end": 162,
+            "refs": {
+                "Kiddushin 27": "קידושין כ״ז"
+            }
+        },
+        {
+            "start": 543,
+            "end": 553,
+            "refs": {
+                "Chullin 130a:1-134b:25": "חולין ק״ל א:א׳-קל״ד ב:כ״ה"
+            }
+        },
+        {
+            "start": 1980,
+            "end": 1998,
+            "refs": {
+                "Tosafot on Yevamot 93": "תוספות על יבמות צ״ג"
+            }
+        },
+        {
+            "start": 2638,
+            "end": 2655,
+            "refs": {
+                "Nedarim 85": "נדרים פ״ה"
+            }
+        },
+        {
+            "start": 2942,
+            "end": 2953,
+            "refs": {
+                "Bava Metzia 49": "בבא מציעא מ״ט"
+            }
+        },
+        {
+            "start": 3362,
+            "end": 3375,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 204": "שולחן ערוך, חושן משפט ר״ד"
+            }
+        }
+    ],
+    "651": [
+        {
+            "start": 239,
+            "end": 258,
+            "refs": {
+                "Kiddushin 27": "קידושין כ״ז"
+            }
+        }
+    ],
+    "652": [
+        {
+            "start": 903,
+            "end": 927,
+            "refs": {
+                "Mishneh Torah, Sales 3": "משנה תורה, הלכות מכירה ג׳"
+            }
+        }
+    ],
+    "653": [
+        {
+            "start": 795,
+            "end": 814,
+            "refs": {
+                "Shevuot 38b:8-44b:7": "שבועות ל״ח ב:ח׳-מ״ד ב:ז׳",
+                "Jerusalem Talmud Shevuot 6:1:1-8:4": "תלמוד ירושלמי שבועות ו׳:א׳:א׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "655": [
+        {
+            "start": 37,
+            "end": 54,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 203": "שפתי כהן על שולחן ערוך חושן משפט ר״ג"
+            }
+        },
+        {
+            "start": 71,
+            "end": 86,
+            "refs": {
+                "Kiddushin 26": "קידושין כ״ו"
+            }
+        },
+        {
+            "start": 190,
+            "end": 205,
+            "refs": {
+                "Kiddushin 27": "קידושין כ״ז"
+            }
+        },
+        {
+            "start": 441,
+            "end": 449,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 203": "שפתי כהן על שולחן ערוך חושן משפט ר״ג"
+            }
+        },
+        {
+            "start": 573,
+            "end": 584,
+            "refs": {
+                "Bava Metzia 11": "בבא מציעא י״א"
+            }
+        }
+    ],
+    "656": [
+        {
+            "start": 171,
+            "end": 182,
+            "refs": {
+                "Bava Batra 85": "בבא בתרא פ״ה"
+            }
+        }
+    ],
+    "666": [
+        {
+            "start": 220,
+            "end": 236,
+            "refs": {
+                "Tosafot on Bava Metzia 11": "תוספות על בבא מציעא י״א"
+            }
+        },
+        {
+            "start": 1329,
+            "end": 1342,
+            "refs": {
+                "Gittin 77": "גיטין ע״ז"
+            }
+        }
+    ],
+    "669": [
+        {
+            "start": 80,
+            "end": 95,
+            "refs": {
+                "Bava Metzia 11": "בבא מציעא י״א"
+            }
+        },
+        {
+            "start": 585,
+            "end": 606,
+            "refs": {
+                "Tosafot on Kiddushin 27": "תוספות על קידושין כ״ז"
+            }
+        },
+        {
+            "start": 607,
+            "end": 620,
+            "refs": {
+                "Arakhin 30": "ערכין ל׳"
+            }
+        }
+    ],
+    "671": [
+        {
+            "start": 784,
+            "end": 797,
+            "refs": {
+                "Meilah 18": "מעילה י״ח"
+            }
+        }
+    ],
+    "673": [
+        {
+            "start": 541,
+            "end": 549,
+            "refs": {
+                "Bava Kamma 80a": "בבא קמא פ׳ א"
+            }
+        }
+    ],
+    "674": [
+        {
+            "start": 934,
+            "end": 947,
+            "refs": {
+                "Gittin 77": "גיטין ע״ז"
+            }
+        }
+    ],
+    "679": [
+        {
+            "start": 334,
+            "end": 346,
+            "refs": {
+                "Bava Metzia 45": "בבא מציעא מ״ה"
+            }
+        },
+        {
+            "start": 1511,
+            "end": 1525,
+            "refs": {
+                "Kiddushin 6": "קידושין ו׳"
+            }
+        }
+    ],
+    "682": [
+        {
+            "start": 3599,
+            "end": 3612,
+            "refs": {
+                "Mishnah Makkot 1": "משנה מכות א׳",
+                "Makkot 2a:1-7a:13": "מכות ב׳ א:א׳-ז׳ א:י״ג"
+            }
+        }
+    ],
+    "684": [
+        {
+            "start": 111,
+            "end": 124,
+            "refs": {
+                "Nedarim 48": "נדרים מ״ח"
+            }
+        }
+    ],
+    "686": [
+        {
+            "start": 3,
+            "end": 29,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 259:5": "שולחן ערוך, חושן משפט רנ״ט:ה׳"
+            }
+        },
+        {
+            "start": 132,
+            "end": 144,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 259:7": "שולחן ערוך, חושן משפט רנ״ט:ז׳"
+            }
+        },
+        {
+            "start": 259,
+            "end": 267,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 259:5": "שולחן ערוך, חושן משפט רנ״ט:ה׳"
+            }
+        },
+        {
+            "start": 330,
+            "end": 338,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 259:5": "שולחן ערוך, חושן משפט רנ״ט:ה׳"
+            }
+        },
+        {
+            "start": 802,
+            "end": 813,
+            "refs": {
+                "Shabbat 120": "שבת ק״כ"
+            }
+        },
+        {
+            "start": 1322,
+            "end": 1333,
+            "refs": {
+                "Bava Metzia 21a:7-33b:6": "בבא מציעא כ״א א:ז׳-ל״ג ב:ו׳",
+                "Jerusalem Talmud Bava Metzia 2:1:1-11:5": "תלמוד ירושלמי בבא מציעא ב׳:א׳:א׳-י״א:ה׳"
+            }
+        }
+    ],
+    "688": [
+        {
+            "start": 80,
+            "end": 98,
+            "refs": {
+                "Bava Kamma 17b": "בבא קמא י״ז ב"
+            }
+        },
+        {
+            "start": 635,
+            "end": 645,
+            "refs": {
+                "Bava Kamma 17a:13-27a:12": "בבא קמא י״ז א:י״ג-כ״ז א:י״ב",
+                "Jerusalem Talmud Bava Kamma 2:1:1-8:2": "תלמוד ירושלמי בבא קמא ב׳:א׳:א׳-ח׳:ב׳"
+            }
+        },
+        {
+            "start": 2338,
+            "end": 2348,
+            "refs": {
+                "Mishnah Kilayim 8": "משנה כלאים ח׳"
+            }
+        }
+    ],
+    "690": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Bava Batra 29": "בבא בתרא כ״ט"
+            }
+        }
+    ],
+    "692": [
+        {
+            "start": 920,
+            "end": 931,
+            "refs": {
+                "Bava Batra 28a:1-60b:22": "בבא בתרא כ״ח א:א׳-ס׳ ב:כ״ב",
+                "Jerusalem Talmud Bava Batra 3:1:1-11:2": "תלמוד ירושלמי בבא בתרא ג׳:א׳:א׳-י״א:ב׳"
+            }
+        }
+    ],
+    "697": [
+        {
+            "start": 1694,
+            "end": 1713,
+            "refs": {
+                "Jerusalem Talmud Ketubot 2": "תלמוד ירושלמי כתובות ב׳"
+            }
+        }
+    ],
+    "699": [
+        {
+            "start": 98,
+            "end": 119,
+            "refs": {
+                "Menachot 36": "מנחות ל״ו"
+            }
+        },
+        {
+            "start": 1392,
+            "end": 1411,
+            "refs": {
+                "Jerusalem Talmud Berakhot 2": "תלמוד ירושלמי ברכות ב׳"
+            }
+        },
+        {
+            "start": 1412,
+            "end": 1429,
+            "refs": {
+                "Eruvin 95a:22-105a:12": "עירובין צ״ה א:כ״ב-ק״ה א:י״ב",
+                "Jerusalem Talmud Eruvin 10:1:1-14:6": "תלמוד ירושלמי עירובין י׳:א׳:א׳-י״ד:ו׳"
+            }
+        },
+        {
+            "start": 1837,
+            "end": 1848,
+            "refs": {
+                "Niddah 51": "נדה נ״א"
+            }
+        }
+    ],
+    "700": [
+        {
+            "start": 724,
+            "end": 739,
+            "refs": {
+                "Eruvin 96": "עירובין צ״ו"
+            }
+        },
+        {
+            "start": 2690,
+            "end": 2706,
+            "refs": {
+                "Sukkah 26": "סוכה כ״ו"
+            }
+        }
+    ],
+    "701": [
+        {
+            "start": 2247,
+            "end": 2263,
+            "refs": {
+                "Sanhedrin 61": "סנהדרין ס״א"
+            }
+        },
+        {
+            "start": 2608,
+            "end": 2619,
+            "refs": {
+                "Shabbat 57": "שבת נ״ז"
+            }
+        }
+    ],
+    "704": [
+        {
+            "start": 810,
+            "end": 839,
+            "refs": {
+                "Eruvin 95a:22-105a:12": "עירובין צ״ה א:כ״ב-ק״ה א:י״ב"
+            }
+        }
+    ],
+    "705": [
+        {
+            "start": 88,
+            "end": 95,
+            "refs": {
+                "Eruvin 44": "עירובין מ״ד"
+            }
+        },
+        {
+            "start": 832,
+            "end": 843,
+            "refs": {
+                "Rosh Hashanah 28": "ראש השנה כ״ח"
+            }
+        },
+        {
+            "start": 1250,
+            "end": 1265,
+            "refs": {
+                "Rosh Hashanah 28": "ראש השנה כ״ח"
+            }
+        },
+        {
+            "start": 2120,
+            "end": 2140,
+            "refs": {
+                "Mishneh Torah, Leavened and Unleavened Bread 7": "משנה תורה, הלכות חמץ ומצה ז׳"
+            }
+        },
+        {
+            "start": 2858,
+            "end": 2872,
+            "refs": {
+                "Pesachim 114": "פסחים קי״ד"
+            }
+        }
+    ],
+    "706": [
+        {
+            "start": 1215,
+            "end": 1230,
+            "refs": {
+                "Eruvin 95": "עירובין צ״ה"
+            }
+        }
+    ],
+    "708": [
+        {
+            "start": 3,
+            "end": 22,
+            "refs": {
+                "Nazir 22": "נזיר כ״ב"
+            }
+        },
+        {
+            "start": 248,
+            "end": 263,
+            "refs": {
+                "Pesachim 114": "פסחים קי״ד"
+            }
+        },
+        {
+            "start": 952,
+            "end": 966,
+            "refs": {
+                "Yevamot 39": "יבמות ל״ט"
+            }
+        }
+    ],
+    "710": [
+        {
+            "start": 93,
+            "end": 110,
+            "refs": {
+                "Menachot 99": "מנחות צ״ט"
+            }
+        },
+        {
+            "start": 151,
+            "end": 164,
+            "refs": {
+                "Pesachim 24": "פסחים כ״ד"
+            }
+        },
+        {
+            "start": 428,
+            "end": 447,
+            "refs": {
+                "Tosafot on Shevuot 22": "תוספות על שבועות כ״ב"
+            }
+        }
+    ],
+    "714": [
+        {
+            "start": 3,
+            "end": 20,
+            "refs": {
+                "Shulchan Arukh, Orach Chayim 460": "שולחן ערוך, אורח חיים ת״ס"
+            }
+        },
+        {
+            "start": 163,
+            "end": 174,
+            "refs": {
+                "Rosh Hashanah 13": "ראש השנה י״ג"
+            }
+        },
+        {
+            "start": 369,
+            "end": 382,
+            "refs": {
+                "Chullin 17": "חולין י״ז"
+            }
+        },
+        {
+            "start": 563,
+            "end": 572,
+            "refs": {
+                "Chullin 17a": "חולין י״ז א"
+            }
+        },
+        {
+            "start": 1067,
+            "end": 1088,
+            "refs": {
+                "Tosafot on Kiddushin 38": "תוספות על קידושין ל״ח"
+            }
+        },
+        {
+            "start": 1830,
+            "end": 1848,
+            "refs": {
+                "Keritot 5": "כריתות ה׳"
+            }
+        },
+        {
+            "start": 2977,
+            "end": 2992,
+            "refs": {
+                "Avodah Zarah 54": "עבודה זרה נ״ד"
+            }
+        }
+    ],
+    "717": [
+        {
+            "start": 3,
+            "end": 22,
+            "refs": {
+                "Sukkah 3": "סוכה ג׳"
+            }
+        }
+    ],
+    "725": [
+        {
+            "start": 3,
+            "end": 18,
+            "refs": {
+                "Sukkah 7": "סוכה ז׳"
+            }
+        }
+    ],
+    "732": [
+        {
+            "start": 100,
+            "end": 116,
+            "refs": {
+                "Sukkah 45": "סוכה מ״ה"
+            }
+        },
+        {
+            "start": 378,
+            "end": 384,
+            "refs": {
+                "Sukkah 8": "סוכה ח׳"
+            }
+        }
+    ],
+    "733": [
+        {
+            "start": 800,
+            "end": 812,
+            "refs": {
+                "Shabbat 44": "שבת מ״ד"
+            }
+        }
+    ],
+    "736": [
+        {
+            "start": 27,
+            "end": 38,
+            "refs": {
+                "Beitzah 4": "ביצה ד׳"
+            }
+        },
+        {
+            "start": 1001,
+            "end": 1019,
+            "refs": {
+                "Tosafot on Shabbat 46": "תוספות על שבת מ״ו"
+            }
+        }
+    ],
+    "737": [
+        {
+            "start": 322,
+            "end": 334,
+            "refs": {
+                "Beitzah 3": "ביצה ג׳"
+            }
+        },
+        {
+            "start": 627,
+            "end": 642,
+            "refs": {
+                "Shita Mekubetzet on Beitzah 3a": "שיטה מקובצת על ביצה ג׳ א"
+            }
+        },
+        {
+            "start": 824,
+            "end": 841,
+            "refs": {
+                "Gittin 17": "גיטין י״ז"
+            }
+        },
+        {
+            "start": 963,
+            "end": 976,
+            "refs": {
+                "Gittin 46": "גיטין מ״ו"
+            }
+        },
+        {
+            "start": 1664,
+            "end": 1676,
+            "refs": {
+                "Beitzah 4": "ביצה ד׳"
+            }
+        }
+    ],
+    "738": [
+        {
+            "start": 127,
+            "end": 139,
+            "refs": {
+                "Shabbat 114": "שבת קי״ד"
+            }
+        },
+        {
+            "start": 751,
+            "end": 768,
+            "refs": {
+                "Pesachim 71": "פסחים ע״א"
+            }
+        },
+        {
+            "start": 1035,
+            "end": 1047,
+            "refs": {
+                "Beitzah 33": "ביצה ל״ג"
+            }
+        }
+    ],
+    "740": [
+        {
+            "start": 116,
+            "end": 136,
+            "refs": {
+                "Shulchan Arukh, Orach Chayim 343": "שולחן ערוך, אורח חיים שמ״ג"
+            }
+        },
+        {
+            "start": 448,
+            "end": 462,
+            "refs": {
+                "Yevamot 114": "יבמות קי״ד"
+            }
+        },
+        {
+            "start": 1413,
+            "end": 1425,
+            "refs": {
+                "Chullin 7": "חולין ז׳"
+            }
+        },
+        {
+            "start": 2163,
+            "end": 2178,
+            "refs": {
+                "Eruvin 82": "עירובין פ״ב"
+            }
+        },
+        {
+            "start": 2334,
+            "end": 2344,
+            "refs": {
+                "Shabbat 90": "שבת צ׳"
+            }
+        },
+        {
+            "start": 2613,
+            "end": 2629,
+            "refs": {
+                "Shabbat 139": "שבת קל״ט"
+            }
+        }
+    ],
+    "742": [
+        {
+            "start": 576,
+            "end": 593,
+            "refs": {
+                "Shulchan Arukh, Orach Chayim 651": "שולחן ערוך, אורח חיים תרנ״א"
+            }
+        },
+        {
+            "start": 1380,
+            "end": 1396,
+            "refs": {
+                "Sukkah 47": "סוכה מ״ז"
+            }
+        },
+        {
+            "start": 1852,
+            "end": 1866,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 112": "שולחן ערוך, חושן משפט קי״ב"
+            }
+        }
+    ],
+    "743": [
+        {
+            "start": 12,
+            "end": 21,
+            "refs": {
+                "Tur, Orach Chayim": "טור, אורח חיים"
+            }
+        }
+    ],
+    "745": [
+        {
+            "start": 301,
+            "end": 317,
+            "refs": {
+                "Eruvin 31": "עירובין ל״א"
+            }
+        },
+        {
+            "start": 467,
+            "end": 483,
+            "refs": {
+                "Sukkah 29b:4-42b:4": "סוכה כ״ט ב:ד׳-מ״ב ב:ד׳",
+                "Jerusalem Talmud Sukkah 3:1:1-12:2": "תלמוד ירושלמי סוכה ג׳:א׳:א׳-י״ב:ב׳"
+            }
+        },
+        {
+            "start": 2391,
+            "end": 2404,
+            "refs": {
+                "Nedarim 15": "נדרים ט״ו"
+            }
+        },
+        {
+            "start": 2560,
+            "end": 2579,
+            "refs": {
+                "Commentary of the Rosh on Nedarim 36": "פירוש הרא\"ש על נדרים ל״ו"
+            }
+        }
+    ]
+}

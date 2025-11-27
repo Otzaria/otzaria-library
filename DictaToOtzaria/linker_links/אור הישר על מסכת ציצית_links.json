@@ -1,0 +1,48 @@
+{
+    "3": [
+        {
+            "start": 172,
+            "end": 192,
+            "refs": {
+                "Tosafot on Berakhot 18a": "תוספות על ברכות י״ח א"
+            }
+        },
+        {
+            "start": 206,
+            "end": 220,
+            "refs": {
+                "Tractate Semachot 12": "מסכת שמחות י״ב"
+            }
+        },
+        {
+            "start": 307,
+            "end": 316,
+            "refs": {
+                "Tosafot on Berakhot 18a": "תוספות על ברכות י״ח א"
+            }
+        },
+        {
+            "start": 361,
+            "end": 376,
+            "refs": {
+                "Menachot 41a": "מנחות מ״א א"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 12,
+            "end": 25,
+            "refs": {
+                "Niddah 61b": "נדה ס״א ב"
+            }
+        },
+        {
+            "start": 335,
+            "end": 349,
+            "refs": {
+                "Megillah 26b": "מגילה כ״ו ב"
+            }
+        }
+    ]
+}

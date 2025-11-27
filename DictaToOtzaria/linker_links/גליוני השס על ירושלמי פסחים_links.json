@@ -1,0 +1,441 @@
+{
+    "5": [
+        {
+            "start": 51,
+            "end": 78,
+            "refs": {
+                "Tosafot on Pesachim 101a:2:2": "תוספות על פסחים ק״א א:ב׳:ב׳"
+            }
+        },
+        {
+            "start": 146,
+            "end": 169,
+            "refs": {
+                "Jerusalem Talmud Bikkurim 3:2": "תלמוד ירושלמי בכורים ג׳:ב׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Tosafot on Pesachim 101a": "תוספות על פסחים ק״א א",
+                "Jerusalem Talmud Bikkurim 3:2": "תלמוד ירושלמי בכורים ג׳:ב׳"
+            }
+        },
+        {
+            "start": 89,
+            "end": 111,
+            "refs": {
+                "Jerusalem Talmud Ketubot 7:6": "תלמוד ירושלמי כתובות ז׳:ו׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 86,
+            "end": 110,
+            "refs": {
+                "Jerusalem Talmud Nedarim 11:12": "תלמוד ירושלמי נדרים י״א:י״ב"
+            }
+        },
+        {
+            "start": 127,
+            "end": 136,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Bikkurim 3:2": "פני משה על תלמוד ירושלמי בכורים ג׳:ב׳",
+                "Penei Moshe on Jerusalem Talmud Ketubot 7:6": "פני משה על תלמוד ירושלמי כתובות ז׳:ו׳",
+                "Penei Moshe on Jerusalem Talmud Nedarim 11:12": "פני משה על תלמוד ירושלמי נדרים י״א:י״ב"
+            }
+        },
+        {
+            "start": 179,
+            "end": 202,
+            "refs": {
+                "Jerusalem Talmud Maasrot 2:4": "תלמוד ירושלמי מעשרות ב׳:ד׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Ketubot 7:8": "פני משה על תלמוד ירושלמי כתובות ז׳:ח׳",
+                "Penei Moshe on Jerusalem Talmud Nedarim 11:8": "פני משה על תלמוד ירושלמי נדרים י״א:ח׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 78,
+            "end": 99,
+            "refs": {
+                "Jerusalem Talmud Demai 7:4": "תלמוד ירושלמי דמאי ז׳:ד׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Jerusalem Talmud Demai 7:4": "תלמוד ירושלמי דמאי ז׳:ד׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 78,
+            "end": 91,
+            "refs": {
+                "Eruvin 61b:11-76a:6": "עירובין ס״א ב:י״א-ע״ו א:ו׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 46,
+            "end": 67,
+            "refs": {
+                "Jerusalem Talmud Sotah 4:3": "תלמוד ירושלמי סוטה ד׳:ג׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 4:5": "תלמוד ירושלמי סוטה ד׳:ה׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 54,
+            "end": 76,
+            "refs": {
+                "Jerusalem Talmud Kilayim 1:2": "תלמוד ירושלמי כלאים א׳:ב׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kilayim 1:7": "תלמוד ירושלמי כלאים א׳:ז׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 224,
+            "end": 247,
+            "refs": {
+                "Jerusalem Talmud Terumot 2:2": "תלמוד ירושלמי תרומות ב׳:ב׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Kilayim 3": "תלמוד ירושלמי כלאים ג׳",
+                "Jerusalem Talmud Terumot 3": "תלמוד ירושלמי תרומות ג׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kilayim 3:3": "תלמוד ירושלמי כלאים ג׳:ג׳",
+                "Jerusalem Talmud Terumot 2:3": "תלמוד ירושלמי תרומות ב׳:ג׳",
+                "Jerusalem Talmud Terumot 3:3": "תלמוד ירושלמי תרומות ג׳:ג׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 35,
+            "end": 55,
+            "refs": {
+                "Jerusalem Talmud Beitzah 1:8": "תלמוד ירושלמי ביצה א׳:ח׳"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Beitzah 1:8": "תלמוד ירושלמי ביצה א׳:ח׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 94,
+            "end": 116,
+            "refs": {
+                "Jerusalem Talmud Kilayim 6:3": "תלמוד ירושלמי כלאים ו׳:ג׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Kilayim 4": "תלמוד ירושלמי כלאים ד׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kilayim 4:1": "תלמוד ירושלמי כלאים ד׳:א׳",
+                "Jerusalem Talmud Kilayim 6:1": "תלמוד ירושלמי כלאים ו׳:א׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 47,
+            "end": 71,
+            "refs": {
+                "Jerusalem Talmud Moed Katan 3:1": "תלמוד ירושלמי מועד קטן ג׳:א׳"
+            }
+        },
+        {
+            "start": 77,
+            "end": 96,
+            "refs": {
+                "Jerusalem Talmud Shabbat 2:6": "תלמוד ירושלמי שבת ב׳:ו׳"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 159,
+            "end": 175,
+            "refs": {
+                "Bava Metzia 77a": "בבא מציעא ע״ז א"
+            }
+        },
+        {
+            "start": 250,
+            "end": 267,
+            "refs": {
+                "Pesachim 74b": "פסחים ע״ד ב"
+            }
+        },
+        {
+            "start": 287,
+            "end": 293,
+            "refs": {
+                "Rashi on Pesachim 74b": "רש\"י על פסחים ע״ד ב",
+                "Rashi on Bava Metzia 77a": "רש\"י על בבא מציעא ע״ז א"
+            }
+        },
+        {
+            "start": 317,
+            "end": 338,
+            "refs": {
+                "Sanhedrin 95a": "סנהדרין צ״ה א"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 64,
+            "end": 83,
+            "refs": {
+                "Jerusalem Talmud Challah 1:1": "תלמוד ירושלמי חלה א׳:א׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Challah 1:9": "תלמוד ירושלמי חלה א׳:ט׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 96,
+            "end": 116,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1:4": "תלמוד ירושלמי ראש השנה א׳:ד׳"
+            }
+        },
+        {
+            "start": 215,
+            "end": 235,
+            "refs": {
+                "Jerusalem Talmud Yoma 8:2": "תלמוד ירושלמי יומא ח׳:ב׳"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Yoma 5": "תלמוד ירושלמי יומא ה׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Yoma 5:3": "תלמוד ירושלמי יומא ה׳:ג׳",
+                "Jerusalem Talmud Yoma 8:3": "תלמוד ירושלמי יומא ח׳:ג׳"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 48,
+            "end": 69,
+            "refs": {
+                "Jerusalem Talmud Taanit 2:1": "תלמוד ירושלמי תענית ב׳:א׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 224,
+            "end": 244,
+            "refs": {
+                "Jerusalem Talmud Sotah 7:4": "תלמוד ירושלמי סוטה ז׳:ד׳"
+            }
+        },
+        {
+            "start": 285,
+            "end": 293,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Taanit 2:1": "פני משה על תלמוד ירושלמי תענית ב׳:א׳",
+                "Penei Moshe on Jerusalem Talmud Sotah 7:4": "פני משה על תלמוד ירושלמי סוטה ז׳:ד׳"
+            }
+        },
+        {
+            "start": 314,
+            "end": 333,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 2:5": "תלמוד ירושלמי ראש השנה ב׳:ה׳"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 217,
+            "end": 240,
+            "refs": {
+                "Jerusalem Talmud Berakhot 1:1": "תלמוד ירושלמי ברכות א׳:א׳"
+            }
+        },
+        {
+            "start": 356,
+            "end": 376,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 3:10": "תלמוד ירושלמי עבודה זרה ג׳:י׳"
+            }
+        },
+        {
+            "start": 382,
+            "end": 390,
+            "refs": {
+                "Jerusalem Talmud Berakhot 1:1": "תלמוד ירושלמי ברכות א׳:א׳",
+                "Jerusalem Talmud Avodah Zarah 3:10": "תלמוד ירושלמי עבודה זרה ג׳:י׳"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 1:4": "תלמוד ירושלמי ברכות א׳:ד׳",
+                "Jerusalem Talmud Avodah Zarah 3:4": "תלמוד ירושלמי עבודה זרה ג׳:ד׳"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 59,
+            "end": 81,
+            "refs": {
+                "Jerusalem Talmud Shekalim 4:1": "תלמוד ירושלמי שקלים ד׳:א׳"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 1:5": "תלמוד ירושלמי ברכות א׳:ה׳",
+                "Jerusalem Talmud Shekalim 4:5": "תלמוד ירושלמי שקלים ד׳:ה׳",
+                "Jerusalem Talmud Avodah Zarah 3:5": "תלמוד ירושלמי עבודה זרה ג׳:ה׳"
+            }
+        }
+    ],
+    "52": [
+        {
+            "start": 64,
+            "end": 86,
+            "refs": {
+                "Jerusalem Talmud Shevuot 1:4": "תלמוד ירושלמי שבועות א׳:ד׳"
+            }
+        }
+    ],
+    "53": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 3:12": "תלמוד ירושלמי עבודה זרה ג׳:י״ב"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 50,
+            "end": 72,
+            "refs": {
+                "Jerusalem Talmud Maasrot 3:3": "תלמוד ירושלמי מעשרות ג׳:ג׳"
+            }
+        }
+    ],
+    "60": [
+        {
+            "start": 42,
+            "end": 65,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3:8": "תלמוד ירושלמי קידושין ג׳:ח׳"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3:8": "תלמוד ירושלמי קידושין ג׳:ח׳"
+            }
+        }
+    ]
+}

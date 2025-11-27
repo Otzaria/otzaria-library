@@ -1,0 +1,315 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 1": "תלמוד ירושלמי קידושין א׳",
+                "Jerusalem Talmud Kiddushin 1:1:2-9:5": "תלמוד ירושלמי קידושין א׳:א׳:ב׳-ט׳:ה׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 1:1": "תלמוד ירושלמי קידושין א׳:א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 1:2": "תלמוד ירושלמי קידושין א׳:ב׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 99,
+            "end": 118,
+            "refs": {
+                "Sanhedrin 98a": "סנהדרין צ״ח א"
+            }
+        },
+        {
+            "start": 179,
+            "end": 189,
+            "refs": {
+                "Rashi on Sanhedrin 98a": "רש\"י על סנהדרין צ״ח א"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 75,
+            "end": 94,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3:4": "תלמוד ירושלמי בבא קמא ג׳:ד׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3:6": "תלמוד ירושלמי בבא קמא ג׳:ו׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 114,
+            "end": 130,
+            "refs": {
+                "Shabbat 53a": "שבת נ״ג א"
+            }
+        },
+        {
+            "start": 174,
+            "end": 188,
+            "refs": {
+                "Chullin 45b": "חולין מ״ה ב"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3:8": "תלמוד ירושלמי בבא קמא ג׳:ח׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Shabbat 2": "תלמוד ירושלמי שבת ב׳",
+                "Jerusalem Talmud Kiddushin 2": "תלמוד ירושלמי קידושין ב׳",
+                "Jerusalem Talmud Bava Kamma 2": "תלמוד ירושלמי בבא קמא ב׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Shabbat 2:1": "תלמוד ירושלמי שבת ב׳:א׳",
+                "Jerusalem Talmud Kiddushin 2:1": "תלמוד ירושלמי קידושין ב׳:א׳",
+                "Jerusalem Talmud Bava Kamma 2:1": "תלמוד ירושלמי בבא קמא ב׳:א׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 33,
+            "end": 54,
+            "refs": {
+                "Jerusalem Talmud Berakhot 3:5": "תלמוד ירושלמי ברכות ג׳:ה׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 256,
+            "end": 278,
+            "refs": {
+                "Jerusalem Talmud Sheviit 10:4": "תלמוד ירושלמי שביעית י׳:ד׳"
+            }
+        },
+        {
+            "start": 307,
+            "end": 331,
+            "refs": {
+                "Jerusalem Talmud Demai 6:8": "תלמוד ירושלמי דמאי ו׳:ח׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 3:5": "תלמוד ירושלמי ברכות ג׳:ה׳",
+                "Jerusalem Talmud Demai 6:5": "תלמוד ירושלמי דמאי ו׳:ה׳"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 326,
+            "end": 340,
+            "refs": {
+                "Zevachim 114b": "זבחים קי״ד ב"
+            }
+        },
+        {
+            "start": 390,
+            "end": 403,
+            "refs": {
+                "Menachot 47b": "מנחות מ״ז ב"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3": "תלמוד ירושלמי קידושין ג׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3:2": "תלמוד ירושלמי קידושין ג׳:ב׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 627,
+            "end": 648,
+            "refs": {
+                "Jerusalem Talmud Gittin 7:3": "תלמוד ירושלמי גיטין ז׳:ג׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Gittin 7:3": "תלמוד ירושלמי גיטין ז׳:ג׳",
+                "Jerusalem Talmud Kiddushin 3:3": "תלמוד ירושלמי קידושין ג׳:ג׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 85,
+            "end": 109,
+            "refs": {
+                "Jerusalem Talmud Maaser Sheni 1:1": "תלמוד ירושלמי מעשר שני א׳:א׳"
+            }
+        },
+        {
+            "start": 468,
+            "end": 488,
+            "refs": {
+                "Jerusalem Talmud Challah 4:2": "תלמוד ירושלמי חלה ד׳:ב׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 36,
+            "end": 55,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 8:6": "תלמוד ירושלמי בבא קמא ח׳:ו׳"
+            }
+        },
+        {
+            "start": 60,
+            "end": 76,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Bava Kamma 8:6:4:3": "פני משה על תלמוד ירושלמי בבא קמא ח׳:ו׳:ד׳:ג׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 4": "תלמוד ירושלמי קידושין ד׳"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 4:2": "תלמוד ירושלמי קידושין ד׳:ב׳"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 126,
+            "end": 145,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10:2": "תלמוד ירושלמי בבא קמא י׳:ב׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 4:7": "תלמוד ירושלמי קידושין ד׳:ז׳",
+                "Jerusalem Talmud Bava Kamma 10:7": "תלמוד ירושלמי בבא קמא י׳:ז׳"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 40,
+            "end": 62,
+            "refs": {
+                "Jerusalem Talmud Berakhot 9:5": "תלמוד ירושלמי ברכות ט׳:ה׳"
+            }
+        },
+        {
+            "start": 342,
+            "end": 364,
+            "refs": {
+                "Jerusalem Talmud Kilayim 9:3": "תלמוד ירושלמי כלאים ט׳:ג׳"
+            }
+        },
+        {
+            "start": 577,
+            "end": 600,
+            "refs": {
+                "Jerusalem Talmud Yevamot 16:5": "תלמוד ירושלמי יבמות ט״ז:ה׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 83,
+            "end": 104,
+            "refs": {
+                "Jerusalem Talmud Sukkah 5:1": "תלמוד ירושלמי סוכה ה׳:א׳"
+            }
+        },
+        {
+            "start": 162,
+            "end": 182,
+            "refs": {
+                "Jerusalem Talmud Peah 8:6": "תלמוד ירושלמי פאה ח׳:ו׳"
+            }
+        },
+        {
+            "start": 242,
+            "end": 250,
+            "refs": {
+                "Jerusalem Talmud Peah 8:6": "תלמוד ירושלמי פאה ח׳:ו׳",
+                "Jerusalem Talmud Kiddushin": "תלמוד ירושלמי קידושין"
+            }
+        }
+    ]
+}

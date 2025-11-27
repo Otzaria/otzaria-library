@@ -1,0 +1,34 @@
+{
+    "5": [
+        {
+            "start": 61,
+            "end": 83,
+            "refs": {
+                "Jerusalem Talmud Terumot 8:3": "תלמוד ירושלמי תרומות ח׳:ג׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 34,
+            "end": 54,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 9:4": "תלמוד ירושלמי בבא בתרא ט׳:ד׳"
+            }
+        },
+        {
+            "start": 89,
+            "end": 111,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 3:11": "תלמוד ירושלמי עבודה זרה ג׳:י״א"
+            }
+        },
+        {
+            "start": 178,
+            "end": 200,
+            "refs": {
+                "Jerusalem Talmud Shekalim 7:3": "תלמוד ירושלמי שקלים ז׳:ג׳"
+            }
+        }
+    ]
+}

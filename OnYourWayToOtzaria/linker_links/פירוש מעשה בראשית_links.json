@@ -1,0 +1,55 @@
+{
+    "55": [
+        {
+            "start": 62,
+            "end": 67,
+            "refs": {
+                "Genesis 1:1": "בראשית א׳:א׳",
+                "Mishnah Chagigah": "משנה חגיגה",
+                "Chagigah": "חגיגה",
+                "Sefer Yetzirah": "ספר יצירה"
+            }
+        }
+    ],
+    "141": [
+        {
+            "start": 35,
+            "end": 44,
+            "refs": {
+                "Berakhot 53": "ברכות נ״ג"
+            }
+        }
+    ],
+    "147": [
+        {
+            "start": 42,
+            "end": 43,
+            "refs": {
+                "Mishnah Berakhot 5": "משנה ברכות ה׳",
+                "Berakhot 5": "ברכות ה׳",
+                "Berakhot 30b:14-34b:32": "ברכות ל׳ ב:י״ד-ל״ד ב:ל״ב",
+                "Sefer Yetzirah 5": "ספר יצירה ה׳",
+                "Tikkunei Zohar 5": "תקוני הזהר ה׳"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Niddah 13": "נדה י״ג"
+            }
+        }
+    ],
+    "159": [
+        {
+            "start": 36,
+            "end": 43,
+            "refs": {
+                "Mishnah Avodah Zarah 1": "משנה עבודה זרה א׳",
+                "Avodah Zarah 2a:1-22a:10": "עבודה זרה ב׳ א:א׳-כ״ב א:י׳"
+            }
+        }
+    ]
+}

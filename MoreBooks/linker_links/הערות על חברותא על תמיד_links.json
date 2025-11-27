@@ -1,0 +1,967 @@
+{
+    "4": [
+        {
+            "start": 4,
+            "end": 30,
+            "refs": {
+                "Guide for the Perplexed, Part 3 45": "מורה נבוכים, חלק ג' מ״ה"
+            }
+        },
+        {
+            "start": 147,
+            "end": 157,
+            "refs": {
+                "Numbers 16:1-18:32": "במדבר ט״ז:א׳-י״ח:ל״ב"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 203,
+            "end": 216,
+            "refs": {
+                "Minchat Chinukh 340": "מנחת חינוך ש״מ"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 36,
+            "end": 60,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 3": "משנה תורה, הלכות כלי המקדש והעובדין בו ג׳"
+            }
+        },
+        {
+            "start": 180,
+            "end": 186,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 3": "משנה תורה, הלכות כלי המקדש והעובדין בו ג׳",
+                "Mishneh LaMelech on Mishneh Torah, Vessels of the Sanctuary and Those who Serve Therein": "משנה למלך על משנה תורה, הלכות כלי המקדש והעובדין בו"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 12,
+            "end": 25,
+            "refs": {
+                "Rashi on Yoma 15": "רש\"י על יומא ט״ו"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 185,
+            "end": 194,
+            "refs": {
+                "Yoma 25a": "יומא כ״ה א"
+            }
+        },
+        {
+            "start": 544,
+            "end": 554,
+            "refs": {
+                "Tosafot on Yoma 25a": "תוספות על יומא כ״ה א"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 304,
+            "end": 312,
+            "refs": {
+                "Yoma 24": "יומא כ״ד"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 165,
+            "end": 198,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 6": "משנה תורה, הלכות תמידים ומוספין ו׳"
+            }
+        },
+        {
+            "start": 233,
+            "end": 247,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b": "תוספות על ראש השנה כ״ט ב",
+                "Tosafot on Beitzah 15b": "תוספות על ביצה ט״ו ב",
+                "Mishneh Torah, Daily Offerings and Additional Offerings 6": "משנה תורה, הלכות תמידים ומוספין ו׳"
+            }
+        },
+        {
+            "start": 56,
+            "end": 65,
+            "refs": {
+                "Numbers 16:1-18:32": "במדבר ט״ז:א׳-י״ח:ל״ב"
+            }
+        },
+        {
+            "start": 185,
+            "end": 194,
+            "refs": {
+                "Numbers 16:1-18:32": "במדבר ט״ז:א׳-י״ח:ל״ב"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 98,
+            "end": 131,
+            "refs": {
+                "Mishneh Torah, The Chosen Temple 8:4": "משנה תורה, הלכות בית הבחירה ח׳:ד׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 133,
+            "end": 165,
+            "refs": {
+                "Mishneh Torah, The Chosen Temple 8:8": "משנה תורה, הלכות בית הבחירה ח׳:ח׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 359,
+            "end": 370,
+            "refs": {
+                "Sotah 48b": "סוטה מ״ח ב"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 40,
+            "end": 59,
+            "refs": {
+                "Kiddushin 54a": "קידושין נ״ד א"
+            }
+        },
+        {
+            "start": 196,
+            "end": 210,
+            "refs": {
+                "Tosafot on Kiddushin 66": "תוספות על קידושין ס״ו"
+            }
+        },
+        {
+            "start": 283,
+            "end": 294,
+            "refs": {
+                "Yoma 60": "יומא ס׳"
+            }
+        },
+        {
+            "start": 300,
+            "end": 309,
+            "refs": {
+                "Tosafot on Yoma 60a": "תוספות על יומא ס׳ א",
+                "Tosafot on Kiddushin 54a": "תוספות על קידושין נ״ד א",
+                "Tosafot on Kiddushin 66a": "תוספות על קידושין ס״ו א"
+            }
+        },
+        {
+            "start": 456,
+            "end": 464,
+            "refs": {
+                "Yoma 60a": "יומא ס׳ א"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 5,
+            "end": 46,
+            "refs": {
+                "Mishneh Torah, The Chosen Temple 8:6": "משנה תורה, הלכות בית הבחירה ח׳:ו׳"
+            }
+        },
+        {
+            "start": 177,
+            "end": 188,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, The Chosen Temple 8:6": "כסף משנה על משנה תורה, הלכות בית הבחירה ח׳:ו׳"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 5,
+            "end": 21,
+            "refs": {
+                "Rashi on Yoma 69a": "רש\"י על יומא ס״ט א"
+            }
+        },
+        {
+            "start": 82,
+            "end": 91,
+            "refs": {
+                "Tosafot on Yoma 69a": "תוספות על יומא ס״ט א"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 57,
+            "end": 85,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, Vessels of the Sanctuary and Those who Serve Therein 8:11": "כסף משנה על משנה תורה, הלכות כלי המקדש והעובדין בו ח׳:י״א"
+            }
+        },
+        {
+            "start": 1007,
+            "end": 1026,
+            "refs": {
+                "Tosafot on Chullin 110b": "תוספות על חולין ק״י ב"
+            }
+        },
+        {
+            "start": 1027,
+            "end": 1038,
+            "refs": {
+                "Menachot 41": "מנחות מ״א"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 80,
+            "end": 98,
+            "refs": {
+                "Tosafot on Chullin 110b": "תוספות על חולין ק״י ב"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 18,
+            "end": 31,
+            "refs": {
+                "Rashi on Yoma 60": "רש\"י על יומא ס׳"
+            }
+        },
+        {
+            "start": 67,
+            "end": 77,
+            "refs": {
+                "Tosafot on Yoma 60a": "תוספות על יומא ס׳ א"
+            }
+        },
+        {
+            "start": 214,
+            "end": 230,
+            "refs": {
+                "HaMaor HaKatan on Beitzah 14b": "המאור הקטן על ביצה י״ד ב"
+            }
+        },
+        {
+            "start": 512,
+            "end": 536,
+            "refs": {
+                "Shita Mekubetzet on Beitzah 14b": "שיטה מקובצת על ביצה י״ד ב"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 10,
+            "end": 18,
+            "refs": {
+                "Yoma 69": "יומא ס״ט"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 114,
+            "end": 146,
+            "refs": {
+                "Jerusalem Talmud Kilayim 9:1": "תלמוד ירושלמי כלאים ט׳:א׳"
+            }
+        }
+    ],
+    "57": [
+        {
+            "start": 46,
+            "end": 60,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 277,
+            "end": 293,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "64": [
+        {
+            "start": 21,
+            "end": 51,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2": "משנה תורה, הלכות תמידים ומוספין ב׳"
+            }
+        }
+    ],
+    "65": [
+        {
+            "start": 17,
+            "end": 31,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "66": [
+        {
+            "start": 4,
+            "end": 12,
+            "refs": {
+                "Yoma 37": "יומא ל״ז"
+            }
+        },
+        {
+            "start": 385,
+            "end": 401,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "68": [
+        {
+            "start": 16,
+            "end": 26,
+            "refs": {
+                "Zevachim 21": "זבחים כ״א"
+            }
+        }
+    ],
+    "69": [
+        {
+            "start": 29,
+            "end": 38,
+            "refs": {
+                "Yoma 24": "יומא כ״ד"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 99,
+            "end": 115,
+            "refs": {
+                "Ritva on Yoma 20b": "ריטב\"א על יומא כ׳ ב"
+            }
+        }
+    ],
+    "71": [
+        {
+            "start": 103,
+            "end": 140,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2:11": "משנה תורה, הלכות תמידים ומוספין ב׳:י״א"
+            }
+        },
+        {
+            "start": 234,
+            "end": 245,
+            "refs": {
+                "Zevachim 21b": "זבחים כ״א ב"
+            }
+        }
+    ],
+    "74": [
+        {
+            "start": 10,
+            "end": 19,
+            "refs": {
+                "Yoma 21": "יומא כ״א"
+            }
+        },
+        {
+            "start": 218,
+            "end": 227,
+            "refs": {
+                "Tosafot on Yoma 21a": "תוספות על יומא כ״א א"
+            }
+        }
+    ],
+    "78": [
+        {
+            "start": 10,
+            "end": 46,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2:7": "משנה תורה, הלכות תמידים ומוספין ב׳:ז׳"
+            }
+        },
+        {
+            "start": 85,
+            "end": 95,
+            "refs": {
+                "Hasagot HaRa'avad on Mishneh Torah, Daily Offerings and Additional Offerings 2:7": "השגות הראב\"ד על משנה תורה, הלכות תמידים ומוספין ב׳:ז׳"
+            }
+        }
+    ],
+    "79": [
+        {
+            "start": 90,
+            "end": 105,
+            "refs": {
+                "Rashi on Chullin 90b": "רש\"י על חולין צ׳ ב"
+            }
+        },
+        {
+            "start": 169,
+            "end": 186,
+            "refs": {
+                "Tosafot on Yoma 27b": "תוספות על יומא כ״ז ב"
+            }
+        },
+        {
+            "start": 775,
+            "end": 785,
+            "refs": {
+                "Meilah 9a": "מעילה ט׳ א"
+            }
+        }
+    ],
+    "81": [
+        {
+            "start": 4,
+            "end": 15,
+            "refs": {
+                "Yoma 27b": "יומא כ״ז ב"
+            }
+        },
+        {
+            "start": 63,
+            "end": 73,
+            "refs": {
+                "Tosafot on Yoma 27b": "תוספות על יומא כ״ז ב"
+            }
+        },
+        {
+            "start": 139,
+            "end": 173,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2": "משנה תורה, הלכות תמידים ומוספין ב׳"
+            }
+        },
+        {
+            "start": 253,
+            "end": 259,
+            "refs": {
+                "Yoma 27b": "יומא כ״ז ב"
+            }
+        }
+    ],
+    "82": [
+        {
+            "start": 272,
+            "end": 306,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2": "משנה תורה, הלכות תמידים ומוספין ב׳"
+            }
+        },
+        {
+            "start": 629,
+            "end": 654,
+            "refs": {
+                "Jerusalem Talmud Yoma 2": "תלמוד ירושלמי יומא ב׳"
+            }
+        }
+    ],
+    "86": [
+        {
+            "start": 101,
+            "end": 111,
+            "refs": {
+                "Yoma 45a": "יומא מ״ה א"
+            }
+        },
+        {
+            "start": 143,
+            "end": 180,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 2:5": "משנה תורה, הלכות תמידים ומוספין ב׳:ה׳"
+            }
+        }
+    ],
+    "87": [
+        {
+            "start": 150,
+            "end": 163,
+            "refs": {
+                "Sanhedrin 49b": "סנהדרין מ״ט ב"
+            }
+        }
+    ],
+    "88": [
+        {
+            "start": 224,
+            "end": 234,
+            "refs": {
+                "Yoma 27a": "יומא כ״ז א"
+            }
+        },
+        {
+            "start": 416,
+            "end": 457,
+            "refs": {
+                "Mishneh Torah, Sacrifices Rendered Unfit 2:26": "משנה תורה, הלכות פסולי המוקדשין ב׳:כ״ו"
+            }
+        }
+    ],
+    "89": [
+        {
+            "start": 13,
+            "end": 28,
+            "refs": {
+                "Rashi on Chullin 90b": "רש\"י על חולין צ׳ ב"
+            }
+        }
+    ],
+    "92": [
+        {
+            "start": 373,
+            "end": 390,
+            "refs": {
+                "Tosafot on Chullin 90b": "תוספות על חולין צ׳ ב"
+            }
+        }
+    ],
+    "94": [
+        {
+            "start": 132,
+            "end": 141,
+            "refs": {
+                "Yoma 28a": "יומא כ״ח א"
+            }
+        }
+    ],
+    "96": [
+        {
+            "start": 216,
+            "end": 230,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "98": [
+        {
+            "start": 155,
+            "end": 172,
+            "refs": {
+                "Tosafot on Yoma 59a": "תוספות על יומא נ״ט א"
+            }
+        },
+        {
+            "start": 324,
+            "end": 334,
+            "refs": {
+                "Yoma 33a": "יומא ל״ג א"
+            }
+        }
+    ],
+    "99": [
+        {
+            "start": 22,
+            "end": 32,
+            "refs": {
+                "Yoma 27b": "יומא כ״ז ב"
+            }
+        }
+    ],
+    "101": [
+        {
+            "start": 25,
+            "end": 35,
+            "refs": {
+                "Megillah 20a": "מגילה כ׳ א"
+            }
+        },
+        {
+            "start": 125,
+            "end": 134,
+            "refs": {
+                "Tosafot on Megillah 20a": "תוספות על מגילה כ׳ א"
+            }
+        },
+        {
+            "start": 140,
+            "end": 176,
+            "refs": {
+                "Mishneh Torah, Sacrificial Procedure 4:1": "משנה תורה, הלכות מעשה הקרבנות ד׳:א׳"
+            }
+        },
+        {
+            "start": 248,
+            "end": 254,
+            "refs": {
+                "Megillah 20a": "מגילה כ׳ א"
+            }
+        }
+    ],
+    "102": [
+        {
+            "start": 9,
+            "end": 48,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 1:2": "משנה תורה, הלכות תמידים ומוספין א׳:ב׳"
+            }
+        }
+    ],
+    "103": [
+        {
+            "start": 5,
+            "end": 19,
+            "refs": {
+                "Rashi on Menachot 100": "רש\"י על מנחות ק׳"
+            }
+        },
+        {
+            "start": 21,
+            "end": 27,
+            "refs": {
+                "Rashi on Menachot 100a": "רש\"י על מנחות ק׳ א"
+            }
+        },
+        {
+            "start": 208,
+            "end": 218,
+            "refs": {
+                "Yoma 28b": "יומא כ״ח ב"
+            }
+        }
+    ],
+    "104": [
+        {
+            "start": 5,
+            "end": 16,
+            "refs": {
+                "Yoma 15b": "יומא ט״ו ב"
+            }
+        }
+    ],
+    "106": [
+        {
+            "start": 9,
+            "end": 46,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 6:2": "משנה תורה, הלכות תמידים ומוספין ו׳:ב׳"
+            }
+        }
+    ],
+    "108": [
+        {
+            "start": 160,
+            "end": 175,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "113": [
+        {
+            "start": 181,
+            "end": 190,
+            "refs": {
+                "Yoma 33b": "יומא ל״ג ב"
+            }
+        }
+    ],
+    "114": [
+        {
+            "start": 9,
+            "end": 49,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 3:12": "משנה תורה, הלכות תמידים ומוספין ג׳:י״ב"
+            }
+        },
+        {
+            "start": 524,
+            "end": 534,
+            "refs": {
+                "Meilah 11": "מעילה י״א"
+            }
+        }
+    ],
+    "118": [
+        {
+            "start": 11,
+            "end": 27,
+            "refs": {
+                "Rashi on Yoma 62b": "רש\"י על יומא ס״ב ב"
+            }
+        },
+        {
+            "start": 116,
+            "end": 126,
+            "refs": {
+                "Tosafot on Yoma 62b": "תוספות על יומא ס״ב ב"
+            }
+        }
+    ],
+    "119": [
+        {
+            "start": 738,
+            "end": 752,
+            "refs": {
+                "Rashi on Yoma 15b": "רש\"י על יומא ט״ו ב"
+            }
+        }
+    ],
+    "131": [
+        {
+            "start": 238,
+            "end": 255,
+            "refs": {
+                "Tosafot on Yoma 16b": "תוספות על יומא ט״ז ב"
+            }
+        }
+    ],
+    "133": [
+        {
+            "start": 348,
+            "end": 357,
+            "refs": {
+                "Yoma 25b": "יומא כ״ה ב"
+            }
+        }
+    ],
+    "136": [
+        {
+            "start": 125,
+            "end": 141,
+            "refs": {
+                "Rashi on Menachot 21b": "רש\"י על מנחות כ״א ב"
+            }
+        }
+    ],
+    "139": [
+        {
+            "start": 4,
+            "end": 43,
+            "refs": {
+                "Hasagot HaRa'avad on Mishneh Torah, Daily Offerings and Additional Offerings 1:10": "השגות הראב\"ד על משנה תורה, הלכות תמידים ומוספין א׳:י׳"
+            }
+        }
+    ],
+    "141": [
+        {
+            "start": 40,
+            "end": 47,
+            "refs": {
+                "Rosh Hashanah 29b:5-35a:13": "ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Beitzah 15b:1-23b:10": "ביצה ט״ו ב:א׳-כ״ג ב:י׳",
+                "Jerusalem Talmud Rosh Hashanah 4:1:1-10:5": "תלמוד ירושלמי ראש השנה ד׳:א׳:א׳-י׳:ה׳",
+                "Jerusalem Talmud Beitzah 2:1:1-10:2": "תלמוד ירושלמי ביצה ב׳:א׳:א׳-י׳:ב׳"
+            }
+        }
+    ],
+    "145": [
+        {
+            "start": 26,
+            "end": 36,
+            "refs": {
+                "Chagigah 12": "חגיגה י״ב"
+            }
+        }
+    ],
+    "152": [
+        {
+            "start": 103,
+            "end": 113,
+            "refs": {
+                "Berakhot 12b": "ברכות י״ב ב"
+            }
+        }
+    ],
+    "153": [
+        {
+            "start": 241,
+            "end": 258,
+            "refs": {
+                "Tosafot on Berakhot 12a": "תוספות על ברכות י״ב א"
+            }
+        }
+    ],
+    "154": [
+        {
+            "start": 123,
+            "end": 137,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "155": [
+        {
+            "start": 9,
+            "end": 27,
+            "refs": {
+                "Ritva on Yoma 25a": "ריטב\"א על יומא כ״ה א"
+            }
+        },
+        {
+            "start": 354,
+            "end": 364,
+            "refs": {
+                "Yoma 28b": "יומא כ״ח ב"
+            }
+        },
+        {
+            "start": 414,
+            "end": 425,
+            "refs": {
+                "Tosafot on Yoma 28b": "תוספות על יומא כ״ח ב"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 69,
+            "end": 84,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "159": [
+        {
+            "start": 95,
+            "end": 105,
+            "refs": {
+                "Yoma 22a": "יומא כ״ב א"
+            }
+        },
+        {
+            "start": 112,
+            "end": 150,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 4:5": "משנה תורה, הלכות תמידים ומוספין ד׳:ה׳"
+            }
+        }
+    ],
+    "161": [
+        {
+            "start": 70,
+            "end": 87,
+            "refs": {
+                "Tosafot on Yoma 46b": "תוספות על יומא מ״ו ב"
+            }
+        }
+    ],
+    "164": [
+        {
+            "start": 312,
+            "end": 326,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "165": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b": "תוספות על ראש השנה כ״ט ב",
+                "Tosafot on Beitzah 15b": "תוספות על ביצה ט״ו ב"
+            }
+        },
+        {
+            "start": 1003,
+            "end": 1018,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "168": [
+        {
+            "start": 208,
+            "end": 215,
+            "refs": {
+                "Rosh Hashanah 29b:5-35a:13": "ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Beitzah 15b:1-23b:10": "ביצה ט״ו ב:א׳-כ״ג ב:י׳",
+                "Jerusalem Talmud Rosh Hashanah 4:1:1-10:5": "תלמוד ירושלמי ראש השנה ד׳:א׳:א׳-י׳:ה׳",
+                "Jerusalem Talmud Beitzah 2:1:1-10:2": "תלמוד ירושלמי ביצה ב׳:א׳:א׳-י׳:ב׳"
+            }
+        }
+    ],
+    "169": [
+        {
+            "start": 125,
+            "end": 143,
+            "refs": {
+                "Tosafot on Menachot 27b": "תוספות על מנחות כ״ז ב"
+            }
+        },
+        {
+            "start": 335,
+            "end": 374,
+            "refs": {
+                "Mishneh Torah, Admission into the Sanctuary 2:4": "משנה תורה, הלכות ביאת מקדש ב׳:ד׳"
+            }
+        },
+        {
+            "start": 454,
+            "end": 468,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "170": [
+        {
+            "start": 442,
+            "end": 456,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "172": [
+        {
+            "start": 251,
+            "end": 264,
+            "refs": {
+                "Rosh Hashanah 31": "ראש השנה ל״א"
+            }
+        }
+    ]
+}

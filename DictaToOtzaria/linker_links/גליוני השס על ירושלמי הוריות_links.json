@@ -1,0 +1,98 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Horayot 1": "תלמוד ירושלמי הוריות א׳",
+                "Jerusalem Talmud Horayot 1:1:2-8:5": "תלמוד ירושלמי הוריות א׳:א׳:ב׳-ח׳:ה׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Horayot 1:3": "תלמוד ירושלמי הוריות א׳:ג׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Horayot 1:6": "תלמוד ירושלמי הוריות א׳:ו׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 72,
+            "end": 94,
+            "refs": {
+                "Jerusalem Talmud Berakhot 9:1": "תלמוד ירושלמי ברכות ט׳:א׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Berakhot 2": "תלמוד ירושלמי ברכות ב׳",
+                "Jerusalem Talmud Horayot 2": "תלמוד ירושלמי הוריות ב׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 2:6": "תלמוד ירושלמי ברכות ב׳:ו׳",
+                "Jerusalem Talmud Horayot 2:6": "תלמוד ירושלמי הוריות ב׳:ו׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Berakhot 3": "תלמוד ירושלמי ברכות ג׳",
+                "Jerusalem Talmud Horayot 3": "תלמוד ירושלמי הוריות ג׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 3:4": "תלמוד ירושלמי ברכות ג׳:ד׳",
+                "Jerusalem Talmud Horayot 2:4": "תלמוד ירושלמי הוריות ב׳:ד׳",
+                "Jerusalem Talmud Horayot 3:4": "תלמוד ירושלמי הוריות ג׳:ד׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 89,
+            "end": 111,
+            "refs": {
+                "Jerusalem Talmud Berakhot 8:1": "תלמוד ירושלמי ברכות ח׳:א׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 42,
+            "end": 63,
+            "refs": {
+                "Jerusalem Talmud Berakhot 2:8": "תלמוד ירושלמי ברכות ב׳:ח׳"
+            }
+        }
+    ]
+}

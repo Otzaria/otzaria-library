@@ -1,0 +1,254 @@
+{
+    "4": [
+        {
+            "start": 45,
+            "end": 65,
+            "refs": {
+                "Tosefta Terumot (Lieberman) 5": "תוספתא תרומות (ליברמן) ה׳",
+                "Tosefta Terumot 5": "תוספתא תרומות ה׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 102,
+            "end": 112,
+            "refs": {
+                "Shabbat 93a": "שבת צ״ג א"
+            }
+        },
+        {
+            "start": 874,
+            "end": 878,
+            "refs": {
+                "Shabbat 93a": "שבת צ״ג א"
+            }
+        },
+        {
+            "start": 909,
+            "end": 922,
+            "refs": {
+                "Yevamot 106b": "יבמות ק״ו ב"
+            }
+        },
+        {
+            "start": 999,
+            "end": 1009,
+            "refs": {
+                "Bava Metzia 36a": "בבא מציעא ל״ו א"
+            }
+        },
+        {
+            "start": 1158,
+            "end": 1168,
+            "refs": {
+                "Bava Kamma 39a": "בבא קמא ל״ט א"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Bava Kamma 3a": "בבא קמא ג׳ א"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 20,
+            "end": 48,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 5 1:586": "תשובות הרדב\"ז חלק ה א׳:תקפ״ו"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Bava Kamma 3": "בבא קמא ג׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 50,
+            "end": 77,
+            "refs": {
+                "Tosafot on Meilah 9b:8:2": "תוספות על מעילה ט׳ ב:ח׳:ב׳",
+                "Tosafot on Meilah 9b:8:3": "תוספות על מעילה ט׳ ב:ח׳:ג׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Tosafot on Meilah 7": "תוספות על מעילה ז׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 83,
+            "end": 94,
+            "refs": {
+                "Makkot 24a": "מכות כ״ד א"
+            }
+        },
+        {
+            "start": 115,
+            "end": 119,
+            "refs": {
+                "Makkot 24a": "מכות כ״ד א"
+            }
+        },
+        {
+            "start": 161,
+            "end": 176,
+            "refs": {
+                "Sanhedrin 99a": "סנהדרין צ״ט א"
+            }
+        },
+        {
+            "start": 354,
+            "end": 360,
+            "refs": {
+                "Rashi on Sanhedrin 99a": "רש\"י על סנהדרין צ״ט א",
+                "Rashi on Makkot 24a": "רש\"י על מכות כ״ד א"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Sanhedrin 9a": "סנהדרין ט׳ א",
+                "Rashi on Makkot 9a": "רש\"י על מכות ט׳ א"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 197,
+            "end": 220,
+            "refs": {
+                "Jerusalem Talmud Shevuot 1:7": "תלמוד ירושלמי שבועות א׳:ז׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Sanhedrin 10a": "סנהדרין י׳ א",
+                "Rashi on Makkot 10a": "רש\"י על מכות י׳ א",
+                "Jerusalem Talmud Shevuot 2:1:9-11": "תלמוד ירושלמי שבועות ב׳:א׳:ט׳-י״א"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 362,
+            "end": 375,
+            "refs": {
+                "Megillah 31b": "מגילה ל״א ב"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Megillah 12": "מגילה י״ב"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 60,
+            "end": 70,
+            "refs": {
+                "Bava Kamma 61a": "בבא קמא ס״א א"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Megillah 13": "מגילה י״ג",
+                "Bava Kamma 13": "בבא קמא י״ג"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 36,
+            "end": 50,
+            "refs": {
+                "Sanhedrin 93a": "סנהדרין צ״ג א"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 35,
+            "end": 63,
+            "refs": {
+                "Rashi on Kiddushin 82a:11:1": "רש\"י על קידושין פ״ב א:י״א:א׳",
+                "Rashi on Kiddushin 82a:11:2": "רש\"י על קידושין פ״ב א:י״א:ב׳"
+            }
+        },
+        {
+            "start": 71,
+            "end": 84,
+            "refs": {
+                "Pesachim 111b": "פסחים קי״א ב"
+            }
+        },
+        {
+            "start": 149,
+            "end": 168,
+            "refs": {
+                "Teshuvot HaRivash 110": "תשובות הריב\"ש ק״י"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Pesachim 13": "פסחים י״ג"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 53,
+            "end": 61,
+            "refs": {
+                "Gittin 48b:6-62a:17": "גיטין מ״ח ב:ו׳-ס״ב א:י״ז",
+                "Jerusalem Talmud Gittin 5:1:1-10:6": "תלמוד ירושלמי גיטין ה׳:א׳:א׳-י׳:ו׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 140,
+            "end": 154,
+            "refs": {
+                "Sanhedrin 37a": "סנהדרין ל״ז א"
+            }
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Megillah 1": "תלמוד ירושלמי מגילה א׳",
+                "Jerusalem Talmud Megillah 1:1:1-12:8": "תלמוד ירושלמי מגילה א׳:א׳:א׳-י״ב:ח׳",
+                "Jerusalem Talmud Megillah 1:1:2-12:8": "תלמוד ירושלמי מגילה א׳:א׳:ב׳-י״ב:ח׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Megillah 1:4": "תלמוד ירושלמי מגילה א׳:ד׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 59,
+            "end": 85,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1:1": "תלמוד ירושלמי ראש השנה א׳:א׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1:9": "תלמוד ירושלמי ראש השנה א׳:ט׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 75,
+            "end": 104,
+            "refs": {
+                "Jerusalem Talmud Moed Katan 3:5": "תלמוד ירושלמי מועד קטן ג׳:ה׳"
+            }
+        },
+        {
+            "start": 139,
+            "end": 162,
+            "refs": {
+                "Jerusalem Talmud Yevamot 8:3": "תלמוד ירושלמי יבמות ח׳:ג׳"
+            }
+        },
+        {
+            "start": 190,
+            "end": 214,
+            "refs": {
+                "Jerusalem Talmud Sheviit 5:2": "תלמוד ירושלמי שביעית ה׳:ב׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sheviit 2": "תלמוד ירושלמי שביעית ב׳",
+                "Jerusalem Talmud Megillah 2": "תלמוד ירושלמי מגילה ב׳",
+                "Jerusalem Talmud Moed Katan 2": "תלמוד ירושלמי מועד קטן ב׳",
+                "Jerusalem Talmud Yevamot 2": "תלמוד ירושלמי יבמות ב׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Megillah 2:4": "תלמוד ירושלמי מגילה ב׳:ד׳",
+                "Jerusalem Talmud Moed Katan 2:4": "תלמוד ירושלמי מועד קטן ב׳:ד׳",
+                "Jerusalem Talmud Yevamot 2:4": "תלמוד ירושלמי יבמות ב׳:ד׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 48,
+            "end": 72,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 2:5": "תלמוד ירושלמי סנהדרין ב׳:ה׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Moed Katan 2:5": "תלמוד ירושלמי מועד קטן ב׳:ה׳",
+                "Jerusalem Talmud Yevamot 2:5": "תלמוד ירושלמי יבמות ב׳:ה׳",
+                "Jerusalem Talmud Sanhedrin 2:5": "תלמוד ירושלמי סנהדרין ב׳:ה׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 51,
+            "end": 70,
+            "refs": {
+                "Jerusalem Talmud Niddah 1:4": "תלמוד ירושלמי נדה א׳:ד׳"
+            }
+        },
+        {
+            "start": 76,
+            "end": 99,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 7:2": "תלמוד ירושלמי סנהדרין ז׳:ב׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Megillah 4": "תלמוד ירושלמי מגילה ד׳",
+                "Jerusalem Talmud Sanhedrin 4": "תלמוד ירושלמי סנהדרין ד׳",
+                "Jerusalem Talmud Niddah 4": "תלמוד ירושלמי נדה ד׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Megillah 4:10": "תלמוד ירושלמי מגילה ד׳:י׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 34,
+            "end": 53,
+            "refs": {
+                "Jerusalem Talmud Challah 1:1": "תלמוד ירושלמי חלה א׳:א׳"
+            }
+        }
+    ]
+}

@@ -1,0 +1,439 @@
+{
+    "5": [
+        {
+            "start": 32,
+            "end": 42,
+            "refs": {
+                "Niddah 50b": "נדה נ׳ ב"
+            }
+        },
+        {
+            "start": 101,
+            "end": 111,
+            "refs": {
+                "Bava Batra 91b": "בבא בתרא צ״א ב"
+            }
+        },
+        {
+            "start": 153,
+            "end": 160,
+            "refs": {
+                "Rashbam on Bava Batra 91b": "רשב\"ם על בבא בתרא צ״א ב"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 1127,
+            "end": 1147,
+            "refs": {
+                "Shabbat 20b:5-36b:2": "שבת כ׳ ב:ה׳-ל״ו ב:ב׳"
+            }
+        },
+        {
+            "start": 1266,
+            "end": 1280,
+            "refs": {
+                "Menachot 44a": "מנחות מ״ד א"
+            }
+        },
+        {
+            "start": 1328,
+            "end": 1343,
+            "refs": {
+                "Rashba on Shabbat 20b": "רשב״א על שבת כ׳ ב"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 36,
+            "end": 47,
+            "refs": {
+                "Bava Metzia 111b": "בבא מציעא קי״א ב"
+            }
+        },
+        {
+            "start": 213,
+            "end": 223,
+            "refs": {
+                "Bava Metzia 60b": "בבא מציעא ס׳ ב"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 56,
+            "end": 69,
+            "refs": {
+                "Sanhedrin 6b": "סנהדרין ו׳ ב"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Sanhedrin 2": "משנה סנהדרין ב׳",
+                "Sanhedrin 18a:5-22b:23": "סנהדרין י״ח א:ה׳-כ״ב ב:כ״ג"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishnah Sanhedrin 2:1": "משנה סנהדרין ב׳:א׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 269,
+            "end": 287,
+            "refs": {
+                "Bekhorot 52b": "בכורות נ״ב ב"
+            }
+        },
+        {
+            "start": 342,
+            "end": 347,
+            "refs": {
+                "Rashi on Bekhorot 52b": "רש\"י על בכורות נ״ב ב"
+            }
+        },
+        {
+            "start": 664,
+            "end": 674,
+            "refs": {
+                "Bava Metzia 62a": "בבא מציעא ס״ב א"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 56,
+            "end": 72,
+            "refs": {
+                "Tosefta Chagigah (Lieberman) 1": "תוספתא חגיגה (ליברמן) א׳",
+                "Tosefta Chagigah 1": "תוספתא חגיגה א׳"
+            }
+        },
+        {
+            "start": 414,
+            "end": 426,
+            "refs": {
+                "Shabbat 127b": "שבת קכ״ז ב"
+            }
+        },
+        {
+            "start": 511,
+            "end": 527,
+            "refs": {
+                "Menachot 43b": "מנחות מ״ג ב"
+            }
+        },
+        {
+            "start": 678,
+            "end": 691,
+            "refs": {
+                "Chullin 125b": "חולין קכ״ה ב"
+            }
+        },
+        {
+            "start": 1137,
+            "end": 1147,
+            "refs": {
+                "Shabbat 75a": "שבת ע״ה א"
+            }
+        },
+        {
+            "start": 1170,
+            "end": 1194,
+            "refs": {
+                "Tosafot on Taanit 7a:16:1": "תוספות על תענית ז׳ א:ט״ז:א׳"
+            }
+        },
+        {
+            "start": 1307,
+            "end": 1327,
+            "refs": {
+                "Jerusalem Talmud Demai 1:4": "תלמוד ירושלמי דמאי א׳:ד׳"
+            }
+        },
+        {
+            "start": 1480,
+            "end": 1502,
+            "refs": {
+                "Jerusalem Talmud Sheviit 8:2": "תלמוד ירושלמי שביעית ח׳:ב׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 193,
+            "end": 205,
+            "refs": {
+                "Ketubot 100b": "כתובות ק׳ ב"
+            }
+        },
+        {
+            "start": 264,
+            "end": 292,
+            "refs": {
+                "Tosafot on Sanhedrin 45a:8:1": "תוספות על סנהדרין מ״ה א:ח׳:א׳"
+            }
+        },
+        {
+            "start": 298,
+            "end": 312,
+            "refs": {
+                "Mishnah Sanhedrin 4:2": "משנה סנהדרין ד׳:ב׳",
+                "Sanhedrin 84b": "סנהדרין פ״ד ב"
+            }
+        },
+        {
+            "start": 313,
+            "end": 332,
+            "refs": {
+                "Rashi on Sanhedrin 84b:13:1": "רש\"י על סנהדרין פ״ד ב:י״ג:א׳"
+            }
+        },
+        {
+            "start": 337,
+            "end": 347,
+            "refs": {
+                "Bava Metzia 29b": "בבא מציעא כ״ט ב"
+            }
+        },
+        {
+            "start": 348,
+            "end": 357,
+            "refs": {
+                "Bava Metzia 30a": "בבא מציעא ל׳ א",
+                "Sanhedrin 30a": "סנהדרין ל׳ א",
+                "Rashi on Sanhedrin 30a": "רש\"י על סנהדרין ל׳ א"
+            }
+        },
+        {
+            "start": 1077,
+            "end": 1102,
+            "refs": {
+                "Tosafot on Niddah 17a:9:1": "תוספות על נדה י״ז א:ט׳:א׳"
+            }
+        },
+        {
+            "start": 1206,
+            "end": 1225,
+            "refs": {
+                "Jerusalem Talmud Bava Metzia 3:7": "תלמוד ירושלמי בבא מציעא ג׳:ז׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tosafot on Niddah 21a:4-31b:17": "תוספות על נדה כ״א א:ד׳-ל״א ב:י״ז",
+                "Jerusalem Talmud Bava Metzia 3": "תלמוד ירושלמי בבא מציעא ג׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 42,
+            "end": 51,
+            "refs": {
+                "Avodah Zarah 20a": "עבודה זרה כ׳ א"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 55,
+            "end": 66,
+            "refs": {
+                "Taanit 7b": "תענית ז׳ ב"
+            }
+        },
+        {
+            "start": 123,
+            "end": 131,
+            "refs": {
+                "Taanit 8a": "תענית ח׳ א"
+            }
+        },
+        {
+            "start": 183,
+            "end": 191,
+            "refs": {
+                "Taanit 8a": "תענית ח׳ א"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 123,
+            "end": 137,
+            "refs": {
+                "Sanhedrin 103b": "סנהדרין ק״ג ב"
+            }
+        },
+        {
+            "start": 179,
+            "end": 185,
+            "refs": {
+                "Rashi on Sanhedrin 103b": "רש\"י על סנהדרין ק״ג ב"
+            }
+        },
+        {
+            "start": 309,
+            "end": 320,
+            "refs": {
+                "Shabbat 153a": "שבת קנ״ג א"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 52,
+            "end": 72,
+            "refs": {
+                "Teshuvot HaRivash 118": "תשובות הריב\"ש קי״ח"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 35,
+            "end": 55,
+            "refs": {
+                "Teshuvot HaRivash 438": "תשובות הריב\"ש תל״ח"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 41,
+            "end": 56,
+            "refs": {
+                "Sanhedrin 111b": "סנהדרין קי״א ב"
+            }
+        },
+        {
+            "start": 210,
+            "end": 215,
+            "refs": {
+                "Rashi on Sanhedrin 111b": "רש\"י על סנהדרין קי״א ב"
+            }
+        },
+        {
+            "start": 221,
+            "end": 232,
+            "refs": {
+                "Tamid 32a": "תמיד ל״ב א"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 191,
+            "end": 211,
+            "refs": {
+                "Mishnah Eduyot 2:9": "משנה עדיות ב׳:ט׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 51,
+            "end": 78,
+            "refs": {
+                "Rashbam on Bava Batra 133b:9:2": "רשב\"ם על בבא בתרא קל״ג ב:ט׳:ב׳"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 77,
+            "end": 88,
+            "refs": {
+                "Shabbat 105b": "שבת ק״ה ב"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 187,
+            "end": 199,
+            "refs": {
+                "Pesachim 108a": "פסחים ק״ח א"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 37,
+            "end": 46,
+            "refs": {
+                "Bava Metzia 70a": "בבא מציעא ע׳ א"
+            }
+        }
+    ],
+    "56": [
+        {
+            "start": 140,
+            "end": 155,
+            "refs": {
+                "Sanhedrin 105b": "סנהדרין ק״ה ב"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 35,
+            "end": 48,
+            "refs": {
+                "Kiddushin 30a": "קידושין ל׳ א"
+            }
+        },
+        {
+            "start": 214,
+            "end": 220,
+            "refs": {
+                "Rashi on Kiddushin 30a": "רש\"י על קידושין ל׳ א"
+            }
+        }
+    ],
+    "63": [
+        {
+            "start": 36,
+            "end": 46,
+            "refs": {
+                "Bava Batra 75a": "בבא בתרא ע״ה א"
+            }
+        }
+    ],
+    "64": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Bava Batra 6": "משנה בבא בתרא ו׳",
+                "Bava Batra 92a:1-102b:8": "בבא בתרא צ״ב א:א׳-ק״ב ב:ח׳"
+            }
+        }
+    ],
+    "65": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishnah Bava Batra 6:6": "משנה בבא בתרא ו׳:ו׳"
+            }
+        }
+    ]
+}

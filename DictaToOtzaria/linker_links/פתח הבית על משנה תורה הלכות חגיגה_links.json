@@ -1,0 +1,497 @@
+{
+    "4": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1": "משנה תורה, הלכות חגיגה א׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1:1": "משנה תורה, הלכות חגיגה א׳:א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 66,
+            "end": 76,
+            "refs": {
+                "Leviticus 21:1-24:23": "ויקרא כ״א:א׳-כ״ד:כ״ג"
+            }
+        },
+        {
+            "start": 152,
+            "end": 161,
+            "refs": {
+                "Deuteronomy 11:26-16:17": "דברים י״א:כ״ו-ט״ז:י״ז"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 807,
+            "end": 819,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2:6": "משנה תורה, הלכות חגיגה ב׳:ו׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 62,
+            "end": 76,
+            "refs": {
+                "Tosafot on Rosh Hashanah 4": "תוספות על ראש השנה ד׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 186,
+            "end": 195,
+            "refs": {
+                "Mishnah Shabbat 24:2": "משנה שבת כ״ד:ב׳",
+                "Shabbat 24b": "שבת כ״ד ב"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 132,
+            "end": 146,
+            "refs": {
+                "Chagigah 4b": "חגיגה ד׳ ב"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 294,
+            "end": 321,
+            "refs": {
+                "Tosafot on Pesachim 70b:12:1": "תוספות על פסחים ע׳ ב:י״ב:א׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 349,
+            "end": 364,
+            "refs": {
+                "Mishnah Keritot 1": "משנה כריתות א׳",
+                "Keritot 2a:1-8b:3": "כריתות ב׳ א:א׳-ח׳ ב:ג׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 70,
+            "end": 108,
+            "refs": {
+                "Mishneh Torah, Sacrificial Procedure 14:13": "משנה תורה, הלכות מעשה הקרבנות י״ד:י״ג"
+            }
+        },
+        {
+            "start": 153,
+            "end": 155,
+            "refs": {
+                "Mishneh Torah, Sacrificial Procedure 14:13": "משנה תורה, הלכות מעשה הקרבנות י״ד:י״ג"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 196,
+            "end": 206,
+            "refs": {
+                "Chagigah 10b": "חגיגה י׳ ב"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 177,
+            "end": 201,
+            "refs": {
+                "Tosafot on Chagigah 8a:9:1": "תוספות על חגיגה ח׳ א:ט׳:א׳"
+            }
+        },
+        {
+            "start": 974,
+            "end": 985,
+            "refs": {
+                "Chagigah 9a": "חגיגה ט׳ א"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 161,
+            "end": 173,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2:5": "משנה תורה, הלכות חגיגה ב׳:ה׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2:6": "משנה תורה, הלכות חגיגה ב׳:ו׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 75,
+            "end": 86,
+            "refs": {
+                "Pesachim 74a:1-86b:13": "פסחים ע״ד א:א׳-פ״ו ב:י״ג",
+                "Jerusalem Talmud Pesachim 7:1:1-13:7": "תלמוד ירושלמי פסחים ז׳:א׳:א׳-י״ג:ז׳"
+            }
+        },
+        {
+            "start": 253,
+            "end": 276,
+            "refs": {
+                "Tosafot on Pesachim 76b:13:1": "תוספות על פסחים ע״ו ב:י״ג:א׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 234,
+            "end": 247,
+            "refs": {
+                "Keritot 14a": "כריתות י״ד א"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 143,
+            "end": 146,
+            "refs": {
+                "Mishneh Torah, Festival Offering 3": "משנה תורה, הלכות חגיגה ג׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 99,
+            "end": 116,
+            "refs": {
+                "Mishneh Torah, Paschal Offering 6": "משנה תורה, הלכות קרבן פסח ו׳"
+            }
+        },
+        {
+            "start": 241,
+            "end": 254,
+            "refs": {
+                "Chagigah 17": "חגיגה י״ז"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 365,
+            "end": 388,
+            "refs": {
+                "Tosafot on Chagigah 9a:13:1": "תוספות על חגיגה ט׳ א:י״ג:א׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 67,
+            "end": 77,
+            "refs": {
+                "Beitzah 20b": "ביצה כ׳ ב"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Beitzah 2": "משנה ביצה ב׳",
+                "Beitzah 15b:1-23b:10": "ביצה ט״ו ב:א׳-כ״ג ב:י׳",
+                "Jerusalem Talmud Beitzah 2": "תלמוד ירושלמי ביצה ב׳",
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Beitzah 2:1": "תלמוד ירושלמי ביצה ב׳:א׳",
+                "Mishneh Torah, Festival Offering 2:1": "משנה תורה, הלכות חגיגה ב׳:א׳"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 46,
+            "end": 54,
+            "refs": {
+                "Jerusalem Talmud Beitzah 2:1": "תלמוד ירושלמי ביצה ב׳:א׳",
+                "Jerusalem Talmud Chagigah": "תלמוד ירושלמי חגיגה"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 249,
+            "end": 263,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1": "משנה תורה, הלכות חגיגה א׳"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 62,
+            "end": 81,
+            "refs": {
+                "Mishneh Torah, Paschal Offering 2": "משנה תורה, הלכות קרבן פסח ב׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 39,
+            "end": 54,
+            "refs": {
+                "Pesachim 8b": "פסחים ח׳ ב"
+            }
+        }
+    ],
+    "45": [
+        {
+            "start": 352,
+            "end": 378,
+            "refs": {
+                "Tosafot on Bava Batra 81a:8:1": "תוספות על בבא בתרא פ״א א:ח׳:א׳"
+            }
+        },
+        {
+            "start": 689,
+            "end": 699,
+            "refs": {
+                "Leviticus 25:1-26:2": "ויקרא כ״ה:א׳-כ״ו:ב׳"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 139,
+            "end": 168,
+            "refs": {
+                "Mishneh Torah, Admission into the Sanctuary 2:12": "משנה תורה, הלכות ביאת מקדש ב׳:י״ב"
+            }
+        },
+        {
+            "start": 231,
+            "end": 239,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, Admission into the Sanctuary 2:12": "כסף משנה על משנה תורה, הלכות ביאת מקדש ב׳:י״ב"
+            }
+        },
+        {
+            "start": 251,
+            "end": 276,
+            "refs": {
+                "Tosafot on Pesachim 62a:10:1": "תוספות על פסחים ס״ב א:י׳:א׳"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 122,
+            "end": 145,
+            "refs": {
+                "Tosafot on Zevachim 22b:3:1": "תוספות על זבחים כ״ב ב:ג׳:א׳"
+            }
+        }
+    ],
+    "57": [
+        {
+            "start": 117,
+            "end": 131,
+            "refs": {
+                "Shulchan Arukh, Orach Chayim 548": "שולחן ערוך, אורח חיים תקמ״ח"
+            }
+        },
+        {
+            "start": 285,
+            "end": 309,
+            "refs": {
+                "Tosafot on Chagigah 9a:13:1": "תוספות על חגיגה ט׳ א:י״ג:א׳"
+            }
+        },
+        {
+            "start": 496,
+            "end": 503,
+            "refs": {
+                "Tosafot on Chagigah 9a": "תוספות על חגיגה ט׳ א"
+            }
+        }
+    ],
+    "58": [
+        {
+            "start": 335,
+            "end": 351,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1:10": "משנה תורה, הלכות חגיגה א׳:י׳"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 1616,
+            "end": 1628,
+            "refs": {
+                "Sukkah 36": "סוכה ל״ו"
+            }
+        }
+    ],
+    "71": [
+        {
+            "start": 345,
+            "end": 360,
+            "refs": {
+                "Tosafot on Pesachim 5a": "תוספות על פסחים ה׳ א"
+            }
+        }
+    ],
+    "73": [
+        {
+            "start": 286,
+            "end": 298,
+            "refs": {
+                "Pesachim 71a": "פסחים ע״א א"
+            }
+        }
+    ],
+    "75": [
+        {
+            "start": 195,
+            "end": 220,
+            "refs": {
+                "Tosafot on Pesachim 70b:12:1": "תוספות על פסחים ע׳ ב:י״ב:א׳"
+            }
+        }
+    ],
+    "76": [
+        {
+            "start": 473,
+            "end": 494,
+            "refs": {
+                "Rashi on Beitzah 20b:11:2": "רש\"י על ביצה כ׳ ב:י״א:ב׳"
+            }
+        }
+    ],
+    "77": [
+        {
+            "start": 56,
+            "end": 67,
+            "refs": {
+                "Beitzah 19b": "ביצה י״ט ב"
+            }
+        }
+    ],
+    "79": [
+        {
+            "start": 119,
+            "end": 132,
+            "refs": {
+                "Pesachim 71": "פסחים ע״א"
+            }
+        }
+    ],
+    "83": [
+        {
+            "start": 196,
+            "end": 210,
+            "refs": {
+                "Shulchan Arukh, Orach Chayim 448": "שולחן ערוך, אורח חיים תמ״ח"
+            }
+        },
+        {
+            "start": 211,
+            "end": 222,
+            "refs": {
+                "Chok Yaakov on Shulchan Arukh, Orach Chayim 448": "חק יעקב על שולחן ערוך אורח חיים תמ״ח"
+            }
+        },
+        {
+            "start": 224,
+            "end": 238,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 305": "שולחן ערוך, יורה דעה ש״ה"
+            }
+        }
+    ],
+    "84": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishneh Torah, Festival Offering 3": "משנה תורה, הלכות חגיגה ג׳"
+            }
+        }
+    ],
+    "85": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishneh Torah, Festival Offering 3:2": "משנה תורה, הלכות חגיגה ג׳:ב׳"
+            }
+        }
+    ],
+    "87": [
+        {
+            "start": 101,
+            "end": 109,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1": "משנה תורה, הלכות חגיגה א׳"
+            }
+        },
+        {
+            "start": 326,
+            "end": 350,
+            "refs": {
+                "Mishneh Torah, Admission into the Sanctuary 3": "משנה תורה, הלכות ביאת מקדש ג׳"
+            }
+        },
+        {
+            "start": 365,
+            "end": 374,
+            "refs": {
+                "Mishneh Torah, Admission into the Sanctuary 3": "משנה תורה, הלכות ביאת מקדש ג׳",
+                "Mishneh Torah, Festival Offering": "משנה תורה, הלכות חגיגה",
+                "Mishneh Torah, Festival Offering 1": "משנה תורה, הלכות חגיגה א׳"
+            }
+        }
+    ],
+    "88": [
+        {
+            "start": 73,
+            "end": 81,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1": "משנה תורה, הלכות חגיגה א׳"
+            }
+        }
+    ]
+}

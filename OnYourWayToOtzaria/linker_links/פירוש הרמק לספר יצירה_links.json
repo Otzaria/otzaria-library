@@ -1,0 +1,824 @@
+{
+    "23": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 293,
+            "end": 307,
+            "refs": {
+                "Tikkunei Zohar 13": "תקוני הזהר י״ג"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 419,
+            "end": 430,
+            "refs": {
+                "Exodus 38:21-40:38": "שמות ל״ח:כ״א-מ׳:ל״ח"
+            }
+        }
+    ],
+    "97": [
+        {
+            "start": 97,
+            "end": 109,
+            "refs": {
+                "Genesis 1:1-6:8": "בראשית א׳:א׳-ו׳:ח׳"
+            }
+        },
+        {
+            "start": 577,
+            "end": 589,
+            "refs": {
+                "Genesis 1:1-6:8": "בראשית א׳:א׳-ו׳:ח׳"
+            }
+        }
+    ],
+    "99": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 2": "ספר יצירה ב׳"
+            }
+        }
+    ],
+    "106": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "109": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "112": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "140": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "142": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 2": "ספר יצירה ב׳",
+                "Sefer Yetzirah 4:2": "ספר יצירה ד׳:ב׳"
+            }
+        }
+    ],
+    "146": [
+        {
+            "start": 26,
+            "end": 28,
+            "refs": {
+                "Sefer Yetzirah 4:12": "ספר יצירה ד׳:י״ב"
+            }
+        }
+    ],
+    "152": [
+        {
+            "start": 21,
+            "end": 23,
+            "refs": {
+                "Genesis 6:9-11:32": "בראשית ו׳:ט׳-י״א:ל״ב"
+            }
+        },
+        {
+            "start": 24,
+            "end": 26,
+            "refs": {
+                "Genesis 6:68": "בראשית ו׳:ס״ח"
+            }
+        },
+        {
+            "start": 27,
+            "end": 29,
+            "refs": {
+                "Genesis 6:78": "בראשית ו׳:ע״ח"
+            }
+        },
+        {
+            "start": 30,
+            "end": 32,
+            "refs": {
+                "Genesis 6:88": "בראשית ו׳:פ״ח"
+            }
+        },
+        {
+            "start": 33,
+            "end": 35,
+            "refs": {
+                "Genesis 6:98": "בראשית ו׳:צ״ח"
+            }
+        },
+        {
+            "start": 36,
+            "end": 38,
+            "refs": {
+                "Genesis 6:108": "בראשית ו׳:ק״ח"
+            }
+        },
+        {
+            "start": 39,
+            "end": 41,
+            "refs": {
+                "Genesis 6:208": "בראשית ו׳:ר״ח"
+            }
+        },
+        {
+            "start": 45,
+            "end": 47,
+            "refs": {
+                "Genesis 6:408": "בראשית ו׳:ת״ח"
+            }
+        }
+    ],
+    "153": [
+        {
+            "start": 0,
+            "end": 8,
+            "refs": {
+                "Genesis 6:13-19": "בראשית ו׳:י״ג-י״ט",
+                "Genesis 13-19": "בראשית י״ג-י״ט"
+            }
+        },
+        {
+            "start": 9,
+            "end": 11,
+            "refs": {
+                "Genesis 29": "בראשית כ״ט"
+            }
+        },
+        {
+            "start": 12,
+            "end": 14,
+            "refs": {
+                "Genesis 39": "בראשית ל״ט"
+            }
+        },
+        {
+            "start": 15,
+            "end": 17,
+            "refs": {
+                "Genesis 49": "בראשית מ״ט"
+            }
+        }
+    ],
+    "198": [
+        {
+            "start": 21,
+            "end": 23,
+            "refs": {
+                "Genesis 6:9-11:32": "בראשית ו׳:ט׳-י״א:ל״ב"
+            }
+        },
+        {
+            "start": 24,
+            "end": 26,
+            "refs": {
+                "Genesis 6:69": "בראשית ו׳:ס״ט"
+            }
+        }
+    ],
+    "204": [
+        {
+            "start": 15,
+            "end": 17,
+            "refs": {
+                "Leviticus 6:1-8:36": "ויקרא ו׳:א׳-ח׳:ל״ו"
+            }
+        },
+        {
+            "start": 18,
+            "end": 20,
+            "refs": {
+                "Leviticus 6:107": "ויקרא ו׳:ק״ז"
+            }
+        },
+        {
+            "start": 21,
+            "end": 23,
+            "refs": {
+                "Leviticus 6:208": "ויקרא ו׳:ר״ח"
+            }
+        },
+        {
+            "start": 24,
+            "end": 26,
+            "refs": {
+                "Leviticus 6:309": "ויקרא ו׳:ש״ט"
+            }
+        }
+    ],
+    "205": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Leviticus 6:51": "ויקרא ו׳:נ״א"
+            }
+        },
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Leviticus 6:62": "ויקרא ו׳:ס״ב"
+            }
+        },
+        {
+            "start": 6,
+            "end": 8,
+            "refs": {
+                "Leviticus 6:73": "ויקרא ו׳:ע״ג"
+            }
+        },
+        {
+            "start": 9,
+            "end": 11,
+            "refs": {
+                "Leviticus 6:84": "ויקרא ו׳:פ״ד"
+            }
+        },
+        {
+            "start": 12,
+            "end": 14,
+            "refs": {
+                "Leviticus 6:95": "ויקרא ו׳:צ״ה"
+            }
+        },
+        {
+            "start": 15,
+            "end": 17,
+            "refs": {
+                "Leviticus 6:106": "ויקרא ו׳:ק״ו"
+            }
+        },
+        {
+            "start": 18,
+            "end": 20,
+            "refs": {
+                "Leviticus 6:207": "ויקרא ו׳:ר״ז"
+            }
+        }
+    ],
+    "206": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Leviticus 6:61": "ויקרא ו׳:ס״א"
+            }
+        },
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Leviticus 6:72": "ויקרא ו׳:ע״ב"
+            }
+        },
+        {
+            "start": 6,
+            "end": 8,
+            "refs": {
+                "Leviticus 6:83": "ויקרא ו׳:פ״ג"
+            }
+        },
+        {
+            "start": 9,
+            "end": 11,
+            "refs": {
+                "Leviticus 6:94": "ויקרא ו׳:צ״ד"
+            }
+        },
+        {
+            "start": 12,
+            "end": 14,
+            "refs": {
+                "Leviticus 6:105": "ויקרא ו׳:ק״ה"
+            }
+        },
+        {
+            "start": 15,
+            "end": 17,
+            "refs": {
+                "Leviticus 6:206": "ויקרא ו׳:ר״ו"
+            }
+        },
+        {
+            "start": 18,
+            "end": 20,
+            "refs": {
+                "Leviticus 6:307": "ויקרא ו׳:ש״ז"
+            }
+        },
+        {
+            "start": 21,
+            "end": 23,
+            "refs": {
+                "Leviticus 6:408": "ויקרא ו׳:ת״ח"
+            }
+        }
+    ],
+    "207": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Leviticus 6:71": "ויקרא ו׳:ע״א"
+            }
+        },
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Leviticus 6:82": "ויקרא ו׳:פ״ב"
+            }
+        },
+        {
+            "start": 6,
+            "end": 8,
+            "refs": {
+                "Leviticus 6:93": "ויקרא ו׳:צ״ג"
+            }
+        },
+        {
+            "start": 9,
+            "end": 11,
+            "refs": {
+                "Leviticus 6:104": "ויקרא ו׳:ק״ד"
+            }
+        },
+        {
+            "start": 12,
+            "end": 14,
+            "refs": {
+                "Leviticus 6:205": "ויקרא ו׳:ר״ה"
+            }
+        },
+        {
+            "start": 15,
+            "end": 17,
+            "refs": {
+                "Leviticus 6:306": "ויקרא ו׳:ש״ו"
+            }
+        }
+    ],
+    "220": [
+        {
+            "start": 840,
+            "end": 842,
+            "refs": {
+                "Genesis 6:9-11:32": "בראשית ו׳:ט׳-י״א:ל״ב"
+            }
+        },
+        {
+            "start": 882,
+            "end": 884,
+            "refs": {
+                "Genesis 6:61": "בראשית ו׳:ס״א"
+            }
+        },
+        {
+            "start": 885,
+            "end": 887,
+            "refs": {
+                "Genesis 6:62": "בראשית ו׳:ס״ב"
+            }
+        },
+        {
+            "start": 888,
+            "end": 890,
+            "refs": {
+                "Genesis 6:63": "בראשית ו׳:ס״ג"
+            }
+        },
+        {
+            "start": 891,
+            "end": 893,
+            "refs": {
+                "Genesis 6:64": "בראשית ו׳:ס״ד"
+            }
+        },
+        {
+            "start": 894,
+            "end": 896,
+            "refs": {
+                "Genesis 6:65": "בראשית ו׳:ס״ה"
+            }
+        },
+        {
+            "start": 897,
+            "end": 899,
+            "refs": {
+                "Genesis 6:66": "בראשית ו׳:ס״ו"
+            }
+        },
+        {
+            "start": 900,
+            "end": 902,
+            "refs": {
+                "Genesis 6:67": "בראשית ו׳:ס״ז"
+            }
+        },
+        {
+            "start": 903,
+            "end": 905,
+            "refs": {
+                "Genesis 6:68": "בראשית ו׳:ס״ח"
+            }
+        },
+        {
+            "start": 1086,
+            "end": 1088,
+            "refs": {
+                "Leviticus 6:1-8:36": "ויקרא ו׳:א׳-ח׳:ל״ו"
+            }
+        },
+        {
+            "start": 1164,
+            "end": 1166,
+            "refs": {
+                "Leviticus 6:120": "ויקרא ו׳:ק״כ"
+            }
+        },
+        {
+            "start": 1173,
+            "end": 1175,
+            "refs": {
+                "Leviticus 6:150": "ויקרא ו׳:ק״נ"
+            }
+        },
+        {
+            "start": 1176,
+            "end": 1178,
+            "refs": {
+                "Leviticus 6:160": "ויקרא ו׳:ק״ס"
+            }
+        },
+        {
+            "start": 1179,
+            "end": 1181,
+            "refs": {
+                "Leviticus 6:170": "ויקרא ו׳:ק״ע"
+            }
+        }
+    ],
+    "234": [
+        {
+            "start": 974,
+            "end": 977,
+            "refs": {
+                "Sefer Yetzirah 6": "ספר יצירה ו׳"
+            }
+        },
+        {
+            "start": 978,
+            "end": 981,
+            "refs": {
+                "Sefer Yetzirah 6:75": "ספר יצירה ו׳:ע״ה"
+            }
+        },
+        {
+            "start": 982,
+            "end": 985,
+            "refs": {
+                "Sefer Yetzirah 6:64": "ספר יצירה ו׳:ס״ד"
+            }
+        },
+        {
+            "start": 986,
+            "end": 989,
+            "refs": {
+                "Sefer Yetzirah 6:53": "ספר יצירה ו׳:נ״ג"
+            }
+        }
+    ],
+    "345": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 2": "ספר יצירה ב׳"
+            }
+        }
+    ],
+    "347": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "353": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "358": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "364": [
+        {
+            "start": 233,
+            "end": 240,
+            "refs": {
+                "Sefer Yetzirah 1": "ספר יצירה א׳"
+            }
+        }
+    ],
+    "393": [
+        {
+            "start": 0,
+            "end": 1,
+            "refs": {
+                "Ecclesiastes 5": "קהלת ה׳",
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "395": [
+        {
+            "start": 0,
+            "end": 1,
+            "refs": {
+                "Ecclesiastes 5:9": "קהלת ה׳:ט׳",
+                "Ecclesiastes 9": "קהלת ט׳"
+            }
+        }
+    ],
+    "396": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Ecclesiastes 5:11": "קהלת ה׳:י״א",
+                "Ecclesiastes 9:11": "קהלת ט׳:י״א",
+                "Ecclesiastes 11": "קהלת י״א"
+            }
+        }
+    ],
+    "397": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Ecclesiastes 5:13": "קהלת ה׳:י״ג",
+                "Ecclesiastes 9:13": "קהלת ט׳:י״ג"
+            }
+        }
+    ],
+    "398": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Ecclesiastes 5:15": "קהלת ה׳:ט״ו",
+                "Ecclesiastes 9:15": "קהלת ט׳:ט״ו"
+            }
+        }
+    ],
+    "399": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Ecclesiastes 5:17": "קהלת ה׳:י״ז",
+                "Ecclesiastes 9:17": "קהלת ט׳:י״ז"
+            }
+        }
+    ],
+    "400": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Ecclesiastes 5:19": "קהלת ה׳:י״ט"
+            }
+        }
+    ],
+    "411": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Sefer Yetzirah 2:3": "ספר יצירה ב׳:ג׳"
+            }
+        },
+        {
+            "start": 6,
+            "end": 11,
+            "refs": {
+                "Sefer Yetzirah 4:20": "ספר יצירה ד׳:כ׳"
+            }
+        }
+    ],
+    "428": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "434": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "440": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "448": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Sefer Yetzirah 2:3": "ספר יצירה ב׳:ג׳"
+            }
+        },
+        {
+            "start": 6,
+            "end": 8,
+            "refs": {
+                "Sefer Yetzirah 2:4": "ספר יצירה ב׳:ד׳",
+                "Sefer Yetzirah 4": "ספר יצירה ד׳"
+            }
+        }
+    ],
+    "453": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "454": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 6": "ספר יצירה ו׳"
+            }
+        }
+    ],
+    "467": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 2": "ספר יצירה ב׳"
+            }
+        }
+    ],
+    "472": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "481": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ],
+    "483": [
+        {
+            "start": 0,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        },
+        {
+            "start": 227,
+            "end": 229,
+            "refs": {
+                "Sefer Yetzirah 5:8": "ספר יצירה ה׳:ח׳"
+            }
+        },
+        {
+            "start": 537,
+            "end": 539,
+            "refs": {
+                "Sefer Yetzirah 5:50": "ספר יצירה ה׳:נ׳"
+            }
+        }
+    ],
+    "500": [
+        {
+            "start": 908,
+            "end": 941,
+            "refs": {
+                "Mishneh Torah, Foundations of the Torah 3": "משנה תורה, הלכות יסודי התורה ג׳"
+            }
+        }
+    ],
+    "503": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 2": "ספר יצירה ב׳"
+            }
+        }
+    ],
+    "507": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 3": "ספר יצירה ג׳"
+            }
+        }
+    ],
+    "512": [
+        {
+            "start": 1,
+            "end": 2,
+            "refs": {
+                "Sefer Yetzirah 5": "ספר יצירה ה׳"
+            }
+        }
+    ]
+}

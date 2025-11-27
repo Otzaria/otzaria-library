@@ -1,0 +1,957 @@
+{
+    "4": [
+        {
+            "start": 29,
+            "end": 42,
+            "refs": {
+                "Menachot 92b": "מנחות צ״ב ב"
+            }
+        },
+        {
+            "start": 57,
+            "end": 68,
+            "refs": {
+                "Rosh Hashanah 1": "ראש השנה א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 36,
+            "end": 48,
+            "refs": {
+                "Chullin 62a": "חולין ס״ב א"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Chullin 6": "חולין ו׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 125,
+            "end": 135,
+            "refs": {
+                "Gittin 14": "גיטין י״ד"
+            }
+        },
+        {
+            "start": 156,
+            "end": 167,
+            "refs": {
+                "Shabbat 62a": "שבת ס״ב א"
+            }
+        },
+        {
+            "start": 218,
+            "end": 245,
+            "refs": {
+                "Tosafot on Bava Batra 156b:1:1": "תוספות על בבא בתרא קנ״ו ב:א׳:א׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Yoma 7": "יומא ז׳",
+                "Tosafot on Yoma 7": "תוספות על יומא ז׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 50,
+            "end": 75,
+            "refs": {
+                "Rashi on Menachot 91b:2:1": "רש\"י על מנחות צ״א ב:ב׳:א׳",
+                "Rashi on Menachot 91b:13:2": "רש\"י על מנחות צ״א ב:י״ג:ב׳",
+                "Rashi on Menachot 91b:20:1": "רש\"י על מנחות צ״א ב:כ׳:א׳",
+                "Rashi on Menachot 91b:21:1": "רש\"י על מנחות צ״א ב:כ״א:א׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 61,
+            "end": 75,
+            "refs": {
+                "Keritot 26b": "כריתות כ״ו ב"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Keritot 10a": "כריתות י׳ א"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 76,
+            "end": 87,
+            "refs": {
+                "Yevamot 8a": "יבמות ח׳ א"
+            }
+        },
+        {
+            "start": 163,
+            "end": 168,
+            "refs": {
+                "Rashi on Yevamot 8a": "רש\"י על יבמות ח׳ א",
+                "Rashi on Keritot 10a": "רש\"י על כריתות י׳ א",
+                "Rashi on Keritot 26b": "רש\"י על כריתות כ״ו ב"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Rashi on Yevamot 10": "רש\"י על יבמות י׳",
+                "Rashi on Keritot 10": "רש\"י על כריתות י׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 42,
+            "end": 66,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 2 697": "תשובות הרדב\"ז חלק ב תרצ״ז"
+            }
+        },
+        {
+            "start": 463,
+            "end": 477,
+            "refs": {
+                "Ketubot 106a": "כתובות ק״ו א"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 85,
+            "end": 110,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 3 969": "תשובות הרדב\"ז חלק ג תתקס״ט"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 256,
+            "end": 268,
+            "refs": {
+                "Ketubot 2b": "כתובות ב׳ ב"
+            }
+        },
+        {
+            "start": 273,
+            "end": 283,
+            "refs": {
+                "Bava Metzia 94b": "בבא מציעא צ״ד ב"
+            }
+        },
+        {
+            "start": 339,
+            "end": 363,
+            "refs": {
+                "Rashbam on Bava Batra 82a:7:3": "רשב\"ם על בבא בתרא פ״ב א:ז׳:ג׳"
+            }
+        },
+        {
+            "start": 446,
+            "end": 475,
+            "refs": {
+                "Rashbam on Bava Batra 128b:6:2": "רשב\"ם על בבא בתרא קכ״ח ב:ו׳:ב׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 509,
+            "end": 521,
+            "refs": {
+                "Menachot 101b": "מנחות ק״א ב"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 49,
+            "end": 59,
+            "refs": {
+                "Shabbat 52a": "שבת נ״ב א"
+            }
+        },
+        {
+            "start": 71,
+            "end": 84,
+            "refs": {
+                "Bekhorot 25a": "בכורות כ״ה א"
+            }
+        },
+        {
+            "start": 90,
+            "end": 100,
+            "refs": {
+                "Avodah Zarah 23b": "עבודה זרה כ״ג ב"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Shabbat 12": "שבת י״ב",
+                "Avodah Zarah 12": "עבודה זרה י״ב",
+                "Bekhorot 12": "בכורות י״ב"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 963,
+            "end": 975,
+            "refs": {
+                "Nedarim 31a": "נדרים ל״א א"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 165,
+            "end": 177,
+            "refs": {
+                "Mishnah Yoma 7:1": "משנה יומא ז׳:א׳",
+                "Yoma 87a": "יומא פ״ז א"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Yoma 14": "יומא י״ד"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 75,
+            "end": 86,
+            "refs": {
+                "Beitzah 19a": "ביצה י״ט א"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Beitzah 16": "ביצה ט״ז"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 93,
+            "end": 106,
+            "refs": {
+                "Chullin 32a": "חולין ל״ב א"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 51,
+            "end": 75,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 2 691": "תשובות הרדב\"ז חלק ב תרצ״א"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 295,
+            "end": 307,
+            "refs": {
+                "Shabbat 118b": "שבת קי״ח ב"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 51,
+            "end": 63,
+            "refs": {
+                "Menachot 34a": "מנחות ל״ד א"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 93,
+            "end": 104,
+            "refs": {
+                "Zevachim 100b": "זבחים ק׳ ב"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 39,
+            "end": 54,
+            "refs": {
+                "Sanhedrin 99b": "סנהדרין צ״ט ב"
+            }
+        },
+        {
+            "start": 85,
+            "end": 99,
+            "refs": {
+                "Sanhedrin 7a": "סנהדרין ז׳ א"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 51,
+            "end": 62,
+            "refs": {
+                "Avodah Zarah 18b": "עבודה זרה י״ח ב"
+            }
+        },
+        {
+            "start": 88,
+            "end": 95,
+            "refs": {
+                "Bava Metzia 30": "בבא מציעא ל׳"
+            }
+        },
+        {
+            "start": 147,
+            "end": 159,
+            "refs": {
+                "Taanit 1": "תענית א׳"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 67,
+            "end": 76,
+            "refs": {
+                "Niddah 70b": "נדה ע׳ ב"
+            }
+        }
+    ],
+    "52": [
+        {
+            "start": 150,
+            "end": 164,
+            "refs": {
+                "Mishnah Negaim 5:4": "משנה נגעים ה׳:ד׳"
+            }
+        }
+    ],
+    "56": [
+        {
+            "start": 42,
+            "end": 62,
+            "refs": {
+                "Teshuvot HaRivash 387": "תשובות הריב\"ש שפ״ז"
+            }
+        }
+    ],
+    "59": [
+        {
+            "start": 125,
+            "end": 138,
+            "refs": {
+                "Mishnah Nedarim 4:1": "משנה נדרים ד׳:א׳",
+                "Nedarim 84a": "נדרים פ״ד א"
+            }
+        }
+    ],
+    "63": [
+        {
+            "start": 306,
+            "end": 317,
+            "refs": {
+                "Mishnah Nazir 1": "משנה נזיר א׳",
+                "Nazir 2a:1-8b:12": "נזיר ב׳ א:א׳-ח׳ ב:י״ב"
+            }
+        },
+        {
+            "start": 1063,
+            "end": 1076,
+            "refs": {
+                "Nedarim 66a": "נדרים ס״ו א"
+            }
+        },
+        {
+            "start": 1491,
+            "end": 1511,
+            "refs": {
+                "Teshuvot HaRivash 159": "תשובות הריב\"ש קנ״ט"
+            }
+        },
+        {
+            "start": 2312,
+            "end": 2325,
+            "refs": {
+                "Nedarim 33b": "נדרים ל״ג ב"
+            }
+        },
+        {
+            "start": 2765,
+            "end": 2799,
+            "refs": {
+                "Nimukei Yosef on Nedarim 6": "נימוקי יוסף על נדרים ו׳"
+            }
+        }
+    ],
+    "69": [
+        {
+            "start": 40,
+            "end": 52,
+            "refs": {
+                "Chagigah 12a": "חגיגה י״ב א"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 60,
+            "end": 80,
+            "refs": {
+                "Jerusalem Talmud Berakhot 6": "תלמוד ירושלמי ברכות ו׳"
+            }
+        }
+    ],
+    "71": [
+        {
+            "start": 81,
+            "end": 92,
+            "refs": {
+                "Chagigah 20a": "חגיגה כ׳ א"
+            }
+        }
+    ],
+    "72": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Chagigah 26": "חגיגה כ״ו"
+            }
+        }
+    ],
+    "73": [
+        {
+            "start": 29,
+            "end": 53,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 2 694": "תשובות הרדב\"ז חלק ב תרצ״ד"
+            }
+        }
+    ],
+    "76": [
+        {
+            "start": 228,
+            "end": 240,
+            "refs": {
+                "Berakhot 22a": "ברכות כ״ב א"
+            }
+        },
+        {
+            "start": 307,
+            "end": 324,
+            "refs": {
+                "Tosafot on Megillah 3a": "תוספות על מגילה ג׳ א"
+            }
+        },
+        {
+            "start": 493,
+            "end": 506,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 47": "שולחן ערוך, יורה דעה מ״ז"
+            }
+        },
+        {
+            "start": 609,
+            "end": 633,
+            "refs": {
+                "Teshuvot haRashba part IV 91": "שו\"ת הרשב\"א חלק ד צ״א"
+            }
+        }
+    ],
+    "77": [
+        {
+            "start": 101,
+            "end": 112,
+            "refs": {
+                "Nazir 62b": "נזיר ס״ב ב"
+            }
+        }
+    ],
+    "78": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Nazir 27": "נזיר כ״ז"
+            }
+        }
+    ],
+    "79": [
+        {
+            "start": 146,
+            "end": 167,
+            "refs": {
+                "Jerusalem Talmud Yoma 2:1": "תלמוד ירושלמי יומא ב׳:א׳"
+            }
+        }
+    ],
+    "84": [
+        {
+            "start": 1160,
+            "end": 1177,
+            "refs": {
+                "Teshuvot HaRan 38": "שו\"ת הר\"ן ל״ח"
+            }
+        },
+        {
+            "start": 1178,
+            "end": 1186,
+            "refs": {
+                "Teshuvot HaRan 73": "שו\"ת הר\"ן ע״ג"
+            }
+        }
+    ],
+    "85": [
+        {
+            "start": 328,
+            "end": 352,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 1 178": "תשובות הרדב\"ז חלק א קע״ח"
+            }
+        }
+    ],
+    "89": [
+        {
+            "start": 117,
+            "end": 120,
+            "refs": {
+                "Leviticus 25:1-26:2": "ויקרא כ״ה:א׳-כ״ו:ב׳"
+            }
+        },
+        {
+            "start": 339,
+            "end": 368,
+            "refs": {
+                "Ran on Nedarim 2a:2:2": "ר\"ן על נדרים ב׳ א:ב׳:ב׳"
+            }
+        }
+    ],
+    "92": [
+        {
+            "start": 34,
+            "end": 49,
+            "refs": {
+                "Sanhedrin 57b": "סנהדרין נ״ז ב"
+            }
+        },
+        {
+            "start": 70,
+            "end": 76,
+            "refs": {
+                "Rashi on Sanhedrin 57b": "רש\"י על סנהדרין נ״ז ב"
+            }
+        }
+    ],
+    "93": [
+        {
+            "start": 39,
+            "end": 50,
+            "refs": {
+                "Yoma 74b": "יומא ע״ד ב"
+            }
+        },
+        {
+            "start": 52,
+            "end": 66,
+            "refs": {
+                "Kiddushin 77a": "קידושין ע״ז א"
+            }
+        },
+        {
+            "start": 68,
+            "end": 80,
+            "refs": {
+                "Chullin 78b": "חולין ע״ח ב"
+            }
+        },
+        {
+            "start": 95,
+            "end": 105,
+            "refs": {
+                "Mishnah Bava Kamma 3:2": "משנה בבא קמא ג׳:ב׳",
+                "Bava Kamma 83b": "בבא קמא פ״ג ב"
+            }
+        }
+    ],
+    "101": [
+        {
+            "start": 70,
+            "end": 92,
+            "refs": {
+                "Jerusalem Talmud Horayot 3:4": "תלמוד ירושלמי הוריות ג׳:ד׳"
+            }
+        }
+    ],
+    "103": [
+        {
+            "start": 394,
+            "end": 417,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 1 5": "תשובות הרדב\"ז חלק א ה׳"
+            }
+        }
+    ],
+    "107": [
+        {
+            "start": 63,
+            "end": 84,
+            "refs": {
+                "Tosafot on Bava Kamma 41b:12:1": "תוספות על בבא קמא מ״א ב:י״ב:א׳"
+            }
+        },
+        {
+            "start": 257,
+            "end": 268,
+            "refs": {
+                "Bava Kamma 113b": "בבא קמא קי״ג ב"
+            }
+        },
+        {
+            "start": 959,
+            "end": 982,
+            "refs": {
+                "Teshuvot haRashba part IV 208": "שו\"ת הרשב\"א חלק ד ר״ח"
+            }
+        },
+        {
+            "start": 2788,
+            "end": 2816,
+            "refs": {
+                "Rashba on Kiddushin 66a:2": "רשב״א על קידושין ס״ו א:ב׳"
+            }
+        }
+    ],
+    "110": [
+        {
+            "start": 53,
+            "end": 72,
+            "refs": {
+                "Sefer Chasidim 418": "ספר חסידים תי״ח"
+            }
+        },
+        {
+            "start": 88,
+            "end": 99,
+            "refs": {
+                "Temurah 3b": "תמורה ג׳ ב"
+            }
+        }
+    ],
+    "112": [
+        {
+            "start": 322,
+            "end": 340,
+            "refs": {
+                "Ketubot 18b": "כתובות י״ח ב"
+            }
+        },
+        {
+            "start": 341,
+            "end": 360,
+            "refs": {
+                "Sanhedrin 9a": "סנהדרין ט׳ א"
+            }
+        }
+    ],
+    "113": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Ketubot 35": "כתובות ל״ה",
+                "Sanhedrin 35": "סנהדרין ל״ה"
+            }
+        }
+    ],
+    "114": [
+        {
+            "start": 454,
+            "end": 469,
+            "refs": {
+                "Sanhedrin 79a": "סנהדרין ע״ט א"
+            }
+        },
+        {
+            "start": 503,
+            "end": 509,
+            "refs": {
+                "Rashi on Sanhedrin 79a": "רש\"י על סנהדרין ע״ט א"
+            }
+        }
+    ],
+    "115": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Sanhedrin 36": "סנהדרין ל״ו",
+                "Rashi on Sanhedrin 36": "רש\"י על סנהדרין ל״ו"
+            }
+        }
+    ],
+    "116": [
+        {
+            "start": 34,
+            "end": 57,
+            "refs": {
+                "Teshuvot HaRadbaz Volume 1 17": "תשובות הרדב\"ז חלק א י״ז"
+            }
+        },
+        {
+            "start": 96,
+            "end": 110,
+            "refs": {
+                "Sanhedrin 94b": "סנהדרין צ״ד ב"
+            }
+        },
+        {
+            "start": 208,
+            "end": 213,
+            "refs": {
+                "Rashi on Sanhedrin 36a": "רש\"י על סנהדרין ל״ו א",
+                "Rashi on Sanhedrin 94b": "רש\"י על סנהדרין צ״ד ב"
+            }
+        },
+        {
+            "start": 264,
+            "end": 273,
+            "refs": {
+                "Shabbat 10b": "שבת י׳ ב"
+            }
+        }
+    ],
+    "117": [
+        {
+            "start": 46,
+            "end": 63,
+            "refs": {
+                "Tosefta Shabbat (Lieberman) 8": "תוספתא שבת (ליברמן) ח׳",
+                "Tosefta Shabbat 8": "תוספתא שבת ח׳"
+            }
+        }
+    ],
+    "118": [
+        {
+            "start": 204,
+            "end": 232,
+            "refs": {
+                "Rashi on Sanhedrin 49a:1:1": "רש\"י על סנהדרין מ״ט א:א׳:א׳"
+            }
+        }
+    ],
+    "126": [
+        {
+            "start": 57,
+            "end": 82,
+            "refs": {
+                "Rashi on Sanhedrin 50b:21:1": "רש\"י על סנהדרין נ׳ ב:כ״א:א׳"
+            }
+        },
+        {
+            "start": 215,
+            "end": 224,
+            "refs": {
+                "Rashi on Sanhedrin 52a": "רש\"י על סנהדרין נ״ב א"
+            }
+        },
+        {
+            "start": 720,
+            "end": 731,
+            "refs": {
+                "Sukkah 56b": "סוכה נ״ו ב"
+            }
+        },
+        {
+            "start": 852,
+            "end": 875,
+            "refs": {
+                "Rashi on Bava Metzia 59b:15:2": "רש\"י על בבא מציעא נ״ט ב:ט״ו:ב׳"
+            }
+        },
+        {
+            "start": 961,
+            "end": 976,
+            "refs": {
+                "Sanhedrin 111a": "סנהדרין קי״א א"
+            }
+        }
+    ],
+    "127": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Sukkah 40": "סוכה מ׳",
+                "Sanhedrin 40": "סנהדרין מ׳",
+                "Rashi on Bava Metzia 40": "רש\"י על בבא מציעא מ׳"
+            }
+        }
+    ],
+    "130": [
+        {
+            "start": 424,
+            "end": 440,
+            "refs": {
+                "Berakhot 6a": "ברכות ו׳ א"
+            }
+        }
+    ],
+    "132": [
+        {
+            "start": 154,
+            "end": 165,
+            "refs": {
+                "Shabbat 67a": "שבת ס״ז א"
+            }
+        }
+    ],
+    "136": [
+        {
+            "start": 119,
+            "end": 131,
+            "refs": {
+                "Pesachim 12b": "פסחים י״ב ב"
+            }
+        },
+        {
+            "start": 304,
+            "end": 323,
+            "refs": {
+                "Teshuvot HaRivash 47": "תשובות הריב\"ש מ״ז"
+            }
+        },
+        {
+            "start": 328,
+            "end": 352,
+            "refs": {
+                "Teshuvot haRashba part IV 211": "שו\"ת הרשב\"א חלק ד רי״א"
+            }
+        },
+        {
+            "start": 476,
+            "end": 489,
+            "refs": {
+                "Ketubot 20b": "כתובות כ׳ ב"
+            }
+        }
+    ],
+    "156": [
+        {
+            "start": 42,
+            "end": 55,
+            "refs": {
+                "Yevamot 69b": "יבמות ס״ט ב"
+            }
+        }
+    ],
+    "157": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Yevamot 48": "יבמות מ״ח"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 134,
+            "end": 157,
+            "refs": {
+                "Teshuvot haRashba part IV 160": "שו\"ת הרשב\"א חלק ד ק״ס"
+            }
+        },
+        {
+            "start": 470,
+            "end": 490,
+            "refs": {
+                "Teshuvot HaRivash 169": "תשובות הריב\"ש קס״ט"
+            }
+        },
+        {
+            "start": 496,
+            "end": 506,
+            "refs": {
+                "Teshuvot HaRivash 108": "תשובות הריב\"ש ק״ח"
+            }
+        },
+        {
+            "start": 512,
+            "end": 534,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 356:106": "שפתי כהן על שולחן ערוך חושן משפט שנ״ו:ק״ו"
+            }
+        }
+    ],
+    "160": [
+        {
+            "start": 138,
+            "end": 157,
+            "refs": {
+                "Teshuvot HaRivash 42": "תשובות הריב\"ש מ״ב"
+            }
+        }
+    ],
+    "162": [
+        {
+            "start": 52,
+            "end": 66,
+            "refs": {
+                "Mishnah Sheviit 10:8": "משנה שביעית י׳:ח׳"
+            }
+        }
+    ],
+    "165": [
+        {
+            "start": 51,
+            "end": 63,
+            "refs": {
+                "Menachot 63a": "מנחות ס״ג א"
+            }
+        }
+    ]
+}

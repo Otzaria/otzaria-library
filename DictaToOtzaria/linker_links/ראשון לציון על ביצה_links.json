@@ -1,0 +1,1206 @@
+{
+    "4": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Beitzah 1": "משנה ביצה א׳",
+                "Beitzah 2a:1-15a:15": "ביצה ב׳ א:א׳-ט״ו א:ט״ו",
+                "Jerusalem Talmud Beitzah 1": "תלמוד ירושלמי ביצה א׳",
+                "Jerusalem Talmud Beitzah 1:1:2-12:4": "תלמוד ירושלמי ביצה א׳:א׳:ב׳-י״ב:ד׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Beitzah 2a": "ביצה ב׳ א",
+                "Jerusalem Talmud Beitzah 1:1:5-7": "תלמוד ירושלמי ביצה א׳:א׳:ה׳-ז׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 2466,
+            "end": 2475,
+            "refs": {
+                "Shabbat 143b:1-148a:4": "שבת קמ״ג ב:א׳-קמ״ח א:ד׳",
+                "Jerusalem Talmud Shabbat 22:1:1-6:1": "תלמוד ירושלמי שבת כ״ב:א׳:א׳-ו׳:א׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 2043,
+            "end": 2049,
+            "refs": {
+                "Pesachim 77": "פסחים ע״ז"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 1365,
+            "end": 1391,
+            "refs": {
+                "Mishneh Torah, Rest on a Holiday 1": "משנה תורה, הלכות שביתת יום טוב א׳"
+            }
+        },
+        {
+            "start": 1676,
+            "end": 1696,
+            "refs": {
+                "Mishneh Torah, Things Forbidden on the Altar 5": "משנה תורה, הלכות איסורי המזבח ה׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 3115,
+            "end": 3134,
+            "refs": {
+                "Tosafot on Pesachim 46": "תוספות על פסחים מ״ו"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 2380,
+            "end": 2387,
+            "refs": {
+                "Shabbat 90b:7-96a:3": "שבת צ׳ ב:ז׳-צ״ו א:ג׳",
+                "Jerusalem Talmud Shabbat 10:1:1-6:3": "תלמוד ירושלמי שבת י׳:א׳:א׳-ו׳:ג׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 1542,
+            "end": 1559,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 2": "משנה תורה, הלכות תרומות ב׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 2": "משנה תורה, הלכות תרומות ב׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 592,
+            "end": 603,
+            "refs": {
+                "Avodah Zarah 36": "עבודה זרה ל״ו"
+            }
+        },
+        {
+            "start": 639,
+            "end": 644,
+            "refs": {
+                "Avodah Zarah 36a": "עבודה זרה ל״ו א"
+            }
+        },
+        {
+            "start": 4761,
+            "end": 4778,
+            "refs": {
+                "Mishneh Torah, Kings and Wars 11": "משנה תורה, הלכות מלכים ומלחמות י״א"
+            }
+        },
+        {
+            "start": 5063,
+            "end": 5075,
+            "refs": {
+                "Gittin 36": "גיטין ל״ו"
+            }
+        },
+        {
+            "start": 5434,
+            "end": 5438,
+            "refs": {
+                "Rashi on Gittin 36a": "רש\"י על גיטין ל״ו א"
+            }
+        },
+        {
+            "start": 5690,
+            "end": 5700,
+            "refs": {
+                "Moed Katan 3": "מועד קטן ג׳"
+            }
+        },
+        {
+            "start": 7155,
+            "end": 7171,
+            "refs": {
+                "Rosh Hashanah 31": "ראש השנה ל״א"
+            }
+        },
+        {
+            "start": 7461,
+            "end": 7471,
+            "refs": {
+                "Moed Katan 8": "מועד קטן ח׳"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 358,
+            "end": 376,
+            "refs": {
+                "Chullin 65": "חולין ס״ה"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 340,
+            "end": 352,
+            "refs": {
+                "Mishnah Eduyot 4": "משנה עדיות ד׳"
+            }
+        },
+        {
+            "start": 646,
+            "end": 652,
+            "refs": {
+                "Mishnah Eduyot 4": "משנה עדיות ד׳"
+            }
+        },
+        {
+            "start": 3812,
+            "end": 3826,
+            "refs": {
+                "Mishnah Kilayim 1": "משנה כלאים א׳"
+            }
+        },
+        {
+            "start": 4288,
+            "end": 4307,
+            "refs": {
+                "Mishneh Torah, Sabbath 25": "משנה תורה, הלכות שבת כ״ה"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 48,
+            "end": 63,
+            "refs": {
+                "Shabbat 47b:8-51b:6": "שבת מ״ז ב:ח׳-נ״א ב:ו׳",
+                "Jerusalem Talmud Shabbat 4:1:1-3:5": "תלמוד ירושלמי שבת ד׳:א׳:א׳-ג׳:ה׳"
+            }
+        },
+        {
+            "start": 115,
+            "end": 126,
+            "refs": {
+                "Mishnah Kilayim 1": "משנה כלאים א׳"
+            }
+        },
+        {
+            "start": 158,
+            "end": 173,
+            "refs": {
+                "Shabbat 50": "שבת נ׳"
+            }
+        },
+        {
+            "start": 473,
+            "end": 479,
+            "refs": {
+                "Mishnah Kilayim 1": "משנה כלאים א׳",
+                "Mishnah Shabbat": "משנה שבת"
+            }
+        },
+        {
+            "start": 513,
+            "end": 519,
+            "refs": {
+                "Mishnah Kilayim 1": "משנה כלאים א׳",
+                "Mishnah Shabbat": "משנה שבת"
+            }
+        },
+        {
+            "start": 2644,
+            "end": 2659,
+            "refs": {
+                "Shabbat 47b:8-51b:6": "שבת מ״ז ב:ח׳-נ״א ב:ו׳",
+                "Jerusalem Talmud Shabbat 4:1:1-3:5": "תלמוד ירושלמי שבת ד׳:א׳:א׳-ג׳:ה׳"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 675,
+            "end": 683,
+            "refs": {
+                "Shabbat 36b:3-47b:7": "שבת ל״ו ב:ג׳-מ״ז ב:ז׳",
+                "Jerusalem Talmud Shabbat 3:1:1-8:3": "תלמוד ירושלמי שבת ג׳:א׳:א׳-ח׳:ג׳"
+            }
+        }
+    ],
+    "58": [
+        {
+            "start": 1063,
+            "end": 1083,
+            "refs": {
+                "Mishneh Torah, Sabbath 26": "משנה תורה, הלכות שבת כ״ו"
+            }
+        },
+        {
+            "start": 2739,
+            "end": 2758,
+            "refs": {
+                "Mishneh Torah, Sabbath 24": "משנה תורה, הלכות שבת כ״ד"
+            }
+        }
+    ],
+    "64": [
+        {
+            "start": 570,
+            "end": 589,
+            "refs": {
+                "Mishnah Maaser Sheni 4": "משנה מעשר שני ד׳"
+            }
+        },
+        {
+            "start": 734,
+            "end": 739,
+            "refs": {
+                "Mishnah Maaser Sheni 4": "משנה מעשר שני ד׳"
+            }
+        },
+        {
+            "start": 762,
+            "end": 767,
+            "refs": {
+                "Mishnah Maaser Sheni 4": "משנה מעשר שני ד׳"
+            }
+        },
+        {
+            "start": 817,
+            "end": 822,
+            "refs": {
+                "Mishnah Maaser Sheni 4": "משנה מעשר שני ד׳"
+            }
+        },
+        {
+            "start": 1101,
+            "end": 1112,
+            "refs": {
+                "Yevamot 35b:1-50a:5": "יבמות ל״ה ב:א׳-נ׳ א:ה׳",
+                "Jerusalem Talmud Yevamot 4:1:1-16:2": "תלמוד ירושלמי יבמות ד׳:א׳:א׳-ט״ז:ב׳"
+            }
+        },
+        {
+            "start": 1173,
+            "end": 1183,
+            "refs": {
+                "Mishnah Beitzah 1": "משנה ביצה א׳",
+                "Beitzah 2a:1-15a:15": "ביצה ב׳ א:א׳-ט״ו א:ט״ו"
+            }
+        }
+    ],
+    "66": [
+        {
+            "start": 917,
+            "end": 930,
+            "refs": {
+                "Bava Batra 17a:8-27b:24": "בבא בתרא י״ז א:ח׳-כ״ז ב:כ״ד",
+                "Jerusalem Talmud Bava Batra 2:1:1-11:5": "תלמוד ירושלמי בבא בתרא ב׳:א׳:א׳-י״א:ה׳"
+            }
+        }
+    ],
+    "68": [
+        {
+            "start": 690,
+            "end": 709,
+            "refs": {
+                "Mishneh Torah, Robbery and Lost Property 15": "משנה תורה, הלכות גזילה ואבידה ט״ו"
+            }
+        }
+    ],
+    "69": [
+        {
+            "start": 63,
+            "end": 80,
+            "refs": {
+                "Shabbat 123": "שבת קכ״ג"
+            }
+        }
+    ],
+    "71": [
+        {
+            "start": 152,
+            "end": 163,
+            "refs": {
+                "Shabbat 122b:4-126b:10": "שבת קכ״ב ב:ד׳-קכ״ו ב:י׳",
+                "Jerusalem Talmud Shabbat 17:1:1-7:3": "תלמוד ירושלמי שבת י״ז:א׳:א׳-ז׳:ג׳"
+            }
+        }
+    ],
+    "76": [
+        {
+            "start": 60,
+            "end": 91,
+            "refs": {
+                "Mishneh Torah, Sabbath 21:27": "משנה תורה, הלכות שבת כ״א:כ״ז"
+            }
+        }
+    ],
+    "77": [
+        {
+            "start": 1571,
+            "end": 1586,
+            "refs": {
+                "Mishneh Torah, Sabbath 9": "משנה תורה, הלכות שבת ט׳"
+            }
+        },
+        {
+            "start": 1592,
+            "end": 1600,
+            "refs": {
+                "Mishneh Torah, Sabbath 9:8": "משנה תורה, הלכות שבת ט׳:ח׳"
+            }
+        }
+    ],
+    "78": [
+        {
+            "start": 88,
+            "end": 125,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        }
+    ],
+    "81": [
+        {
+            "start": 438,
+            "end": 451,
+            "refs": {
+                "Pesachim 46": "פסחים מ״ו"
+            }
+        }
+    ],
+    "84": [
+        {
+            "start": 142,
+            "end": 174,
+            "refs": {
+                "Mishneh Torah, Festival Offering 1:9": "משנה תורה, הלכות חגיגה א׳:ט׳"
+            }
+        },
+        {
+            "start": 1005,
+            "end": 1018,
+            "refs": {
+                "Ketubot 7": "כתובות ז׳"
+            }
+        }
+    ],
+    "87": [
+        {
+            "start": 615,
+            "end": 636,
+            "refs": {
+                "Shabbat 128": "שבת קכ״ח"
+            }
+        }
+    ],
+    "93": [
+        {
+            "start": 202,
+            "end": 219,
+            "refs": {
+                "Megillah 20": "מגילה כ׳"
+            }
+        }
+    ],
+    "97": [
+        {
+            "start": 89,
+            "end": 100,
+            "refs": {
+                "Mishnah Kilayim 9": "משנה כלאים ט׳"
+            }
+        }
+    ],
+    "99": [
+        {
+            "start": 59,
+            "end": 83,
+            "refs": {
+                "Mishneh Torah, Diverse Species 10": "משנה תורה, הלכות כלאים י׳"
+            }
+        }
+    ],
+    "103": [
+        {
+            "start": 1048,
+            "end": 1078,
+            "refs": {
+                "Mishneh Torah, Sabbath 19:23": "משנה תורה, הלכות שבת י״ט:כ״ג"
+            }
+        },
+        {
+            "start": 1149,
+            "end": 1161,
+            "refs": {
+                "Mishneh Torah, Sabbath 19:26": "משנה תורה, הלכות שבת י״ט:כ״ו"
+            }
+        },
+        {
+            "start": 1258,
+            "end": 1286,
+            "refs": {
+                "Mishneh Torah, Tefillin, Mezuzah and the Torah Scroll 4:12": "משנה תורה, הלכות תפילין ומזוזה וספר תורה ד׳:י״ב"
+            }
+        },
+        {
+            "start": 1486,
+            "end": 1512,
+            "refs": {
+                "Mishneh Torah, Sabbath 19:23": "משנה תורה, הלכות שבת י״ט:כ״ג"
+            }
+        },
+        {
+            "start": 1860,
+            "end": 1872,
+            "refs": {
+                "Mishneh Torah, Tefillin, Mezuzah and the Torah Scroll 4:26": "משנה תורה, הלכות תפילין ומזוזה וספר תורה ד׳:כ״ו",
+                "Mishneh Torah, Sabbath 19:26": "משנה תורה, הלכות שבת י״ט:כ״ו"
+            }
+        },
+        {
+            "start": 2335,
+            "end": 2362,
+            "refs": {
+                "Mishneh Torah, Tefillin, Mezuzah and the Torah Scroll 4:12": "משנה תורה, הלכות תפילין ומזוזה וספר תורה ד׳:י״ב"
+            }
+        }
+    ],
+    "104": [
+        {
+            "start": 360,
+            "end": 378,
+            "refs": {
+                "Mishneh Torah, Tefillin, Mezuzah and the Torah Scroll 3": "משנה תורה, הלכות תפילין ומזוזה וספר תורה ג׳"
+            }
+        },
+        {
+            "start": 678,
+            "end": 697,
+            "refs": {
+                "Mishneh Torah, Sabbath 19": "משנה תורה, הלכות שבת י״ט"
+            }
+        },
+        {
+            "start": 763,
+            "end": 765,
+            "refs": {
+                "Mishneh Torah, Sabbath 19": "משנה תורה, הלכות שבת י״ט"
+            }
+        }
+    ],
+    "107": [
+        {
+            "start": 189,
+            "end": 202,
+            "refs": {
+                "Pesachim 46": "פסחים מ״ו"
+            }
+        },
+        {
+            "start": 609,
+            "end": 619,
+            "refs": {
+                "Pesachim 46a": "פסחים מ״ו א"
+            }
+        }
+    ],
+    "108": [
+        {
+            "start": 3,
+            "end": 17,
+            "refs": {
+                "Pesachim 46a": "פסחים מ״ו א"
+            }
+        },
+        {
+            "start": 54,
+            "end": 58,
+            "refs": {
+                "Pesachim 46a": "פסחים מ״ו א"
+            }
+        }
+    ],
+    "109": [
+        {
+            "start": 110,
+            "end": 132,
+            "refs": {
+                "Mishneh Torah, Fasts 1": "משנה תורה, הלכות תעניות א׳"
+            }
+        }
+    ],
+    "112": [
+        {
+            "start": 2795,
+            "end": 2812,
+            "refs": {
+                "Mishneh Torah, Forbidden Foods 7": "משנה תורה, הלכות מאכלות אסורות ז׳"
+            }
+        }
+    ],
+    "126": [
+        {
+            "start": 112,
+            "end": 132,
+            "refs": {
+                "Mishneh Torah, Sabbath 23": "משנה תורה, הלכות שבת כ״ג"
+            }
+        }
+    ],
+    "130": [
+        {
+            "start": 419,
+            "end": 435,
+            "refs": {
+                "Mishneh Torah, Sabbath 23": "משנה תורה, הלכות שבת כ״ג"
+            }
+        }
+    ],
+    "133": [
+        {
+            "start": 606,
+            "end": 628,
+            "refs": {
+                "Mishneh Torah, Rest on the Tenth of Tishrei 3": "משנה תורה, הלכות שביתת עשור ג׳"
+            }
+        }
+    ],
+    "137": [
+        {
+            "start": 993,
+            "end": 1013,
+            "refs": {
+                "Mishneh Torah, Sabbath 24": "משנה תורה, הלכות שבת כ״ד"
+            }
+        },
+        {
+            "start": 1023,
+            "end": 1032,
+            "refs": {
+                "Mishneh Torah, Sabbath 24": "משנה תורה, הלכות שבת כ״ד"
+            }
+        }
+    ],
+    "139": [
+        {
+            "start": 1647,
+            "end": 1682,
+            "refs": {
+                "Mishneh Torah, Eruvin 1:21": "משנה תורה, הלכות עירובין א׳:כ״א"
+            }
+        }
+    ],
+    "143": [
+        {
+            "start": 46,
+            "end": 59,
+            "refs": {
+                "Chagigah 17": "חגיגה י״ז"
+            }
+        }
+    ],
+    "146": [
+        {
+            "start": 206,
+            "end": 216,
+            "refs": {
+                "Mishnah Nazir 2": "משנה נזיר ב׳",
+                "Nazir 9a:1-16a:3": "נזיר ט׳ א:א׳-ט״ז א:ג׳"
+            }
+        },
+        {
+            "start": 1529,
+            "end": 1551,
+            "refs": {
+                "Mishneh Torah, Marriage 6": "משנה תורה, הלכות אישות ו׳"
+            }
+        },
+        {
+            "start": 2749,
+            "end": 2767,
+            "refs": {
+                "Nazir 51": "נזיר נ״א"
+            }
+        }
+    ],
+    "147": [
+        {
+            "start": 5809,
+            "end": 5841,
+            "refs": {
+                "Mishneh Torah, Ownerless Property and Gifts 11": "משנה תורה, הלכות זכייה ומתנה י״א"
+            }
+        }
+    ],
+    "149": [
+        {
+            "start": 99,
+            "end": 130,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2:14": "משנה תורה, הלכות חגיגה ב׳:י״ד"
+            }
+        },
+        {
+            "start": 183,
+            "end": 209,
+            "refs": {
+                "Mishneh Torah, Nazariteship 8:14": "משנה תורה, הלכות נזירות ח׳:י״ד"
+            }
+        },
+        {
+            "start": 1453,
+            "end": 1472,
+            "refs": {
+                "Mishneh Torah, Nazariteship 8": "משנה תורה, הלכות נזירות ח׳"
+            }
+        }
+    ],
+    "150": [
+        {
+            "start": 32,
+            "end": 41,
+            "refs": {
+                "Mishnah Rosh Hashanah 1": "משנה ראש השנה א׳",
+                "Rosh Hashanah 2a:1-22a:12": "ראש השנה ב׳ א:א׳-כ״ב א:י״ב"
+            }
+        },
+        {
+            "start": 53,
+            "end": 58,
+            "refs": {
+                "Rosh Hashanah 6": "ראש השנה ו׳"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 1193,
+            "end": 1227,
+            "refs": {
+                "Mishneh Torah, Sabbath 26:16": "משנה תורה, הלכות שבת כ״ו:ט״ז"
+            }
+        },
+        {
+            "start": 2922,
+            "end": 2938,
+            "refs": {
+                "Mishneh Torah, Sabbath 26": "משנה תורה, הלכות שבת כ״ו"
+            }
+        }
+    ],
+    "159": [
+        {
+            "start": 1882,
+            "end": 1899,
+            "refs": {
+                "Mishneh Torah, Sabbath 21": "משנה תורה, הלכות שבת כ״א"
+            }
+        }
+    ],
+    "160": [
+        {
+            "start": 1025,
+            "end": 1036,
+            "refs": {
+                "Shabbat 29": "שבת כ״ט"
+            }
+        }
+    ],
+    "173": [
+        {
+            "start": 74,
+            "end": 92,
+            "refs": {
+                "Mishneh Torah, Sabbath 10": "משנה תורה, הלכות שבת י׳"
+            }
+        },
+        {
+            "start": 1507,
+            "end": 1522,
+            "refs": {
+                "Mishneh Torah, Sabbath 10": "משנה תורה, הלכות שבת י׳"
+            }
+        }
+    ],
+    "182": [
+        {
+            "start": 2424,
+            "end": 2446,
+            "refs": {
+                "Mishneh Torah, Sabbath 1": "משנה תורה, הלכות שבת א׳"
+            }
+        },
+        {
+            "start": 2768,
+            "end": 2779,
+            "refs": {
+                "Mishneh Torah, Sabbath 1": "משנה תורה, הלכות שבת א׳"
+            }
+        }
+    ],
+    "183": [
+        {
+            "start": 75,
+            "end": 90,
+            "refs": {
+                "Mishneh Torah, Sabbath 6": "משנה תורה, הלכות שבת ו׳"
+            }
+        },
+        {
+            "start": 850,
+            "end": 872,
+            "refs": {
+                "Mishneh Torah, Sabbath 6": "משנה תורה, הלכות שבת ו׳"
+            }
+        },
+        {
+            "start": 5311,
+            "end": 5325,
+            "refs": {
+                "Eruvin 40": "עירובין מ׳"
+            }
+        }
+    ],
+    "216": [
+        {
+            "start": 6919,
+            "end": 6933,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        }
+    ],
+    "217": [
+        {
+            "start": 442,
+            "end": 458,
+            "refs": {
+                "Mishneh Torah, Sabbath 12": "משנה תורה, הלכות שבת י״ב"
+            }
+        },
+        {
+            "start": 1795,
+            "end": 1810,
+            "refs": {
+                "Mishneh Torah, Sabbath 12": "משנה תורה, הלכות שבת י״ב"
+            }
+        },
+        {
+            "start": 2621,
+            "end": 2635,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        },
+        {
+            "start": 2748,
+            "end": 2765,
+            "refs": {
+                "Tosafot on Shabbat 19": "תוספות על שבת י״ט"
+            }
+        },
+        {
+            "start": 2868,
+            "end": 2891,
+            "refs": {
+                "Mishneh Torah, Sabbath 25": "משנה תורה, הלכות שבת כ״ה"
+            }
+        },
+        {
+            "start": 3186,
+            "end": 3199,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        },
+        {
+            "start": 3444,
+            "end": 3467,
+            "refs": {
+                "Mishneh Torah, Sabbath 25": "משנה תורה, הלכות שבת כ״ה"
+            }
+        },
+        {
+            "start": 3835,
+            "end": 3846,
+            "refs": {
+                "Mishneh Torah, Sabbath 1": "משנה תורה, הלכות שבת א׳"
+            }
+        },
+        {
+            "start": 3965,
+            "end": 3978,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        },
+        {
+            "start": 4179,
+            "end": 4188,
+            "refs": {
+                "Shabbat 126b:11-129b:18": "שבת קכ״ו ב:י״א-קכ״ט ב:י״ח",
+                "Jerusalem Talmud Shabbat 18:1:1-3:6": "תלמוד ירושלמי שבת י״ח:א׳:א׳-ג׳:ו׳"
+            }
+        },
+        {
+            "start": 5452,
+            "end": 5466,
+            "refs": {
+                "Chullin 14": "חולין י״ד"
+            }
+        }
+    ],
+    "218": [
+        {
+            "start": 1918,
+            "end": 1927,
+            "refs": {
+                "Shabbat 36b:3-47b:7": "שבת ל״ו ב:ג׳-מ״ז ב:ז׳",
+                "Jerusalem Talmud Shabbat 3:1:1-8:3": "תלמוד ירושלמי שבת ג׳:א׳:א׳-ח׳:ג׳"
+            }
+        }
+    ],
+    "229": [
+        {
+            "start": 1504,
+            "end": 1516,
+            "refs": {
+                "Shabbat 122b:4-126b:10": "שבת קכ״ב ב:ד׳-קכ״ו ב:י׳",
+                "Jerusalem Talmud Shabbat 17:1:1-7:3": "תלמוד ירושלמי שבת י״ז:א׳:א׳-ז׳:ג׳"
+            }
+        },
+        {
+            "start": 2142,
+            "end": 2153,
+            "refs": {
+                "Shabbat 48": "שבת מ״ח"
+            }
+        }
+    ],
+    "230": [
+        {
+            "start": 489,
+            "end": 502,
+            "refs": {
+                "Mishneh Torah, Sabbath 9": "משנה תורה, הלכות שבת ט׳"
+            }
+        },
+        {
+            "start": 681,
+            "end": 699,
+            "refs": {
+                "Mishneh Torah, Sabbath 22": "משנה תורה, הלכות שבת כ״ב"
+            }
+        }
+    ],
+    "231": [
+        {
+            "start": 50,
+            "end": 62,
+            "refs": {
+                "Shabbat 155": "שבת קנ״ה"
+            }
+        },
+        {
+            "start": 812,
+            "end": 822,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        }
+    ],
+    "234": [
+        {
+            "start": 75,
+            "end": 88,
+            "refs": {
+                "Beitzah 23b:11-29b:9": "ביצה כ״ג ב:י״א-כ״ט ב:ט׳",
+                "Jerusalem Talmud Beitzah 3:1:1-9:2": "תלמוד ירושלמי ביצה ג׳:א׳:א׳-ט׳:ב׳"
+            }
+        },
+        {
+            "start": 1526,
+            "end": 1542,
+            "refs": {
+                "Shabbat 46": "שבת מ״ו"
+            }
+        }
+    ],
+    "242": [
+        {
+            "start": 1155,
+            "end": 1165,
+            "refs": {
+                "Shabbat 137b:11-141b:18": "שבת קל״ז ב:י״א-קמ״א ב:י״ח",
+                "Jerusalem Talmud Shabbat 20:1:1-5:3": "תלמוד ירושלמי שבת כ׳:א׳:א׳-ה׳:ג׳"
+            }
+        },
+        {
+            "start": 2082,
+            "end": 2101,
+            "refs": {
+                "Mishneh Torah, Shofar, Sukkah and Lulav 4": "משנה תורה, הלכות שופר וסוכה ולולב ד׳"
+            }
+        }
+    ],
+    "243": [
+        {
+            "start": 104,
+            "end": 113,
+            "refs": {
+                "Shabbat 153a:11-157b:3": "שבת קנ״ג א:י״א-קנ״ז ב:ג׳",
+                "Jerusalem Talmud Shabbat 24:1:1-5:1": "תלמוד ירושלמי שבת כ״ד:א׳:א׳-ה׳:א׳"
+            }
+        }
+    ],
+    "244": [
+        {
+            "start": 130,
+            "end": 145,
+            "refs": {
+                "Mishneh Torah, Sabbath 10": "משנה תורה, הלכות שבת י׳"
+            }
+        },
+        {
+            "start": 207,
+            "end": 219,
+            "refs": {
+                "Shabbat 143b:1-148a:4": "שבת קמ״ג ב:א׳-קמ״ח א:ד׳"
+            }
+        },
+        {
+            "start": 220,
+            "end": 235,
+            "refs": {
+                "Mishneh Torah, Sabbath 4:19": "משנה תורה, הלכות שבת ד׳:י״ט"
+            }
+        },
+        {
+            "start": 435,
+            "end": 450,
+            "refs": {
+                "Mishneh Torah, Sabbath 10": "משנה תורה, הלכות שבת י׳"
+            }
+        },
+        {
+            "start": 539,
+            "end": 552,
+            "refs": {
+                "Mishneh Torah, Sabbath 23": "משנה תורה, הלכות שבת כ״ג"
+            }
+        },
+        {
+            "start": 756,
+            "end": 769,
+            "refs": {
+                "Mishneh Torah, Sabbath 10": "משנה תורה, הלכות שבת י׳"
+            }
+        },
+        {
+            "start": 788,
+            "end": 793,
+            "refs": {
+                "Mishneh Torah, Sabbath 22": "משנה תורה, הלכות שבת כ״ב"
+            }
+        }
+    ],
+    "257": [
+        {
+            "start": 1036,
+            "end": 1058,
+            "refs": {
+                "Mishneh Torah, Sabbath 11": "משנה תורה, הלכות שבת י״א"
+            }
+        }
+    ],
+    "259": [
+        {
+            "start": 546,
+            "end": 560,
+            "refs": {
+                "Eruvin 26b:17-41b:5": "עירובין כ״ו ב:י״ז-מ״א ב:ה׳",
+                "Jerusalem Talmud Eruvin 3:1:1-10:2": "תלמוד ירושלמי עירובין ג׳:א׳:א׳-י׳:ב׳"
+            }
+        }
+    ],
+    "264": [
+        {
+            "start": 49,
+            "end": 67,
+            "refs": {
+                "Mishneh Torah, Sabbath 9": "משנה תורה, הלכות שבת ט׳"
+            }
+        }
+    ],
+    "266": [
+        {
+            "start": 1024,
+            "end": 1036,
+            "refs": {
+                "Mishneh Torah, Sabbath 9": "משנה תורה, הלכות שבת ט׳"
+            }
+        },
+        {
+            "start": 1200,
+            "end": 1219,
+            "refs": {
+                "Mishneh Torah, Sabbath 12": "משנה תורה, הלכות שבת י״ב"
+            }
+        }
+    ],
+    "267": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Sabbath 12": "משנה תורה, הלכות שבת י״ב"
+            }
+        },
+        {
+            "start": 990,
+            "end": 1012,
+            "refs": {
+                "Mishneh Torah, Sabbath 3:19": "משנה תורה, הלכות שבת ג׳:י״ט"
+            }
+        }
+    ],
+    "273": [
+        {
+            "start": 367,
+            "end": 379,
+            "refs": {
+                "Mishnah Maasrot 2": "משנה מעשרות ב׳"
+            }
+        }
+    ],
+    "274": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Maasrot 5": "משנה מעשרות ה׳"
+            }
+        }
+    ],
+    "276": [
+        {
+            "start": 1411,
+            "end": 1432,
+            "refs": {
+                "Mishneh Torah, Sabbath 27": "משנה תורה, הלכות שבת כ״ז"
+            }
+        }
+    ],
+    "278": [
+        {
+            "start": 170,
+            "end": 201,
+            "refs": {
+                "Mishneh Torah, Sabbath 25:24": "משנה תורה, הלכות שבת כ״ה:כ״ד"
+            }
+        }
+    ],
+    "285": [
+        {
+            "start": 744,
+            "end": 751,
+            "refs": {
+                "Beitzah 35b:7-40b:4": "ביצה ל״ה ב:ז׳-מ׳ ב:ד׳",
+                "Jerusalem Talmud Beitzah 5:1:1-8:2": "תלמוד ירושלמי ביצה ה׳:א׳:א׳-ח׳:ב׳"
+            }
+        }
+    ],
+    "289": [
+        {
+            "start": 205,
+            "end": 221,
+            "refs": {
+                "Avodah Zarah 46": "עבודה זרה מ״ו"
+            }
+        }
+    ],
+    "293": [
+        {
+            "start": 1428,
+            "end": 1445,
+            "refs": {
+                "Mishneh Torah, Leavened and Unleavened Bread 1": "משנה תורה, הלכות חמץ ומצה א׳"
+            }
+        },
+        {
+            "start": 1531,
+            "end": 1556,
+            "refs": {
+                "Mishneh Torah, Forbidden Foods 15": "משנה תורה, הלכות מאכלות אסורות ט״ו"
+            }
+        }
+    ],
+    "296": [
+        {
+            "start": 788,
+            "end": 802,
+            "refs": {
+                "Eruvin 6": "עירובין ו׳"
+            }
+        }
+    ],
+    "297": [
+        {
+            "start": 379,
+            "end": 403,
+            "refs": {
+                "Mishneh Torah, Sabbath 18": "משנה תורה, הלכות שבת י״ח"
+            }
+        },
+        {
+            "start": 589,
+            "end": 602,
+            "refs": {
+                "Shabbat 82a:12-90b:6": "שבת פ״ב א:י״ב-צ׳ ב:ו׳",
+                "Jerusalem Talmud Shabbat 9:1:1-7:7": "תלמוד ירושלמי שבת ט׳:א׳:א׳-ז׳:ז׳"
+            }
+        },
+        {
+            "start": 671,
+            "end": 692,
+            "refs": {
+                "Mishneh Torah, Sabbath 9": "משנה תורה, הלכות שבת ט׳"
+            }
+        },
+        {
+            "start": 1831,
+            "end": 1853,
+            "refs": {
+                "Mishneh Torah, Trespass 2": "משנה תורה, הלכות מעילה ב׳"
+            }
+        }
+    ]
+}

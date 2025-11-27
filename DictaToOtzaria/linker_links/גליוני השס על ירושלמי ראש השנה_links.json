@@ -1,0 +1,173 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1": "תלמוד ירושלמי ראש השנה א׳",
+                "Jerusalem Talmud Rosh Hashanah 1:1:2-8:4": "תלמוד ירושלמי ראש השנה א׳:א׳:ב׳-ח׳:ד׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1:1": "תלמוד ירושלמי ראש השנה א׳:א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 1:2": "תלמוד ירושלמי ראש השנה א׳:ב׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 63,
+            "end": 85,
+            "refs": {
+                "Jerusalem Talmud Maasrot 4:4": "תלמוד ירושלמי מעשרות ד׳:ד׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Maasrot 4:3": "תלמוד ירושלמי מעשרות ד׳:ג׳",
+                "Jerusalem Talmud Rosh Hashanah 1:3": "תלמוד ירושלמי ראש השנה א׳:ג׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 196,
+            "end": 213,
+            "refs": {
+                "Gittin 12b": "גיטין י״ב ב"
+            }
+        },
+        {
+            "start": 302,
+            "end": 315,
+            "refs": {
+                "Ketubot 68a": "כתובות ס״ח א"
+            }
+        },
+        {
+            "start": 320,
+            "end": 348,
+            "refs": {
+                "Rashi on Bava Metzia 69b:9:2": "רש\"י על בבא מציעא ס״ט ב:ט׳:ב׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 79,
+            "end": 101,
+            "refs": {
+                "Jerusalem Talmud Berakhot 9:1": "תלמוד ירושלמי ברכות ט׳:א׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 9:4": "תלמוד ירושלמי ברכות ט׳:ד׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 18,
+            "end": 37,
+            "refs": {
+                "Jerusalem Talmud Challah 1:1": "תלמוד ירושלמי חלה א׳:א׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 9:5": "תלמוד ירושלמי ברכות ט׳:ה׳",
+                "Jerusalem Talmud Challah 1:5": "תלמוד ירושלמי חלה א׳:ה׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 25,
+            "end": 37,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 2:7": "תלמוד ירושלמי ראש השנה ב׳:ז׳"
+            }
+        },
+        {
+            "start": 38,
+            "end": 59,
+            "refs": {
+                "Jerusalem Talmud Megillah 2:7": "תלמוד ירושלמי מגילה ב׳:ז׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 2:8": "תלמוד ירושלמי ראש השנה ב׳:ח׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 2": "תלמוד ירושלמי ראש השנה ב׳",
+                "Jerusalem Talmud Megillah 2": "תלמוד ירושלמי מגילה ב׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Eruvin 4": "משנה עירובין ד׳",
+                "Eruvin 41b:6-52b:15": "עירובין מ״א ב:ו׳-נ״ב ב:ט״ו",
+                "Jerusalem Talmud Rosh Hashanah 4": "תלמוד ירושלמי ראש השנה ד׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 4:8": "תלמוד ירושלמי ראש השנה ד׳:ח׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 45,
+            "end": 67,
+            "refs": {
+                "Jerusalem Talmud Berakhot 5:1": "תלמוד ירושלמי ברכות ה׳:א׳"
+            }
+        }
+    ]
+}

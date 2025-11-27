@@ -1,0 +1,321 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 2": "תלמוד ירושלמי בבא בתרא ב׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 2:3": "תלמוד ירושלמי בבא בתרא ב׳:ג׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 3": "תלמוד ירושלמי בבא בתרא ג׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 3:5": "תלמוד ירושלמי בבא בתרא ג׳:ה׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 380,
+            "end": 397,
+            "refs": {
+                "Ketubot 2a:1-15b:11": "כתובות ב׳ א:א׳-ט״ו ב:י״א",
+                "Ketubot 80a": "כתובות פ׳ א"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Ketubot 4": "משנה כתובות ד׳",
+                "Ketubot 41b:11-54b:5": "כתובות מ״א ב:י״א-נ״ד ב:ה׳",
+                "Jerusalem Talmud Bava Batra 4": "תלמוד ירושלמי בבא בתרא ד׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 4:8": "תלמוד ירושלמי בבא בתרא ד׳:ח׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 149,
+            "end": 161,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 6:1": "תלמוד ירושלמי בבא בתרא ו׳:א׳"
+            }
+        },
+        {
+            "start": 271,
+            "end": 283,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 7:1": "תלמוד ירושלמי בבא בתרא ז׳:א׳"
+            }
+        },
+        {
+            "start": 339,
+            "end": 351,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 7:1": "תלמוד ירושלמי בבא בתרא ז׳:א׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 5": "תלמוד ירושלמי בבא בתרא ה׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 5:1": "תלמוד ירושלמי בבא בתרא ה׳:א׳",
+                "Jerusalem Talmud Bava Batra 7:1": "תלמוד ירושלמי בבא בתרא ז׳:א׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 134,
+            "end": 154,
+            "refs": {
+                "Jerusalem Talmud Nazir 9:3": "תלמוד ירושלמי נזיר ט׳:ג׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Nazir 9:5": "תלמוד ירושלמי נזיר ט׳:ה׳",
+                "Jerusalem Talmud Bava Batra 5:5": "תלמוד ירושלמי בבא בתרא ה׳:ה׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 42,
+            "end": 59,
+            "refs": {
+                "Mareh HaPanim on Jerusalem Talmud Bava Batra 5:5:2:3": "מראה הפנים על תלמוד ירושלמי בבא בתרא ה׳:ה׳:ב׳:ג׳"
+            }
+        },
+        {
+            "start": 140,
+            "end": 161,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 6:2": "תלמוד ירושלמי בבא קמא ו׳:ב׳"
+            }
+        },
+        {
+            "start": 281,
+            "end": 300,
+            "refs": {
+                "Rashi on Eruvin 28b": "רש\"י על עירובין כ״ח ב"
+            }
+        },
+        {
+            "start": 301,
+            "end": 315,
+            "refs": {
+                "Pesachim 53a": "פסחים נ״ג א"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Pesachim 6": "משנה פסחים ו׳",
+                "Pesachim 65b:10-73b:16": "פסחים ס״ה ב:י׳-ע״ג ב:ט״ז",
+                "Rashi on Eruvin 61b:11-76a:6": "רש\"י על עירובין ס״א ב:י״א-ע״ו א:ו׳",
+                "Jerusalem Talmud Bava Batra 6": "תלמוד ירושלמי בבא בתרא ו׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 6:1": "תלמוד ירושלמי בבא בתרא ו׳:א׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 8": "תלמוד ירושלמי בבא בתרא ח׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 8:5": "תלמוד ירושלמי בבא בתרא ח׳:ה׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 146,
+            "end": 169,
+            "refs": {
+                "Jerusalem Talmud Ketubot 4:11": "תלמוד ירושלמי כתובות ד׳:י״א"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Ketubot 4:7": "תלמוד ירושלמי כתובות ד׳:ז׳",
+                "Jerusalem Talmud Bava Batra 8:7": "תלמוד ירושלמי בבא בתרא ח׳:ז׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 34,
+            "end": 57,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 4:7": "תלמוד ירושלמי קידושין ד׳:ז׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 41,
+            "end": 62,
+            "refs": {
+                "Jerusalem Talmud Gittin 1:20": "תלמוד ירושלמי גיטין א׳:כ׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 4:8": "תלמוד ירושלמי קידושין ד׳:ח׳",
+                "Jerusalem Talmud Bava Batra 8:8": "תלמוד ירושלמי בבא בתרא ח׳:ח׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 84,
+            "end": 104,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 8:1": "תלמוד ירושלמי בבא קמא ח׳:א׳"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 9": "תלמוד ירושלמי בבא קמא ט׳",
+                "Jerusalem Talmud Bava Batra 9": "תלמוד ירושלמי בבא בתרא ט׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 8:7": "תלמוד ירושלמי בבא קמא ח׳:ז׳",
+                "Jerusalem Talmud Bava Kamma 9:7": "תלמוד ירושלמי בבא קמא ט׳:ז׳",
+                "Jerusalem Talmud Bava Batra 9:7": "תלמוד ירושלמי בבא בתרא ט׳:ז׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 36,
+            "end": 57,
+            "refs": {
+                "Jerusalem Talmud Sotah 5:2": "תלמוד ירושלמי סוטה ה׳:ב׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10": "תלמוד ירושלמי בבא קמא י׳",
+                "Jerusalem Talmud Bava Batra 10": "תלמוד ירושלמי בבא בתרא י׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10:7": "תלמוד ירושלמי בבא קמא י׳:ז׳",
+                "Jerusalem Talmud Bava Batra 10:7": "תלמוד ירושלמי בבא בתרא י׳:ז׳"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 48,
+            "end": 55,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10:6": "תלמוד ירושלמי בבא קמא י׳:ו׳",
+                "Jerusalem Talmud Bava Batra 10:6": "תלמוד ירושלמי בבא בתרא י׳:ו׳"
+            }
+        },
+        {
+            "start": 311,
+            "end": 324,
+            "refs": {
+                "Bava Batra 171a": "בבא בתרא קע״א א"
+            }
+        }
+    ]
+}

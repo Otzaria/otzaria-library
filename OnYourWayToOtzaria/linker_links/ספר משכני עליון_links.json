@@ -1,0 +1,89 @@
+{
+    "17": [
+        {
+            "start": 352,
+            "end": 360,
+            "refs": {
+                "Taanit 5a": "תענית ה׳ א"
+            }
+        }
+    ],
+    "112": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Mishnah Berurah 83": "משנה ברורה פ״ג"
+            }
+        }
+    ],
+    "115": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Mishnah Berurah 81:41": "משנה ברורה פ״א:מ״א"
+            }
+        },
+        {
+            "start": 8,
+            "end": 9,
+            "refs": {
+                "Mishnah Berurah 81": "משנה ברורה פ״א",
+                "Mishnah Berurah 83": "משנה ברורה פ״ג"
+            }
+        },
+        {
+            "start": 10,
+            "end": 17,
+            "refs": {
+                "Mishnah Berurah 84:41": "משנה ברורה פ״ד:מ״א"
+            }
+        }
+    ],
+    "117": [
+        {
+            "start": 58,
+            "end": 63,
+            "refs": {
+                "Ezekiel 41:8": "יחזקאל מ״א:ח׳"
+            }
+        }
+    ],
+    "130": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Mishnah Berurah 82": "משנה ברורה פ״ב"
+            }
+        }
+    ],
+    "252": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Mishnah Berurah 81": "משנה ברורה פ״א"
+            }
+        }
+    ],
+    "254": [
+        {
+            "start": 77,
+            "end": 81,
+            "refs": {
+                "Mishnah Berurah 40:2": "משנה ברורה מ׳:ב׳"
+            }
+        }
+    ],
+    "258": [
+        {
+            "start": 1,
+            "end": 8,
+            "refs": {
+                "Mishnah Berurah 81:41": "משנה ברורה פ״א:מ״א"
+            }
+        }
+    ]
+}

@@ -1,0 +1,228 @@
+{
+    "7": [
+        {
+            "start": 1,
+            "end": 6,
+            "refs": {
+                "Genesis 1:1": "בראשית א׳:א׳"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Genesis 12:1-17:27": "בראשית י״ב:א׳-י״ז:כ״ז"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 1,
+            "end": 7,
+            "refs": {
+                "Genesis 12:4": "בראשית י״ב:ד׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 242,
+            "end": 249,
+            "refs": {
+                "Avodah Zarah 52": "עבודה זרה נ״ב"
+            }
+        },
+        {
+            "start": 348,
+            "end": 360,
+            "refs": {
+                "Sanhedrin 109": "סנהדרין ק״ט"
+            }
+        },
+        {
+            "start": 514,
+            "end": 523,
+            "refs": {
+                "Deuteronomy 15": "דברים ט״ו"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 321,
+            "end": 343,
+            "refs": {
+                "Rashi on Bava Metzia 87a:4:2": "רש\"י על בבא מציעא פ״ז א:ד׳:ב׳"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Rashi on Bava Metzia 9": "רש\"י על בבא מציעא ט׳",
+                "Rashi on Bava Metzia 103a:16-116a:9": "רש\"י על בבא מציעא ק״ג א:ט״ז-קט״ז א:ט׳"
+            }
+        },
+        {
+            "start": 73,
+            "end": 80,
+            "refs": {
+                "Mishnah Bava Metzia 7": "משנה בבא מציעא ז׳",
+                "Bava Metzia 83a:12-94a:15": "בבא מציעא פ״ג א:י״ב-צ״ד א:ט״ו",
+                "Bava Metzia 87": "בבא מציעא פ״ז"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 0,
+            "end": 6,
+            "refs": {
+                "Rashi on Bava Metzia 12": "רש\"י על בבא מציעא י״ב"
+            }
+        }
+    ],
+    "124": [
+        {
+            "start": 1,
+            "end": 10,
+            "refs": {
+                "Avodah Zarah 39b": "עבודה זרה ל״ט ב"
+            }
+        }
+    ],
+    "125": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Mishnah Avodah Zarah 3": "משנה עבודה זרה ג׳",
+                "Avodah Zarah 3": "עבודה זרה ג׳",
+                "Avodah Zarah 40b:12-49b:17": "עבודה זרה מ׳ ב:י״ב-מ״ט ב:י״ז"
+            }
+        },
+        {
+            "start": 23,
+            "end": 28,
+            "refs": {
+                "Mishnah Avodah Zarah 3:4": "משנה עבודה זרה ג׳:ד׳",
+                "Mishnah Avodah Zarah 4": "משנה עבודה זרה ד׳",
+                "Avodah Zarah 4": "עבודה זרה ד׳",
+                "Avodah Zarah 49b:18-61b:16": "עבודה זרה מ״ט ב:י״ח-ס״א ב:ט״ז"
+            }
+        }
+    ],
+    "126": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Mishnah Avodah Zarah 4:6": "משנה עבודה זרה ד׳:ו׳",
+                "Avodah Zarah 6": "עבודה זרה ו׳"
+            }
+        }
+    ],
+    "127": [
+        {
+            "start": 0,
+            "end": 5,
+            "refs": {
+                "Mishnah Avodah Zarah 4:9": "משנה עבודה זרה ד׳:ט׳",
+                "Avodah Zarah 9": "עבודה זרה ט׳"
+            }
+        }
+    ],
+    "141": [
+        {
+            "start": 4,
+            "end": 8,
+            "refs": {
+                "Genesis 44:18-47:27": "בראשית מ״ד:י״ח-מ״ז:כ״ז"
+            }
+        }
+    ],
+    "144": [
+        {
+            "start": 267,
+            "end": 276,
+            "refs": {
+                "Megillah 16": "מגילה ט״ז"
+            }
+        }
+    ],
+    "156": [
+        {
+            "start": 145,
+            "end": 158,
+            "refs": {
+                "Sotah 36b": "סוטה ל״ו ב"
+            }
+        },
+        {
+            "start": 229,
+            "end": 236,
+            "refs": {
+                "Rashi on Sotah 36b": "רש\"י על סוטה ל״ו ב"
+            }
+        }
+    ],
+    "157": [
+        {
+            "start": 1,
+            "end": 6,
+            "refs": {
+                "Sotah 10": "סוטה י׳",
+                "Rashi on Sotah 10": "רש\"י על סוטה י׳"
+            }
+        }
+    ],
+    "163": [
+        {
+            "start": 1,
+            "end": 6,
+            "refs": {
+                "Exodus 1:20": "שמות א׳:כ׳"
+            }
+        }
+    ],
+    "164": [
+        {
+            "start": 1,
+            "end": 6,
+            "refs": {
+                "Exodus 3:4": "שמות ג׳:ד׳"
+            }
+        }
+    ],
+    "165": [
+        {
+            "start": 210,
+            "end": 219,
+            "refs": {
+                "Avodah Zarah 27": "עבודה זרה כ״ז"
+            }
+        }
+    ],
+    "168": [
+        {
+            "start": 90,
+            "end": 105,
+            "refs": {
+                "Commentary of the Rosh on Nedarim 64": "פירוש הרא\"ש על נדרים ס״ד"
+            }
+        }
+    ],
+    "169": [
+        {
+            "start": 0,
+            "end": 6,
+            "refs": {
+                "Commentary of the Rosh on Nedarim 22": "פירוש הרא\"ש על נדרים כ״ב"
+            }
+        }
+    ]
+}

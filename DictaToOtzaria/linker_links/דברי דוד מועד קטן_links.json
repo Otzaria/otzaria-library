@@ -1,0 +1,96 @@
+{
+    "8": [
+        {
+            "start": 47,
+            "end": 59,
+            "refs": {
+                "Shabbat 67b:17-76b:5": "שבת ס״ז ב:י״ז-ע״ו ב:ה׳",
+                "Jerusalem Talmud Sheviit 7:1:1-2:7": "תלמוד ירושלמי שביעית ז׳:א׳:א׳-ב׳:ז׳",
+                "Jerusalem Talmud Sheviit 8:1:1-8:8": "תלמוד ירושלמי שביעית ח׳:א׳:א׳-ח׳:ח׳",
+                "Jerusalem Talmud Shabbat 7:1:1-4:3": "תלמוד ירושלמי שבת ז׳:א׳:א׳-ד׳:ג׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 203,
+            "end": 219,
+            "refs": {
+                "Bava Kamma 26b": "בבא קמא כ״ו ב"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 28,
+            "end": 32,
+            "refs": {
+                "Rashi on Bava Kamma 26b": "רש\"י על בבא קמא כ״ו ב"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Avodah Zarah 3a": "עבודה זרה ג׳ א"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 435,
+            "end": 460,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, Sabbatical Year and the Jubilee 4": "כסף משנה על משנה תורה, הלכות שמיטה ויובל ד׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 257,
+            "end": 269,
+            "refs": {
+                "Mishnah Sheviit 1": "משנה שביעית א׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 300,
+            "end": 327,
+            "refs": {
+                "Tosafot on Ketubot 28b:6:2": "תוספות על כתובות כ״ח ב:ו׳:ב׳"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 540,
+            "end": 550,
+            "refs": {
+                "Chullin 83a": "חולין פ״ג א"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 12,
+            "end": 23,
+            "refs": {
+                "Moed Katan 13b:15-29a:7": "מועד קטן י״ג ב:ט״ו-כ״ט א:ז׳",
+                "Jerusalem Talmud Moed Katan 3:1:1-9:3": "תלמוד ירושלמי מועד קטן ג׳:א׳:א׳-ט׳:ג׳"
+            }
+        }
+    ],
+    "55": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Moed Katan 14": "מועד קטן י״ד"
+            }
+        }
+    ]
+}

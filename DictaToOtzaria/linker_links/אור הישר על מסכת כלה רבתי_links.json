@@ -1,0 +1,275 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kallah Rabbati 1": "מסכת כלה רבתי א׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kallah Rabbati 2": "מסכת כלה רבתי ב׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 80,
+            "end": 98,
+            "refs": {
+                "Jerusalem Talmud Shekalim 3": "תלמוד ירושלמי שקלים ג׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kallah Rabbati 3": "מסכת כלה רבתי ג׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 201,
+            "end": 216,
+            "refs": {
+                "Gittin 61a": "גיטין ס״א א"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 53,
+            "end": 68,
+            "refs": {
+                "Pirkei Avot 4": "משנה אבות ד׳"
+            }
+        },
+        {
+            "start": 173,
+            "end": 178,
+            "refs": {
+                "Pirkei Avot 4": "משנה אבות ד׳"
+            }
+        },
+        {
+            "start": 276,
+            "end": 290,
+            "refs": {
+                "Berakhot 17a": "ברכות י״ז א"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Berakhot 4": "משנה ברכות ד׳",
+                "Pirkei Avot 4": "משנה אבות ד׳",
+                "Berakhot 26a:11-30b:13": "ברכות כ״ו א:י״א-ל׳ ב:י״ג",
+                "Tractate Kallah Rabbati 4": "מסכת כלה רבתי ד׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 63,
+            "end": 85,
+            "refs": {
+                "Jerusalem Talmud Chagigah 1:8": "תלמוד ירושלמי חגיגה א׳:ח׳"
+            }
+        },
+        {
+            "start": 236,
+            "end": 250,
+            "refs": {
+                "Zevachim 101a": "זבחים ק״א א"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Zevachim 5": "משנה זבחים ה׳",
+                "Zevachim 47a:12-57b:12": "זבחים מ״ז א:י״ב-נ״ז ב:י״ב",
+                "Tractate Kallah Rabbati 5": "מסכת כלה רבתי ה׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 174,
+            "end": 188,
+            "refs": {
+                "Berakhot 4a": "ברכות ד׳ א"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 248,
+            "end": 263,
+            "refs": {
+                "Chullin 132b": "חולין קל״ב ב"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kallah Rabbati 6": "מסכת כלה רבתי ו׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 471,
+            "end": 483,
+            "refs": {
+                "Bava Metzia 59b": "בבא מציעא נ״ט ב"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 79,
+            "end": 93,
+            "refs": {
+                "Berakhot 28b": "ברכות כ״ח ב"
+            }
+        },
+        {
+            "start": 94,
+            "end": 111,
+            "refs": {
+                "Sanhedrin 68a": "סנהדרין ס״ח א"
+            }
+        },
+        {
+            "start": 136,
+            "end": 147,
+            "refs": {
+                "Berakhot 28b": "ברכות כ״ח ב",
+                "Sanhedrin 68a": "סנהדרין ס״ח א"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Berakhot 7": "משנה ברכות ז׳",
+                "Mishnah Sanhedrin 7": "משנה סנהדרין ז׳",
+                "Berakhot 45a:4-51b:10": "ברכות מ״ה א:ד׳-נ״א ב:י׳",
+                "Sanhedrin 49b:1-68a:13": "סנהדרין מ״ט ב:א׳-ס״ח א:י״ג",
+                "Tractate Kallah Rabbati 7": "מסכת כלה רבתי ז׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Kallah Rabbati 8": "מסכת כלה רבתי ח׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 148,
+            "end": 160,
+            "refs": {
+                "Bava Metzia 107b": "בבא מציעא ק״ז ב"
+            }
+        },
+        {
+            "start": 240,
+            "end": 257,
+            "refs": {
+                "Sanhedrin 49a": "סנהדרין מ״ט א"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Bava Metzia 9": "משנה בבא מציעא ט׳",
+                "Mishnah Sanhedrin 9": "משנה סנהדרין ט׳",
+                "Bava Metzia 103a:16-116a:9": "בבא מציעא ק״ג א:ט״ז-קט״ז א:ט׳",
+                "Sanhedrin 75a:7-84a:18": "סנהדרין ע״ה א:ז׳-פ״ד א:י״ח",
+                "Tractate Kallah Rabbati 9": "מסכת כלה רבתי ט׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 129,
+            "end": 145,
+            "refs": {
+                "Tractate Derekh Eretz Rabbah 5": "מסכת דרך ארץ רבה ה׳"
+            }
+        },
+        {
+            "start": 302,
+            "end": 317,
+            "refs": {
+                "Pesachim 112a": "פסחים קי״ב א"
+            }
+        },
+        {
+            "start": 358,
+            "end": 370,
+            "refs": {
+                "Niddah 16b": "נדה ט״ז ב"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Pesachim 10": "משנה פסחים י׳",
+                "Mishnah Niddah 10": "משנה נדה י׳",
+                "Pesachim 99b:1-121b:3": "פסחים צ״ט ב:א׳-קכ״א ב:ג׳",
+                "Niddah 64b:5-73a:16": "נדה ס״ד ב:ה׳-ע״ג א:ט״ז",
+                "Tractate Derekh Eretz Rabbah 10": "מסכת דרך ארץ רבה י׳",
+                "Tractate Kallah Rabbati 10": "מסכת כלה רבתי י׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 178,
+            "end": 190,
+            "refs": {
+                "Bava Kamma 79b": "בבא קמא ע״ט ב"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 114,
+            "end": 131,
+            "refs": {
+                "Tosafot on Bava Batra 88b": "תוספות על בבא בתרא פ״ח ב"
+            }
+        }
+    ]
+}

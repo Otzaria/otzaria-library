@@ -1,0 +1,109 @@
+{
+    "4": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishneh Torah, Foreign Worship and Customs of the Nations 2": "משנה תורה, הלכות עבודה זרה וחוקות הגויים ב׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Mishneh Torah, Foreign Worship and Customs of the Nations 2:2": "משנה תורה, הלכות עבודה זרה וחוקות הגויים ב׳:ב׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 45,
+            "end": 63,
+            "refs": {
+                "Chullin 37b": "חולין ל״ז ב"
+            }
+        },
+        {
+            "start": 159,
+            "end": 172,
+            "refs": {
+                "Tosafot on Chullin 37b:6:1": "תוספות על חולין ל״ז ב:ו׳:א׳",
+                "Tosafot on Chullin 37b:6:2": "תוספות על חולין ל״ז ב:ו׳:ב׳"
+            }
+        },
+        {
+            "start": 301,
+            "end": 327,
+            "refs": {
+                "Megillah 28a": "מגילה כ״ח א"
+            }
+        },
+        {
+            "start": 637,
+            "end": 660,
+            "refs": {
+                "Niddah 13b": "נדה י״ג ב"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 63,
+            "end": 94,
+            "refs": {
+                "Tosafot on Bekhorot 2b:19:3": "תוספות על בכורות ב׳ ב:י״ט:ג׳"
+            }
+        },
+        {
+            "start": 143,
+            "end": 159,
+            "refs": {
+                "Mishnah Megillah 4": "משנה מגילה ד׳",
+                "Megillah 25b:20-32a:18": "מגילה כ״ה ב:כ׳-ל״ב א:י״ח"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 102,
+            "end": 124,
+            "refs": {
+                "Pesachim 26a": "פסחים כ״ו א"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 213,
+            "end": 243,
+            "refs": {
+                "Tosafot on Avodah Zarah 50a:9:1": "תוספות על עבודה זרה נ׳ א:ט׳:א׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 178,
+            "end": 192,
+            "refs": {
+                "Avodah Zarah 20a": "עבודה זרה כ׳ א"
+            }
+        },
+        {
+            "start": 194,
+            "end": 208,
+            "refs": {
+                "Tosafot on Avodah Zarah 20a:6:2": "תוספות על עבודה זרה כ׳ א:ו׳:ב׳"
+            }
+        },
+        {
+            "start": 538,
+            "end": 557,
+            "refs": {
+                "Nedarim 24a": "נדרים כ״ד א"
+            }
+        }
+    ]
+}

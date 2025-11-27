@@ -1,0 +1,515 @@
+{
+    "4": [
+        {
+            "start": 84,
+            "end": 94,
+            "refs": {
+                "Pirkei DeRabbi Eliezer 14": "פרקי דרבי אליעזר י״ד"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 121,
+            "end": 133,
+            "refs": {
+                "Pirkei DeRabbi Eliezer 13": "פרקי דרבי אליעזר י״ג"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 93,
+            "end": 102,
+            "refs": {
+                "Gittin 56": "גיטין נ״ו"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 92,
+            "end": 110,
+            "refs": {
+                "Rashbam on Bava Batra 115b": "רשב\"ם על בבא בתרא קט״ו ב"
+            }
+        },
+        {
+            "start": 111,
+            "end": 124,
+            "refs": {
+                "Avodah Zarah 19a": "עבודה זרה י״ט א"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 39,
+            "end": 48,
+            "refs": {
+                "Pirkei DeRabbi Eliezer 1": "פרקי דרבי אליעזר א׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 123,
+            "end": 131,
+            "refs": {
+                "Sotah 10": "סוטה י׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 277,
+            "end": 292,
+            "refs": {
+                "Tosafot on Zevachim 69": "תוספות על זבחים ס״ט"
+            }
+        },
+        {
+            "start": 612,
+            "end": 620,
+            "refs": {
+                "Bava Kamma 25": "בבא קמא כ״ה"
+            }
+        },
+        {
+            "start": 621,
+            "end": 631,
+            "refs": {
+                "Bava Batra 111": "בבא בתרא קי״א"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 89,
+            "end": 110,
+            "refs": {
+                "Jerusalem Talmud Pesachim 6:1": "תלמוד ירושלמי פסחים ו׳:א׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 64,
+            "end": 77,
+            "refs": {
+                "Berakhot 63b": "ברכות ס״ג ב"
+            }
+        },
+        {
+            "start": 78,
+            "end": 91,
+            "refs": {
+                "Niddah 27a": "נדה כ״ז א"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 109,
+            "end": 132,
+            "refs": {
+                "Jerusalem Talmud Sukkah 5:1:1-8:8": "תלמוד ירושלמי סוכה ה׳:א׳:א׳-ח׳:ח׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 113,
+            "end": 127,
+            "refs": {
+                "Berakhot 17a": "ברכות י״ז א"
+            }
+        },
+        {
+            "start": 277,
+            "end": 287,
+            "refs": {
+                "Sukkah 28": "סוכה כ״ח"
+            }
+        },
+        {
+            "start": 383,
+            "end": 396,
+            "refs": {
+                "Sukkah 31a": "סוכה ל״א א"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 61,
+            "end": 73,
+            "refs": {
+                "Yoma 35b": "יומא ל״ה ב"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 89,
+            "end": 103,
+            "refs": {
+                "Ketubot 66b": "כתובות ס״ו ב"
+            }
+        },
+        {
+            "start": 104,
+            "end": 120,
+            "refs": {
+                "Tosefta Ketubot (Lieberman) 5": "תוספתא כתובות (ליברמן) ה׳",
+                "Tosefta Ketubot 5": "תוספתא כתובות ה׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 138,
+            "end": 152,
+            "refs": {
+                "Chagigah 3a": "חגיגה ג׳ א"
+            }
+        },
+        {
+            "start": 153,
+            "end": 162,
+            "refs": {
+                "Rashi on Chagigah 3a": "רש\"י על חגיגה ג׳ א"
+            }
+        },
+        {
+            "start": 190,
+            "end": 206,
+            "refs": {
+                "Tosefta Sotah (Lieberman) 7": "תוספתא סוטה (ליברמן) ז׳",
+                "Tosefta Sotah 7": "תוספתא סוטה ז׳"
+            }
+        }
+    ],
+    "45": [
+        {
+            "start": 44,
+            "end": 58,
+            "refs": {
+                "Gittin 67a": "גיטין ס״ז א"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 94,
+            "end": 104,
+            "refs": {
+                "Gittin 67": "גיטין ס״ז"
+            }
+        },
+        {
+            "start": 131,
+            "end": 144,
+            "refs": {
+                "Eruvin 62": "עירובין ס״ב"
+            }
+        },
+        {
+            "start": 310,
+            "end": 331,
+            "refs": {
+                "Rashi on Kiddushin 62b": "רש\"י על קידושין ס״ב ב"
+            }
+        },
+        {
+            "start": 355,
+            "end": 366,
+            "refs": {
+                "Yevamot 37": "יבמות ל״ז"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 25,
+            "end": 46,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, The Chosen Temple 2": "כסף משנה על משנה תורה, הלכות בית הבחירה ב׳"
+            }
+        },
+        {
+            "start": 309,
+            "end": 330,
+            "refs": {
+                "Tosafot on Bekhorot 23b": "תוספות על בכורות כ״ג ב"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 355,
+            "end": 381,
+            "refs": {
+                "Tosafot on Shabbat 12a:5:1": "תוספות על שבת י״ב א:ה׳:א׳"
+            }
+        },
+        {
+            "start": 420,
+            "end": 448,
+            "refs": {
+                "Mishneh Torah, Defilement by a Corpse 3:10": "משנה תורה, הלכות טומאת מת ג׳:י׳"
+            }
+        }
+    ],
+    "53": [
+        {
+            "start": 156,
+            "end": 173,
+            "refs": {
+                "Jerusalem Talmud Shabbat 6": "תלמוד ירושלמי שבת ו׳"
+            }
+        }
+    ],
+    "55": [
+        {
+            "start": 145,
+            "end": 159,
+            "refs": {
+                "Pesachim 99a": "פסחים צ״ט א"
+            }
+        },
+        {
+            "start": 160,
+            "end": 175,
+            "refs": {
+                "Tosefta Pesachim (Lieberman) 9": "תוספתא פסחים (ליברמן) ט׳",
+                "Tosefta Pesachim 9": "תוספתא פסחים ט׳"
+            }
+        },
+        {
+            "start": 219,
+            "end": 241,
+            "refs": {
+                "Jerusalem Talmud Pesachim 9:9": "תלמוד ירושלמי פסחים ט׳:ט׳"
+            }
+        },
+        {
+            "start": 242,
+            "end": 260,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 7": "מסכת דרך ארץ זוטא ז׳"
+            }
+        }
+    ],
+    "56": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 23": "מסכת דרך ארץ זוטא כ״ג"
+            }
+        }
+    ],
+    "57": [
+        {
+            "start": 65,
+            "end": 85,
+            "refs": {
+                "Tamid 32a": "תמיד ל״ב א"
+            }
+        }
+    ],
+    "59": [
+        {
+            "start": 73,
+            "end": 86,
+            "refs": {
+                "Chagigah 15a": "חגיגה ט״ו א"
+            }
+        },
+        {
+            "start": 87,
+            "end": 107,
+            "refs": {
+                "Jerusalem Talmud Chagigah 2:1": "תלמוד ירושלמי חגיגה ב׳:א׳"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 65,
+            "end": 87,
+            "refs": {
+                "Sanhedrin 49b:1-68a:13": "סנהדרין מ״ט ב:א׳-ס״ח א:י״ג"
+            }
+        }
+    ],
+    "63": [
+        {
+            "start": 81,
+            "end": 95,
+            "refs": {
+                "Zevachim 62a": "זבחים ס״ב א"
+            }
+        },
+        {
+            "start": 96,
+            "end": 113,
+            "refs": {
+                "Rashi on Zevachim 62a:2:2": "רש\"י על זבחים ס״ב א:ב׳:ב׳"
+            }
+        }
+    ],
+    "66": [
+        {
+            "start": 156,
+            "end": 177,
+            "refs": {
+                "Midrash Tanchuma, Beshalach 26": "מדרש תנחומא, בשלח כ״ו"
+            }
+        }
+    ],
+    "68": [
+        {
+            "start": 65,
+            "end": 80,
+            "refs": {
+                "Kiddushin 49b": "קידושין מ״ט ב"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 119,
+            "end": 132,
+            "refs": {
+                "Zevachim 102a": "זבחים ק״ב א"
+            }
+        },
+        {
+            "start": 133,
+            "end": 148,
+            "refs": {
+                "Menachot 98a": "מנחות צ״ח א"
+            }
+        }
+    ],
+    "72": [
+        {
+            "start": 140,
+            "end": 157,
+            "refs": {
+                "Sanhedrin 89b": "סנהדרין פ״ט ב"
+            }
+        }
+    ],
+    "74": [
+        {
+            "start": 174,
+            "end": 192,
+            "refs": {
+                "Rashi on Shabbat 88b": "רש\"י על שבת פ״ח ב"
+            }
+        }
+    ],
+    "77": [
+        {
+            "start": 79,
+            "end": 95,
+            "refs": {
+                "Sanhedrin 108b": "סנהדרין ק״ח ב"
+            }
+        }
+    ],
+    "81": [
+        {
+            "start": 110,
+            "end": 124,
+            "refs": {
+                "Menachot 87b": "מנחות פ״ז ב"
+            }
+        }
+    ],
+    "86": [
+        {
+            "start": 104,
+            "end": 120,
+            "refs": {
+                "Sanhedrin 109a": "סנהדרין ק״ט א"
+            }
+        },
+        {
+            "start": 152,
+            "end": 171,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 10:3": "תלמוד ירושלמי סנהדרין י׳:ג׳"
+            }
+        },
+        {
+            "start": 172,
+            "end": 188,
+            "refs": {
+                "Tosefta Sanhedrin 13": "תוספתא סנהדרין י״ג"
+            }
+        },
+        {
+            "start": 200,
+            "end": 220,
+            "refs": {
+                "Midrash Tanchuma, Vayera 7": "מדרש תנחומא, וירא ז׳"
+            }
+        }
+    ],
+    "88": [
+        {
+            "start": 57,
+            "end": 70,
+            "refs": {
+                "Chagigah 15a": "חגיגה ט״ו א"
+            }
+        }
+    ],
+    "89": [
+        {
+            "start": 184,
+            "end": 199,
+            "refs": {
+                "Midrash Mishlei 8": "מדרש משלי ח׳"
+            }
+        }
+    ],
+    "91": [
+        {
+            "start": 587,
+            "end": 601,
+            "refs": {
+                "Gittin 57b": "גיטין נ״ז ב"
+            }
+        }
+    ],
+    "95": [
+        {
+            "start": 87,
+            "end": 100,
+            "refs": {
+                "Shabbat 127a": "שבת קכ״ז א"
+            }
+        },
+        {
+            "start": 129,
+            "end": 144,
+            "refs": {
+                "Kiddushin 39b": "קידושין ל״ט ב"
+            }
+        }
+    ],
+    "97": [
+        {
+            "start": 41,
+            "end": 54,
+            "refs": {
+                "Berakhot 57b": "ברכות נ״ז ב"
+            }
+        }
+    ]
+}

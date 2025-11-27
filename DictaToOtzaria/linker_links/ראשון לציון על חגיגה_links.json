@@ -1,0 +1,703 @@
+{
+    "4": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Chagigah 1": "משנה חגיגה א׳",
+                "Chagigah 2a:1-11b:5": "חגיגה ב׳ א:א׳-י״א ב:ה׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 12,
+            "refs": {
+                "Chagigah 2a": "חגיגה ב׳ א"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 507,
+            "end": 532,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        },
+        {
+            "start": 2441,
+            "end": 2458,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        },
+        {
+            "start": 2585,
+            "end": 2605,
+            "refs": {
+                "Mishneh Torah, Damages to Property 11": "משנה תורה, הלכות נזקי ממון י״א"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 870,
+            "end": 882,
+            "refs": {
+                "Mishnah Sheviit 6": "משנה שביעית ו׳"
+            }
+        },
+        {
+            "start": 936,
+            "end": 947,
+            "refs": {
+                "Mishnah Yevamot 1": "משנה יבמות א׳",
+                "Yevamot 2a:1-17a:10": "יבמות ב׳ א:א׳-י״ז א:י׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 480,
+            "end": 515,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 6": "משנה תורה, הלכות מתנות עניים ו׳"
+            }
+        },
+        {
+            "start": 1764,
+            "end": 1775,
+            "refs": {
+                "Mishnah Megillah 2": "משנה מגילה ב׳",
+                "Megillah 17a:9-21a:9": "מגילה י״ז א:ט׳-כ״א א:ט׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 1537,
+            "end": 1562,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 1": "משנה תורה, הלכות תרומות א׳"
+            }
+        },
+        {
+            "start": 1770,
+            "end": 1791,
+            "refs": {
+                "Mishnah Terumot 8": "משנה תרומות ח׳"
+            }
+        },
+        {
+            "start": 1949,
+            "end": 1960,
+            "refs": {
+                "Mishnah Yevamot 8": "משנה יבמות ח׳",
+                "Yevamot 70a:12-84a:4": "יבמות ע׳ א:י״ב-פ״ד א:ד׳"
+            }
+        },
+        {
+            "start": 2039,
+            "end": 2052,
+            "refs": {
+                "Pesachim 44": "פסחים מ״ד"
+            }
+        },
+        {
+            "start": 2236,
+            "end": 2262,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 1:5": "משנה תורה, הלכות תרומות א׳:ה׳"
+            }
+        },
+        {
+            "start": 2313,
+            "end": 2322,
+            "refs": {
+                "Yevamot 70a:12-84a:4": "יבמות ע׳ א:י״ב-פ״ד א:ד׳",
+                "Jerusalem Talmud Yevamot 8:1:1-6:5": "תלמוד ירושלמי יבמות ח׳:א׳:א׳-ו׳:ה׳"
+            }
+        },
+        {
+            "start": 2596,
+            "end": 2614,
+            "refs": {
+                "Yevamot 82": "יבמות פ״ב"
+            }
+        },
+        {
+            "start": 3479,
+            "end": 3490,
+            "refs": {
+                "Niddah 46": "נדה מ״ו"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 848,
+            "end": 864,
+            "refs": {
+                "Pesachim 87a:1-92b:3": "פסחים פ״ז א:א׳-צ״ב ב:ג׳"
+            }
+        },
+        {
+            "start": 2015,
+            "end": 2029,
+            "refs": {
+                "Yoma 73b:13-88a:12": "יומא ע״ג ב:י״ג-פ״ח א:י״ב"
+            }
+        },
+        {
+            "start": 3816,
+            "end": 3833,
+            "refs": {
+                "Chullin 78a:5-83b:2": "חולין ע״ח א:ה׳-פ״ג ב:ב׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 422,
+            "end": 447,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 210,
+            "end": 239,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 399,
+            "end": 418,
+            "refs": {
+                "Zevachim 119": "זבחים קי״ט"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 69,
+            "end": 93,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 2415,
+            "end": 2428,
+            "refs": {
+                "Pesachim 89": "פסחים פ״ט"
+            }
+        },
+        {
+            "start": 4758,
+            "end": 4774,
+            "refs": {
+                "Eruvin 96": "עירובין צ״ו"
+            }
+        },
+        {
+            "start": 4981,
+            "end": 4985,
+            "refs": {
+                "Rashi on Eruvin 96a": "רש\"י על עירובין צ״ו א"
+            }
+        },
+        {
+            "start": 4996,
+            "end": 5009,
+            "refs": {
+                "Chullin 85": "חולין פ״ה"
+            }
+        },
+        {
+            "start": 5291,
+            "end": 5306,
+            "refs": {
+                "Eruvin 96": "עירובין צ״ו"
+            }
+        },
+        {
+            "start": 5494,
+            "end": 5501,
+            "refs": {
+                "Rashi on Eruvin 96a": "רש\"י על עירובין צ״ו א",
+                "Rashi on Chullin 85a": "רש\"י על חולין פ״ה א"
+            }
+        },
+        {
+            "start": 5861,
+            "end": 5872,
+            "refs": {
+                "Rosh Hashanah 33": "ראש השנה ל״ג"
+            }
+        },
+        {
+            "start": 6044,
+            "end": 6056,
+            "refs": {
+                "Sukkah 42": "סוכה מ״ב"
+            }
+        },
+        {
+            "start": 7840,
+            "end": 7863,
+            "refs": {
+                "Mishneh Torah, Shofar, Sukkah and Lulav 4": "משנה תורה, הלכות שופר וסוכה ולולב ד׳"
+            }
+        },
+        {
+            "start": 10972,
+            "end": 10989,
+            "refs": {
+                "Mishneh Torah, Festival Offering 2": "משנה תורה, הלכות חגיגה ב׳"
+            }
+        },
+        {
+            "start": 11100,
+            "end": 11113,
+            "refs": {
+                "Mishnah Kiddushin 1": "משנה קידושין א׳",
+                "Kiddushin 2a:1-41a:2": "קידושין ב׳ א:א׳-מ״א א:ב׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 98,
+            "end": 108,
+            "refs": {
+                "Rosh Hashanah 4": "ראש השנה ד׳"
+            }
+        },
+        {
+            "start": 706,
+            "end": 718,
+            "refs": {
+                "Sukkah 47": "סוכה מ״ז"
+            }
+        },
+        {
+            "start": 966,
+            "end": 997,
+            "refs": {
+                "Tosafot on Sukkah 47a:12:2": "תוספות על סוכה מ״ז א:י״ב:ב׳"
+            }
+        },
+        {
+            "start": 1185,
+            "end": 1199,
+            "refs": {
+                "Pesachim 95": "פסחים צ״ה"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 1743,
+            "end": 1766,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8": "משנה תורה, הלכות מתנות עניים ח׳"
+            }
+        },
+        {
+            "start": 3817,
+            "end": 3838,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8": "משנה תורה, הלכות מתנות עניים ח׳"
+            }
+        },
+        {
+            "start": 5649,
+            "end": 5679,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8": "משנה תורה, הלכות מתנות עניים ח׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 439,
+            "end": 469,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 7": "משנה תורה, הלכות כלי המקדש והעובדין בו ז׳"
+            }
+        },
+        {
+            "start": 2369,
+            "end": 2384,
+            "refs": {
+                "Chagigah 11b:6-20b:6": "חגיגה י״א ב:ו׳-כ׳ ב:ו׳",
+                "Jerusalem Talmud Chagigah 2:1:1-7:3": "תלמוד ירושלמי חגיגה ב׳:א׳:א׳-ז׳:ג׳"
+            }
+        },
+        {
+            "start": 2417,
+            "end": 2432,
+            "refs": {
+                "Chagigah 11b:6-20b:6": "חגיגה י״א ב:ו׳-כ׳ ב:ו׳",
+                "Jerusalem Talmud Chagigah 2:1:1-7:3": "תלמוד ירושלמי חגיגה ב׳:א׳:א׳-ז׳:ג׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 501,
+            "end": 512,
+            "refs": {
+                "Rosh Hashanah 5": "ראש השנה ה׳"
+            }
+        },
+        {
+            "start": 518,
+            "end": 522,
+            "refs": {
+                "Rashi on Rosh Hashanah 5a": "רש\"י על ראש השנה ה׳ א"
+            }
+        },
+        {
+            "start": 867,
+            "end": 885,
+            "refs": {
+                "Pesachim 96": "פסחים צ״ו"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 4,
+            "end": 13,
+            "refs": {
+                "Rosh Hashanah 18a": "ראש השנה י״ח א"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 589,
+            "end": 606,
+            "refs": {
+                "Mishneh Torah, Blessings 6": "משנה תורה, הלכות ברכות ו׳"
+            }
+        },
+        {
+            "start": 713,
+            "end": 733,
+            "refs": {
+                "Mishneh Torah, Heave Offerings 11": "משנה תורה, הלכות תרומות י״א"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 115,
+            "end": 136,
+            "refs": {
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        },
+        {
+            "start": 144,
+            "end": 152,
+            "refs": {
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        },
+        {
+            "start": 175,
+            "end": 183,
+            "refs": {
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        },
+        {
+            "start": 344,
+            "end": 355,
+            "refs": {
+                "Mishnah Berakhot 6": "משנה ברכות ו׳",
+                "Berakhot 35a:1-45a:3": "ברכות ל״ה א:א׳-מ״ה א:ג׳"
+            }
+        },
+        {
+            "start": 702,
+            "end": 710,
+            "refs": {
+                "Mishnah Berakhot 6": "משנה ברכות ו׳",
+                "Mishnah Bikkurim": "משנה ביכורים",
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        },
+        {
+            "start": 762,
+            "end": 770,
+            "refs": {
+                "Mishnah Berakhot 6": "משנה ברכות ו׳",
+                "Mishnah Bikkurim": "משנה ביכורים",
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        },
+        {
+            "start": 866,
+            "end": 879,
+            "refs": {
+                "Mishnah Bikkurim 2": "משנה ביכורים ב׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 454,
+            "end": 467,
+            "refs": {
+                "Chullin 31": "חולין ל״א"
+            }
+        },
+        {
+            "start": 691,
+            "end": 720,
+            "refs": {
+                "Mishneh Torah, Immersion Pools 1": "משנה תורה, הלכות מקואות א׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 833,
+            "end": 856,
+            "refs": {
+                "Tosefta Chagigah (Lieberman) 3": "תוספתא חגיגה (ליברמן) ג׳",
+                "Tosefta Chagigah 3": "תוספתא חגיגה ג׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 146,
+            "end": 171,
+            "refs": {
+                "Mishneh Torah, Immersion Pools 8": "משנה תורה, הלכות מקואות ח׳"
+            }
+        }
+    ],
+    "45": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Immersion Pools 8": "משנה תורה, הלכות מקואות ח׳"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 1442,
+            "end": 1480,
+            "refs": {
+                "Mishneh Torah, Forbidden Foods 12:17": "משנה תורה, הלכות מאכלות אסורות י״ב:י״ז"
+            }
+        },
+        {
+            "start": 1702,
+            "end": 1713,
+            "refs": {
+                "Avodah Zarah 69": "עבודה זרה ס״ט"
+            }
+        },
+        {
+            "start": 3070,
+            "end": 3087,
+            "refs": {
+                "Mishnah Tahorot 10": "משנה טהרות י׳"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Avodah Zarah 3": "משנה עבודה זרה ג׳",
+                "Mishnah Tahorot 3": "משנה טהרות ג׳",
+                "Avodah Zarah 40b:12-49b:17": "עבודה זרה מ׳ ב:י״ב-מ״ט ב:י״ז"
+            }
+        }
+    ],
+    "53": [
+        {
+            "start": 4,
+            "end": 13,
+            "refs": {
+                "Avodah Zarah 21a": "עבודה זרה כ״א א"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 576,
+            "end": 589,
+            "refs": {
+                "Mishnah Mikvaot 6": "משנה מקואות ו׳"
+            }
+        }
+    ],
+    "55": [
+        {
+            "start": 733,
+            "end": 745,
+            "refs": {
+                "Mishnah Mikvaot 3": "משנה מקואות ג׳"
+            }
+        }
+    ],
+    "60": [
+        {
+            "start": 1968,
+            "end": 1987,
+            "refs": {
+                "Mishnah Oholot 5:3": "משנה אהלות ה׳:ג׳"
+            }
+        },
+        {
+            "start": 2243,
+            "end": 2258,
+            "refs": {
+                "Mishnah Oholot 5": "משנה אהלות ה׳"
+            }
+        }
+    ],
+    "64": [
+        {
+            "start": 68,
+            "end": 86,
+            "refs": {
+                "Mishnah Kelim 3:3": "משנה כלים ג׳:ג׳"
+            }
+        }
+    ],
+    "66": [
+        {
+            "start": 205,
+            "end": 227,
+            "refs": {
+                "Mishneh Torah, Red Heifer 10": "משנה תורה, הלכות פרה אדומה י׳"
+            }
+        }
+    ],
+    "74": [
+        {
+            "start": 4277,
+            "end": 4291,
+            "refs": {
+                "Berakhot 51b:11-53b:33": "ברכות נ״א ב:י״א-נ״ג ב:ל״ג",
+                "Pesachim 65b:10-73b:16": "פסחים ס״ה ב:י׳-ע״ג ב:ט״ז",
+                "Jerusalem Talmud Berakhot 8:1:1-8:7": "תלמוד ירושלמי ברכות ח׳:א׳:א׳-ח׳:ז׳",
+                "Jerusalem Talmud Demai 2:1:1-5:4": "תלמוד ירושלמי דמאי ב׳:א׳:א׳-ה׳:ד׳",
+                "Jerusalem Talmud Pesachim 6:1:1-6:4": "תלמוד ירושלמי פסחים ו׳:א׳:א׳-ו׳:ד׳"
+            }
+        }
+    ],
+    "77": [
+        {
+            "start": 467,
+            "end": 497,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        }
+    ],
+    "79": [
+        {
+            "start": 44,
+            "end": 83,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 1": "משנה תורה, הלכות מטמאי משכב ומושב א׳"
+            }
+        }
+    ],
+    "82": [
+        {
+            "start": 1001,
+            "end": 1010,
+            "refs": {
+                "Pesachim 87a:1-92b:3": "פסחים פ״ז א:א׳-צ״ב ב:ג׳",
+                "Niddah 59b:1-64b:4": "נדה נ״ט ב:א׳-ס״ד ב:ד׳",
+                "Jerusalem Talmud Pesachim 8:1:1-8:9": "תלמוד ירושלמי פסחים ח׳:א׳:א׳-ח׳:ט׳"
+            }
+        }
+    ],
+    "86": [
+        {
+            "start": 99,
+            "end": 138,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        }
+    ],
+    "87": [
+        {
+            "start": 142,
+            "end": 182,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        }
+    ],
+    "88": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        },
+        {
+            "start": 364,
+            "end": 397,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 5": "משנה תורה, הלכות תמידים ומוספין ה׳"
+            }
+        }
+    ],
+    "89": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 5": "משנה תורה, הלכות תמידים ומוספין ה׳",
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א"
+            }
+        },
+        {
+            "start": 412,
+            "end": 435,
+            "refs": {
+                "Mishneh Torah, Vessels 3": "משנה תורה, הלכות כלים ג׳"
+            }
+        }
+    ],
+    "90": [
+        {
+            "start": 3,
+            "end": 5,
+            "refs": {
+                "Mishneh Torah, Daily Offerings and Additional Offerings 5": "משנה תורה, הלכות תמידים ומוספין ה׳",
+                "Mishneh Torah, Those Who Defile Bed or Seat 11": "משנה תורה, הלכות מטמאי משכב ומושב י״א",
+                "Mishneh Torah, Vessels 3": "משנה תורה, הלכות כלים ג׳"
+            }
+        }
+    ]
+}

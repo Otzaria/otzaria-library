@@ -1,0 +1,147 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Taanit 1": "תלמוד ירושלמי תענית א׳",
+                "Jerusalem Talmud Taanit 1:1:2-8:5": "תלמוד ירושלמי תענית א׳:א׳:ב׳-ח׳:ה׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Taanit 1:1": "תלמוד ירושלמי תענית א׳:א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Taanit 2": "תלמוד ירושלמי תענית ב׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Taanit 1:1": "תלמוד ירושלמי תענית א׳:א׳",
+                "Jerusalem Talmud Taanit 2:1": "תלמוד ירושלמי תענית ב׳:א׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 40,
+            "end": 60,
+            "refs": {
+                "Jerusalem Talmud Makkot 2:6": "תלמוד ירושלמי מכות ב׳:ו׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 36,
+            "end": 56,
+            "refs": {
+                "Jerusalem Talmud Beitzah 1:7": "תלמוד ירושלמי ביצה א׳:ז׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Beitzah 1:8": "תלמוד ירושלמי ביצה א׳:ח׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 28,
+            "end": 50,
+            "refs": {
+                "Jerusalem Talmud Megillah 1:11": "תלמוד ירושלמי מגילה א׳:י״א"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Beitzah 3": "תלמוד ירושלמי ביצה ג׳",
+                "Jerusalem Talmud Taanit 3": "תלמוד ירושלמי תענית ג׳",
+                "Jerusalem Talmud Megillah 3": "תלמוד ירושלמי מגילה ג׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Beitzah 3:3": "תלמוד ירושלמי ביצה ג׳:ג׳",
+                "Jerusalem Talmud Taanit 3:3": "תלמוד ירושלמי תענית ג׳:ג׳",
+                "Jerusalem Talmud Megillah 3:3": "תלמוד ירושלמי מגילה ג׳:ג׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 213,
+            "end": 232,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 5:4": "תלמוד ירושלמי עבודה זרה ה׳:ד׳"
+            }
+        },
+        {
+            "start": 287,
+            "end": 297,
+            "refs": {
+                "Jerusalem Talmud Taanit 1:2": "תלמוד ירושלמי תענית א׳:ב׳",
+                "Jerusalem Talmud Megillah 1:2": "תלמוד ירושלמי מגילה א׳:ב׳",
+                "Jerusalem Talmud Avodah Zarah 1:2": "תלמוד ירושלמי עבודה זרה א׳:ב׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Taanit 4": "תלמוד ירושלמי תענית ד׳",
+                "Jerusalem Talmud Megillah 4": "תלמוד ירושלמי מגילה ד׳",
+                "Jerusalem Talmud Avodah Zarah 4": "תלמוד ירושלמי עבודה זרה ד׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Taanit 4:3": "תלמוד ירושלמי תענית ד׳:ג׳",
+                "Jerusalem Talmud Megillah 4:3": "תלמוד ירושלמי מגילה ד׳:ג׳",
+                "Jerusalem Talmud Avodah Zarah 4:3": "תלמוד ירושלמי עבודה זרה ד׳:ג׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 43,
+            "end": 62,
+            "refs": {
+                "Jerusalem Talmud Rosh Hashanah 4:4": "תלמוד ירושלמי ראש השנה ד׳:ד׳"
+            }
+        }
+    ]
+}

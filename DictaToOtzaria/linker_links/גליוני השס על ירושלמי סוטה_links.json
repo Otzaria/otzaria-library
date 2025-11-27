@@ -1,0 +1,528 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sotah 1": "תלמוד ירושלמי סוטה א׳",
+                "Jerusalem Talmud Sotah 1:1:2-10:6": "תלמוד ירושלמי סוטה א׳:א׳:ב׳-י׳:ו׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 1:1": "תלמוד ירושלמי סוטה א׳:א׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 42,
+            "end": 54,
+            "refs": {
+                "Jerusalem Talmud Sotah 9:1": "תלמוד ירושלמי סוטה ט׳:א׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 1:2": "תלמוד ירושלמי סוטה א׳:ב׳",
+                "Jerusalem Talmud Sotah 9:2": "תלמוד ירושלמי סוטה ט׳:ב׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 402,
+            "end": 424,
+            "refs": {
+                "Jerusalem Talmud Chagigah 1:8": "תלמוד ירושלמי חגיגה א׳:ח׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 74,
+            "end": 91,
+            "refs": {
+                "Sukkah 42a": "סוכה מ״ב א"
+            }
+        },
+        {
+            "start": 138,
+            "end": 160,
+            "refs": {
+                "Jerusalem Talmud Chagigah 1:1": "תלמוד ירושלמי חגיגה א׳:א׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Chagigah 1:5": "תלמוד ירושלמי חגיגה א׳:ה׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 52,
+            "end": 75,
+            "refs": {
+                "Jerusalem Talmud Megillah 1:12": "תלמוד ירושלמי מגילה א׳:י״ב"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Megillah 1:10": "תלמוד ירושלמי מגילה א׳:י׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 80,
+            "end": 103,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 1:2": "תלמוד ירושלמי סנהדרין א׳:ב׳"
+            }
+        },
+        {
+            "start": 371,
+            "end": 391,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 1:1": "תלמוד ירושלמי עבודה זרה א׳:א׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Megillah 2": "תלמוד ירושלמי מגילה ב׳",
+                "Jerusalem Talmud Sotah 2": "תלמוד ירושלמי סוטה ב׳",
+                "Jerusalem Talmud Sanhedrin 2": "תלמוד ירושלמי סנהדרין ב׳",
+                "Jerusalem Talmud Avodah Zarah 2": "תלמוד ירושלמי עבודה זרה ב׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 2:1": "תלמוד ירושלמי סוטה ב׳:א׳",
+                "Jerusalem Talmud Sanhedrin 2:1": "תלמוד ירושלמי סנהדרין ב׳:א׳",
+                "Jerusalem Talmud Avodah Zarah 2:1": "תלמוד ירושלמי עבודה זרה ב׳:א׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 2:2": "תלמוד ירושלמי סוטה ב׳:ב׳",
+                "Jerusalem Talmud Sanhedrin 2:2": "תלמוד ירושלמי סנהדרין ב׳:ב׳",
+                "Jerusalem Talmud Avodah Zarah 2:2": "תלמוד ירושלמי עבודה זרה ב׳:ב׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 96,
+            "end": 112,
+            "refs": {
+                "Beitzah 8a": "ביצה ח׳ א"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 2:4": "תלמוד ירושלמי סנהדרין ב׳:ד׳",
+                "Jerusalem Talmud Avodah Zarah 2:4": "תלמוד ירושלמי עבודה זרה ב׳:ד׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 210,
+            "end": 237,
+            "refs": {
+                "Tosafot on Menachot 52a:2:1": "תוספות על מנחות נ״ב א:ב׳:א׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tosafot on Menachot 17a:16-38a:3": "תוספות על מנחות י״ז א:ט״ז-ל״ח א:ג׳",
+                "Jerusalem Talmud Sotah 3": "תלמוד ירושלמי סוטה ג׳",
+                "Jerusalem Talmud Sanhedrin 3": "תלמוד ירושלמי סנהדרין ג׳",
+                "Jerusalem Talmud Avodah Zarah 3": "תלמוד ירושלמי עבודה זרה ג׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 3:3": "תלמוד ירושלמי סוטה ג׳:ג׳",
+                "Jerusalem Talmud Sanhedrin 3:3": "תלמוד ירושלמי סנהדרין ג׳:ג׳",
+                "Jerusalem Talmud Avodah Zarah 3:3": "תלמוד ירושלמי עבודה זרה ג׳:ג׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sotah 5": "תלמוד ירושלמי סוטה ה׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 5:1": "תלמוד ירושלמי סוטה ה׳:א׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 70,
+            "end": 90,
+            "refs": {
+                "Jerusalem Talmud Nazir 5:1": "תלמוד ירושלמי נזיר ה׳:א׳"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 108,
+            "end": 127,
+            "refs": {
+                "Jerusalem Talmud Challah 3:5": "תלמוד ירושלמי חלה ג׳:ה׳"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 101,
+            "end": 123,
+            "refs": {
+                "Jerusalem Talmud Shevuot 1:2": "תלמוד ירושלמי שבועות א׳:ב׳"
+            }
+        },
+        {
+            "start": 259,
+            "end": 278,
+            "refs": {
+                "Jerusalem Talmud Shabbat 9:4": "תלמוד ירושלמי שבת ט׳:ד׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 169,
+            "end": 185,
+            "refs": {
+                "Shabbat 96b": "שבת צ״ו ב"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Shabbat 6": "משנה שבת ו׳",
+                "Shabbat 57a:1-67b:16": "שבת נ״ז א:א׳-ס״ז ב:ט״ז",
+                "Jerusalem Talmud Sotah 6": "תלמוד ירושלמי סוטה ו׳"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 6:1": "תלמוד ירושלמי סוטה ו׳:א׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 68,
+            "end": 91,
+            "refs": {
+                "Jerusalem Talmud Ketubot 5:1": "תלמוד ירושלמי כתובות ה׳:א׳"
+            }
+        },
+        {
+            "start": 145,
+            "end": 170,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 10:2": "תלמוד ירושלמי סנהדרין י׳:ב׳"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sotah 7": "תלמוד ירושלמי סוטה ז׳",
+                "Jerusalem Talmud Ketubot 7": "תלמוד ירושלמי כתובות ז׳",
+                "Jerusalem Talmud Sanhedrin 7": "תלמוד ירושלמי סנהדרין ז׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 7:8": "תלמוד ירושלמי סוטה ז׳:ח׳",
+                "Jerusalem Talmud Ketubot 7:8": "תלמוד ירושלמי כתובות ז׳:ח׳",
+                "Jerusalem Talmud Sanhedrin 7:8": "תלמוד ירושלמי סנהדרין ז׳:ח׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 460,
+            "end": 477,
+            "refs": {
+                "Chullin 26b": "חולין כ״ו ב"
+            }
+        },
+        {
+            "start": 478,
+            "end": 501,
+            "refs": {
+                "Jerusalem Talmud Berakhot 5:2": "תלמוד ירושלמי ברכות ה׳:ב׳"
+            }
+        }
+    ],
+    "45": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Chullin 8": "משנה חולין ח׳",
+                "Chullin 103b:16-117b:5": "חולין ק״ג ב:ט״ז-קי״ז ב:ה׳",
+                "Jerusalem Talmud Berakhot 8": "תלמוד ירושלמי ברכות ח׳",
+                "Jerusalem Talmud Sotah 8": "תלמוד ירושלמי סוטה ח׳",
+                "Jerusalem Talmud Sanhedrin 8": "תלמוד ירושלמי סנהדרין ח׳"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Berakhot 8:4": "תלמוד ירושלמי ברכות ח׳:ד׳",
+                "Jerusalem Talmud Sotah 8:4": "תלמוד ירושלמי סוטה ח׳:ד׳",
+                "Jerusalem Talmud Sanhedrin 8:4": "תלמוד ירושלמי סנהדרין ח׳:ד׳"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 524,
+            "end": 534,
+            "refs": {
+                "Mishnah Sukkah 1": "משנה סוכה א׳",
+                "Sukkah 2a:1-20b:9": "סוכה ב׳ א:א׳-כ׳ ב:ט׳"
+            }
+        },
+        {
+            "start": 845,
+            "end": 866,
+            "refs": {
+                "Mishnah Eruvin 5:2": "משנה עירובין ה׳:ב׳"
+            }
+        },
+        {
+            "start": 992,
+            "end": 996,
+            "refs": {
+                "Mishnah Eruvin 5:2": "משנה עירובין ה׳:ב׳",
+                "Mishnah Sukkah": "משנה סוכה",
+                "Mishnah Sukkah 1": "משנה סוכה א׳",
+                "Eruvin": "עירובין",
+                "Sukkah": "סוכה",
+                "Sukkah 2a": "סוכה ב׳ א"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 3001,
+            "end": 3022,
+            "refs": {
+                "Jerusalem Talmud Shabbat 7:2": "תלמוד ירושלמי שבת ז׳:ב׳"
+            }
+        },
+        {
+            "start": 3890,
+            "end": 3912,
+            "refs": {
+                "Jerusalem Talmud Sheviit 1:6": "תלמוד ירושלמי שביעית א׳:ו׳"
+            }
+        },
+        {
+            "start": 3999,
+            "end": 4007,
+            "refs": {
+                "Jerusalem Talmud Sheviit 1:6": "תלמוד ירושלמי שביעית א׳:ו׳",
+                "Jerusalem Talmud Shabbat": "תלמוד ירושלמי שבת",
+                "Jerusalem Talmud Sotah": "תלמוד ירושלמי סוטה"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Sheviit 9": "תלמוד ירושלמי שביעית ט׳",
+                "Jerusalem Talmud Shabbat 9": "תלמוד ירושלמי שבת ט׳",
+                "Jerusalem Talmud Sotah 9": "תלמוד ירושלמי סוטה ט׳"
+            }
+        }
+    ],
+    "51": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sheviit 9:3": "תלמוד ירושלמי שביעית ט׳:ג׳",
+                "Jerusalem Talmud Shabbat 9:3": "תלמוד ירושלמי שבת ט׳:ג׳",
+                "Jerusalem Talmud Sotah 9:3": "תלמוד ירושלמי סוטה ט׳:ג׳"
+            }
+        }
+    ],
+    "52": [
+        {
+            "start": 43,
+            "end": 63,
+            "refs": {
+                "Jerusalem Talmud Niddah 3:3": "תלמוד ירושלמי נדה ג׳:ג׳"
+            }
+        }
+    ],
+    "53": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Shabbat 9:5": "תלמוד ירושלמי שבת ט׳:ה׳",
+                "Jerusalem Talmud Sotah 9:5": "תלמוד ירושלמי סוטה ט׳:ה׳",
+                "Jerusalem Talmud Niddah 3:5": "תלמוד ירושלמי נדה ג׳:ה׳"
+            }
+        }
+    ],
+    "54": [
+        {
+            "start": 78,
+            "end": 97,
+            "refs": {
+                "Jerusalem Talmud Peah 1:4": "תלמוד ירושלמי פאה א׳:ד׳"
+            }
+        }
+    ],
+    "55": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Sotah 9:10": "תלמוד ירושלמי סוטה ט׳:י׳"
+            }
+        }
+    ],
+    "56": [
+        {
+            "start": 58,
+            "end": 81,
+            "refs": {
+                "Jerusalem Talmud Sheviit 3:3": "תלמוד ירושלמי שביעית ג׳:ג׳"
+            }
+        }
+    ],
+    "57": [
+        {
+            "start": 4,
+            "end": 11,
+            "refs": {
+                "Jerusalem Talmud Sotah 9:15": "תלמוד ירושלמי סוטה ט׳:ט״ו"
+            }
+        }
+    ],
+    "58": [
+        {
+            "start": 120,
+            "end": 129,
+            "refs": {
+                "Penei Moshe on Jerusalem Talmud Sheviit 3:3": "פני משה על תלמוד ירושלמי שביעית ג׳:ג׳",
+                "Penei Moshe on Jerusalem Talmud Sotah": "פני משה על תלמוד ירושלמי סוטה",
+                "Penei Moshe on Jerusalem Talmud Sotah 9:10": "פני משה על תלמוד ירושלמי סוטה ט׳:י׳",
+                "Penei Moshe on Jerusalem Talmud Sotah 9:15": "פני משה על תלמוד ירושלמי סוטה ט׳:ט״ו"
+            }
+        },
+        {
+            "start": 224,
+            "end": 243,
+            "refs": {
+                "Jerusalem Talmud Avodah Zarah 3:1": "תלמוד ירושלמי עבודה זרה ג׳:א׳"
+            }
+        },
+        {
+            "start": 343,
+            "end": 369,
+            "refs": {
+                "Rashi on Berakhot 5b:18:2": "רש\"י על ברכות ה׳ ב:י״ח:ב׳"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 68,
+            "end": 91,
+            "refs": {
+                "Jerusalem Talmud Kiddushin 3:9": "תלמוד ירושלמי קידושין ג׳:ט׳"
+            }
+        }
+    ],
+    "62": [
+        {
+            "start": 74,
+            "end": 93,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3:7": "תלמוד ירושלמי בבא קמא ג׳:ז׳"
+            }
+        }
+    ]
+}

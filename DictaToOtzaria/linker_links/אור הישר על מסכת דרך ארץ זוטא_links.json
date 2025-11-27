@@ -1,0 +1,268 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 1": "מסכת דרך ארץ זוטא א׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 2": "מסכת דרך ארץ זוטא ב׳"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 41,
+            "end": 55,
+            "refs": {
+                "Berakhot 63a": "ברכות ס״ג א"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Berakhot 3": "משנה ברכות ג׳",
+                "Berakhot 17b:12-26a:10": "ברכות י״ז ב:י״ב-כ״ו א:י׳",
+                "Tractate Derekh Eretz Zuta 3": "מסכת דרך ארץ זוטא ג׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 40,
+            "end": 54,
+            "refs": {
+                "Arakhin 16b": "ערכין ט״ז ב"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 64,
+            "end": 77,
+            "refs": {
+                "Sotah 9a": "סוטה ט׳ א"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Sotah 4": "משנה סוטה ד׳",
+                "Sotah 23b:14-27b:2": "סוטה כ״ג ב:י״ד-כ״ז ב:ב׳",
+                "Tractate Derekh Eretz Zuta 4": "מסכת דרך ארץ זוטא ד׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 60,
+            "end": 71,
+            "refs": {
+                "Nedarim 37": "נדרים ל״ז"
+            }
+        },
+        {
+            "start": 340,
+            "end": 351,
+            "refs": {
+                "Commentary of the Rosh on Nedarim 37a": "פירוש הרא\"ש על נדרים ל״ז א",
+                "Rosh on Nedarim": "פסקי הרא\"ש על נדרים"
+            }
+        },
+        {
+            "start": 440,
+            "end": 448,
+            "refs": {
+                "Tractate Derekh Eretz Zuta": "מסכת דרך ארץ זוטא"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Nedarim 5": "משנה נדרים ה׳",
+                "Nedarim 45b:1-48b:8": "נדרים מ״ה ב:א׳-מ״ח ב:ח׳",
+                "Tractate Derekh Eretz Zuta 5": "מסכת דרך ארץ זוטא ה׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 81,
+            "end": 92,
+            "refs": {
+                "Sanhedrin 23a:1-31b:21": "סנהדרין כ״ג א:א׳-ל״א ב:כ״א",
+                "Jerusalem Talmud Sanhedrin 3:1:1-12:4": "תלמוד ירושלמי סנהדרין ג׳:א׳:א׳-י״ב:ד׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Mishnah Sanhedrin 6": "משנה סנהדרין ו׳",
+                "Sanhedrin 42b:1-49a:17": "סנהדרין מ״ב ב:א׳-מ״ט א:י״ז",
+                "Tractate Derekh Eretz Zuta 6": "מסכת דרך ארץ זוטא ו׳",
+                "Jerusalem Talmud Sanhedrin 6": "תלמוד ירושלמי סנהדרין ו׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 132,
+            "end": 148,
+            "refs": {
+                "Sanhedrin 102b": "סנהדרין ק״ב ב"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 7": "מסכת דרך ארץ זוטא ז׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 89,
+            "end": 112,
+            "refs": {
+                "Jerusalem Talmud Pesachim 9:9": "תלמוד ירושלמי פסחים ט׳:ט׳"
+            }
+        },
+        {
+            "start": 152,
+            "end": 169,
+            "refs": {
+                "Pesachim 99a": "פסחים צ״ט א"
+            }
+        },
+        {
+            "start": 174,
+            "end": 188,
+            "refs": {
+                "Tosefta Pesachim (Lieberman) 9": "תוספתא פסחים (ליברמן) ט׳",
+                "Tosefta Pesachim 9": "תוספתא פסחים ט׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 8": "מסכת דרך ארץ זוטא ח׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 244,
+            "end": 254,
+            "refs": {
+                "Tractate Semachot 4": "מסכת שמחות ד׳"
+            }
+        },
+        {
+            "start": 264,
+            "end": 296,
+            "refs": {
+                "Tosafot on Ketubot 17a:11:1": "תוספות על כתובות י״ז א:י״א:א׳"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 9": "מסכת דרך ארץ זוטא ט׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 62,
+            "end": 76,
+            "refs": {
+                "Yevamot 62b": "יבמות ס״ב ב"
+            }
+        },
+        {
+            "start": 77,
+            "end": 94,
+            "refs": {
+                "Sanhedrin 76b": "סנהדרין ע״ו ב"
+            }
+        },
+        {
+            "start": 131,
+            "end": 147,
+            "refs": {
+                "Tosafot on Sanhedrin 76b:4:1": "תוספות על סנהדרין ע״ו ב:ד׳:א׳"
+            }
+        },
+        {
+            "start": 148,
+            "end": 154,
+            "refs": {
+                "Rashi on Sanhedrin 76b": "רש\"י על סנהדרין ע״ו ב"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 10": "מסכת דרך ארץ זוטא י׳"
+            }
+        }
+    ],
+    "26": [
+        {
+            "start": 146,
+            "end": 162,
+            "refs": {
+                "Sanhedrin 97a": "סנהדרין צ״ז א"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Tractate Derekh Eretz Zuta 11": "מסכת דרך ארץ זוטא י״א"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 126,
+            "end": 147,
+            "refs": {
+                "Jerusalem Talmud Peah 1:1": "תלמוד ירושלמי פאה א׳:א׳"
+            }
+        }
+    ]
+}

@@ -1,0 +1,467 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 1": "תלמוד ירושלמי בבא קמא א׳",
+                "Jerusalem Talmud Bava Kamma 1:1:2-5:2": "תלמוד ירושלמי בבא קמא א׳:א׳:ב׳-ה׳:ב׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 1:1": "תלמוד ירושלמי בבא קמא א׳:א׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 63,
+            "end": 82,
+            "refs": {
+                "Jerusalem Talmud Shabbat 7:2": "תלמוד ירושלמי שבת ז׳:ב׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 35,
+            "end": 56,
+            "refs": {
+                "Jerusalem Talmud Orlah 2:3": "תלמוד ירושלמי ערלה ב׳:ג׳"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 45,
+            "end": 65,
+            "refs": {
+                "Jerusalem Talmud Nazir 6:4": "תלמוד ירושלמי נזיר ו׳:ד׳"
+            }
+        }
+    ],
+    "9": [
+        {
+            "start": 60,
+            "end": 72,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 4:1": "תלמוד ירושלמי בבא קמא ד׳:א׳"
+            }
+        }
+    ],
+    "10": [
+        {
+            "start": 62,
+            "end": 84,
+            "refs": {
+                "Jerusalem Talmud Shevuot 6:6": "תלמוד ירושלמי שבועות ו׳:ו׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Nazir 2": "תלמוד ירושלמי נזיר ב׳",
+                "Jerusalem Talmud Bava Kamma 2": "תלמוד ירושלמי בבא קמא ב׳",
+                "Jerusalem Talmud Shevuot 2": "תלמוד ירושלמי שבועות ב׳"
+            }
+        }
+    ],
+    "12": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Nazir 2:5": "תלמוד ירושלמי נזיר ב׳:ה׳",
+                "Jerusalem Talmud Bava Kamma 2:5": "תלמוד ירושלמי בבא קמא ב׳:ה׳",
+                "Jerusalem Talmud Shevuot 2:5": "תלמוד ירושלמי שבועות ב׳:ה׳"
+            }
+        }
+    ],
+    "13": [
+        {
+            "start": 49,
+            "end": 69,
+            "refs": {
+                "Jerusalem Talmud Bava Metzia 3:7": "תלמוד ירושלמי בבא מציעא ג׳:ז׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3": "תלמוד ירושלמי בבא קמא ג׳",
+                "Jerusalem Talmud Bava Metzia 3": "תלמוד ירושלמי בבא מציעא ג׳",
+                "Jerusalem Talmud Shevuot 3": "תלמוד ירושלמי שבועות ג׳"
+            }
+        }
+    ],
+    "15": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 3:3": "תלמוד ירושלמי בבא קמא ג׳:ג׳",
+                "Jerusalem Talmud Bava Metzia 3:3": "תלמוד ירושלמי בבא מציעא ג׳:ג׳",
+                "Jerusalem Talmud Shevuot 3:3": "תלמוד ירושלמי שבועות ג׳:ג׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 224,
+            "end": 247,
+            "refs": {
+                "Jerusalem Talmud Eruvin 1:3": "תלמוד ירושלמי עירובין א׳:ג׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 1:10": "תלמוד ירושלמי עירובין א׳:י׳"
+            }
+        }
+    ],
+    "18": [
+        {
+            "start": 151,
+            "end": 172,
+            "refs": {
+                "Jerusalem Talmud Shabbat 2:5": "תלמוד ירושלמי שבת ב׳:ה׳"
+            }
+        }
+    ],
+    "19": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Shabbat 4": "תלמוד ירושלמי שבת ד׳",
+                "Jerusalem Talmud Eruvin 4": "תלמוד ירושלמי עירובין ד׳",
+                "Jerusalem Talmud Bava Kamma 4": "תלמוד ירושלמי בבא קמא ד׳"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Shabbat 4:3": "תלמוד ירושלמי שבת ד׳:ג׳",
+                "Jerusalem Talmud Eruvin 4:3": "תלמוד ירושלמי עירובין ד׳:ג׳",
+                "Jerusalem Talmud Bava Kamma 4:3": "תלמוד ירושלמי בבא קמא ד׳:ג׳"
+            }
+        }
+    ],
+    "21": [
+        {
+            "start": 563,
+            "end": 587,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5:1": "תלמוד ירושלמי עירובין ה׳:א׳"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5:9": "תלמוד ירושלמי עירובין ה׳:ט׳"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 88,
+            "end": 111,
+            "refs": {
+                "Jerusalem Talmud Shevuot 8:1": "תלמוד ירושלמי שבועות ח׳:א׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5": "תלמוד ירושלמי עירובין ה׳",
+                "Jerusalem Talmud Bava Kamma 5": "תלמוד ירושלמי בבא קמא ה׳",
+                "Jerusalem Talmud Shevuot 5": "תלמוד ירושלמי שבועות ה׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5:5": "תלמוד ירושלמי עירובין ה׳:ה׳",
+                "Jerusalem Talmud Bava Kamma 5:5": "תלמוד ירושלמי בבא קמא ה׳:ה׳",
+                "Jerusalem Talmud Shevuot 5:5": "תלמוד ירושלמי שבועות ה׳:ה׳"
+            }
+        }
+    ],
+    "27": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5:6": "תלמוד ירושלמי עירובין ה׳:ו׳",
+                "Jerusalem Talmud Bava Kamma 5:6": "תלמוד ירושלמי בבא קמא ה׳:ו׳",
+                "Jerusalem Talmud Shevuot 5:6": "תלמוד ירושלמי שבועות ה׳:ו׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 102,
+            "end": 110,
+            "refs": {
+                "Jerusalem Talmud Eruvin 5:6": "תלמוד ירושלמי עירובין ה׳:ו׳",
+                "Jerusalem Talmud Bava Kamma": "תלמוד ירושלמי בבא קמא",
+                "Jerusalem Talmud Bava Kamma 5:6": "תלמוד ירושלמי בבא קמא ה׳:ו׳",
+                "Jerusalem Talmud Shevuot 5:6": "תלמוד ירושלמי שבועות ה׳:ו׳"
+            }
+        },
+        {
+            "start": 147,
+            "end": 170,
+            "refs": {
+                "Jerusalem Talmud Eruvin 9:1": "תלמוד ירושלמי עירובין ט׳:א׳"
+            }
+        },
+        {
+            "start": 197,
+            "end": 208,
+            "refs": {
+                "Jerusalem Talmud Eruvin 10:7": "תלמוד ירושלמי עירובין י׳:ז׳",
+                "Jerusalem Talmud Bava Kamma 10:7": "תלמוד ירושלמי בבא קמא י׳:ז׳"
+            }
+        },
+        {
+            "start": 232,
+            "end": 255,
+            "refs": {
+                "Jerusalem Talmud Kilayim 5:3": "תלמוד ירושלמי כלאים ה׳:ג׳"
+            }
+        },
+        {
+            "start": 341,
+            "end": 349,
+            "refs": {
+                "Jerusalem Talmud Kilayim 5:3": "תלמוד ירושלמי כלאים ה׳:ג׳",
+                "Jerusalem Talmud Eruvin 10:7": "תלמוד ירושלמי עירובין י׳:ז׳",
+                "Jerusalem Talmud Bava Kamma": "תלמוד ירושלמי בבא קמא",
+                "Jerusalem Talmud Bava Kamma 10:7": "תלמוד ירושלמי בבא קמא י׳:ז׳"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 10:8": "תלמוד ירושלמי עירובין י׳:ח׳",
+                "Jerusalem Talmud Bava Kamma 10:8": "תלמוד ירושלמי בבא קמא י׳:ח׳"
+            }
+        }
+    ],
+    "30": [
+        {
+            "start": 56,
+            "end": 75,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 4:4": "תלמוד ירושלמי בבא בתרא ד׳:ד׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Eruvin 7": "תלמוד ירושלמי עירובין ז׳",
+                "Jerusalem Talmud Bava Kamma 7": "תלמוד ירושלמי בבא קמא ז׳",
+                "Jerusalem Talmud Bava Batra 7": "תלמוד ירושלמי בבא בתרא ז׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Eruvin 7:3": "תלמוד ירושלמי עירובין ז׳:ג׳",
+                "Jerusalem Talmud Bava Kamma 7:3": "תלמוד ירושלמי בבא קמא ז׳:ג׳",
+                "Jerusalem Talmud Bava Batra 7:3": "תלמוד ירושלמי בבא בתרא ז׳:ג׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 35,
+            "end": 54,
+            "refs": {
+                "Jerusalem Talmud Bava Batra 3:6": "תלמוד ירושלמי בבא בתרא ג׳:ו׳"
+            }
+        }
+    ],
+    "34": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 7:4": "תלמוד ירושלמי בבא קמא ז׳:ד׳",
+                "Jerusalem Talmud Bava Batra 3:4": "תלמוד ירושלמי בבא בתרא ג׳:ד׳",
+                "Jerusalem Talmud Bava Batra 7:4": "תלמוד ירושלמי בבא בתרא ז׳:ד׳"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 8": "תלמוד ירושלמי בבא קמא ח׳",
+                "Jerusalem Talmud Bava Batra 8": "תלמוד ירושלמי בבא בתרא ח׳"
+            }
+        }
+    ],
+    "37": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 8:1": "תלמוד ירושלמי בבא קמא ח׳:א׳",
+                "Jerusalem Talmud Bava Batra 7:1": "תלמוד ירושלמי בבא בתרא ז׳:א׳",
+                "Jerusalem Talmud Bava Batra 8:1": "תלמוד ירושלמי בבא בתרא ח׳:א׳"
+            }
+        }
+    ],
+    "38": [
+        {
+            "start": 656,
+            "end": 672,
+            "refs": {
+                "Bava Kamma 59a": "בבא קמא נ״ט א"
+            }
+        },
+        {
+            "start": 706,
+            "end": 729,
+            "refs": {
+                "Jerusalem Talmud Ketubot 12:1": "תלמוד ירושלמי כתובות י״ב:א׳"
+            }
+        }
+    ],
+    "39": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Ketubot 12:2": "תלמוד ירושלמי כתובות י״ב:ב׳",
+                "Jerusalem Talmud Bava Batra 8:2": "תלמוד ירושלמי בבא בתרא ח׳:ב׳"
+            }
+        }
+    ],
+    "40": [
+        {
+            "start": 36,
+            "end": 56,
+            "refs": {
+                "Jerusalem Talmud Nazir 9:5": "תלמוד ירושלמי נזיר ט׳:ה׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Ketubot 9": "תלמוד ירושלמי כתובות ט׳",
+                "Jerusalem Talmud Nazir 9": "תלמוד ירושלמי נזיר ט׳",
+                "Jerusalem Talmud Bava Kamma 9": "תלמוד ירושלמי בבא קמא ט׳",
+                "Jerusalem Talmud Bava Batra 9": "תלמוד ירושלמי בבא בתרא ט׳"
+            }
+        }
+    ],
+    "42": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Nazir 9:1": "תלמוד ירושלמי נזיר ט׳:א׳",
+                "Jerusalem Talmud Bava Kamma 9:1": "תלמוד ירושלמי בבא קמא ט׳:א׳",
+                "Jerusalem Talmud Bava Batra 9:1": "תלמוד ירושלמי בבא בתרא ט׳:א׳"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 35,
+            "end": 59,
+            "refs": {
+                "Jerusalem Talmud Sanhedrin 4:5": "תלמוד ירושלמי סנהדרין ד׳:ה׳"
+            }
+        },
+        {
+            "start": 60,
+            "end": 71,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 6:1": "תלמוד ירושלמי בבא קמא ו׳:א׳",
+                "Jerusalem Talmud Bava Batra 6:1": "תלמוד ירושלמי בבא בתרא ו׳:א׳",
+                "Jerusalem Talmud Sanhedrin 6:1": "תלמוד ירושלמי סנהדרין ו׳:א׳"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 6:5": "תלמוד ירושלמי בבא קמא ו׳:ה׳",
+                "Jerusalem Talmud Sanhedrin 6:5": "תלמוד ירושלמי סנהדרין ו׳:ה׳"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 673,
+            "end": 694,
+            "refs": {
+                "Tosafot on Rosh Hashanah 6a:13:1": "תוספות על ראש השנה ו׳ א:י״ג:א׳"
+            }
+        }
+    ],
+    "48": [
+        {
+            "start": 4,
+            "end": 9,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10": "תלמוד ירושלמי בבא קמא י׳"
+            }
+        }
+    ],
+    "49": [
+        {
+            "start": 4,
+            "end": 10,
+            "refs": {
+                "Jerusalem Talmud Bava Kamma 10:5": "תלמוד ירושלמי בבא קמא י׳:ה׳"
+            }
+        }
+    ]
+}

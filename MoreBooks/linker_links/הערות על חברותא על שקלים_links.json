@@ -1,0 +1,546 @@
+{
+    "3": [
+        {
+            "start": 4,
+            "end": 27,
+            "refs": {
+                "Tosafot on Kiddushin 54a": "תוספות על קידושין נ״ד א"
+            }
+        },
+        {
+            "start": 273,
+            "end": 293,
+            "refs": {
+                "Ritva on Megillah 29a": "ריטב\"א על מגילה כ״ט א"
+            }
+        },
+        {
+            "start": 328,
+            "end": 350,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 2:9": "משנה תורה, הלכות שקלים ב׳:ט׳"
+            }
+        }
+    ],
+    "4": [
+        {
+            "start": 12,
+            "end": 32,
+            "refs": {
+                "Tosefta Shekalim (Lieberman) 1:1": "תוספתא שקלים (ליברמן) א׳:א׳",
+                "Tosefta Megillah (Lieberman) 1:1": "תוספתא מגילה (ליברמן) א׳:א׳"
+            }
+        },
+        {
+            "start": 37,
+            "end": 43,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 2:9": "משנה תורה, הלכות שקלים ב׳:ט׳"
+            }
+        }
+    ],
+    "5": [
+        {
+            "start": 4,
+            "end": 30,
+            "refs": {
+                "Tractate Soferim 21:4": "מסכת סופרים כ״א:ד׳"
+            }
+        }
+    ],
+    "6": [
+        {
+            "start": 4,
+            "end": 34,
+            "refs": {
+                "Rosh Hashanah 7a": "ראש השנה ז׳ א"
+            }
+        }
+    ],
+    "7": [
+        {
+            "start": 67,
+            "end": 100,
+            "refs": {
+                "Shulchan Arukh, Choshen Mishpat 43:28": "שולחן ערוך, חושן משפט מ״ג:כ״ח"
+            }
+        },
+        {
+            "start": 154,
+            "end": 166,
+            "refs": {
+                "Siftei Kohen on Shulchan Arukh, Choshen Mishpat 43:28": "שפתי כהן על שולחן ערוך חושן משפט מ״ג:כ״ח"
+            }
+        }
+    ],
+    "8": [
+        {
+            "start": 4,
+            "end": 35,
+            "refs": {
+                "Mishneh Torah, Woman Suspected of Infidelity 4:1": "משנה תורה, הלכות סוטה ד׳:א׳"
+            }
+        },
+        {
+            "start": 187,
+            "end": 196,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, Woman Suspected of Infidelity 4:1": "כסף משנה על משנה תורה, הלכות סוטה ד׳:א׳"
+            }
+        }
+    ],
+    "11": [
+        {
+            "start": 50,
+            "end": 86,
+            "refs": {
+                "Mishneh Torah, Defilement by a Corpse 8:9": "משנה תורה, הלכות טומאת מת ח׳:ט׳"
+            }
+        }
+    ],
+    "17": [
+        {
+            "start": 154,
+            "end": 169,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        },
+        {
+            "start": 293,
+            "end": 295,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b": "תוספות על ראש השנה כ״ט ב",
+                "Tosafot on Beitzah 15b": "תוספות על ביצה ט״ו ב"
+            }
+        }
+    ],
+    "23": [
+        {
+            "start": 5,
+            "end": 45,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8:8": "משנה תורה, הלכות מתנות עניים ח׳:ח׳"
+            }
+        }
+    ],
+    "24": [
+        {
+            "start": 5,
+            "end": 11,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8:8": "משנה תורה, הלכות מתנות עניים ח׳:ח׳"
+            }
+        }
+    ],
+    "25": [
+        {
+            "start": 99,
+            "end": 137,
+            "refs": {
+                "Mishneh Torah, Gifts to the Poor 8:8": "משנה תורה, הלכות מתנות עניים ח׳:ח׳"
+            }
+        }
+    ],
+    "28": [
+        {
+            "start": 5,
+            "end": 23,
+            "refs": {
+                "Rashi on Bekhorot 56b": "רש\"י על בכורות נ״ו ב"
+            }
+        },
+        {
+            "start": 213,
+            "end": 241,
+            "refs": {
+                "Mishneh Torah, Firstlings 6:10": "משנה תורה, הלכות בכורות ו׳:י׳"
+            }
+        }
+    ],
+    "31": [
+        {
+            "start": 65,
+            "end": 92,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 2:1": "משנה תורה, הלכות שקלים ב׳:א׳"
+            }
+        }
+    ],
+    "32": [
+        {
+            "start": 9,
+            "end": 42,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 3:8": "משנה תורה, הלכות שקלים ג׳:ח׳"
+            }
+        },
+        {
+            "start": 395,
+            "end": 402,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 3:9": "משנה תורה, הלכות שקלים ג׳:ט׳"
+            }
+        }
+    ],
+    "33": [
+        {
+            "start": 5,
+            "end": 23,
+            "refs": {
+                "Rashi on Ketubot 108a": "רש\"י על כתובות ק״ח א"
+            }
+        },
+        {
+            "start": 135,
+            "end": 144,
+            "refs": {
+                "Tosafot on Ketubot 108a": "תוספות על כתובות ק״ח א"
+            }
+        }
+    ],
+    "35": [
+        {
+            "start": 28,
+            "end": 61,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 1:1": "משנה תורה, הלכות שקלים א׳:א׳"
+            }
+        }
+    ],
+    "36": [
+        {
+            "start": 98,
+            "end": 129,
+            "refs": {
+                "Mishneh Torah, Sheqel Dues 1:5-6": "משנה תורה, הלכות שקלים א׳:ה׳-ו׳"
+            }
+        }
+    ],
+    "41": [
+        {
+            "start": 5,
+            "end": 34,
+            "refs": {
+                "Rashi on Menachot 108a:7:2": "רש\"י על מנחות ק״ח א:ז׳:ב׳"
+            }
+        },
+        {
+            "start": 93,
+            "end": 134,
+            "refs": {
+                "Mishneh Torah, Sacrifices Rendered Unfit 5:8": "משנה תורה, הלכות פסולי המוקדשין ה׳:ח׳"
+            }
+        },
+        {
+            "start": 579,
+            "end": 596,
+            "refs": {
+                "Mishnah Shekalim 6:6": "משנה שקלים ו׳:ו׳"
+            }
+        },
+        {
+            "start": 965,
+            "end": 967,
+            "refs": {
+                "Mishnah Shekalim 6:6": "משנה שקלים ו׳:ו׳"
+            }
+        },
+        {
+            "start": 1012,
+            "end": 1024,
+            "refs": {
+                "Menachot 108": "מנחות ק״ח"
+            }
+        }
+    ],
+    "43": [
+        {
+            "start": 5,
+            "end": 41,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 356:1": "שולחן ערוך, יורה דעה שנ״ו:א׳"
+            }
+        },
+        {
+            "start": 66,
+            "end": 83,
+            "refs": {
+                "Pitchei Teshuva on Shulchan Arukh, Yoreh De'ah 356:101": "פתחי תשובה על שולחן ערוך יורה דעה שנ״ו:ק״א"
+            }
+        }
+    ],
+    "44": [
+        {
+            "start": 422,
+            "end": 460,
+            "refs": {
+                "Shulchan Arukh, Yoreh De'ah 253:7": "שולחן ערוך, יורה דעה רנ״ג:ז׳"
+            }
+        },
+        {
+            "start": 478,
+            "end": 500,
+            "refs": {
+                "Beur HaGra on Shulchan Arukh, Yoreh De'ah 253:114": "ביאור הגר\"א על שולחן ערוך יורה דעה רנ״ג:קי״ד"
+            }
+        }
+    ],
+    "46": [
+        {
+            "start": 137,
+            "end": 155,
+            "refs": {
+                "Tosafot on Bekhorot 58b": "תוספות על בכורות נ״ח ב"
+            }
+        }
+    ],
+    "47": [
+        {
+            "start": 5,
+            "end": 18,
+            "refs": {
+                "Bekhorot 58a": "בכורות נ״ח א"
+            }
+        },
+        {
+            "start": 348,
+            "end": 357,
+            "refs": {
+                "Shabbat 148b": "שבת קמ״ח ב"
+            }
+        }
+    ],
+    "50": [
+        {
+            "start": 57,
+            "end": 75,
+            "refs": {
+                "Rosh Hashanah 6b": "ראש השנה ו׳ ב"
+            }
+        }
+    ],
+    "55": [
+        {
+            "start": 5,
+            "end": 24,
+            "refs": {
+                "Ohr Sameach on Mishneh Torah, Sheqel Dues 2:9": "אור שמח על משנה תורה, הלכות שקלים ב׳:ט׳"
+            }
+        },
+        {
+            "start": 384,
+            "end": 399,
+            "refs": {
+                "Tosafot on Menachot 84a": "תוספות על מנחות פ״ד א"
+            }
+        },
+        {
+            "start": 717,
+            "end": 739,
+            "refs": {
+                "Bava Metzia 118a": "בבא מציעא קי״ח א"
+            }
+        }
+    ],
+    "59": [
+        {
+            "start": 48,
+            "end": 68,
+            "refs": {
+                "Sanhedrin 17b": "סנהדרין י״ז ב"
+            }
+        }
+    ],
+    "62": [
+        {
+            "start": 5,
+            "end": 33,
+            "refs": {
+                "Yoma 23a": "יומא כ״ג א"
+            }
+        }
+    ],
+    "65": [
+        {
+            "start": 74,
+            "end": 96,
+            "refs": {
+                "Yoma 38a": "יומא ל״ח א"
+            }
+        }
+    ],
+    "66": [
+        {
+            "start": 52,
+            "end": 77,
+            "refs": {
+                "Beit Yosef, Orach Chayim 133": "בית יוסף, אורח חיים קל״ג"
+            }
+        },
+        {
+            "start": 254,
+            "end": 270,
+            "refs": {
+                "Yoma 53a": "יומא נ״ג א"
+            }
+        }
+    ],
+    "70": [
+        {
+            "start": 5,
+            "end": 46,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 4:16-17": "משנה תורה, הלכות כלי המקדש והעובדין בו ד׳:ט״ז-י״ז"
+            }
+        }
+    ],
+    "71": [
+        {
+            "start": 5,
+            "end": 19,
+            "refs": {
+                "Tosefta Shekalim (Lieberman) 2": "תוספתא שקלים (ליברמן) ב׳",
+                "Tosefta Shekalim 2": "תוספתא שקלים ב׳"
+            }
+        },
+        {
+            "start": 21,
+            "end": 60,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 4:17": "משנה תורה, הלכות כלי המקדש והעובדין בו ד׳:י״ז"
+            }
+        }
+    ],
+    "74": [
+        {
+            "start": 66,
+            "end": 108,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 7:12": "משנה תורה, הלכות כלי המקדש והעובדין בו ז׳:י״ב"
+            }
+        },
+        {
+            "start": 183,
+            "end": 196,
+            "refs": {
+                "Kessef Mishneh on Mishneh Torah, Vessels of the Sanctuary and Those who Serve Therein 7:12": "כסף משנה על משנה תורה, הלכות כלי המקדש והעובדין בו ז׳:י״ב"
+            }
+        }
+    ],
+    "76": [
+        {
+            "start": 57,
+            "end": 81,
+            "refs": {
+                "Bava Batra 2a:1-17a:7": "בבא בתרא ב׳ א:א׳-י״ז א:ז׳"
+            }
+        },
+        {
+            "start": 152,
+            "end": 171,
+            "refs": {
+                "Tosafot on Eruvin 63b": "תוספות על עירובין ס״ג ב"
+            }
+        }
+    ],
+    "78": [
+        {
+            "start": 213,
+            "end": 247,
+            "refs": {
+                "Mishneh Torah, Vessels of the Sanctuary and Those Who Serve Therein 1:11": "משנה תורה, הלכות כלי המקדש והעובדין בו א׳:י״א"
+            }
+        }
+    ],
+    "80": [
+        {
+            "start": 109,
+            "end": 120,
+            "refs": {
+                "Menachot 95b": "מנחות צ״ה ב"
+            }
+        },
+        {
+            "start": 235,
+            "end": 246,
+            "refs": {
+                "Menachot 28b": "מנחות כ״ח ב"
+            }
+        },
+        {
+            "start": 394,
+            "end": 420,
+            "refs": {
+                "Tosafot on Zevachim 47a:12-57b:12": "תוספות על זבחים מ״ז א:י״ב-נ״ז ב:י״ב"
+            }
+        }
+    ],
+    "82": [
+        {
+            "start": 5,
+            "end": 15,
+            "refs": {
+                "Yoma 55b": "יומא נ״ה ב"
+            }
+        },
+        {
+            "start": 16,
+            "end": 28,
+            "refs": {
+                "Temurah 23b": "תמורה כ״ג ב"
+            }
+        },
+        {
+            "start": 100,
+            "end": 115,
+            "refs": {
+                "Ezra 1": "עזרא א׳"
+            }
+        }
+    ],
+    "84": [
+        {
+            "start": 129,
+            "end": 140,
+            "refs": {
+                "Menachot 107b": "מנחות ק״ז ב"
+            }
+        },
+        {
+            "start": 249,
+            "end": 256,
+            "refs": {
+                "Rashi on Menachot 107b": "רש\"י על מנחות ק״ז ב"
+            }
+        }
+    ],
+    "85": [
+        {
+            "start": 42,
+            "end": 58,
+            "refs": {
+                "Tosafot on Gittin 28b": "תוספות על גיטין כ״ח ב"
+            }
+        }
+    ],
+    "91": [
+        {
+            "start": 83,
+            "end": 104,
+            "refs": {
+                "Menachot 78a": "מנחות ע״ח א"
+            }
+        }
+    ],
+    "93": [
+        {
+            "start": 231,
+            "end": 240,
+            "refs": {
+                "Mishnah Shekalim 1:8": "משנה שקלים א׳:ח׳"
+            }
+        }
+    ]
+}
