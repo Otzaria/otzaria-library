@@ -18,6 +18,7 @@ env:
   MONGO_PORT: 27017
   MONGO_DB_NAME: sefaria
   SEFARIA_TO_OTZARIA_PATH: ${{ github.workspace }}/sefariaToOtzaria
+  SCRIPTS_PATH: ${{ github.workspace }}/sefariaToOtzaria/סקריפטים/from_export
 
 jobs:
   export_release:
@@ -172,7 +173,7 @@ jobs:
           set -euo pipefail
           cd Sefaria-Project/sefaria
           cp local_settings_example.py local_settings.py
-          python ../../configure_local_settings.py
+          python ${SCRIPTS_PATH}/configure_local_settings.py
           
           echo ""
           echo "📄 Checking local_settings.py content:"
@@ -288,7 +289,7 @@ jobs:
           fi
           
           # Ensure 'history' collection exists (some exports expect it)
-          python ./ensure_history_collection.py
+          python ${SCRIPTS_PATH}/ensure_history_collection.py
           
           # Clean up dump files to free space
           rm -rf mongo_dump_pkg
@@ -300,7 +301,7 @@ jobs:
         run: |
           set -euo pipefail
           export PYTHONPATH="${GITHUB_WORKSPACE:-$PWD}/Sefaria-Project"
-          if ! python ./check_export_module.py; then
+          if ! python ${SCRIPTS_PATH}/check_export_module.py; then
             echo "❌ Failed to load export module"
           fi
 
