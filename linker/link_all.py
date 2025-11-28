@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from linker.linker import link_book
+from linker import link_book
 
 
 def main() -> None:

@@ -1,0 +1,783 @@
+{
+    "5": [
+        {
+            "start": 74,
+            "end": 80,
+            "refs": {
+                "Esther 5": "אסתר ה׳"
+            }
+        }
+    ],
+    "14": [
+        {
+            "start": 15,
+            "end": 26,
+            "refs": {
+                "Sukkah 6b": "סוכה ו׳ ב",
+                "Jerusalem Talmud Sukkah 1:7:2-8:2": "תלמוד ירושלמי סוכה א׳:ז׳:ב׳-ח׳:ב׳"
+            }
+        }
+    ],
+    "16": [
+        {
+            "start": 28,
+            "end": 45,
+            "refs": {
+                "Rashi on Chagigah 11": "רש\"י על חגיגה י״א"
+            }
+        }
+    ],
+    "20": [
+        {
+            "start": 51,
+            "end": 66,
+            "refs": {
+                "Rashi on Sukkah 6b": "רש\"י על סוכה ו׳ ב"
+            }
+        }
+    ],
+    "22": [
+        {
+            "start": 5,
+            "end": 18,
+            "refs": {
+                "Mishnah Berurah 340": "משנה ברורה ש״מ"
+            }
+        }
+    ],
+    "29": [
+        {
+            "start": 38,
+            "end": 62,
+            "refs": {
+                "Tosafot on Arakhin 2b:8:2": "תוספות על ערכין ב׳ ב:ח׳:ב׳"
+            }
+        }
+    ],
+    "61": [
+        {
+            "start": 68,
+            "end": 92,
+            "refs": {
+                "Bach, Yoreh De'ah 287": "ב\"ח, יורה דעה רפ״ז"
+            }
+        }
+    ],
+    "80": [
+        {
+            "start": 5,
+            "end": 19,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "87": [
+        {
+            "start": 22,
+            "end": 38,
+            "refs": {
+                "Rashi on Sukkah 22b": "רש\"י על סוכה כ״ב ב"
+            }
+        }
+    ],
+    "88": [
+        {
+            "start": 22,
+            "end": 38,
+            "refs": {
+                "Rashi on Sukkah 22b": "רש\"י על סוכה כ״ב ב"
+            }
+        }
+    ],
+    "95": [
+        {
+            "start": 21,
+            "end": 38,
+            "refs": {
+                "Tosafot on Sukkah 8a": "תוספות על סוכה ח׳ א"
+            }
+        }
+    ],
+    "100": [
+        {
+            "start": 5,
+            "end": 19,
+            "refs": {
+                "Rashi on Shabbat 35": "רש\"י על שבת ל״ה"
+            }
+        }
+    ],
+    "102": [
+        {
+            "start": 41,
+            "end": 55,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "105": [
+        {
+            "start": 6,
+            "end": 21,
+            "refs": {
+                "Rashi on Shabbat 101b": "רש\"י על שבת ק״א ב"
+            }
+        }
+    ],
+    "109": [
+        {
+            "start": 6,
+            "end": 22,
+            "refs": {
+                "Rashi on Gittin 67": "רש\"י על גיטין ס״ז"
+            }
+        }
+    ],
+    "112": [
+        {
+            "start": 671,
+            "end": 710,
+            "refs": {
+                "Chidushei Agadot on Makkot 23b:9": "חידושי אגדות על מכות כ״ג ב:ט׳"
+            }
+        },
+        {
+            "start": 721,
+            "end": 723,
+            "refs": {
+                "Chidushei Agadot on Makkot 23b": "חידושי אגדות על מכות כ״ג ב"
+            }
+        }
+    ],
+    "126": [
+        {
+            "start": 24,
+            "end": 41,
+            "refs": {
+                "Bava Kamma 81b": "בבא קמא פ״א ב"
+            }
+        }
+    ],
+    "134": [
+        {
+            "start": 8,
+            "end": 24,
+            "refs": {
+                "Biur Halacha 358:1": "ביאור הלכה שנ״ח:א׳"
+            }
+        }
+    ],
+    "140": [
+        {
+            "start": 259,
+            "end": 287,
+            "refs": {
+                "Teshuvot haRashba part I 60": "שו\"ת הרשב\"א חלק א ס׳"
+            }
+        },
+        {
+            "start": 521,
+            "end": 535,
+            "refs": {
+                "Tur, Even HaEzer": "טור, אבן העזר"
+            }
+        }
+    ],
+    "143": [
+        {
+            "start": 618,
+            "end": 644,
+            "refs": {
+                "Teshuvot haRashba part I 60": "שו\"ת הרשב\"א חלק א ס׳"
+            }
+        },
+        {
+            "start": 654,
+            "end": 656,
+            "refs": {
+                "Teshuvot haRashba part I 60": "שו\"ת הרשב\"א חלק א ס׳"
+            }
+        }
+    ],
+    "146": [
+        {
+            "start": 5,
+            "end": 24,
+            "refs": {
+                "Rashi on Berakhot 61a": "רש\"י על ברכות ס״א א"
+            }
+        }
+    ],
+    "147": [
+        {
+            "start": 5,
+            "end": 25,
+            "refs": {
+                "Tosafot on Berakhot 61a": "תוספות על ברכות ס״א א"
+            }
+        }
+    ],
+    "149": [
+        {
+            "start": 5,
+            "end": 24,
+            "refs": {
+                "Rashi on Berakhot 61a": "רש\"י על ברכות ס״א א"
+            }
+        }
+    ],
+    "152": [
+        {
+            "start": 87,
+            "end": 99,
+            "refs": {
+                "Sotah 35a": "סוטה ל״ה א"
+            }
+        }
+    ],
+    "158": [
+        {
+            "start": 11,
+            "end": 23,
+            "refs": {
+                "Joshua 18:16": "יהושע י״ח:ט״ז"
+            }
+        }
+    ],
+    "159": [
+        {
+            "start": 15,
+            "end": 27,
+            "refs": {
+                "Yoma 75a": "יומא ע״ה א"
+            }
+        }
+    ],
+    "175": [
+        {
+            "start": 185,
+            "end": 213,
+            "refs": {
+                "Tosafot on Pesachim 94a:10:1": "תוספות על פסחים צ״ד א:י׳:א׳"
+            }
+        }
+    ],
+    "180": [
+        {
+            "start": 102,
+            "end": 119,
+            "refs": {
+                "Shabbat 14b": "שבת י״ד ב"
+            }
+        },
+        {
+            "start": 359,
+            "end": 373,
+            "refs": {
+                "Chagigah 18b": "חגיגה י״ח ב"
+            }
+        }
+    ],
+    "195": [
+        {
+            "start": 42,
+            "end": 71,
+            "refs": {
+                "Mishnah Berurah 358:12": "משנה ברורה שנ״ח:י״ב"
+            }
+        }
+    ],
+    "200": [
+        {
+            "start": 17,
+            "end": 37,
+            "refs": {
+                "Mishnah Berurah 359": "משנה ברורה שנ״ט"
+            }
+        }
+    ],
+    "218": [
+        {
+            "start": 107,
+            "end": 137,
+            "refs": {
+                "Mishneh Torah, Eruvin 1:11": "משנה תורה, הלכות עירובין א׳:י״א"
+            }
+        }
+    ],
+    "233": [
+        {
+            "start": 81,
+            "end": 107,
+            "refs": {
+                "Mishneh Torah, Immersion Pools 7:4": "משנה תורה, הלכות מקואות ז׳:ד׳"
+            }
+        }
+    ],
+    "237": [
+        {
+            "start": 23,
+            "end": 37,
+            "refs": {
+                "Pesachim 32a": "פסחים ל״ב א"
+            }
+        }
+    ],
+    "242": [
+        {
+            "start": 9,
+            "end": 29,
+            "refs": {
+                "Mishnah Oholot 3:6": "משנה אהלות ג׳:ו׳"
+            }
+        },
+        {
+            "start": 432,
+            "end": 444,
+            "refs": {
+                "Beitzah 10a": "ביצה י׳ א"
+            }
+        }
+    ],
+    "258": [
+        {
+            "start": 52,
+            "end": 66,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "292": [
+        {
+            "start": 95,
+            "end": 114,
+            "refs": {
+                "Rashi on Beitzah 31b": "רש\"י על ביצה ל״א ב"
+            }
+        }
+    ],
+    "321": [
+        {
+            "start": 111,
+            "end": 130,
+            "refs": {
+                "Rashi on Chullin 14a": "רש\"י על חולין י״ד א"
+            }
+        }
+    ],
+    "332": [
+        {
+            "start": 18,
+            "end": 33,
+            "refs": {
+                "Rashi on Beitzah 2b": "רש\"י על ביצה ב׳ ב"
+            }
+        },
+        {
+            "start": 52,
+            "end": 54,
+            "refs": {
+                "Rashi on Beitzah 2b": "רש\"י על ביצה ב׳ ב"
+            }
+        }
+    ],
+    "362": [
+        {
+            "start": 564,
+            "end": 583,
+            "refs": {
+                "Eruvin 89a:4-17": "עירובין פ״ט א:ד׳-י״ז"
+            }
+        },
+        {
+            "start": 613,
+            "end": 628,
+            "refs": {
+                "Rashi on Eruvin 89a:14:1": "רש\"י על עירובין פ״ט א:י״ד:א׳"
+            }
+        },
+        {
+            "start": 648,
+            "end": 666,
+            "refs": {
+                "Tosafot on Eruvin 89a:14:1": "תוספות על עירובין פ״ט א:י״ד:א׳"
+            }
+        }
+    ],
+    "366": [
+        {
+            "start": 9,
+            "end": 36,
+            "refs": {
+                "Mishnah Berurah 405:26": "משנה ברורה ת״ה:כ״ו"
+            }
+        }
+    ],
+    "372": [
+        {
+            "start": 5,
+            "end": 22,
+            "refs": {
+                "Rosh Hashanah 11b": "ראש השנה י״א ב"
+            }
+        },
+        {
+            "start": 347,
+            "end": 363,
+            "refs": {
+                "Sanhedrin 98a": "סנהדרין צ״ח א"
+            }
+        }
+    ],
+    "374": [
+        {
+            "start": 5,
+            "end": 24,
+            "refs": {
+                "Gittin 28b": "גיטין כ״ח ב"
+            }
+        }
+    ],
+    "376": [
+        {
+            "start": 26,
+            "end": 43,
+            "refs": {
+                "Rosh Hashanah 11b": "ראש השנה י״א ב"
+            }
+        },
+        {
+            "start": 276,
+            "end": 285,
+            "refs": {
+                "Rosh Hashanah 11b": "ראש השנה י״א ב"
+            }
+        }
+    ],
+    "401": [
+        {
+            "start": 22,
+            "end": 36,
+            "refs": {
+                "Rashi on Yevamot 41": "רש\"י על יבמות מ״א"
+            }
+        }
+    ],
+    "423": [
+        {
+            "start": 152,
+            "end": 163,
+            "refs": {
+                "Yevamot 122a": "יבמות קכ״ב א"
+            }
+        }
+    ],
+    "436": [
+        {
+            "start": 16,
+            "end": 27,
+            "refs": {
+                "Genesis 32:4-36:43": "בראשית ל״ב:ד׳-ל״ו:מ״ג"
+            }
+        },
+        {
+            "start": 65,
+            "end": 78,
+            "refs": {
+                "Genesis 23:1-25:18": "בראשית כ״ג:א׳-כ״ה:י״ח"
+            }
+        }
+    ],
+    "469": [
+        {
+            "start": 51,
+            "end": 65,
+            "refs": {
+                "Ketubot 30b": "כתובות ל׳ ב"
+            }
+        }
+    ],
+    "506": [
+        {
+            "start": 42,
+            "end": 54,
+            "refs": {
+                "Beitzah 10a": "ביצה י׳ א"
+            }
+        }
+    ],
+    "507": [
+        {
+            "start": 5,
+            "end": 24,
+            "refs": {
+                "Tosafot on Gittin 8b": "תוספות על גיטין ח׳ ב"
+            }
+        }
+    ],
+    "515": [
+        {
+            "start": 54,
+            "end": 68,
+            "refs": {
+                "Chullin 13b": "חולין י״ג ב"
+            }
+        },
+        {
+            "start": 81,
+            "end": 90,
+            "refs": {
+                "Leviticus 23": "ויקרא כ״ג"
+            }
+        },
+        {
+            "start": 280,
+            "end": 294,
+            "refs": {
+                "Rashi on Chullin 5a": "רש\"י על חולין ה׳ א"
+            }
+        }
+    ],
+    "530": [
+        {
+            "start": 37,
+            "end": 49,
+            "refs": {
+                "Rashi on Shabbat 5b": "רש\"י על שבת ה׳ ב"
+            }
+        }
+    ],
+    "536": [
+        {
+            "start": 126,
+            "end": 146,
+            "refs": {
+                "Mishnah Berurah 370": "משנה ברורה ש״ע"
+            }
+        }
+    ],
+    "571": [
+        {
+            "start": 21,
+            "end": 34,
+            "refs": {
+                "Shabbat 150b": "שבת ק״נ ב"
+            }
+        },
+        {
+            "start": 39,
+            "end": 57,
+            "refs": {
+                "Rashi on Shabbat 113a": "רש\"י על שבת קי״ג א"
+            }
+        }
+    ],
+    "580": [
+        {
+            "start": 211,
+            "end": 232,
+            "refs": {
+                "Rashi on Rosh Hashanah 28a": "רש\"י על ראש השנה כ״ח א"
+            }
+        }
+    ],
+    "587": [
+        {
+            "start": 83,
+            "end": 96,
+            "refs": {
+                "Gittin 64b": "גיטין ס״ד ב"
+            }
+        }
+    ],
+    "600": [
+        {
+            "start": 107,
+            "end": 138,
+            "refs": {
+                "Maggid Mishneh on Mishneh Torah, Sabbath 17:12": "מגיד משנה על משנה תורה, הלכות שבת י״ז:י״ב"
+            }
+        }
+    ],
+    "612": [
+        {
+            "start": 11,
+            "end": 26,
+            "refs": {
+                "Sanhedrin 25a": "סנהדרין כ״ה א"
+            }
+        },
+        {
+            "start": 27,
+            "end": 35,
+            "refs": {
+                "Rashi on Sanhedrin 25a": "רש\"י על סנהדרין כ״ה א"
+            }
+        },
+        {
+            "start": 42,
+            "end": 63,
+            "refs": {
+                "Rashi on Rosh Hashanah 22a": "רש\"י על ראש השנה כ״ב א"
+            }
+        },
+        {
+            "start": 202,
+            "end": 224,
+            "refs": {
+                "Tosafot on Sanhedrin 24b": "תוספות על סנהדרין כ״ד ב"
+            }
+        }
+    ],
+    "615": [
+        {
+            "start": 9,
+            "end": 32,
+            "refs": {
+                "Tosafot on Sanhedrin 25a": "תוספות על סנהדרין כ״ה א"
+            }
+        }
+    ],
+    "639": [
+        {
+            "start": 437,
+            "end": 453,
+            "refs": {
+                "Rashi on Sukkah 3b": "רש\"י על סוכה ג׳ ב"
+            }
+        }
+    ],
+    "643": [
+        {
+            "start": 44,
+            "end": 57,
+            "refs": {
+                "Sukkah 16a": "סוכה ט״ז א"
+            }
+        }
+    ],
+    "654": [
+        {
+            "start": 15,
+            "end": 29,
+            "refs": {
+                "Sukkah 16b": "סוכה ט״ז ב"
+            }
+        }
+    ],
+    "656": [
+        {
+            "start": 118,
+            "end": 133,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "672": [
+        {
+            "start": 72,
+            "end": 92,
+            "refs": {
+                "Biur Halacha 357": "ביאור הלכה שנ״ז"
+            }
+        }
+    ],
+    "675": [
+        {
+            "start": 37,
+            "end": 53,
+            "refs": {
+                "Tosafot on Rosh Hashanah 29b:5-35a:13": "תוספות על ראש השנה כ״ט ב:ה׳-ל״ה א:י״ג",
+                "Tosafot on Beitzah 15b:1-23b:10": "תוספות על ביצה ט״ו ב:א׳-כ״ג ב:י׳"
+            }
+        }
+    ],
+    "748": [
+        {
+            "start": 17,
+            "end": 34,
+            "refs": {
+                "Rashi on Sukkah 18a": "רש\"י על סוכה י״ח א"
+            }
+        }
+    ],
+    "749": [
+        {
+            "start": 5,
+            "end": 22,
+            "refs": {
+                "Rashi on Sukkah 18b": "רש\"י על סוכה י״ח ב"
+            }
+        },
+        {
+            "start": 33,
+            "end": 35,
+            "refs": {
+                "Rashi on Sukkah 18b": "רש\"י על סוכה י״ח ב"
+            }
+        }
+    ],
+    "757": [
+        {
+            "start": 211,
+            "end": 220,
+            "refs": {
+                "Shabbat 61a": "שבת ס״א א"
+            }
+        }
+    ],
+    "795": [
+        {
+            "start": 77,
+            "end": 90,
+            "refs": {
+                "Mishnah Shabbat 7:2": "משנה שבת ז׳:ב׳",
+                "Shabbat 7b": "שבת ז׳ ב"
+            }
+        }
+    ],
+    "804": [
+        {
+            "start": 214,
+            "end": 228,
+            "refs": {
+                "Shabbat 93b": "שבת צ״ג ב"
+            }
+        }
+    ],
+    "824": [
+        {
+            "start": 378,
+            "end": 394,
+            "refs": {
+                "Zevachim 97b": "זבחים צ״ז ב"
+            }
+        }
+    ],
+    "856": [
+        {
+            "start": 293,
+            "end": 319,
+            "refs": {
+                "Rashi on Shabbat 126a:3:1": "רש\"י על שבת קכ״ו א:ג׳:א׳"
+            }
+        }
+    ],
+    "858": [
+        {
+            "start": 270,
+            "end": 297,
+            "refs": {
+                "Tosafot on Shabbat 126a:3:1": "תוספות על שבת קכ״ו א:ג׳:א׳"
+            }
+        }
+    ]
+}

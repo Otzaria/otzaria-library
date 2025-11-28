@@ -59,10 +59,10 @@ jobs:
         with:
           python-version: '3.14'
 
-      # - name: update linker links
-      #   run: |
-      #     pip install -r linker/requirements.txt
-      #     python linker/linker_on_commit.py
+      - name: update linker links
+        run: |
+          pip install -r linker/requirements.txt
+          python linker/linker_on_commit.py
 
       - name: update in mitmachim
         env:

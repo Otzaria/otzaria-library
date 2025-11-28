@@ -3,7 +3,7 @@ import subprocess
 from collections.abc import Sequence
 from pathlib import Path
 
-from linker.linker import link_book
+from linker import link_book
 
 
 def decode_git_output_line(line: str) -> str:
