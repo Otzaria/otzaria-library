@@ -16,7 +16,8 @@ def main() -> None:
         "MoreBooks/ספרים/אוצריא",
         # "wikisourceToOtzaria/ספרים/אוצריא",
         # "wikiJewishBooksToOtzaria/ספרים/אוצריא",
-        "ToratEmetToOtzaria/ספרים/אוצריא"
+        "ToratEmetToOtzaria/ספרים/אוצריא",
+        "pninimToOtzaria/ספרים/אוצריא"
     )
     for folder in folders:
         folder_path = base_path / folder

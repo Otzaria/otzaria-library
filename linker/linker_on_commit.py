@@ -54,7 +54,8 @@ def main() -> None:
         "MoreBooks/ספרים/אוצריא",
         # "wikisourceToOtzaria/ספרים/אוצריא",
         # "wikiJewishBooksToOtzaria/ספרים/אוצריא",
-        "ToratEmetToOtzaria/ספרים/אוצריא"
+        "ToratEmetToOtzaria/ספרים/אוצריא",
+        "pninimToOtzaria/ספרים/אוצריא"
     )
     renamed_files = get_renamed_files(folders)
     for renamed_file in renamed_files:
