@@ -19,6 +19,7 @@ folders = [
     "wikiJewishBooksToOtzaria/ספרים/אוצריא",
     "ToratEmetToOtzaria/ספרים/אוצריא",
     "wikisourceToOtzaria/ספרים/אוצריא",
+    "pninimToOtzaria/ספרים/אוצריא",
 ]
 
 
@@ -48,12 +49,14 @@ def get_changed_files(status_filter: str, folders: list[str]) -> list[str]:
 added_files = get_changed_files("A", folders)
 modified_files = get_changed_files("M", folders)
 deleted_files = get_changed_files("D", folders)
+renamed_files = get_changed_files("R", folders)
 date = heb_date()
 print(added_files)
 print(modified_files)
 print(deleted_files)
+print(renamed_files)
 
-if any([added_files, modified_files, deleted_files]):
+if any([added_files, modified_files, deleted_files, renamed_files]):
     content_mitmachim = f"**עדכון {date}**\n"
     date_yemot = f"עדכון {date}\n"
     content_yemot = {}
@@ -63,6 +66,9 @@ if any([added_files, modified_files, deleted_files]):
     if modified_files:
         content_mitmachim += f"\nהשתנו הקבצים הבאים:\n* {"\n* ".join(modified_files)}\n"
         content_yemot["השתנו הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in modified_files])}"
+    if renamed_files:
+        content_mitmachim += f"\nשונה מיקום/שם של הקבצים הבאים:\n* {"\n* ".join(renamed_files)}\n"
+        content_yemot["שונה מיקום/שם של הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in renamed_files])}"
     if deleted_files:
         content_mitmachim += f"\nנמחקו הקבצים הבאים:\n* {"\n* ".join(deleted_files)}\n"
         content_yemot["נמחקו הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in deleted_files])}"
