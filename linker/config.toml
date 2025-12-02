@@ -1,3 +1,3 @@
 [otzaria]
-log_path = "/workspaces/otzaria-library/sefaria_linker/log"
-refs_all_file_path = "/workspaces/otzaria-library/sefaria_linker/refs_all.csv"
+log_path = "../sefariaToOtzaria/new_books/log"
+refs_all_file_path = "../sefariaToOtzaria/new_books/refs_all..csv"

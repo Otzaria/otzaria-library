@@ -11,6 +11,8 @@ from typing import TypedDict
 from tqdm import tqdm
 from utils import CONFIG
 
+LOG = False
+
 
 class Link(TypedDict):
     first_part: list[str]
@@ -356,16 +358,16 @@ print(f"{len(set_links)=} {len(set_range)=} {len(otzaria_links)=}")
 # otzaria_links_found_2 = log_path / "otzaria_links_found_2.json"
 # with otzaria_links_found_2.open("w", encoding="utf-8") as f:
 #     json.dump(found_links_dict, f, ensure_ascii=False, indent=4)
-
-not_found_links_2 = log_path / "not_found_links_2.json"
-with not_found_links_2.open("w", encoding="utf-8") as f:
-    for link in not_found_links:
-        f.write(f"{link}\n")
-not_found_books_2 = log_path / "not_found_books_2.json"
-with not_found_books_2.open("w", encoding="utf-8") as f:
-    for book in not_found_books:
-        f.write(f"{book}\n")
-found_links_2 = log_path / "found_links_2.txt"
-with found_links_2.open("w", encoding="utf-8") as f:
-    for book in found_links:
-        f.write(f"{book}\n")
+if LOG:
+    not_found_links_2 = log_path / "not_found_links_2.json"
+    with not_found_links_2.open("w", encoding="utf-8") as f:
+        for link in not_found_links:
+            f.write(f"{link}\n")
+    not_found_books_2 = log_path / "not_found_books_2.json"
+    with not_found_books_2.open("w", encoding="utf-8") as f:
+        for book in not_found_books:
+            f.write(f"{book}\n")
+    found_links_2 = log_path / "found_links_2.txt"
+    with found_links_2.open("w", encoding="utf-8") as f:
+        for book in found_links:
+            f.write(f"{book}\n")

@@ -4,12 +4,13 @@ from pathlib import Path
 
 import tomllib
 
-sefaria_module_path = Path(__file__).resolve().parent.parent
-sys.path.append(str(sefaria_module_path))
+# sefaria_module_path = Path(__file__).resolve().parent.parent
+# sys.path.append(str(sefaria_module_path))
 
 CONFIG_FILE_PATH = Path(__file__).parent / "config.toml"
 with CONFIG_FILE_PATH.open("rb") as f:
     CONFIG = tomllib.load(f)
+# print(Path(CONFIG["otzaria"]["refs_all_file_path"]).resolve())
 
 
 def read_csv_file(file_path: Path, with_headers: bool = False) -> dict[str, str]:

@@ -413,6 +413,12 @@ jobs:
           
           echo "✅ All files moved to sefaria_export."
 
+      - name: convert all linker links to otzaria format
+        working-directory: ${{ github.workspace }}
+        run: |
+          pip install -r linker/requirements.txt
+          python linker/convert_all_linker_links.py
+
       # Cleanup temporary directories
       - name: Cleanup temporary directories
         run: |
@@ -446,6 +452,7 @@ jobs:
           
           # Add all changes in sefariaToOtzaria directory
           git add sefariaToOtzaria/
+          git add $(find . -type d -name "links")
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
