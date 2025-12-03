@@ -417,7 +417,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           pip install -r linker/requirements.txt
-          python linker/convert_all_linker_links.py
+          python linker/to_otzaria_links.py
 
       # Cleanup temporary directories
       - name: Cleanup temporary directories
