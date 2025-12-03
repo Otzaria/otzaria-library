@@ -11,6 +11,8 @@ from typing import TypedDict
 from tqdm import tqdm
 from utils import CONFIG
 
+LOG = False
+
 
 class Link(TypedDict):
     first_part: list[str]
@@ -32,13 +34,17 @@ class LinkerLink(TypedDict):
 OtzariaLink = TypedDict("OtzariaLink", {"line_index_1": int, "line_index_2": int, "heRef_2": str, "path_2": str, "Conection Type": str})
 
 
-log_path = Path(CONFIG["otzaria"]["log_path"])
+# log_path = Path(CONFIG["otzaria"]["log_path"])
+log_path = Path(__file__).parent / CONFIG["otzaria"]["log_path"]
+log_path = log_path.resolve()
 set_links: set[str] = set()
 set_range: set[str] = set()
 otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
 otzaria_parse: defaultdict[str, list[Link]] = defaultdict(list)
 all_otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
-refs_file_path = Path(CONFIG["otzaria"]["refs_all_file_path"])
+# refs_file_path = Path(CONFIG["otzaria"]["refs_all_file_path"]).resolve()
+refs_file_path = Path(__file__).parent / CONFIG["otzaria"]["refs_all_file_path"]
+refs_file_path = refs_file_path.resolve()
 not_found_links: set[str] = set()
 not_found_books: set[str] = set()
 found_links: set[str] = set()
@@ -356,16 +362,16 @@ print(f"{len(set_links)=} {len(set_range)=} {len(otzaria_links)=}")
 # otzaria_links_found_2 = log_path / "otzaria_links_found_2.json"
 # with otzaria_links_found_2.open("w", encoding="utf-8") as f:
 #     json.dump(found_links_dict, f, ensure_ascii=False, indent=4)
-
-not_found_links_2 = log_path / "not_found_links_2.json"
-with not_found_links_2.open("w", encoding="utf-8") as f:
-    for link in not_found_links:
-        f.write(f"{link}\n")
-not_found_books_2 = log_path / "not_found_books_2.json"
-with not_found_books_2.open("w", encoding="utf-8") as f:
-    for book in not_found_books:
-        f.write(f"{book}\n")
-found_links_2 = log_path / "found_links_2.txt"
-with found_links_2.open("w", encoding="utf-8") as f:
-    for book in found_links:
-        f.write(f"{book}\n")
+if LOG:
+    not_found_links_2 = log_path / "not_found_links_2.json"
+    with not_found_links_2.open("w", encoding="utf-8") as f:
+        for link in not_found_links:
+            f.write(f"{link}\n")
+    not_found_books_2 = log_path / "not_found_books_2.json"
+    with not_found_books_2.open("w", encoding="utf-8") as f:
+        for book in not_found_books:
+            f.write(f"{book}\n")
+    found_links_2 = log_path / "found_links_2.txt"
+    with found_links_2.open("w", encoding="utf-8") as f:
+        for book in found_links:
+            f.write(f"{book}\n")

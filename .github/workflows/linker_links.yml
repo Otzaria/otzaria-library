@@ -1,0 +1,31 @@
+name: linker links
+
+on:
+  workflow_dispatch: 
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+        
+
+      - name: Set up Python 
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'  
+
+      - name: update linker links
+        run: |
+          pip install -r linker/requirements.txt
+          python linker/link_all.py
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Update linker links"
+          default_author: github_actions

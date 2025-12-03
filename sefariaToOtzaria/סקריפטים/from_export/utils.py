@@ -6,6 +6,7 @@ import tomllib
 
 sefaria_module_path = Path(__file__).resolve().parent.parent
 sys.path.append(str(sefaria_module_path))
+print(f"Added {sefaria_module_path} to sys.path")
 
 CONFIG_FILE_PATH = Path(__file__).parent / "config.toml"
 with CONFIG_FILE_PATH.open("rb") as f:

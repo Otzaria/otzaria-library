@@ -29,6 +29,33 @@ def get_renamed_files(folders: Sequence[str]) -> list[tuple[str, str]]:
     return rename_pairs
 
 
+def get_moves_from_outside(folders: Sequence[str]) -> tuple[list[tuple[str, str]], list[tuple[str, str]], list[tuple[str, str]]]:
+    cmd = ["git", "diff", "--name-status", "--diff-filter=R", "HEAD^", "HEAD"]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
+    raw_output = result.stdout.strip()
+    from_external_moves = []
+    internal_moves = []
+    to_external_moves = []
+    for line in raw_output.split("\n"):
+        if not line:
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 3:
+            old_name = decode_git_output_line(parts[1])
+            new_name = decode_git_output_line(parts[2])
+            if not (new_name.lower().endswith(".txt") and not new_name.lower().endswith("גירסת ספריה.txt")):
+                continue
+            dest_is_watched = any(new_name.startswith(f) for f in folders)
+            src_is_watched = any(old_name.startswith(f) for f in folders)
+            if dest_is_watched and not src_is_watched:
+                from_external_moves.append((old_name, new_name))
+            elif dest_is_watched and src_is_watched:
+                internal_moves.append((old_name, new_name))
+            elif not dest_is_watched and src_is_watched:
+                to_external_moves.append((old_name, new_name))
+    return from_external_moves, internal_moves, to_external_moves
+
+
 def get_changed_files(status_filter: str, folders: Sequence[str]) -> list[str]:
     cmd = ["git", "diff", "--name-only", f"--diff-filter={status_filter}", "HEAD^", "HEAD", "--", *folders]
     result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
@@ -59,7 +86,9 @@ def main() -> None:
         "ToratEmetToOtzaria/ספרים/אוצריא",
         "pninimToOtzaria/ספרים/אוצריא"
     )
-    renamed_files = get_renamed_files(folders)
+    # renamed_files = get_renamed_files(folders)
+    from_external_moves, internal_moves, to_external_moves = get_moves_from_outside(folders)
+    renamed_files = internal_moves + from_external_moves + to_external_moves
     for renamed_file in renamed_files:
         src, target = renamed_file
         src_path = Path(src)
@@ -67,6 +96,9 @@ def main() -> None:
         src_link = Path(src_path.parts[0]) / "linker_links" / f"{src_path.stem}_links.json"
         target_link = Path(target_path.parts[0]) / "linker_links" / f"{target_path.stem}_links.json"
         if not src_link.exists():
+            continue
+        if renamed_file in to_external_moves:
+            src_link.unlink()
             continue
         target_link.parent.mkdir(parents=True, exist_ok=True)
         src_path.rename(target_link)
@@ -81,7 +113,13 @@ def main() -> None:
         new_file_path = Path(new_file)
         title = " ".join(new_file_path.parts[new_file_path.parts.index("אוצריא") + 1:-1]) + " " + new_file_path.stem
         output_file = Path(new_file_path.parts[0]) / "linker_links" / f"{new_file_path.stem}_links.json"
-        link_book(new_file_path, output_file, title)
+        try:
+            link_book(new_file_path, output_file, title)
+        except Exception as e:
+            if log:
+                print(f"Error processing {new_file_path}: {e}")
+            if output_file.exists():
+                output_file.unlink()
     deleted_files = get_changed_files("D", folders)
     for deleted_file in deleted_files:
         deleted_file_path = Path(deleted_file)

@@ -1,12 +1,13 @@
-import json
+import json  # noqa: I001, INP001
 from pathlib import Path
 
 import pandas as pd
+
+from utils import *
 from otzaria.get_from_export import Book
 from otzaria.utils import footnotes, sanitize_filename
 from pyluach.dates import GregorianDate
 from tqdm import tqdm
-from utils import *
 
 
 def read_file(file_path: Path) -> set[str]:
@@ -129,7 +130,7 @@ schemas_folder = Path(CONFIG["sefaria"]["schemas_folder"])
 files_black_list_file_path = Path(CONFIG["sefaria"]["files_black_list_file_path"])
 authors_black_files_list_file_path = Path(CONFIG["sefaria"]["authors_black_files_list_file_path"])
 authors_white_files_list_file_path = Path(CONFIG["sefaria"]["authors_white_files_list_file_path"])
-books_white_list_file_path = Path(CONFIG["sefaria"]["books_white_list_file_path"])
+books_white_list_file_path = Path(CONFIG["sefaria"]["files_white_list_file_path"])
 files_black_list = read_file(files_black_list_file_path)
 authors_black_list = read_file(authors_black_files_list_file_path)
 authors_white_list = read_file(authors_white_files_list_file_path)

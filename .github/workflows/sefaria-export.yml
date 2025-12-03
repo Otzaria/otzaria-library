@@ -17,6 +17,8 @@ env:
   MONGO_HOST: 127.0.0.1
   MONGO_PORT: 27017
   MONGO_DB_NAME: sefaria
+  PIP_NO_CACHE_DIR: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
   SEFARIA_TO_OTZARIA_PATH: ${{ github.workspace }}/sefariaToOtzaria
   SCRIPTS_PATH: ${{ github.workspace }}/sefariaToOtzaria/סקריפטים/from_export
 
@@ -79,7 +81,9 @@ jobs:
           set -euo pipefail
           if command -v apt-get >/dev/null 2>&1; then
             sudo apt-get update -y
-            sudo apt-get install -y aria2 ca-certificates tar zstd wget netcat-openbsd
+            sudo apt-get install -y --no-install-recommends aria2 ca-certificates tar zstd wget netcat-openbsd
+            sudo apt-get clean
+            sudo rm -rf /var/lib/apt/lists/*
           fi
           python3 -V || true
 
@@ -105,9 +109,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p mongo_dump
-          aria2c -x 16 -s 16 -k 1M -o dump_small.tar.gz "https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz"
+          aria2c --file-allocation=none -x 16 -s 16 -k 1M -o dump_small.tar.gz "https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz"
           tar -xzf dump_small.tar.gz -C mongo_dump
-          rm dump_small.tar.gz
+          rm -f dump_small.tar.gz
           mkdir -p mongo_dump_pkg
           if [ -d mongo_dump/dump/sefaria ]; then
             cp -a mongo_dump/dump/sefaria mongo_dump_pkg/
@@ -292,8 +296,9 @@ jobs:
           python ${SCRIPTS_PATH}/ensure_history_collection.py
           
           # Clean up dump files to free space
-          rm -rf mongo_dump_pkg
-          
+          if [ "${KEEP_MONGO_DUMP:-false}" != "true" ]; then
+            rm -rf mongo_dump_pkg
+          fi
           echo "✅ Mongo restore complete."
 
       # 13_check_export_module.sh
@@ -408,6 +413,12 @@ jobs:
           
           echo "✅ All files moved to sefaria_export."
 
+      - name: convert all linker links to otzaria format
+        working-directory: ${{ github.workspace }}
+        run: |
+          pip install -r linker/requirements.txt
+          python linker/to_otzaria_links.py
+
       # Cleanup temporary directories
       - name: Cleanup temporary directories
         run: |
@@ -441,6 +452,7 @@ jobs:
           
           # Add all changes in sefariaToOtzaria directory
           git add sefariaToOtzaria/
+          git add $(find . -type d -name "links")
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then

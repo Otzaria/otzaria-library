@@ -1,0 +1,55 @@
+{
+    "101": [
+        {
+            "start": 494,
+            "end": 502,
+            "refs": {
+                "Yalkut Shimoni on Nach 88": "ילקוט שמעוני על נ\"ך פ״ח",
+                "Yalkut Shimoni on Torah 88": "ילקוט שמעוני על התורה פ״ח"
+            }
+        }
+    ],
+    "103": [
+        {
+            "start": 84,
+            "end": 95,
+            "refs": {
+                "Avodah Zarah 19a": "עבודה זרה י״ט א"
+            }
+        },
+        {
+            "start": 171,
+            "end": 183,
+            "refs": {
+                "Mishnah Bava Metzia 4:1": "משנה בבא מציעא ד׳:א׳",
+                "Bava Metzia 84a": "בבא מציעא פ״ד א"
+            }
+        },
+        {
+            "start": 241,
+            "end": 247,
+            "refs": {
+                "Bava Metzia 81a": "בבא מציעא פ״א א",
+                "Avodah Zarah 59a": "עבודה זרה נ״ט א"
+            }
+        }
+    ],
+    "104": [
+        {
+            "start": 0,
+            "end": 3,
+            "refs": {
+                "Mishnah Bava Metzia 7": "משנה בבא מציעא ז׳",
+                "Bava Metzia 83a:12-94a:15": "בבא מציעא פ״ג א:י״ב-צ״ד א:ט״ו",
+                "Bava Metzia 87": "בבא מציעא פ״ז"
+            }
+        },
+        {
+            "start": 115,
+            "end": 128,
+            "refs": {
+                "Yoma 86b": "יומא פ״ו ב"
+            }
+        }
+    ]
+}
