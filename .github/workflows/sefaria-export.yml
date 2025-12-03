@@ -413,11 +413,11 @@ jobs:
           
           echo "✅ All files moved to sefaria_export."
 
-      - name: convert all linker links to otzaria format
-        working-directory: ${{ github.workspace }}
-        run: |
-          pip install -r linker/requirements.txt
-          python linker/to_otzaria_links.py
+      # - name: convert all linker links to otzaria format
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #     pip install -r linker/requirements.txt
+      #     python linker/to_otzaria_links.py
 
       # Cleanup temporary directories
       - name: Cleanup temporary directories
