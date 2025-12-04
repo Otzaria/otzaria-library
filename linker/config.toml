@@ -1,3 +1,4 @@
 [otzaria]
 log_path = "../sefariaToOtzaria/new_books/log"
 refs_all_file_path = "../sefariaToOtzaria/new_books/refs_all.csv"
+hash_all_files_file_path = "hash_all_files.json"

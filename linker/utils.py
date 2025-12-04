@@ -1,5 +1,5 @@
 import csv
-import sys
+import json
 from pathlib import Path
 
 import tomllib
@@ -10,14 +10,6 @@ import tomllib
 CONFIG_FILE_PATH = Path(__file__).parent / "config.toml"
 with CONFIG_FILE_PATH.open("rb") as f:
     CONFIG = tomllib.load(f)
-print(Path(CONFIG["otzaria"]["refs_all_file_path"]).resolve())
-p = Path(CONFIG["otzaria"]["refs_all_file_path"])
-p_2 = Path(__file__).parent / CONFIG["otzaria"]["refs_all_file_path"]
-print(p_2)
-print(p_2.resolve())
-p.parent.mkdir(parents=True, exist_ok=True)
-with p.open("w", encoding="utf-8") as f:
-    f.write("")
 
 
 def read_csv_file(file_path: Path, with_headers: bool = False) -> dict[str, str]:
@@ -30,3 +22,15 @@ def read_csv_file(file_path: Path, with_headers: bool = False) -> dict[str, str]
             if row[0] and row[1]:
                 dict_replacements[row[0]] = row[1]
     return dict_replacements
+
+
+def get_hash_all_files() -> dict[str, str]:
+    file_path = Path(__file__).parent / CONFIG["hash_all_files_file_path"]
+    with file_path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def write_hash_all_files(dict_all: dict[str, str]) -> None:
+    file_path = Path(__file__).parent / CONFIG["hash_all_files_file_path"]
+    with file_path.open("w", encoding="utf-8") as f:
+        json.dump(dict_all, f, indent=2, ensure_ascii=False)

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import bisect
+import hashlib
 import json
 import time
 from collections import defaultdict
@@ -86,3 +87,9 @@ def link_book(input_file: Path, output_file: Path | None = None, title: str | No
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with output_file.open("w", encoding="utf-8") as f:
         json.dump(dict_all, f, ensure_ascii=False, indent=4)
+
+
+def get_hash(file_path: Path) -> str:
+    with file_path.open("rb") as f:
+        content = f.read()
+    return hashlib.sha256(content).hexdigest()

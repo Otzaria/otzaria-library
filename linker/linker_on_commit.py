@@ -3,7 +3,9 @@ import subprocess
 from collections.abc import Sequence
 from pathlib import Path
 
-from linker import link_book
+from utils import get_hash_all_files, write_hash_all_files
+
+from linker import get_hash, link_book
 
 log = True
 
@@ -73,6 +75,7 @@ def get_changed_files(status_filter: str, folders: Sequence[str]) -> list[str]:
 
 
 def main() -> None:
+    hash_all = get_hash_all_files()
     folders = (
         "Ben-YehudaToOtzaria/ספרים/אוצריא",
         "DictaToOtzaria/ערוך/ספרים/אוצריא",
@@ -95,13 +98,16 @@ def main() -> None:
         target_path = Path(target)
         src_link = Path(src_path.parts[0]) / "linker_links" / f"{src_path.stem}_links.json"
         target_link = Path(target_path.parts[0]) / "linker_links" / f"{target_path.stem}_links.json"
+        if hash_all.get(src_path.as_posix()):
+            del hash_all[src_link.as_posix()]
         if not src_link.exists():
             continue
         if renamed_file in to_external_moves:
             src_link.unlink()
             continue
         target_link.parent.mkdir(parents=True, exist_ok=True)
-        src_path.rename(target_link)
+        src_link.rename(target_link)
+        hash_all[target_path.as_posix()] = get_hash(target_path)
     added_files = get_changed_files("A", folders)
     modified_files = get_changed_files("M", folders)
     if log:
@@ -115,6 +121,7 @@ def main() -> None:
         output_file = Path(new_file_path.parts[0]) / "linker_links" / f"{new_file_path.stem}_links.json"
         try:
             link_book(new_file_path, output_file, title)
+            hash_all[new_file_path.as_posix()] = get_hash(new_file_path)
         except Exception as e:
             if log:
                 print(f"Error processing {new_file_path}: {e}")
@@ -124,8 +131,11 @@ def main() -> None:
     for deleted_file in deleted_files:
         deleted_file_path = Path(deleted_file)
         deleted_link = Path(deleted_file_path.parts[0]) / "linker_links" / f"{deleted_file_path.stem}_links.json"
+        if hash_all.get(deleted_file_path.as_posix()):
+            del hash_all[deleted_file_path.as_posix()]
         if deleted_link.exists():
             deleted_link.unlink()
+    write_hash_all_files(hash_all)
 
 
 if __name__ == "__main__":
