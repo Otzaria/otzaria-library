@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עורך מטאדאטה - אוצריא</title>
+    <style>
+        /* משתנים גלובליים */
+        :root {
+            --primary-color: #795548;
+            --primary-light: #a1887f;
+            --primary-dark: #5d4037;
+            --primary-contrast: #ffffff;
+            --background: #f5f5f5;
+            --surface: #ffffff;
+            --surface-variant: #fafafa;
+            --on-background: #1c1b1f;
+            --border-color: #e0e0e0;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.5;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--surface);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* כותרת ראשית */
+        .header {
+            background: var(--surface);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header h1 { color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 5px; }
+        .header p { color: #666; font-size: 0.9rem; }
+
+        /* אזור חיפוש והעלאה */
+        .search-section {
+            padding: 20px;
+            background: var(--surface-variant);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .upload-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .upload-label:hover { background-color: var(--primary-dark); }
+        .file-upload { text-align: center; }
+        .file-status { margin-top: 10px; font-weight: bold; color: var(--primary-color); }
+
+        .search-box { position: relative; max-width: 600px; margin: 0 auto; }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .results-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .results-dropdown.show { display: block; }
+        .result-item { padding: 10px 15px; cursor: pointer; border-bottom: 1px solid #eee; }
+        .result-item:hover { background: #f0f0f0; }
+
+        /* אזור העריכה - שיפור הגריד */
+        .editor-section {
+            padding: 30px;
+            display: none;
+            background: var(--surface);
+        }
+
+        .editor-section.show { display: block; animation: fadeIn 0.3s ease; }
+
+        .book-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        /* Grid System לסידור השדות */
+        #fieldsContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .field-group {
+            background: var(--surface);
+            padding: 15px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* שדות שתופסים רוחב מלא (כמו תיאור) */
+        .field-group.full-width {
+            grid-column: 1 / -1;
+            background: var(--surface-variant);
+            padding: 20px;
+        }
+
+        .field-group.readonly {
+            background: #f0f0f0;
+            opacity: 0.8;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            flex: 1;
+        }
+
+        .field-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(121, 85, 72, 0.1);
+        }
+
+        .field-input:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        textarea.field-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .field-input.modified {
+            background-color: #fff3e0;
+            border-color: #ff9800;
+        }
+
+        .field-label.new-field {
+            color: #ff6f00;
+        }
+
+        .field-label.new-field::after {
+            content: " (חדש)";
+            font-size: 0.8rem;
+            color: #ff6f00;
+        }
+
+        /* עיצוב מערכים (קטגוריות) - קוביות */
+        .array-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .array-item-input {
+            flex: 1;
+            min-width: 150px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .array-item-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(121, 85, 72, 0.1);
+        }
+
+        .array-item-input:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .array-item-input.modified {
+            background-color: #fff3e0;
+            border-color: #ff9800;
+        }
+        
+        .field-group.full-width .array-item-input {
+            max-width: 300px;
+            flex: 0 1 auto;
+        }
+
+        .save-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+
+        .save-button:hover { transform: scale(1.05); background-color: var(--primary-dark); }
+
+        .message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 2000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .message.show { display: block; animation: slideDown 0.3s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { top: -50px; } to { top: 20px; } }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 עורך מטאדאטה</h1>
+        </div>
+
+        <div class="search-section">
+            <div class="file-upload" id="fileUploadSection">
+                <!-- הוסר ה-Javascript המיותר שגרם לבחירה כפולה -->
+                <label for="fileInput" class="upload-label">
+                    📁 טען קובץ metadata_1.json
+                </label>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+                <div id="fileStatus" class="file-status"></div>
+            </div>
+
+            <div class="search-box" id="searchBox" style="display: none;">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 חפש ספר..." autocomplete="off">
+                <div class="results-dropdown" id="resultsDropdown"></div>
+            </div>
+        </div>
+
+        <div class="editor-section" id="editorSection">
+            <div id="bookTitle" class="book-title"></div>
+            <div id="fieldsContainer"></div>
+        </div>
+        
+        <button class="save-button" id="saveButton" style="display: none;">💾 שמור וייצא</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        let booksData = [];
+        let currentBookIndex = -1;
+        let modifiedFields = {};
+
+        // הגדרת שדות - איזה שדה הוא ארוך (תיאור) ואיזה קצר
+        const fieldConfig = {
+            'title': { label: 'שם הספר', type: 'short' },
+            'heAuthors': { label: 'מחברים', type: 'array' },
+            'heCategories': { label: 'קטגוריות', type: 'array' },
+            'heDesc': { label: 'תיאור מלא', type: 'long' },
+            'heShortDesc': { label: 'תיאור קצר', type: 'long' },
+            'pubDate': { label: 'שנת הוצאה', type: 'short' },
+            'compDate': { label: 'שנת חיבור', type: 'short' },
+            'pubPlace': { label: 'מקום הוצאה', type: 'short' },
+            'compPlace': { label: 'מקום חיבור', type: 'short' },
+            'heEra': { label: 'תקופה', type: 'short' },
+            'compDateStringHe': { label: 'תאריך חיבור (טקסט)', type: 'short' },
+            'pubDateStringHe': { label: 'תאריך פרסום (טקסט)', type: 'short' },
+            'compPlaceStringHe': { label: 'מקום חיבור (טקסט)', type: 'short' },
+            'pubPlaceStringHe': { label: 'מקום הוצאה (טקסט)', type: 'short' },
+            'extraTitlesHe': { label: 'שמות נוספים', type: 'array' },
+            'compDateHeb': { label: 'תאריך חיבור עברי', type: 'short' },
+            'pubDateHeb': { label: 'תאריך פרסום עברי', type: 'short' },
+            'Sourcefolder': { label: 'מקור הספר', type: 'short', readonly: true }
+        };
+
+        const fileInput = document.getElementById('fileInput');
+        
+        // תיקון: הסרנו את ה-EventListener על ה-Label שגרם לפתיחה כפולה
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    booksData = JSON.parse(event.target.result);
+                    document.getElementById('fileStatus').textContent = `✅ נטענו ${booksData.length} ספרים`;
+                    document.getElementById('fileUploadSection').style.display = 'none';
+                    document.getElementById('searchBox').style.display = 'block';
+                } catch (error) {
+                    alert('שגיאה בקובץ');
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // לוגיקת חיפוש
+        const searchInput = document.getElementById('searchInput');
+        const resultsDropdown = document.getElementById('resultsDropdown');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            if (query.length < 1) {
+                resultsDropdown.classList.remove('show');
+                return;
+            }
+            const results = booksData.filter(b => b.title && b.title.includes(query)).slice(0, 15);
+            
+            resultsDropdown.innerHTML = results.length ? results.map(b => 
+                `<div class="result-item" onclick="loadBook(${booksData.indexOf(b)})">${b.title}</div>`
+            ).join('') : '<div class="result-item">לא נמצא</div>';
+            
+            resultsDropdown.classList.add('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-box')) resultsDropdown.classList.remove('show');
+        });
+
+        function loadBook(index) {
+            currentBookIndex = index;
+            const book = booksData[index];
+            modifiedFields = {};
+            
+            document.getElementById('bookTitle').textContent = book.title;
+            const container = document.getElementById('fieldsContainer');
+            container.innerHTML = '';
+
+            // יצירת השדות לפי הקונפיגורציה
+            Object.keys(fieldConfig).forEach(key => {
+                // בדיקה אם יש גרסה _New של השדה
+                const newKey = key + '_New';
+                const hasNewVersion = book.hasOwnProperty(newKey);
+                
+                if (hasNewVersion) {
+                    // אם יש גרסה חדשה, נציג אותה במקום המקורית
+                    container.appendChild(createField(key, book[newKey], fieldConfig[key], true));
+                } else if (book.hasOwnProperty(key)) {
+                    // אחרת נציג את הגרסה המקורית
+                    container.appendChild(createField(key, book[key], fieldConfig[key], false));
+                }
+            });
+
+            const editor = document.getElementById('editorSection');
+            editor.classList.add('show');
+            document.getElementById('saveButton').style.display = 'block';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            resultsDropdown.classList.remove('show');
+            searchInput.value = '';
+        }
+
+        function createField(key, value, config, isNewVersion) {
+            const group = document.createElement('div');
+            group.className = 'field-group';
+            
+            // אם זה שדה "long" (כמו תיאור), הוא יקבל רוחב מלא בגריד
+            if (config.type === 'long') {
+                group.classList.add('full-width');
+            }
+
+            // אם זה שדה readonly
+            if (config.readonly) {
+                group.classList.add('readonly');
+            }
+
+            const label = document.createElement('label');
+            label.className = 'field-label';
+            label.textContent = config.label;
+            
+            // סימון שדות חדשים
+            if (isNewVersion) {
+                label.classList.add('new-field');
+            }
+            
+            group.appendChild(label);
+
+            if (Array.isArray(value) || config.type === 'array') {
+                // טיפול במערכים
+                const arrContainer = document.createElement('div');
+                arrContainer.className = 'array-container';
+                
+                const items = (Array.isArray(value) && value.length) ? value : [''];
+                
+                items.forEach((item, idx) => {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.className = 'array-item-input';
+                    input.value = item || '';
+                    input.dataset.key = key;
+                    input.dataset.index = idx;
+                    input.dataset.isNew = isNewVersion;
+                    
+                    if (!config.readonly) {
+                        input.addEventListener('input', handleInput);
+                    } else {
+                        input.disabled = true;
+                    }
+                    
+                    arrContainer.appendChild(input);
+                });
+                
+                group.appendChild(arrContainer);
+            } else {
+                // שדות טקסט רגילים
+                let input;
+                if (config.type === 'long') {
+                    input = document.createElement('textarea');
+                } else {
+                    input = document.createElement('input');
+                    input.type = 'text';
+                }
+                
+                input.className = 'field-input';
+                input.value = value !== null && value !== undefined ? value : '';
+                input.dataset.key = key;
+                input.dataset.isNew = isNewVersion;
+                
+                if (!config.readonly) {
+                    input.addEventListener('input', handleInput);
+                } else {
+                    input.disabled = true;
+                }
+                
+                group.appendChild(input);
+            }
+
+            return group;
+        }
+
+        function handleInput(e) {
+            const target = e.target;
+            target.classList.add('modified');
+            const key = target.dataset.key;
+            
+            if (target.dataset.index !== undefined) {
+                // עדכון מערך
+                const idx = target.dataset.index;
+                if (!modifiedFields[key]) modifiedFields[key] = [...booksData[currentBookIndex][key]];
+                modifiedFields[key][idx] = target.value;
+            } else {
+                // עדכון רגיל
+                modifiedFields[key] = target.value;
+            }
+        }
+
+        document.getElementById('saveButton').addEventListener('click', () => {
+            if (Object.keys(modifiedFields).length === 0) {
+                showMessage('לא בוצעו שינויים', 'error');
+                return;
+            }
+
+            // שמירת שדות - תמיד עם New ללא קו תחתון
+            Object.keys(modifiedFields).forEach(key => {
+                const newKey = key + 'New';
+                booksData[currentBookIndex][newKey] = modifiedFields[key];
+            });
+
+            // הורדת הקובץ
+            const blob = new Blob([JSON.stringify(booksData, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'metadata_1_edited.json';
+            a.click();
+            
+            showMessage('✅ הקובץ נשמר בהצלחה!', 'success');
+            
+            // איפוס סימונים
+            document.querySelectorAll('.modified').forEach(el => el.classList.remove('modified'));
+            modifiedFields = {};
+        });
+
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type} show`;
+            setTimeout(() => msg.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>
