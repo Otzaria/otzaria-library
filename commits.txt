@@ -1,0 +1,176 @@
+קהלת יעקב (ליסא)
+Update files manifest and sync folders
+ד חנוכה - 2
+Update files manifest and sync folders
+ד דחנוכה
+Update files manifest and sync folders
+חנוכה 1
+Update files manifest and sync folders
+הסרת ספרים שנערכו מדיקטה לא ערוך
+Update files manifest and sync folders
+ב דחנוכה
+ב דחנוכה
+Update files manifest and sync folders
+תיקון לינק
+Update files manifest and sync folders
+יום חמישי פרשת ויצא
+Update files manifest and sync folders
+יום רביעי פרשת ויצא
+יום שלישי פרשת ויצא
+יום שני פרשת ויצא
+Update files manifest and sync folders
+מחיקת אם למקרא
+קובץ מטא דאטה, ועורך
+הסרת כפילויות
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+Update files manifest and sync folders
+Merge pr #10 f gwngdwl
+מחיקת הודעה חשובה מהמאגר החדש! מחוסר רלוונטיות!
+Update files manifest and sync folders
+Fix path to hash_all_files_file_path in get_hash_all_files and write_hash_all_files functions
+יום שישי וישלח
+linker links hash
+Update files manifest and sync folders
+יום ה פרשת וישלח
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+Comment out linker conversion step in export workflow
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+יום חמישי פרשת וישלח
+fix linker refs all file path 3
+fix linker refs all file path 2
+fix linker refs all file path
+Update linker script for converting links to Otzaria format
+Fix path for books white list file in export script
+sefaria export ci fix
+Add new text file with a comprehensive list of authors for the project
+linker and sefarua export ci
+Add linker links for various texts in the DictaToOtzaria and MoreBooks collections
+שינויי מיקום, תיקונים, לינקר
+Update files manifest and sync folders
+שינויי מיקום
+Add 'pninim' folder to various scripts for improved linking and synchronization
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+עדכון הפרסום במתמחים
+Remove obsolete linker JSON files for MoreBooks, cleaning up unused references and improving project structure.
+הוספת 'פנינים'
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+עדכון פנינים
+Automated commit from GitHub Actions
+Update files manifest and sync folders
+תיקונים והסרת כפולים
+linker patr 2
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+Add pyluach to requirements.txt
+Add Hebrew date conversion for compDate and pubDate in metadata
+Update files manifest and sync folders
+שינויי מיקומים
+dicta _
+linker links part 1
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+תיקון נתיבים
+Update files manifest and sync folders
+תיקון נתיבים ושינויי שם
+Refactor linker functions and add file tracking for renamed, added, modified, and deleted files
+Merge pull request #8 from zevisvei/aaaa
+path python ci
+Update files manifest and sync folders
+תיקוני מיקומים
+תיקון הריצה האוטומטית
+Update files manifest and sync folders
+Merge pull request #6 from YOSEFTT/main
+Update docs.html
+Update files manifest and sync folders
+תיקוני מיקומים
+Update files manifest and sync folders
+עדכון .gitignore
+מיזוג PR של יוסף, ידנית
+Update files manifest and sync folders
+שינויים בקבצי ה'אודות'
+Update files manifest and sync folders
+תיקונים, פרשת ויצא
+Fix source path for Dicta ZIP archive creation in update-library workflow
+Enable update in mitmachim step in workflowtmachim update
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+rename
+Update files manifest and sync folders
+org
+fix struct
+Update files manifest and sync folders
+פרשת תולדות
+sync offline to offline
+config file path fix
+black and white list's
+Implement structural updates and optimizations in the codebase
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+Refactor update-library workflow to streamline ZIP archive creation and remove temporary directories
+Update files manifest and sync folders
+Remove truly_deleted.txt and refactor sync_offline.py to use pathlib for file operations
+sefaria export ci files move
+sefaria export ci
+Update files manifest and sync folders
+פרשת חי-שרה
+Update files manifest and sync folders
+Merge pull request #1 from YOSEFTT/main
+Automated commit from GitHub Actions
+ben=y fix
+Add script to extract PDF bookmarks and map them to HTML headings
+Update tutorial-dicta.html with tool descriptions
+Update tutorial-dicta.html with new content
+Update files manifest and sync folders
+יום שני פרשת חיי-שרה
+Update files manifest and sync folders
+מוצש וירא
+Add initial appscript and clasp configuration files
+Refactor and update multiple scripts in the otzaria-library: - Removed unnecessary comments and cleaned up the __init__.py file. - Adjusted import statements in htmltootzaria.py for better organization. - Implemented session management in mediawikiapi.py to optimize requests. - Added new functions in mediawikitohtml.py to handle new line formatting. - Enhanced template handling in templates.py with additional logic for cleaning comments. - Created a comprehensive config.toml file for linker settings. - Developed linker.py to manage linking processes with improved error handling. - Expanded to_otzaria_links.py for better link management and parsing. - Updated utils.py to include configuration loading and CSV reading functionality. - Implemented demo_part_1.py and demo_part_2.py for processing and exporting book data.
+Update files manifest and sync folders
+תיקון קל
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+הסרת כפילויות
+Update files manifest and sync folders
+הסרת תיקיית ירושלמי
+Update files manifest and sync folders
+עדכון הלינקים החדשים
+עדכון רישיונות בreadme
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+הסרת פניני הלכה
+Update files manifest and sync folders
+הוספות בקובץ 'עריכת ספר באוצריא'
+Update files manifest and sync folders
+עדכון הריצה האוטומטית, להכלל לינקים בדיקטה
+עדכון הקישורים החדשים
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+קישורים בתוך טקסט הספרים - העלאת בדיקה
+Automated commit from GitHub Actions
+Update permissions and comment out Ben-Yehuda script in monthly_update.yml
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+פרשת לך לך
+Update files manifest and sync folders
+הסרת תיקיית "בבלי"
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+עדכון ספרי ספריא
+Update files manifest and sync folders
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+עדכון ריצת הגיטהאב
+Update files manifest and sync folders
+גירסת ספרייה
+sefaria export move folder
+Merge branch 'main' of https://github.com/Y-PLONI/otzaria-library
+עדכון גרסה של Python ל-3.14 ב-workflow והוספת newline לקריאה מקובץ CSV
+Update files manifest and sync folders
+הוספת הרשאות לכתיבה ב-workflow והזזת workflow_dispatch
+תיקון תצוגת הטקסט ב"חיי יוסף" - החלפת strong ב-b
+הוספת אפשרות הפעלה ידנית ל-workflow ועדכון קריאת קובץ ב-sync_and_merge_folders.py
+עדכון הגדרות workflow והסרת קבצים מיותרים, הוספת קובץ גרסה חדש
+תיקון הגדרות workflow ובדיקת פעילות
+הוספת קישורים לאוצר הספרים השיתופי
+העלאה ראשונית - 3
+העלאה ראשונית - 2
+העלאה ראשונית - 1
