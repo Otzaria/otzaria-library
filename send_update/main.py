@@ -3,7 +3,7 @@ import os
 import subprocess
 
 import requests
-from mitmachim import MitmachimClient
+from otzaria_forum import OtzariaForumClient
 from pyluach import dates
 from yemot import split_and_send
 
@@ -57,22 +57,30 @@ print(deleted_files)
 print(renamed_files)
 
 if any([added_files, modified_files, deleted_files, renamed_files]):
-    content_mitmachim = f"**עדכון {date}**\n"
+    content_forum = f"**עדכון {date}**\n"
     date_yemot = f"עדכון {date}\n"
     content_yemot = {}
     if added_files:
-        content_mitmachim += f"\nהתווספו הקבצים הבאים:\n* {"\n* ".join(added_files)}\n"
-        content_yemot["התווספו הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in added_files])}"
+        separator = "\n* "
+        newline = "\n"
+        content_forum += f"\nהתווספו הקבצים הבאים:\n* {separator.join(added_files)}\n"
+        content_yemot["התווספו הקבצים הבאים:"] = f"{newline.join([i.split('/')[-1].split('.')[0] for i in added_files])}"
     if modified_files:
-        content_mitmachim += f"\nהשתנו הקבצים הבאים:\n* {"\n* ".join(modified_files)}\n"
-        content_yemot["השתנו הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in modified_files])}"
+        separator = "\n* "
+        newline = "\n"
+        content_forum += f"\nהשתנו הקבצים הבאים:\n* {separator.join(modified_files)}\n"
+        content_yemot["השתנו הקבצים הבאים:"] = f"{newline.join([i.split('/')[-1].split('.')[0] for i in modified_files])}"
     if renamed_files:
-        content_mitmachim += f"\nשונה מיקום/שם של הקבצים הבאים:\n* {"\n* ".join(renamed_files)}\n"
-        content_yemot["שונה מיקום/שם של הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in renamed_files])}"
+        separator = "\n* "
+        newline = "\n"
+        content_forum += f"\nשונה מיקום/שם של הקבצים הבאים:\n* {separator.join(renamed_files)}\n"
+        content_yemot["שונה מיקום/שם של הקבצים הבאים:"] = f"{newline.join([i.split('/')[-1].split('.')[0] for i in renamed_files])}"
     if deleted_files:
-        content_mitmachim += f"\nנמחקו הקבצים הבאים:\n* {"\n* ".join(deleted_files)}\n"
-        content_yemot["נמחקו הקבצים הבאים:"] = f"{"\n".join([i.split('/')[-1].split('.')[0] for i in deleted_files])}"
-    print(content_mitmachim)
+        separator = "\n* "
+        newline = "\n"
+        content_forum += f"\nנמחקו הקבצים הבאים:\n* {separator.join(deleted_files)}\n"
+        content_yemot["נמחקו הקבצים הבאים:"] = f"{newline.join([i.split('/')[-1].split('.')[0] for i in deleted_files])}"
+    print(content_forum)
     username = os.getenv("USER_NAME")
     password = os.getenv("PASSWORD")
     yemot_token = os.getenv("TOKEN_YEMOT")
@@ -80,14 +88,14 @@ if any([added_files, modified_files, deleted_files, renamed_files]):
     yemot_path = "ivr2:/1"
     tzintuk_list_name = "books update"
 
-    requests.post(google_chat_url, json={"text": content_mitmachim})
+    requests.post(google_chat_url, json={"text": content_forum})
 
-    client = MitmachimClient(username.strip().replace(" ", "+"), password.strip())
+    client = OtzariaForumClient(username.strip().replace(" ", "+"), password.strip())
 
     try:
         client.login()
-        topic_id = 80213
-        client.send_post(content_mitmachim, topic_id)
+        topic_id = 20
+        client.send_post(content_forum, topic_id)
     except Exception as e:
         print(e)
     finally:

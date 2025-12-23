@@ -4,9 +4,9 @@ import re
 import uuid
 
 
-class MitmachimClient:
+class OtzariaForumClient:
     def __init__(self, username, password):
-        self.base_url = "https://mitmachim.top"
+        self.base_url = "https://forum.otzaria.org"
         self.session = requests.Session()
         self.username = username
         self.password = password

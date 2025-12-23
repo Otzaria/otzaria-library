@@ -66,7 +66,7 @@ jobs:
           pip install -r linker/requirements.txt
           python linker/linker_on_commit.py
 
-      - name: update in mitmachim
+      - name: update in otzaria forum
         env:
           USER_NAME: ${{ secrets.USER_NAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
