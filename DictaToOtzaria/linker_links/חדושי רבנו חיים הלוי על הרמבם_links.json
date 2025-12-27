@@ -8618,13 +8618,6 @@
             "refs": {
                 "Jerusalem Talmud Bava Kamma 6:1:1-8:2": "תלמוד ירושלמי בבא קמא ו׳:א׳:א׳-ח׳:ב׳"
             }
-        },
-        {
-            "start": 1952,
-            "end": 1960,
-            "refs": {
-                "Jerusalem Talmud Bava Kamma 6:1": "תלמוד ירושלמי בבא קמא ו׳:א׳"
-            }
         }
     ],
     "808": [
@@ -8645,22 +8638,22 @@
             }
         },
         {
-            "start": 929,
-            "end": 944,
+            "start": 930,
+            "end": 945,
             "refs": {
                 "Sanhedrin 57": "סנהדרין נ״ז"
             }
         },
         {
-            "start": 1018,
-            "end": 1040,
+            "start": 1019,
+            "end": 1041,
             "refs": {
                 "Mishneh Torah, Kings and Wars 9": "משנה תורה, הלכות מלכים ומלחמות ט׳"
             }
         },
         {
-            "start": 1329,
-            "end": 1344,
+            "start": 1330,
+            "end": 1345,
             "refs": {
                 "Sanhedrin 73": "סנהדרין ע״ג"
             }
@@ -8786,13 +8779,6 @@
             "refs": {
                 "Mishneh Torah, Woman Suspected of Infidelity 1:18": "משנה תורה, הלכות סוטה א׳:י״ח"
             }
-        },
-        {
-            "start": 455,
-            "end": 461,
-            "refs": {
-                "Mishneh Torah, Woman Suspected of Infidelity 1:18": "משנה תורה, הלכות סוטה א׳:י״ח"
-            }
         }
     ],
     "819": [
@@ -8892,20 +8878,6 @@
             "end": 609,
             "refs": {
                 "Makkot 3": "מכות ג׳"
-            }
-        },
-        {
-            "start": 618,
-            "end": 622,
-            "refs": {
-                "Makkot 3a": "מכות ג׳ א"
-            }
-        },
-        {
-            "start": 672,
-            "end": 676,
-            "refs": {
-                "Makkot 3a": "מכות ג׳ א"
             }
         },
         {
@@ -9065,24 +9037,10 @@
             }
         },
         {
-            "start": 74,
-            "end": 78,
-            "refs": {
-                "Bava Metzia 33b": "בבא מציעא ל״ג ב"
-            }
-        },
-        {
             "start": 212,
             "end": 220,
             "refs": {
                 "Tosafot on Bava Metzia 33b": "תוספות על בבא מציעא ל״ג ב"
-            }
-        },
-        {
-            "start": 385,
-            "end": 389,
-            "refs": {
-                "Bava Metzia 33b": "בבא מציעא ל״ג ב"
             }
         },
         {
@@ -9133,14 +9091,6 @@
             "refs": {
                 "Bava Kamma 69": "בבא קמא ס״ט"
             }
-        },
-        {
-            "start": 1193,
-            "end": 1197,
-            "refs": {
-                "Bava Kamma 69a": "בבא קמא ס״ט א",
-                "Niddah 46a": "נדה מ״ו א"
-            }
         }
     ],
     "855": [
@@ -9177,13 +9127,6 @@
             "refs": {
                 "Bava Batra 106": "בבא בתרא ק״ו"
             }
-        },
-        {
-            "start": 404,
-            "end": 408,
-            "refs": {
-                "Bava Batra 106a": "בבא בתרא ק״ו א"
-            }
         }
     ],
     "861": [
@@ -9215,15 +9158,6 @@
             "end": 1258,
             "refs": {
                 "Eruvin 37": "עירובין ל״ז"
-            }
-        }
-    ],
-    "864": [
-        {
-            "start": 66,
-            "end": 70,
-            "refs": {
-                "Eruvin 37a": "עירובין ל״ז א"
             }
         }
     ],
@@ -9311,14 +9245,6 @@
             }
         },
         {
-            "start": 1075,
-            "end": 1079,
-            "refs": {
-                "Yevamot 78a": "יבמות ע״ח א",
-                "Temurah": "תמורה"
-            }
-        },
-        {
             "start": 1925,
             "end": 1940,
             "refs": {
@@ -9332,20 +9258,6 @@
             "end": 845,
             "refs": {
                 "Gittin 77": "גיטין ע״ז"
-            }
-        },
-        {
-            "start": 1803,
-            "end": 1807,
-            "refs": {
-                "Gittin 77a": "גיטין ע״ז א"
-            }
-        },
-        {
-            "start": 2078,
-            "end": 2082,
-            "refs": {
-                "Gittin 77a": "גיטין ע״ז א"
             }
         }
     ],
@@ -9486,16 +9398,6 @@
             "end": 2205,
             "refs": {
                 "Tosafot on Bava Metzia 64b": "תוספות על בבא מציעא ס״ד ב"
-            }
-        }
-    ],
-    "897": [
-        {
-            "start": 111,
-            "end": 116,
-            "refs": {
-                "Bava Metzia 64b": "בבא מציעא ס״ד ב",
-                "Arakhin": "ערכין"
             }
         }
     ],
