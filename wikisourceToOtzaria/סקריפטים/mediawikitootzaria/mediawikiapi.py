@@ -14,6 +14,9 @@ YESHIVA = "https://www.yeshiva.org.il/wiki/api.php"  # ה end-point של ויק�
 JEWISHBOOKS = "https://wiki.jewishbooks.org.il/mediawiki/api.php"  # ה end-point של אוצר הספרים היהודי השיתופי
 BASE_URL = ""
 SESSION = requests.Session()
+HEADERS = {
+    "User-Agent": "OtzariaBot/1.0 (https://github.com/yourname/otzaria; contact@example.com)"
+}
 
 
 def get_ns_list() -> list:
@@ -158,7 +161,7 @@ def get_page_content(page_title: str) -> str:
         'format': 'json',
     }
     try:
-        response = SESSION.get(BASE_URL, params=params)
+        response = SESSION.get(BASE_URL, params=params, headers=HEADERS)
         response.raise_for_status()
 
         data = response.json()

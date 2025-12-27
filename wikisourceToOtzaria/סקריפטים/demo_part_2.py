@@ -2,6 +2,7 @@ import csv
 import html
 import json
 import re
+import time
 from collections.abc import Generator
 from pathlib import Path
 
@@ -9,7 +10,8 @@ from mediawikitootzaria import htmltootzaria, mediawikiapi, mediawikitohtml, tem
 from openpyxl import load_workbook
 from tqdm import tqdm
 
-mediawikiapi.BASE_URL = mediawikiapi.JEWISHBOOKS
+mediawikiapi.BASE_URL = mediawikiapi.WIKISOURCE
+templates.replacement_dict = templates.wikisource_replacement_dict
 
 
 def iter_books_with_author(xlsx_file_path: Path) -> Generator[tuple[str, str, str, list[list[str]]]]:
@@ -56,9 +58,11 @@ def main(pages: list[list[str]], title: str, author: str, link: str) -> None:
     sup_num = 0
     all_sup = []
     dict_links = []
-    all_content = [f"<h1>{title}</h1>", author if author else "", "באדיבות 'אוצר הספרים היהודי השיתופי'", f'(במצב מקוון אפשר ללחוץ <a href="{link}">כאן</a> ולתקן את הדף המקורי או להוסיף הערת שוליים)']
+    # all_content = [f"<h1>{title}</h1>", author if author else "", "באדיבות 'אוצר הספרים היהודי השיתופי'", f'(במצב מקוון אפשר ללחוץ <a href="{link}">כאן</a> ולתקן את הדף המקורי או להוסיף הערת שוליים)']
+    all_content = [f"<h1>{title}</h1>", author if author else ""]
     lines = len(all_content)
     # for book in read_order_from_csv(csv_file_path):
+    time.sleep(1)
     for book in tqdm(pages):
         h_level = 0
         book_url = book[0]
@@ -123,7 +127,7 @@ def main(pages: list[list[str]], title: str, author: str, link: str) -> None:
 # file_path = r"C:\Users\User\Downloads\אוצר הספרים היהודי השיתופי - עץ הדר.csv"
 # book_title = "עץ הדר"
 # book_author = ""
-for author, book_name, link, rows in iter_books_with_author(Path("books.xlsx")):
+for author, book_name, link, rows in iter_books_with_author(Path(r"C:\Users\User\Downloads\ויקיטקסט_3.xlsx")):
     print("מחבר:", author)
     print(f"{book_name=}:")
     # main(Path(file_path), book_title, book_author)

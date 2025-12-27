@@ -2,23 +2,49 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
+from functools import partial
 
 import mwparserfromhell
+from mwparserfromhell.nodes.template import Template
 from wikiexpand.expand import ExpansionContext
 from wikiexpand.expand.templates import TemplateDict
 
-from . import mediawikiapi, utils
+from . import mediawikiapi, template_funcs, utils
+
+TemplateAction = Callable[[Template], str]
+
+wikisource_replacement_dict: dict[str, Callable[[Template], str]] = {
+    "קיצור דרך": template_funcs.remove,
+    "פרשן על פסוק": template_funcs.remove,
+    "צמ": template_funcs.bold_and_parenthesize,
+    "קטע של פירוש על פסוק": template_funcs.remove,
+    "#קטע": template_funcs.remove,
+    "צ": template_funcs.bold_italic_and_gersim,
+    "קישור למחבר": template_funcs.remove,
+    "כו": template_funcs.remove,
+    "הפניה-גמ": partial(template_funcs.keep_some_params, params_to_keep=[0, 1, 2]),
+    "ממ": template_funcs.parenthesize_only
+}
+
+replacement_dict: dict[str, TemplateAction] = {}
 
 
 def filter_templates(string: str, all_templates: list[str] | None = None, template_dict: TemplateDict | None = None) -> list[list[str]] | bool:
-    """מחזיר את התבניות ברמה העליונה של הטקסט"""
+    """מחזיר את התבניות ברמה העליונה של הטקסט."""
     string_2 = []
     parsed = mwparserfromhell.parse(string)
     templates = parsed.filter_templates(parsed.RECURSE_OTHERS)
     if templates:
         for template in templates:
-            if all_templates and template_dict and template.name in all_templates:
+            template_name = str(template.name).strip()
+            # טיפול בתבניות מיוחדות שמתחילות ב #
+            if template_name.startswith("#") and ":" in template_name:
+                template_name = template_name.split(":", 1)[0].strip()
+            if all_templates and template_dict and template_name in all_templates:
                 template_str = convert_templates(str(template), template_dict)
+            elif template_name in replacement_dict:
+                template_str = replacement_dict[template_name](template)
             else:
                 template_str = " ".join([str(param) for param in template.params])
             string_2.append([str(template), template.name, template_str])
@@ -27,7 +53,7 @@ def filter_templates(string: str, all_templates: list[str] | None = None, templa
 
 
 def clean_comment(comment: str, all_templates: list | None, template_dict: TemplateDict) -> str:
-    """מסיר תבניות מההערה"""
+    """מסיר תבניות מההערה."""
     while True:
         replace = filter_templates(comment, all_templates, template_dict)
         if not replace:
@@ -42,8 +68,7 @@ def remove_templates(wikitext: str, template_dict=None) -> tuple[str, dict]:
     """
     מסיר תבניות ללא פרמטרים
     תבנית עם פרמטרים התבנית מוסרת והפרמטרים נשארים
-    תבנית הערה מוסרת ונכנסת הפנייה במקומה
-    """
+    תבנית הערה מוסרת ונכנסת הפנייה במקומה. """
     if template_dict:
         all_templates = [i for i in template_dict.keys()]
         template_dict = templates_dict(template_dict)
@@ -60,7 +85,7 @@ def remove_templates(wikitext: str, template_dict=None) -> tuple[str, dict]:
     }
     while True:
         replace = filter_templates(wikitext, all_templates, template_dict)
-        if not replace:
+        if replace is False:
             break
         for i in replace:
             if i[1].strip() == "הערה":

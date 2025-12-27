@@ -1,11 +1,12 @@
 import csv
-import re
 import html
 import json
+import re
 
-from mediawikitootzaria import mediawikiapi, mediawikitohtml, htmltootzaria, templates
+from mediawikitootzaria import htmltootzaria, mediawikiapi, mediawikitohtml, templates
 
 mediawikiapi.BASE_URL = mediawikiapi.WIKISOURCE
+templates.replacement_dict = templates.wikisource_replacement_dict
 
 
 def read_order_from_csv(csv_file_path):

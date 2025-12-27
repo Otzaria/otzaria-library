@@ -37,18 +37,11 @@ OtzariaLink = TypedDict("OtzariaLink", {"line_index_1": int, "line_index_2": int
 # log_path = Path(CONFIG["otzaria"]["log_path"])
 log_path = Path(__file__).parent / CONFIG["otzaria"]["log_path"]
 log_path = log_path.resolve()
-set_links: set[str] = set()
-set_range: set[str] = set()
-otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
-otzaria_parse: defaultdict[str, list[Link]] = defaultdict(list)
-all_otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
+
 # refs_file_path = Path(CONFIG["otzaria"]["refs_all_file_path"]).resolve()
 refs_file_path = Path(__file__).parent / CONFIG["otzaria"]["refs_all_file_path"]
 refs_file_path = refs_file_path.resolve()
-not_found_links: set[str] = set()
-not_found_books: set[str] = set()
-found_links: set[str] = set()
-found_links_dict = {}
+
 folders = (
     "Ben-YehudaToOtzaria/ספרים/אוצריא",
     "DictaToOtzaria/ערוך/ספרים/אוצריא",
@@ -189,6 +182,29 @@ def read_linker_json(file_path: Path) -> dict[str, list[LinkerLink]]:
         return json.load(f)
 
 
+set_links: set[str] = set()
+set_range: set[str] = set()
+otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
+otzaria_parse: defaultdict[str, list[Link]] = defaultdict(list)
+all_otzaria_links: defaultdict[str, list[list[str]]] = defaultdict(list)
+not_found_links: set[str] = set()
+not_found_books: set[str] = set()
+found_links: set[str] = set()
+found_links_dict = {}
+with refs_file_path.open("r", encoding="utf-8", newline="") as f:
+    reader = csv.reader(f)
+    headers = next(reader)
+    print(headers)
+    for line in tqdm(reader):
+        parse = split_link(line[0].strip())
+        all_otzaria_links[f"{", ".join(parse["first_part"])} {":".join(map(str, parse["start_index"]))}"].append(line)
+        otzaria_parse[parse["first_part"][0]].append(parse)
+        if line[0].strip() in set_links:
+            line[1] = line[1].replace("&&&", ", ")
+            otzaria_links[line[0].strip()].append(line)
+            set_links.remove(line[0].strip())
+
+
 for folder in folders:
     folder_path = Path(folder)
     linker_links_path = Path(folder_path.parts[0]) / "linker_links"
@@ -205,21 +221,7 @@ for folder in folders:
                         set_links.add(ref.strip())
 
 print(f"{len(set_links)=} {len(set_range)=}")
-with refs_file_path.open("r", encoding="utf-8", newline="") as f:
-    reader = csv.reader(f)
-    headers = next(reader)
-    print(headers)
-    for line in tqdm(reader):
-        parse = split_link(line[0].strip())
-        # if parse["first_part"][0] == "Shabbat" and len(parse["first_part"]) == 1:
-        #     print(line)
-        #     print(parse)
-        all_otzaria_links[f"{", ".join(parse["first_part"])} {":".join(map(str, parse["start_index"]))}"].append(line)
-        otzaria_parse[parse["first_part"][0]].append(parse)
-        if line[0].strip() in set_links:
-            line[1] = line[1].replace("&&&", ", ")
-            otzaria_links[line[0].strip()].append(line)
-            set_links.remove(line[0].strip())
+
 num = len(set_links)
 
 print(f"{num=}")

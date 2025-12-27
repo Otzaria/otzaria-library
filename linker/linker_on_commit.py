@@ -99,8 +99,7 @@ def main() -> None:
         src_link = Path(src_path.parts[0]) / "linker_links" / f"{src_path.stem}_links.json"
         target_link = Path(target_path.parts[0]) / "linker_links" / f"{target_path.stem}_links.json"
         if hash_all.get(src_path.as_posix()):
-            if hash_all.get(src_link.as_posix()):
-                del hash_all[src_link.as_posix()]
+            del hash_all[src_path.as_posix()]
         if not src_link.exists():
             continue
         if renamed_file in to_external_moves:
