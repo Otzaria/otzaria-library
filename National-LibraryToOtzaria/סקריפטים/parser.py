@@ -374,12 +374,7 @@ for code_mefaresh_id, mef_entry in all_mef.items():
                             if not otzaria_line:
                                 print(f"Missing link for {book.strip()}, {halachot.strip()}, {perek.strip()}, {ot.strip()}")
                                 continue
-                            # הקובץ נקרא על שם המפרש, ולכן הוא צד ה-source. מנקודת
-                            # מבטו, משנה תורה הוא ה"מקור" (source) שעליו הוא מפרש —
-                            # לכן הסוג הוא "source" ולא "commentary". הגנרטור הופך
-                            # קישור-source לכיוון הקנוני (רמב"ם→מפרש, COMMENTARY),
-                            # והאפליקציה מציגה את המפרש תחת "מפרשים" של הרמב"ם ואת
-                            # הרמב"ם תחת "מקור" של המפרש (issue Otzaria/otzaria#531).
+                            # המפרש הוא ה-source ומשנה תורה הבסיס, לכן "source" (הגנרטור הופך לקנוני). issue #531
                             dict_links.append(
                                 {
                                     "line_index_1": lines,
