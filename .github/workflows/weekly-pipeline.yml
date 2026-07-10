@@ -65,3 +65,20 @@ jobs:
           set -euo pipefail
           gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary
           echo "בניית SeforimLibrary הופעלה. תפורסם כ-release בסיום."
+
+  linker:
+    name: Trigger LinkerToOtzaria re-link
+    needs: upstreams          # רץ במקביל ל-build, אחרי שהמקורות הצליחו
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+    steps:
+      # חוצה-מחזור בכוונה: הלינקר צורך את ה-lines_snapshot מה-release האחרון של
+      # SeforimLibrary (הבנייה הקודמת) ומפרסם zst שה-build הבא יצרוך ב-Phase-2.
+      # לכן אין תלות סדר בין linker ל-build באותו מחזור — כל אחד צורך את פלט-הקודם
+      # של רעהו. fire-and-forget (הריצה כבדה: Mongo+NER+Django).
+      - name: הפעלת re-link (fire-and-forget)
+        run: |
+          set -euo pipefail
+          gh workflow run relink.yml -R Otzaria/LinkerToOtzaria
+          echo "LinkerToOtzaria re-link הופעל. יפרסם linker_links.zst בסיום."
