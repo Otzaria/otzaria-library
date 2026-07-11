@@ -2,6 +2,8 @@ name: Weekly Otzaria pipeline
 
 # מנצח שבועי: מפעיל את שני מקורות הנתונים (SefariaExport + update-library)
 # במקביל, ממתין שששניהם *יצליחו*, ורק אז מפעיל את בניית ה-DB ב-SeforimLibrary.
+# הלינקר (LinkerToOtzaria) לא מופעל מכאן: הבנייה עצמה מריצה אותו סריאלית
+# באמצע (snapshot → relink → הזרקת קישורים), כך שכל release יוצא עם קישורים מלאים.
 #
 # למה כאן: SeforimLibrary מושך בזמן ריצה את ה-release האחרון של שני ה-repos,
 # אז הוא חייב להתחיל רק אחרי ששניהם פרסמו release טרי. כל שלושת ה-workflows
@@ -64,21 +66,4 @@ jobs:
         run: |
           set -euo pipefail
           gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary
-          echo "בניית SeforimLibrary הופעלה. תפורסם כ-release בסיום."
-
-  linker:
-    name: Trigger LinkerToOtzaria re-link
-    needs: upstreams          # רץ במקביל ל-build, אחרי שהמקורות הצליחו
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
-    steps:
-      # חוצה-מחזור בכוונה: הלינקר צורך את ה-lines_snapshot מה-release האחרון של
-      # SeforimLibrary (הבנייה הקודמת) ומפרסם zst שה-build הבא יצרוך ב-Phase-2.
-      # לכן אין תלות סדר בין linker ל-build באותו מחזור — כל אחד צורך את פלט-הקודם
-      # של רעהו. fire-and-forget (הריצה כבדה: Mongo+NER+Django).
-      - name: הפעלת re-link (fire-and-forget)
-        run: |
-          set -euo pipefail
-          gh workflow run relink.yml -R Otzaria/LinkerToOtzaria
-          echo "LinkerToOtzaria re-link הופעל. יפרסם linker_links.zst בסיום."
+          echo "בניית SeforimLibrary הופעלה (כולל relink סריאלי). תפורסם כ-release בסיום."
