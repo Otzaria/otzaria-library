@@ -1,69 +1,78 @@
 name: Weekly Otzaria pipeline
 
-# מנצח שבועי: מפעיל את שני מקורות הנתונים (SefariaExport + update-library)
-# במקביל, ממתין שששניהם *יצליחו*, ורק אז מפעיל את בניית ה-DB ב-SeforimLibrary.
-# הלינקר (LinkerToOtzaria) לא מופעל מכאן: הבנייה עצמה מריצה אותו סריאלית
-# באמצע (snapshot → relink → הזרקת קישורים), כך שכל release יוצא עם קישורים מלאים.
-#
-# למה כאן: SeforimLibrary מושך בזמן ריצה את ה-release האחרון של שני ה-repos,
-# אז הוא חייב להתחיל רק אחרי ששניהם פרסמו release טרי. כל שלושת ה-workflows
-# כבר תומכים ב-workflow_dispatch, לכן כל הלוגיקה חיה כאן ואפס שינויים נדרשים
-# ב-SefariaExport וב-SeforimLibrary.
-#
-# דורש secret בשם PIPELINE_TOKEN (PAT) — ה-GITHUB_TOKEN האוטומטי חסום מלהפעיל
-# workflows ב-repos אחרים.
+run-name: weekly immutable pipeline ${{ github.run_id }}-${{ github.run_attempt }}
 
 on:
   schedule:
-    # יום חמישי 15:00 UTC → 18:00 שעון קיץ ישראל / 17:00 שעון חורף.
-    # ה-cron ב-UTC בלבד, אז יש הסחה של שעה בין קיץ לחורף — הכל נשאר בערב חמישי.
-    # יום=4=חמישי (ראשון=0).
     - cron: '0 15 * * 4'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: weekly-otzaria-pipeline
+  cancel-in-progress: false
+
 jobs:
-  upstreams:
-    name: Trigger + wait for SefariaExport and update-library
+  orchestrate:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
     steps:
-      - name: הרצת שני המקורות במקביל והמתנה שששניהם יצליחו
+      - name: Prepare Otzaria sources, then export Sefaria
+        shell: bash
         run: |
           set -euo pipefail
 
-          echo "מפעיל SefariaExport ו-update-library..."
-          gh workflow run release.yml        -R Otzaria/SefariaExport
-          gh workflow run update-library.yml -R Otzaria/otzaria-library
+          find_exact_run() {
+            local repo="$1" workflow="$2" title="$3" head_sha="$4" dispatched_at="$5"
+            local matches=""
+            for _ in {1..30}; do
+              matches="$(gh run list -R "$repo" -w "$workflow" --event workflow_dispatch --limit 50 \
+                --json databaseId,displayTitle,headSha,createdAt,event \
+                --jq "[.[] | select(.displayTitle == \"$title\" and .headSha == \"$head_sha\" and .createdAt >= \"$dispatched_at\")] | .[].databaseId")"
+              count="$(sed '/^$/d' <<<"$matches" | wc -l | tr -d ' ')"
+              if [[ "$count" == 1 ]]; then
+                printf '%s\n' "$matches"
+                return 0
+              fi
+              if (( count > 1 )); then
+                echo "More than one run matched exact dispatch identity" >&2
+                return 1
+              fi
+              sleep 10
+            done
+            echo "No exact workflow run appeared for $repo/$workflow" >&2
+            return 1
+          }
 
-          # ה-runs נוצרים אסינכרונית; ממתינים שיירשמו לפני שתופסים מזהה.
-          # שום דבר אחר לא מפעיל את שני ה-workflows האלה, אז "האחרון" הוא שלנו.
-          sleep 20
+          prepare_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}:prepare"
+          prepare_title="update-library mode=prepare_only correlation=${prepare_correlation}"
+          prepare_head="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
+          prepare_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          gh workflow run update-library.yml -R Otzaria/otzaria-library \
+            -f mode=prepare_only \
+            -f correlation_id="$prepare_correlation"
+          prepare_run="$(find_exact_run Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head" "$prepare_time")"
+          gh run watch "$prepare_run" -R Otzaria/otzaria-library --exit-status
 
-          SEF=$(gh run list -R Otzaria/SefariaExport   -w release.yml        -L1 --json databaseId -q '.[0].databaseId')
-          LIB=$(gh run list -R Otzaria/otzaria-library -w update-library.yml -L1 --json databaseId -q '.[0].databaseId')
-          echo "SefariaExport run:   $SEF"
-          echo "update-library run:  $LIB"
+          # SefariaExport publishes an immutable release and dispatches the link
+          # sync itself.  The weekly orchestrator neither races a publisher nor
+          # chooses downstream release inputs.
+          export_head="$(gh api repos/Otzaria/SefariaExport/commits/main --jq .sha)"
+          export_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          gh workflow run release.yml -R Otzaria/SefariaExport
 
-          # ממתינים לשניהם במקביל; --exit-status מכשיל אותנו אם ריצה כלשהי נכשלה.
-          gh run watch "$SEF" -R Otzaria/SefariaExport   --exit-status & P1=$!
-          gh run watch "$LIB" -R Otzaria/otzaria-library --exit-status & P2=$!
-          wait "$P1"
-          wait "$P2"
-          echo "שני המקורות הסתיימו בהצלחה."
-
-  build:
-    name: Trigger SeforimLibrary build
-    needs: upstreams          # רץ רק אם ה-job הקודם (=שני המקורות) הצליח
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
-    steps:
-      - name: הפעלת בניית ה-DB (fire-and-forget — לא ממתינים ל-1.5 השעות)
-        run: |
-          set -euo pipefail
-          gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary
-          echo "בניית SeforimLibrary הופעלה (כולל relink סריאלי). תפורסם כ-release בסיום."
+          export_runs=""
+          for _ in {1..30}; do
+            export_runs="$(gh run list -R Otzaria/SefariaExport -w release.yml --event workflow_dispatch --limit 50 \
+              --json databaseId,headSha,createdAt,event \
+              --jq "[.[] | select(.headSha == \"$export_head\" and .createdAt >= \"$export_time\")] | .[].databaseId")"
+            count="$(sed '/^$/d' <<<"$export_runs" | wc -l | tr -d ' ')"
+            [[ "$count" == 0 ]] || break
+            sleep 10
+          done
+          [[ "$(sed '/^$/d' <<<"$export_runs" | wc -l | tr -d ' ')" == 1 ]]
+          gh run watch "$export_runs" -R Otzaria/SefariaExport --exit-status
+          echo "SefariaExport succeeded and dispatched exact manual-link synchronization."

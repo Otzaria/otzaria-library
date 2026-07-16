@@ -1,0 +1,455 @@
+name: Sync manual links
+
+run-name: sync-manual-links correlation=${{ inputs.correlation_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      sefaria_tag:
+        required: true
+        type: string
+      sefaria_release_metadata_sha256:
+        required: true
+        type: string
+      sefaria_run_id:
+        required: true
+        type: string
+      sefaria_run_attempt:
+        required: true
+        type: string
+      correlation_id:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: manual-links-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-and-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    concurrency:
+      group: otzaria-main-writer
+      cancel-in-progress: false
+    outputs:
+      expected_links_commit: ${{ steps.apply.outputs.expected_links_commit }}
+      seforim_tool_commit: ${{ steps.tool.outputs.sha }}
+      sefaria_archive_sha256: ${{ steps.chain.outputs.archive_sha256 }}
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+      SEFARIA_TAG: ${{ inputs.sefaria_tag }}
+      METADATA_SHA: ${{ inputs.sefaria_release_metadata_sha256 }}
+      CORRELATION_ID: ${{ inputs.correlation_id }}
+    steps:
+      - name: Free disk space for the verified Sefaria export
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: false
+
+      - name: Validate dispatch identity
+        env:
+          RUN_ID: ${{ inputs.sefaria_run_id }}
+          RUN_ATTEMPT: ${{ inputs.sefaria_run_attempt }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$RUN_ID" =~ ^[1-9][0-9]*$ ]]
+          [[ "$RUN_ATTEMPT" =~ ^[1-9][0-9]*$ ]]
+          [[ "$SEFARIA_TAG" =~ ^[A-Za-z0-9._-]+$ ]]
+          [[ "$METADATA_SHA" =~ ^[0-9a-f]{64}$ ]]
+          [[ "$CORRELATION_ID" == "sefaria:${RUN_ID}:${RUN_ATTEMPT}:${SEFARIA_TAG}:${METADATA_SHA}" ]]
+
+      - name: Checkout current Otzaria main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+
+      - name: Validate committed synchronization contract
+        run: |
+          python3 -m unittest -v test_manual_links_packaging.py test_sefaria_release_chain.py
+          test -f manual_links_lineage.json
+          # Source roots may legitimately differ from the previous lineage after
+          # prepare_only.  Validate config/state/collisions now; require the new
+          # exact lineage only after the updater has processed that source tree.
+          python3 manual_links_packaging.py check --workspace .
+
+      - name: Resolve one authorized Seforim tool commit
+        id: tool
+        shell: bash
+        run: |
+          set -euo pipefail
+          lineage_tag="$(jq -r '.sefaria.tag' manual_links_lineage.json)"
+          lineage_digest="$(jq -r '.sefaria.release_metadata_sha256' manual_links_lineage.json)"
+          if [[ "$lineage_tag" == "$SEFARIA_TAG" && "$lineage_digest" == "$METADATA_SHA" ]]; then
+            sha="$(jq -r '.seforim_tool_commit' manual_links_lineage.json)"
+          else
+            ref="$(jq -r '.seforim_tool_ref' manual_links_sync.json)"
+            sha="$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$ref" | awk 'NR==1 {print $1}')"
+          fi
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout the exact updater tool
+        uses: actions/checkout@v4
+        with:
+          repository: Otzaria/SeforimLibrary
+          ref: ${{ steps.tool.outputs.sha }}
+          path: seforim-tool
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify tool authorization
+        working-directory: seforim-tool
+        env:
+          TOOL_SHA: ${{ steps.tool.outputs.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$TOOL_SHA" ]]
+          ref="$(jq -r '.seforim_tool_ref' ../manual_links_sync.json)"
+          branch="${ref#refs/heads/}"
+          git fetch origin "$branch"
+          git merge-base --is-ancestor "$TOOL_SHA" "origin/$branch"
+
+      - name: Preflight resources before downloading the export
+        shell: bash
+        run: |
+          set -euo pipefail
+          available_kib="$(awk '/MemAvailable/ {print $2}' /proc/meminfo)"
+          (( available_kib >= 6 * 1024 * 1024 ))
+          available_blocks="$(df -Pk . | awk 'NR==2 {print $4}')"
+          (( available_blocks >= 12 * 1024 * 1024 ))
+
+      - name: Fetch and verify Sefaria metadata chain and archive
+        id: chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf sefaria-chain
+          python3 sefaria_release_chain.py \
+            --repo Otzaria/SefariaExport \
+            --target-tag "$SEFARIA_TAG" \
+            --target-metadata-sha256 "$METADATA_SHA" \
+            --lineage manual_links_lineage.json \
+            --output sefaria-chain
+          archive_sha="$(jq -r '.archive.sha256' sefaria-chain/chain-result.json)"
+          echo "archive_sha256=$archive_sha" >> "$GITHUB_OUTPUT"
+          mapfile -t parts < <(jq -r '.archive.parts[].name' sefaria-chain/chain-result.json)
+          : > sefaria-chain/combined.tar.zst
+          for part in "${parts[@]}"; do
+            cat "sefaria-chain/target-assets/$part" >> sefaria-chain/combined.tar.zst
+          done
+          [[ "$(sha256sum sefaria-chain/combined.tar.zst | cut -d' ' -f1)" == "$archive_sha" ]]
+          mkdir sefaria-chain/export
+          tar --zstd -xf sefaria-chain/combined.tar.zst -C sefaria-chain/export
+          mapfile -t database_exports < <(find sefaria-chain/export -type d -name database_export -print)
+          [[ ${#database_exports[@]} -eq 1 ]]
+          dirname "${database_exports[0]}" > sefaria-chain/export-root.txt
+
+      - name: Refresh, apply, commit and push atomically
+        id: apply
+        env:
+          TOOL_SHA: ${{ steps.tool.outputs.sha }}
+          PIPELINE_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          export_root="$(realpath "$(cat sefaria-chain/export-root.txt)")"
+          auth="$(printf 'x-access-token:%s' "$PIPELINE_TOKEN" | base64 | tr -d '\n')"
+          success=false
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            worktree="$RUNNER_TEMP/otzaria-attempt-$attempt"
+            output="$RUNNER_TEMP/manual-links-output-$attempt"
+            rm -rf "$worktree" "$output"
+            git worktree add --detach "$worktree" origin/main
+            mkdir "$output"
+
+            ./seforim-tool/gradlew -p seforim-tool :sefariasqlite:refreshManualLinks \
+              -PmanualLinksMode=refresh \
+              -PmanualLinksRepo="$worktree" \
+              -PmanualLinksConfig="$worktree/manual_links_sync.json" \
+              -PmanualLinksLineage="$worktree/manual_links_lineage.json" \
+              -PsefariaExport="$export_root" \
+              -PsefariaReleaseMetadata="$GITHUB_WORKSPACE/sefaria-chain/release_metadata.json" \
+              -PsefariaReleaseMetadataSha256="$METADATA_SHA" \
+              -PsefariaChangelogDir="$GITHUB_WORKSPACE/sefaria-chain/changelogs" \
+              -PseforimToolCommit="$TOOL_SHA" \
+              -PmanualLinksOutput="$output" \
+              -Dorg.gradle.jvmargs=-Xmx4g
+
+            test -f "$output/.manual-links-refresh-complete"
+            test -f "$output/manual_links_refresh_report.json"
+            test -f "$output/manual_links_lineage.json"
+            status="$(jq -r '.status' "$output/manual_links_refresh_report.json")"
+            [[ "$status" == ok || "$status" == no_op ]]
+            python3 - "$output" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          root = Path(sys.argv[1])
+          def load_strict(path):
+              def pairs(items):
+                  value = {}
+                  for key, item in items:
+                      if key in value:
+                          raise SystemExit(f"duplicate JSON key {key!r} in {path}")
+                      value[key] = item
+                  return value
+              return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs)
+
+          marker_path = root / ".manual-links-refresh-complete"
+          marker = load_strict(marker_path)
+          if set(marker) != {"schema_version", "report_sha256", "lineage_sha256", "status"} or marker["schema_version"] != 1:
+              raise SystemExit("completion marker does not match schema version 1")
+          canonical_marker = json.dumps(marker, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\n"
+          if marker_path.read_bytes() != canonical_marker:
+              raise SystemExit("completion marker is not canonical JSON with one trailing LF")
+          report = root / "manual_links_refresh_report.json"
+          lineage = root / "manual_links_lineage.json"
+          for path in (report, lineage):
+              value = load_strict(path)
+              canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8") + b"\n"
+              if path.read_bytes() != canonical:
+                  raise SystemExit(f"{path.name} is not canonical JSON with one trailing LF")
+          file_hash = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          if marker["report_sha256"] != file_hash(report) or marker["lineage_sha256"] != file_hash(lineage):
+              raise SystemExit("completion marker hashes do not match output files")
+          report_status = load_strict(report).get("status")
+          if marker["status"] not in {"ok", "no_op"} or marker["status"] != report_status:
+              raise SystemExit("completion marker status differs from report")
+          PY
+
+            if [[ "$status" == ok ]]; then
+              while IFS= read -r root; do
+                test -d "$output/$root"
+                mkdir -p "$worktree/$root"
+                rsync --archive --delete "$output/$root/" "$worktree/$root/"
+              done < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+              cp "$output/manual_links_lineage.json" "$worktree/manual_links_lineage.json"
+            fi
+
+            python3 "$worktree/manual_links_packaging.py" check --workspace "$worktree" --require-lineage >/dev/null
+            python3 - "$worktree" <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          root = Path(sys.argv[1])
+          config = json.loads((root / "manual_links_sync.json").read_text(encoding="utf-8"))
+          allowed_roots = tuple(entry["path"] + "/" for entry in config["links_roots"])
+          changed = set()
+          for command in (["git", "diff", "--name-only", "-z"], ["git", "ls-files", "--others", "--exclude-standard", "-z"]):
+              raw = subprocess.check_output(command, cwd=root)
+              changed.update(item.decode("utf-8") for item in raw.split(b"\0") if item)
+          forbidden = sorted(path for path in changed if path != "manual_links_lineage.json" and not path.startswith(allowed_roots))
+          if forbidden:
+              raise SystemExit(f"updater changed paths outside the strict allowlist: {forbidden}")
+          PY
+
+            mapfile -t roots < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+            git -C "$worktree" config user.name github-actions[bot]
+            git -C "$worktree" config user.email github-actions[bot]@users.noreply.github.com
+            git -C "$worktree" add -- manual_links_lineage.json "${roots[@]}"
+            python3 - "$worktree" <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          root = Path(sys.argv[1])
+          config = json.loads((root / "manual_links_sync.json").read_text(encoding="utf-8"))
+          prefixes = tuple(entry["path"] + "/" for entry in config["links_roots"])
+          raw = subprocess.check_output(["git", "diff", "--cached", "--name-only", "-z"], cwd=root)
+          paths = [item.decode("utf-8") for item in raw.split(b"\0") if item]
+          forbidden = [path for path in paths if path != "manual_links_lineage.json" and not path.startswith(prefixes)]
+          if forbidden:
+              raise SystemExit(f"staged paths outside strict allowlist: {forbidden}")
+          PY
+            if ! git -C "$worktree" diff --cached --quiet; then
+              git -C "$worktree" commit -m "chore(manual-links): sync Sefaria $SEFARIA_TAG"
+            fi
+            expected="$(git -C "$worktree" rev-parse HEAD)"
+
+            if git -C "$worktree" -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" push origin HEAD:main; then
+              mkdir -p manual-links-refresh-artifact
+              cp "$output/manual_links_refresh_report.json" manual-links-refresh-artifact/
+              cp "$output/manual_links_lineage.json" manual-links-refresh-artifact/
+              cp "$output/.manual-links-refresh-complete" manual-links-refresh-artifact/
+              echo "expected_links_commit=$expected" >> "$GITHUB_OUTPUT"
+              success=true
+              git worktree remove --force "$worktree"
+              break
+            fi
+            git worktree remove --force "$worktree"
+            echo "Push conflict on attempt $attempt; discarding output and recomputing from origin/main."
+          done
+          [[ "$success" == true ]]
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manual-links-refresh-report
+          path: manual-links-refresh-artifact
+          if-no-files-found: error
+          retention-days: 30
+
+  release-and-build:
+    needs: sync-and-commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+      EXPECTED_COMMIT: ${{ needs.sync-and-commit.outputs.expected_links_commit }}
+      TOOL_SHA: ${{ needs.sync-and-commit.outputs.seforim_tool_commit }}
+      SEFARIA_ARCHIVE_SHA: ${{ needs.sync-and-commit.outputs.sefaria_archive_sha256 }}
+      CORRELATION_ID: ${{ inputs.correlation_id }}
+    steps:
+      - name: Checkout orchestration scripts only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.sync-and-commit.outputs.expected_links_commit }}
+          sparse-checkout: |
+            .github/scripts
+            manual_links_sync.json
+            pipeline_result_contract.py
+          persist-credentials: false
+
+      - name: Dispatch exact Otzaria publisher and wait
+        id: otzaria
+        shell: bash
+        run: |
+          set -euo pipefail
+          head_sha="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
+          dispatched_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          gh workflow run update-library.yml -R Otzaria/otzaria-library \
+            -f mode=links_sync_mode \
+            -f expected_links_commit="$EXPECTED_COMMIT" \
+            -f correlation_id="$CORRELATION_ID"
+          title="update-library mode=links_sync_mode correlation=${CORRELATION_ID}"
+          run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/otzaria-library update-library.yml "$title" "$head_sha" "$dispatched_at")"
+          gh run watch "$run_id" -R Otzaria/otzaria-library --exit-status
+          rm -rf child-result
+          gh run download "$run_id" -R Otzaria/otzaria-library -n pipeline-result -D child-result
+          run_attempt="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .run_attempt)"
+          python3 pipeline_result_contract.py validate-otzaria-result \
+            --json child-result/pipeline-result.json --sha256 child-result/pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
+            --run-id "$run_id" --run-attempt "$run_attempt"
+          tag="$(jq -r '.tag' child-result/pipeline-result.json)"
+          asset_sha="$(jq -r '.asset.sha256' child-result/pipeline-result.json)"
+          target="$(gh api "repos/Otzaria/otzaria-library/git/ref/tags/$tag" --jq '.object.sha')"
+          [[ "$target" == "$EXPECTED_COMMIT" ]]
+          expected_names="$(printf '%s\n' otzaria_dicta_latest.zip otzaria_latest.zip otzaria_release_provenance.json talmud_bavli_latest.tar.zst)"
+          remote_names="$(gh release view "$tag" -R Otzaria/otzaria-library --json assets --jq '[.assets[].name] | sort | .[]')"
+          [[ "$remote_names" == "$expected_names" ]]
+          rm -rf release-check && mkdir release-check
+          gh release download "$tag" -R Otzaria/otzaria-library \
+            --pattern otzaria_release_provenance.json --dir release-check
+          while IFS= read -r name; do
+            gh release download "$tag" -R Otzaria/otzaria-library --pattern "$name" --dir release-check
+          done < <(jq -r '[.asset] + .auxiliary_assets | .[].name' child-result/pipeline-result.json)
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import pipeline_result_contract as contract
+
+          result = contract.load_json(Path("child-result/pipeline-result.json"))
+          provenance_path = Path("release-check/otzaria_release_provenance.json")
+          provenance = contract.load_json(provenance_path)
+          contract.validate_provenance(provenance)
+          expected = {key: result[key] for key in contract.PROVENANCE_KEYS}
+          expected["correlation_id"] = result["release_correlation_id"]
+          if provenance != expected:
+              raise SystemExit("remote provenance differs from the exact child result")
+          if hashlib.sha256(provenance_path.read_bytes()).hexdigest() != result["release_provenance_sha256"]:
+              raise SystemExit("remote provenance hash differs from the child result")
+          for descriptor in [result["asset"], *result["auxiliary_assets"]]:
+              path = Path("release-check") / descriptor["name"]
+              if path.stat().st_size != descriptor["size"] or hashlib.sha256(path.read_bytes()).hexdigest() != descriptor["sha256"]:
+                  raise SystemExit(f"remote release asset differs from child result: {descriptor['name']}")
+          PY
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "asset_sha256=$asset_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Dispatch exact pinned Seforim build
+        shell: bash
+        env:
+          OTZARIA_TAG: ${{ steps.otzaria.outputs.tag }}
+          OTZARIA_ASSET_SHA: ${{ steps.otzaria.outputs.asset_sha256 }}
+        run: |
+          set -euo pipefail
+          tool_ref="$(jq -r '.seforim_tool_ref' manual_links_sync.json)"
+          [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]]
+          workflow_ref="${tool_ref#refs/heads/}"
+          head_sha="$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR == 1 {print $1}')"
+          [[ "$head_sha" =~ ^[0-9a-f]{40}$ ]]
+          dispatched_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary --ref "$workflow_ref" \
+            -f source_commit="$TOOL_SHA" \
+            -f sefaria_tag="${{ inputs.sefaria_tag }}" \
+            -f sefaria_release_metadata_sha256="${{ inputs.sefaria_release_metadata_sha256 }}" \
+            -f sefaria_archive_sha256="$SEFARIA_ARCHIVE_SHA" \
+            -f otzaria_tag="$OTZARIA_TAG" \
+            -f otzaria_asset_sha256="$OTZARIA_ASSET_SHA" \
+            -f expected_links_commit="$EXPECTED_COMMIT" \
+            -f otzaria_target_commit="$EXPECTED_COMMIT" \
+            -f correlation_id="$CORRELATION_ID"
+          title="manual-generate-release correlation=${CORRELATION_ID}"
+          run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha" "$dispatched_at")"
+          gh run watch "$run_id" -R Otzaria/SeforimLibrary --exit-status
+          rm -rf build-result
+          gh run download "$run_id" -R Otzaria/SeforimLibrary -n pipeline-result -D build-result
+          run_attempt="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$run_id" --jq .run_attempt)"
+          python3 pipeline_result_contract.py validate-seforim-result \
+            --json build-result/pipeline-result.json --sha256 build-result/pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --run-id "$run_id" --run-attempt "$run_attempt" \
+            --source-commit "$TOOL_SHA" \
+            --sefaria-tag "${{ inputs.sefaria_tag }}" \
+            --sefaria-release-metadata-sha256 "${{ inputs.sefaria_release_metadata_sha256 }}" \
+            --sefaria-archive-sha256 "$SEFARIA_ARCHIVE_SHA" \
+            --otzaria-tag "$OTZARIA_TAG" --otzaria-asset-sha256 "$OTZARIA_ASSET_SHA" \
+            --expected-links-commit "$EXPECTED_COMMIT" --otzaria-target-commit "$EXPECTED_COMMIT" \
+            --config-sha256 "$(jq -r .config_sha256 child-result/pipeline-result.json)" \
+            --source-links-tree-sha256 "$(jq -r .source_links_tree_sha256 child-result/pipeline-result.json)" \
+            --packaged-links-tree-sha256 "$(jq -r .packaged_links_tree_sha256 child-result/pipeline-result.json)" \
+            --lineage-sha256 "$(jq -r .lineage_sha256 child-result/pipeline-result.json)"
+          release_tag="$(jq -r .release_tag build-result/pipeline-result.json)"
+          [[ "$(gh api "repos/Otzaria/SeforimLibrary/git/ref/tags/$release_tag" --jq .object.sha)" == "$TOOL_SHA" ]]
+          rm -rf build-release-check && mkdir build-release-check
+          while IFS= read -r name; do
+            gh release download "$release_tag" -R Otzaria/SeforimLibrary --pattern "$name" --dir build-release-check
+          done < <(jq -r '.assets[].name' build-result/pipeline-result.json)
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          import pipeline_result_contract as contract
+
+          result = contract.load_json(Path("build-result/pipeline-result.json"))
+          for descriptor in result["assets"]:
+              path = Path("build-release-check") / descriptor["name"]
+              if path.stat().st_size != descriptor["size"] or hashlib.sha256(path.read_bytes()).hexdigest() != descriptor["sha256"]:
+                  raise SystemExit(f"remote Seforim asset differs from child result: {descriptor['name']}")
+          PY
+          echo "Pinned Seforim build completed and returned a verified result artifact."

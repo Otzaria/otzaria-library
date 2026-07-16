@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "seforim_tool_ref": "refs/heads/otzaria",
+  "links_roots": [
+    { "path": "Ben-YehudaToOtzaria/links", "expected_state": "present" },
+    { "path": "DictaToOtzaria/ערוך/links", "expected_state": "present" },
+    { "path": "OnYourWayToOtzaria/links", "expected_state": "absent" },
+    { "path": "OraytaToOtzaria/links", "expected_state": "absent" },
+    { "path": "tashmaToOtzaria/links", "expected_state": "present" },
+    { "path": "sefariaToOtzaria/sefaria_export/links", "expected_state": "absent" },
+    { "path": "sefariaToOtzaria/sefaria_api/links", "expected_state": "absent" },
+    { "path": "MoreBooks/links", "expected_state": "present" },
+    { "path": "wikiJewishBooksToOtzaria/links", "expected_state": "present" },
+    { "path": "wikisourceToOtzaria/links", "expected_state": "absent" },
+    { "path": "ToratEmetToOtzaria/links", "expected_state": "present" },
+    { "path": "pninimToOtzaria/links", "expected_state": "present" },
+    { "path": "National-LibraryToOtzaria/links", "expected_state": "present" }
+  ],
+  "bootstrap_adapters": {
+    "National-LibraryToOtzaria/links": "national_library_mishneh_torah_v1",
+    "MoreBooks/links": "morebooks_heref_v1"
+  },
+  "excluded_files": [
+    {
+      "path": "MoreBooks/links/דרך ה_links.json",
+      "reason": "both-sides-sefaria; owned by SefariaLinksImporter",
+      "raw_file_sha256": "60a867f71bc8faa7d9570f15c306dbdd66224debbd44af4e2dcba07ee97591ac",
+      "expected_record_count": 174,
+      "source_sefaria_primary_en_title": "Derekh Hashem",
+      "source_sefaria_primary_he_title": "דרך ה'",
+      "external_primary_target_count": 86,
+      "legacy_self_target": {
+        "count": 88,
+        "basename": "דרך ה",
+        "required_heRef_prefix": "דרך ה', "
+      }
+    }
+  ],
+  "bootstrap_file_renames": [
+    {
+      "from": "National-LibraryToOtzaria/links/טורי אבן_links.json",
+      "to": "National-LibraryToOtzaria/links/טורי אבן רוקח_links.json",
+      "local_book_path": "National-LibraryToOtzaria/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/טורי אבן רוקח.txt",
+      "expected_db_title": "טורי אבן רוקח"
+    },
+    {
+      "from": "National-LibraryToOtzaria/links/חידושי ופירושי מהרי''ק_links.json",
+      "to": "National-LibraryToOtzaria/links/חידושי ופירושי מהרי״ק_links.json",
+      "local_book_path": "National-LibraryToOtzaria/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/חידושי ופירושי מהרי''ק.txt",
+      "expected_db_title": "חידושי ופירושי מהרי״ק"
+    },
+    {
+      "from": "National-LibraryToOtzaria/links/נר שמואל ח''א_links.json",
+      "to": "National-LibraryToOtzaria/links/נר שמואל ח״א_links.json",
+      "local_book_path": "National-LibraryToOtzaria/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/נר שמואל ח''א.txt",
+      "expected_db_title": "נר שמואל ח״א"
+    }
+  ],
+  "bootstrap_record_overrides": [
+    {
+      "path": "MoreBooks/links/סידור אשכנז_links.json",
+      "record_sha256": "587aac82846558b9567e62b19c116477541490ca8699a585c94a8a6fc62081c2",
+      "post_record_sha256": "248eca8b9237e7100fa17035ac97e454db5c1f09783d7de96fbb49da9778fa3b",
+      "require_heRef_2": "סידור ספרד, ערבית לימות החול, , ק\"ש וברכותיה כד,",
+      "ref_2": "Siddur Sefard, Weekday Maariv, The Shema,  24",
+      "line_index_2": 1145
+    },
+    {
+      "path": "MoreBooks/links/סידור אשכנז_links.json",
+      "record_sha256": "54c276b77c60aa55c22f948c2e5a043e0484dee1f3a76ef55439c154f020820c",
+      "post_record_sha256": "242160ef88b25c3f2e2253f82be10429846e79f9a5a7de0c8eae45b64c26b159",
+      "require_heRef_2": "אבודרהם, סדר תפילות החול, , קריאת שמע וברכותיה ג,",
+      "ref_2": "Abudarham, Weekday Prayers, Blessings on the Shema,  3",
+      "line_index_2": 191
+    },
+    {
+      "path": "MoreBooks/links/סידור אשכנז_links.json",
+      "record_sha256": "bdff1908342eab1e5a456a79a6bdcb28715b57bf1918b8844f2ffe3f385931c4",
+      "post_record_sha256": "db45f5c035afc2ee62b389b58cc40a22ef49eb8d625cdedc313d2746e2afe01b",
+      "require_heRef_2": "אבודרהם, סדר תפילות החול, , קריאת שמע וברכותיה ג,",
+      "ref_2": "Abudarham, Weekday Prayers, Blessings on the Shema,  3",
+      "line_index_2": 191
+    },
+    {
+      "path": "MoreBooks/links/סידור אשכנז_links.json",
+      "record_sha256": "333fe6fe60b5d55c2be40e84037641f6e8b51440fedfc52bc4fcc06b6a76c028",
+      "post_record_sha256": "c5de80e414c37be2d33ebee225354d13f518d374466981db240aa4b8faa23b8f",
+      "require_heRef_2": "קדושת לוי, ויקרא, , דרוש לפסח ו,",
+      "ref_2": "Kedushat Levi, Leviticus, Homily for Pesach,  6",
+      "line_index_2": 715
+    }
+  ]
+}

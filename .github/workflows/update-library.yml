@@ -1,372 +1,323 @@
 name: Update Library and create manifest
 
-on:
-  # התזמון הועבר ל-weekly-pipeline.yml (הריצה השבועית) שמפעיל workflow זה
-  # במקביל ל-SefariaExport ואז את בניית SeforimLibrary. אין כאן schedule
-  # עצמאי כדי שלא ירוץ פעמיים.
-  workflow_dispatch:
+run-name: update-library mode=${{ inputs.mode }} correlation=${{ inputs.correlation_id || 'manual' }}
 
-# הטריגר הישן - push על שינויים בנתיבים ספציפיים
-#   push:
-#     paths:
-#       - "Ben-YehudaToOtzaria/ספרים/אוצריא/**"
-#       - "DictaToOtzaria/ערוך/ספרים/אוצריא/**"
-#       - "DictaToOtzaria/לא ערוך/ספרים/אוצריא/**"
-#       - "OnYourWayToOtzaria/ספרים/אוצריא/**"
-#       - "OraytaToOtzaria/ספרים/אוצריא/**"
-#       - "tashmaToOtzaria/ספרים/אוצריא/**"
-#       - "sefariaToOtzaria/sefaria_export/ספרים/אוצריא/**"
-#       - "sefariaToOtzaria/sefaria_api/ספרים/אוצריא/**"
-#       - "MoreBooks/ספרים/אוצריא/**"
-#       - "ToratEmetToOtzaria/ספרים/אוצריא/**"
-#       - "wikiJewishBooksToOtzaria/ספרים/אוצריא/**"
-#       - "wikisourceToOtzaria/ספרים/אוצריא/**"
-#       - "pninimToOtzaria/ספרים/אוצריא/**"
-#       - "National-LibraryToOtzaria/ספרים/אוצריא/**"
-#       - "Ben-YehudaToOtzaria/links/**"
-#       - "DictaToOtzaria/links/**"
-#       - "OnYourWayToOtzaria/links/**"
-#       - "OraytaToOtzaria/links/**"
-#       - "tashmaToOtzaria/links/**"
-#       - "sefariaToOtzaria/sefaria_export/links/**"
-#       - "sefariaToOtzaria/sefaria_api/links/**"
-#       - "MoreBooks/links/**"
-#       - "ToratEmetToOtzaria/links/**"
-#       - "wikiJewishBooksToOtzaria/links/**"
-#       - "wikisourceToOtzaria/links/**"
-#       - "DictaToOtzaria/לא ערוך/links/**"
-#       - "DictaToOtzaria/ערוך/links/**"
-#       - "pninimToOtzaria/links/**"
-#       - "National-LibraryToOtzaria/links/**"
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: prepare_only mutates main; links_sync_mode publishes one exact commit
+        required: true
+        type: choice
+        options:
+          - prepare_only
+          - links_sync_mode
+      expected_links_commit:
+        description: Full commit SHA required by links_sync_mode
+        required: false
+        type: string
+      correlation_id:
+        description: Exact end-to-end correlation identifier
+        required: false
+        type: string
+
 permissions:
   contents: write
+  actions: read
 
 jobs:
-  update-manifest:
+  validate-inputs:
     runs-on: ubuntu-latest
-    # if: github.actor != 'github-actions[bot]' && github.actor != 'github-actions'
-
+    outputs:
+      mode: ${{ steps.validate.outputs.mode }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - id: validate
+        env:
+          MODE: ${{ inputs.mode }}
+          EXPECTED: ${{ inputs.expected_links_commit }}
+          CORRELATION: ${{ inputs.correlation_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$MODE" in
+            prepare_only)
+              [[ -z "$EXPECTED" ]]
+              ;;
+            links_sync_mode)
+              [[ "$EXPECTED" =~ ^[0-9a-f]{40}$ ]]
+              [[ "$CORRELATION" =~ ^sefaria:[1-9][0-9]*:[1-9][0-9]*:[A-Za-z0-9._-]+:[0-9a-f]{64}$ ]]
+              ;;
+            *) exit 2 ;;
+          esac
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+
+  prepare:
+    needs: validate-inputs
+    if: needs.validate-inputs.outputs.mode == 'prepare_only'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: otzaria-main-writer
+      cancel-in-progress: false
+    steps:
+      - name: Checkout main with LFS
+        uses: actions/checkout@v4
         with:
           lfs: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PIPELINE_TOKEN || github.token }}
           fetch-depth: 25
-
-      - name: Pull LFS objects for packaging
-        run: |
+      - run: |
           git lfs pull
           git lfs checkout
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.14'
-
-      # - name: update linker links
-      #   run: |
-      #     pip install -r linker/requirements.txt
-      #     python linker/linker_on_commit.py
-
-      - name: update in otzaria forum
+          python-version: '3.12.10'
+      - name: Update forum-controlled sources
         env:
           USER_NAME: ${{ secrets.USER_NAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
           TOKEN_YEMOT: ${{ secrets.TOKEN_YEMOT }}
           GOOGLE_CHAT_URL: ${{ secrets.GOOGLE_CHAT_URL }}
         run: |
-          pip install bs4 requests pyluach tzdata
-          python send_update/main.py
-          
+          python3 -m pip install --quiet bs4 requests pyluach tzdata
+          python3 send_update/main.py
       - name: Sync files and folders
+        run: python3 sync_and_merge_folders.py
+      - name: Validate config state and write manifests
         run: |
-          python sync_and_merge_folders.py
+          python3 -m unittest -v test_manual_links_packaging.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          import manual_links_packaging as p
 
-      - name: Generate New Files Manifest (New format - with full paths from sources)
-        run: |          
-          echo "{" > files_manifest.json
-          
-          # Add metadata.json (root file)
-          if [ -f "./metadata.json" ]; then
-            hash=$(sha256sum "./metadata.json" | cut -d" " -f1)
-            echo "\"metadata.json\": {\"hash\": \"$hash\"}," >> files_manifest.json
-          fi
-          
-          # Find all files in source directories (אוצריא files from all sources)
-          find . \( \
-            -path "./Ben-YehudaToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./DictaToOtzaria/ערוך/ספרים/אוצריא/*" -o \
-            -path "./OnYourWayToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./OraytaToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./tashmaToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./sefariaToOtzaria/sefaria_export/ספרים/אוצריא/*" -o \
-            -path "./sefariaToOtzaria/sefaria_api/ספרים/אוצריא/*" -o \
-            -path "./MoreBooks/ספרים/אוצריא/*" -o \
-            -path "./ToratEmetToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./wikisourceToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./wikiJewishBooksToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./pninimToOtzaria/ספרים/אוצריא/*" -o \
-            -path "./National-LibraryToOtzaria/ספרים/אוצריא/*" \
-          \) -type f \
-          ! -path "./.git/*" \
-          ! -path "./.github/*" \
-          2>/dev/null | while read -r file; do
-            path="${file#./}"
-            hash=$(sha256sum "$file" | cut -d" " -f1)
-            echo "\"$path\": {\"hash\": \"$hash\"},"
-          done >> files_manifest.json
-          
-          # Find all link files from all sources
-          find . \( \
-            -path "./Ben-YehudaToOtzaria/links/*" -o \
-            -path "./DictaToOtzaria/ערוך/links/*" -o \
-            -path "./OnYourWayToOtzaria/links/*" -o \
-            -path "./OraytaToOtzaria/links/*" -o \
-            -path "./tashmaToOtzaria/links/*" -o \
-            -path "./sefariaToOtzaria/sefaria_export/links/*" -o \
-            -path "./sefariaToOtzaria/sefaria_api/links/*" -o \
-            -path "./MoreBooks/links/*" -o \
-            -path "./ToratEmetToOtzaria/links/*" -o \
-            -path "./wikisourceToOtzaria/links/*" -o \
-            -path "./wikiJewishBooksToOtzaria/links/*" -o \
-            -path "./pninimToOtzaria/links/*" -o \
-            -path "./National-LibraryToOtzaria/links/*" \
-          \) -type f \
-          ! -path "./.git/*" \
-          ! -path "./.github/*" \
-          2>/dev/null | while read -r file; do
-            path="${file#./}"
-            hash=$(sha256sum "$file" | cut -d" " -f1)
-            echo "\"$path\": {\"hash\": \"$hash\"},"
-          done >> files_manifest.json
-          
-          # Remove the trailing comma from the last entry and close the JSON
-          sed -i '$ s/,$//' files_manifest.json
-          echo "}" >> files_manifest.json
+          workspace = Path.cwd()
+          config = p.validate_config(p.load_json(workspace / p.CONFIG_NAME))
+          Path("files_manifest.json").write_bytes(p.canonical_bytes(p.manifest(workspace, config)))
 
-      - name: Generate dicta Files Manifest
-        run: |
-          echo "{" > files_manifest_dicta.json
-          find "./DictaToOtzaria/לא ערוך/ספרים/אוצריא" -type f \
-          ! -path "./.git/*" \
-            ! -path "./.github/*" \
-            2>/dev/null | while read -r file; do
-              path="${file#./}"
-              hash=$(sha256sum "$file" | cut -d" " -f1)
-              echo "\"$path\": {\"hash\": \"$hash\"},"
-          done >> files_manifest_dicta.json
-          sed -i '$ s/,$//' files_manifest_dicta.json
-          echo "}" >> files_manifest_dicta.json
-
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          # קריאת הגירסה החדשה מהקובץ שהתעדכן על ידי הסקריפט הפייתון
-          VERSION=$(cat "MoreBooks/ספרים/אוצריא/אודות התוכנה/גירסת ספריה.txt")
-          # ביצוע commit עם הודעה הכוללת את הגירסה
-          git diff --staged --quiet || git commit -m "גרסת ספרייה $VERSION"
-          # git diff --staged --quiet || git commit -m "Update files manifest and sync folders"
-          git push
-      - name: Create otzaria Release Archive
-        run: |
-          echo "Creating ZIP archive for אוצריא and links (keeping subfolders)..."
-
-          # ZIP אוצריא מכל המקורות
-          for src in \
-            Ben-YehudaToOtzaria/ספרים/אוצריא \
-            DictaToOtzaria/ערוך/ספרים/אוצריא \
-            OnYourWayToOtzaria/ספרים/אוצריא \
-            OraytaToOtzaria/ספרים/אוצריא \
-            tashmaToOtzaria/ספרים/אוצריא \
-            sefariaToOtzaria/sefaria_export/ספרים/אוצריא \
-            sefariaToOtzaria/sefaria_api/ספרים/אוצריא \
-            MoreBooks/ספרים/אוצריא \
-            wikiJewishBooksToOtzaria/ספרים/אוצריא \
-            wikisourceToOtzaria/ספרים/אוצריא \
-            ToratEmetToOtzaria/ספרים/אוצריא \
-            pninimToOtzaria/ספרים/אוצריא \
-            National-LibraryToOtzaria/ספרים/אוצריא
-          do
-            if [ -d "$src" ]; then
-              echo "Adding $src to ZIP..."
-              parent=$(dirname "$src")      # תיקיה אב
-              folder=$(basename "$src")     # אוצריא
-              (cd "$parent" && zip -qr "$GITHUB_WORKSPACE/otzaria_latest.zip" "$folder")
-            fi
-          done
-
-          # ZIP links מכל המקורות
-          for src in \
-            Ben-YehudaToOtzaria/links \
-            DictaToOtzaria/ערוך/links \
-            OnYourWayToOtzaria/links \
-            OraytaToOtzaria/links \
-            tashmaToOtzaria/links \
-            sefariaToOtzaria/sefaria_export/links \
-            sefariaToOtzaria/sefaria_api/links \
-            MoreBooks/links \
-            wikiJewishBooksToOtzaria/links \
-            wikisourceToOtzaria/links \
-            ToratEmetToOtzaria/links \
-            pninimToOtzaria/links \
-            National-LibraryToOtzaria/links
-          do
-            if [ -d "$src" ]; then
-              echo "Adding $src to ZIP..."
-              parent=$(dirname "$src")      # תיקיה אב
-              folder=$(basename "$src")     # links
-              (cd "$parent" && zip -qr "$GITHUB_WORKSPACE/otzaria_latest.zip" "$folder")
-            fi
-          done
-
-          # Add manifest files
-          zip -q "$GITHUB_WORKSPACE/otzaria_latest.zip" files_manifest.json metadata.json || true
-
-          echo "Archive created successfully!"
-      
-      - name: Create dicta Release Archive
-        run: |
-          echo "Creating Dicta ZIP archive (flattening 'לא ערוך' folder)..."
-
-          SRC="DictaToOtzaria/לא ערוך/ספרים"
-          if [ -d "$SRC" ]; then
-            (cd "$SRC" && zip -qr "$GITHUB_WORKSPACE/otzaria_dicta_latest.zip" *)
-          else
-            echo "Source not found: $SRC (skipping)"
-          fi
-
-          # Add manifest file
-          zip -q "$GITHUB_WORKSPACE/otzaria_dicta_latest.zip" files_manifest_dicta.json || true
-
-          echo "Dicta archive created successfully!"
-
-      - name: Create Bavli PDF ZST Archive
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          dicta = {}
+          root = Path("DictaToOtzaria/לא ערוך/ספרים/אוצריא")
+          if root.is_dir():
+              for path in sorted(root.rglob("*"), key=lambda item: item.as_posix().encode("utf-8")):
+                  if path.is_file() and not path.is_symlink():
+                      dicta[path.as_posix()] = {"hash": p.sha256_file(path)}
+          Path("files_manifest_dicta.json").write_bytes(p.canonical_bytes(dicta))
+          PY
+      - name: Commit all prepared source updates
+        shell: bash
         run: |
           set -euo pipefail
-          export LANG=C.UTF-8
-          export LC_ALL=C.UTF-8
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add -A
+          version="$(cat 'MoreBooks/ספרים/אוצריא/אודות התוכנה/גירסת ספריה.txt')"
+          git diff --cached --quiet || git commit -m "גרסת ספרייה $version"
+          git push
 
-          ARCHIVE_NAME="talmud_bavli_latest.tar.zst"
-          SRC="MoreBooks/ספרים/אוצריא/תלמוד בבלי"
-          PREV_RUN=$((GITHUB_RUN_NUMBER - 1))
-          PREV_TAG="library-${PREV_RUN}"
-          REBUILD_ARCHIVE=1
-
-          validate_archive() {
-            local archive_path="$1"
-            zstd -t --quiet "$archive_path"
-            tar --use-compress-program=unzstd -tf "$archive_path" > /dev/null
-          }
-
-          EVENT_BEFORE="$(jq -r '.before // empty' "$GITHUB_EVENT_PATH")"
-
-          if [ "$GITHUB_EVENT_NAME" = "push" ] && [ -n "$EVENT_BEFORE" ] && [ "$EVENT_BEFORE" != "0000000000000000000000000000000000000000" ]; then
-            if git cat-file -e "${EVENT_BEFORE}^{commit}" 2>/dev/null; then
-              if git diff --quiet "$EVENT_BEFORE" "$GITHUB_SHA" -- "$SRC"; then
-                echo "No Bavli PDF changes detected in this push."
-                REBUILD_ARCHIVE=0
-              else
-                echo "Bavli PDF changes detected in this push."
-              fi
-            else
-              echo "Base commit is not available locally. Rebuilding Bavli archive."
-            fi
-          else
-            REBUILD_ARCHIVE=0
-          fi
-
-          if [ "$REBUILD_ARCHIVE" -eq 0 ] && [ "$PREV_RUN" -gt 0 ]; then
-            echo "Trying to reuse Bavli archive from release $PREV_TAG..."
-            if gh release download "$PREV_TAG" -p "$ARCHIVE_NAME"; then
-              if validate_archive "$ARCHIVE_NAME"; then
-                echo "Reused Bavli archive from previous release."
-                exit 0
-              fi
-
-              echo "Downloaded Bavli archive is invalid. Rebuilding..."
-              rm -f "$ARCHIVE_NAME"
-            fi
-
-            echo "Previous Bavli archive not found. Rebuilding..."
-          fi
-
-          echo "Creating flattened ZST archive for Bavli PDFs..."
-
-          STAGING_DIR="$(mktemp -d)"
-          FLAT_DIR="$STAGING_DIR/תלמוד בבלי"
-
-          mkdir -p "$FLAT_DIR"
-
-          declare -A seen_files=()
-
-          while IFS= read -r -d '' pdf; do
-            base_name="$(basename "$pdf")"
-
-            if [[ -n "${seen_files[$base_name]:-}" ]]; then
-              echo "Duplicate PDF name detected while flattening: $base_name"
-              echo "Existing: ${seen_files[$base_name]}"
-              echo "Duplicate: $pdf"
+  package:
+    needs: validate-inputs
+    if: needs.validate-inputs.outputs.mode == 'links_sync_mode'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    concurrency:
+      group: otzaria-release-publisher
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN || github.token }}
+      EXPECTED_COMMIT: ${{ inputs.expected_links_commit }}
+      CORRELATION_ID: ${{ inputs.correlation_id }}
+    steps:
+      - name: Free disk space for reproducible archives
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: false
+      - name: Checkout exact detached commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.expected_links_commit }}
+          fetch-depth: 0
+          lfs: true
+          persist-credentials: false
+      - name: Verify target is exact and reachable from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_COMMIT" ]]
+          git fetch origin main
+          git merge-base --is-ancestor "$EXPECTED_COMMIT" origin/main
+          git lfs pull
+          git lfs checkout
+          test -z "$(git status --porcelain)"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+      - name: Validate and build reproducible archives
+        run: |
+          python3 -m unittest -v test_manual_links_packaging.py test_verify_packaging_toolchain.py
+          python3 verify_packaging_toolchain.py
+          bash create_release_archives.sh
+          bash create_auxiliary_archives.sh
+      - name: Reuse an already complete release or prepare a new draft
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          auxiliary_assets="$(jq -cS -n \
+            --arg dicta_sha "$(sha256sum otzaria_dicta_latest.zip | cut -d' ' -f1)" \
+            --argjson dicta_size "$(stat -c '%s' otzaria_dicta_latest.zip)" \
+            --arg bavli_sha "$(sha256sum talmud_bavli_latest.tar.zst | cut -d' ' -f1)" \
+            --argjson bavli_size "$(stat -c '%s' talmud_bavli_latest.tar.zst)" \
+            '[{name:"otzaria_dicta_latest.zip",size:$dicta_size,sha256:$dicta_sha},{name:"talmud_bavli_latest.tar.zst",size:$bavli_size,sha256:$bavli_sha}]')"
+          jq -cS -n \
+            --arg correlation "$CORRELATION_ID" \
+            --arg target "$EXPECTED_COMMIT" \
+            --argjson packaging "$(cat otzaria_packaging_result.json)" \
+            --argjson auxiliary "$auxiliary_assets" \
+            '{schema_version:1,correlation_id:$correlation,target_commit:$target,tag:"library-links-candidate",asset:$packaging.asset,auxiliary_assets:$auxiliary,packaging_runtime:$packaging.runtime,packaging_toolchain:$packaging.toolchain,config_sha256:$packaging.config_sha256,source_links_tree_sha256:$packaging.source_links_tree_sha256,packaged_links_tree_sha256:$packaging.packaged_links_tree_sha256,lineage_sha256:$packaging.lineage_sha256}' \
+            > fresh-provenance.json
+          python3 pipeline_result_contract.py validate-provenance fresh-provenance.json
+          mkdir -p recovery
+          existing_tag=""
+          while IFS=$'\t' read -r tag is_draft target_commitish; do
+            encoded_tag="$(jq -rn --arg value "$tag" '$value|@uri')"
+            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha')"
+            effective_target="$tag_target"
+            [[ "$target_commitish" != "$EXPECTED_COMMIT" ]] || effective_target="$EXPECTED_COMMIT"
+            if [[ "$is_draft" == true && ( "$target_commitish" == "$EXPECTED_COMMIT" || "$tag_target" == "$EXPECTED_COMMIT" ) ]]; then
+              echo "A partial draft already targets the expected commit: $tag" >&2
               exit 1
             fi
+            candidate_dir="recovery/$(printf '%s' "$tag" | sha256sum | cut -d' ' -f1)"
+            mkdir -p "$candidate_dir"
+            if gh release download "$tag" --pattern otzaria_release_provenance.json --dir "$candidate_dir" 2>/dev/null; then
+              candidate="$candidate_dir/otzaria_release_provenance.json"
+              python3 pipeline_result_contract.py validate-provenance "$candidate"
+              [[ "$(jq -r '.tag' "$candidate")" == "$tag" ]] || { echo "Provenance tag mismatch for $tag" >&2; exit 1; }
+              classification="$(python3 pipeline_result_contract.py classify-recovery \
+                --recorded "$candidate" --fresh fresh-provenance.json \
+                --actual-target "$effective_target" --draft "$is_draft")"
+              if [[ "$classification" == match ]]; then
+                [[ -z "$existing_tag" ]] || { echo "Multiple releases match one immutable input tuple" >&2; exit 1; }
+                existing_tag="$tag"
+                cp "$candidate" recovery/matched-provenance.json
+              elif [[ "$classification" != ignore ]]; then
+                echo "Unexpected recovery classification for $tag: $classification" >&2
+                exit 1
+              fi
+            else
+              if [[ "$tag" == library-links-* && ( "$target_commitish" == "$EXPECTED_COMMIT" || "$tag_target" == "$EXPECTED_COMMIT" ) ]]; then
+                echo "Release $tag targets the expected commit but lacks mandatory provenance" >&2
+                exit 1
+              fi
+            fi
+          done < <(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq '.[] | [.tag_name, .draft, .target_commitish] | @tsv')
 
-            seen_files[$base_name]="$pdf"
-            cp "$pdf" "$FLAT_DIR/$base_name"
-          done < <(find "$SRC" -type f -iname '*.pdf' -print0)
+          if [[ -n "$existing_tag" ]]; then
+            jq -cS --arg tag "$existing_tag" '.tag=$tag' fresh-provenance.json > recovery/fresh-for-match.json
+            python3 pipeline_result_contract.py compare-fresh \
+              --recorded recovery/matched-provenance.json \
+              --fresh recovery/fresh-for-match.json
+            gh release download "$existing_tag" \
+              --pattern otzaria_latest.zip \
+              --pattern otzaria_dicta_latest.zip \
+              --pattern talmud_bavli_latest.tar.zst \
+              --dir recovery
+            expected_names="$(printf '%s\n' otzaria_dicta_latest.zip otzaria_latest.zip otzaria_release_provenance.json talmud_bavli_latest.tar.zst)"
+            remote_names="$(gh release view "$existing_tag" --json assets --jq '[.assets[].name] | sort | .[]')"
+            [[ "$remote_names" == "$expected_names" ]]
+            python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
 
-          if [ -z "$(find "$FLAT_DIR" -maxdepth 1 -type f -iname '*.pdf' -print -quit)" ]; then
-            echo "No PDF files found under $SRC"
-            exit 1
+          root = Path("recovery")
+          provenance = json.loads((root / "matched-provenance.json").read_text(encoding="utf-8"))
+          for descriptor in [provenance["asset"], *provenance["auxiliary_assets"]]:
+              path = root / descriptor["name"]
+              digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              if path.stat().st_size != descriptor["size"] or digest != descriptor["sha256"]:
+                  raise SystemExit(f"published asset differs from recorded descriptor: {descriptor['name']}")
+          PY
+            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${existing_tag}" --jq '.object.sha')"
+            [[ "$tag_target" == "$EXPECTED_COMMIT" ]]
+            echo "tag=$existing_tag" >> "$GITHUB_OUTPUT"
+            echo "reused=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
 
-          # Force POSIX/PAX tar metadata so UTF-8 filenames survive cross-platform extraction.
-          tar --format=posix -C "$STAGING_DIR" -cf - "תלמוד בבלי" | zstd -19 -T0 -o "$GITHUB_WORKSPACE/$ARCHIVE_NAME"
-
-          rm -rf "$STAGING_DIR"
-
-          validate_archive "$GITHUB_WORKSPACE/$ARCHIVE_NAME"
-
-          echo "Bavli archive created successfully!"
-
-
-      - name: Create Release for this run
-        id: create_release
+          tag="library-links-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${EXPECTED_COMMIT:0:12}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Incomplete or mismatched release already exists for $tag" >&2
+            exit 1
+          fi
+          jq -cS -n \
+            --arg correlation "$CORRELATION_ID" \
+            --arg target "$EXPECTED_COMMIT" \
+            --arg tag "$tag" \
+            --argjson packaging "$(cat otzaria_packaging_result.json)" \
+            --argjson auxiliary "$auxiliary_assets" \
+            '{schema_version:1,correlation_id:$correlation,target_commit:$target,tag:$tag,asset:$packaging.asset,auxiliary_assets:$auxiliary,packaging_runtime:$packaging.runtime,packaging_toolchain:$packaging.toolchain,config_sha256:$packaging.config_sha256,source_links_tree_sha256:$packaging.source_links_tree_sha256,packaged_links_tree_sha256:$packaging.packaged_links_tree_sha256,lineage_sha256:$packaging.lineage_sha256}' \
+            > otzaria_release_provenance.json
+          python3 pipeline_result_contract.py validate-provenance otzaria_release_provenance.json
+          gh release create "$tag" --draft --target "$EXPECTED_COMMIT" --title "Otzaria library $tag" --notes "Immutable manual-link synchronized release"
+          gh release upload "$tag" otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "reused=false" >> "$GITHUB_OUTPUT"
+      - name: Verify draft bytes and publish last
+        if: steps.release.outputs.reused == 'false'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.release.outputs.tag }}
+        shell: bash
         run: |
-          set -e
-
-          # שם תג ייחודי לכל ריצה של ה־workflow
-          TAG_NAME="library-${GITHUB_RUN_NUMBER}"
-
-          echo "Creating release with tag: $TAG_NAME"
-
-          gh release create "$TAG_NAME" \
-            --latest \
-            --title "Latest Otzaria Files" \
-            --notes "Latest version of Otzaria files" \
-            otzaria_latest.zip \
-            otzaria_dicta_latest.zip \
-            talmud_bavli_latest.tar.zst
-
-          rm otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst
-
-      - name: Delete previous release to save space
-        continue-on-error: true
+          set -euo pipefail
+          rm -rf release-verification
+          mkdir release-verification
+          gh release download "$TAG" --dir release-verification
+          expected_names="$(printf '%s\n' otzaria_dicta_latest.zip otzaria_latest.zip otzaria_release_provenance.json talmud_bavli_latest.tar.zst)"
+          remote_names="$(gh release view "$TAG" --json assets --jq '[.assets[].name] | sort | .[]')"
+          [[ "$remote_names" == "$expected_names" ]]
+          for asset in otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json; do
+            cmp "$asset" "release-verification/$asset"
+          done
+          target="$(gh release view "$TAG" --json targetCommitish --jq '.targetCommitish')"
+          [[ "$target" == "$EXPECTED_COMMIT" ]]
+          gh release edit "$TAG" --draft=false --latest
+          published_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha')"
+          [[ "$published_target" == "$EXPECTED_COMMIT" ]]
+      - name: Emit exact child result
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.release.outputs.tag }}
+        shell: bash
         run: |
-          # חישוב מספר הריצה הקודמת
-          PREV_RUN=$((GITHUB_RUN_NUMBER - 1))
-          PREV_TAG="library-${PREV_RUN}"
-
-          echo "Attempting to delete previous release: $PREV_TAG"
-
-          # מחיקת ה-release והתג הקודם
-          gh release delete "$PREV_TAG" --yes 2>/dev/null || echo "Previous release $PREV_TAG not found (OK)"
-          git push --delete origin "$PREV_TAG" 2>/dev/null || echo "Previous tag $PREV_TAG not found (OK)"
+          set -euo pipefail
+          if [[ "${{ steps.release.outputs.reused }}" == "true" ]]; then
+            cp recovery/matched-provenance.json otzaria_release_provenance.json
+          fi
+          provenance_sha="$(sha256sum otzaria_release_provenance.json | cut -d' ' -f1)"
+          jq -cS \
+            --arg correlation "$CORRELATION_ID" \
+            --arg status "$(if [[ "${{ steps.release.outputs.reused }}" == true ]]; then echo reused; else echo published; fi)" \
+            --arg run_id "$GITHUB_RUN_ID" \
+            --arg run_attempt "$GITHUB_RUN_ATTEMPT" \
+            --arg provenance_sha "$provenance_sha" \
+            '. + {release_correlation_id:.correlation_id,correlation_id:$correlation,status:$status,child_run_id:($run_id|tonumber),child_run_attempt:($run_attempt|tonumber),expected_commit:.target_commit,release_provenance_sha256:$provenance_sha}' \
+            otzaria_release_provenance.json \
+            > pipeline-result.json
+          sha256sum pipeline-result.json | cut -d' ' -f1 > pipeline-result.sha256
+          python3 pipeline_result_contract.py validate-otzaria-result \
+            --json pipeline-result.json --sha256 pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
+            --run-id "$GITHUB_RUN_ID" --run-attempt "$GITHUB_RUN_ATTEMPT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-result
+          path: |
+            pipeline-result.json
+            pipeline-result.sha256
+          if-no-files-found: error
+          retention-days: 30
