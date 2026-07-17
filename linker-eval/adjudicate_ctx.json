@@ -1,0 +1,54 @@
+{
+ "book": "פני יהושע על בבא קמא",
+ "model": "claude-haiku-4-5-20251001",
+ "only_flagged": true,
+ "total": {
+  "n": 27,
+  "matcher": 17,
+  "hybrid": 17,
+  "oracle": 24,
+  "sent": 18
+ },
+ "per_daf": [
+  {
+   "daf": "דף ב.",
+   "n": 8,
+   "matcher": 5,
+   "hybrid": 5,
+   "oracle": 7,
+   "sent": 3
+  },
+  {
+   "daf": "דף ב:",
+   "n": 5,
+   "matcher": 5,
+   "hybrid": 5,
+   "oracle": 5,
+   "sent": 4
+  },
+  {
+   "daf": "דף ג.",
+   "n": 6,
+   "matcher": 3,
+   "hybrid": 2,
+   "oracle": 6,
+   "sent": 6
+  },
+  {
+   "daf": "דף ג:",
+   "n": 6,
+   "matcher": 4,
+   "hybrid": 5,
+   "oracle": 6,
+   "sent": 3
+  },
+  {
+   "daf": "דף ד.",
+   "n": 2,
+   "matcher": 0,
+   "hybrid": 0,
+   "oracle": 0,
+   "sent": 2
+  }
+ ]
+}

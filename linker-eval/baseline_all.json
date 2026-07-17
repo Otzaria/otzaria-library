@@ -1,0 +1,5303 @@
+{
+ "results": [
+  {
+   "title": "באר שבע על כריתות",
+   "base": "כריתות",
+   "gold_lines": 218,
+   "super_pct": 0.0,
+   "entries": 218,
+   "unresolved": 0,
+   "low_conf": 50,
+   "seg": {
+    "overall": {
+     "hit": 203,
+     "miss": 15,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 203,
+     "miss": 15,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 193,
+     "miss": 14,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 10,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 8,
+   "flagged_hit": 42,
+   "total_miss": 15
+  },
+  {
+   "title": "באר שבע על סוטה",
+   "base": "סוטה",
+   "gold_lines": 168,
+   "super_pct": 0.0,
+   "entries": 168,
+   "unresolved": 0,
+   "low_conf": 45,
+   "seg": {
+    "overall": {
+     "hit": 157,
+     "miss": 11,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 157,
+     "miss": 11,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 144,
+     "miss": 11,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 13,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 7,
+   "flagged_hit": 38,
+   "total_miss": 11
+  },
+  {
+   "title": "באר שבע על תמיד",
+   "base": "תמיד",
+   "gold_lines": 181,
+   "super_pct": 0.0,
+   "entries": 183,
+   "unresolved": 0,
+   "low_conf": 36,
+   "seg": {
+    "overall": {
+     "hit": 176,
+     "miss": 5,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 176,
+     "miss": 5,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 166,
+     "miss": 5,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 10,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 3,
+   "flagged_hit": 33,
+   "total_miss": 5
+  },
+  {
+   "title": "גבורת ארי על יומא",
+   "base": "יומא",
+   "gold_lines": 512,
+   "super_pct": 0.4,
+   "entries": 512,
+   "unresolved": 0,
+   "low_conf": 282,
+   "seg": {
+    "overall": {
+     "hit": 298,
+     "miss": 214,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 297,
+     "miss": 213,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 1,
+     "miss": 1,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 259,
+     "miss": 189,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 39,
+     "miss": 25,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 200,
+   "flagged_hit": 82,
+   "total_miss": 214
+  },
+  {
+   "title": "גבורת ארי על תענית",
+   "base": "תענית",
+   "gold_lines": 388,
+   "super_pct": 0.0,
+   "entries": 388,
+   "unresolved": 0,
+   "low_conf": 195,
+   "seg": {
+    "overall": {
+     "hit": 272,
+     "miss": 116,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 272,
+     "miss": 116,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 256,
+     "miss": 108,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 16,
+     "miss": 8,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 96,
+   "flagged_hit": 99,
+   "total_miss": 116
+  },
+  {
+   "title": "המאור הקטן על שבת",
+   "base": "שבת",
+   "gold_lines": 103,
+   "super_pct": 0.0,
+   "entries": 149,
+   "unresolved": 0,
+   "low_conf": 134,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 98,
+     "nopred": 5
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 98,
+     "nopred": 5
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 71,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 27,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 90,
+   "flagged_hit": 0,
+   "total_miss": 98
+  },
+  {
+   "title": "הפלאה על כתובות",
+   "base": "כתובות",
+   "gold_lines": 1086,
+   "super_pct": 37.7,
+   "entries": 1747,
+   "unresolved": 23,
+   "low_conf": 947,
+   "seg": {
+    "overall": {
+     "hit": 480,
+     "miss": 583,
+     "nopred": 23
+    },
+    "non_super": {
+     "hit": 243,
+     "miss": 411,
+     "nopred": 23
+    },
+    "super": {
+     "hit": 237,
+     "miss": 172,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 326,
+     "miss": 412,
+     "nopred": 22
+    },
+    "multi": {
+     "hit": 154,
+     "miss": 171,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 284,
+   "flagged_hit": 318,
+   "total_miss": 583
+  },
+  {
+   "title": "חדושי הלכות על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 533,
+   "super_pct": 15.4,
+   "entries": 812,
+   "unresolved": 45,
+   "low_conf": 639,
+   "seg": {
+    "overall": {
+     "hit": 310,
+     "miss": 213,
+     "nopred": 10
+    },
+    "non_super": {
+     "hit": 262,
+     "miss": 179,
+     "nopred": 10
+    },
+    "super": {
+     "hit": 48,
+     "miss": 34,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 306,
+     "miss": 210,
+     "nopred": 10
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 164,
+   "flagged_hit": 256,
+   "total_miss": 213
+  },
+  {
+   "title": "חדושי הלכות על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 539,
+   "super_pct": 27.3,
+   "entries": 533,
+   "unresolved": 11,
+   "low_conf": 422,
+   "seg": {
+    "overall": {
+     "hit": 187,
+     "miss": 339,
+     "nopred": 13
+    },
+    "non_super": {
+     "hit": 121,
+     "miss": 258,
+     "nopred": 13
+    },
+    "super": {
+     "hit": 66,
+     "miss": 81,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 185,
+     "miss": 330,
+     "nopred": 13
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 9,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 268,
+   "flagged_hit": 150,
+   "total_miss": 339
+  },
+  {
+   "title": "חדושי הלכות על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 398,
+   "super_pct": 26.1,
+   "entries": 395,
+   "unresolved": 4,
+   "low_conf": 347,
+   "seg": {
+    "overall": {
+     "hit": 143,
+     "miss": 246,
+     "nopred": 9
+    },
+    "non_super": {
+     "hit": 93,
+     "miss": 192,
+     "nopred": 9
+    },
+    "super": {
+     "hit": 50,
+     "miss": 54,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 142,
+     "miss": 239,
+     "nopred": 8
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 7,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 218,
+   "flagged_hit": 123,
+   "total_miss": 246
+  },
+  {
+   "title": "חדושי הלכות על ביצה",
+   "base": "ביצה",
+   "gold_lines": 131,
+   "super_pct": 29.0,
+   "entries": 157,
+   "unresolved": 8,
+   "low_conf": 118,
+   "seg": {
+    "overall": {
+     "hit": 65,
+     "miss": 59,
+     "nopred": 7
+    },
+    "non_super": {
+     "hit": 41,
+     "miss": 45,
+     "nopred": 7
+    },
+    "super": {
+     "hit": 24,
+     "miss": 14,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 64,
+     "miss": 59,
+     "nopred": 7
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 48,
+   "flagged_hit": 49,
+   "total_miss": 59
+  },
+  {
+   "title": "חדושי הלכות על בכורות",
+   "base": "בכורות",
+   "gold_lines": 287,
+   "super_pct": 41.8,
+   "entries": 445,
+   "unresolved": 8,
+   "low_conf": 366,
+   "seg": {
+    "overall": {
+     "hit": 145,
+     "miss": 140,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 94,
+     "miss": 71,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 51,
+     "miss": 69,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 142,
+     "miss": 140,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 118,
+   "flagged_hit": 111,
+   "total_miss": 140
+  },
+  {
+   "title": "חדושי הלכות על יבמות",
+   "base": "יבמות",
+   "gold_lines": 325,
+   "super_pct": 37.8,
+   "entries": 408,
+   "unresolved": 8,
+   "low_conf": 297,
+   "seg": {
+    "overall": {
+     "hit": 196,
+     "miss": 127,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 129,
+     "miss": 71,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 67,
+     "miss": 56,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 179,
+     "miss": 118,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 9,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 112,
+   "flagged_hit": 132,
+   "total_miss": 127
+  },
+  {
+   "title": "חדושי הלכות על מכות",
+   "base": "מכות",
+   "gold_lines": 145,
+   "super_pct": 33.1,
+   "entries": 195,
+   "unresolved": 7,
+   "low_conf": 154,
+   "seg": {
+    "overall": {
+     "hit": 75,
+     "miss": 70,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 50,
+     "miss": 47,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 25,
+     "miss": 23,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 75,
+     "miss": 69,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 56,
+   "flagged_hit": 62,
+   "total_miss": 70
+  },
+  {
+   "title": "חדושי הלכות על נדרים",
+   "base": "נדרים",
+   "gold_lines": 343,
+   "super_pct": 3.5,
+   "entries": 907,
+   "unresolved": 1,
+   "low_conf": 724,
+   "seg": {
+    "overall": {
+     "hit": 188,
+     "miss": 154,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 183,
+     "miss": 147,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 5,
+     "miss": 7,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 187,
+     "miss": 154,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 133,
+   "flagged_hit": 127,
+   "total_miss": 154
+  },
+  {
+   "title": "חדושי הלכות על סוטה",
+   "base": "סוטה",
+   "gold_lines": 259,
+   "super_pct": 26.6,
+   "entries": 384,
+   "unresolved": 3,
+   "low_conf": 245,
+   "seg": {
+    "overall": {
+     "hit": 187,
+     "miss": 72,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 144,
+     "miss": 46,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 43,
+     "miss": 26,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 185,
+     "miss": 72,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 56,
+   "flagged_hit": 110,
+   "total_miss": 72
+  },
+  {
+   "title": "חדושי הלכות על סוכה",
+   "base": "סוכה",
+   "gold_lines": 142,
+   "super_pct": 35.2,
+   "entries": 184,
+   "unresolved": 12,
+   "low_conf": 156,
+   "seg": {
+    "overall": {
+     "hit": 100,
+     "miss": 40,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 67,
+     "miss": 23,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 33,
+     "miss": 17,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 98,
+     "miss": 39,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 38,
+   "flagged_hit": 91,
+   "total_miss": 40
+  },
+  {
+   "title": "חדושי הלכות על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 297,
+   "super_pct": 32.3,
+   "entries": 365,
+   "unresolved": 12,
+   "low_conf": 296,
+   "seg": {
+    "overall": {
+     "hit": 181,
+     "miss": 115,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 122,
+     "miss": 78,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 59,
+     "miss": 37,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 177,
+     "miss": 111,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 4,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 100,
+   "flagged_hit": 154,
+   "total_miss": 115
+  },
+  {
+   "title": "חדושי הלכות על פסחים",
+   "base": "פסחים",
+   "gold_lines": 595,
+   "super_pct": 24.5,
+   "entries": 766,
+   "unresolved": 3,
+   "low_conf": 596,
+   "seg": {
+    "overall": {
+     "hit": 299,
+     "miss": 294,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 237,
+     "miss": 210,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 62,
+     "miss": 84,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 283,
+     "miss": 280,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 16,
+     "miss": 14,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 234,
+   "flagged_hit": 220,
+   "total_miss": 294
+  },
+  {
+   "title": "חדושי הלכות על קידושין",
+   "base": "קידושין",
+   "gold_lines": 419,
+   "super_pct": 23.9,
+   "entries": 527,
+   "unresolved": 5,
+   "low_conf": 374,
+   "seg": {
+    "overall": {
+     "hit": 233,
+     "miss": 186,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 174,
+     "miss": 145,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 59,
+     "miss": 41,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 230,
+     "miss": 183,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 146,
+   "flagged_hit": 166,
+   "total_miss": 186
+  },
+  {
+   "title": "חדושי הלכות על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 240,
+   "super_pct": 30.0,
+   "entries": 244,
+   "unresolved": 1,
+   "low_conf": 186,
+   "seg": {
+    "overall": {
+     "hit": 93,
+     "miss": 144,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 65,
+     "miss": 100,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 28,
+     "miss": 44,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 93,
+     "miss": 142,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 113,
+   "flagged_hit": 70,
+   "total_miss": 144
+  },
+  {
+   "title": "חדושי הלכות על שבועות",
+   "base": "שבועות",
+   "gold_lines": 202,
+   "super_pct": 20.3,
+   "entries": 269,
+   "unresolved": 4,
+   "low_conf": 199,
+   "seg": {
+    "overall": {
+     "hit": 108,
+     "miss": 93,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 88,
+     "miss": 72,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 20,
+     "miss": 21,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 107,
+     "miss": 91,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 76,
+   "flagged_hit": 78,
+   "total_miss": 93
+  },
+  {
+   "title": "חידושי אגדות על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 308,
+   "super_pct": 0.0,
+   "entries": 359,
+   "unresolved": 0,
+   "low_conf": 116,
+   "seg": {
+    "overall": {
+     "hit": 284,
+     "miss": 21,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 284,
+     "miss": 21,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 277,
+     "miss": 21,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 7,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 11,
+   "flagged_hit": 81,
+   "total_miss": 21
+  },
+  {
+   "title": "חידושי אגדות על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 114,
+   "super_pct": 0.0,
+   "entries": 153,
+   "unresolved": 0,
+   "low_conf": 59,
+   "seg": {
+    "overall": {
+     "hit": 100,
+     "miss": 13,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 100,
+     "miss": 13,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 99,
+     "miss": 13,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 4,
+   "flagged_hit": 30,
+   "total_miss": 13
+  },
+  {
+   "title": "חידושי אגדות על יבמות",
+   "base": "יבמות",
+   "gold_lines": 114,
+   "super_pct": 0.9,
+   "entries": 136,
+   "unresolved": 1,
+   "low_conf": 39,
+   "seg": {
+    "overall": {
+     "hit": 92,
+     "miss": 13,
+     "nopred": 9
+    },
+    "non_super": {
+     "hit": 91,
+     "miss": 13,
+     "nopred": 9
+    },
+    "super": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 89,
+     "miss": 11,
+     "nopred": 9
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 8,
+   "flagged_hit": 19,
+   "total_miss": 13
+  },
+  {
+   "title": "חידושי אגדות על סוטה",
+   "base": "סוטה",
+   "gold_lines": 430,
+   "super_pct": 0.9,
+   "entries": 488,
+   "unresolved": 0,
+   "low_conf": 135,
+   "seg": {
+    "overall": {
+     "hit": 296,
+     "miss": 132,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 292,
+     "miss": 132,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 4,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 287,
+     "miss": 131,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 9,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 52,
+   "flagged_hit": 51,
+   "total_miss": 132
+  },
+  {
+   "title": "חידושי אגדות על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 153,
+   "super_pct": 0.0,
+   "entries": 174,
+   "unresolved": 0,
+   "low_conf": 55,
+   "seg": {
+    "overall": {
+     "hit": 144,
+     "miss": 8,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 144,
+     "miss": 8,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 143,
+     "miss": 8,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 6,
+   "flagged_hit": 36,
+   "total_miss": 8
+  },
+  {
+   "title": "חידושי אגדות על קידושין",
+   "base": "קידושין",
+   "gold_lines": 166,
+   "super_pct": 0.0,
+   "entries": 188,
+   "unresolved": 0,
+   "low_conf": 59,
+   "seg": {
+    "overall": {
+     "hit": 149,
+     "miss": 15,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 149,
+     "miss": 15,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 145,
+     "miss": 15,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 9,
+   "flagged_hit": 41,
+   "total_miss": 15
+  },
+  {
+   "title": "חידושי אגדות על שבת",
+   "base": "שבת",
+   "gold_lines": 376,
+   "super_pct": 0.5,
+   "entries": 602,
+   "unresolved": 1,
+   "low_conf": 235,
+   "seg": {
+    "overall": {
+     "hit": 234,
+     "miss": 141,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 233,
+     "miss": 140,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 1,
+     "miss": 1,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 226,
+     "miss": 138,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 8,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 60,
+   "flagged_hit": 74,
+   "total_miss": 141
+  },
+  {
+   "title": "חידושי הלכות על ברכות",
+   "base": "ברכות",
+   "gold_lines": 294,
+   "super_pct": 22.1,
+   "entries": 293,
+   "unresolved": 4,
+   "low_conf": 228,
+   "seg": {
+    "overall": {
+     "hit": 115,
+     "miss": 174,
+     "nopred": 5
+    },
+    "non_super": {
+     "hit": 82,
+     "miss": 142,
+     "nopred": 5
+    },
+    "super": {
+     "hit": 33,
+     "miss": 32,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 114,
+     "miss": 170,
+     "nopred": 5
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 4,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 139,
+   "flagged_hit": 86,
+   "total_miss": 174
+  },
+  {
+   "title": "חידושי הלכות על יומא",
+   "base": "יומא",
+   "gold_lines": 485,
+   "super_pct": 45.4,
+   "entries": 473,
+   "unresolved": 23,
+   "low_conf": 350,
+   "seg": {
+    "overall": {
+     "hit": 224,
+     "miss": 235,
+     "nopred": 26
+    },
+    "non_super": {
+     "hit": 121,
+     "miss": 118,
+     "nopred": 26
+    },
+    "super": {
+     "hit": 103,
+     "miss": 117,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 221,
+     "miss": 233,
+     "nopred": 26
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 183,
+   "flagged_hit": 160,
+   "total_miss": 235
+  },
+  {
+   "title": "חידושי הלכות על עירובין",
+   "base": "עירובין",
+   "gold_lines": 557,
+   "super_pct": 24.4,
+   "entries": 625,
+   "unresolved": 7,
+   "low_conf": 467,
+   "seg": {
+    "overall": {
+     "hit": 306,
+     "miss": 250,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 233,
+     "miss": 187,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 73,
+     "miss": 63,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 244,
+     "miss": 205,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 62,
+     "miss": 45,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 191,
+   "flagged_hit": 226,
+   "total_miss": 250
+  },
+  {
+   "title": "חידושי הלכות על שבת",
+   "base": "שבת",
+   "gold_lines": 874,
+   "super_pct": 26.0,
+   "entries": 870,
+   "unresolved": 15,
+   "low_conf": 681,
+   "seg": {
+    "overall": {
+     "hit": 356,
+     "miss": 498,
+     "nopred": 20
+    },
+    "non_super": {
+     "hit": 217,
+     "miss": 410,
+     "nopred": 20
+    },
+    "super": {
+     "hit": 139,
+     "miss": 88,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 341,
+     "miss": 484,
+     "nopred": 20
+    },
+    "multi": {
+     "hit": 15,
+     "miss": 14,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 392,
+   "flagged_hit": 283,
+   "total_miss": 498
+  },
+  {
+   "title": "חידושי הלכות על תענית",
+   "base": "תענית",
+   "gold_lines": 136,
+   "super_pct": 52.9,
+   "entries": 141,
+   "unresolved": 1,
+   "low_conf": 112,
+   "seg": {
+    "overall": {
+     "hit": 75,
+     "miss": 60,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 40,
+     "miss": 23,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 35,
+     "miss": 37,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 70,
+     "miss": 55,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 56,
+   "flagged_hit": 50,
+   "total_miss": 60
+  },
+  {
+   "title": "חידושי חתם סופר על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 364,
+   "super_pct": 0.0,
+   "entries": 618,
+   "unresolved": 0,
+   "low_conf": 366,
+   "seg": {
+    "overall": {
+     "hit": 328,
+     "miss": 36,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 328,
+     "miss": 36,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 315,
+     "miss": 34,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 13,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 31,
+   "flagged_hit": 117,
+   "total_miss": 36
+  },
+  {
+   "title": "חידושי חתם סופר על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 141,
+   "super_pct": 0.0,
+   "entries": 192,
+   "unresolved": 0,
+   "low_conf": 92,
+   "seg": {
+    "overall": {
+     "hit": 117,
+     "miss": 24,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 117,
+     "miss": 24,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 110,
+     "miss": 22,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 7,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 20,
+   "flagged_hit": 34,
+   "total_miss": 24
+  },
+  {
+   "title": "חידושי חתם סופר על ביצה",
+   "base": "ביצה",
+   "gold_lines": 238,
+   "super_pct": 0.0,
+   "entries": 385,
+   "unresolved": 0,
+   "low_conf": 216,
+   "seg": {
+    "overall": {
+     "hit": 195,
+     "miss": 43,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 195,
+     "miss": 43,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 191,
+     "miss": 38,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 37,
+   "flagged_hit": 54,
+   "total_miss": 43
+  },
+  {
+   "title": "חידושי חתם סופר על גיטין",
+   "base": "גיטין",
+   "gold_lines": 880,
+   "super_pct": 0.0,
+   "entries": 1204,
+   "unresolved": 0,
+   "low_conf": 581,
+   "seg": {
+    "overall": {
+     "hit": 777,
+     "miss": 103,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 777,
+     "miss": 103,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 751,
+     "miss": 99,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 26,
+     "miss": 4,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 83,
+   "flagged_hit": 260,
+   "total_miss": 103
+  },
+  {
+   "title": "חידושי חתם סופר על נדרים",
+   "base": "נדרים",
+   "gold_lines": 245,
+   "super_pct": 0.0,
+   "entries": 470,
+   "unresolved": 0,
+   "low_conf": 257,
+   "seg": {
+    "overall": {
+     "hit": 195,
+     "miss": 50,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 195,
+     "miss": 50,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 179,
+     "miss": 42,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 16,
+     "miss": 8,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 44,
+   "flagged_hit": 48,
+   "total_miss": 50
+  },
+  {
+   "title": "חידושי חתם סופר על סוכה",
+   "base": "סוכה",
+   "gold_lines": 114,
+   "super_pct": 0.0,
+   "entries": 234,
+   "unresolved": 0,
+   "low_conf": 155,
+   "seg": {
+    "overall": {
+     "hit": 86,
+     "miss": 28,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 86,
+     "miss": 28,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 82,
+     "miss": 28,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 24,
+   "flagged_hit": 29,
+   "total_miss": 28
+  },
+  {
+   "title": "חידושי חתם סופר על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 203,
+   "super_pct": 0.0,
+   "entries": 371,
+   "unresolved": 0,
+   "low_conf": 214,
+   "seg": {
+    "overall": {
+     "hit": 150,
+     "miss": 53,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 150,
+     "miss": 53,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 137,
+     "miss": 50,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 13,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 45,
+   "flagged_hit": 49,
+   "total_miss": 53
+  },
+  {
+   "title": "חידושי חתם סופר על פסחים",
+   "base": "פסחים",
+   "gold_lines": 332,
+   "super_pct": 0.0,
+   "entries": 398,
+   "unresolved": 0,
+   "low_conf": 196,
+   "seg": {
+    "overall": {
+     "hit": 296,
+     "miss": 36,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 296,
+     "miss": 36,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 272,
+     "miss": 31,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 24,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 31,
+   "flagged_hit": 112,
+   "total_miss": 36
+  },
+  {
+   "title": "חידושי חתם סופר על שבועות",
+   "base": "שבועות",
+   "gold_lines": 215,
+   "super_pct": 1.4,
+   "entries": 557,
+   "unresolved": 0,
+   "low_conf": 363,
+   "seg": {
+    "overall": {
+     "hit": 125,
+     "miss": 90,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 125,
+     "miss": 87,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 3,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 120,
+     "miss": 89,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 65,
+   "flagged_hit": 58,
+   "total_miss": 90
+  },
+  {
+   "title": "חידושי חתם סופר על שבת",
+   "base": "שבת",
+   "gold_lines": 474,
+   "super_pct": 0.6,
+   "entries": 992,
+   "unresolved": 0,
+   "low_conf": 480,
+   "seg": {
+    "overall": {
+     "hit": 380,
+     "miss": 94,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 379,
+     "miss": 92,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 1,
+     "miss": 2,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 355,
+     "miss": 89,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 25,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 68,
+   "flagged_hit": 106,
+   "total_miss": 94
+  },
+  {
+   "title": "חכמת שלמה על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 747,
+   "super_pct": 15.7,
+   "entries": 1108,
+   "unresolved": 2,
+   "low_conf": 885,
+   "seg": {
+    "overall": {
+     "hit": 479,
+     "miss": 266,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 401,
+     "miss": 227,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 78,
+     "miss": 39,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 476,
+     "miss": 263,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 210,
+   "flagged_hit": 393,
+   "total_miss": 266
+  },
+  {
+   "title": "חכמת שלמה על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 385,
+   "super_pct": 41.6,
+   "entries": 516,
+   "unresolved": 12,
+   "low_conf": 383,
+   "seg": {
+    "overall": {
+     "hit": 224,
+     "miss": 154,
+     "nopred": 7
+    },
+    "non_super": {
+     "hit": 134,
+     "miss": 84,
+     "nopred": 7
+    },
+    "super": {
+     "hit": 90,
+     "miss": 70,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 223,
+     "miss": 152,
+     "nopred": 7
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 110,
+   "flagged_hit": 157,
+   "total_miss": 154
+  },
+  {
+   "title": "חכמת שלמה על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 288,
+   "super_pct": 39.2,
+   "entries": 441,
+   "unresolved": 2,
+   "low_conf": 351,
+   "seg": {
+    "overall": {
+     "hit": 168,
+     "miss": 120,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 102,
+     "miss": 73,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 66,
+     "miss": 47,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 167,
+     "miss": 119,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 92,
+   "flagged_hit": 132,
+   "total_miss": 120
+  },
+  {
+   "title": "חכמת שלמה על ביצה",
+   "base": "ביצה",
+   "gold_lines": 309,
+   "super_pct": 28.5,
+   "entries": 383,
+   "unresolved": 0,
+   "low_conf": 299,
+   "seg": {
+    "overall": {
+     "hit": 232,
+     "miss": 77,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 159,
+     "miss": 62,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 73,
+     "miss": 15,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 230,
+     "miss": 77,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 59,
+   "flagged_hit": 178,
+   "total_miss": 77
+  },
+  {
+   "title": "חכמת שלמה על ברכות",
+   "base": "ברכות",
+   "gold_lines": 201,
+   "super_pct": 28.4,
+   "entries": 306,
+   "unresolved": 0,
+   "low_conf": 202,
+   "seg": {
+    "overall": {
+     "hit": 108,
+     "miss": 93,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 74,
+     "miss": 70,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 34,
+     "miss": 23,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 108,
+     "miss": 91,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 59,
+   "flagged_hit": 74,
+   "total_miss": 93
+  },
+  {
+   "title": "חכמת שלמה על גיטין",
+   "base": "גיטין",
+   "gold_lines": 228,
+   "super_pct": 30.3,
+   "entries": 352,
+   "unresolved": 2,
+   "low_conf": 254,
+   "seg": {
+    "overall": {
+     "hit": 156,
+     "miss": 72,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 105,
+     "miss": 54,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 51,
+     "miss": 18,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 150,
+     "miss": 69,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 6,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 50,
+   "flagged_hit": 104,
+   "total_miss": 72
+  },
+  {
+   "title": "חכמת שלמה על יבמות",
+   "base": "יבמות",
+   "gold_lines": 600,
+   "super_pct": 33.2,
+   "entries": 845,
+   "unresolved": 1,
+   "low_conf": 670,
+   "seg": {
+    "overall": {
+     "hit": 396,
+     "miss": 198,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 254,
+     "miss": 141,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 142,
+     "miss": 57,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 391,
+     "miss": 193,
+     "nopred": 6
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 153,
+   "flagged_hit": 314,
+   "total_miss": 198
+  },
+  {
+   "title": "חכמת שלמה על כתובות",
+   "base": "כתובות",
+   "gold_lines": 362,
+   "super_pct": 39.2,
+   "entries": 472,
+   "unresolved": 0,
+   "low_conf": 327,
+   "seg": {
+    "overall": {
+     "hit": 264,
+     "miss": 98,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 152,
+     "miss": 68,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 112,
+     "miss": 30,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 261,
+     "miss": 97,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 65,
+   "flagged_hit": 180,
+   "total_miss": 98
+  },
+  {
+   "title": "חכמת שלמה על סוטה",
+   "base": "סוטה",
+   "gold_lines": 306,
+   "super_pct": 23.9,
+   "entries": 441,
+   "unresolved": 0,
+   "low_conf": 337,
+   "seg": {
+    "overall": {
+     "hit": 188,
+     "miss": 118,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 145,
+     "miss": 88,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 43,
+     "miss": 30,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 188,
+     "miss": 118,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 86,
+   "flagged_hit": 142,
+   "total_miss": 118
+  },
+  {
+   "title": "חכמת שלמה על סוכה",
+   "base": "סוכה",
+   "gold_lines": 316,
+   "super_pct": 32.9,
+   "entries": 435,
+   "unresolved": 2,
+   "low_conf": 301,
+   "seg": {
+    "overall": {
+     "hit": 237,
+     "miss": 79,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 161,
+     "miss": 51,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 76,
+     "miss": 28,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 237,
+     "miss": 78,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 61,
+   "flagged_hit": 152,
+   "total_miss": 79
+  },
+  {
+   "title": "חכמת שלמה על עירובין",
+   "base": "עירובין",
+   "gold_lines": 554,
+   "super_pct": 32.5,
+   "entries": 798,
+   "unresolved": 2,
+   "low_conf": 590,
+   "seg": {
+    "overall": {
+     "hit": 348,
+     "miss": 205,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 231,
+     "miss": 142,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 117,
+     "miss": 63,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 341,
+     "miss": 202,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 7,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 150,
+   "flagged_hit": 259,
+   "total_miss": 205
+  },
+  {
+   "title": "חכמת שלמה על פסחים",
+   "base": "פסחים",
+   "gold_lines": 321,
+   "super_pct": 43.3,
+   "entries": 446,
+   "unresolved": 0,
+   "low_conf": 338,
+   "seg": {
+    "overall": {
+     "hit": 201,
+     "miss": 120,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 114,
+     "miss": 68,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 87,
+     "miss": 52,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 197,
+     "miss": 117,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 96,
+   "flagged_hit": 146,
+   "total_miss": 120
+  },
+  {
+   "title": "חכמת שלמה על קידושין",
+   "base": "קידושין",
+   "gold_lines": 197,
+   "super_pct": 34.5,
+   "entries": 313,
+   "unresolved": 0,
+   "low_conf": 223,
+   "seg": {
+    "overall": {
+     "hit": 130,
+     "miss": 67,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 84,
+     "miss": 45,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 46,
+     "miss": 22,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 129,
+     "miss": 67,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 53,
+   "flagged_hit": 87,
+   "total_miss": 67
+  },
+  {
+   "title": "חכמת שלמה על שבועות",
+   "base": "שבועות",
+   "gold_lines": 152,
+   "super_pct": 38.8,
+   "entries": 228,
+   "unresolved": 2,
+   "low_conf": 161,
+   "seg": {
+    "overall": {
+     "hit": 80,
+     "miss": 66,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 57,
+     "miss": 30,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 23,
+     "miss": 36,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 60,
+     "miss": 63,
+     "nopred": 6
+    },
+    "multi": {
+     "hit": 20,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 57,
+   "flagged_hit": 42,
+   "total_miss": 66
+  },
+  {
+   "title": "חכמת שלמה על שבת",
+   "base": "שבת",
+   "gold_lines": 941,
+   "super_pct": 25.8,
+   "entries": 1416,
+   "unresolved": 4,
+   "low_conf": 1044,
+   "seg": {
+    "overall": {
+     "hit": 647,
+     "miss": 293,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 467,
+     "miss": 230,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 180,
+     "miss": 63,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 639,
+     "miss": 291,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 8,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 182,
+   "flagged_hit": 473,
+   "total_miss": 293
+  },
+  {
+   "title": "יבמות מהדורא בתרא",
+   "base": "יבמות",
+   "gold_lines": 251,
+   "super_pct": 16.3,
+   "entries": 380,
+   "unresolved": 3,
+   "low_conf": 246,
+   "seg": {
+    "overall": {
+     "hit": 165,
+     "miss": 86,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 142,
+     "miss": 68,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 23,
+     "miss": 18,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 164,
+     "miss": 85,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 63,
+   "flagged_hit": 94,
+   "total_miss": 86
+  },
+  {
+   "title": "יד רמה על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 1333,
+   "super_pct": 0.0,
+   "entries": 3770,
+   "unresolved": 1,
+   "low_conf": 2841,
+   "seg": {
+    "overall": {
+     "hit": 736,
+     "miss": 597,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 736,
+     "miss": 597,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 654,
+     "miss": 473,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 82,
+     "miss": 124,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 508,
+   "flagged_hit": 252,
+   "total_miss": 597
+  },
+  {
+   "title": "ים של שלמה על ביצה",
+   "base": "ביצה",
+   "gold_lines": 181,
+   "super_pct": 0.0,
+   "entries": 0,
+   "unresolved": 0,
+   "low_conf": 0,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 181
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 181
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 181
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 0,
+   "flagged_hit": 0,
+   "total_miss": 0
+  },
+  {
+   "title": "ים של שלמה על גיטין",
+   "base": "גיטין",
+   "gold_lines": 274,
+   "super_pct": 0.0,
+   "entries": 0,
+   "unresolved": 0,
+   "low_conf": 0,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 274
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 274
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 274
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 0,
+   "flagged_hit": 0,
+   "total_miss": 0
+  },
+  {
+   "title": "ים של שלמה על כתובות",
+   "base": "כתובות",
+   "gold_lines": 160,
+   "super_pct": 0.0,
+   "entries": 0,
+   "unresolved": 0,
+   "low_conf": 0,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 160
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 160
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 160
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 0,
+   "flagged_hit": 0,
+   "total_miss": 0
+  },
+  {
+   "title": "ים של שלמה על קידושין",
+   "base": "קידושין",
+   "gold_lines": 165,
+   "super_pct": 0.0,
+   "entries": 0,
+   "unresolved": 0,
+   "low_conf": 0,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 165
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 165
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 165
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 0,
+   "flagged_hit": 0,
+   "total_miss": 0
+  },
+  {
+   "title": "מאירי על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 1646,
+   "super_pct": 0.0,
+   "entries": 1640,
+   "unresolved": 4,
+   "low_conf": 1411,
+   "seg": {
+    "overall": {
+     "hit": 805,
+     "miss": 835,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 805,
+     "miss": 835,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 648,
+     "miss": 726,
+     "nopred": 4
+    },
+    "multi": {
+     "hit": 157,
+     "miss": 109,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 771,
+   "flagged_hit": 640,
+   "total_miss": 835
+  },
+  {
+   "title": "מאירי על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 1793,
+   "super_pct": 0.0,
+   "entries": 1791,
+   "unresolved": 0,
+   "low_conf": 1524,
+   "seg": {
+    "overall": {
+     "hit": 778,
+     "miss": 1013,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 778,
+     "miss": 1013,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 620,
+     "miss": 889,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 158,
+     "miss": 124,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 921,
+   "flagged_hit": 603,
+   "total_miss": 1013
+  },
+  {
+   "title": "מאירי על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 1750,
+   "super_pct": 0.0,
+   "entries": 1744,
+   "unresolved": 4,
+   "low_conf": 1421,
+   "seg": {
+    "overall": {
+     "hit": 783,
+     "miss": 961,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 783,
+     "miss": 961,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 601,
+     "miss": 801,
+     "nopred": 4
+    },
+    "multi": {
+     "hit": 182,
+     "miss": 160,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 861,
+   "flagged_hit": 560,
+   "total_miss": 961
+  },
+  {
+   "title": "מאירי על ביצה",
+   "base": "ביצה",
+   "gold_lines": 118,
+   "super_pct": 0.0,
+   "entries": 684,
+   "unresolved": 3,
+   "low_conf": 580,
+   "seg": {
+    "overall": {
+     "hit": 46,
+     "miss": 70,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 46,
+     "miss": 70,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 45,
+     "miss": 67,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 3,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 62,
+   "flagged_hit": 21,
+   "total_miss": 70
+  },
+  {
+   "title": "מאירי על גיטין",
+   "base": "גיטין",
+   "gold_lines": 1150,
+   "super_pct": 0.0,
+   "entries": 1147,
+   "unresolved": 3,
+   "low_conf": 999,
+   "seg": {
+    "overall": {
+     "hit": 448,
+     "miss": 697,
+     "nopred": 5
+    },
+    "non_super": {
+     "hit": 448,
+     "miss": 697,
+     "nopred": 5
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 317,
+     "miss": 555,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 131,
+     "miss": 142,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 640,
+   "flagged_hit": 357,
+   "total_miss": 697
+  },
+  {
+   "title": "מאירי על חגיגה",
+   "base": "חגיגה",
+   "gold_lines": 200,
+   "super_pct": 0.0,
+   "entries": 199,
+   "unresolved": 0,
+   "low_conf": 163,
+   "seg": {
+    "overall": {
+     "hit": 98,
+     "miss": 101,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 98,
+     "miss": 101,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 81,
+     "miss": 84,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 17,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 91,
+   "flagged_hit": 72,
+   "total_miss": 101
+  },
+  {
+   "title": "מאירי על יבמות",
+   "base": "יבמות",
+   "gold_lines": 135,
+   "super_pct": 0.0,
+   "entries": 1684,
+   "unresolved": 2,
+   "low_conf": 1364,
+   "seg": {
+    "overall": {
+     "hit": 7,
+     "miss": 125,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 7,
+     "miss": 125,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 6,
+     "miss": 108,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 17,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 100,
+   "flagged_hit": 6,
+   "total_miss": 125
+  },
+  {
+   "title": "מאירי על כתובות",
+   "base": "כתובות",
+   "gold_lines": 589,
+   "super_pct": 0.0,
+   "entries": 1191,
+   "unresolved": 2,
+   "low_conf": 1017,
+   "seg": {
+    "overall": {
+     "hit": 225,
+     "miss": 361,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 225,
+     "miss": 361,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 215,
+     "miss": 328,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 10,
+     "miss": 33,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 308,
+   "flagged_hit": 143,
+   "total_miss": 361
+  },
+  {
+   "title": "מאירי על מכות",
+   "base": "מכות",
+   "gold_lines": 385,
+   "super_pct": 0.0,
+   "entries": 384,
+   "unresolved": 0,
+   "low_conf": 325,
+   "seg": {
+    "overall": {
+     "hit": 198,
+     "miss": 186,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 198,
+     "miss": 186,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 157,
+     "miss": 155,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 41,
+     "miss": 31,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 173,
+   "flagged_hit": 152,
+   "total_miss": 186
+  },
+  {
+   "title": "מאירי על נדרים",
+   "base": "נדרים",
+   "gold_lines": 244,
+   "super_pct": 0.0,
+   "entries": 872,
+   "unresolved": 4,
+   "low_conf": 738,
+   "seg": {
+    "overall": {
+     "hit": 101,
+     "miss": 141,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 101,
+     "miss": 141,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 96,
+     "miss": 132,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 9,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 106,
+   "flagged_hit": 84,
+   "total_miss": 141
+  },
+  {
+   "title": "מאירי על סוטה",
+   "base": "סוטה",
+   "gold_lines": 444,
+   "super_pct": 0.0,
+   "entries": 443,
+   "unresolved": 0,
+   "low_conf": 342,
+   "seg": {
+    "overall": {
+     "hit": 184,
+     "miss": 259,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 184,
+     "miss": 259,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 139,
+     "miss": 231,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 45,
+     "miss": 28,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 225,
+   "flagged_hit": 117,
+   "total_miss": 259
+  },
+  {
+   "title": "מאירי על סוכה",
+   "base": "סוכה",
+   "gold_lines": 266,
+   "super_pct": 0.0,
+   "entries": 518,
+   "unresolved": 1,
+   "low_conf": 395,
+   "seg": {
+    "overall": {
+     "hit": 142,
+     "miss": 122,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 142,
+     "miss": 122,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 136,
+     "miss": 115,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 6,
+     "miss": 7,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 100,
+   "flagged_hit": 65,
+   "total_miss": 122
+  },
+  {
+   "title": "מאירי על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 404,
+   "super_pct": 0.0,
+   "entries": 1053,
+   "unresolved": 2,
+   "low_conf": 915,
+   "seg": {
+    "overall": {
+     "hit": 174,
+     "miss": 227,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 174,
+     "miss": 227,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 162,
+     "miss": 214,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 12,
+     "miss": 13,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 205,
+   "flagged_hit": 117,
+   "total_miss": 227
+  },
+  {
+   "title": "מאירי על עירובין",
+   "base": "עירובין",
+   "gold_lines": 470,
+   "super_pct": 0.0,
+   "entries": 1019,
+   "unresolved": 2,
+   "low_conf": 820,
+   "seg": {
+    "overall": {
+     "hit": 240,
+     "miss": 229,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 240,
+     "miss": 229,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 214,
+     "miss": 194,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 26,
+     "miss": 35,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 201,
+   "flagged_hit": 159,
+   "total_miss": 229
+  },
+  {
+   "title": "מאירי על פסחים",
+   "base": "פסחים",
+   "gold_lines": 1342,
+   "super_pct": 0.0,
+   "entries": 1338,
+   "unresolved": 3,
+   "low_conf": 1070,
+   "seg": {
+    "overall": {
+     "hit": 676,
+     "miss": 662,
+     "nopred": 4
+    },
+    "non_super": {
+     "hit": 676,
+     "miss": 662,
+     "nopred": 4
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 553,
+     "miss": 585,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 123,
+     "miss": 77,
+     "nopred": 3
+    }
+   },
+   "flagged_miss": 585,
+   "flagged_hit": 485,
+   "total_miss": 662
+  },
+  {
+   "title": "מאירי על קידושין",
+   "base": "קידושין",
+   "gold_lines": 913,
+   "super_pct": 0.0,
+   "entries": 908,
+   "unresolved": 4,
+   "low_conf": 761,
+   "seg": {
+    "overall": {
+     "hit": 415,
+     "miss": 492,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 415,
+     "miss": 492,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 354,
+     "miss": 446,
+     "nopred": 5
+    },
+    "multi": {
+     "hit": 61,
+     "miss": 46,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 430,
+   "flagged_hit": 330,
+   "total_miss": 492
+  },
+  {
+   "title": "מאירי על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 319,
+   "super_pct": 0.0,
+   "entries": 325,
+   "unresolved": 0,
+   "low_conf": 258,
+   "seg": {
+    "overall": {
+     "hit": 161,
+     "miss": 157,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 161,
+     "miss": 157,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 144,
+     "miss": 155,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 136,
+   "flagged_hit": 116,
+   "total_miss": 157
+  },
+  {
+   "title": "מאירי על שבועות",
+   "base": "שבועות",
+   "gold_lines": 177,
+   "super_pct": 0.0,
+   "entries": 633,
+   "unresolved": 0,
+   "low_conf": 530,
+   "seg": {
+    "overall": {
+     "hit": 55,
+     "miss": 120,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 55,
+     "miss": 120,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 50,
+     "miss": 110,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 10,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 103,
+   "flagged_hit": 28,
+   "total_miss": 120
+  },
+  {
+   "title": "מאירי על שבת",
+   "base": "שבת",
+   "gold_lines": 1030,
+   "super_pct": 0.0,
+   "entries": 1958,
+   "unresolved": 2,
+   "low_conf": 1531,
+   "seg": {
+    "overall": {
+     "hit": 503,
+     "miss": 524,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 503,
+     "miss": 524,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 474,
+     "miss": 488,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 29,
+     "miss": 36,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 435,
+   "flagged_hit": 252,
+   "total_miss": 524
+  },
+  {
+   "title": "מאירי על תענית",
+   "base": "תענית",
+   "gold_lines": 248,
+   "super_pct": 0.0,
+   "entries": 247,
+   "unresolved": 1,
+   "low_conf": 206,
+   "seg": {
+    "overall": {
+     "hit": 110,
+     "miss": 136,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 110,
+     "miss": 136,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 86,
+     "miss": 106,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 24,
+     "miss": 30,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 122,
+   "flagged_hit": 83,
+   "total_miss": 136
+  },
+  {
+   "title": "מבוא התלמוד",
+   "base": "ברכות",
+   "gold_lines": 87,
+   "super_pct": 0.0,
+   "entries": 0,
+   "unresolved": 0,
+   "low_conf": 0,
+   "seg": {
+    "overall": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 87
+    },
+    "non_super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 87
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 45
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 42
+    }
+   },
+   "flagged_miss": 0,
+   "flagged_hit": 0,
+   "total_miss": 0
+  },
+  {
+   "title": "ערוך לנר על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 326,
+   "super_pct": 22.1,
+   "entries": 549,
+   "unresolved": 0,
+   "low_conf": 368,
+   "seg": {
+    "overall": {
+     "hit": 221,
+     "miss": 105,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 173,
+     "miss": 81,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 48,
+     "miss": 24,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 218,
+     "miss": 104,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 93,
+   "flagged_hit": 171,
+   "total_miss": 105
+  },
+  {
+   "title": "פני יהושע על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 606,
+   "super_pct": 40.9,
+   "entries": 840,
+   "unresolved": 3,
+   "low_conf": 492,
+   "seg": {
+    "overall": {
+     "hit": 409,
+     "miss": 194,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 237,
+     "miss": 118,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 172,
+     "miss": 76,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 392,
+     "miss": 180,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 14,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 115,
+   "flagged_hit": 290,
+   "total_miss": 194
+  },
+  {
+   "title": "פני יהושע על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 554,
+   "super_pct": 37.4,
+   "entries": 1351,
+   "unresolved": 16,
+   "low_conf": 764,
+   "seg": {
+    "overall": {
+     "hit": 333,
+     "miss": 216,
+     "nopred": 5
+    },
+    "non_super": {
+     "hit": 196,
+     "miss": 146,
+     "nopred": 5
+    },
+    "super": {
+     "hit": 137,
+     "miss": 70,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 311,
+     "miss": 200,
+     "nopred": 5
+    },
+    "multi": {
+     "hit": 22,
+     "miss": 16,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 115,
+   "flagged_hit": 238,
+   "total_miss": 216
+  },
+  {
+   "title": "פני יהושע על ביצה",
+   "base": "ביצה",
+   "gold_lines": 250,
+   "super_pct": 29.2,
+   "entries": 440,
+   "unresolved": 0,
+   "low_conf": 267,
+   "seg": {
+    "overall": {
+     "hit": 163,
+     "miss": 84,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 111,
+     "miss": 63,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 52,
+     "miss": 21,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 150,
+     "miss": 75,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 13,
+     "miss": 9,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 31,
+   "flagged_hit": 103,
+   "total_miss": 84
+  },
+  {
+   "title": "פני יהושע על ברכות",
+   "base": "ברכות",
+   "gold_lines": 433,
+   "super_pct": 19.9,
+   "entries": 616,
+   "unresolved": 1,
+   "low_conf": 302,
+   "seg": {
+    "overall": {
+     "hit": 217,
+     "miss": 212,
+     "nopred": 4
+    },
+    "non_super": {
+     "hit": 155,
+     "miss": 188,
+     "nopred": 4
+    },
+    "super": {
+     "hit": 62,
+     "miss": 24,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 198,
+     "miss": 193,
+     "nopred": 4
+    },
+    "multi": {
+     "hit": 19,
+     "miss": 19,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 53,
+   "flagged_hit": 137,
+   "total_miss": 212
+  },
+  {
+   "title": "פני יהושע על גיטין",
+   "base": "גיטין",
+   "gold_lines": 749,
+   "super_pct": 40.3,
+   "entries": 1069,
+   "unresolved": 15,
+   "low_conf": 567,
+   "seg": {
+    "overall": {
+     "hit": 510,
+     "miss": 230,
+     "nopred": 9
+    },
+    "non_super": {
+     "hit": 295,
+     "miss": 143,
+     "nopred": 9
+    },
+    "super": {
+     "hit": 215,
+     "miss": 87,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 461,
+     "miss": 212,
+     "nopred": 8
+    },
+    "multi": {
+     "hit": 49,
+     "miss": 18,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 137,
+   "flagged_hit": 345,
+   "total_miss": 230
+  },
+  {
+   "title": "פני יהושע על סוכה",
+   "base": "סוכה",
+   "gold_lines": 201,
+   "super_pct": 29.4,
+   "entries": 385,
+   "unresolved": 1,
+   "low_conf": 226,
+   "seg": {
+    "overall": {
+     "hit": 145,
+     "miss": 56,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 99,
+     "miss": 43,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 46,
+     "miss": 13,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 137,
+     "miss": 54,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 8,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 20,
+   "flagged_hit": 81,
+   "total_miss": 56
+  },
+  {
+   "title": "פני יהושע על פסחים",
+   "base": "פסחים",
+   "gold_lines": 406,
+   "super_pct": 35.5,
+   "entries": 601,
+   "unresolved": 4,
+   "low_conf": 338,
+   "seg": {
+    "overall": {
+     "hit": 274,
+     "miss": 130,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 169,
+     "miss": 91,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 105,
+     "miss": 39,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 256,
+     "miss": 122,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 18,
+     "miss": 8,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 57,
+   "flagged_hit": 190,
+   "total_miss": 130
+  },
+  {
+   "title": "פני יהושע על קידושין",
+   "base": "קידושין",
+   "gold_lines": 736,
+   "super_pct": 29.9,
+   "entries": 1198,
+   "unresolved": 10,
+   "low_conf": 594,
+   "seg": {
+    "overall": {
+     "hit": 441,
+     "miss": 292,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 273,
+     "miss": 240,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 168,
+     "miss": 52,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 426,
+     "miss": 277,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 15,
+     "miss": 15,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 94,
+   "flagged_hit": 269,
+   "total_miss": 292
+  },
+  {
+   "title": "פני יהושע על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 170,
+   "super_pct": 28.2,
+   "entries": 366,
+   "unresolved": 0,
+   "low_conf": 211,
+   "seg": {
+    "overall": {
+     "hit": 120,
+     "miss": 47,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 81,
+     "miss": 38,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 39,
+     "miss": 9,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 118,
+     "miss": 45,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 15,
+   "flagged_hit": 80,
+   "total_miss": 47
+  },
+  {
+   "title": "פני יהושע על שבת",
+   "base": "שבת",
+   "gold_lines": 559,
+   "super_pct": 33.1,
+   "entries": 920,
+   "unresolved": 6,
+   "low_conf": 548,
+   "seg": {
+    "overall": {
+     "hit": 382,
+     "miss": 171,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 238,
+     "miss": 130,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 144,
+     "miss": 41,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 338,
+     "miss": 153,
+     "nopred": 4
+    },
+    "multi": {
+     "hit": 44,
+     "miss": 18,
+     "nopred": 2
+    }
+   },
+   "flagged_miss": 84,
+   "flagged_hit": 254,
+   "total_miss": 171
+  },
+  {
+   "title": "ציון לנפש חיה על שבת",
+   "base": "שבת",
+   "gold_lines": 280,
+   "super_pct": 17.5,
+   "entries": 594,
+   "unresolved": 0,
+   "low_conf": 414,
+   "seg": {
+    "overall": {
+     "hit": 126,
+     "miss": 154,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 94,
+     "miss": 137,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 32,
+     "miss": 17,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 111,
+     "miss": 142,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 15,
+     "miss": 12,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 91,
+   "flagged_hit": 68,
+   "total_miss": 154
+  },
+  {
+   "title": "רבינו גרשום על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 4394,
+   "super_pct": 0.0,
+   "entries": 4394,
+   "unresolved": 1,
+   "low_conf": 2238,
+   "seg": {
+    "overall": {
+     "hit": 3810,
+     "miss": 583,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 3810,
+     "miss": 583,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 3801,
+     "miss": 583,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 9,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 454,
+   "flagged_hit": 1783,
+   "total_miss": 583
+  },
+  {
+   "title": "רבינו גרשום על בכורות",
+   "base": "בכורות",
+   "gold_lines": 2191,
+   "super_pct": 0.0,
+   "entries": 2191,
+   "unresolved": 0,
+   "low_conf": 1087,
+   "seg": {
+    "overall": {
+     "hit": 1853,
+     "miss": 338,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 1853,
+     "miss": 338,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 1850,
+     "miss": 337,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 248,
+   "flagged_hit": 839,
+   "total_miss": 338
+  },
+  {
+   "title": "רבינו גרשום על כריתות",
+   "base": "כריתות",
+   "gold_lines": 1322,
+   "super_pct": 0.0,
+   "entries": 1323,
+   "unresolved": 0,
+   "low_conf": 722,
+   "seg": {
+    "overall": {
+     "hit": 1021,
+     "miss": 301,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 1021,
+     "miss": 301,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 1018,
+     "miss": 301,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 215,
+   "flagged_hit": 507,
+   "total_miss": 301
+  },
+  {
+   "title": "רבינו גרשום על מעילה",
+   "base": "מעילה",
+   "gold_lines": 634,
+   "super_pct": 0.0,
+   "entries": 633,
+   "unresolved": 1,
+   "low_conf": 290,
+   "seg": {
+    "overall": {
+     "hit": 541,
+     "miss": 92,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 541,
+     "miss": 92,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 541,
+     "miss": 91,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 67,
+   "flagged_hit": 223,
+   "total_miss": 92
+  },
+  {
+   "title": "רבינו גרשום על ערכין",
+   "base": "ערכין",
+   "gold_lines": 1430,
+   "super_pct": 0.0,
+   "entries": 1430,
+   "unresolved": 0,
+   "low_conf": 706,
+   "seg": {
+    "overall": {
+     "hit": 1169,
+     "miss": 261,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 1169,
+     "miss": 261,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 1164,
+     "miss": 261,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 5,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 199,
+   "flagged_hit": 507,
+   "total_miss": 261
+  },
+  {
+   "title": "רבינו גרשום על תמיד",
+   "base": "תמיד",
+   "gold_lines": 136,
+   "super_pct": 0.0,
+   "entries": 136,
+   "unresolved": 0,
+   "low_conf": 64,
+   "seg": {
+    "overall": {
+     "hit": 117,
+     "miss": 19,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 117,
+     "miss": 19,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 117,
+     "miss": 19,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 15,
+   "flagged_hit": 49,
+   "total_miss": 19
+  },
+  {
+   "title": "רבינו גרשום על תענית",
+   "base": "תענית",
+   "gold_lines": 369,
+   "super_pct": 0.0,
+   "entries": 368,
+   "unresolved": 1,
+   "low_conf": 175,
+   "seg": {
+    "overall": {
+     "hit": 285,
+     "miss": 83,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 285,
+     "miss": 83,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 285,
+     "miss": 83,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 58,
+   "flagged_hit": 117,
+   "total_miss": 83
+  },
+  {
+   "title": "רבינו חננאל על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 351,
+   "super_pct": 0.0,
+   "entries": 369,
+   "unresolved": 0,
+   "low_conf": 225,
+   "seg": {
+    "overall": {
+     "hit": 192,
+     "miss": 159,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 192,
+     "miss": 159,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 191,
+     "miss": 157,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 107,
+   "flagged_hit": 105,
+   "total_miss": 159
+  },
+  {
+   "title": "רבינו חננאל על הוריות",
+   "base": "הוריות",
+   "gold_lines": 153,
+   "super_pct": 0.0,
+   "entries": 154,
+   "unresolved": 0,
+   "low_conf": 113,
+   "seg": {
+    "overall": {
+     "hit": 89,
+     "miss": 64,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 89,
+     "miss": 64,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 87,
+     "miss": 63,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 49,
+   "flagged_hit": 63,
+   "total_miss": 64
+  },
+  {
+   "title": "רבינו חננאל על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 751,
+   "super_pct": 0.0,
+   "entries": 766,
+   "unresolved": 3,
+   "low_conf": 428,
+   "seg": {
+    "overall": {
+     "hit": 491,
+     "miss": 257,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 491,
+     "miss": 257,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 487,
+     "miss": 257,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 4,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 155,
+   "flagged_hit": 258,
+   "total_miss": 257
+  },
+  {
+   "title": "רבינו חננאל על תענית",
+   "base": "תענית",
+   "gold_lines": 323,
+   "super_pct": 0.0,
+   "entries": 343,
+   "unresolved": 2,
+   "low_conf": 222,
+   "seg": {
+    "overall": {
+     "hit": 215,
+     "miss": 106,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 215,
+     "miss": 106,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 214,
+     "miss": 106,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 0,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 70,
+   "flagged_hit": 136,
+   "total_miss": 106
+  },
+  {
+   "title": "רשימות שיעורים על ברכות",
+   "base": "ברכות",
+   "gold_lines": 1231,
+   "super_pct": 7.3,
+   "entries": 2217,
+   "unresolved": 0,
+   "low_conf": 1658,
+   "seg": {
+    "overall": {
+     "hit": 151,
+     "miss": 1080,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 85,
+     "miss": 1056,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 66,
+     "miss": 24,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 137,
+     "miss": 971,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 14,
+     "miss": 109,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 824,
+   "flagged_hit": 98,
+   "total_miss": 1080
+  },
+  {
+   "title": "רשימות שיעורים על סוכה",
+   "base": "סוכה",
+   "gold_lines": 2136,
+   "super_pct": 1.4,
+   "entries": 2136,
+   "unresolved": 0,
+   "low_conf": 1518,
+   "seg": {
+    "overall": {
+     "hit": 336,
+     "miss": 1800,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 326,
+     "miss": 1780,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 10,
+     "miss": 20,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 244,
+     "miss": 1642,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 92,
+     "miss": 158,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 1336,
+   "flagged_hit": 182,
+   "total_miss": 1800
+  },
+  {
+   "title": "רשימות שיעורים על שבועות",
+   "base": "שבועות",
+   "gold_lines": 2151,
+   "super_pct": 0.5,
+   "entries": 2151,
+   "unresolved": 0,
+   "low_conf": 1660,
+   "seg": {
+    "overall": {
+     "hit": 192,
+     "miss": 1959,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 183,
+     "miss": 1958,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 9,
+     "miss": 1,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 113,
+     "miss": 1786,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 79,
+     "miss": 173,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 1523,
+   "flagged_hit": 137,
+   "total_miss": 1959
+  },
+  {
+   "title": "תוספות חד מקמאי על יבמות",
+   "base": "יבמות",
+   "gold_lines": 140,
+   "super_pct": 0.0,
+   "entries": 140,
+   "unresolved": 0,
+   "low_conf": 84,
+   "seg": {
+    "overall": {
+     "hit": 84,
+     "miss": 56,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 84,
+     "miss": 56,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 72,
+     "miss": 51,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 12,
+     "miss": 5,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 46,
+   "flagged_hit": 38,
+   "total_miss": 56
+  },
+  {
+   "title": "תוספות ישנים  על כריתות",
+   "base": "כריתות",
+   "gold_lines": 108,
+   "super_pct": 0.0,
+   "entries": 108,
+   "unresolved": 0,
+   "low_conf": 42,
+   "seg": {
+    "overall": {
+     "hit": 82,
+     "miss": 26,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 82,
+     "miss": 26,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 80,
+     "miss": 25,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 19,
+   "flagged_hit": 23,
+   "total_miss": 26
+  },
+  {
+   "title": "תוספות ישנים על יבמות",
+   "base": "יבמות",
+   "gold_lines": 259,
+   "super_pct": 0.0,
+   "entries": 468,
+   "unresolved": 1,
+   "low_conf": 256,
+   "seg": {
+    "overall": {
+     "hit": 227,
+     "miss": 32,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 227,
+     "miss": 32,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 225,
+     "miss": 30,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 24,
+   "flagged_hit": 62,
+   "total_miss": 32
+  },
+  {
+   "title": "תוספות על בבא בתרא",
+   "base": "בבא בתרא",
+   "gold_lines": 1343,
+   "super_pct": 0.0,
+   "entries": 1343,
+   "unresolved": 0,
+   "low_conf": 400,
+   "seg": {
+    "overall": {
+     "hit": 1215,
+     "miss": 128,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 1215,
+     "miss": 128,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 1072,
+     "miss": 107,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 143,
+     "miss": 21,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 61,
+   "flagged_hit": 339,
+   "total_miss": 128
+  },
+  {
+   "title": "תוספות על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 1108,
+   "super_pct": 0.0,
+   "entries": 1109,
+   "unresolved": 1,
+   "low_conf": 350,
+   "seg": {
+    "overall": {
+     "hit": 964,
+     "miss": 143,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 964,
+     "miss": 143,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 792,
+     "miss": 119,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 172,
+     "miss": 24,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 111,
+   "flagged_hit": 237,
+   "total_miss": 143
+  },
+  {
+   "title": "תוספות על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 1276,
+   "super_pct": 0.0,
+   "entries": 1274,
+   "unresolved": 2,
+   "low_conf": 352,
+   "seg": {
+    "overall": {
+     "hit": 1112,
+     "miss": 162,
+     "nopred": 2
+    },
+    "non_super": {
+     "hit": 1112,
+     "miss": 162,
+     "nopred": 2
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 907,
+     "miss": 143,
+     "nopred": 2
+    },
+    "multi": {
+     "hit": 205,
+     "miss": 19,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 116,
+   "flagged_hit": 236,
+   "total_miss": 162
+  },
+  {
+   "title": "תוספות על ביצה",
+   "base": "ביצה",
+   "gold_lines": 272,
+   "super_pct": 0.0,
+   "entries": 272,
+   "unresolved": 0,
+   "low_conf": 63,
+   "seg": {
+    "overall": {
+     "hit": 256,
+     "miss": 16,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 256,
+     "miss": 16,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 239,
+     "miss": 15,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 8,
+   "flagged_hit": 55,
+   "total_miss": 16
+  },
+  {
+   "title": "תוספות על בכורות",
+   "base": "בכורות",
+   "gold_lines": 503,
+   "super_pct": 0.0,
+   "entries": 503,
+   "unresolved": 0,
+   "low_conf": 144,
+   "seg": {
+    "overall": {
+     "hit": 450,
+     "miss": 53,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 450,
+     "miss": 53,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 390,
+     "miss": 49,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 60,
+     "miss": 4,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 36,
+   "flagged_hit": 108,
+   "total_miss": 53
+  },
+  {
+   "title": "תוספות על גיטין",
+   "base": "גיטין",
+   "gold_lines": 946,
+   "super_pct": 0.0,
+   "entries": 947,
+   "unresolved": 0,
+   "low_conf": 252,
+   "seg": {
+    "overall": {
+     "hit": 828,
+     "miss": 118,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 828,
+     "miss": 118,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 692,
+     "miss": 101,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 136,
+     "miss": 17,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 77,
+   "flagged_hit": 175,
+   "total_miss": 118
+  },
+  {
+   "title": "תוספות על חגיגה",
+   "base": "חגיגה",
+   "gold_lines": 272,
+   "super_pct": 0.0,
+   "entries": 272,
+   "unresolved": 0,
+   "low_conf": 70,
+   "seg": {
+    "overall": {
+     "hit": 240,
+     "miss": 31,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 240,
+     "miss": 31,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 229,
+     "miss": 29,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 11,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 14,
+   "flagged_hit": 56,
+   "total_miss": 31
+  },
+  {
+   "title": "תוספות על יבמות",
+   "base": "יבמות",
+   "gold_lines": 1306,
+   "super_pct": 0.0,
+   "entries": 1306,
+   "unresolved": 0,
+   "low_conf": 333,
+   "seg": {
+    "overall": {
+     "hit": 1151,
+     "miss": 155,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 1151,
+     "miss": 155,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 934,
+     "miss": 135,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 217,
+     "miss": 20,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 102,
+   "flagged_hit": 231,
+   "total_miss": 155
+  },
+  {
+   "title": "תוספות על יומא",
+   "base": "יומא",
+   "gold_lines": 492,
+   "super_pct": 0.0,
+   "entries": 492,
+   "unresolved": 0,
+   "low_conf": 116,
+   "seg": {
+    "overall": {
+     "hit": 431,
+     "miss": 61,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 431,
+     "miss": 61,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 387,
+     "miss": 54,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 44,
+     "miss": 7,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 41,
+   "flagged_hit": 75,
+   "total_miss": 61
+  },
+  {
+   "title": "תוספות על מכות",
+   "base": "מכות",
+   "gold_lines": 168,
+   "super_pct": 0.0,
+   "entries": 167,
+   "unresolved": 1,
+   "low_conf": 49,
+   "seg": {
+    "overall": {
+     "hit": 148,
+     "miss": 19,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 148,
+     "miss": 19,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 140,
+     "miss": 17,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 8,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 10,
+   "flagged_hit": 39,
+   "total_miss": 19
+  },
+  {
+   "title": "תוספות על סוטה",
+   "base": "סוטה",
+   "gold_lines": 307,
+   "super_pct": 0.0,
+   "entries": 307,
+   "unresolved": 0,
+   "low_conf": 70,
+   "seg": {
+    "overall": {
+     "hit": 274,
+     "miss": 33,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 274,
+     "miss": 33,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 257,
+     "miss": 30,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 17,
+     "miss": 3,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 18,
+   "flagged_hit": 52,
+   "total_miss": 33
+  },
+  {
+   "title": "תוספות על סוכה",
+   "base": "סוכה",
+   "gold_lines": 450,
+   "super_pct": 0.0,
+   "entries": 450,
+   "unresolved": 0,
+   "low_conf": 105,
+   "seg": {
+    "overall": {
+     "hit": 429,
+     "miss": 21,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 429,
+     "miss": 21,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 354,
+     "miss": 15,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 75,
+     "miss": 6,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 10,
+   "flagged_hit": 95,
+   "total_miss": 21
+  },
+  {
+   "title": "תוספות על עבודה זרה",
+   "base": "עבודה זרה",
+   "gold_lines": 776,
+   "super_pct": 0.0,
+   "entries": 775,
+   "unresolved": 1,
+   "low_conf": 215,
+   "seg": {
+    "overall": {
+     "hit": 699,
+     "miss": 76,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 699,
+     "miss": 76,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 579,
+     "miss": 68,
+     "nopred": 1
+    },
+    "multi": {
+     "hit": 120,
+     "miss": 8,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 63,
+   "flagged_hit": 152,
+   "total_miss": 76
+  },
+  {
+   "title": "תוספות על עירובין",
+   "base": "עירובין",
+   "gold_lines": 902,
+   "super_pct": 0.0,
+   "entries": 899,
+   "unresolved": 3,
+   "low_conf": 228,
+   "seg": {
+    "overall": {
+     "hit": 771,
+     "miss": 128,
+     "nopred": 3
+    },
+    "non_super": {
+     "hit": 771,
+     "miss": 128,
+     "nopred": 3
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 617,
+     "miss": 108,
+     "nopred": 3
+    },
+    "multi": {
+     "hit": 154,
+     "miss": 20,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 77,
+   "flagged_hit": 151,
+   "total_miss": 128
+  },
+  {
+   "title": "תוספות על ערכין",
+   "base": "ערכין",
+   "gold_lines": 326,
+   "super_pct": 0.0,
+   "entries": 326,
+   "unresolved": 0,
+   "low_conf": 104,
+   "seg": {
+    "overall": {
+     "hit": 269,
+     "miss": 57,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 269,
+     "miss": 57,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 254,
+     "miss": 53,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 15,
+     "miss": 4,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 38,
+   "flagged_hit": 66,
+   "total_miss": 57
+  },
+  {
+   "title": "תוספות על פסחים",
+   "base": "פסחים",
+   "gold_lines": 1060,
+   "super_pct": 0.0,
+   "entries": 1060,
+   "unresolved": 0,
+   "low_conf": 322,
+   "seg": {
+    "overall": {
+     "hit": 886,
+     "miss": 174,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 886,
+     "miss": 174,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 779,
+     "miss": 153,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 107,
+     "miss": 21,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 119,
+   "flagged_hit": 203,
+   "total_miss": 174
+  },
+  {
+   "title": "תוספות על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 330,
+   "super_pct": 0.0,
+   "entries": 330,
+   "unresolved": 0,
+   "low_conf": 92,
+   "seg": {
+    "overall": {
+     "hit": 309,
+     "miss": 21,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 309,
+     "miss": 21,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 278,
+     "miss": 19,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 31,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 16,
+   "flagged_hit": 76,
+   "total_miss": 21
+  },
+  {
+   "title": "תוספות על שבועות",
+   "base": "שבועות",
+   "gold_lines": 520,
+   "super_pct": 0.0,
+   "entries": 519,
+   "unresolved": 1,
+   "low_conf": 147,
+   "seg": {
+    "overall": {
+     "hit": 439,
+     "miss": 75,
+     "nopred": 6
+    },
+    "non_super": {
+     "hit": 439,
+     "miss": 75,
+     "nopred": 6
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 383,
+     "miss": 67,
+     "nopred": 6
+    },
+    "multi": {
+     "hit": 56,
+     "miss": 8,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 30,
+   "flagged_hit": 114,
+   "total_miss": 75
+  },
+  {
+   "title": "תוספות על שבת",
+   "base": "שבת",
+   "gold_lines": 1551,
+   "super_pct": 0.0,
+   "entries": 1550,
+   "unresolved": 1,
+   "low_conf": 438,
+   "seg": {
+    "overall": {
+     "hit": 1378,
+     "miss": 172,
+     "nopred": 1
+    },
+    "non_super": {
+     "hit": 1378,
+     "miss": 172,
+     "nopred": 1
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 1141,
+     "miss": 135,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 237,
+     "miss": 37,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 130,
+   "flagged_hit": 308,
+   "total_miss": 172
+  },
+  {
+   "title": "תוספות שאנץ על סוטה",
+   "base": "סוטה",
+   "gold_lines": 113,
+   "super_pct": 0.0,
+   "entries": 210,
+   "unresolved": 1,
+   "low_conf": 92,
+   "seg": {
+    "overall": {
+     "hit": 93,
+     "miss": 20,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 93,
+     "miss": 20,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 90,
+     "miss": 19,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 12,
+   "flagged_hit": 25,
+   "total_miss": 20
+  }
+ ],
+ "aggregate": {
+  "overall": {
+   "hit": 46566,
+   "miss": 26348,
+   "nopred": 1161
+  },
+  "non_super": {
+   "hit": 42752,
+   "miss": 24095,
+   "nopred": 1161
+  },
+  "super": {
+   "hit": 3814,
+   "miss": 2253,
+   "nopred": 0
+  },
+  "single": {
+   "hit": 42534,
+   "miss": 24053,
+   "nopred": 1086
+  },
+  "multi": {
+   "hit": 4032,
+   "miss": 2295,
+   "nopred": 75
+  }
+ },
+ "low_conf": {
+  "flagged_miss": 20159,
+  "total_miss": 26348,
+  "flagged_hit": 22230,
+  "flagged_lines": 58607,
+  "total_gold": 74075
+ }
+}

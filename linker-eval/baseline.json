@@ -1,0 +1,311 @@
+{
+ "results": [
+  {
+   "title": "תוספות על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 330,
+   "super_pct": 0.0,
+   "entries": 330,
+   "unresolved": 0,
+   "low_conf": 92,
+   "seg": {
+    "overall": {
+     "hit": 309,
+     "miss": 21,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 309,
+     "miss": 21,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 278,
+     "miss": 19,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 31,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 16,
+   "flagged_hit": 76,
+   "total_miss": 21
+  },
+  {
+   "title": "חידושי חתם סופר על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 141,
+   "super_pct": 0.0,
+   "entries": 192,
+   "unresolved": 0,
+   "low_conf": 92,
+   "seg": {
+    "overall": {
+     "hit": 117,
+     "miss": 24,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 117,
+     "miss": 24,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 110,
+     "miss": 22,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 7,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 20,
+   "flagged_hit": 34,
+   "total_miss": 24
+  },
+  {
+   "title": "ערוך לנר על ראש השנה",
+   "base": "ראש השנה",
+   "gold_lines": 326,
+   "super_pct": 22.1,
+   "entries": 549,
+   "unresolved": 0,
+   "low_conf": 368,
+   "seg": {
+    "overall": {
+     "hit": 221,
+     "miss": 105,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 173,
+     "miss": 81,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 48,
+     "miss": 24,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 218,
+     "miss": 104,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 3,
+     "miss": 1,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 93,
+   "flagged_hit": 171,
+   "total_miss": 105
+  },
+  {
+   "title": "רבינו חננאל על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 351,
+   "super_pct": 0.0,
+   "entries": 369,
+   "unresolved": 0,
+   "low_conf": 225,
+   "seg": {
+    "overall": {
+     "hit": 192,
+     "miss": 159,
+     "nopred": 0
+    },
+    "non_super": {
+     "hit": 192,
+     "miss": 159,
+     "nopred": 0
+    },
+    "super": {
+     "hit": 0,
+     "miss": 0,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 191,
+     "miss": 157,
+     "nopred": 0
+    },
+    "multi": {
+     "hit": 1,
+     "miss": 2,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 107,
+   "flagged_hit": 105,
+   "total_miss": 159
+  },
+  {
+   "title": "פני יהושע על בבא קמא",
+   "base": "בבא קמא",
+   "gold_lines": 554,
+   "super_pct": 37.4,
+   "entries": 1351,
+   "unresolved": 16,
+   "low_conf": 764,
+   "seg": {
+    "overall": {
+     "hit": 333,
+     "miss": 216,
+     "nopred": 5
+    },
+    "non_super": {
+     "hit": 196,
+     "miss": 146,
+     "nopred": 5
+    },
+    "super": {
+     "hit": 137,
+     "miss": 70,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 311,
+     "miss": 200,
+     "nopred": 5
+    },
+    "multi": {
+     "hit": 22,
+     "miss": 16,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 115,
+   "flagged_hit": 238,
+   "total_miss": 216
+  },
+  {
+   "title": "הפלאה על כתובות",
+   "base": "כתובות",
+   "gold_lines": 1086,
+   "super_pct": 37.7,
+   "entries": 1747,
+   "unresolved": 23,
+   "low_conf": 947,
+   "seg": {
+    "overall": {
+     "hit": 480,
+     "miss": 583,
+     "nopred": 23
+    },
+    "non_super": {
+     "hit": 243,
+     "miss": 411,
+     "nopred": 23
+    },
+    "super": {
+     "hit": 237,
+     "miss": 172,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 326,
+     "miss": 412,
+     "nopred": 22
+    },
+    "multi": {
+     "hit": 154,
+     "miss": 171,
+     "nopred": 1
+    }
+   },
+   "flagged_miss": 284,
+   "flagged_hit": 318,
+   "total_miss": 583
+  },
+  {
+   "title": "חדושי הלכות על בבא מציעא",
+   "base": "בבא מציעא",
+   "gold_lines": 539,
+   "super_pct": 27.3,
+   "entries": 533,
+   "unresolved": 11,
+   "low_conf": 422,
+   "seg": {
+    "overall": {
+     "hit": 187,
+     "miss": 339,
+     "nopred": 13
+    },
+    "non_super": {
+     "hit": 121,
+     "miss": 258,
+     "nopred": 13
+    },
+    "super": {
+     "hit": 66,
+     "miss": 81,
+     "nopred": 0
+    },
+    "single": {
+     "hit": 185,
+     "miss": 330,
+     "nopred": 13
+    },
+    "multi": {
+     "hit": 2,
+     "miss": 9,
+     "nopred": 0
+    }
+   },
+   "flagged_miss": 268,
+   "flagged_hit": 150,
+   "total_miss": 339
+  }
+ ],
+ "aggregate": {
+  "overall": {
+   "hit": 1839,
+   "miss": 1447,
+   "nopred": 41
+  },
+  "non_super": {
+   "hit": 1351,
+   "miss": 1100,
+   "nopred": 41
+  },
+  "super": {
+   "hit": 488,
+   "miss": 347,
+   "nopred": 0
+  },
+  "single": {
+   "hit": 1619,
+   "miss": 1244,
+   "nopred": 40
+  },
+  "multi": {
+   "hit": 220,
+   "miss": 203,
+   "nopred": 1
+  }
+ },
+ "low_conf": {
+  "flagged_miss": 903,
+  "total_miss": 1447,
+  "flagged_hit": 1092,
+  "flagged_lines": 2910,
+  "total_gold": 3327
+ }
+}

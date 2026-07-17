@@ -1,0 +1,592 @@
+{
+ "rows": [
+  {
+   "title": "גבורת ארי על יומא",
+   "gold": 512,
+   "super_pct": 0.4,
+   "hit": 298,
+   "recoverable": 212,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 201
+  },
+  {
+   "title": "הפלאה על כתובות",
+   "gold": 1086,
+   "super_pct": 37.7,
+   "hit": 480,
+   "recoverable": 337,
+   "unreachable": 269,
+   "nopred": 0,
+   "recov_small_margin": 308
+  },
+  {
+   "title": "חדושי הלכות על בבא בתרא",
+   "gold": 533,
+   "super_pct": 15.4,
+   "hit": 310,
+   "recoverable": 222,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 199
+  },
+  {
+   "title": "חדושי הלכות על בבא מציעא",
+   "gold": 539,
+   "super_pct": 27.3,
+   "hit": 187,
+   "recoverable": 225,
+   "unreachable": 127,
+   "nopred": 0,
+   "recov_small_margin": 207
+  },
+  {
+   "title": "חדושי הלכות על בבא קמא",
+   "gold": 398,
+   "super_pct": 26.1,
+   "hit": 143,
+   "recoverable": 151,
+   "unreachable": 104,
+   "nopred": 0,
+   "recov_small_margin": 137
+  },
+  {
+   "title": "חדושי הלכות על ביצה",
+   "gold": 131,
+   "super_pct": 29.0,
+   "hit": 65,
+   "recoverable": 66,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 56
+  },
+  {
+   "title": "חדושי הלכות על בכורות",
+   "gold": 287,
+   "super_pct": 41.8,
+   "hit": 145,
+   "recoverable": 139,
+   "unreachable": 3,
+   "nopred": 0,
+   "recov_small_margin": 129
+  },
+  {
+   "title": "חדושי הלכות על יבמות",
+   "gold": 325,
+   "super_pct": 37.8,
+   "hit": 196,
+   "recoverable": 123,
+   "unreachable": 6,
+   "nopred": 0,
+   "recov_small_margin": 112
+  },
+  {
+   "title": "חדושי הלכות על מכות",
+   "gold": 145,
+   "super_pct": 33.1,
+   "hit": 75,
+   "recoverable": 70,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 64
+  },
+  {
+   "title": "חדושי הלכות על נדרים",
+   "gold": 343,
+   "super_pct": 3.5,
+   "hit": 188,
+   "recoverable": 155,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 119
+  },
+  {
+   "title": "חדושי הלכות על סוטה",
+   "gold": 259,
+   "super_pct": 26.6,
+   "hit": 187,
+   "recoverable": 71,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 69
+  },
+  {
+   "title": "חדושי הלכות על סוכה",
+   "gold": 142,
+   "super_pct": 35.2,
+   "hit": 100,
+   "recoverable": 41,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 38
+  },
+  {
+   "title": "חדושי הלכות על עבודה זרה",
+   "gold": 297,
+   "super_pct": 32.3,
+   "hit": 181,
+   "recoverable": 115,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 107
+  },
+  {
+   "title": "חדושי הלכות על פסחים",
+   "gold": 595,
+   "super_pct": 24.5,
+   "hit": 299,
+   "recoverable": 291,
+   "unreachable": 5,
+   "nopred": 0,
+   "recov_small_margin": 271
+  },
+  {
+   "title": "חדושי הלכות על קידושין",
+   "gold": 419,
+   "super_pct": 23.9,
+   "hit": 233,
+   "recoverable": 184,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 173
+  },
+  {
+   "title": "חדושי הלכות על ראש השנה",
+   "gold": 240,
+   "super_pct": 30.0,
+   "hit": 93,
+   "recoverable": 119,
+   "unreachable": 28,
+   "nopred": 0,
+   "recov_small_margin": 97
+  },
+  {
+   "title": "חדושי הלכות על שבועות",
+   "gold": 202,
+   "super_pct": 20.3,
+   "hit": 108,
+   "recoverable": 92,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 84
+  },
+  {
+   "title": "חידושי אגדות על יבמות",
+   "gold": 114,
+   "super_pct": 0.9,
+   "hit": 92,
+   "recoverable": 13,
+   "unreachable": 9,
+   "nopred": 0,
+   "recov_small_margin": 7
+  },
+  {
+   "title": "חידושי אגדות על סוטה",
+   "gold": 430,
+   "super_pct": 0.9,
+   "hit": 296,
+   "recoverable": 132,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 38
+  },
+  {
+   "title": "חידושי אגדות על שבת",
+   "gold": 376,
+   "super_pct": 0.5,
+   "hit": 234,
+   "recoverable": 136,
+   "unreachable": 6,
+   "nopred": 0,
+   "recov_small_margin": 52
+  },
+  {
+   "title": "חידושי הלכות על ברכות",
+   "gold": 294,
+   "super_pct": 22.1,
+   "hit": 115,
+   "recoverable": 95,
+   "unreachable": 84,
+   "nopred": 0,
+   "recov_small_margin": 76
+  },
+  {
+   "title": "חידושי הלכות על יומא",
+   "gold": 485,
+   "super_pct": 45.4,
+   "hit": 224,
+   "recoverable": 202,
+   "unreachable": 59,
+   "nopred": 0,
+   "recov_small_margin": 178
+  },
+  {
+   "title": "חידושי הלכות על עירובין",
+   "gold": 557,
+   "super_pct": 24.4,
+   "hit": 306,
+   "recoverable": 250,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 235
+  },
+  {
+   "title": "חידושי הלכות על שבת",
+   "gold": 874,
+   "super_pct": 26.0,
+   "hit": 356,
+   "recoverable": 328,
+   "unreachable": 190,
+   "nopred": 0,
+   "recov_small_margin": 278
+  },
+  {
+   "title": "חידושי הלכות על תענית",
+   "gold": 136,
+   "super_pct": 52.9,
+   "hit": 75,
+   "recoverable": 61,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 57
+  },
+  {
+   "title": "חידושי חתם סופר על שבועות",
+   "gold": 215,
+   "super_pct": 1.4,
+   "hit": 125,
+   "recoverable": 77,
+   "unreachable": 13,
+   "nopred": 0,
+   "recov_small_margin": 70
+  },
+  {
+   "title": "חידושי חתם סופר על שבת",
+   "gold": 474,
+   "super_pct": 0.6,
+   "hit": 380,
+   "recoverable": 53,
+   "unreachable": 41,
+   "nopred": 0,
+   "recov_small_margin": 49
+  },
+  {
+   "title": "חכמת שלמה על בבא בתרא",
+   "gold": 747,
+   "super_pct": 15.7,
+   "hit": 479,
+   "recoverable": 265,
+   "unreachable": 3,
+   "nopred": 0,
+   "recov_small_margin": 244
+  },
+  {
+   "title": "חכמת שלמה על בבא מציעא",
+   "gold": 385,
+   "super_pct": 41.6,
+   "hit": 224,
+   "recoverable": 159,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 145
+  },
+  {
+   "title": "חכמת שלמה על בבא קמא",
+   "gold": 288,
+   "super_pct": 39.2,
+   "hit": 168,
+   "recoverable": 119,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 106
+  },
+  {
+   "title": "חכמת שלמה על ביצה",
+   "gold": 309,
+   "super_pct": 28.5,
+   "hit": 232,
+   "recoverable": 77,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 71
+  },
+  {
+   "title": "חכמת שלמה על ברכות",
+   "gold": 201,
+   "super_pct": 28.4,
+   "hit": 108,
+   "recoverable": 89,
+   "unreachable": 4,
+   "nopred": 0,
+   "recov_small_margin": 82
+  },
+  {
+   "title": "חכמת שלמה על גיטין",
+   "gold": 228,
+   "super_pct": 30.3,
+   "hit": 156,
+   "recoverable": 71,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 64
+  },
+  {
+   "title": "חכמת שלמה על יבמות",
+   "gold": 600,
+   "super_pct": 33.2,
+   "hit": 396,
+   "recoverable": 200,
+   "unreachable": 4,
+   "nopred": 0,
+   "recov_small_margin": 177
+  },
+  {
+   "title": "חכמת שלמה על כתובות",
+   "gold": 362,
+   "super_pct": 39.2,
+   "hit": 264,
+   "recoverable": 96,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 93
+  },
+  {
+   "title": "חכמת שלמה על סוטה",
+   "gold": 306,
+   "super_pct": 23.9,
+   "hit": 188,
+   "recoverable": 118,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 103
+  },
+  {
+   "title": "חכמת שלמה על סוכה",
+   "gold": 316,
+   "super_pct": 32.9,
+   "hit": 237,
+   "recoverable": 76,
+   "unreachable": 3,
+   "nopred": 0,
+   "recov_small_margin": 69
+  },
+  {
+   "title": "חכמת שלמה על עירובין",
+   "gold": 554,
+   "super_pct": 32.5,
+   "hit": 348,
+   "recoverable": 204,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 178
+  },
+  {
+   "title": "חכמת שלמה על פסחים",
+   "gold": 321,
+   "super_pct": 43.3,
+   "hit": 201,
+   "recoverable": 119,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 112
+  },
+  {
+   "title": "חכמת שלמה על קידושין",
+   "gold": 197,
+   "super_pct": 34.5,
+   "hit": 130,
+   "recoverable": 67,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 59
+  },
+  {
+   "title": "חכמת שלמה על שבועות",
+   "gold": 152,
+   "super_pct": 38.8,
+   "hit": 80,
+   "recoverable": 71,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 56
+  },
+  {
+   "title": "חכמת שלמה על שבת",
+   "gold": 941,
+   "super_pct": 25.8,
+   "hit": 647,
+   "recoverable": 287,
+   "unreachable": 7,
+   "nopred": 0,
+   "recov_small_margin": 266
+  },
+  {
+   "title": "יבמות מהדורא בתרא",
+   "gold": 251,
+   "super_pct": 16.3,
+   "hit": 165,
+   "recoverable": 85,
+   "unreachable": 1,
+   "nopred": 0,
+   "recov_small_margin": 79
+  },
+  {
+   "title": "ערוך לנר על ראש השנה",
+   "gold": 326,
+   "super_pct": 22.1,
+   "hit": 221,
+   "recoverable": 103,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 99
+  },
+  {
+   "title": "פני יהושע על בבא מציעא",
+   "gold": 606,
+   "super_pct": 40.9,
+   "hit": 409,
+   "recoverable": 181,
+   "unreachable": 16,
+   "nopred": 0,
+   "recov_small_margin": 177
+  },
+  {
+   "title": "פני יהושע על בבא קמא",
+   "gold": 554,
+   "super_pct": 37.4,
+   "hit": 333,
+   "recoverable": 166,
+   "unreachable": 55,
+   "nopred": 0,
+   "recov_small_margin": 160
+  },
+  {
+   "title": "פני יהושע על ביצה",
+   "gold": 250,
+   "super_pct": 29.2,
+   "hit": 163,
+   "recoverable": 74,
+   "unreachable": 13,
+   "nopred": 0,
+   "recov_small_margin": 71
+  },
+  {
+   "title": "פני יהושע על ברכות",
+   "gold": 433,
+   "super_pct": 19.9,
+   "hit": 217,
+   "recoverable": 183,
+   "unreachable": 33,
+   "nopred": 0,
+   "recov_small_margin": 175
+  },
+  {
+   "title": "פני יהושע על גיטין",
+   "gold": 749,
+   "super_pct": 40.3,
+   "hit": 510,
+   "recoverable": 219,
+   "unreachable": 20,
+   "nopred": 0,
+   "recov_small_margin": 203
+  },
+  {
+   "title": "פני יהושע על סוכה",
+   "gold": 201,
+   "super_pct": 29.4,
+   "hit": 145,
+   "recoverable": 51,
+   "unreachable": 5,
+   "nopred": 0,
+   "recov_small_margin": 49
+  },
+  {
+   "title": "פני יהושע על פסחים",
+   "gold": 406,
+   "super_pct": 35.5,
+   "hit": 274,
+   "recoverable": 121,
+   "unreachable": 11,
+   "nopred": 0,
+   "recov_small_margin": 117
+  },
+  {
+   "title": "פני יהושע על קידושין",
+   "gold": 736,
+   "super_pct": 29.9,
+   "hit": 441,
+   "recoverable": 280,
+   "unreachable": 15,
+   "nopred": 0,
+   "recov_small_margin": 269
+  },
+  {
+   "title": "פני יהושע על ראש השנה",
+   "gold": 170,
+   "super_pct": 28.2,
+   "hit": 120,
+   "recoverable": 39,
+   "unreachable": 11,
+   "nopred": 0,
+   "recov_small_margin": 39
+  },
+  {
+   "title": "פני יהושע על שבת",
+   "gold": 559,
+   "super_pct": 33.1,
+   "hit": 382,
+   "recoverable": 135,
+   "unreachable": 42,
+   "nopred": 0,
+   "recov_small_margin": 129
+  },
+  {
+   "title": "ציון לנפש חיה על שבת",
+   "gold": 280,
+   "super_pct": 17.5,
+   "hit": 126,
+   "recoverable": 122,
+   "unreachable": 32,
+   "nopred": 0,
+   "recov_small_margin": 118
+  },
+  {
+   "title": "רשימות שיעורים על ברכות",
+   "gold": 1231,
+   "super_pct": 7.3,
+   "hit": 151,
+   "recoverable": 1073,
+   "unreachable": 7,
+   "nopred": 0,
+   "recov_small_margin": 1051
+  },
+  {
+   "title": "רשימות שיעורים על סוכה",
+   "gold": 2136,
+   "super_pct": 1.4,
+   "hit": 336,
+   "recoverable": 1800,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 1706
+  },
+  {
+   "title": "רשימות שיעורים על שבועות",
+   "gold": 2151,
+   "super_pct": 0.5,
+   "hit": 192,
+   "recoverable": 1959,
+   "unreachable": 0,
+   "nopred": 0,
+   "recov_small_margin": 1890
+  }
+ ],
+ "aggregate": {
+  "hit": 13534,
+  "recoverable": 12569,
+  "unreachable": 1251,
+  "nopred": 0,
+  "gold": 27354,
+  "recov_small_margin": 11568
+ }
+}

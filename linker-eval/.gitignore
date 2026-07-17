@@ -1,0 +1,3 @@
+# Derived gold data — regenerate with build_truth_set.py from a seforim.db.
+# Kept out of git because it's ~31MB and reproducible.
+truth/

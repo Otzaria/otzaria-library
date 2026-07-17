@@ -1,0 +1,52 @@
+{
+ "rows": [
+  {
+   "title": "ערוך לנר על ראש השנה",
+   "gold": 326,
+   "super_pct": 22.1,
+   "hit": 221,
+   "recoverable": 103,
+   "unreachable": 2,
+   "nopred": 0,
+   "recov_small_margin": 99
+  },
+  {
+   "title": "פני יהושע על בבא קמא",
+   "gold": 554,
+   "super_pct": 37.4,
+   "hit": 333,
+   "recoverable": 166,
+   "unreachable": 55,
+   "nopred": 0,
+   "recov_small_margin": 160
+  },
+  {
+   "title": "הפלאה על כתובות",
+   "gold": 1086,
+   "super_pct": 37.7,
+   "hit": 480,
+   "recoverable": 337,
+   "unreachable": 269,
+   "nopred": 0,
+   "recov_small_margin": 308
+  },
+  {
+   "title": "חדושי הלכות על בבא מציעא",
+   "gold": 539,
+   "super_pct": 27.3,
+   "hit": 187,
+   "recoverable": 225,
+   "unreachable": 127,
+   "nopred": 0,
+   "recov_small_margin": 207
+  }
+ ],
+ "aggregate": {
+  "hit": 1221,
+  "recoverable": 831,
+  "unreachable": 453,
+  "nopred": 0,
+  "gold": 2505,
+  "recov_small_margin": 774
+ }
+}

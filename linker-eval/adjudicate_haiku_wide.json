@@ -1,0 +1,94 @@
+{
+ "book": "פני יהושע על בבא קמא",
+ "model": "claude-haiku-4-5-20251001",
+ "only_flagged": false,
+ "total": {
+  "n": 38,
+  "matcher": 24,
+  "hybrid": 31,
+  "oracle": 34,
+  "sent": 38
+ },
+ "per_daf": [
+  {
+   "daf": "דף ב.",
+   "n": 8,
+   "matcher": 5,
+   "hybrid": 7,
+   "oracle": 7,
+   "sent": 8
+  },
+  {
+   "daf": "דף ב:",
+   "n": 5,
+   "matcher": 5,
+   "hybrid": 5,
+   "oracle": 5,
+   "sent": 5
+  },
+  {
+   "daf": "דף ג.",
+   "n": 6,
+   "matcher": 3,
+   "hybrid": 4,
+   "oracle": 6,
+   "sent": 6
+  },
+  {
+   "daf": "דף ג:",
+   "n": 6,
+   "matcher": 4,
+   "hybrid": 6,
+   "oracle": 6,
+   "sent": 6
+  },
+  {
+   "daf": "דף ד.",
+   "n": 2,
+   "matcher": 0,
+   "hybrid": 0,
+   "oracle": 0,
+   "sent": 2
+  },
+  {
+   "daf": "דף ה.",
+   "n": 3,
+   "matcher": 1,
+   "hybrid": 2,
+   "oracle": 3,
+   "sent": 3
+  },
+  {
+   "daf": "דף ה:",
+   "n": 2,
+   "matcher": 2,
+   "hybrid": 2,
+   "oracle": 2,
+   "sent": 2
+  },
+  {
+   "daf": "דף ו:",
+   "n": 1,
+   "matcher": 0,
+   "hybrid": 0,
+   "oracle": 0,
+   "sent": 1
+  },
+  {
+   "daf": "דף ח.",
+   "n": 4,
+   "matcher": 4,
+   "hybrid": 4,
+   "oracle": 4,
+   "sent": 4
+  },
+  {
+   "daf": "דף ח:",
+   "n": 1,
+   "matcher": 0,
+   "hybrid": 1,
+   "oracle": 1,
+   "sent": 1
+  }
+ ]
+}
