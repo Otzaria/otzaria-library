@@ -60,7 +60,7 @@ jobs:
           # SefariaExport publishes an immutable release and dispatches the link
           # sync itself.  The weekly orchestrator neither races a publisher nor
           # chooses downstream release inputs.
-          export_head="$(gh api repos/Otzaria/SefariaExport/commits/main --jq .sha)"
+          export_head="$(gh api repos/Otzaria/SefariaExport/commits/master --jq .sha)"
           export_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           gh workflow run release.yml -R Otzaria/SefariaExport
 
