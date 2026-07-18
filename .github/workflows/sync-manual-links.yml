@@ -159,9 +159,11 @@ jobs:
           [[ "$(sha256sum sefaria-chain/combined.tar.zst | cut -d' ' -f1)" == "$archive_sha" ]]
           mkdir sefaria-chain/export
           tar --zstd -xf sefaria-chain/combined.tar.zst -C sefaria-chain/export
-          mapfile -t database_exports < <(find sefaria-chain/export -type d -name database_export -print)
-          [[ ${#database_exports[@]} -eq 1 ]]
-          dirname "${database_exports[0]}" > sefaria-chain/export-root.txt
+          # The export root is the single directory holding both json/ and schemas/
+          # (the Docker-Compose archives no longer ship a database_export folder).
+          mapfile -t export_roots < <(find sefaria-chain/export -type d -name schemas -print | sort | while read -r s; do d="$(dirname "$s")"; [[ -d "$d/json" ]] && printf '%s\n' "$d"; done)
+          [[ ${#export_roots[@]} -eq 1 ]]
+          printf '%s\n' "${export_roots[0]}" > sefaria-chain/export-root.txt
 
       - name: Refresh, apply, commit and push atomically
         id: apply
