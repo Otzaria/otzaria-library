@@ -344,11 +344,21 @@ jobs:
           set -euo pipefail
           head_sha="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
           dispatched_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-          gh workflow run update-library.yml -R Otzaria/otzaria-library \
-            -f mode=links_sync_mode \
-            -f expected_links_commit="$EXPECTED_COMMIT" \
-            -f correlation_id="$CORRELATION_ID"
           title="update-library mode=links_sync_mode correlation=${CORRELATION_ID}"
+          # Retry transient GitHub 5xx on the dispatch itself — a single flaky 500 must
+          # not break a pipeline meant to run unattended for years. Idempotent: only retry
+          # when no matching run appeared, so a false-negative 5xx can't double-dispatch.
+          for attempt in 1 2 3 4 5; do
+            gh workflow run update-library.yml -R Otzaria/otzaria-library \
+              -f mode=links_sync_mode \
+              -f expected_links_commit="$EXPECTED_COMMIT" \
+              -f correlation_id="$CORRELATION_ID" && break
+            sleep "$((attempt * 15))"
+            n="$(gh run list -R Otzaria/otzaria-library -w update-library.yml --event workflow_dispatch --limit 100 \
+                 --json displayTitle,createdAt --jq "[.[] | select(.displayTitle == \"$title\" and .createdAt >= \"$dispatched_at\")] | length" 2>/dev/null || echo 0)"
+            [ "${n:-0}" -ge 1 ] && break
+            [ "$attempt" = 5 ] && { echo "::error::update-library dispatch failed after 5 attempts"; exit 1; }
+          done
           run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/otzaria-library update-library.yml "$title" "$head_sha" "$dispatched_at")"
           # Low-frequency resilient wait (gh run watch polls every 3s and can
           # exhaust the shared API quota; transient errors must not kill the saga).
@@ -417,17 +427,27 @@ jobs:
           head_sha="$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR == 1 {print $1}')"
           [[ "$head_sha" =~ ^[0-9a-f]{40}$ ]]
           dispatched_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-          gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary --ref "$workflow_ref" \
-            -f source_commit="$TOOL_SHA" \
-            -f sefaria_tag="${{ inputs.sefaria_tag }}" \
-            -f sefaria_release_metadata_sha256="${{ inputs.sefaria_release_metadata_sha256 }}" \
-            -f sefaria_archive_sha256="$SEFARIA_ARCHIVE_SHA" \
-            -f otzaria_tag="$OTZARIA_TAG" \
-            -f otzaria_asset_sha256="$OTZARIA_ASSET_SHA" \
-            -f expected_links_commit="$EXPECTED_COMMIT" \
-            -f otzaria_target_commit="$EXPECTED_COMMIT" \
-            -f correlation_id="$CORRELATION_ID"
           title="manual-generate-release correlation=${CORRELATION_ID}"
+          # Retry transient GitHub 5xx on the dispatch itself — a single flaky 500 must
+          # not break a pipeline meant to run unattended for years. Idempotent: only retry
+          # when no matching run appeared, so a false-negative 5xx can't double-dispatch.
+          for attempt in 1 2 3 4 5; do
+            gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary --ref "$workflow_ref" \
+              -f source_commit="$TOOL_SHA" \
+              -f sefaria_tag="${{ inputs.sefaria_tag }}" \
+              -f sefaria_release_metadata_sha256="${{ inputs.sefaria_release_metadata_sha256 }}" \
+              -f sefaria_archive_sha256="$SEFARIA_ARCHIVE_SHA" \
+              -f otzaria_tag="$OTZARIA_TAG" \
+              -f otzaria_asset_sha256="$OTZARIA_ASSET_SHA" \
+              -f expected_links_commit="$EXPECTED_COMMIT" \
+              -f otzaria_target_commit="$EXPECTED_COMMIT" \
+              -f correlation_id="$CORRELATION_ID" && break
+            sleep "$((attempt * 15))"
+            n="$(gh run list -R Otzaria/SeforimLibrary -w manual-generate-release.yml --event workflow_dispatch --limit 100 \
+                 --json displayTitle,createdAt --jq "[.[] | select(.displayTitle == \"$title\" and .createdAt >= \"$dispatched_at\")] | length" 2>/dev/null || echo 0)"
+            [ "${n:-0}" -ge 1 ] && break
+            [ "$attempt" = 5 ] && { echo "::error::manual-generate-release dispatch failed after 5 attempts"; exit 1; }
+          done
           run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha" "$dispatched_at")"
           # Low-frequency resilient wait — the DB build runs for hours.
           while :; do
