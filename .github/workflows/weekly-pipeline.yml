@@ -60,7 +60,7 @@ jobs:
           watch_run() {
             local repo="$1" rid="$2" label="$3" state
             while :; do
-              state="$(gh api "repos/$repo/actions/runs/$rid" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+              state="$(gh api "repos/$repo/actions/runs/$rid" --jq '.status + ":" + (.conclusion // "")' 2>"$RUNNER_TEMP/wait-err.txt" || { grep -q "HTTP 401" "$RUNNER_TEMP/wait-err.txt" && echo fatal-auth || echo transient; })"
               case "$state" in
                 completed:success) return 0 ;;
                 completed:*) echo "::error::$label run $rid concluded ${state#completed:}"; return 1 ;;

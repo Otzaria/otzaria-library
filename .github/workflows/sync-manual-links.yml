@@ -363,10 +363,11 @@ jobs:
           # Low-frequency resilient wait (gh run watch polls every 3s and can
           # exhaust the shared API quota; transient errors must not kill the saga).
           while :; do
-            state="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+            state="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>"$RUNNER_TEMP/wait-err.txt" || { grep -q "HTTP 401" "$RUNNER_TEMP/wait-err.txt" && echo fatal-auth || echo transient; })"
             case "$state" in
               completed:success) break ;;
               completed:*) echo "::error::update-library run $run_id concluded ${state#completed:}"; exit 1 ;;
+              fatal-auth) echo "::error::token rejected (HTTP 401) while waiting — dead credentials cannot heal"; exit 1 ;;
               *) sleep 60 ;;
             esac
           done
@@ -451,10 +452,11 @@ jobs:
           run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha" "$dispatched_at")"
           # Low-frequency resilient wait — the DB build runs for hours.
           while :; do
-            state="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+            state="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>"$RUNNER_TEMP/wait-err.txt" || { grep -q "HTTP 401" "$RUNNER_TEMP/wait-err.txt" && echo fatal-auth || echo transient; })"
             case "$state" in
               completed:success) break ;;
               completed:*) echo "::error::manual-generate-release run $run_id concluded ${state#completed:}"; exit 1 ;;
+              fatal-auth) echo "::error::token rejected (HTTP 401) while waiting — dead credentials cannot heal"; exit 1 ;;
               *) sleep 60 ;;
             esac
           done
