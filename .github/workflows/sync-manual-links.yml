@@ -70,6 +70,17 @@ jobs:
           [[ "$METADATA_SHA" =~ ^[0-9a-f]{64}$ ]]
           [[ "$CORRELATION_ID" == "sefaria:${RUN_ID}:${RUN_ATTEMPT}:${SEFARIA_TAG}:${METADATA_SHA}" ]]
 
+      - name: Preflight PIPELINE_TOKEN can push to Otzaria main
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Every repo here except LinkerToOtzaria is public, so reads succeed even with
+          # an empty/underscoped token — the failure only surfaces at the atomic git push.
+          # Fail loud and specific instead of a cryptic "could not read Username".
+          [ -n "${GH_TOKEN:-}" ] || { echo "::error::PIPELINE_TOKEN secret is empty on otzaria-library — set it: gh secret set PIPELINE_TOKEN -R Otzaria/otzaria-library"; exit 1; }
+          push="$(gh api repos/Otzaria/otzaria-library --jq '.permissions.push // false' 2>/dev/null || echo error)"
+          [ "$push" = true ] || { echo "::error::PIPELINE_TOKEN cannot push to otzaria-library (permissions.push=$push) — the classic PAT needs the 'repo' scope (public_repo is not enough for cross-repo automation) and must belong to a user with write access"; exit 1; }
+
       - name: Checkout current Otzaria main
         uses: actions/checkout@v4
         with:
