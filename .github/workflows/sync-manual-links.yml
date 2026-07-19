@@ -350,7 +350,16 @@ jobs:
             -f correlation_id="$CORRELATION_ID"
           title="update-library mode=links_sync_mode correlation=${CORRELATION_ID}"
           run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/otzaria-library update-library.yml "$title" "$head_sha" "$dispatched_at")"
-          gh run watch "$run_id" -R Otzaria/otzaria-library --exit-status
+          # Low-frequency resilient wait (gh run watch polls every 3s and can
+          # exhaust the shared API quota; transient errors must not kill the saga).
+          while :; do
+            state="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+            case "$state" in
+              completed:success) break ;;
+              completed:*) echo "::error::update-library run $run_id concluded ${state#completed:}"; exit 1 ;;
+              *) sleep 60 ;;
+            esac
+          done
           rm -rf child-result
           gh run download "$run_id" -R Otzaria/otzaria-library -n pipeline-result -D child-result
           run_attempt="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .run_attempt)"
@@ -420,7 +429,15 @@ jobs:
             -f correlation_id="$CORRELATION_ID"
           title="manual-generate-release correlation=${CORRELATION_ID}"
           run_id="$(bash .github/scripts/find_exact_workflow_run.sh Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha" "$dispatched_at")"
-          gh run watch "$run_id" -R Otzaria/SeforimLibrary --exit-status
+          # Low-frequency resilient wait — the DB build runs for hours.
+          while :; do
+            state="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$run_id" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+            case "$state" in
+              completed:success) break ;;
+              completed:*) echo "::error::manual-generate-release run $run_id concluded ${state#completed:}"; exit 1 ;;
+              *) sleep 60 ;;
+            esac
+          done
           rm -rf build-result
           gh run download "$run_id" -R Otzaria/SeforimLibrary -n pipeline-result -D build-result
           run_attempt="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$run_id" --jq .run_attempt)"

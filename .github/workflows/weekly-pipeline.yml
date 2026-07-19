@@ -55,7 +55,20 @@ jobs:
             -f mode=prepare_only \
             -f correlation_id="$prepare_correlation"
           prepare_run="$(find_exact_run Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head" "$prepare_time")"
-          gh run watch "$prepare_run" -R Otzaria/otzaria-library --exit-status
+          # Low-frequency resilient wait (gh run watch polls every 3s and can
+          # exhaust the shared API quota; transient errors must not kill the run).
+          watch_run() {
+            local repo="$1" rid="$2" label="$3" state
+            while :; do
+              state="$(gh api "repos/$repo/actions/runs/$rid" --jq '.status + ":" + (.conclusion // "")' 2>/dev/null || echo transient)"
+              case "$state" in
+                completed:success) return 0 ;;
+                completed:*) echo "::error::$label run $rid concluded ${state#completed:}"; return 1 ;;
+                *) sleep 60 ;;
+              esac
+            done
+          }
+          watch_run Otzaria/otzaria-library "$prepare_run" update-library
 
           # SefariaExport publishes an immutable release and dispatches the link
           # sync itself.  The weekly orchestrator neither races a publisher nor
@@ -74,5 +87,5 @@ jobs:
             sleep 10
           done
           [[ "$(sed '/^$/d' <<<"$export_runs" | wc -l | tr -d ' ')" == 1 ]]
-          gh run watch "$export_runs" -R Otzaria/SefariaExport --exit-status
+          watch_run Otzaria/SefariaExport "$export_runs" sefaria-export
           echo "SefariaExport succeeded and dispatched exact manual-link synchronization."
