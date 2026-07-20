@@ -1,0 +1,354 @@
+name: Continue immutable weekly saga
+run-name: saga-continue stage=${{ github.event.action || inputs.stage }} correlation=${{ github.event.client_payload.correlation_id || inputs.correlation_id }}
+
+on:
+  repository_dispatch:
+    types: [otzaria-published, seforim-published]
+  workflow_dispatch:
+    inputs:
+      stage:
+        required: true
+        type: choice
+        options: [otzaria-published, seforim-published]
+      correlation_id:
+        required: true
+        type: string
+      saga_run_id:
+        required: true
+        type: string
+      saga_run_attempt:
+        required: true
+        type: string
+      child_run_id:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  resolve:
+    name: Resolve untrusted callback to canonical saga identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      stage: ${{ steps.resolve.outputs.stage }}
+      correlation_id: ${{ steps.state.outputs.correlation_id }}
+      correlation_sha256: ${{ steps.state.outputs.correlation_sha256 }}
+      saga_run_id: ${{ steps.state.outputs.saga_run_id }}
+      saga_run_attempt: ${{ steps.state.outputs.saga_run_attempt }}
+      expected_links_commit: ${{ steps.state.outputs.expected_links_commit }}
+      seforim_tool_commit: ${{ steps.state.outputs.seforim_tool_commit }}
+      sefaria_tag: ${{ steps.state.outputs.sefaria_tag }}
+      sefaria_release_metadata_sha256: ${{ steps.state.outputs.sefaria_release_metadata_sha256 }}
+      sefaria_archive_sha256: ${{ steps.state.outputs.sefaria_archive_sha256 }}
+      fordb_tag: ${{ steps.state.outputs.fordb_tag }}
+      fordb_archive_sha256: ${{ steps.state.outputs.fordb_archive_sha256 }}
+      fordb_provenance_sha256: ${{ steps.state.outputs.fordb_provenance_sha256 }}
+      child_run_id: ${{ steps.resolve.outputs.child_run_id }}
+      child_run_attempt: ${{ steps.resolve.outputs.child_run_attempt }}
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+      REQUEST_STAGE: ${{ github.event_name == 'repository_dispatch' && github.event.action || inputs.stage }}
+      REQUEST_CORRELATION: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.correlation_id || inputs.correlation_id }}
+      REQUEST_SAGA_RUN_ID: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.saga_run_id || inputs.saga_run_id }}
+      REQUEST_SAGA_RUN_ATTEMPT: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.saga_run_attempt || inputs.saga_run_attempt }}
+      REQUEST_CHILD_RUN_ID: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.child_run_id || inputs.child_run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download and validate the original signed saga state
+        id: state
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$REQUEST_STAGE" in otzaria-published|seforim-published) ;; *) exit 2;; esac
+          [[ "$REQUEST_SAGA_RUN_ID" =~ ^[1-9][0-9]*$ ]]
+          [[ "$REQUEST_SAGA_RUN_ATTEMPT" =~ ^[1-9][0-9]*$ ]]
+          [[ "$REQUEST_CHILD_RUN_ID" =~ ^[1-9][0-9]*$ ]]
+          [[ "$REQUEST_CORRELATION" =~ ^sefaria:[1-9][0-9]*:[1-9][0-9]*:[A-Za-z0-9._-]+:[0-9a-f]{64}$ ]]
+          correlation_sha="$(printf '%s' "$REQUEST_CORRELATION" | sha256sum | cut -d' ' -f1)"
+          rm -rf saga-state
+          gh run download "$REQUEST_SAGA_RUN_ID" -R Otzaria/otzaria-library \
+            -n "saga-state-$correlation_sha-attempt-$REQUEST_SAGA_RUN_ATTEMPT" -D saga-state
+          python3 .github/scripts/saga_contract.py --directory saga-state \
+            --expected-run-id "$REQUEST_SAGA_RUN_ID" --expected-correlation "$REQUEST_CORRELATION" \
+            --expected-run-attempt "$REQUEST_SAGA_RUN_ATTEMPT" \
+            --github-output "$GITHUB_OUTPUT"
+          gh api "repos/Otzaria/otzaria-library/actions/runs/$REQUEST_SAGA_RUN_ID" > saga-run.json
+          jq -e --arg title "sync-manual-links correlation=$REQUEST_CORRELATION" \
+            --argjson attempt "$REQUEST_SAGA_RUN_ATTEMPT" \
+            '.event=="workflow_dispatch" and .display_title==$title and .run_attempt==$attempt and
+             .status=="completed" and .conclusion=="success"' \
+            saga-run.json >/dev/null
+      - name: Verify callback child against GitHub, never the payload
+        id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_commit="$(jq -r .expected_links_commit saga-state/saga-state.json)"
+          tool_commit="$(jq -r .seforim_tool_commit saga-state/saga-state.json)"
+          case "$REQUEST_STAGE" in
+            otzaria-published)
+              repo=Otzaria/otzaria-library
+              title="update-library mode=links_sync_mode correlation=$REQUEST_CORRELATION"
+              expected_head="*"
+              stage=s1 ;;
+            seforim-published)
+              repo=Otzaria/SeforimLibrary
+              title="manual-generate-release correlation=$REQUEST_CORRELATION"
+              expected_head="$tool_commit"
+              stage=s2 ;;
+          esac
+          gh api "repos/$repo/actions/runs/$REQUEST_CHILD_RUN_ID" > child-run.json
+          jq -e --arg title "$title" --arg head "$expected_head" \
+            '.event=="workflow_dispatch" and .display_title==$title and ($head=="*" or .head_sha==$head) and
+             .status=="completed" and .conclusion=="success" and
+             (.run_attempt|type)=="number" and .run_attempt>=1' child-run.json >/dev/null
+          if [ "$REQUEST_STAGE" = otzaria-published ]; then
+            child_head="$(jq -r .head_sha child-run.json)"
+            relation="$(gh api "repos/Otzaria/otzaria-library/compare/$expected_commit...$child_head" --jq .status)"
+            case "$relation" in identical|ahead) ;; *) echo "::error::Otzaria child workflow head does not descend from the saga commit"; exit 1;; esac
+          fi
+          echo "stage=$stage" >> "$GITHUB_OUTPUT"
+          echo "child_run_id=$REQUEST_CHILD_RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "child_run_attempt=$(jq -r .run_attempt child-run.json)" >> "$GITHUB_OUTPUT"
+
+  continue:
+    name: Mutate only under canonical correlation mutex
+    needs: resolve
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency:
+      group: saga-${{ needs.resolve.outputs.correlation_sha256 }}-${{ needs.resolve.outputs.stage }}
+      cancel-in-progress: false
+      queue: max
+    env:
+      GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+      STAGE: ${{ needs.resolve.outputs.stage }}
+      CORRELATION_ID: ${{ needs.resolve.outputs.correlation_id }}
+      CORRELATION_SHA: ${{ needs.resolve.outputs.correlation_sha256 }}
+      SAGA_RUN_ID: ${{ needs.resolve.outputs.saga_run_id }}
+      SAGA_RUN_ATTEMPT: ${{ needs.resolve.outputs.saga_run_attempt }}
+      EXPECTED_COMMIT: ${{ needs.resolve.outputs.expected_links_commit }}
+      TOOL_SHA: ${{ needs.resolve.outputs.seforim_tool_commit }}
+      SEFARIA_TAG: ${{ needs.resolve.outputs.sefaria_tag }}
+      SEFARIA_METADATA_SHA: ${{ needs.resolve.outputs.sefaria_release_metadata_sha256 }}
+      SEFARIA_ARCHIVE_SHA: ${{ needs.resolve.outputs.sefaria_archive_sha256 }}
+      PINNED_FORDB_TAG: ${{ needs.resolve.outputs.fordb_tag }}
+      PINNED_FORDB_SHA: ${{ needs.resolve.outputs.fordb_archive_sha256 }}
+      PINNED_FORDB_PROVENANCE_SHA: ${{ needs.resolve.outputs.fordb_provenance_sha256 }}
+      CALLBACK_CHILD_RUN_ID: ${{ needs.resolve.outputs.child_run_id }}
+      CALLBACK_CHILD_RUN_ATTEMPT: ${{ needs.resolve.outputs.child_run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Re-check durable stage product inside the correlation mutex
+        id: stage_gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          done=false
+          if [ "$STAGE" = s2 ]; then
+            title="saga-continue stage=seforim-published correlation=$CORRELATION_ID"
+            rows="$(TITLE="$title" gh api --paginate -X GET \
+              "repos/Otzaria/otzaria-library/actions/workflows/saga-continue.yml/runs" -f per_page=100 \
+              --jq '.workflow_runs[] | select(.display_title==env.TITLE and .status=="completed" and .conclusion=="success") | (.id|tostring)')"
+            if printf '%s\n' "$rows" | awk -v current="$GITHUB_RUN_ID" 'NF && $0!=current {found=1} END{exit !found}'; then
+              done=true
+              echo "S2 already has a successful durable completion; duplicate callback is a no-op."
+            fi
+          fi
+          echo "done=$done" >> "$GITHUB_OUTPUT"
+      - name: Validate exact Otzaria result and immutable release
+        id: otzaria
+        if: needs.resolve.outputs.stage == 's1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf child-result release-check && mkdir child-result release-check
+          gh run download "$CALLBACK_CHILD_RUN_ID" -R Otzaria/otzaria-library \
+            -n "pipeline-result-$CALLBACK_CHILD_RUN_ATTEMPT" -D child-result
+          python3 pipeline_result_contract.py validate-otzaria-result \
+            --json child-result/pipeline-result.json --sha256 child-result/pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
+            --run-id "$CALLBACK_CHILD_RUN_ID" --run-attempt "$CALLBACK_CHILD_RUN_ATTEMPT"
+          tag="$(jq -r .tag child-result/pipeline-result.json)"
+          [[ "$(gh api "repos/Otzaria/otzaria-library/git/ref/tags/$tag" --jq .object.sha)" == "$EXPECTED_COMMIT" ]]
+          gh release download "$tag" -R Otzaria/otzaria-library -p otzaria_release_provenance.json -D release-check
+          gh release view "$tag" -R Otzaria/otzaria-library --json assets > release-check/remote-assets.json
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          import pipeline_result_contract as contract
+          result = contract.load_json(Path("child-result/pipeline-result.json"))
+          provenance = contract.load_json(Path("release-check/otzaria_release_provenance.json"))
+          contract.validate_provenance(provenance)
+          expected = {key: result[key] for key in contract.PROVENANCE_KEYS}
+          expected["correlation_id"] = result["release_correlation_id"]
+          if provenance != expected:
+              raise SystemExit("remote Otzaria provenance differs from exact child result")
+          prov_path=Path("release-check/otzaria_release_provenance.json")
+          if hashlib.sha256(prov_path.read_bytes()).hexdigest()!=result["release_provenance_sha256"]:
+              raise SystemExit("remote Otzaria provenance digest differs from child result")
+          expected_assets={item["name"]:(item["size"],"sha256:"+item["sha256"]) for item in [result["asset"],*result["auxiliary_assets"]]}
+          expected_assets[prov_path.name]=(prov_path.stat().st_size,"sha256:"+result["release_provenance_sha256"])
+          remote=contract.load_json(Path("release-check/remote-assets.json"),require_canonical=False)["assets"]
+          actual={item["name"]:(item["size"],item.get("digest")) for item in remote}
+          if actual!=expected_assets: raise SystemExit("remote Otzaria asset descriptors differ from exact child result")
+          PY
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "asset_sha256=$(jq -r .asset.sha256 child-result/pipeline-result.json)" >> "$GITHUB_OUTPUT"
+      - name: Resolve and verify immutable ForDB pointer
+        id: fordb
+        if: needs.resolve.outputs.stage == 's1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="$PINNED_FORDB_TAG"
+          sha="$PINNED_FORDB_SHA"
+          [[ "$tag" == "fordb-sha256-$sha" ]]
+          [[ "$PINNED_FORDB_PROVENANCE_SHA" =~ ^[0-9a-f]{64}$ ]]
+          rm -rf fordb-check && mkdir fordb-check
+          gh release download "$tag" -R Otzaria/otzaria-library \
+            -p fordb_latest.zip -p fordb_provenance.json -D fordb-check
+          [[ "$(sha256sum fordb-check/fordb_latest.zip | cut -d' ' -f1)" == "$sha" ]]
+          [[ "$(sha256sum fordb-check/fordb_provenance.json | cut -d' ' -f1)" == "$PINNED_FORDB_PROVENANCE_SHA" ]]
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          def pairs(items):
+              out={}
+              for key,value in items:
+                  if key in out: raise SystemExit(f"duplicate provenance key {key}")
+                  out[key]=value
+              return out
+          value=json.loads(Path("fordb-check/fordb_provenance.json").read_text(),object_pairs_hook=pairs)
+          keys={"schema_version","archive","source_commit","validator_tool_sha","validated_library_tag"}
+          if set(value)!=keys or type(value["schema_version"]) is not int or value["schema_version"]!=1:
+              raise SystemExit("invalid ForDB provenance schema")
+          archive=value["archive"]
+          if set(archive)!={"name","sha256","size"} or archive["name"]!="fordb_latest.zip" or archive["sha256"]!=__import__('os').environ["PINNED_FORDB_SHA"]:
+              raise SystemExit("ForDB provenance archive mismatch")
+          if type(archive["size"]) is not int or archive["size"]<1: raise SystemExit("invalid ForDB archive size")
+          for field in ("source_commit","validator_tool_sha"):
+              if type(value[field]) is not str or not re.fullmatch(r"[0-9a-f]{40}",value[field]): raise SystemExit(f"invalid {field}")
+          if type(value["validated_library_tag"]) is not str or not re.fullmatch(r"[A-Za-z0-9._-]{1,100}",value["validated_library_tag"]):
+              raise SystemExit("invalid validated_library_tag")
+          Path("fordb-check/source-commit.txt").write_text(value["source_commit"]+"\n")
+          PY
+          [[ "$(gh api "repos/Otzaria/otzaria-library/git/ref/tags/$tag" --jq .object.sha)" == "$(cat fordb-check/source-commit.txt)" ]]
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "sha256=$sha" >> "$GITHUB_OUTPUT"
+      - name: Idempotently dispatch exact pinned Seforim build
+        if: needs.resolve.outputs.stage == 's1'
+        env:
+          OTZARIA_TAG: ${{ steps.otzaria.outputs.tag }}
+          OTZARIA_ASSET_SHA: ${{ steps.otzaria.outputs.asset_sha256 }}
+          FORDB_TAG: ${{ steps.fordb.outputs.tag }}
+          FORDB_ARCHIVE_SHA: ${{ steps.fordb.outputs.sha256 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="manual-generate-release correlation=$CORRELATION_ID"
+          tool_ref="$(jq -r .seforim_tool_ref manual_links_sync.json)"
+          [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]]
+          workflow_ref="${tool_ref#refs/heads/}"
+          head_sha="$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR==1 {print $1}')"
+          [[ "$head_sha" == "$TOOL_SHA" ]]
+          set +e
+          existing="$(FIND_RUN_ATTEMPTS=1 bash .github/scripts/find_exact_workflow_run.sh \
+              Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha")"
+          scan_rc=$?
+          set -e
+          if [ "$scan_rc" -eq 0 ]; then
+            state="$(gh api "repos/Otzaria/SeforimLibrary/actions/runs/$existing" --jq '.status+":"+(.conclusion//"")')"
+            case "$state" in completed:success|requested:*|waiting:*|pending:*|queued:*|in_progress:*) exit 0;;
+              *) echo "::error::existing Seforim child $existing is terminal but failed ($state)"; exit 1;; esac
+          fi
+          [ "$scan_rc" -eq 1 ] || exit "$scan_rc"
+          # Submit exactly once. A failed response is ambiguous, so let this
+          # continuation fail; reconcile-sagas will inspect the exact child title
+          # before rerunning this databaseId. No blind duplicate dispatch.
+          gh workflow run manual-generate-release.yml -R Otzaria/SeforimLibrary --ref "$workflow_ref" \
+            -f source_commit="$TOOL_SHA" -f sefaria_tag="$SEFARIA_TAG" \
+            -f sefaria_release_metadata_sha256="$SEFARIA_METADATA_SHA" \
+            -f sefaria_archive_sha256="$SEFARIA_ARCHIVE_SHA" \
+            -f otzaria_tag="$OTZARIA_TAG" -f otzaria_asset_sha256="$OTZARIA_ASSET_SHA" \
+            -f fordb_tag="$FORDB_TAG" -f fordb_archive_sha256="$FORDB_ARCHIVE_SHA" \
+            -f expected_links_commit="$EXPECTED_COMMIT" -f otzaria_target_commit="$EXPECTED_COMMIT" \
+            -f correlation_id="$CORRELATION_ID" -f saga_run_id="$SAGA_RUN_ID" \
+            -f saga_run_attempt="$SAGA_RUN_ATTEMPT"
+          echo "Seforim child submission accepted; S1 complete."
+      - name: Re-download authoritative Otzaria result for S2
+        id: s2_otzaria
+        if: needs.resolve.outputs.stage == 's2' && steps.stage_gate.outputs.done != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="update-library mode=links_sync_mode correlation=$CORRELATION_ID"
+          run_id="$(bash .github/scripts/find_exact_workflow_run.sh \
+            Otzaria/otzaria-library update-library.yml "$title" '*')"
+          attempt="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .run_attempt)"
+          rm -rf child-result && mkdir child-result
+          gh run download "$run_id" -R Otzaria/otzaria-library \
+            -n "pipeline-result-$attempt" -D child-result
+          python3 pipeline_result_contract.py validate-otzaria-result \
+            --json child-result/pipeline-result.json --sha256 child-result/pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
+            --run-id "$run_id" --run-attempt "$attempt"
+      - name: Validate Seforim result and every remote release byte
+        if: needs.resolve.outputs.stage == 's2' && steps.stage_gate.outputs.done != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf build-result build-release-check && mkdir build-result build-release-check
+          gh run download "$CALLBACK_CHILD_RUN_ID" -R Otzaria/SeforimLibrary \
+            -n "pipeline-result-$CALLBACK_CHILD_RUN_ATTEMPT" -D build-result
+          FORDB_TAG="$(jq -r .fordb_tag build-result/pipeline-result.json)"
+          FORDB_SHA="$(jq -r .fordb_archive_sha256 build-result/pipeline-result.json)"
+          [[ "$FORDB_TAG" == "$PINNED_FORDB_TAG" && "$FORDB_SHA" == "$PINNED_FORDB_SHA" ]]
+          python3 pipeline_result_contract.py validate-seforim-result \
+            --json build-result/pipeline-result.json --sha256 build-result/pipeline-result.sha256 \
+            --correlation-id "$CORRELATION_ID" --run-id "$CALLBACK_CHILD_RUN_ID" \
+            --run-attempt "$CALLBACK_CHILD_RUN_ATTEMPT" --source-commit "$TOOL_SHA" \
+            --sefaria-tag "$SEFARIA_TAG" --sefaria-release-metadata-sha256 "$SEFARIA_METADATA_SHA" \
+            --sefaria-archive-sha256 "$SEFARIA_ARCHIVE_SHA" \
+            --otzaria-tag "$(jq -r .tag child-result/pipeline-result.json)" \
+            --otzaria-asset-sha256 "$(jq -r .asset.sha256 child-result/pipeline-result.json)" \
+            --fordb-tag "$FORDB_TAG" --fordb-archive-sha256 "$FORDB_SHA" \
+            --expected-links-commit "$EXPECTED_COMMIT" --otzaria-target-commit "$EXPECTED_COMMIT" \
+            --config-sha256 "$(jq -r .config_sha256 child-result/pipeline-result.json)" \
+            --source-links-tree-sha256 "$(jq -r .source_links_tree_sha256 child-result/pipeline-result.json)" \
+            --packaged-links-tree-sha256 "$(jq -r .packaged_links_tree_sha256 child-result/pipeline-result.json)" \
+            --lineage-sha256 "$(jq -r .lineage_sha256 child-result/pipeline-result.json)"
+          release_tag="$(jq -r .release_tag build-result/pipeline-result.json)"
+          [[ "$(gh api "repos/Otzaria/SeforimLibrary/git/ref/tags/$release_tag" --jq .object.sha)" == "$TOOL_SHA" ]]
+          gh release view "$release_tag" -R Otzaria/SeforimLibrary --json assets > build-release-check/remote-assets.json
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          result=json.loads(Path("build-result/pipeline-result.json").read_text())
+          expected={item["name"]:(item["size"],"sha256:"+item["sha256"]) for item in result["assets"]}
+          remote=json.loads(Path("build-release-check/remote-assets.json").read_text())["assets"]
+          actual={item["name"]:(item["size"],item.get("digest")) for item in remote}
+          if actual!=expected: raise SystemExit("remote Seforim release descriptors differ from exact child result")
+          PY
+          mkdir saga-complete
+          jq -cS -n --arg correlation_id "$CORRELATION_ID" --arg correlation_sha256 "$CORRELATION_SHA" \
+            --argjson saga_run_id "$SAGA_RUN_ID" --argjson seforim_run_id "$CALLBACK_CHILD_RUN_ID" \
+            --arg release_tag "$release_tag" \
+            '{schema_version:1,status:"complete",correlation_id:$correlation_id,correlation_sha256:$correlation_sha256,saga_run_id:$saga_run_id,seforim_run_id:$seforim_run_id,release_tag:$release_tag}' \
+            > saga-complete/saga-complete.json
+          sha256sum saga-complete/saga-complete.json | cut -d' ' -f1 > saga-complete/saga-complete.sha256
+      - uses: actions/upload-artifact@v4
+        if: needs.resolve.outputs.stage == 's2' && steps.stage_gate.outputs.done != 'true'
+        with:
+          name: saga-complete-${{ needs.resolve.outputs.correlation_sha256 }}-attempt-${{ github.run_attempt }}
+          path: saga-complete/
+          if-no-files-found: error
+          retention-days: 90

@@ -89,7 +89,11 @@ def safe_relative_path(value: object, field: str) -> PurePosixPath:
 
 
 def validate_config(config: object) -> dict:
-    if not isinstance(config, dict) or config.get("schema_version") != 1:
+    if (
+        not isinstance(config, dict)
+        or type(config.get("schema_version")) is not int
+        or config.get("schema_version") != 1
+    ):
         raise PackagingError("manual_links_sync.json schema_version must be 1")
     if not isinstance(config.get("seforim_tool_ref"), str) or not config["seforim_tool_ref"].startswith("refs/"):
         raise PackagingError("seforim_tool_ref must be an explicit refs/... value")
@@ -187,7 +191,11 @@ def validate_lineage(
     lineage: object,
     computed_trees: tuple[str, str, list[tuple[str, Path]]] | None = None,
 ) -> dict:
-    if not isinstance(lineage, dict) or lineage.get("schema_version") != 1:
+    if (
+        not isinstance(lineage, dict)
+        or type(lineage.get("schema_version")) is not int
+        or lineage.get("schema_version") != 1
+    ):
         raise PackagingError("manual_links_lineage.json schema_version must be 1")
     lineage_path = workspace / LINEAGE_NAME
     if lineage_path.read_bytes() != canonical_bytes(lineage) + b"\n":

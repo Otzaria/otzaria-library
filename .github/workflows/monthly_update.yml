@@ -9,6 +9,10 @@ permissions:
 
 jobs:
   build:
+    concurrency:
+      group: otzaria-main-writer
+      cancel-in-progress: false
+      queue: max
     runs-on: ubuntu-latest
 
     steps:

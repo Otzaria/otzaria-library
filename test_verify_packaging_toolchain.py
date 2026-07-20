@@ -24,6 +24,12 @@ class VerifyPackagingToolchainTest(unittest.TestCase):
         with self.assertRaises(ToolchainError):
             verify_versions(expected, actual)
 
+    def test_boolean_schema_version_fails(self):
+        expected = self.contract()
+        expected["schema_version"] = True
+        with self.assertRaises(ToolchainError):
+            verify_versions(expected, self.contract())
+
 
 if __name__ == "__main__":
     unittest.main()
