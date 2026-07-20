@@ -433,6 +433,12 @@ jobs:
           OTZARIA_ASSET_SHA: ${{ steps.otzaria.outputs.asset_sha256 }}
         run: |
           set -euo pipefail
+          # Pin the ForDB rules archive by its content digest at dispatch time, so the
+          # DB build is a pure function of its inputs (same discipline as the Sefaria
+          # and Otzaria pins). The build re-downloads and re-verifies against this.
+          FORDB_ARCHIVE_SHA="$(gh api repos/Otzaria/otzaria-library/releases/tags/fordb-latest \
+            --jq '.assets[] | select(.name == "fordb_latest.zip") | .digest' | sed 's/^sha256://')"
+          [[ "$FORDB_ARCHIVE_SHA" =~ ^[0-9a-f]{64}$ ]]
           tool_ref="$(jq -r '.seforim_tool_ref' manual_links_sync.json)"
           [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]]
           workflow_ref="${tool_ref#refs/heads/}"
@@ -451,6 +457,7 @@ jobs:
               -f sefaria_archive_sha256="$SEFARIA_ARCHIVE_SHA" \
               -f otzaria_tag="$OTZARIA_TAG" \
               -f otzaria_asset_sha256="$OTZARIA_ASSET_SHA" \
+              -f fordb_archive_sha256="$FORDB_ARCHIVE_SHA" \
               -f expected_links_commit="$EXPECTED_COMMIT" \
               -f otzaria_target_commit="$EXPECTED_COMMIT" \
               -f correlation_id="$CORRELATION_ID" && break
@@ -482,6 +489,7 @@ jobs:
             --sefaria-release-metadata-sha256 "${{ inputs.sefaria_release_metadata_sha256 }}" \
             --sefaria-archive-sha256 "$SEFARIA_ARCHIVE_SHA" \
             --otzaria-tag "$OTZARIA_TAG" --otzaria-asset-sha256 "$OTZARIA_ASSET_SHA" \
+            --fordb-archive-sha256 "$FORDB_ARCHIVE_SHA" \
             --expected-links-commit "$EXPECTED_COMMIT" --otzaria-target-commit "$EXPECTED_COMMIT" \
             --config-sha256 "$(jq -r .config_sha256 child-result/pipeline-result.json)" \
             --source-links-tree-sha256 "$(jq -r .source_links_tree_sha256 child-result/pipeline-result.json)" \
