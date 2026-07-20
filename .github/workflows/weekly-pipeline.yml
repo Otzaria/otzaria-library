@@ -17,6 +17,10 @@ concurrency:
 jobs:
   orchestrate:
     runs-on: ubuntu-latest
+    # The orchestrator only waits for prepare (~7m) + the Sefaria export (~55m); 4h is
+    # ample headroom yet bounds a stuck watch loop well below GitHub's implicit 6h job
+    # ceiling, so a wedged wait can't silently burn a runner for hours.
+    timeout-minutes: 240
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
     steps:
@@ -64,6 +68,7 @@ jobs:
               case "$state" in
                 completed:success) return 0 ;;
                 completed:*) echo "::error::$label run $rid concluded ${state#completed:}"; return 1 ;;
+                fatal-auth) echo "::error::$label watch: token rejected (HTTP 401) — dead credentials cannot heal, failing fast"; return 1 ;;
                 *) sleep 60 ;;
               esac
             done
