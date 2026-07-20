@@ -13,9 +13,9 @@ sefariaToOtzaria/.../otzaria/utils.py):
         בדיוק את .github/workflows/update-library.yml (PACKAGED_PREFIXES). תיקיות
         ביניים/ארכיון (extraBooks, KSK) אינן נכנסות ל-DB ולכן אינן
         נחשבות. נמנים דרך `git ls-tree` (ללא הורדת תוכן - עובד עם sparse/partial).
-     2. שמות ספרי *ספריא*: נמשכים חיים מ-API + רשומות sefaria מ-all_metadata (גיבוי).
-        ספרי ספריא נוצרים בבנייה ואין להם קובץ מקומי, לכן זה מקורם. כשל במשיכה החיה
-        אינו מפיל את הבדיקה (גיבוי לרשומות ה-sefaria שבמטא-דאטה).
+     2. שמות ספרי *ספריא*: נמשכים חיים מ-API (רשומות sefaria שב-all_metadata הן בסיס, ה-API
+        מתאחד עליהן). ספרי ספריא נוצרים בבנייה ואין להם קובץ מקומי, לכן זה מקורם. כשל
+        במשיכה החיה תחת SEFARIA_FETCH=1 מפיל את הבדיקה (exit 2) — אסור לאמת מול רשימה חלקית.
      3. שאר רשומות all_metadata_with_file_paths.json (אוצריא) - לבדיקות מטא-דאטה בלבד.
   A. "db_final" = (1)+(2) אחרי שינויי השמות - מה שבאמת מגיע ל-DB. ספר אוצריא נכנס ל-DB
      רק כקובץ נארז, ולכן שם במטא-דאטה לבדו (בלי קובץ נארז) אינו נכלל. כך נתפס ספר שהוזז
@@ -38,8 +38,9 @@ sefariaToOtzaria/.../otzaria/utils.py):
     נחשבים שגיאה. DictaToOtzaria/לא ערוך נארז ל-ZIP נפרד ואינו משתתף בבדיקה זו.
 
 יציאה בקוד 1 אם נמצא ולו שם אחד שאינו קיים, כפילות שם בתיקיות הנארזות, או דליפת-מקור
-ב-all_metadata.json - כך ש-CI נכשל ב-PR / בכל קומיט. אלה אינם ניתנים לתיקון אוטומטי
-(מפילים גם במצב --fix).
+ב-all_metadata.json - כך ש-CI נכשל ב-PR / בכל קומיט. report-only: הבעיות מדווחות ומפילות
+את הריצה, לעולם לא מתוקנות אוטומטית (מחיקת שורות move/rename תאבד כוונה אנושית, ותקלת-API
+עלולה למחוק שורות תקינות); אדם מיישב את מה שדווח. יציאה בקוד 2 אם משיכת ספריא נכשלה.
 """
 
 import argparse
@@ -64,9 +65,6 @@ GENERATIONS = os.path.join(FORDB, "generations.csv")
 SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
 BOOK_MOVES = os.path.join(FORDB, "book_moves.csv")
 FORDB_METADATA = os.path.join(FORDB, "all_metadata.json")
-
-# דוח --fix: רשימת [{"file","name"}] של שורות שהוסרו אוטומטית (נכתב רק אם הוסר משהו).
-REMOVED_REPORT = os.path.join(REPO_ROOT, "fordb_removed.json")
 
 # API של ספריא: עץ התוכן המלא (TOC) - מכיל את כל שמות הספרים, ללא הטקסטים.
 SEFARIA_INDEX_URL = "https://www.sefaria.org/api/index/"
@@ -262,10 +260,16 @@ def load_canonical(srename):
     sefaria = set(sefaria_meta)
     if SEFARIA_FETCH:
         live = fetch_sefaria_titles()
-        if live is not None:
-            before = len(sefaria)
-            sefaria |= clean_titles(live)
-            print(f"[canonical] נמשכו {len(live)} שמות חיים מספריא; נוספו {len(sefaria) - before} חדשים (union)")
+        # A failed fetch must NEVER silently fall back to the local list: the canonical
+        # set would be incomplete and real ForDB rows would look like orphans. Since this
+        # validator gates ForDB publishing, validating against a partial list is unsafe —
+        # fail loud (exit 2, distinct from a validation failure) so the run is retried.
+        if live is None:
+            print("::error::משיכת השמות מספריא נכשלה ו-SEFARIA_FETCH=1 — לא מאמתים מול רשימה חלקית; הריצו שוב.")
+            sys.exit(2)
+        before = len(sefaria)
+        sefaria |= clean_titles(live)
+        print(f"[canonical] נמשכו {len(live)} שמות חיים מספריא; נוספו {len(sefaria) - before} חדשים (union)")
     else:
         print("[canonical] משיכת ספריא מושבתת (SEFARIA_FETCH=0)")
 
@@ -288,8 +292,8 @@ def fetch_sefaria_titles():
         )
         with urllib.request.urlopen(req, timeout=60) as resp:
             data = json.loads(resp.read().decode("utf-8"))
-    except Exception as e:  # noqa: BLE001 - כל כשל תקשורת/פענוח -> נפילה בטוחה לרשימה המקומית
-        print(f"::warning::משיכת השמות מספריא נכשלה ({e}); ממשיכים עם הרשימה המקומית בלבד.")
+    except Exception as e:  # noqa: BLE001 - כל כשל תקשורת/פענוח -> None; המתקשר מפיל (fail-loud, ראו load_canonical)
+        print(f"::warning::משיכת השמות מספריא נכשלה ({e}).")
         return None
 
     titles = set()
@@ -324,48 +328,15 @@ def load_rename_pairs():
     return pairs
 
 
-def remove_orphans(path, col_name, db_final, srename):
-    """מסיר מקובץ CSV (עם כותרת) שורות שספרן לא יגיע ל-DB (אינו ב-db_final). שומר על
-    הטקסט המדויק של השורות הנותרות (ללא רה-סריאליזציה של ה-CSV, כדי לא לשנות ציטוטים).
-    מחזיר את רשימת השמות שהוסרו."""
-    if not path or not os.path.isfile(path):
-        return []
-    with open(path, encoding="utf-8-sig", newline="") as fh:
-        lines = fh.read().split("\n")
-    if not lines or not lines[0].strip():
-        return []
-    header = next(csv.reader([lines[0]]))
-    if col_name not in header:
-        return []
-    idx = header.index(col_name)
-    kept, removed = [lines[0]], []
-    for line in lines[1:]:
-        if line.strip() == "":
-            kept.append(line)
-            continue
-        fields = next(csv.reader([line]))
-        name = fields[idx] if len(fields) > idx else ""
-        clean = sanitize_title(name)
-        if name and srename.get(clean, clean) not in db_final:
-            removed.append(name)
-        else:
-            kept.append(line)
-    if removed:
-        with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write("\n".join(kept))
-    return removed
-
-
 # ---------------------------------------------------------------------------
 # הבדיקה
 # ---------------------------------------------------------------------------
 def main():
-    ap = argparse.ArgumentParser(description="אימות שמות ForDB מול רשימת הספרים הקנונית.")
-    ap.add_argument("--fix", action="store_true",
-                    help="הסרה אוטומטית של שורות יתומות מ-generations.csv/book_moves.csv "
-                         "(ספרים שאינם מגיעים ל-DB), וכתיבת דוח ל-fordb_removed.json. "
-                         "שאר הבדיקות (book_renames, metadata) עדיין מפילות את הריצה.")
-    args = ap.parse_args()
+    # Report-only by design: this validator REPORTS problems and fails the run — it never
+    # rewrites ForDB. Auto-deleting move/rename rows would silently drop human intent, and
+    # a transient Sefaria-API hiccup could delete real rows; a human resolves what is
+    # reported. parse_args() with no options still rejects a stale --fix loudly.
+    argparse.ArgumentParser(description="אימות שמות ForDB מול רשימת הספרים הקנונית (report-only).").parse_args()
 
     rename_pairs = load_rename_pairs()
     srename = build_sanitized_rename(rename_pairs)
@@ -398,19 +369,16 @@ def main():
 
     # 2) generations.csv + 4) book_moves.csv - עמודות "שם ספר"/"name". חייבים להתאים
     #    בדיוק ל-book.title שב-DB (db_final); ספר שאינו נארז (כגון שהוזז ל-KSK) ייתפס.
-    #    ב--fix מסירים אוטומטית את השורות היתומות במקום להפיל; אחרת בודקים ומפילים.
-    removed = []  # [(file_label, name, reason)] שהוסרו אוטומטית במצב --fix
-    fixable = [("ForDB/generations.csv", GENERATIONS, "שם ספר"),
-               ("ForDB/book_moves.csv", BOOK_MOVES, "name")]
-    for file_label, path, col in fixable:
-        if args.fix:
-            removed += [(file_label, n, "orphan") for n in remove_orphans(path, col, db_final, srename)]
-        else:
-            header, rows = read_csv_rows(path, has_header=True)
-            c_idx = col_index(header, col)
-            for line_no, row in enumerate(rows, start=2):
-                if len(row) > c_idx:
-                    check_db_name(file_label, f"שורה {line_no}", row[c_idx], db_final)
+    #    report-only: שורה יתומה (ספר שאינו ב-db_final) מדווחת ומפילה — לעולם לא נמחקת.
+    for file_label, path, col in (
+        ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
+        ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
+    ):
+        header, rows = read_csv_rows(path, has_header=True)
+        c_idx = col_index(header, col)
+        for line_no, row in enumerate(rows, start=2):
+            if len(row) > c_idx:
+                check_db_name(file_label, f"שורה {line_no}", row[c_idx], db_final)
 
     # 3) sefaria_metadata_changes.csv - עמודה "title" (מטא-דאטה -> final_canon)
     header, rows = read_csv_rows(SEFARIA_CHANGES, has_header=True)
@@ -425,7 +393,7 @@ def main():
     #    updateBookMetadata(sourceId=...) שדורס את book.sourceId מ-"Sefaria" ל-Dicta/
     #    MoreBooks/וכו' — ואז "אודות הספר" באפליקציה מציג מקור שגוי. רשומות ספריא אמורות
     #    להיות מסוננות מ-ForDB (Sourcefolder=="sefaria" מסונן ביצירתו); רשומה לא-ספריא
-    #    לספר ספריא היא כפילות תקועה. ב--fix מוסרת אוטומטית (ראו 5b); אחרת מפילה את הריצה.
+    #    לספר ספריא היא כפילות תקועה — מדווחת ומפילה את הריצה (report-only, ללא הסרה).
     fordb_meta = read_json(FORDB_METADATA)
     source_leaks = []  # [(idx, title, sourcefolder)]
     for idx, entry in enumerate(fordb_meta):
@@ -439,29 +407,8 @@ def main():
 
     # 6) כפילויות שמות בתוך otzaria_latest.zip: שני קבצי ספרים שונים עם אותו שם מנוקה
     #    בתיקיות הנארזות לאותו ZIP יתנגשו ב-DB (book.title זהה). אינו ניתן לתיקון
-    #    אוטומטי (אי אפשר להחליט איזה עותק להסיר) ולכן מפיל את הריצה גם במצב --fix.
+    #    אוטומטי (אי אפשר להחליט איזה עותק להסיר) ולכן מפיל את הריצה.
     duplicates = find_packaged_duplicates()
-
-    # 5b) הסרה אוטומטית של דליפות-מקור מ-ForDB/all_metadata.json (רק ב--fix): מוחקים את
-    #     הרשומה הכפולה הלא-ספריא של ספר ספריא, כדי ש-seed-המטא-דאטה לא ידרוס את המקור.
-    #     שומר על פורמט הקובץ (indent=2, ensure_ascii=False, ללא ASCII-escape לעברית).
-    #     ב-check-mode (PR) לא מוסרים — source_leaks יישאר ויפיל את הריצה (חוסם מיזוג).
-    if args.fix and source_leaks:
-        drop = {idx for idx, _t, _sf in source_leaks}
-        kept = [e for i, e in enumerate(fordb_meta) if i not in drop]
-        with open(FORDB_METADATA, "w", encoding="utf-8") as fh:
-            json.dump(kept, fh, ensure_ascii=False, indent=2)
-            fh.write("\n")
-        removed += [("ForDB/all_metadata.json", t, "sefaria_duplicate") for _i, t, _sf in source_leaks]
-        source_leaks = []  # תוקנו — לא נכשלים עליהם בהמשך הדוח
-
-    # ----- הסרה אוטומטית (--fix): כותבים דוח של מה שהוסר עבור ה-commit וההודעה בפורום -----
-    if args.fix and removed:
-        with open(REMOVED_REPORT, "w", encoding="utf-8") as fh:
-            json.dump([{"file": f, "name": n, "reason": r} for f, n, r in removed], fh, ensure_ascii=False, indent=2)
-        print(f"\n🧹 סה\"כ הוסרו אוטומטית {len(removed)} רשומות (דוח: {os.path.basename(REMOVED_REPORT)}):")
-        for f, n, r in removed:
-            print(f"     - [{r}] {f}: {n!r}")
 
     # ----- דוח -----
     total = sum(len(v) for v in failures.values())
@@ -494,7 +441,7 @@ def main():
         print(f"\n❌ נמצאו {len(source_leaks)} רשומות ב-ForDB/all_metadata.json של ספרי *ספריא* עם Sourcefolder שאינו 'sefaria'.")
         print("   שלב seed-המטא-דאטה מתאים לפי כותרת ודורס את מקור הספר מ-'Sefaria' לערך שברשומה")
         print("   (updateBookMetadata → book.sourceId), כך ש'אודות הספר' מציג מקור שגוי (למשל 'דיקטה').")
-        print("   ב-push ל-main הרשומות הכפולות מוסרות אוטומטית (--fix) ומוכרזות בפורום; כאן (PR) חוסם מיזוג:\n")
+        print("   יש להסיר ידנית את הרשומה הכפולה מ-ForDB/all_metadata.json (report-only — אין הסרה אוטומטית):\n")
         for idx, title, sf in sorted(source_leaks, key=lambda x: x[1]):
             print(f"     - רשומה {idx}: {title!r}  (Sourcefolder={sf!r} → אמור להיות 'sefaria')")
         print()
