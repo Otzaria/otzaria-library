@@ -246,6 +246,7 @@ SEFORIM_RESULT_KEYS = {
     "schema_version", "status", "correlation_id", "child_run_id", "child_run_attempt",
     "source_commit", "sefaria_tag", "sefaria_release_metadata_sha256",
     "sefaria_archive_sha256", "otzaria_tag", "otzaria_asset_sha256",
+    "fordb_archive_sha256",
     "expected_links_commit", "otzaria_target_commit", "release_tag",
     "build_provenance_sha256", "config_sha256", "source_links_tree_sha256",
     "packaged_links_tree_sha256", "lineage_sha256", "assets",
@@ -263,6 +264,7 @@ def validate_seforim_result(value: object) -> dict:
         require_commit(result[field], field)
     for field in (
         "sefaria_release_metadata_sha256", "sefaria_archive_sha256", "otzaria_asset_sha256",
+        "fordb_archive_sha256",
         "build_provenance_sha256", "config_sha256", "source_links_tree_sha256",
         "packaged_links_tree_sha256", "lineage_sha256",
     ):
@@ -319,9 +321,9 @@ def main(argv=None) -> int:
     for name in (
         "correlation-id", "run-id", "run-attempt", "source-commit", "sefaria-tag",
         "sefaria-release-metadata-sha256", "sefaria-archive-sha256", "otzaria-tag",
-        "otzaria-asset-sha256", "expected-links-commit", "otzaria-target-commit",
-        "config-sha256", "source-links-tree-sha256", "packaged-links-tree-sha256",
-        "lineage-sha256",
+        "otzaria-asset-sha256", "fordb-archive-sha256", "expected-links-commit",
+        "otzaria-target-commit", "config-sha256", "source-links-tree-sha256",
+        "packaged-links-tree-sha256", "lineage-sha256",
     ):
         seforim_parser.add_argument(f"--{name}", required=True)
     args = parser.parse_args(argv)
@@ -355,6 +357,7 @@ def main(argv=None) -> int:
                 "sefaria_archive_sha256": args.sefaria_archive_sha256,
                 "otzaria_tag": args.otzaria_tag,
                 "otzaria_asset_sha256": args.otzaria_asset_sha256,
+                "fordb_archive_sha256": args.fordb_archive_sha256,
                 "expected_links_commit": args.expected_links_commit,
                 "otzaria_target_commit": args.otzaria_target_commit,
                 "config_sha256": args.config_sha256,

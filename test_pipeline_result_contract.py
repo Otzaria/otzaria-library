@@ -126,6 +126,7 @@ class PipelineResultContractTest(unittest.TestCase):
             "sefaria_archive_sha256": "3" * 64,
             "otzaria_tag": "library-links-1",
             "otzaria_asset_sha256": "4" * 64,
+            "fordb_archive_sha256": "c" * 64,
             "expected_links_commit": "5" * 40,
             "otzaria_target_commit": "5" * 40,
             "release_tag": "release-1",
