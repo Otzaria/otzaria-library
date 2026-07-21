@@ -131,6 +131,16 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertNotIn("git lfs pull", workflow)
         self.assertNotIn("git lfs checkout", workflow)
 
+    def test_update_library_allows_only_drafts_to_lack_tag_refs(self):
+        workflow = self.workflow("update-library.yml")
+        self.assertIn(
+            'tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" '
+            "--jq '.object.sha' 2>/dev/null || true)\"",
+            workflow,
+        )
+        self.assertIn('if [[ "$is_draft" != true && -z "$tag_target" ]]; then', workflow)
+        self.assertIn("Published release $tag has no resolvable Git tag ref", workflow)
+
     def test_update_fordb_only_hydrates_sparse_inputs(self):
         workflow = self.workflow("update-fordb.yml")
         self.assertNotIn("lfs: true", workflow)

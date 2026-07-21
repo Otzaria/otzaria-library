@@ -201,7 +201,11 @@ jobs:
           existing_tag=""
           while IFS=$'\t' read -r tag is_draft target_commitish; do
             encoded_tag="$(jq -rn --arg value "$tag" '$value|@uri')"
-            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha')"
+            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha' 2>/dev/null || true)"
+            if [[ "$is_draft" != true && -z "$tag_target" ]]; then
+              echo "Published release $tag has no resolvable Git tag ref" >&2
+              exit 1
+            fi
             effective_target="$tag_target"
             [[ "$target_commitish" != "$EXPECTED_COMMIT" ]] || effective_target="$EXPECTED_COMMIT"
             if [[ "$is_draft" == true && ( "$target_commitish" == "$EXPECTED_COMMIT" || "$tag_target" == "$EXPECTED_COMMIT" ) ]]; then
