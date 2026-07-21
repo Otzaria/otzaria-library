@@ -9,6 +9,9 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 FAILURES=0
 MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
+CONTROL_HEAD=$(git rev-parse HEAD)
+[[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
+  echo "::error::cannot resolve reconciler control head"; exit 2; }
 [[ "$MAX_RERUN_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || {
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
 
@@ -38,9 +41,9 @@ dispatch_continuation() {
 ensure_continuation() {
   local stage="$1" corr="$2" saga="$3" saga_attempt="$4" child="$5" title rows count rid run_attempt
   title="saga-continue stage=$stage correlation=$corr"
-  if ! rows=$(TITLE="$title" gh api --paginate -X GET \
+  if ! rows=$(TITLE="$title" HEAD_SHA="$CONTROL_HEAD" gh api --paginate -X GET \
       "repos/$REPO/actions/workflows/saga-continue.yml/runs" -f per_page=100 \
-      --jq '.workflow_runs[] | select(.display_title==env.TITLE) | [(.id|tostring),.status,(.conclusion//""),(.run_attempt|tostring)] | @tsv'); then
+      --jq '.workflow_runs[] | select(.display_title==env.TITLE and .head_sha==env.HEAD_SHA) | [(.id|tostring),.status,(.conclusion//""),(.run_attempt|tostring)] | @tsv'); then
     echo "::error::cannot list exact $stage continuation runs"
     return 1
   fi
@@ -121,6 +124,17 @@ for saga_run in $RUNS; do
   fi
   expected=$(jq -r .expected_links_commit "$state_dir/saga-state.json")
   tool=$(jq -r .seforim_tool_commit "$state_dir/saga-state.json")
+  tool_ref=$(jq -r .seforim_tool_ref manual_links_sync.json)
+  [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]] || {
+    echo "::error::invalid Seforim workflow ref"; FAILURES=$((FAILURES+1)); continue; }
+  sef_control_head=$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR==1 {print $1}')
+  [[ "$sef_control_head" =~ ^[0-9a-f]{40}$ ]] || {
+    echo "::error::cannot resolve Seforim control head"; FAILURES=$((FAILURES+1)); continue; }
+  relation=$(gh api "repos/Otzaria/SeforimLibrary/compare/$tool...$sef_control_head" --jq .status) || {
+    FAILURES=$((FAILURES+1)); continue; }
+  case "$relation" in identical|ahead) ;;
+    *) echo "::error::Seforim control head does not descend from saga payload"; FAILURES=$((FAILURES+1)); continue ;;
+  esac
 
   # A successful S2 continuation is the durable completion marker.
   completion_title="saga-continue stage=seforim-published correlation=$corr"
@@ -156,7 +170,7 @@ for saga_run in $RUNS; do
 
   sef_title="manual-generate-release correlation=$corr"
   set +e
-  sef_run=$(find_child Otzaria/SeforimLibrary manual-generate-release.yml "$sef_title" "$tool")
+  sef_run=$(find_child Otzaria/SeforimLibrary manual-generate-release.yml "$sef_title" "$sef_control_head")
   rc=$?
   set -e
   if [ "$rc" -ne 0 ]; then

@@ -117,6 +117,23 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertNotIn("for attempt in", segment)
         self.assertIn("No blind duplicate dispatch", segment)
 
+    def test_seforim_control_plane_may_advance_but_payload_stays_pinned(self):
+        workflow = self.workflow("saga-continue.yml")
+        self.assertIn(
+            'repos/Otzaria/SeforimLibrary/compare/$TOOL_SHA...$head_sha',
+            workflow,
+        )
+        self.assertIn(
+            'repos/Otzaria/SeforimLibrary/compare/$tool_commit...$child_head',
+            workflow,
+        )
+        self.assertNotIn('[[ "$head_sha" == "$TOOL_SHA" ]]', workflow)
+        self.assertIn('--source-commit "$TOOL_SHA"', workflow)
+        reconciler = (self.root / ".github" / "scripts" / "reconcile_sagas.sh").read_text()
+        self.assertIn('compare/$tool...$sef_control_head', reconciler)
+        self.assertIn('"$sef_control_head")', reconciler)
+        self.assertIn('.head_sha==env.HEAD_SHA', reconciler)
+
     def test_weekly_export_dispatch_is_exactly_adoptable(self):
         workflow = self.workflow("weekly-pipeline.yml")
         self.assertIn("sparse-checkout: .github/scripts", workflow)

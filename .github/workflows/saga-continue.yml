@@ -99,7 +99,11 @@ jobs:
             seforim-published)
               repo=Otzaria/SeforimLibrary
               title="manual-generate-release correlation=$REQUEST_CORRELATION"
-              expected_head="$tool_commit"
+              # The workflow control plane may advance after the immutable
+              # payload commit was selected.  The signed result below still
+              # has to name tool_commit exactly; run metadata only proves the
+              # workflow revision is a descendant, never an unrelated tree.
+              expected_head="*"
               stage=s2 ;;
           esac
           gh api "repos/$repo/actions/runs/$REQUEST_CHILD_RUN_ID" > child-run.json
@@ -111,6 +115,10 @@ jobs:
             child_head="$(jq -r .head_sha child-run.json)"
             relation="$(gh api "repos/Otzaria/otzaria-library/compare/$expected_commit...$child_head" --jq .status)"
             case "$relation" in identical|ahead) ;; *) echo "::error::Otzaria child workflow head does not descend from the saga commit"; exit 1;; esac
+          else
+            child_head="$(jq -r .head_sha child-run.json)"
+            relation="$(gh api "repos/Otzaria/SeforimLibrary/compare/$tool_commit...$child_head" --jq .status)"
+            case "$relation" in identical|ahead) ;; *) echo "::error::Seforim control head does not descend from the pinned payload commit"; exit 1;; esac
           fi
           echo "stage=$stage" >> "$GITHUB_OUTPUT"
           echo "child_run_id=$REQUEST_CHILD_RUN_ID" >> "$GITHUB_OUTPUT"
@@ -259,7 +267,10 @@ jobs:
           [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]]
           workflow_ref="${tool_ref#refs/heads/}"
           head_sha="$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR==1 {print $1}')"
-          [[ "$head_sha" == "$TOOL_SHA" ]]
+          relation="$(gh api "repos/Otzaria/SeforimLibrary/compare/$TOOL_SHA...$head_sha" --jq .status)"
+          case "$relation" in identical|ahead) ;;
+            *) echo "::error::Seforim workflow head does not descend from the pinned payload commit"; exit 1 ;;
+          esac
           set +e
           existing="$(FIND_RUN_ATTEMPTS=1 bash .github/scripts/find_exact_workflow_run.sh \
               Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha")"
