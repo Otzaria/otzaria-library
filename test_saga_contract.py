@@ -125,5 +125,11 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertIn('export_title="Sefaria immutable export orchestration=$export_correlation"', workflow)
         self.assertIn('find_exact_run Otzaria/SefariaExport release.yml "$export_title"', workflow)
 
+    def test_update_library_does_not_download_lfs_twice(self):
+        workflow = self.workflow("update-library.yml")
+        self.assertEqual(2, workflow.count("lfs: true"))
+        self.assertNotIn("git lfs pull", workflow)
+        self.assertNotIn("git lfs checkout", workflow)
+
 if __name__ == "__main__":
     unittest.main()

@@ -84,9 +84,6 @@ jobs:
           lfs: true
           token: ${{ secrets.PIPELINE_TOKEN || github.token }}
           fetch-depth: 25
-      - run: |
-          git lfs pull
-          git lfs checkout
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12.10'
@@ -171,8 +168,6 @@ jobs:
           [[ "$(git rev-parse HEAD)" == "$EXPECTED_COMMIT" ]]
           git fetch origin main
           git merge-base --is-ancestor "$EXPECTED_COMMIT" origin/main
-          git lfs pull
-          git lfs checkout
           test -z "$(git status --porcelain)"
       - uses: actions/setup-python@v5
         with:
