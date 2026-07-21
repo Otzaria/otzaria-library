@@ -199,7 +199,13 @@ jobs:
           python3 pipeline_result_contract.py validate-provenance fresh-provenance.json
           mkdir -p recovery
           existing_tag=""
-          while IFS=$'\t' read -r tag is_draft target_commitish; do
+          existing_release_id=""
+          existing_is_draft=""
+          release_rows="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[] | [(.id|tostring), .tag_name, .draft, .target_commitish] | @tsv')"
+          while IFS=$'\t' read -r release_id tag is_draft target_commitish; do
+            [[ -n "$release_id" ]] || continue
+            [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
             encoded_tag="$(jq -rn --arg value "$tag" '$value|@uri')"
             tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha' 2>/dev/null || true)"
             if [[ "$is_draft" != true && -z "$tag_target" ]]; then
@@ -207,23 +213,33 @@ jobs:
               exit 1
             fi
             effective_target="$tag_target"
-            [[ "$target_commitish" != "$EXPECTED_COMMIT" ]] || effective_target="$EXPECTED_COMMIT"
-            if [[ "$is_draft" == true && ( "$target_commitish" == "$EXPECTED_COMMIT" || "$tag_target" == "$EXPECTED_COMMIT" ) ]]; then
-              echo "A partial draft already targets the expected commit: $tag" >&2
-              exit 1
+            if [[ "$is_draft" == true ]]; then
+              [[ "$target_commitish" =~ ^[0-9a-f]{40}$ ]] || { echo "Draft $tag does not target a full commit" >&2; exit 1; }
+              effective_target="$target_commitish"
+            elif [[ "$target_commitish" == "$EXPECTED_COMMIT" ]]; then
+              effective_target="$EXPECTED_COMMIT"
             fi
             candidate_dir="recovery/$(printf '%s' "$tag" | sha256sum | cut -d' ' -f1)"
             mkdir -p "$candidate_dir"
-            if gh release download "$tag" --pattern otzaria_release_provenance.json --dir "$candidate_dir" 2>/dev/null; then
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$release_id" > "$candidate_dir/release.json"
+            provenance_rows="$(jq -r '.assets[] | select(.name=="otzaria_release_provenance.json") | .id' "$candidate_dir/release.json")"
+            mapfile -t provenance_asset_ids < <(printf '%s' "$provenance_rows")
+            [[ ${#provenance_asset_ids[@]} -le 1 ]] || { echo "Release $tag has duplicate provenance assets" >&2; exit 1; }
+            if [[ ${#provenance_asset_ids[@]} -eq 1 ]]; then
+              [[ "${provenance_asset_ids[0]}" =~ ^[1-9][0-9]*$ ]]
               candidate="$candidate_dir/otzaria_release_provenance.json"
+              gh api -H "Accept: application/octet-stream" \
+                "repos/${GITHUB_REPOSITORY}/releases/assets/${provenance_asset_ids[0]}" > "$candidate"
               python3 pipeline_result_contract.py validate-provenance "$candidate"
               [[ "$(jq -r '.tag' "$candidate")" == "$tag" ]] || { echo "Provenance tag mismatch for $tag" >&2; exit 1; }
               classification="$(python3 pipeline_result_contract.py classify-recovery \
                 --recorded "$candidate" --fresh fresh-provenance.json \
                 --actual-target "$effective_target" --draft "$is_draft")"
-              if [[ "$classification" == match ]]; then
+              if [[ "$classification" == match || "$classification" == draft_match ]]; then
                 [[ -z "$existing_tag" ]] || { echo "Multiple releases match one immutable input tuple" >&2; exit 1; }
                 existing_tag="$tag"
+                existing_release_id="$release_id"
+                existing_is_draft="$is_draft"
                 cp "$candidate" recovery/matched-provenance.json
               elif [[ "$classification" != ignore ]]; then
                 echo "Unexpected recovery classification for $tag: $classification" >&2
@@ -235,14 +251,14 @@ jobs:
                 exit 1
               fi
             fi
-          done < <(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq '.[] | [.tag_name, .draft, .target_commitish] | @tsv')
+          done <<< "$release_rows"
 
           if [[ -n "$existing_tag" ]]; then
             jq -cS --arg tag "$existing_tag" '.tag=$tag' fresh-provenance.json > recovery/fresh-for-match.json
             python3 pipeline_result_contract.py compare-fresh \
               --recorded recovery/matched-provenance.json \
               --fresh recovery/fresh-for-match.json
-            gh release view "$existing_tag" --json assets > recovery/remote-assets.json
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$existing_release_id" > recovery/remote-assets.json
             python3 - <<'PY'
           import hashlib
           import json
@@ -258,15 +274,22 @@ jobs:
           if actual!=expected:
               raise SystemExit("published release descriptors differ from recorded provenance")
           PY
-            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${existing_tag}" --jq '.object.sha')"
-            [[ "$tag_target" == "$EXPECTED_COMMIT" ]]
             echo "tag=$existing_tag" >> "$GITHUB_OUTPUT"
-            echo "reused=true" >> "$GITHUB_OUTPUT"
+            echo "release_id=$existing_release_id" >> "$GITHUB_OUTPUT"
+            if [[ "$existing_is_draft" == true ]]; then
+              echo "reused=false" >> "$GITHUB_OUTPUT"
+            else
+              tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${existing_tag}" --jq '.object.sha')"
+              [[ "$tag_target" == "$EXPECTED_COMMIT" ]]
+              echo "reused=true" >> "$GITHUB_OUTPUT"
+            fi
             exit 0
           fi
 
           tag="library-links-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${EXPECTED_COMMIT:0:12}"
-          if gh release view "$tag" >/dev/null 2>&1; then
+          existing_ids="$(TAG="$tag" gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[] | select(.tag_name==env.TAG) | .id')"
+          if [[ -n "$existing_ids" ]]; then
             echo "Incomplete or mismatched release already exists for $tag" >&2
             exit 1
           fi
@@ -279,19 +302,33 @@ jobs:
             '{schema_version:1,correlation_id:$correlation,target_commit:$target,tag:$tag,asset:$packaging.asset,auxiliary_assets:$auxiliary,packaging_runtime:$packaging.runtime,packaging_toolchain:$packaging.toolchain,config_sha256:$packaging.config_sha256,source_links_tree_sha256:$packaging.source_links_tree_sha256,packaged_links_tree_sha256:$packaging.packaged_links_tree_sha256,lineage_sha256:$packaging.lineage_sha256}' \
             > otzaria_release_provenance.json
           python3 pipeline_result_contract.py validate-provenance otzaria_release_provenance.json
-          gh release create "$tag" --draft --target "$EXPECTED_COMMIT" --title "Otzaria library $tag" --notes "Immutable manual-link synchronized release"
-          gh release upload "$tag" otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json
+          gh release create "$tag" --draft --target "$EXPECTED_COMMIT" \
+            --title "Otzaria library $tag" --notes "Immutable manual-link synchronized release" \
+            otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json
+          release_id=""
+          for _ in $(seq 1 12); do
+            release_rows="$(TAG="$tag" gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+              --jq '.[] | select(.tag_name==env.TAG) | .id')"
+            mapfile -t release_ids < <(printf '%s' "$release_rows")
+            [[ ${#release_ids[@]} -le 1 ]] || { echo "Multiple releases exist for $tag" >&2; exit 1; }
+            if [[ ${#release_ids[@]} -eq 1 ]]; then release_id="${release_ids[0]}"; break; fi
+            sleep 5
+          done
+          [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "release_id=$release_id" >> "$GITHUB_OUTPUT"
           echo "reused=false" >> "$GITHUB_OUTPUT"
       - name: Verify draft bytes and publish last
         if: steps.release.outputs.reused == 'false'
         env:
           TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_ID: ${{ steps.release.outputs.release_id }}
         shell: bash
         run: |
           set -euo pipefail
+          [[ "$RELEASE_ID" =~ ^[1-9][0-9]*$ ]]
           verify_remote() {
-            gh release view "$TAG" --json assets > "$RUNNER_TEMP/otzaria-release-assets.json"
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" > "$RUNNER_TEMP/otzaria-release-assets.json"
             python3 - "$RUNNER_TEMP/otzaria-release-assets.json" <<'PY'
           import hashlib,json,sys
           from pathlib import Path
@@ -310,11 +347,23 @@ jobs:
           verified=false
           for _ in $(seq 1 12); do if verify_remote; then verified=true; break; fi; sleep 5; done
           [ "$verified" = true ]
-          target="$(gh release view "$TAG" --json targetCommitish --jq '.targetCommitish')"
+          [[ "$(jq -r .tag_name "$RUNNER_TEMP/otzaria-release-assets.json")" == "$TAG" ]]
+          [[ "$(jq -r .draft "$RUNNER_TEMP/otzaria-release-assets.json")" == true ]]
+          target="$(jq -r .target_commitish "$RUNNER_TEMP/otzaria-release-assets.json")"
           [[ "$target" == "$EXPECTED_COMMIT" ]]
-          gh release edit "$TAG" --draft=false --latest
-          published_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha')"
-          [[ "$published_target" == "$EXPECTED_COMMIT" ]]
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" \
+            -F draft=false -f make_latest=true > "$RUNNER_TEMP/otzaria-published-release.json"
+          published=false
+          for _ in $(seq 1 12); do
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" > "$RUNNER_TEMP/otzaria-published-release.json"
+            published_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha' 2>/dev/null || true)"
+            if [[ "$(jq -r .draft "$RUNNER_TEMP/otzaria-published-release.json")" == false && "$published_target" == "$EXPECTED_COMMIT" ]]; then
+              published=true
+              break
+            fi
+            sleep 5
+          done
+          [[ "$published" == true ]]
       - name: Emit exact child result
         env:
           TAG: ${{ steps.release.outputs.tag }}

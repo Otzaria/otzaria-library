@@ -123,6 +123,24 @@ class PipelineResultContractTest(unittest.TestCase):
                 self.provenance(), self.provenance(), "e" * 40, False
             )
 
+    def test_complete_matching_draft_is_recoverable(self):
+        provenance = self.provenance()
+        self.assertEqual(
+            "draft_match",
+            contract.classify_recovery_release(
+                provenance, provenance, provenance["target_commit"], True
+            ),
+        )
+
+    def test_draft_with_same_target_and_different_key_is_fatal(self):
+        recorded = self.provenance()
+        fresh = self.provenance()
+        recorded["lineage_sha256"] = "f" * 64
+        with self.assertRaises(contract.ContractError):
+            contract.classify_recovery_release(
+                recorded, fresh, fresh["target_commit"], True
+            )
+
     def test_exact_seforim_child_schema_is_accepted(self):
         value = {
             "schema_version": 1,

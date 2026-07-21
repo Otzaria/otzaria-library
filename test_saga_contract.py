@@ -140,6 +140,12 @@ class SagaWorkflowContractTest(unittest.TestCase):
         )
         self.assertIn('if [[ "$is_draft" != true && -z "$tag_target" ]]; then', workflow)
         self.assertIn("Published release $tag has no resolvable Git tag ref", workflow)
+        self.assertIn('echo "release_id=$release_id" >> "$GITHUB_OUTPUT"', workflow)
+        self.assertIn('repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID', workflow)
+        self.assertIn('-F draft=false -f make_latest=true', workflow)
+        self.assertNotIn('gh release upload "$tag"', workflow)
+        self.assertNotIn('gh release view "$TAG"', workflow)
+        self.assertNotIn('gh release edit "$TAG"', workflow)
 
     def test_update_fordb_only_hydrates_sparse_inputs(self):
         workflow = self.workflow("update-fordb.yml")

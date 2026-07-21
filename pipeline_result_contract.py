@@ -207,8 +207,10 @@ def classify_recovery_release(recorded: dict, fresh: dict, actual_target: str, d
     require_commit(actual_target, "actual release target")
     same_key = recovery_key(recorded) == recovery_key(fresh)
     expected_target = fresh["target_commit"]
+    if draft and same_key and actual_target == expected_target:
+        return "draft_match"
     if draft and (actual_target == expected_target or same_key):
-        raise ContractError("a partial draft already targets this commit or recovery key")
+        raise ContractError("a conflicting draft already targets this commit or recovery key")
     if actual_target == expected_target and not same_key:
         raise ContractError(
             "a published release already targets the expected commit with a different recovery key"
