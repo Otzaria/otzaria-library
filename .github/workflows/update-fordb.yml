@@ -179,31 +179,54 @@ jobs:
             > fordb_provenance.json
 
           rm -rf fordb-verify && mkdir fordb-verify
-          if gh release view "$immutable_tag" >/dev/null 2>&1; then
-            :
-          else
+          list_releases() {
+            gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/releases?per_page=100" > fordb-verify/releases.json
+          }
+          find_release_id() {
+            jq -er --arg tag "$immutable_tag" '
+              add | map(select(.tag_name == $tag)) |
+              if length == 0 then ""
+              elif length == 1 and (.[0].id | type) == "number" and .[0].id > 0 then .[0].id
+              else error("expected at most one ForDB release for the immutable tag") end
+            ' fordb-verify/releases.json
+          }
+          list_releases
+          release_id="$(find_release_id)"
+          if [ -z "$release_id" ]; then
             gh release create "$immutable_tag" --draft --latest=false --target "$GITHUB_SHA" \
               --title "$immutable_tag" --notes "Immutable validated ForDB payload sha256:$archive_sha" \
               "$ARCHIVE_NAME" fordb_provenance.json
+            list_releases
+            release_id="$(find_release_id)"
           fi
+          [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
           verify_remote() {
-            gh release view "$immutable_tag" --json isDraft,targetCommitish,assets > fordb-verify/release.json
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$release_id" > fordb-verify/release.json
             ARCHIVE_NAME="$ARCHIVE_NAME" ARCHIVE_SHA="$archive_sha" ARCHIVE_SIZE="$archive_size" \
+              IMMUTABLE_TAG="$immutable_tag" SOURCE_COMMIT="$GITHUB_SHA" \
               python3 - fordb-verify/release.json <<'PY'
           import json,os,re,sys
           from pathlib import Path
           value=json.loads(Path(sys.argv[1]).read_text())
-          assets={item["name"]:(item["size"],item.get("digest")) for item in value["assets"]}
+          if value.get("tag_name") != os.environ["IMMUTABLE_TAG"] or value.get("target_commitish") != os.environ["SOURCE_COMMIT"]:
+              raise SystemExit("ForDB release identity/target mismatch")
+          if type(value.get("draft")) is not bool:
+              raise SystemExit("ForDB release draft state is invalid")
+          assets={item["name"]:(item["id"],item["size"],item.get("digest")) for item in value["assets"]}
           if set(assets)!={os.environ["ARCHIVE_NAME"],"fordb_provenance.json"}: raise SystemExit("unexpected ForDB release asset set")
-          if assets[os.environ["ARCHIVE_NAME"]]!=(int(os.environ["ARCHIVE_SIZE"]),"sha256:"+os.environ["ARCHIVE_SHA"]): raise SystemExit("remote ForDB archive descriptor mismatch")
-          size,digest=assets["fordb_provenance.json"]
-          if type(size) is not int or size<1 or type(digest) is not str or not re.fullmatch(r"sha256:[0-9a-f]{64}",digest): raise SystemExit("invalid remote provenance descriptor")
+          archive_id,size,digest=assets[os.environ["ARCHIVE_NAME"]]
+          if type(archive_id) is not int or archive_id<1 or (size,digest)!=(int(os.environ["ARCHIVE_SIZE"]),"sha256:"+os.environ["ARCHIVE_SHA"]): raise SystemExit("remote ForDB archive descriptor mismatch")
+          provenance_id,size,digest=assets["fordb_provenance.json"]
+          if type(provenance_id) is not int or provenance_id<1 or type(size) is not int or size<1 or type(digest) is not str or not re.fullmatch(r"sha256:[0-9a-f]{64}",digest): raise SystemExit("invalid remote provenance descriptor")
           PY
           }
           verified=false
           for _ in $(seq 1 12); do if verify_remote; then verified=true; break; fi; sleep 5; done
           [ "$verified" = true ]
-          gh release download "$immutable_tag" -p fordb_provenance.json -D fordb-verify
+          provenance_asset_id="$(jq -er '.assets[] | select(.name=="fordb_provenance.json") | .id' fordb-verify/release.json)"
+          [[ "$provenance_asset_id" =~ ^[1-9][0-9]*$ ]]
+          gh api -H "Accept: application/octet-stream" \
+            "repos/${GITHUB_REPOSITORY}/releases/assets/$provenance_asset_id" > fordb-verify/fordb_provenance.json
           remote_provenance_sha="$(sha256sum fordb-verify/fordb_provenance.json | cut -d' ' -f1)"
           [[ "$(jq -r '.assets[]|select(.name=="fordb_provenance.json")|.digest' fordb-verify/release.json)" == "sha256:$remote_provenance_sha" ]]
           ARCHIVE_NAME="$ARCHIVE_NAME" ARCHIVE_SHA="$archive_sha" ARCHIVE_SIZE="$archive_size" \
@@ -245,11 +268,22 @@ jobs:
           Path("fordb-verify/source-commit.txt").write_text(value["source_commit"] + "\n", encoding="ascii")
           PY
           provenance_source="$(cat fordb-verify/source-commit.txt)"
-          encoded_tag="$(jq -rn --arg value "$immutable_tag" '$value|@uri')"
-          [[ "$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/$encoded_tag" --jq .object.sha)" == "$provenance_source" ]]
-          if [ "$(jq -r .isDraft fordb-verify/release.json)" = true ]; then
-            gh release edit "$immutable_tag" --draft=false --latest=false
+          if [ "$(jq -r .draft fordb-verify/release.json)" = true ]; then
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/$release_id" \
+              -F draft=false -f make_latest=false > fordb-verify/published-release.json
           fi
+          encoded_tag="$(jq -rn --arg value "$immutable_tag" '$value|@uri')"
+          published=false
+          for _ in $(seq 1 12); do
+            verify_remote || { sleep 5; continue; }
+            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/$encoded_tag" --jq .object.sha 2>/dev/null || true)"
+            if [ "$(jq -r .draft fordb-verify/release.json)" = false ] && [ "$tag_target" = "$provenance_source" ]; then
+              published=true
+              break
+            fi
+            sleep 5
+          done
+          [ "$published" = true ]
 
           jq -cS -n --arg tag "$immutable_tag" --arg sha "$archive_sha" \
             --arg provenance_sha "$remote_provenance_sha" \
