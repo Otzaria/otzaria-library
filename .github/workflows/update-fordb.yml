@@ -196,7 +196,7 @@ jobs:
             gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/releases?per_page=100" > fordb-verify/releases.json
           }
           find_release_id() {
-            jq -er --arg tag "$immutable_tag" '
+            jq -r --arg tag "$immutable_tag" '
               add | map(select(.tag_name == $tag)) |
               if length == 0 then ""
               elif length == 1 and (.[0].id | type) == "number" and .[0].id > 0 then .[0].id
@@ -209,20 +209,26 @@ jobs:
             gh release create "$immutable_tag" --draft --latest=false --target "$GITHUB_SHA" \
               --title "$immutable_tag" --notes "Immutable validated ForDB payload sha256:$archive_sha" \
               "$ARCHIVE_NAME" fordb_provenance.json
-            list_releases
-            release_id="$(find_release_id)"
+            for _ in $(seq 1 12); do
+              list_releases
+              release_id="$(find_release_id)"
+              [ -n "$release_id" ] && break
+              sleep 5
+            done
           fi
           [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
           verify_remote() {
             gh api "repos/${GITHUB_REPOSITORY}/releases/$release_id" > fordb-verify/release.json
             ARCHIVE_NAME="$ARCHIVE_NAME" ARCHIVE_SHA="$archive_sha" ARCHIVE_SIZE="$archive_size" \
-              IMMUTABLE_TAG="$immutable_tag" SOURCE_COMMIT="$GITHUB_SHA" \
+              IMMUTABLE_TAG="$immutable_tag" \
               python3 - fordb-verify/release.json <<'PY'
           import json,os,re,sys
           from pathlib import Path
           value=json.loads(Path(sys.argv[1]).read_text())
-          if value.get("tag_name") != os.environ["IMMUTABLE_TAG"] or value.get("target_commitish") != os.environ["SOURCE_COMMIT"]:
-              raise SystemExit("ForDB release identity/target mismatch")
+          if value.get("tag_name") != os.environ["IMMUTABLE_TAG"]:
+              raise SystemExit("ForDB release tag mismatch")
+          if type(value.get("target_commitish")) is not str or not re.fullmatch(r"[0-9a-f]{40}", value["target_commitish"]):
+              raise SystemExit("ForDB release target is not a full commit")
           if type(value.get("draft")) is not bool:
               raise SystemExit("ForDB release draft state is invalid")
           assets={item["name"]:(item["id"],item["size"],item.get("digest")) for item in value["assets"]}
@@ -281,6 +287,7 @@ jobs:
           Path("fordb-verify/source-commit.txt").write_text(value["source_commit"] + "\n", encoding="ascii")
           PY
           provenance_source="$(cat fordb-verify/source-commit.txt)"
+          [[ "$(jq -r .target_commitish fordb-verify/release.json)" == "$provenance_source" ]]
           if [ "$(jq -r .draft fordb-verify/release.json)" = true ]; then
             gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/$release_id" \
               -F draft=false -f make_latest=false > fordb-verify/published-release.json

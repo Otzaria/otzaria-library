@@ -148,6 +148,14 @@ class SagaWorkflowContractTest(unittest.TestCase):
         )
         self.assertNotIn("git lfs pull\n", workflow)
         self.assertNotIn("git lfs checkout", workflow)
+        self.assertIn('jq -r --arg tag "$immutable_tag"', workflow)
+        self.assertNotIn('jq -er --arg tag "$immutable_tag"', workflow)
+        self.assertIn('for _ in $(seq 1 12); do', workflow)
+        self.assertIn(
+            '[[ "$(jq -r .target_commitish fordb-verify/release.json)" == "$provenance_source" ]]',
+            workflow,
+        )
+        self.assertNotIn('IMMUTABLE_TAG="$immutable_tag" SOURCE_COMMIT="$GITHUB_SHA"', workflow)
 
 if __name__ == "__main__":
     unittest.main()
