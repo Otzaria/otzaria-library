@@ -1,12 +1,12 @@
 name: Validate ForDB book names
 
-# מוודא שכל שמות הספרים בקבצי ForDB קיימים *בדיוק כצורתם* ברשימת הספרים שתיבנה ב-DB.
-# report-only: הבדיקה מדווחת ומפילה את הריצה — לעולם אינה משכתבת את ForDB. מחיקה אוטומטית
-# של שורות move/rename הייתה מאבדת כוונה אנושית, ותקלת-API של ספריא הייתה מסמנת שורות
-# תקינות כיתומות ומוחקת אותן. לכן ב-push ובכל PR האימות רץ במצב דיווח בלבד; כשל חוסם
-# מיזוג / מסמן את הקומיט אדום, ואדם מיישב את מה שדווח (הסרה/תיקון של השורה ב-ForDB).
-# אותה בדיקה משמשת גם כשער-פרסום ב-update-fordb.yml, כך שהמצביע
-# fordb_latest_pointer.json מתקדם רק לתוכן ממוען-תוכן שעבר את כל השערים.
+# מאמת את *כל* קבצי ForDB בשתי שכבות לפני בניית הספרייה:
+#   1. בדיקת שמות מהירה מול קבצי הספרים הנארזים והקטלוג החי של ספריא.
+#   2. validateForDbInputs של SeforimLibrary על מסד הנתונים האחרון: אותם parsers,
+#      אותם appliers ובאותו סדר כמו בריצה האמיתית. השכבה הזו מכסה category/book
+#      renames+moves, generations, all_metadata ושינויי המטא-דאטה של ספרים וקטגוריות.
+# שתי השכבות הן report-only: ערך שלא ניתן לקריאה או שלא ניתן להחלה מפיל את ה-CI
+# וחוסם את הקומיט/המיזוג לפני ריצת הבנייה; ה-workflow אינו משכתב את מקור האמת בשקט.
 
 on:
   push:
@@ -23,9 +23,14 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    # כולל הורדת seforim.db, קומפילציית כלי ה-Kotlin והרצת כל צרכני ForDB.
+    timeout-minutes: 180
+
+    env:
+      ARCHIVE_NAME: fordb_candidate.zip
 
     steps:
-      # partial-clone (ללא תוכן קבצים) + sparse-checkout לתיקיות הנדרשות בלבד.
+      # partial-clone (ללא תוכן קבצי הספרים) + hydration רק לקלטים הנדרשים.
       - name: Checkout repository (sparse, blobless)
         uses: actions/checkout@v6
         with:
@@ -33,9 +38,19 @@ jobs:
           lfs: false
           filter: blob:none
           sparse-checkout: |
-            ForDB
-            .github
+            /ForDB/
+            /.github/scripts/
+            /all_metadata_with_file_paths.json
+          sparse-checkout-cone-mode: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Hydrate validation inputs from LFS
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git lfs pull --include="ForDB/**,all_metadata_with_file_paths.json" --exclude=""
+          test -d ForDB
+          test -f all_metadata_with_file_paths.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -49,3 +64,113 @@ jobs:
           SEFARIA_FETCH: "1"
           PYTHONIOENCODING: "utf-8"
         run: python3 .github/scripts/validate_fordb_book_names.py
+
+      # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
+      # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.
+      - name: Create deterministic candidate archive
+        run: |
+          set -euo pipefail
+          export LANG=C.UTF-8
+          export LC_ALL=C.UTF-8
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile
+
+          root = Path("ForDB")
+          expected = {
+              "ForDB/all_metadata.json",
+              "ForDB/book_moves.csv",
+              "ForDB/book_renames.csv",
+              "ForDB/category_moves.csv",
+              "ForDB/category_renames.csv",
+              "ForDB/generations.csv",
+              "ForDB/sefaria_category_changes.csv",
+              "ForDB/sefaria_metadata_changes.csv",
+          }
+          paths = sorted(
+              (path for path in root.rglob("*") if path.name != ".DS_Store"),
+              key=lambda path: path.as_posix().encode(),
+          )
+          if any(path.is_symlink() for path in paths):
+              raise SystemExit("ForDB archive refuses symlinks")
+          actual = {path.as_posix() for path in paths if path.is_file()}
+          if actual != expected:
+              missing = sorted(expected - actual)
+              unknown = sorted(actual - expected)
+              raise SystemExit(
+                  "ForDB consumer coverage is incomplete; "
+                  f"missing={missing}, files without a runtime validator={unknown}"
+              )
+          with zipfile.ZipFile(
+              "fordb_candidate.zip",
+              "w",
+              compression=zipfile.ZIP_STORED,
+          ) as archive:
+              for path in paths:
+                  if not path.is_file():
+                      continue
+                  info = zipfile.ZipInfo(path.as_posix(), date_time=(1980, 1, 1, 0, 0, 0))
+                  info.create_system = 3
+                  info.external_attr = 0o100644 << 16
+                  info.compress_type = zipfile.ZIP_STORED
+                  archive.writestr(info, path.read_bytes())
+          PY
+
+      - name: Free disk space for the full ForDB dry-run
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Checkout the runtime ForDB consumers
+        uses: actions/checkout@v6
+        with:
+          repository: Otzaria/SeforimLibrary
+          ref: otzaria
+          token: ${{ github.token }}
+          path: seforim-tool
+          persist-credentials: false
+
+      # ה-release האחרון כולל את עץ הקטגוריות והספרים הקרוב ביותר לקלט של הבנייה
+      # הבאה. validateForDbInputs מעתיקה אותו, קוראת את כל שמונת קבצי ForDB דרך
+      # הקוראים האמיתיים, ומחילה על העותק את כל שלבי ה-runtime; המקור נשאר ללא שינוי.
+      - name: Validate every ForDB file with the real runtime consumers
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          LIB_TAG=$(gh release list -R Otzaria/SeforimLibrary -L1 --json tagName -q '.[0].tagName')
+          test -n "$LIB_TAG"
+          echo "Validating every ForDB input against SeforimLibrary release $LIB_TAG"
+
+          gh release download "$LIB_TAG" \
+            -R Otzaria/SeforimLibrary \
+            -p 'seforim.db.zst' \
+            -D dbdir
+          DB_ASSET_DIGEST=$(gh release view "$LIB_TAG" \
+            -R Otzaria/SeforimLibrary \
+            --json assets \
+            --jq '.assets[] | select(.name=="seforim.db.zst") | .digest')
+          [[ "$DB_ASSET_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]
+          [[ "$(sha256sum dbdir/seforim.db.zst | cut -d' ' -f1)" == "${DB_ASSET_DIGEST#sha256:}" ]]
+
+          unzstd -f dbdir/seforim.db.zst
+          rm -f dbdir/seforim.db.zst
+          CANDIDATE_SHA=$(sha256sum "$ARCHIVE_NAME" | cut -d' ' -f1)
+          (
+            cd seforim-tool
+            chmod +x gradlew
+            ./gradlew :sefariasqlite:validateForDbInputs \
+              -PseforimDb="$GITHUB_WORKSPACE/dbdir/seforim.db" \
+              -PforDbArchive="$GITHUB_WORKSPACE/$ARCHIVE_NAME" \
+              -PforDbSha256="$CANDIDATE_SHA" \
+              --no-daemon
+          )
