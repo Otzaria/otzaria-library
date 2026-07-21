@@ -119,6 +119,7 @@ class SagaWorkflowContractTest(unittest.TestCase):
 
     def test_weekly_export_dispatch_is_exactly_adoptable(self):
         workflow = self.workflow("weekly-pipeline.yml")
+        self.assertIn("sparse-checkout: .github/scripts", workflow)
         self.assertIn('export_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"', workflow)
         self.assertIn('-f orchestration_id="$export_correlation"', workflow)
         self.assertIn('export_title="Sefaria immutable export orchestration=$export_correlation"', workflow)

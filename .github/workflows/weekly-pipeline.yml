@@ -26,6 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # The repository's current tree is ~10 GiB, while this coordinator
+          # consumes only the exact-run helper.  Never download the book corpus
+          # merely to dispatch and observe children.
+          sparse-checkout: .github/scripts
           persist-credentials: false
       - name: Prepare Otzaria sources, then export Sefaria
         shell: bash
