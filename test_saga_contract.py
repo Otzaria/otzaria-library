@@ -131,5 +131,23 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertNotIn("git lfs pull", workflow)
         self.assertNotIn("git lfs checkout", workflow)
 
+    def test_update_fordb_only_hydrates_sparse_inputs(self):
+        workflow = self.workflow("update-fordb.yml")
+        self.assertNotIn("lfs: true", workflow)
+        self.assertIn("sparse-checkout-cone-mode: false", workflow)
+        for path in (
+            "/ForDB/",
+            "/.github/scripts/",
+            "/all_metadata_with_file_paths.json",
+            "/fordb_latest_pointer.json",
+        ):
+            self.assertIn(path, workflow)
+        self.assertIn(
+            'git lfs pull --include="ForDB/**,all_metadata_with_file_paths.json" --exclude=""',
+            workflow,
+        )
+        self.assertNotIn("git lfs pull\n", workflow)
+        self.assertNotIn("git lfs checkout", workflow)
+
 if __name__ == "__main__":
     unittest.main()

@@ -41,13 +41,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          lfs: true
+          # The gate only reads ForDB, the validator, and its canonical metadata.
+          # Fetching every LFS object in this multi-GB repository dominated runtime.
+          lfs: false
+          sparse-checkout: |
+            /ForDB/
+            /.github/scripts/
+            /all_metadata_with_file_paths.json
+            /fordb_latest_pointer.json
+          sparse-checkout-cone-mode: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pull LFS objects for packaging
+      - name: Hydrate only possible ForDB inputs from LFS
         run: |
-          git lfs pull
-          git lfs checkout
+          set -euo pipefail
+          # There are no LFS files in these inputs today. Keep the targeted pull so
+          # a future migration to LFS cannot silently package pointer text.
+          git lfs install --local
+          git lfs pull --include="ForDB/**,all_metadata_with_file_paths.json" --exclude=""
+          test -d ForDB
+          test -f all_metadata_with_file_paths.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
