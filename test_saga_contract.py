@@ -130,8 +130,10 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertNotIn('[[ "$head_sha" == "$TOOL_SHA" ]]', workflow)
         self.assertIn('--source-commit "$TOOL_SHA"', workflow)
         reconciler = (self.root / ".github" / "scripts" / "reconcile_sagas.sh").read_text()
-        self.assertIn('compare/$tool...$sef_control_head', reconciler)
-        self.assertIn('"$sef_control_head")', reconciler)
+        self.assertIn('find_seforim_child', reconciler)
+        self.assertIn('compare/$payload...$head', reconciler)
+        self.assertIn('multiple active Seforim children', reconciler)
+        self.assertIn('$2=="completed" && $3=="success"', reconciler)
         self.assertIn('.head_sha==env.HEAD_SHA', reconciler)
 
     def test_weekly_export_dispatch_is_exactly_adoptable(self):

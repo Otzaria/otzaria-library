@@ -28,6 +28,48 @@ find_child() {
   FIND_RUN_ATTEMPTS=1 bash "$HERE/find_exact_workflow_run.sh" "$repo" "$workflow" "$title" "$head"
 }
 
+# A Seforim run has two identities: the immutable source_commit in its signed
+# result and the workflow control head in GitHub run metadata.  A hotfix may
+# advance the latter while an expensive build is active.  Accept only control
+# heads that descend from the signed payload pin; prefer an already successful
+# delivery, otherwise require exactly one active delivery.  Failed historical
+# deliveries never hide a newer recovery run.
+find_seforim_child() {
+  local title="$1" payload="$2" rows allowed relation id status conclusion head successes active count
+  if ! rows=$(TITLE="$title" gh api --paginate -X GET \
+      "repos/Otzaria/SeforimLibrary/actions/workflows/manual-generate-release.yml/runs" \
+      -f event=workflow_dispatch -f per_page=100 \
+      --jq '.workflow_runs[] | select(.display_title==env.TITLE) | [(.id|tostring),.status,(.conclusion//""),.head_sha] | @tsv'); then
+    echo "::error::cannot list exact Seforim children" >&2
+    return 2
+  fi
+  rows=$(printf '%s\n' "$rows" | awk -F'\t' 'NF && !seen[$1]++')
+  allowed=""
+  while IFS=$'\t' read -r id status conclusion head; do
+    [ -n "$id" ] || continue
+    relation=$(gh api "repos/Otzaria/SeforimLibrary/compare/$payload...$head" --jq .status) || return 2
+    case "$relation" in
+      identical|ahead) allowed+="$id"$'\t'"$status"$'\t'"$conclusion"$'\t'"$head"$'\n' ;;
+    esac
+  done <<< "$rows"
+  successes=$(printf '%s' "$allowed" | awk -F'\t' '$2=="completed" && $3=="success" {print $1}')
+  if [ -n "$successes" ]; then
+    printf '%s\n' "$successes" | sort -n | tail -1
+    return 0
+  fi
+  active=$(printf '%s' "$allowed" | awk -F'\t' '$2 ~ /^(requested|waiting|pending|queued|in_progress)$/ {print $1}')
+  count=$(printf '%s\n' "$active" | awk 'NF' | wc -l | tr -d ' ')
+  if [ "$count" -eq 1 ]; then
+    printf '%s\n' "$active"
+    return 0
+  fi
+  if [ "$count" -gt 1 ]; then
+    echo "::error::multiple active Seforim children descend from the pinned payload; refusing to guess" >&2
+    return 3
+  fi
+  return 1
+}
+
 dispatch_continuation() {
   local stage="$1" corr="$2" saga="$3" saga_attempt="$4" child="$5"
   gh workflow run saga-continue.yml -R "$REPO" \
@@ -124,17 +166,6 @@ for saga_run in $RUNS; do
   fi
   expected=$(jq -r .expected_links_commit "$state_dir/saga-state.json")
   tool=$(jq -r .seforim_tool_commit "$state_dir/saga-state.json")
-  tool_ref=$(jq -r .seforim_tool_ref manual_links_sync.json)
-  [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]] || {
-    echo "::error::invalid Seforim workflow ref"; FAILURES=$((FAILURES+1)); continue; }
-  sef_control_head=$(git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref" | awk 'NR==1 {print $1}')
-  [[ "$sef_control_head" =~ ^[0-9a-f]{40}$ ]] || {
-    echo "::error::cannot resolve Seforim control head"; FAILURES=$((FAILURES+1)); continue; }
-  relation=$(gh api "repos/Otzaria/SeforimLibrary/compare/$tool...$sef_control_head" --jq .status) || {
-    FAILURES=$((FAILURES+1)); continue; }
-  case "$relation" in identical|ahead) ;;
-    *) echo "::error::Seforim control head does not descend from saga payload"; FAILURES=$((FAILURES+1)); continue ;;
-  esac
 
   # A successful S2 continuation is the durable completion marker.
   completion_title="saga-continue stage=seforim-published correlation=$corr"
@@ -170,7 +201,7 @@ for saga_run in $RUNS; do
 
   sef_title="manual-generate-release correlation=$corr"
   set +e
-  sef_run=$(find_child Otzaria/SeforimLibrary manual-generate-release.yml "$sef_title" "$sef_control_head")
+  sef_run=$(find_seforim_child "$sef_title" "$tool")
   rc=$?
   set -e
   if [ "$rc" -ne 0 ]; then
