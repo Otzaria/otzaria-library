@@ -21,6 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Reconciliation only evaluates the control scripts.  The repository
+          # contains the multi-gigabyte book corpus, so a full checkout would
+          # delay every 15-minute recovery tick and waste runner bandwidth.
+          sparse-checkout: .github/scripts
           persist-credentials: false
       - name: Reconcile every open retained saga
         env:
