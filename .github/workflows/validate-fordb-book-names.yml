@@ -5,8 +5,9 @@ name: Validate ForDB book names
 #   2. validateForDbInputs של SeforimLibrary על מסד הנתונים האחרון: אותם parsers,
 #      אותם appliers ובאותו סדר כמו בריצה האמיתית. השכבה הזו מכסה category/book
 #      renames+moves, generations, all_metadata ושינויי המטא-דאטה של ספרים וקטגוריות.
-# שתי השכבות הן report-only: ערך שלא ניתן לקריאה או שלא ניתן להחלה מפיל את ה-CI
-# וחוסם את הקומיט/המיזוג לפני ריצת הבנייה; ה-workflow אינו משכתב את מקור האמת בשקט.
+# ב-push ל-main השכבה המהירה מסירה ודוחפת תיקונים דטרמיניסטיים בלבד (שורות ספר
+# יתומות ב-generations/book_moves וכפילויות מקור-ספריא). ב-PR היא report-only.
+# כל כשל שאינו ניתן לתיקון בטוח, או כשל בשכבת ה-runtime, מפיל את ה-CI וחוסם בנייה.
 
 on:
   push:
@@ -14,11 +15,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: validate-fordb-book-names-${{ github.ref }}
-  cancel-in-progress: true
+  # auto-fix דוחף commit חדש; אסור שהריצה החדשה תבטל את הריצה שעדיין מאמתת את
+  # התוכן המתוקן. ב-PR עדיין מבטלים ריצה ישנה כדי לחסוך משאבים.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   validate:
@@ -42,7 +45,9 @@ jobs:
             /.github/scripts/
             /all_metadata_with_file_paths.json
           sparse-checkout-cone-mode: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # PAT ב-main גורם ל-auto-fix push להפעיל את השערים מחדש. ב-fork PR אין
+          # גישה לסוד ולכן נופלים ל-token המובנה, המשמש לקריאה בלבד בפועל.
+          token: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.PIPELINE_TOKEN || github.token }}
 
       - name: Hydrate validation inputs from LFS
         run: |
@@ -57,13 +62,40 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Report-only: exit 1 = ForDB names need a human fix (block); exit 2 = the Sefaria
-      # fetch failed — never validate against a partial canonical list, so block and retry.
-      - name: Validate ForDB book names (report-only — never rewrites ForDB)
+      # exit 1 = נשארה בעיה שאסור לתקן בניחוש; exit 2 = ספריא לא זמינה. במקרה
+      # השני --fix יוצא לפני כל כתיבה, ולכן כשל רשת לעולם לא מוחק נתון תקין.
+      - name: Validate names and auto-remove safe orphans on main
+        id: names
         env:
           SEFARIA_FETCH: "1"
           PYTHONIOENCODING: "utf-8"
-        run: python3 .github/scripts/validate_fordb_book_names.py
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" = "push" ] && [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            python3 .github/scripts/validate_fordb_book_names.py --fix
+            if [ -f fordb_removed.json ]; then
+              echo "fixed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "fixed=false" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            python3 .github/scripts/validate_fordb_book_names.py
+            echo "fixed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push safe ForDB removals
+        if: ${{ steps.names.outputs.fixed == 'true' }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ForDB
+          if git diff --cached --quiet; then
+            echo "::error::fordb_removed.json exists but no ForDB change was staged"
+            exit 1
+          fi
+          git commit -m "ci(fordb): remove inputs that cannot be applied"
+          git push origin HEAD:main
 
       # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
       # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.
