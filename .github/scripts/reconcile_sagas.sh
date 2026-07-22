@@ -9,9 +9,17 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 FAILURES=0
 MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
+# The reconciler was introduced together with the durable saga-state artifact.
+# Successful workflow runs from before that rollout used the old synchronous
+# protocol and legitimately have no saga-state artifact.  Gate on ancestry,
+# rather than on a date or artifact absence, so a post-rollout missing artifact
+# remains a loud contract failure.
+STATE_CONTRACT_COMMIT=${SAGA_STATE_CONTRACT_COMMIT:-d887f442b3c358da28e62506fae9df3f7c931700}
 CONTROL_HEAD=$(git rev-parse HEAD)
 [[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
   echo "::error::cannot resolve reconciler control head"; exit 2; }
+[[ "$STATE_CONTRACT_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
+  echo "::error::SAGA_STATE_CONTRACT_COMMIT must be a full commit SHA"; exit 2; }
 [[ "$MAX_RERUN_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || {
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
 
@@ -136,12 +144,28 @@ rerun_failed_child() {
 }
 
 for saga_run in $RUNS; do
-  if ! saga_attempt=$(gh api "repos/$REPO/actions/runs/$saga_run" \
-      --jq 'select(.status=="completed" and .conclusion=="success" and (.run_attempt|type)=="number" and .run_attempt>=1) | .run_attempt'); then
+  if ! saga_meta=$(gh api "repos/$REPO/actions/runs/$saga_run" \
+      --jq 'select(.status=="completed" and .conclusion=="success" and (.run_attempt|type)=="number" and .run_attempt>=1 and (.head_sha|type)=="string") | [.head_sha,.run_attempt] | @tsv'); then
     echo "::warning::cannot resolve current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue
   fi
+  IFS=$'\t' read -r saga_head saga_attempt <<< "$saga_meta"
+  [[ "$saga_head" =~ ^[0-9a-f]{40}$ ]] || {
+    echo "::error::invalid head SHA for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
   [[ "$saga_attempt" =~ ^[1-9][0-9]*$ ]] || {
     echo "::error::invalid current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
+  if ! contract_relation=$(gh api "repos/$REPO/compare/$STATE_CONTRACT_COMMIT...$saga_head" --jq .status); then
+    echo "::error::cannot establish saga-state contract ancestry for saga $saga_run"
+    FAILURES=$((FAILURES+1)); continue
+  fi
+  case "$contract_relation" in
+    identical|ahead) ;;
+    behind)
+      echo "legacy saga=$saga_run predates durable saga-state; skipped"
+      continue ;;
+    *)
+      echo "::error::saga $saga_run head is not on the durable saga-state lineage ($contract_relation)"
+      FAILURES=$((FAILURES+1)); continue ;;
+  esac
   artifact_rows=$(gh api --paginate "repos/$REPO/actions/runs/$saga_run/artifacts?per_page=100" \
     --jq '.artifacts[] | select(.expired==false and (.name|startswith("saga-state-"))) | [.id,.name] | @tsv') || {
       echo "::warning::cannot list artifacts for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
