@@ -58,6 +58,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/scripts
+          sparse-checkout-cone-mode: true
           persist-credentials: false
       - name: Download and validate the original signed saga state
         id: state
@@ -153,7 +157,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+          sparse-checkout: |
+            .github/scripts
+            manual_links_sync.json
+            pipeline_result_contract.py
+          sparse-checkout-cone-mode: false
           persist-credentials: false
       - name: Re-check durable stage product inside the correlation mutex
         id: stage_gate
@@ -302,9 +311,23 @@ jobs:
         run: |
           set -euo pipefail
           title="update-library mode=links_sync_mode correlation=$CORRELATION_ID"
-          run_id="$(bash .github/scripts/find_exact_workflow_run.sh \
-            Otzaria/otzaria-library update-library.yml "$title" '*')"
+          rows="$(TITLE="$title" gh api --paginate -X GET \
+            "repos/Otzaria/otzaria-library/actions/workflows/update-library.yml/runs" \
+            -f event=workflow_dispatch -f per_page=100 \
+            --jq '.workflow_runs[] | select(.display_title==env.TITLE and .status=="completed" and .conclusion=="success") | (.id|tostring)')"
+          matches="$(printf '%s\n' "$rows" | awk 'NF && !seen[$0]++')"
+          count="$(printf '%s\n' "$matches" | awk 'NF' | wc -l | tr -d ' ')"
+          if [ "$count" -ne 1 ]; then
+            echo "::error::Expected exactly one successful Otzaria child for the canonical correlation; found $count."
+            exit 1
+          fi
+          run_id="$matches"
           attempt="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .run_attempt)"
+          child_head="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .head_sha)"
+          relation="$(gh api "repos/Otzaria/otzaria-library/compare/$EXPECTED_COMMIT...$child_head" --jq .status)"
+          case "$relation" in identical|ahead) ;;
+            *) echo "::error::Successful Otzaria child workflow head does not descend from the saga commit"; exit 1 ;;
+          esac
           rm -rf child-result && mkdir child-result
           gh run download "$run_id" -R Otzaria/otzaria-library \
             -n "pipeline-result-$attempt" -D child-result
