@@ -15,6 +15,7 @@ MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
 # rather than on a date or artifact absence, so a post-rollout missing artifact
 # remains a loud contract failure.
 STATE_CONTRACT_COMMIT=${SAGA_STATE_CONTRACT_COMMIT:-a7a9feef7e0f8ee702e0b179b346dd9fcf845393}
+RETIRED_ROOTS_FILE=${SAGA_RETIRED_ROOTS_FILE:-"$HERE/retired_completed_sagas.tsv"}
 CONTROL_HEAD=$(git rev-parse HEAD)
 [[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
   echo "::error::cannot resolve reconciler control head"; exit 2; }
@@ -22,6 +23,14 @@ CONTROL_HEAD=$(git rev-parse HEAD)
   echo "::error::SAGA_STATE_CONTRACT_COMMIT must be a full commit SHA"; exit 2; }
 [[ "$MAX_RERUN_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || {
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
+test -f "$RETIRED_ROOTS_FILE" || {
+  echo "::error::missing retired-saga registry"; exit 2; }
+awk -F'\t' '
+  /^[[:space:]]*(#|$)/ {next}
+  NF != 2 || $1 !~ /^[1-9][0-9]*$/ || $2 !~ /^[1-9][0-9]*$/ {exit 1}
+  seen_root[$1]++ || seen_completion[$2]++ {exit 1}
+' "$RETIRED_ROOTS_FILE" || {
+  echo "::error::invalid/duplicate retired-saga registry"; exit 2; }
 
 if ! RUNS=$(gh api --paginate -X GET "repos/$REPO/actions/workflows/sync-manual-links.yml/runs" \
   -f event=workflow_dispatch -f created=">=$SINCE" -f per_page=100 \
@@ -34,6 +43,34 @@ RUNS=$(printf '%s\n' "$RUNS" | awk 'NF && !seen[$0]++')
 find_child() {
   local repo="$1" workflow="$2" title="$3" head="$4"
   FIND_RUN_ATTEMPTS=1 bash "$HERE/find_exact_workflow_run.sh" "$repo" "$workflow" "$title" "$head"
+}
+
+# An authorized history compaction can make an already-complete root diverge from
+# the current control lineage. Never generalize that divergence into a soft skip:
+# only roots recorded in the reviewed registry may retire, and every tick re-verifies
+# their exact successful S2 callback identity from GitHub before ignoring them.
+verify_retired_completed_saga() {
+  local saga_run="$1" completion_run="$2" root_title corr completion_json
+  root_title=$(gh api "repos/$REPO/actions/runs/$saga_run" --jq .display_title) || return 1
+  case "$root_title" in
+    "sync-manual-links correlation="*) corr=${root_title#"sync-manual-links correlation="} ;;
+    *) echo "::error::retired saga $saga_run has an invalid root title" >&2; return 1 ;;
+  esac
+  [ -n "$corr" ] || {
+    echo "::error::retired saga $saga_run has an empty correlation" >&2; return 1; }
+  completion_json="$TMP/retired-completion-$completion_run.json"
+  gh api "repos/$REPO/actions/runs/$completion_run" > "$completion_json" || return 1
+  jq -e --argjson expected_id "$completion_run" \
+    --arg expected_title "saga-continue stage=seforim-published correlation=$corr" '
+      (.id|type) == "number" and .id == $expected_id and
+      .status == "completed" and .conclusion == "success" and
+      (.event == "workflow_dispatch" or .event == "repository_dispatch") and
+      .path == ".github/workflows/saga-continue.yml" and
+      .display_title == $expected_title
+    ' "$completion_json" >/dev/null || {
+      echo "::error::retired saga $saga_run lacks its exact successful S2 completion $completion_run" >&2
+      return 1
+    }
 }
 
 # A Seforim run has two identities: the immutable source_commit in its signed
@@ -167,6 +204,16 @@ for saga_run in $RUNS; do
       echo "legacy saga=$saga_run predates durable saga-state; skipped"
       continue ;;
     *)
+      retired_completion=$(awk -F'\t' -v root="$saga_run" \
+        '$1 == root {print $2}' "$RETIRED_ROOTS_FILE")
+      if [ -n "$retired_completion" ]; then
+        if verify_retired_completed_saga "$saga_run" "$retired_completion"; then
+          echo "retired complete saga=$saga_run completion=$retired_completion skipped after exact verification"
+          continue
+        fi
+        FAILURES=$((FAILURES+1))
+        continue
+      fi
       echo "::error::saga $saga_run head is not on the durable saga-state lineage ($contract_relation)"
       FAILURES=$((FAILURES+1)); continue ;;
   esac

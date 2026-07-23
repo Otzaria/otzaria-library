@@ -1,0 +1,6 @@
+# saga_root_run_id	completed_seforim_callback_run_id
+# These two roots were completed before the authorized 2026-07-23 history compaction.
+# Their control heads now diverge from main, so the reconciler must verify the exact
+# durable S2 completion run below before retiring them. Unknown divergence remains fatal.
+29804091806	29888953717
+29915955456	29999479404

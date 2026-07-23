@@ -144,6 +144,35 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertIn('export_title="Sefaria immutable export orchestration=$export_correlation"', workflow)
         self.assertIn('find_exact_run Otzaria/SefariaExport release.yml "$export_title"', workflow)
 
+    def test_only_reviewed_diverged_roots_retire_after_exact_s2_completion(self):
+        registry = (
+            self.root / ".github" / "scripts" / "retired_completed_sagas.tsv"
+        ).read_text(encoding="utf-8")
+        rows = [
+            tuple(line.split("\t"))
+            for line in registry.splitlines()
+            if line and not line.startswith("#")
+        ]
+        self.assertEqual(
+            rows,
+            [
+                ("29804091806", "29888953717"),
+                ("29915955456", "29999479404"),
+            ],
+        )
+        reconciler = (
+            self.root / ".github" / "scripts" / "reconcile_sagas.sh"
+        ).read_text(encoding="utf-8")
+        self.assertIn("verify_retired_completed_saga", reconciler)
+        self.assertIn('.status == "completed" and .conclusion == "success"', reconciler)
+        self.assertIn('.path == ".github/workflows/saga-continue.yml"', reconciler)
+        self.assertIn('.display_title == $expected_title', reconciler)
+        self.assertIn(
+            "head is not on the durable saga-state lineage",
+            reconciler,
+            "unknown divergence must remain fatal",
+        )
+
     def test_update_library_does_not_download_lfs_twice(self):
         workflow = self.workflow("update-library.yml")
         self.assertEqual(2, workflow.count("lfs: true"))
