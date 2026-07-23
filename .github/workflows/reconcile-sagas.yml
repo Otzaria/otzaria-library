@@ -1,0 +1,32 @@
+name: Reconcile event-driven sagas
+run-name: reconcile-sagas
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: reconcile-sagas
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Reconciliation only evaluates the control scripts.  The repository
+          # contains the multi-gigabyte book corpus, so a full checkout would
+          # delay every 15-minute recovery tick and waste runner bandwidth.
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+      - name: Reconcile every open retained saga
+        env:
+          GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+        run: bash .github/scripts/reconcile_sagas.sh

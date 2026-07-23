@@ -36,7 +36,12 @@ def actual_versions():
 
 def verify_versions(expected, actual):
     required = {"schema_version", "python", "zlib_build", "zlib_runtime", "gnu_tar", "zstd"}
-    if not isinstance(expected, dict) or set(expected) != required or expected.get("schema_version") != 1:
+    if (
+        not isinstance(expected, dict)
+        or set(expected) != required
+        or type(expected.get("schema_version")) is not int
+        or expected.get("schema_version") != 1
+    ):
         raise ToolchainError("packaging_toolchain.json has an unexpected schema")
     if actual != expected:
         differing = {key: {"expected": expected.get(key), "actual": actual.get(key)} for key in required if expected.get(key) != actual.get(key)}

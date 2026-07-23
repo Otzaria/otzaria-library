@@ -20,6 +20,14 @@ on:
         description: Exact end-to-end correlation identifier
         required: false
         type: string
+      saga_run_id:
+        description: Origin sync-manual-links run for callback/recovery
+        required: false
+        type: string
+      saga_run_attempt:
+        description: Exact attempt of the origin sync-manual-links run
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -28,6 +36,7 @@ permissions:
 jobs:
   validate-inputs:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     outputs:
       mode: ${{ steps.validate.outputs.mode }}
     steps:
@@ -36,16 +45,22 @@ jobs:
           MODE: ${{ inputs.mode }}
           EXPECTED: ${{ inputs.expected_links_commit }}
           CORRELATION: ${{ inputs.correlation_id }}
+          SAGA_RUN_ID: ${{ inputs.saga_run_id }}
+          SAGA_RUN_ATTEMPT: ${{ inputs.saga_run_attempt }}
         shell: bash
         run: |
           set -euo pipefail
           case "$MODE" in
             prepare_only)
               [[ -z "$EXPECTED" ]]
+              [[ -z "$SAGA_RUN_ID" && -z "$SAGA_RUN_ATTEMPT" ]]
+              [[ -z "$CORRELATION" || "$CORRELATION" =~ ^weekly:[1-9][0-9]*:[1-9][0-9]*:prepare$ ]]
               ;;
             links_sync_mode)
               [[ "$EXPECTED" =~ ^[0-9a-f]{40}$ ]]
               [[ "$CORRELATION" =~ ^sefaria:[1-9][0-9]*:[1-9][0-9]*:[A-Za-z0-9._-]+:[0-9a-f]{64}$ ]]
+              [[ "$SAGA_RUN_ID" =~ ^[1-9][0-9]*$ ]]
+              [[ "$SAGA_RUN_ATTEMPT" =~ ^[1-9][0-9]*$ ]]
               ;;
             *) exit 2 ;;
           esac
@@ -55,9 +70,13 @@ jobs:
     needs: validate-inputs
     if: needs.validate-inputs.outputs.mode == 'prepare_only'
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     concurrency:
       group: otzaria-main-writer
       cancel-in-progress: false
+      # Shared writer group (also used by sync-manual-links): each queued run carries
+      # a DIFFERENT correlation/intent — queue every intent durably.
+      queue: max
     steps:
       - name: Checkout main with LFS
         uses: actions/checkout@v4
@@ -65,9 +84,6 @@ jobs:
           lfs: true
           token: ${{ secrets.PIPELINE_TOKEN || github.token }}
           fetch-depth: 25
-      - run: |
-          git lfs pull
-          git lfs checkout
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12.10'
@@ -121,6 +137,8 @@ jobs:
     concurrency:
       group: otzaria-release-publisher
       cancel-in-progress: false
+      # Publisher serialization; distinct intents per run — queue them all.
+      queue: max
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN || github.token }}
       EXPECTED_COMMIT: ${{ inputs.expected_links_commit }}
@@ -150,8 +168,6 @@ jobs:
           [[ "$(git rev-parse HEAD)" == "$EXPECTED_COMMIT" ]]
           git fetch origin main
           git merge-base --is-ancestor "$EXPECTED_COMMIT" origin/main
-          git lfs pull
-          git lfs checkout
           test -z "$(git status --porcelain)"
       - uses: actions/setup-python@v5
         with:
@@ -183,27 +199,47 @@ jobs:
           python3 pipeline_result_contract.py validate-provenance fresh-provenance.json
           mkdir -p recovery
           existing_tag=""
-          while IFS=$'\t' read -r tag is_draft target_commitish; do
+          existing_release_id=""
+          existing_is_draft=""
+          release_rows="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[] | [(.id|tostring), .tag_name, .draft, .target_commitish] | @tsv')"
+          while IFS=$'\t' read -r release_id tag is_draft target_commitish; do
+            [[ -n "$release_id" ]] || continue
+            [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
             encoded_tag="$(jq -rn --arg value "$tag" '$value|@uri')"
-            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha')"
-            effective_target="$tag_target"
-            [[ "$target_commitish" != "$EXPECTED_COMMIT" ]] || effective_target="$EXPECTED_COMMIT"
-            if [[ "$is_draft" == true && ( "$target_commitish" == "$EXPECTED_COMMIT" || "$tag_target" == "$EXPECTED_COMMIT" ) ]]; then
-              echo "A partial draft already targets the expected commit: $tag" >&2
+            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${encoded_tag}" --jq '.object.sha' 2>/dev/null || true)"
+            if [[ "$is_draft" != true && -z "$tag_target" ]]; then
+              echo "Published release $tag has no resolvable Git tag ref" >&2
               exit 1
+            fi
+            effective_target="$tag_target"
+            if [[ "$is_draft" == true ]]; then
+              [[ "$target_commitish" =~ ^[0-9a-f]{40}$ ]] || { echo "Draft $tag does not target a full commit" >&2; exit 1; }
+              effective_target="$target_commitish"
+            elif [[ "$target_commitish" == "$EXPECTED_COMMIT" ]]; then
+              effective_target="$EXPECTED_COMMIT"
             fi
             candidate_dir="recovery/$(printf '%s' "$tag" | sha256sum | cut -d' ' -f1)"
             mkdir -p "$candidate_dir"
-            if gh release download "$tag" --pattern otzaria_release_provenance.json --dir "$candidate_dir" 2>/dev/null; then
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$release_id" > "$candidate_dir/release.json"
+            provenance_rows="$(jq -r '.assets[] | select(.name=="otzaria_release_provenance.json") | .id' "$candidate_dir/release.json")"
+            mapfile -t provenance_asset_ids < <(printf '%s' "$provenance_rows")
+            [[ ${#provenance_asset_ids[@]} -le 1 ]] || { echo "Release $tag has duplicate provenance assets" >&2; exit 1; }
+            if [[ ${#provenance_asset_ids[@]} -eq 1 ]]; then
+              [[ "${provenance_asset_ids[0]}" =~ ^[1-9][0-9]*$ ]]
               candidate="$candidate_dir/otzaria_release_provenance.json"
+              gh api -H "Accept: application/octet-stream" \
+                "repos/${GITHUB_REPOSITORY}/releases/assets/${provenance_asset_ids[0]}" > "$candidate"
               python3 pipeline_result_contract.py validate-provenance "$candidate"
               [[ "$(jq -r '.tag' "$candidate")" == "$tag" ]] || { echo "Provenance tag mismatch for $tag" >&2; exit 1; }
               classification="$(python3 pipeline_result_contract.py classify-recovery \
                 --recorded "$candidate" --fresh fresh-provenance.json \
                 --actual-target "$effective_target" --draft "$is_draft")"
-              if [[ "$classification" == match ]]; then
+              if [[ "$classification" == match || "$classification" == draft_match ]]; then
                 [[ -z "$existing_tag" ]] || { echo "Multiple releases match one immutable input tuple" >&2; exit 1; }
                 existing_tag="$tag"
+                existing_release_id="$release_id"
+                existing_is_draft="$is_draft"
                 cp "$candidate" recovery/matched-provenance.json
               elif [[ "$classification" != ignore ]]; then
                 echo "Unexpected recovery classification for $tag: $classification" >&2
@@ -215,21 +251,14 @@ jobs:
                 exit 1
               fi
             fi
-          done < <(gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq '.[] | [.tag_name, .draft, .target_commitish] | @tsv')
+          done <<< "$release_rows"
 
           if [[ -n "$existing_tag" ]]; then
             jq -cS --arg tag "$existing_tag" '.tag=$tag' fresh-provenance.json > recovery/fresh-for-match.json
             python3 pipeline_result_contract.py compare-fresh \
               --recorded recovery/matched-provenance.json \
               --fresh recovery/fresh-for-match.json
-            gh release download "$existing_tag" \
-              --pattern otzaria_latest.zip \
-              --pattern otzaria_dicta_latest.zip \
-              --pattern talmud_bavli_latest.tar.zst \
-              --dir recovery
-            expected_names="$(printf '%s\n' otzaria_dicta_latest.zip otzaria_latest.zip otzaria_release_provenance.json talmud_bavli_latest.tar.zst)"
-            remote_names="$(gh release view "$existing_tag" --json assets --jq '[.assets[].name] | sort | .[]')"
-            [[ "$remote_names" == "$expected_names" ]]
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$existing_release_id" > recovery/remote-assets.json
             python3 - <<'PY'
           import hashlib
           import json
@@ -237,21 +266,30 @@ jobs:
 
           root = Path("recovery")
           provenance = json.loads((root / "matched-provenance.json").read_text(encoding="utf-8"))
-          for descriptor in [provenance["asset"], *provenance["auxiliary_assets"]]:
-              path = root / descriptor["name"]
-              digest = hashlib.sha256(path.read_bytes()).hexdigest()
-              if path.stat().st_size != descriptor["size"] or digest != descriptor["sha256"]:
-                  raise SystemExit(f"published asset differs from recorded descriptor: {descriptor['name']}")
+          expected={item["name"]:(item["size"],"sha256:"+item["sha256"]) for item in [provenance["asset"],*provenance["auxiliary_assets"]]}
+          prov_path=root/"matched-provenance.json"
+          expected["otzaria_release_provenance.json"]=(prov_path.stat().st_size,"sha256:"+hashlib.sha256(prov_path.read_bytes()).hexdigest())
+          remote=json.loads((root/"remote-assets.json").read_text())["assets"]
+          actual={item["name"]:(item["size"],item.get("digest")) for item in remote}
+          if actual!=expected:
+              raise SystemExit("published release descriptors differ from recorded provenance")
           PY
-            tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${existing_tag}" --jq '.object.sha')"
-            [[ "$tag_target" == "$EXPECTED_COMMIT" ]]
             echo "tag=$existing_tag" >> "$GITHUB_OUTPUT"
-            echo "reused=true" >> "$GITHUB_OUTPUT"
+            echo "release_id=$existing_release_id" >> "$GITHUB_OUTPUT"
+            if [[ "$existing_is_draft" == true ]]; then
+              echo "reused=false" >> "$GITHUB_OUTPUT"
+            else
+              tag_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${existing_tag}" --jq '.object.sha')"
+              [[ "$tag_target" == "$EXPECTED_COMMIT" ]]
+              echo "reused=true" >> "$GITHUB_OUTPUT"
+            fi
             exit 0
           fi
 
           tag="library-links-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${EXPECTED_COMMIT:0:12}"
-          if gh release view "$tag" >/dev/null 2>&1; then
+          existing_ids="$(TAG="$tag" gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[] | select(.tag_name==env.TAG) | .id')"
+          if [[ -n "$existing_ids" ]]; then
             echo "Incomplete or mismatched release already exists for $tag" >&2
             exit 1
           fi
@@ -264,31 +302,68 @@ jobs:
             '{schema_version:1,correlation_id:$correlation,target_commit:$target,tag:$tag,asset:$packaging.asset,auxiliary_assets:$auxiliary,packaging_runtime:$packaging.runtime,packaging_toolchain:$packaging.toolchain,config_sha256:$packaging.config_sha256,source_links_tree_sha256:$packaging.source_links_tree_sha256,packaged_links_tree_sha256:$packaging.packaged_links_tree_sha256,lineage_sha256:$packaging.lineage_sha256}' \
             > otzaria_release_provenance.json
           python3 pipeline_result_contract.py validate-provenance otzaria_release_provenance.json
-          gh release create "$tag" --draft --target "$EXPECTED_COMMIT" --title "Otzaria library $tag" --notes "Immutable manual-link synchronized release"
-          gh release upload "$tag" otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json
+          gh release create "$tag" --draft --target "$EXPECTED_COMMIT" \
+            --title "Otzaria library $tag" --notes "Immutable manual-link synchronized release" \
+            otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json
+          release_id=""
+          for _ in $(seq 1 12); do
+            release_rows="$(TAG="$tag" gh api --paginate "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+              --jq '.[] | select(.tag_name==env.TAG) | .id')"
+            mapfile -t release_ids < <(printf '%s' "$release_rows")
+            [[ ${#release_ids[@]} -le 1 ]] || { echo "Multiple releases exist for $tag" >&2; exit 1; }
+            if [[ ${#release_ids[@]} -eq 1 ]]; then release_id="${release_ids[0]}"; break; fi
+            sleep 5
+          done
+          [[ "$release_id" =~ ^[1-9][0-9]*$ ]]
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "release_id=$release_id" >> "$GITHUB_OUTPUT"
           echo "reused=false" >> "$GITHUB_OUTPUT"
       - name: Verify draft bytes and publish last
         if: steps.release.outputs.reused == 'false'
         env:
           TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_ID: ${{ steps.release.outputs.release_id }}
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf release-verification
-          mkdir release-verification
-          gh release download "$TAG" --dir release-verification
-          expected_names="$(printf '%s\n' otzaria_dicta_latest.zip otzaria_latest.zip otzaria_release_provenance.json talmud_bavli_latest.tar.zst)"
-          remote_names="$(gh release view "$TAG" --json assets --jq '[.assets[].name] | sort | .[]')"
-          [[ "$remote_names" == "$expected_names" ]]
-          for asset in otzaria_latest.zip otzaria_dicta_latest.zip talmud_bavli_latest.tar.zst otzaria_release_provenance.json; do
-            cmp "$asset" "release-verification/$asset"
-          done
-          target="$(gh release view "$TAG" --json targetCommitish --jq '.targetCommitish')"
+          [[ "$RELEASE_ID" =~ ^[1-9][0-9]*$ ]]
+          verify_remote() {
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" > "$RUNNER_TEMP/otzaria-release-assets.json"
+            python3 - "$RUNNER_TEMP/otzaria-release-assets.json" <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          names=("otzaria_latest.zip","otzaria_dicta_latest.zip","talmud_bavli_latest.tar.zst","otzaria_release_provenance.json")
+          def file_sha256(path):
+              digest=hashlib.sha256()
+              with path.open("rb") as source:
+                  for chunk in iter(lambda: source.read(1024*1024),b""): digest.update(chunk)
+              return digest.hexdigest()
+          expected={name:(Path(name).stat().st_size,"sha256:"+file_sha256(Path(name))) for name in names}
+          remote=json.loads(Path(sys.argv[1]).read_text())["assets"]
+          actual={item["name"]:(item["size"],item.get("digest")) for item in remote}
+          if actual!=expected: raise SystemExit("draft release descriptors differ from local bytes")
+          PY
+          }
+          verified=false
+          for _ in $(seq 1 12); do if verify_remote; then verified=true; break; fi; sleep 5; done
+          [ "$verified" = true ]
+          [[ "$(jq -r .tag_name "$RUNNER_TEMP/otzaria-release-assets.json")" == "$TAG" ]]
+          [[ "$(jq -r .draft "$RUNNER_TEMP/otzaria-release-assets.json")" == true ]]
+          target="$(jq -r .target_commitish "$RUNNER_TEMP/otzaria-release-assets.json")"
           [[ "$target" == "$EXPECTED_COMMIT" ]]
-          gh release edit "$TAG" --draft=false --latest
-          published_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha')"
-          [[ "$published_target" == "$EXPECTED_COMMIT" ]]
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" \
+            -F draft=false -f make_latest=true > "$RUNNER_TEMP/otzaria-published-release.json"
+          published=false
+          for _ in $(seq 1 12); do
+            gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID" > "$RUNNER_TEMP/otzaria-published-release.json"
+            published_target="$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha' 2>/dev/null || true)"
+            if [[ "$(jq -r .draft "$RUNNER_TEMP/otzaria-published-release.json")" == false && "$published_target" == "$EXPECTED_COMMIT" ]]; then
+              published=true
+              break
+            fi
+            sleep 5
+          done
+          [[ "$published" == true ]]
       - name: Emit exact child result
         env:
           TAG: ${{ steps.release.outputs.tag }}
@@ -315,9 +390,23 @@ jobs:
             --run-id "$GITHUB_RUN_ID" --run-attempt "$GITHUB_RUN_ATTEMPT"
       - uses: actions/upload-artifact@v4
         with:
-          name: pipeline-result
+          name: pipeline-result-${{ github.run_attempt }}
           path: |
             pipeline-result.json
             pipeline-result.sha256
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 90
+      - name: Callback event-driven saga after the result artifact exists
+        env:
+          GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+          SAGA_RUN_ID: ${{ inputs.saga_run_id }}
+          SAGA_RUN_ATTEMPT: ${{ inputs.saga_run_attempt }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="$(jq -cn --arg correlation_id "$CORRELATION_ID" \
+            --argjson saga_run_id "$SAGA_RUN_ID" --argjson child_run_id "$GITHUB_RUN_ID" \
+            --argjson saga_run_attempt "$SAGA_RUN_ATTEMPT" \
+            --argjson child_run_attempt "$GITHUB_RUN_ATTEMPT" \
+            '{event_type:"otzaria-published",client_payload:{correlation_id:$correlation_id,saga_run_id:$saga_run_id,saga_run_attempt:$saga_run_attempt,child_run_id:$child_run_id,child_run_attempt:$child_run_attempt}}')"
+          gh api repos/Otzaria/otzaria-library/dispatches --method POST --input - <<<"$payload"

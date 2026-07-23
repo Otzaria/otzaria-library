@@ -22,6 +22,12 @@ class SefariaReleaseChainTest(unittest.TestCase):
     def test_valid_metadata(self):
         self.assertEqual("new", chain.validate_metadata(self.metadata(), "new")["tag"])
 
+    def test_boolean_schema_version_fails(self):
+        value = self.metadata()
+        value["schema_version"] = True
+        with self.assertRaises(chain.ChainError):
+            chain.validate_metadata(value, "new")
+
     def test_wrong_changelog_boundary_fails(self):
         value = self.metadata()
         value["changelog"]["old_tag"] = "fork"

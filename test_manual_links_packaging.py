@@ -24,6 +24,10 @@ class ManualLinksPackagingTest(unittest.TestCase):
         (root / packaging.CONFIG_NAME).write_text(json.dumps(config), encoding="utf-8")
         return packaging.validate_config(config)
 
+    def test_boolean_config_schema_version_is_rejected(self):
+        with self.assertRaises(packaging.PackagingError):
+            packaging.validate_config({"schema_version": True})
+
     def test_collision_after_flattening_is_fatal(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -142,13 +146,13 @@ class ManualLinksPackagingTest(unittest.TestCase):
                 self.assertIn(packaging.TOOLCHAIN_NAME, archive.namelist())
             self.assertEqual(packaging.sha256_file(output), json.loads(result.read_text())["asset"]["sha256"])
 
-    def test_seforim_dispatch_uses_the_configured_ref_for_head_and_dispatch(self):
+    def test_seforim_tool_is_resolved_from_the_configured_ref_and_pinned(self):
         root = Path(__file__).resolve().parent
         workflow = (root / ".github/workflows/sync-manual-links.yml").read_text(encoding="utf-8")
-        self.assertIn("tool_ref=\"$(jq -r '.seforim_tool_ref' manual_links_sync.json)\"", workflow)
-        self.assertIn('git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$tool_ref"', workflow)
-        self.assertIn('--ref "$workflow_ref"', workflow)
-        self.assertIn('find_exact_workflow_run.sh Otzaria/SeforimLibrary manual-generate-release.yml "$title" "$head_sha"', workflow)
+        self.assertIn("ref=\"$(jq -r '.seforim_tool_ref' manual_links_sync.json)\"", workflow)
+        self.assertIn('git ls-remote https://github.com/Otzaria/SeforimLibrary.git "$ref"', workflow)
+        self.assertIn('ref: ${{ steps.tool.outputs.sha }}', workflow)
+        self.assertIn('git merge-base --is-ancestor "$TOOL_SHA" "origin/$branch"', workflow)
         self.assertNotIn("repos/Otzaria/SeforimLibrary/commits/otzaria", workflow)
 
     def test_free_disk_space_action_is_pinned_to_a_full_commit(self):

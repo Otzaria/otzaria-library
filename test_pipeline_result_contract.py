@@ -43,6 +43,16 @@ class PipelineResultContractTest(unittest.TestCase):
         with self.assertRaises(contract.ContractError):
             contract.assert_fresh_bytes_match(recorded, fresh)
 
+    def test_boolean_schema_versions_are_rejected(self):
+        provenance = self.provenance()
+        provenance["schema_version"] = True
+        with self.assertRaises(contract.ContractError):
+            contract.validate_provenance(provenance)
+        provenance = self.provenance()
+        provenance["packaging_toolchain"]["schema_version"] = True
+        with self.assertRaises(contract.ContractError):
+            contract.validate_provenance(provenance)
+
     def test_result_rejects_extra_fields(self):
         result = {**self.provenance(),
             "status": "published", "child_run_id": 1, "child_run_attempt": 1,
@@ -113,6 +123,24 @@ class PipelineResultContractTest(unittest.TestCase):
                 self.provenance(), self.provenance(), "e" * 40, False
             )
 
+    def test_complete_matching_draft_is_recoverable(self):
+        provenance = self.provenance()
+        self.assertEqual(
+            "draft_match",
+            contract.classify_recovery_release(
+                provenance, provenance, provenance["target_commit"], True
+            ),
+        )
+
+    def test_draft_with_same_target_and_different_key_is_fatal(self):
+        recorded = self.provenance()
+        fresh = self.provenance()
+        recorded["lineage_sha256"] = "f" * 64
+        with self.assertRaises(contract.ContractError):
+            contract.classify_recovery_release(
+                recorded, fresh, fresh["target_commit"], True
+            )
+
     def test_exact_seforim_child_schema_is_accepted(self):
         value = {
             "schema_version": 1,
@@ -127,6 +155,7 @@ class PipelineResultContractTest(unittest.TestCase):
             "otzaria_tag": "library-links-1",
             "otzaria_asset_sha256": "4" * 64,
             "fordb_archive_sha256": "c" * 64,
+            "fordb_tag": "fordb-sha256-" + "c" * 64,
             "expected_links_commit": "5" * 40,
             "otzaria_target_commit": "5" * 40,
             "release_tag": "release-1",
@@ -141,6 +170,9 @@ class PipelineResultContractTest(unittest.TestCase):
             ],
         }
         self.assertEqual(value, contract.validate_seforim_result(value))
+        value["schema_version"] = True
+        with self.assertRaises(contract.ContractError):
+            contract.validate_seforim_result(value)
 
 
 if __name__ == "__main__":

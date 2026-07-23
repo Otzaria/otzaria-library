@@ -24,6 +24,10 @@ env:
 
 jobs:
   export_release:
+    concurrency:
+      group: otzaria-main-writer
+      cancel-in-progress: false
+      queue: max
     runs-on: ubuntu-latest
     defaults:
       run:

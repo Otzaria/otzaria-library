@@ -113,7 +113,7 @@ def validate_toolchain(value: object) -> dict:
         {"schema_version", "python", "zlib_build", "zlib_runtime", "gnu_tar", "zstd"},
         "packaging_toolchain",
     )
-    if toolchain["schema_version"] != 1:
+    if type(toolchain["schema_version"]) is not int or toolchain["schema_version"] != 1:
         raise ContractError("packaging_toolchain.schema_version must be 1")
     for field in ("python", "zlib_build", "zlib_runtime", "gnu_tar", "zstd"):
         require_string(toolchain[field], f"packaging_toolchain.{field}")
@@ -130,7 +130,7 @@ PROVENANCE_KEYS = {
 
 def validate_provenance(value: object) -> dict:
     provenance = require_exact_keys(value, PROVENANCE_KEYS, "release provenance")
-    if provenance["schema_version"] != 1:
+    if type(provenance["schema_version"]) is not int or provenance["schema_version"] != 1:
         raise ContractError("release provenance schema_version must be 1")
     require_string(provenance["correlation_id"], "correlation_id")
     require_commit(provenance["target_commit"], "target_commit")
@@ -207,8 +207,10 @@ def classify_recovery_release(recorded: dict, fresh: dict, actual_target: str, d
     require_commit(actual_target, "actual release target")
     same_key = recovery_key(recorded) == recovery_key(fresh)
     expected_target = fresh["target_commit"]
+    if draft and same_key and actual_target == expected_target:
+        return "draft_match"
     if draft and (actual_target == expected_target or same_key):
-        raise ContractError("a partial draft already targets this commit or recovery key")
+        raise ContractError("a conflicting draft already targets this commit or recovery key")
     if actual_target == expected_target and not same_key:
         raise ContractError(
             "a published release already targets the expected commit with a different recovery key"
@@ -246,7 +248,7 @@ SEFORIM_RESULT_KEYS = {
     "schema_version", "status", "correlation_id", "child_run_id", "child_run_attempt",
     "source_commit", "sefaria_tag", "sefaria_release_metadata_sha256",
     "sefaria_archive_sha256", "otzaria_tag", "otzaria_asset_sha256",
-    "fordb_archive_sha256",
+    "fordb_archive_sha256", "fordb_tag",
     "expected_links_commit", "otzaria_target_commit", "release_tag",
     "build_provenance_sha256", "config_sha256", "source_links_tree_sha256",
     "packaged_links_tree_sha256", "lineage_sha256", "assets",
@@ -255,7 +257,11 @@ SEFORIM_RESULT_KEYS = {
 
 def validate_seforim_result(value: object) -> dict:
     result = require_exact_keys(value, SEFORIM_RESULT_KEYS, "Seforim pipeline result")
-    if result["schema_version"] != 1 or result["status"] not in {"published", "reused"}:
+    if (
+        type(result["schema_version"]) is not int
+        or result["schema_version"] != 1
+        or result["status"] not in {"published", "reused"}
+    ):
         raise ContractError("invalid Seforim result schema/status")
     require_string(result["correlation_id"], "correlation_id")
     require_positive_int(result["child_run_id"], "child_run_id")
@@ -269,9 +275,11 @@ def validate_seforim_result(value: object) -> dict:
         "packaged_links_tree_sha256", "lineage_sha256",
     ):
         require_sha(result[field], field)
-    for field in ("sefaria_tag", "otzaria_tag", "release_tag"):
+    for field in ("sefaria_tag", "otzaria_tag", "fordb_tag", "release_tag"):
         if not isinstance(result[field], str) or not TAG_RE.fullmatch(result[field]):
             raise ContractError(f"{field} is unsafe")
+    if result["fordb_tag"] != f"fordb-sha256-{result['fordb_archive_sha256']}":
+        raise ContractError("fordb_tag is not content-addressed by fordb_archive_sha256")
     validate_descriptors(result["assets"], "assets")
     provenance_assets = [item for item in result["assets"] if item["name"] == "build_provenance.json"]
     if len(provenance_assets) != 1 or provenance_assets[0]["sha256"] != result["build_provenance_sha256"]:
@@ -321,7 +329,7 @@ def main(argv=None) -> int:
     for name in (
         "correlation-id", "run-id", "run-attempt", "source-commit", "sefaria-tag",
         "sefaria-release-metadata-sha256", "sefaria-archive-sha256", "otzaria-tag",
-        "otzaria-asset-sha256", "fordb-archive-sha256", "expected-links-commit",
+        "otzaria-asset-sha256", "fordb-archive-sha256", "fordb-tag", "expected-links-commit",
         "otzaria-target-commit", "config-sha256", "source-links-tree-sha256",
         "packaged-links-tree-sha256", "lineage-sha256",
     ):
@@ -358,6 +366,7 @@ def main(argv=None) -> int:
                 "otzaria_tag": args.otzaria_tag,
                 "otzaria_asset_sha256": args.otzaria_asset_sha256,
                 "fordb_archive_sha256": args.fordb_archive_sha256,
+                "fordb_tag": args.fordb_tag,
                 "expected_links_commit": args.expected_links_commit,
                 "otzaria_target_commit": args.otzaria_target_commit,
                 "config_sha256": args.config_sha256,

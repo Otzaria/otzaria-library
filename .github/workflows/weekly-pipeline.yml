@@ -24,6 +24,13 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          # The repository's current tree is ~10 GiB, while this coordinator
+          # consumes only the exact-run helper.  Never download the book corpus
+          # merely to dispatch and observe children.
+          sparse-checkout: .github/scripts
+          persist-credentials: false
       - name: Prepare Otzaria sources, then export Sefaria
         shell: bash
         run: |
@@ -31,33 +38,20 @@ jobs:
 
           find_exact_run() {
             local repo="$1" workflow="$2" title="$3" head_sha="$4" dispatched_at="$5"
-            local matches=""
-            for _ in {1..30}; do
-              matches="$(gh run list -R "$repo" -w "$workflow" --event workflow_dispatch --limit 50 \
-                --json databaseId,displayTitle,headSha,createdAt,event \
-                --jq "[.[] | select(.displayTitle == \"$title\" and .headSha == \"$head_sha\" and .createdAt >= \"$dispatched_at\")] | .[].databaseId")"
-              count="$(sed '/^$/d' <<<"$matches" | wc -l | tr -d ' ')"
-              if [[ "$count" == 1 ]]; then
-                printf '%s\n' "$matches"
-                return 0
-              fi
-              if (( count > 1 )); then
-                echo "More than one run matched exact dispatch identity" >&2
-                return 1
-              fi
-              sleep 10
-            done
-            echo "No exact workflow run appeared for $repo/$workflow" >&2
-            return 1
+            bash .github/scripts/find_exact_workflow_run.sh "$repo" "$workflow" "$title" "$head_sha" "$dispatched_at"
           }
 
           prepare_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}:prepare"
           prepare_title="update-library mode=prepare_only correlation=${prepare_correlation}"
           prepare_head="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
           prepare_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-          gh workflow run update-library.yml -R Otzaria/otzaria-library \
+          # Submit once. A non-zero response is delivery-ambiguous; exact-title
+          # discovery below adopts a request that reached GitHub without replying.
+          if ! gh workflow run update-library.yml -R Otzaria/otzaria-library \
             -f mode=prepare_only \
-            -f correlation_id="$prepare_correlation"
+            -f correlation_id="$prepare_correlation"; then
+            echo "::warning::prepare dispatch returned non-zero; checking exact identity before any retry"
+          fi
           prepare_run="$(find_exact_run Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head" "$prepare_time")"
           # Low-frequency resilient wait (gh run watch polls every 3s and can
           # exhaust the shared API quota; transient errors must not kill the run).
@@ -79,18 +73,12 @@ jobs:
           # sync itself.  The weekly orchestrator neither races a publisher nor
           # chooses downstream release inputs.
           export_head="$(gh api repos/Otzaria/SefariaExport/commits/master --jq .sha)"
-          export_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-          gh workflow run release.yml -R Otzaria/SefariaExport
-
-          export_runs=""
-          for _ in {1..30}; do
-            export_runs="$(gh run list -R Otzaria/SefariaExport -w release.yml --event workflow_dispatch --limit 50 \
-              --json databaseId,headSha,createdAt,event \
-              --jq "[.[] | select(.headSha == \"$export_head\" and .createdAt >= \"$export_time\")] | .[].databaseId")"
-            count="$(sed '/^$/d' <<<"$export_runs" | wc -l | tr -d ' ')"
-            [[ "$count" == 0 ]] || break
-            sleep 10
-          done
-          [[ "$(sed '/^$/d' <<<"$export_runs" | wc -l | tr -d ' ')" == 1 ]]
-          watch_run Otzaria/SefariaExport "$export_runs" sefaria-export
+          export_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"
+          export_title="Sefaria immutable export orchestration=$export_correlation"
+          if ! gh workflow run release.yml -R Otzaria/SefariaExport \
+            -f orchestration_id="$export_correlation"; then
+            echo "::warning::SefariaExport dispatch returned non-zero; adopting only an exact run"
+          fi
+          export_run="$(find_exact_run Otzaria/SefariaExport release.yml "$export_title" "$export_head" "unused")"
+          watch_run Otzaria/SefariaExport "$export_run" sefaria-export
           echo "SefariaExport succeeded and dispatched exact manual-link synchronization."

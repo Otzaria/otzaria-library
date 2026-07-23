@@ -66,7 +66,12 @@ def validate_descriptor(value, field):
 
 
 def validate_metadata(value, expected_tag):
-    if not isinstance(value, dict) or value.get("schema_version") != 1 or value.get("tag") != expected_tag:
+    if (
+        not isinstance(value, dict)
+        or type(value.get("schema_version")) is not int
+        or value.get("schema_version") != 1
+        or value.get("tag") != expected_tag
+    ):
         raise ChainError(f"invalid metadata identity for {expected_tag}")
     required = {
         "schema_version", "tag", "run_id", "run_attempt", "source_commit",
