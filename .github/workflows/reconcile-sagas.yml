@@ -1,4 +1,4 @@
-name: Reconcile event-driven sagas
+name: Recovery guard · Resume interrupted weekly sagas (not a build stage)
 run-name: reconcile-sagas
 
 on:

@@ -1,4 +1,4 @@
-name: Sync manual links
+name: Weekly 3/6 · Sync Sefaria manual links into Otzaria
 
 run-name: sync-manual-links correlation=${{ inputs.correlation_id }}
 
@@ -35,6 +35,7 @@ concurrency:
 
 jobs:
   sync-and-commit:
+    name: Weekly 3/6 · Refresh and commit exact manual links
     runs-on: ubuntu-latest
     timeout-minutes: 180
     concurrency:
@@ -336,7 +337,7 @@ jobs:
           retention-days: 90
 
   start-saga:
-    name: Persist saga state and dispatch Otzaria publisher
+    name: Weekly 3→4/6 · Persist state and dispatch Otzaria publisher
     needs: sync-and-commit
     runs-on: ubuntu-latest
     timeout-minutes: 20

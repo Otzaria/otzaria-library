@@ -1,4 +1,4 @@
-name: Continue immutable weekly saga
+name: Weekly stage transition · Verify and continue immutable saga
 run-name: saga-continue stage=${{ github.event.action || inputs.stage }} correlation=${{ github.event.client_payload.correlation_id || inputs.correlation_id }}
 
 on:
@@ -29,7 +29,7 @@ permissions:
 
 jobs:
   resolve:
-    name: Resolve untrusted callback to canonical saga identity
+    name: Weekly transition · Resolve callback to canonical saga identity
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:
@@ -129,7 +129,7 @@ jobs:
           echo "child_run_attempt=$(jq -r .run_attempt child-run.json)" >> "$GITHUB_OUTPUT"
 
   continue:
-    name: Mutate only under canonical correlation mutex
+    name: Weekly 4→5 or 6/6 · Verify product and continue
     needs: resolve
     runs-on: ubuntu-latest
     timeout-minutes: 45

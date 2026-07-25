@@ -139,6 +139,9 @@ class SagaWorkflowContractTest(unittest.TestCase):
     def test_weekly_export_dispatch_is_exactly_adoptable(self):
         workflow = self.workflow("weekly-pipeline.yml")
         self.assertIn("sparse-checkout: .github/scripts", workflow)
+        self.assertIn("uses: ./.github/workflows/update-library.yml", workflow)
+        self.assertIn("mode: prepare_only", workflow)
+        self.assertNotIn("gh workflow run update-library.yml", workflow)
         self.assertIn('export_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"', workflow)
         self.assertIn('-f orchestration_id="$export_correlation"', workflow)
         self.assertIn('export_title="Sefaria immutable export orchestration=$export_correlation"', workflow)
@@ -172,6 +175,24 @@ class SagaWorkflowContractTest(unittest.TestCase):
             reconciler,
             "unknown divergence must remain fatal",
         )
+
+    def test_only_reviewed_terminal_failures_retire_before_replacement_saga(self):
+        registry = (
+            self.root / ".github" / "scripts" / "retired_failed_sagas.tsv"
+        ).read_text(encoding="utf-8")
+        rows = [
+            tuple(line.split("\t"))
+            for line in registry.splitlines()
+            if line and not line.startswith("#")
+        ]
+        self.assertEqual(rows, [("30034398310", "30103685737")])
+        reconciler = (
+            self.root / ".github" / "scripts" / "reconcile_sagas.sh"
+        ).read_text(encoding="utf-8")
+        self.assertIn("verify_retired_failed_saga", reconciler)
+        self.assertIn('.path == ".github/workflows/manual-generate-release.yml"', reconciler)
+        self.assertIn('.display_title == $expected_title', reconciler)
+        self.assertIn('retired failed saga=$saga_run child=$retired_failure_proof', reconciler)
 
     def test_update_library_does_not_download_lfs_twice(self):
         workflow = self.workflow("update-library.yml")

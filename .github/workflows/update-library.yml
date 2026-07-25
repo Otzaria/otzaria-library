@@ -1,8 +1,41 @@
-name: Update Library and create manifest
+name: Weekly 1 or 4/6 · Prepare or publish Otzaria
 
 run-name: update-library mode=${{ inputs.mode }} correlation=${{ inputs.correlation_id || 'manual' }}
 
 on:
+  workflow_call:
+    inputs:
+      mode:
+        description: prepare_only mutates main; links_sync_mode publishes one exact commit
+        required: true
+        type: string
+      expected_links_commit:
+        description: Full commit SHA required by links_sync_mode
+        required: false
+        type: string
+      correlation_id:
+        description: Exact end-to-end correlation identifier
+        required: false
+        type: string
+      saga_run_id:
+        description: Origin sync-manual-links run for callback/recovery
+        required: false
+        type: string
+      saga_run_attempt:
+        description: Exact attempt of the origin sync-manual-links run
+        required: false
+        type: string
+    secrets:
+      PIPELINE_TOKEN:
+        required: true
+      USER_NAME:
+        required: false
+      PASSWORD:
+        required: false
+      TOKEN_YEMOT:
+        required: false
+      GOOGLE_CHAT_URL:
+        required: false
   workflow_dispatch:
     inputs:
       mode:
@@ -35,6 +68,7 @@ permissions:
 
 jobs:
   validate-inputs:
+    name: Weekly stage gate · Validate ${{ inputs.mode }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     outputs:
@@ -67,6 +101,7 @@ jobs:
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
 
   prepare:
+    name: Weekly 1/6 · Prepare Otzaria sources
     needs: validate-inputs
     if: needs.validate-inputs.outputs.mode == 'prepare_only'
     runs-on: ubuntu-latest
@@ -130,6 +165,7 @@ jobs:
           git push
 
   package:
+    name: Weekly 4/6 · Publish exact Otzaria library release
     needs: validate-inputs
     if: needs.validate-inputs.outputs.mode == 'links_sync_mode'
     runs-on: ubuntu-24.04

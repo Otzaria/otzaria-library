@@ -1,0 +1,4 @@
+# saga_root_run_id	terminal_seforim_child_run_id
+# The 2026-07-23 split canary was deliberately abandoned after its exact Seforim
+# child failed before Linker admission. A fresh post-baseline weekly run replaces it.
+30034398310	30103685737

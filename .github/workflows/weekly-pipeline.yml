@@ -1,4 +1,4 @@
-name: Weekly Otzaria pipeline
+name: Weekly Otzaria pipeline — end-to-end entrypoint
 
 run-name: weekly immutable pipeline ${{ github.run_id }}-${{ github.run_attempt }}
 
@@ -8,19 +8,31 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # The in-run reusable prepare stage commits refreshed Otzaria sources.
+  contents: write
+  actions: read
 
 concurrency:
   group: weekly-otzaria-pipeline
   cancel-in-progress: false
 
 jobs:
-  orchestrate:
+  prepare-otzaria:
+    name: Weekly 1/6 · Prepare Otzaria sources
+    uses: ./.github/workflows/update-library.yml
+    with:
+      mode: prepare_only
+      correlation_id: weekly:${{ github.run_id }}:${{ github.run_attempt }}:prepare
+    secrets: inherit
+
+  export-sefaria:
+    name: Weekly 2/6 · Export Sefaria and hand off the durable saga
+    needs: prepare-otzaria
     runs-on: ubuntu-latest
-    # The orchestrator only waits for prepare (~7m) + the Sefaria export (~55m); 4h is
-    # ample headroom yet bounds a stuck watch loop well below GitHub's implicit 6h job
-    # ceiling, so a wedged wait can't silently burn a runner for hours.
-    timeout-minutes: 240
+    # This job waits only for the Sefaria export.  The source preparation is now a
+    # reusable job inside this same Weekly run, while the long cross-repository
+    # publication chain remains event-driven so no stage can hit GitHub's 6h job cap.
+    timeout-minutes: 180
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
     steps:
@@ -31,7 +43,7 @@ jobs:
           # merely to dispatch and observe children.
           sparse-checkout: .github/scripts
           persist-credentials: false
-      - name: Prepare Otzaria sources, then export Sefaria
+      - name: Export Sefaria and verify the exact handoff
         shell: bash
         run: |
           set -euo pipefail
@@ -41,18 +53,6 @@ jobs:
             bash .github/scripts/find_exact_workflow_run.sh "$repo" "$workflow" "$title" "$head_sha" "$dispatched_at"
           }
 
-          prepare_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}:prepare"
-          prepare_title="update-library mode=prepare_only correlation=${prepare_correlation}"
-          prepare_head="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
-          prepare_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-          # Submit once. A non-zero response is delivery-ambiguous; exact-title
-          # discovery below adopts a request that reached GitHub without replying.
-          if ! gh workflow run update-library.yml -R Otzaria/otzaria-library \
-            -f mode=prepare_only \
-            -f correlation_id="$prepare_correlation"; then
-            echo "::warning::prepare dispatch returned non-zero; checking exact identity before any retry"
-          fi
-          prepare_run="$(find_exact_run Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head" "$prepare_time")"
           # Low-frequency resilient wait (gh run watch polls every 3s and can
           # exhaust the shared API quota; transient errors must not kill the run).
           watch_run() {
@@ -67,8 +67,6 @@ jobs:
               esac
             done
           }
-          watch_run Otzaria/otzaria-library "$prepare_run" update-library
-
           # SefariaExport publishes an immutable release and dispatches the link
           # sync itself.  The weekly orchestrator neither races a publisher nor
           # chooses downstream release inputs.
@@ -82,3 +80,17 @@ jobs:
           export_run="$(find_exact_run Otzaria/SefariaExport release.yml "$export_title" "$export_head" "unused")"
           watch_run Otzaria/SefariaExport "$export_run" sefaria-export
           echo "SefariaExport succeeded and dispatched exact manual-link synchronization."
+
+          {
+            echo "## Weekly pipeline handoff"
+            echo
+            echo "- ✅ 1/6 — Otzaria sources prepared inside this Weekly run"
+            echo "- ✅ 2/6 — [Sefaria export run $export_run](https://github.com/Otzaria/SefariaExport/actions/runs/$export_run)"
+            echo "- ⏭️ 3/6 — Sync Sefaria manual links into Otzaria"
+            echo "- ⏭️ 4/6 — Publish the exact Otzaria library release"
+            echo "- ⏭️ 5/6 — Build Seforim DB; run incremental Linker GPU NER + CPU resolution"
+            echo "- ⏭️ 6/6 — Validate and publish the final Seforim release"
+            echo
+            echo "Stages 3–6 remain separate, exact-correlated runs so long work can"
+            echo "survive runner limits and be resumed without duplicating a weekly saga."
+          } >> "$GITHUB_STEP_SUMMARY"

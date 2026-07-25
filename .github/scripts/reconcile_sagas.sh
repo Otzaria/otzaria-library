@@ -16,6 +16,7 @@ MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
 # remains a loud contract failure.
 STATE_CONTRACT_COMMIT=${SAGA_STATE_CONTRACT_COMMIT:-a7a9feef7e0f8ee702e0b179b346dd9fcf845393}
 RETIRED_ROOTS_FILE=${SAGA_RETIRED_ROOTS_FILE:-"$HERE/retired_completed_sagas.tsv"}
+RETIRED_FAILED_ROOTS_FILE=${SAGA_RETIRED_FAILED_ROOTS_FILE:-"$HERE/retired_failed_sagas.tsv"}
 CONTROL_HEAD=$(git rev-parse HEAD)
 [[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
   echo "::error::cannot resolve reconciler control head"; exit 2; }
@@ -25,12 +26,20 @@ CONTROL_HEAD=$(git rev-parse HEAD)
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
 test -f "$RETIRED_ROOTS_FILE" || {
   echo "::error::missing retired-saga registry"; exit 2; }
+test -f "$RETIRED_FAILED_ROOTS_FILE" || {
+  echo "::error::missing retired-failed-saga registry"; exit 2; }
 awk -F'\t' '
   /^[[:space:]]*(#|$)/ {next}
   NF != 2 || $1 !~ /^[1-9][0-9]*$/ || $2 !~ /^[1-9][0-9]*$/ {exit 1}
   seen_root[$1]++ || seen_completion[$2]++ {exit 1}
 ' "$RETIRED_ROOTS_FILE" || {
   echo "::error::invalid/duplicate retired-saga registry"; exit 2; }
+awk -F'\t' '
+  /^[[:space:]]*(#|$)/ {next}
+  NF != 2 || $1 !~ /^[1-9][0-9]*$/ || $2 !~ /^[1-9][0-9]*$/ {exit 1}
+  seen_root[$1]++ || seen_child[$2]++ {exit 1}
+' "$RETIRED_FAILED_ROOTS_FILE" || {
+  echo "::error::invalid/duplicate retired-failed-saga registry"; exit 2; }
 
 if ! RUNS=$(gh api --paginate -X GET "repos/$REPO/actions/workflows/sync-manual-links.yml/runs" \
   -f event=workflow_dispatch -f created=">=$SINCE" -f per_page=100 \
@@ -69,6 +78,35 @@ verify_retired_completed_saga() {
       .display_title == $expected_title
     ' "$completion_json" >/dev/null || {
       echo "::error::retired saga $saga_run lacks its exact successful S2 completion $completion_run" >&2
+      return 1
+    }
+}
+
+# A new full weekly run may deliberately replace a terminal, unpublished saga.
+# Retire only reviewed root/failed-child pairs, and re-prove their exact GitHub
+# identities every tick.  This prevents an abandoned historical root from
+# competing with the replacement saga while keeping unknown failures loud.
+verify_retired_failed_saga() {
+  local saga_run="$1" child_run="$2" root_title corr child_json
+  root_title=$(gh api "repos/$REPO/actions/runs/$saga_run" --jq .display_title) || return 1
+  case "$root_title" in
+    "sync-manual-links correlation="*) corr=${root_title#"sync-manual-links correlation="} ;;
+    *) echo "::error::retired failed saga $saga_run has an invalid root title" >&2; return 1 ;;
+  esac
+  [ -n "$corr" ] || {
+    echo "::error::retired failed saga $saga_run has an empty correlation" >&2; return 1; }
+  child_json="$TMP/retired-failed-child-$child_run.json"
+  gh api "repos/Otzaria/SeforimLibrary/actions/runs/$child_run" > "$child_json" || return 1
+  jq -e --argjson expected_id "$child_run" \
+    --arg expected_title "manual-generate-release correlation=$corr" '
+      (.id|type) == "number" and .id == $expected_id and
+      .status == "completed" and
+      (.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out") and
+      .event == "workflow_dispatch" and
+      .path == ".github/workflows/manual-generate-release.yml" and
+      .display_title == $expected_title
+    ' "$child_json" >/dev/null || {
+      echo "::error::retired failed saga $saga_run lacks its exact terminal child $child_run" >&2
       return 1
     }
 }
@@ -194,6 +232,16 @@ for saga_run in $RUNS; do
     echo "::error::invalid head SHA for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
   [[ "$saga_attempt" =~ ^[1-9][0-9]*$ ]] || {
     echo "::error::invalid current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
+  retired_failure_proof=$(awk -F'\t' -v root="$saga_run" \
+    '$1 == root {print $2}' "$RETIRED_FAILED_ROOTS_FILE")
+  if [ -n "$retired_failure_proof" ]; then
+    if verify_retired_failed_saga "$saga_run" "$retired_failure_proof"; then
+      echo "retired failed saga=$saga_run child=$retired_failure_proof skipped after exact verification"
+      continue
+    fi
+    FAILURES=$((FAILURES+1))
+    continue
+  fi
   if ! contract_relation=$(gh api "repos/$REPO/compare/$STATE_CONTRACT_COMMIT...$saga_head" --jq .status); then
     echo "::error::cannot establish saga-state contract ancestry for saga $saga_run"
     FAILURES=$((FAILURES+1)); continue
