@@ -197,6 +197,39 @@ jobs:
           fetch-depth: 0
           lfs: true
           persist-credentials: false
+          # Keep the exact-commit ancestry check while avoiding the unrelated
+          # multi-gigabyte source trees. actions/checkout uses blob:none for a
+          # sparse checkout and hydrates only LFS objects selected below.
+          sparse-checkout: |
+            .github/workflows
+            Ben-YehudaToOtzaria/ספרים/אוצריא
+            Ben-YehudaToOtzaria/links
+            DictaToOtzaria/ערוך/ספרים/אוצריא
+            DictaToOtzaria/ערוך/links
+            DictaToOtzaria/לא ערוך/ספרים
+            OnYourWayToOtzaria/ספרים/אוצריא
+            OnYourWayToOtzaria/links
+            OraytaToOtzaria/ספרים/אוצריא
+            OraytaToOtzaria/links
+            tashmaToOtzaria/ספרים/אוצריא
+            tashmaToOtzaria/links
+            sefariaToOtzaria/sefaria_export/ספרים/אוצריא
+            sefariaToOtzaria/sefaria_export/links
+            sefariaToOtzaria/sefaria_api/ספרים/אוצריא
+            sefariaToOtzaria/sefaria_api/links
+            MoreBooks/ספרים/אוצריא
+            MoreBooks/links
+            wikiJewishBooksToOtzaria/ספרים/אוצריא
+            wikiJewishBooksToOtzaria/links
+            wikisourceToOtzaria/ספרים/אוצריא
+            wikisourceToOtzaria/links
+            ToratEmetToOtzaria/ספרים/אוצריא
+            ToratEmetToOtzaria/links
+            pninimToOtzaria/ספרים/אוצריא
+            pninimToOtzaria/links
+            National-LibraryToOtzaria/ספרים/אוצריא
+            National-LibraryToOtzaria/links
+          sparse-checkout-cone-mode: true
       - name: Verify target is exact and reachable from main
         shell: bash
         run: |

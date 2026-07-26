@@ -163,6 +163,23 @@ class ManualLinksPackagingTest(unittest.TestCase):
             self.assertIn(expected, workflow)
             self.assertNotIn("jlumbroso/free-disk-space@main", workflow)
 
+    def test_publisher_sparse_checkout_contains_every_packaged_source(self):
+        root = Path(__file__).resolve().parent
+        workflow = (root / ".github/workflows/update-library.yml").read_text(encoding="utf-8")
+        package_job = workflow.split("\n  package:\n", 1)[1]
+        config = packaging.validate_config(packaging.load_json(root / packaging.CONFIG_NAME))
+        required_paths = {
+            ".github/workflows",
+            "DictaToOtzaria/לא ערוך/ספרים",
+            *packaging.BOOK_ROOTS,
+            *(entry["path"] for entry in config["links_roots"]),
+        }
+        self.assertIn("          sparse-checkout-cone-mode: true\n", package_job)
+        self.assertIn("          fetch-depth: 0\n", package_job)
+        self.assertIn("          lfs: true\n", package_job)
+        for path in required_paths:
+            self.assertIn(f"            {path}\n", package_job)
+
 
 if __name__ == "__main__":
     unittest.main()
