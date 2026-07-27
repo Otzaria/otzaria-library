@@ -11,9 +11,11 @@ FAILURES=0
 MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
 # The reconciler was introduced together with the durable saga-state artifact.
 # Successful workflow runs from before that rollout used the old synchronous
-# protocol and legitimately have no saga-state artifact.  Gate on ancestry,
-# rather than on a date or artifact absence, so a post-rollout missing artifact
-# remains a loud contract failure.
+# protocol and legitimately have no saga-state artifact.  A rewritten Git
+# history can also make an otherwise valid historical root `diverged` from
+# this marker.  In either case, never auto-recover it: that would create a
+# duplicate saga from a foreign control-plane history.  Post-rollout roots on
+# the current lineage still require their state artifact below.
 STATE_CONTRACT_COMMIT=${SAGA_STATE_CONTRACT_COMMIT:-d887f442b3c358da28e62506fae9df3f7c931700}
 CONTROL_HEAD=$(git rev-parse HEAD)
 [[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
@@ -159,8 +161,8 @@ for saga_run in $RUNS; do
   fi
   case "$contract_relation" in
     identical|ahead) ;;
-    behind)
-      echo "legacy saga=$saga_run predates durable saga-state; skipped"
+    behind|diverged)
+      echo "legacy saga=$saga_run is outside the durable saga-state lineage ($contract_relation); skipped"
       continue ;;
     *)
       echo "::error::saga $saga_run head is not on the durable saga-state lineage ($contract_relation)"

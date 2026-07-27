@@ -136,6 +136,19 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertIn('$2=="completed" && $3=="success"', reconciler)
         self.assertIn('.head_sha==env.HEAD_SHA', reconciler)
 
+    def test_reconciler_skips_historical_roots_outside_current_lineage(self):
+        reconciler = (self.root / ".github" / "scripts" / "reconcile_sagas.sh").read_text()
+        lineage_case = reconciler.split("  case \"$contract_relation\" in\n", 1)[1].split(
+            "  esac\n", 1
+        )[0]
+        self.assertIn("behind|diverged)", lineage_case)
+        self.assertIn("outside the durable saga-state lineage", lineage_case)
+        self.assertLess(
+            lineage_case.index("behind|diverged)"),
+            lineage_case.index("*)"),
+            "rewritten historical roots must be skipped before the error fallback",
+        )
+
     def test_weekly_export_dispatch_is_exactly_adoptable(self):
         workflow = self.workflow("weekly-pipeline.yml")
         self.assertIn("sparse-checkout: .github/scripts", workflow)
