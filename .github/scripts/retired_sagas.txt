@@ -1,0 +1,3 @@
+# Explicit operator tombstones. These successful roots must never be recovered
+# again even when their durable state artifact remains live.
+30310796971

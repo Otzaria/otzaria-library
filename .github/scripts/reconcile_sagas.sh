@@ -5,6 +5,7 @@ set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=${SAGA_REPO:-Otzaria/otzaria-library}
 SINCE=${SAGA_SINCE:-$(date -u -d '90 days ago' +%Y-%m-%dT%H:%M:%SZ)}
+RETIRED_SAGAS_FILE=${SAGA_RETIRED_FILE:-"$HERE/retired_sagas.txt"}
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 FAILURES=0
@@ -24,6 +25,16 @@ CONTROL_HEAD=$(git rev-parse HEAD)
   echo "::error::SAGA_STATE_CONTRACT_COMMIT must be a full commit SHA"; exit 2; }
 [[ "$MAX_RERUN_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || {
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
+if [ -f "$RETIRED_SAGAS_FILE" ]; then
+  awk '
+    /^[[:space:]]*(#|$)/ { next }
+    !/^[1-9][0-9]*$/ {
+      printf "::error::invalid retired saga id at %s:%d\n", FILENAME, NR > "/dev/stderr"
+      bad=1
+    }
+    END { exit bad ? 1 : 0 }
+  ' "$RETIRED_SAGAS_FILE" || exit 2
+fi
 
 if ! RUNS=$(gh api --paginate -X GET "repos/$REPO/actions/workflows/sync-manual-links.yml/runs" \
   -f event=workflow_dispatch -f created=">=$SINCE" -f per_page=100 \
@@ -146,6 +157,11 @@ rerun_failed_child() {
 }
 
 for saga_run in $RUNS; do
+  if [ -f "$RETIRED_SAGAS_FILE" ] &&
+      grep -Fxq "$saga_run" "$RETIRED_SAGAS_FILE"; then
+    echo "retired saga=$saga_run skipped by explicit operator tombstone"
+    continue
+  fi
   if ! saga_meta=$(gh api "repos/$REPO/actions/runs/$saga_run" \
       --jq 'select(.status=="completed" and .conclusion=="success" and (.run_attempt|type)=="number" and .run_attempt>=1 and (.head_sha|type)=="string") | [.head_sha,.run_attempt] | @tsv'); then
     echo "::warning::cannot resolve current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue
