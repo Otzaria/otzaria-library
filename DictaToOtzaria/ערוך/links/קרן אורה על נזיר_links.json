@@ -1,5 +1,12 @@
 [
   {
+    "line_index_1": 5,
+    "line_index_2": 7,
+    "heRef_2": "תוספות על נזיר ב., ב, ג",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 6,
     "line_index_2": 3,
     "heRef_2": "נזיר ב., א",
@@ -735,11 +742,18 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 130,
+    "line_index_2": 155,
+    "heRef_2": "תוספות על נזיר ט., ב, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 131,
-    "line_index_2": 191,
-    "heRef_2": "נזיר ט., ג",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 155,
+    "heRef_2": "תוספות על נזיר ט., ב, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 133,
@@ -840,6 +854,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 149,
+    "line_index_2": 174,
+    "heRef_2": "תוספות על נזיר י., ה, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 151,
     "line_index_2": 214,
     "heRef_2": "נזיר י., ח",
@@ -903,11 +924,18 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 163,
+    "line_index_2": 190,
+    "heRef_2": "תוספות על נזיר יא., ז, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 164,
-    "line_index_2": 227,
-    "heRef_2": "נזיר יא., ו",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 190,
+    "heRef_2": "תוספות על נזיר יא., ז, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 165,
@@ -1652,18 +1680,25 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 288,
+    "line_index_2": 262,
+    "heRef_2": "תוספות על נזיר יד:, א, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 289,
-    "line_index_2": 297,
-    "heRef_2": "נזיר יד:, ט",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 262,
+    "heRef_2": "תוספות על נזיר יד:, א, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 290,
-    "line_index_2": 297,
-    "heRef_2": "נזיר יד:, ט",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 262,
+    "heRef_2": "תוספות על נזיר יד:, א, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 292,
@@ -1813,6 +1848,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 320,
+    "line_index_2": 323,
+    "heRef_2": "תוספות על נזיר טז:, ד, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 321,
     "line_index_2": 333,
     "heRef_2": "נזיר טז:, ה",
@@ -1946,11 +1988,18 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 341,
+    "line_index_2": 335,
+    "heRef_2": "תוספות על נזיר יז., ד, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 342,
-    "line_index_2": 346,
-    "heRef_2": "נזיר יז., י",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 335,
+    "heRef_2": "תוספות על נזיר יז., ד, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 343,
@@ -2224,6 +2273,13 @@
     "heRef_2": "נזיר יט., ב",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 386,
+    "line_index_2": 396,
+    "heRef_2": "תוספות על נזיר יט., ח, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 387,
@@ -2539,6 +2595,13 @@
     "heRef_2": "נזיר כא:, ט",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 439,
+    "line_index_2": 596,
+    "heRef_2": "רש\"י על נזיר כא:, ט, א",
+    "path_2": "רשי על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 440,
@@ -2898,11 +2961,25 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 502,
+    "line_index_2": 544,
+    "heRef_2": "תוספות על נזיר כה:, ה, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 503,
     "line_index_2": 530,
     "heRef_2": "נזיר כה:, ד",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 504,
+    "line_index_2": 712,
+    "heRef_2": "רש\"י על נזיר כה:, ו, ב",
+    "path_2": "רשי על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 505,
@@ -3087,6 +3164,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 533,
+    "line_index_2": 561,
+    "heRef_2": "תוספות על נזיר כו:, ג, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 534,
     "line_index_2": 545,
     "heRef_2": "נזיר כו:, ג",
@@ -3239,6 +3323,13 @@
     "heRef_2": "נזיר כח., א",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 559,
+    "line_index_2": 585,
+    "heRef_2": "תוספות על נזיר כח., י, ב",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 560,
@@ -3613,10 +3704,10 @@
   },
   {
     "line_index_1": 634,
-    "line_index_2": 639,
-    "heRef_2": "נזיר לא., א",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 647,
+    "heRef_2": "תוספות על נזיר לא., א, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 636,
@@ -3899,11 +3990,11 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 686,
-    "line_index_2": 721,
-    "heRef_2": "נזיר לה., ד",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_1": 683,
+    "line_index_2": 726,
+    "heRef_2": "תוספות על נזיר לד:, יג, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 687,
@@ -4443,6 +4534,13 @@
     "heRef_2": "נזיר לז., טו",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 774,
+    "line_index_2": 780,
+    "heRef_2": "תוספות על נזיר לז:, א, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 775,
@@ -5656,18 +5754,25 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 960,
+    "line_index_2": 929,
+    "heRef_2": "תוספות על נזיר מג., ז, ב",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 961,
-    "line_index_2": 900,
-    "heRef_2": "נזיר מג., ו",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 929,
+    "heRef_2": "תוספות על נזיר מג., ז, ב",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 962,
-    "line_index_2": 900,
-    "heRef_2": "נזיר מג., ו",
-    "path_2": "נזיר.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 929,
+    "heRef_2": "תוספות על נזיר מג., ז, ב",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 963,
@@ -6059,6 +6164,13 @@
     "line_index_2": 1346,
     "heRef_2": "רש\"י על נזיר מז., ג, א",
     "path_2": "רשי על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 1043,
+    "line_index_2": 1026,
+    "heRef_2": "תוספות על נזיר מז., ב, א",
+    "path_2": "תוספות על נזיר.txt",
     "Conection Type": "super_commentary"
   },
   {
@@ -7007,6 +7119,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 1198,
+    "line_index_2": 1582,
+    "heRef_2": "רש\"י על נזיר נה., ח, ג",
+    "path_2": "רשי על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 1200,
     "line_index_2": 1170,
     "heRef_2": "נזיר נה:, א",
@@ -7364,6 +7483,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 1265,
+    "line_index_2": 1319,
+    "heRef_2": "תוספות על נזיר ס., ט, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 1266,
     "line_index_2": 1265,
     "heRef_2": "נזיר ס., ג",
@@ -7418,6 +7544,13 @@
     "heRef_2": "נזיר ס:, ה",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 1275,
+    "line_index_2": 1327,
+    "heRef_2": "תוספות על נזיר ס:, ט, א",
+    "path_2": "תוספות על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 1278,
@@ -7873,6 +8006,13 @@
     "heRef_2": "נזיר סה., ה",
     "path_2": "נזיר.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 1352,
+    "line_index_2": 1897,
+    "heRef_2": "רש\"י על נזיר סה., ט, ד",
+    "path_2": "רשי על נזיר.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 1354,

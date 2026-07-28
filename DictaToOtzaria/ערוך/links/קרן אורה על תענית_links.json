@@ -1,5 +1,12 @@
 [
   {
+    "line_index_1": 5,
+    "line_index_2": 7,
+    "heRef_2": "תוספות על תענית ב., ז, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 6,
     "line_index_2": 11,
     "heRef_2": "תענית ב., ט",
@@ -259,6 +266,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 60,
+    "line_index_2": 109,
+    "heRef_2": "תוספות על תענית יא:, א, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 61,
     "line_index_2": 320,
     "heRef_2": "תענית יא:, ד",
@@ -274,10 +288,10 @@
   },
   {
     "line_index_1": 64,
-    "line_index_2": 321,
-    "heRef_2": "תענית יא:, ה",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 112,
+    "heRef_2": "תוספות על תענית יא:, ד, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 66,
@@ -441,6 +455,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 95,
+    "line_index_2": 149,
+    "heRef_2": "תוספות על תענית יד:, ג, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 96,
     "line_index_2": 404,
     "heRef_2": "תענית יד:, ד",
@@ -502,6 +523,13 @@
     "heRef_2": "תענית טו:, טו",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 111,
+    "line_index_2": 809,
+    "heRef_2": "רש\"י על תענית טז., ה, א",
+    "path_2": "רשי על תענית.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 112,
@@ -581,11 +609,25 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 125,
+    "line_index_2": 173,
+    "heRef_2": "תוספות על תענית יז., יג, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 127,
     "line_index_2": 501,
     "heRef_2": "תענית יז:, ו",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 128,
+    "line_index_2": 180,
+    "heRef_2": "תוספות על תענית יז:, ז, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 129,
@@ -1036,6 +1078,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 218,
+    "line_index_2": 1614,
+    "heRef_2": "רש\"י על תענית כט:, ג, א",
+    "path_2": "רשי על תענית.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 219,
     "line_index_2": 911,
     "heRef_2": "תענית כט:, י",
@@ -1048,6 +1097,13 @@
     "heRef_2": "תענית ל., ב",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 222,
+    "line_index_2": 269,
+    "heRef_2": "תוספות על תענית ל., ד, א",
+    "path_2": "תוספות על תענית.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 223,

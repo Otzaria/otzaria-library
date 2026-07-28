@@ -14,6 +14,27 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 7,
+    "line_index_2": 6,
+    "heRef_2": "פסחים ב., ד",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 8,
+    "line_index_2": 7,
+    "heRef_2": "פסחים ב., ה",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 9,
+    "line_index_2": 4,
+    "heRef_2": "תוספות על פסחים ב., א, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 10,
     "line_index_2": 3,
     "heRef_2": "פסחים ב., א",
@@ -33,27 +54,6 @@
     "heRef_2": "תוספות על פסחים ב., א, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 9,
-    "line_index_2": 4,
-    "heRef_2": "תוספות על פסחים ב., א, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 7,
-    "line_index_2": 6,
-    "heRef_2": "פסחים ב., ד",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 8,
-    "line_index_2": 7,
-    "heRef_2": "פסחים ב., ה",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 13,
@@ -175,27 +175,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 43,
-    "line_index_2": 72,
-    "heRef_2": "פסחים ד:, א",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 42,
-    "line_index_2": 33,
-    "heRef_2": "תוספות על פסחים ד:, א, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 41,
-    "line_index_2": 33,
-    "heRef_2": "תוספות על פסחים ד:, א, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 35,
     "line_index_2": 76,
     "heRef_2": "פסחים ד:, ה",
@@ -234,6 +213,27 @@
     "line_index_1": 40,
     "line_index_2": 81,
     "heRef_2": "פסחים ד:, י",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 41,
+    "line_index_2": 33,
+    "heRef_2": "תוספות על פסחים ד:, א, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 42,
+    "line_index_2": 33,
+    "heRef_2": "תוספות על פסחים ד:, א, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 43,
+    "line_index_2": 72,
+    "heRef_2": "פסחים ד:, א",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
@@ -518,14 +518,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 91,
+    "line_index_1": 90,
     "line_index_2": 92,
     "heRef_2": "תוספות על פסחים ט., י, ב",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 90,
+    "line_index_1": 91,
     "line_index_2": 92,
     "heRef_2": "תוספות על פסחים ט., י, ב",
     "path_2": "תוספות על פסחים.txt",
@@ -616,13 +616,6 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 113,
-    "line_index_2": 163,
-    "heRef_2": "תוספות על פסחים טו., ב, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 110,
     "line_index_2": 163,
     "heRef_2": "תוספות על פסחים טו., ב, א",
@@ -640,6 +633,13 @@
     "line_index_1": 112,
     "line_index_2": 165,
     "heRef_2": "תוספות על פסחים טו., ג, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 113,
+    "line_index_2": 163,
+    "heRef_2": "תוספות על פסחים טו., ב, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
@@ -889,13 +889,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 167,
-    "line_index_2": 650,
-    "heRef_2": "פסחים כא:, ו",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 163,
     "line_index_2": 655,
     "heRef_2": "פסחים כא:, יא",
@@ -924,6 +917,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 167,
+    "line_index_2": 650,
+    "heRef_2": "פסחים כא:, ו",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
+  },
+  {
     "line_index_1": 168,
     "line_index_2": 232,
     "heRef_2": "תוספות על פסחים כא:, י, א",
@@ -938,16 +938,16 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 172,
-    "line_index_2": 657,
-    "heRef_2": "פסחים כב., א",
+    "line_index_1": 171,
+    "line_index_2": 658,
+    "heRef_2": "פסחים כב., ב",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 171,
-    "line_index_2": 658,
-    "heRef_2": "פסחים כב., ב",
+    "line_index_1": 172,
+    "line_index_2": 657,
+    "heRef_2": "פסחים כב., א",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
@@ -1232,16 +1232,16 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 221,
-    "line_index_2": 756,
-    "heRef_2": "פסחים כה., יא",
+    "line_index_1": 220,
+    "line_index_2": 757,
+    "heRef_2": "פסחים כה., יב",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 220,
-    "line_index_2": 757,
-    "heRef_2": "פסחים כה., יב",
+    "line_index_1": 221,
+    "line_index_2": 756,
+    "heRef_2": "פסחים כה., יא",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
@@ -1393,16 +1393,16 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 250,
-    "line_index_2": 818,
-    "heRef_2": "פסחים כז:, ב",
+    "line_index_1": 249,
+    "line_index_2": 822,
+    "heRef_2": "פסחים כז:, ו",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 249,
-    "line_index_2": 822,
-    "heRef_2": "פסחים כז:, ו",
+    "line_index_1": 250,
+    "line_index_2": 818,
+    "heRef_2": "פסחים כז:, ב",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
   },
@@ -1421,20 +1421,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 256,
-    "line_index_2": 313,
-    "heRef_2": "תוספות על פסחים כז:, ח, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 255,
-    "line_index_2": 313,
-    "heRef_2": "תוספות על פסחים כז:, ח, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 253,
     "line_index_2": 308,
     "heRef_2": "תוספות על פסחים כז:, א, א",
@@ -1447,6 +1433,20 @@
     "heRef_2": "פסחים כז:, א",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 255,
+    "line_index_2": 313,
+    "heRef_2": "תוספות על פסחים כז:, ח, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 256,
+    "line_index_2": 313,
+    "heRef_2": "תוספות על פסחים כז:, ח, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 257,
@@ -1575,20 +1575,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 282,
-    "line_index_2": 336,
-    "heRef_2": "תוספות על פסחים כט., יג, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 281,
-    "line_index_2": 336,
-    "heRef_2": "תוספות על פסחים כט., יג, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 279,
     "line_index_2": 333,
     "heRef_2": "תוספות על פסחים כט., ג, א",
@@ -1601,6 +1587,27 @@
     "heRef_2": "תוספות על פסחים כט., ג, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 281,
+    "line_index_2": 336,
+    "heRef_2": "תוספות על פסחים כט., יג, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 282,
+    "line_index_2": 336,
+    "heRef_2": "תוספות על פסחים כט., יג, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 285,
+    "line_index_2": 875,
+    "heRef_2": "פסחים כט:, ה",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
   },
   {
     "line_index_1": 286,
@@ -1622,13 +1629,6 @@
     "heRef_2": "תוספות על פסחים כט:, ה, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 285,
-    "line_index_2": 875,
-    "heRef_2": "פסחים כט:, ה",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 290,
@@ -1799,13 +1799,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 320,
-    "line_index_2": 925,
-    "heRef_2": "פסחים לא:, ד",
-    "path_2": "פסחים.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 317,
     "line_index_2": 926,
     "heRef_2": "פסחים לא:, ה",
@@ -1825,6 +1818,13 @@
     "heRef_2": "תוספות על פסחים לא:, א, ג",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 320,
+    "line_index_2": 925,
+    "heRef_2": "פסחים לא:, ד",
+    "path_2": "פסחים.txt",
+    "Conection Type": "commentary"
   },
   {
     "line_index_1": 321,
@@ -2163,14 +2163,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 381,
+    "line_index_1": 380,
     "line_index_2": 410,
     "heRef_2": "תוספות על פסחים לז:, ז, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 380,
+    "line_index_1": 381,
     "line_index_2": 410,
     "heRef_2": "תוספות על פסחים לז:, ז, א",
     "path_2": "תוספות על פסחים.txt",
@@ -2394,9 +2394,9 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 421,
-    "line_index_2": 435,
-    "heRef_2": "תוספות על פסחים מ:, ח, א",
+    "line_index_1": 419,
+    "line_index_2": 434,
+    "heRef_2": "תוספות על פסחים מ:, ג, ב",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
@@ -2408,9 +2408,9 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 419,
-    "line_index_2": 434,
-    "heRef_2": "תוספות על פסחים מ:, ג, ב",
+    "line_index_1": 421,
+    "line_index_2": 435,
+    "heRef_2": "תוספות על פסחים מ:, ח, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
@@ -2562,18 +2562,18 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 450,
-    "line_index_2": 462,
-    "heRef_2": "תוספות על פסחים מג., ז, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 449,
     "line_index_2": 1322,
     "heRef_2": "פסחים מג., יט",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 450,
+    "line_index_2": 462,
+    "heRef_2": "תוספות על פסחים מג., ז, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 452,
@@ -2604,14 +2604,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 457,
+    "line_index_1": 456,
     "line_index_2": 467,
     "heRef_2": "תוספות על פסחים מג:, א, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 456,
+    "line_index_1": 457,
     "line_index_2": 467,
     "heRef_2": "תוספות על פסחים מג:, א, א",
     "path_2": "תוספות על פסחים.txt",
@@ -2807,13 +2807,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 492,
-    "line_index_2": 501,
-    "heRef_2": "תוספות על פסחים מו:, ג, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 491,
     "line_index_2": 501,
     "heRef_2": "תוספות על פסחים מו:, ג, א",
@@ -2821,14 +2814,21 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 494,
+    "line_index_1": 492,
+    "line_index_2": 501,
+    "heRef_2": "תוספות על פסחים מו:, ג, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 493,
     "line_index_2": 502,
     "heRef_2": "תוספות על פסחים מו:, ג, ב",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 493,
+    "line_index_1": 494,
     "line_index_2": 502,
     "heRef_2": "תוספות על פסחים מו:, ג, ב",
     "path_2": "תוספות על פסחים.txt",
@@ -2961,14 +2961,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 522,
+    "line_index_1": 521,
     "line_index_2": 548,
     "heRef_2": "תוספות על פסחים נא., ג, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 521,
+    "line_index_1": 522,
     "line_index_2": 548,
     "heRef_2": "תוספות על פסחים נא., ג, א",
     "path_2": "תוספות על פסחים.txt",
@@ -3211,6 +3211,13 @@
     "heRef_2": "פסחים נח:, יא",
     "path_2": "פסחים.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 570,
+    "line_index_2": 608,
+    "heRef_2": "תוספות על פסחים נח:, ח, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 571,
@@ -3899,6 +3906,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 703,
+    "line_index_2": 774,
+    "heRef_2": "תוספות על פסחים עד., י, א",
+    "path_2": "תוספות על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 704,
     "line_index_2": 774,
     "heRef_2": "תוספות על פסחים עד., י, א",
@@ -3914,13 +3928,6 @@
   },
   {
     "line_index_1": 706,
-    "line_index_2": 774,
-    "heRef_2": "תוספות על פסחים עד., י, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 703,
     "line_index_2": 774,
     "heRef_2": "תוספות על פסחים עד., י, א",
     "path_2": "תוספות על פסחים.txt",
@@ -3969,14 +3976,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 715,
+    "line_index_1": 714,
     "line_index_2": 780,
     "heRef_2": "תוספות על פסחים עד:, יב, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 714,
+    "line_index_1": 715,
     "line_index_2": 780,
     "heRef_2": "תוספות על פסחים עד:, יב, א",
     "path_2": "תוספות על פסחים.txt",
@@ -4021,13 +4028,6 @@
     "line_index_1": 722,
     "line_index_2": 782,
     "heRef_2": "תוספות על פסחים עה., ג, א",
-    "path_2": "תוספות על פסחים.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 747,
-    "line_index_2": 800,
-    "heRef_2": "תוספות על פסחים עו:, ג, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
@@ -4176,6 +4176,13 @@
     "line_index_2": 3659,
     "heRef_2": "רש\"י על פסחים עו:, ח, א",
     "path_2": "רשי על פסחים.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 747,
+    "line_index_2": 800,
+    "heRef_2": "תוספות על פסחים עו:, ג, א",
+    "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
@@ -4522,14 +4529,14 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 820,
+    "line_index_1": 819,
     "line_index_2": 944,
     "heRef_2": "תוספות על פסחים פט., ח, א",
     "path_2": "תוספות על פסחים.txt",
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 819,
+    "line_index_1": 820,
     "line_index_2": 944,
     "heRef_2": "תוספות על פסחים פט., ח, א",
     "path_2": "תוספות על פסחים.txt",

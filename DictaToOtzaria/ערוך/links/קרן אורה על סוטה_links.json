@@ -98,6 +98,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 25,
+    "line_index_2": 136,
+    "heRef_2": "רש\"י על סוטה ג:, כ, א",
+    "path_2": "רשי על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 26,
     "line_index_2": 92,
     "heRef_2": "סוטה ג:, כא",
@@ -364,6 +371,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 72,
+    "line_index_2": 64,
+    "heRef_2": "תוספות על סוטה ז:, ג, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 73,
     "line_index_2": 237,
     "heRef_2": "סוטה ז:, ד",
@@ -600,6 +614,13 @@
     "heRef_2": "סוטה טו., א",
     "path_2": "סוטה.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 120,
+    "line_index_2": 117,
+    "heRef_2": "תוספות על סוטה טו., יב, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 122,
@@ -1076,6 +1097,13 @@
     "heRef_2": "סוטה כג., ב",
     "path_2": "סוטה.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 211,
+    "line_index_2": 205,
+    "heRef_2": "תוספות על סוטה כג., ח, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 213,
@@ -1617,11 +1645,18 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 306,
+    "line_index_2": 267,
+    "heRef_2": "תוספות על סוטה כח:, ד, ב",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 307,
-    "line_index_2": 961,
-    "heRef_2": "סוטה כח:, ד",
-    "path_2": "סוטה.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 267,
+    "heRef_2": "תוספות על סוטה כח:, ד, ב",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 308,
@@ -1666,6 +1701,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 316,
+    "line_index_2": 1469,
+    "heRef_2": "רש\"י על סוטה כט:, י, ד",
+    "path_2": "רשי על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 317,
     "line_index_2": 992,
     "heRef_2": "סוטה כט:, י",
@@ -1702,10 +1744,10 @@
   },
   {
     "line_index_1": 324,
-    "line_index_2": 1002,
-    "heRef_2": "סוטה ל., א",
-    "path_2": "סוטה.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 273,
+    "heRef_2": "תוספות על סוטה ל., א, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 325,
@@ -2002,6 +2044,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 380,
+    "line_index_2": 321,
+    "heRef_2": "תוספות על סוטה לה:, ט, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 381,
     "line_index_2": 322,
     "heRef_2": "תוספות על סוטה לה:, יג, א",
@@ -2271,6 +2320,13 @@
     "line_index_1": 443,
     "line_index_2": 382,
     "heRef_2": "תוספות על סוטה מא:, טו, א",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 446,
+    "line_index_2": 385,
+    "heRef_2": "תוספות על סוטה מב., יב, א",
     "path_2": "תוספות על סוטה.txt",
     "Conection Type": "super_commentary"
   },

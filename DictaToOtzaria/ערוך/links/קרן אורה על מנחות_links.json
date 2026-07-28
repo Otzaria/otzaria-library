@@ -7,6 +7,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 5,
+    "line_index_2": 5,
+    "heRef_2": "תוספות על מנחות ב., א, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 7,
     "line_index_2": 10,
     "heRef_2": "תוספות על מנחות ב:, ד, א",
@@ -24,6 +31,13 @@
     "line_index_1": 10,
     "line_index_2": 20,
     "heRef_2": "תוספות על מנחות ג., יב, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 11,
+    "line_index_2": 21,
+    "heRef_2": "תוספות על מנחות ג., יב, ב",
     "path_2": "תוספות על מנחות.txt",
     "Conection Type": "super_commentary"
   },
@@ -54,6 +68,13 @@
     "heRef_2": "מנחות ד., א",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 20,
+    "line_index_2": 32,
+    "heRef_2": "תוספות על מנחות ד., ו, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 21,
@@ -112,6 +133,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 31,
+    "line_index_2": 50,
+    "heRef_2": "תוספות על מנחות ה., יג, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 33,
     "line_index_2": 134,
     "heRef_2": "מנחות ה:, ו",
@@ -168,6 +196,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 44,
+    "line_index_2": 74,
+    "heRef_2": "תוספות על מנחות ו:, ו, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 45,
     "line_index_2": 186,
     "heRef_2": "מנחות ו:, ח",
@@ -196,11 +231,25 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 50,
+    "line_index_2": 84,
+    "heRef_2": "תוספות על מנחות ז., ג, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 51,
     "line_index_2": 205,
     "heRef_2": "מנחות ז., ב",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 52,
+    "line_index_2": 85,
+    "heRef_2": "תוספות על מנחות ז., י, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 54,
@@ -280,6 +329,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 69,
+    "line_index_2": 107,
+    "heRef_2": "תוספות על מנחות ט., ט, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 71,
     "line_index_2": 285,
     "heRef_2": "מנחות ט., ה",
@@ -348,6 +404,13 @@
     "heRef_2": "מנחות יא., יט",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 86,
+    "line_index_2": 126,
+    "heRef_2": "תוספות על מנחות יא., יא, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 88,
@@ -434,6 +497,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 107,
+    "line_index_2": 603,
+    "heRef_2": "רש\"י על מנחות יד., יב, ג",
+    "path_2": "רשי על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 110,
     "line_index_2": 474,
     "heRef_2": "מנחות יד:, ז",
@@ -446,6 +516,13 @@
     "heRef_2": "מנחות טו., א",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 113,
+    "line_index_2": 161,
+    "heRef_2": "תוספות על מנחות טו., א, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 114,
@@ -581,6 +658,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 141,
+    "line_index_2": 199,
+    "heRef_2": "תוספות על מנחות יח:, א, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 142,
     "line_index_2": 200,
     "heRef_2": "תוספות על מנחות יח:, ב, א",
@@ -705,6 +789,13 @@
     "heRef_2": "מנחות כב., ו",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 167,
+    "line_index_2": 260,
+    "heRef_2": "תוספות על מנחות כב:, א, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 169,
@@ -903,6 +994,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 207,
+    "line_index_2": 326,
+    "heRef_2": "תוספות על מנחות כח., יז, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 208,
     "line_index_2": 980,
     "heRef_2": "מנחות כח., ט",
@@ -1050,11 +1148,18 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 237,
+    "line_index_2": 377,
+    "heRef_2": "תוספות על מנחות לב., יא, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 238,
-    "line_index_2": 1116,
-    "heRef_2": "מנחות לב., י",
-    "path_2": "מנחות.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 377,
+    "heRef_2": "תוספות על מנחות לב., יא, ב",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 239,
@@ -1167,6 +1272,13 @@
     "heRef_2": "מנחות לד:, ט",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 261,
+    "line_index_2": 1604,
+    "heRef_2": "רש\"י על מנחות לה., א, א",
+    "path_2": "רשי על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 262,
@@ -1687,6 +1799,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 359,
+    "line_index_2": 549,
+    "heRef_2": "תוספות על מנחות מה., יז, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 360,
     "line_index_2": 1521,
     "heRef_2": "מנחות מה., כ",
@@ -1785,6 +1904,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 379,
+    "line_index_2": 579,
+    "heRef_2": "תוספות על מנחות מז., ז, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 380,
     "line_index_2": 1609,
     "heRef_2": "מנחות מז., יד",
@@ -1827,6 +1953,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 388,
+    "line_index_2": 593,
+    "heRef_2": "תוספות על מנחות מח., א, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 391,
     "line_index_2": 1645,
     "heRef_2": "מנחות מח., יא",
@@ -1839,6 +1972,13 @@
     "heRef_2": "מנחות מח., יא",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 393,
+    "line_index_2": 598,
+    "heRef_2": "תוספות על מנחות מח., טו, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 394,
@@ -2331,6 +2471,13 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 486,
+    "line_index_2": 714,
+    "heRef_2": "תוספות על מנחות נז:, ז, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 487,
     "line_index_2": 2000,
     "heRef_2": "מנחות נז:, ט",
@@ -2478,11 +2625,18 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 513,
+    "line_index_2": 743,
+    "heRef_2": "תוספות על מנחות ס., ח, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 514,
-    "line_index_2": 2103,
-    "heRef_2": "מנחות ס., יב",
-    "path_2": "מנחות.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 743,
+    "heRef_2": "תוספות על מנחות ס., ח, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 516,
@@ -2525,6 +2679,13 @@
     "heRef_2": "מנחות סב., יח",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 529,
+    "line_index_2": 764,
+    "heRef_2": "תוספות על מנחות סב:, א, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 530,
@@ -2765,6 +2926,20 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 574,
+    "line_index_2": 819,
+    "heRef_2": "תוספות על מנחות סז:, ב, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 575,
+    "line_index_2": 819,
+    "heRef_2": "תוספות על מנחות סז:, ב, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 576,
     "line_index_2": 2342,
     "heRef_2": "מנחות סז:, ד",
@@ -2777,6 +2952,13 @@
     "heRef_2": "מנחות סז:, ה",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 579,
+    "line_index_2": 825,
+    "heRef_2": "תוספות על מנחות סח., ד, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 580,
@@ -2891,6 +3073,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 601,
+    "line_index_2": 3236,
+    "heRef_2": "רש\"י על מנחות ע:, א, ה",
+    "path_2": "רשי על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 602,
     "line_index_2": 2444,
     "heRef_2": "מנחות ע:, ד",
@@ -2987,6 +3176,13 @@
     "heRef_2": "מנחות עב:, כה",
     "path_2": "מנחות.txt",
     "Conection Type": "commentary"
+  },
+  {
+    "line_index_1": 621,
+    "line_index_2": 3384,
+    "heRef_2": "רש\"י על מנחות עג., ו, א",
+    "path_2": "רשי על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 622,
@@ -3178,6 +3374,13 @@
     "Conection Type": "super_commentary"
   },
   {
+    "line_index_1": 656,
+    "line_index_2": 924,
+    "heRef_2": "תוספות על מנחות עו:, א, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 657,
     "line_index_2": 2675,
     "heRef_2": "מנחות עו:, יא",
@@ -3300,6 +3503,13 @@
     "line_index_1": 679,
     "line_index_2": 954,
     "heRef_2": "תוספות על מנחות פ., ג, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
+    "line_index_1": 680,
+    "line_index_2": 956,
+    "heRef_2": "תוספות על מנחות פ., ט, ב",
     "path_2": "תוספות על מנחות.txt",
     "Conection Type": "super_commentary"
   },
@@ -4018,11 +4228,18 @@
     "Conection Type": "commentary"
   },
   {
+    "line_index_1": 826,
+    "line_index_2": 1194,
+    "heRef_2": "תוספות על מנחות קא., יז, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
+  },
+  {
     "line_index_1": 827,
-    "line_index_2": 3597,
-    "heRef_2": "מנחות קא., א",
-    "path_2": "מנחות.txt",
-    "Conection Type": "commentary"
+    "line_index_2": 1194,
+    "heRef_2": "תוספות על מנחות קא., יז, א",
+    "path_2": "תוספות על מנחות.txt",
+    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 829,
