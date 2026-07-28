@@ -1,3 +1,5 @@
 # Explicit operator tombstones. These successful roots must never be recovered
 # again even when their durable state artifact remains live.
+# Deleted weekly parent and its durable sync-saga root.
 30310796971
+30313579495
