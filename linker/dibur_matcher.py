@@ -1,6 +1,33 @@
 """
 dibur_matcher_v5.py -- third round of fixes, on top of v4.
 
+=======================================================================
+OVERRIDING PRINCIPLE -- a missing link beats a wrong one.
+עדיף להסיר קישור לא-ודאי מאשר לתרום קישור זבל.
+
+This matcher's output is contributed upstream to a library other people
+read. A link on the wrong line shows text that does not belong to the
+passage and quietly discredits every other link on the page; a missing
+link is a visible, harmless gap.
+
+So a weak/ambiguous assessment from assess_best_match() is a REMOVAL
+signal -- never take the top-scoring candidate anyway to fill coverage.
+`MatchAssessment.needs_review` and `.ambiguous` exist to be acted on.
+
+Two hard-won guards, do not remove them:
+  * Score alone is not evidence. At the accept threshold the dibur
+    "כאן שניתותרו" matched the unrelated lemma "ומר סבר מלא חפניו".
+    Require the dibur's opening word(s) to align with the candidate's
+    OWN lemma head (the text before the " - " dash). That anchor check
+    caught 47 such wrong matches in a single run.
+  * Anchor the candidate pool on the daf heading the CITING line sits
+    under, not on an existing heRef_2 -- the heRef may itself be wrong,
+    and then it propagates the error into the "fix".
+See .claude/skills/otzaria-commentary-linker/SKILL.md for the full rule,
+and scripts/lemma_head_match.py there for spelling-drift-tolerant
+alignment (ר"ל/ריש לקיש, דילמא/דלמא, והאמר/והא אמר).
+=======================================================================
+
 New in this version (found while spot-checking v4's output against the QA
 audit's specific flagged lines):
 

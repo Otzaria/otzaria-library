@@ -17,6 +17,21 @@ description: >
 You are the **auditor** of someone else's (or a prior run's) `_links.json`. You do **not**
 rewrite the links file unless the user explicitly asks you to fix it after the report.
 
+## Overriding principle — a missing link beats a wrong one
+
+**עדיף להסיר קישור לא-ודאי מאשר לתרום קישור זבל.**
+
+These links are contributed upstream to a library other people read. A link pointing at the
+wrong line shows the reader text that does not belong to the passage and quietly discredits
+every other link on the page; a missing link is a visible, harmless gap.
+
+So when the user does ask you to fix after the report, the disposition of every finding is
+binary: **fix it with verified evidence, or delete it.** Never "improve" a link into a
+plausible-looking guess, never keep a wrong-daf link because the daf is close, and never
+downgrade a `major` to `minor` so it can ship. Removal is a success outcome — report the
+count and the reason for each removal. Verdicts must state removals explicitly, e.g.
+`כשיר לייבוא לאחר הסרת N קישורים שלא ניתן לאמת`.
+
 This skill applies to **any** citing book in the Otzaria library (Talmud commentaries,
 Tanakh parshanut, codes, midrashim, etc.). Examples from past runs (e.g. שפת אמת) are
 illustrative only — never assume the citing title, author byline, or target genre.
@@ -69,6 +84,25 @@ A links file passes only if all of these hold:
 | 5 | **Semantic match** — citing content discusses the chosen target line, not merely the same section/daf/perek | `major` / `minor` / `info` |
 | 6 | **Super-commentary attribution** — when applicable: lines that open by naming an intermediate commentary + ד"ה (or any continuation of that run — `בד"ה`, or any other connective/resumptive opening that links to the previous passage and names no new subject) must be `super_commentary` into that book, **not** `commentary`→primary base text | `major` |
 | 7 | **Preserve `linker`** — pre-existing `"Conection Type": "linker"` entries stay untouched; do not count them toward commentary coverage | `major` if stripped/altered |
+| 8 | **Daf agreement** — the daf heading the citing line sits under must equal the daf in `heRef_2` | `major` |
+
+### Check 8 in detail — the highest-precision check available
+
+Run this on **100% of entries**, not a sample; it is deterministic and needs no judgement.
+Most citing books carry their own daf headings, so the daf a line is printed under is
+authoritative. If a line sits under `<h2>דף לד.</h2>` but its link resolves to `לג.`, the
+link is on the wrong page — `major`, regardless of how well the words overlap.
+
+That same heading is also the **best anchor for repair**: re-resolve the lemma within the
+correct daf of the target book rather than trusting the existing (possibly wrong) `heRef_2`.
+
+> **Parse the daf properly or you will fabricate errors.** Notation is not uniform across
+> books: `דף ב.` / `דף ב:` · `דף ב ע"א` / `דף ב ע"ב` · `דף ה עמוד ב` · `דף לט` (no amud) ·
+> and the heading level varies (`<h2>`/`<h3>`/`<h4>`). Splitting on whitespace and taking the
+> last token turns `דף ב ע"א` into `עא` — that bug reported **156 perfectly correct links in
+> `קרן אורה על הוריות` as broken**. Normalize to `(page, amud)`, treat a missing amud as a
+> wildcard, and ignore non-daf headings (`פרק …`, `פתיחה`, `הקדמה`) when tracking position.
+> Use `scripts/daf_util.py` in this skill rather than re-deriving it.
 
 Indexing: `line_index_*` are **1-based physical** file lines. DB `line.lineIndex` is
 **0-based** → compare with `line_index_2 - 1`.
@@ -131,6 +165,25 @@ python -X utf8 .claude/skills/otzaria-commentary-linker-qa/scripts/validate_link
   --skip-line <n> \
   --db "%APPDATA%/io.github.kdroidfilter.seforimapp/databases/seforim.db"
 ```
+
+Then run check 8 (daf agreement) over **every** entry — single book or a whole directory:
+
+```bash
+python -X utf8 .claude/skills/otzaria-commentary-linker-qa/scripts/check_daf.py \
+  --links "<links.json>" --citing "<citing.txt>"
+```
+
+```bash
+python -X utf8 .claude/skills/otzaria-commentary-linker-qa/scripts/check_daf.py \
+  --dir "<links dir>" --books-root "<repo subtree with the .txt books>"
+```
+
+It exits non-zero on any mismatch. Its `daf_util.py` handles every daf notation in the
+corpus — import it instead of writing your own parser (see the warning under check 8).
+
+To resolve or re-resolve a dibur against a target's lemmas, use
+`otzaria-commentary-linker/scripts/lemma_head_match.py`; when its `best()` returns `None`,
+that is a removal signal, not a prompt to take the top-scoring candidate anyway.
 
 On Windows PowerShell: **always** `chcp 65001` + `python -X utf8`, and prefer a real
 `.py` file under `%TEMP%` over `python -c` with Hebrew (quoting breaks).
@@ -279,6 +332,11 @@ investigate with nearby lines (classic off-by-one on the same section).
 ### 5. What you must not do
 
 - Do **not** rewrite `_links.json` as part of QA unless the user asks to fix after the report.
+- Do **not** keep a link you could not verify, once you are in fixing mode — delete it and
+  say so. "Probably right" is not a disposition; see the overriding principle at the top.
+- Do **not** treat an accept-threshold score as evidence. Require the dibur's opening
+  word(s) to align with the target's own lemma head.
+- Do **not** report a daf mismatch before confirming your daf parser handles `ע"א`/`ע"ב`.
 - Do **not** "fix" `"Conection Type"` → `"Connection Type"`.
 - Do **not** treat file-derived heRef alone as enough when DB is available.
 - Do **not** mark semantic QA passed on "same section/daf" only.

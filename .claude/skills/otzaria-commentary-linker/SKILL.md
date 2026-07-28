@@ -51,19 +51,44 @@ this skill always uses two fixed terms:
 Whenever a user or a project doc says "מקור", check contextually whether they mean the
 citing book or the target book — do not assume "מקור" = target.
 
+## Overriding principle — a missing link beats a wrong one
+
+**עדיף להסיר קישור לא-ודאי מאשר לתרום קישור זבל.**
+
+This repo's output is contributed upstream to a library other people read. A link that
+points at the wrong line is worse than no link at all: the reader is shown text that does
+not belong to the passage, and silently loses trust in every other link on the page. A
+missing link is a visible, harmless gap.
+
+Therefore, whenever you cannot *verify* a link, **delete it — do not guess, do not
+approximate, and do not keep a "close enough" target.** Concretely:
+
+- Never invent a `line_index_2` to satisfy a coverage target.
+- Never leave a link whose daf/section disagrees with the citing line's own heading.
+- Never keep a link you could not confirm against `seforim.db`.
+- Never keep a `commentary`→base-text link for a line that is actually commenting on an
+  intermediate commentary (רש"י/תוספות/…) when you cannot resolve the correct lemma.
+- When a matcher reports weak or ambiguous evidence, that is a **removal** signal, not a
+  "ship it with a caveat" signal.
+
+Report every removal with its reason and count. Under-delivering a verified set is the
+success case; a full-coverage set padded with unverified guesses is the failure case.
+
 ## Success criteria — what a finished result looks like
 
 Don't treat this as a checklist to run once at the end — treat it as the target you're
 solving for the whole time. A finished `_links.json` update is correct only if all of the
 following hold:
 
-1. **Full coverage.** Every non-heading, non-front-matter, non-blank line in the citing book
-   has exactly one match to a target line. No line is silently skipped because a match felt
-   uncertain — low confidence is something you disclose, not something you avoid by omitting
-   the line. Headings, blank lines, and genuine front-matter (like an author byline under the
-   `<h1>` title with no relation to any passage) are the legitimate exceptions — they still
-   count toward the physical line numbering (see criterion 2), but never receive a link entry
-   themselves, and any front-matter you skip still gets named in your report.
+1. **Coverage, subordinate to verifiability.** Aim for every non-heading, non-front-matter,
+   non-blank line in the citing book to have exactly one *verified* match to a target line.
+   Coverage is the goal you work toward — but it never outranks correctness: a line whose
+   target you cannot verify gets **no entry at all**, and is listed in your report instead.
+   Do not pad coverage with guesses (see the overriding principle above). Headings, blank
+   lines, and genuine front-matter (like an author byline under the `<h1>` title with no
+   relation to any passage) are the other legitimate exceptions — they still count toward the
+   physical line numbering (see criterion 2), but never receive a link entry themselves, and
+   any front-matter you skip still gets named in your report.
 
 2. **Correct, complete entries.** Every entry has exactly these five fields: `line_index_1`,
    `line_index_2`, `heRef_2`, `path_2`, and the literal key `"Conection Type"` — spelled
@@ -145,18 +170,24 @@ following hold:
    is the deliverable; re-importing it into `seforim.db` is a separate, later step — use
     `otzaria-db-linker` when the user asks to write the links into the live DB.
 
-### Automated matcher contract: full coverage without hiding guesses
+### Automated matcher contract: verified entries only, guesses never ship
 
 When a script produces the links, distinguish **coverage** from **approval**:
 
-- The final `_links.json` still has full coverage and only the normal link fields. Do not add
-  confidence/debug keys to link entries; the app schema is not a QA metadata channel.
+- The final `_links.json` carries only verified entries, with only the normal link fields. Do
+  not add confidence/debug keys to link entries; the app schema is not a QA metadata channel.
 - Write weak, short-anchor, tied, or otherwise uncertain decisions to a separate QA JSON/report
   (`--qa-report` in `linker/dibur_matcher.py`) with the citing line, chosen target, scores,
   evidence class, and reason for review.
-- An unresolved content line blocks a final production artifact. Resolve it semantically or
-  supply a reviewed override. `--allow-incomplete` is only for an explicitly named intermediate
-  review artifact, never for an import-ready file.
+- An unresolved content line **does not block the artifact — it is simply omitted** and
+  reported. What blocks the artifact is shipping a line whose target was guessed. Resolve it
+  semantically, supply a reviewed override, or leave it out; never split the difference by
+  emitting a low-confidence target.
+- Threshold discipline: a numeric score at the accept threshold is not evidence. Require a
+  positive signal — the dibur's opening word(s) actually aligning with the target's own lemma
+  head — before accepting. A real case: the dibur `כאן שניתותרו` scored just over threshold
+  against the lemma `ומר סבר מלא חפניו`, an unrelated passage. Anchor checks caught 47 such
+  matches in one run that the score alone would have shipped.
 - Reviewed manual decisions belong in a deterministic override JSON, not only in generated
   output. The format is an object keyed by citing `line_index_1`; each value is either a complete
   five-field link entry or `null` for a verified legitimate skip. Re-running must reapply and
@@ -202,7 +233,13 @@ confirmed to live at
 machine) — reach it via the Windows-MCP PowerShell tool, not bash, and mind the UTF-8 gotcha
 documented in `references/query_seforim_db.md` (also bundled with this skill, not part of the
 repo). `scripts/dump_book_from_db.py` finds a book by title and dumps its lines (id,
-lineIndex, heRef, content) as JSON. If that exact path doesn't exist (different machine,
+lineIndex, heRef, content) as JSON. `scripts/lemma_head_match.py` resolves a dibur to the
+right lemma line among a daf's candidates, tolerating rabbinic spelling drift
+(`ר"ל`/`ריש לקיש`, `דילמא`/`דלמא`, `והאמר`/`והא אמר`) that generic overlap scoring gets
+wrong — and returns `None` rather than a guess when the evidence is weak. Anchor the
+candidate pool on the daf heading the citing line sits under, using
+`otzaria-commentary-linker-qa/scripts/daf_util.py`; that heading is more trustworthy than
+an existing `heRef_2`, which may itself be wrong. If that exact path doesn't exist (different machine,
 different user folder), fall back to `%APPDATA%\...` and ask the user for the real path
 rather than guessing. If the database turns out to be genuinely unreachable even after that —
 tool unavailable, permission denied, user has no answer — don't block the whole task on it:

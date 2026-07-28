@@ -19,6 +19,26 @@ description: >
 
 # Otzaria DB linker — making a finished `_links.json` take effect
 
+## Before you write anything: a missing link beats a wrong one
+
+**עדיף להסיר קישור לא-ודאי מאשר לתרום קישור זבל.**
+
+This skill is the last gate before links become visible to readers. A link pointing at the
+wrong line shows text that does not belong to the passage and quietly discredits every other
+link on the page; a missing link is a visible, harmless gap.
+
+So this skill **never repairs a questionable link on the way in.** If entries look wrong,
+stop and run **otzaria-commentary-linker-qa** first, then either fix them with verified
+evidence or delete them there. Never widen a match, never "round" a `line_index_2` to
+something nearby, and never ingest a batch you have not verified just because it is already
+written. Ingesting junk is worse than ingesting nothing: it is far harder to find and undo
+once it is in `seforim.db`.
+
+Minimum bar before writing: `path_2` resolves to a real book, `heRef_2` matches `seforim.db`
+at `line_index_2 - 1`, and the daf in `heRef_2` agrees with the daf heading the citing line
+sits under (`otzaria-commentary-linker-qa/scripts/check_daf.py`). If any of those fail, the
+entry does not get written.
+
 ## What this does, and what it doesn't
 
 This is the second half of a two-step workflow. The first half — matching a commentary's
