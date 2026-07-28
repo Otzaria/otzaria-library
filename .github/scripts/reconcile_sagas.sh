@@ -49,7 +49,7 @@ find_seforim_child() {
   if ! rows=$(TITLE="$title" gh api --paginate -X GET \
       "repos/Otzaria/SeforimLibrary/actions/workflows/manual-generate-release.yml/runs" \
       -f event=workflow_dispatch -f per_page=100 \
-      --jq '.workflow_runs[] | select(.display_title==env.TITLE) | [(.id|tostring),.status,(.conclusion//""),.head_sha] | @tsv'); then
+      --jq '.workflow_runs[] | select(.display_title==env.TITLE) | [(.id|tostring),.status,(.conclusion//"-"),.head_sha] | @tsv'); then
     echo "::error::cannot list exact Seforim children" >&2
     return 2
   fi

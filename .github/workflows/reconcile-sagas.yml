@@ -29,4 +29,6 @@ jobs:
       - name: Reconcile every open retained saga
         env:
           GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
-        run: bash .github/scripts/reconcile_sagas.sh
+        run: |
+          python3 .github/scripts/test_reconcile_sagas.py
+          bash .github/scripts/reconcile_sagas.sh
