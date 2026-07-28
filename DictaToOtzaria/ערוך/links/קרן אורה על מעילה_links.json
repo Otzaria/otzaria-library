@@ -1,12 +1,5 @@
 [
   {
-    "line_index_1": 5,
-    "line_index_2": 3,
-    "heRef_2": "מעילה ב., א",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 6,
     "line_index_2": 9,
     "heRef_2": "מעילה ב., ז",
@@ -26,13 +19,6 @@
     "heRef_2": "מעילה ב., ז",
     "path_2": "מעילה.txt",
     "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 10,
-    "line_index_2": 10,
-    "heRef_2": "תוספות על מעילה ב., יג, א",
-    "path_2": "תוספות על מעילה.txt",
-    "Conection Type": "super_commentary"
   },
   {
     "line_index_1": 11,
@@ -57,13 +43,6 @@
   },
   {
     "line_index_1": 15,
-    "line_index_2": 33,
-    "heRef_2": "מעילה ג., ד",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 16,
     "line_index_2": 33,
     "heRef_2": "מעילה ג., ד",
     "path_2": "מעילה.txt",
@@ -164,13 +143,6 @@
     "line_index_1": 31,
     "line_index_2": 54,
     "heRef_2": "מעילה ג:, טו",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 33,
-    "line_index_2": 58,
-    "heRef_2": "מעילה ד., ג",
     "path_2": "מעילה.txt",
     "Conection Type": "commentary"
   },
@@ -301,13 +273,6 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 55,
-    "line_index_2": 98,
-    "heRef_2": "מעילה ה:, א",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 57,
     "line_index_2": 140,
     "heRef_2": "רש\"י על מעילה ו., ב, א",
@@ -327,13 +292,6 @@
     "heRef_2": "רש\"י על מעילה ו., ז, א",
     "path_2": "רשי על מעילה.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 60,
-    "line_index_2": 121,
-    "heRef_2": "מעילה ו., ט",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 61,
@@ -567,32 +525,11 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 97,
-    "line_index_2": 183,
-    "heRef_2": "מעילה ח., ב",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 100,
     "line_index_2": 219,
     "heRef_2": "רש\"י על מעילה ח., ג, א",
     "path_2": "רשי על מעילה.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 101,
-    "line_index_2": 182,
-    "heRef_2": "מעילה ח., א",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 102,
-    "line_index_2": 182,
-    "heRef_2": "מעילה ח., א",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 103,
@@ -672,13 +609,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 116,
-    "line_index_2": 211,
-    "heRef_2": "מעילה ט., יא",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 117,
     "line_index_2": 211,
     "heRef_2": "מעילה ט., יא",
@@ -710,20 +640,6 @@
     "line_index_1": 121,
     "line_index_2": 216,
     "heRef_2": "מעילה ט., טז",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 123,
-    "line_index_2": 236,
-    "heRef_2": "מעילה י., ה",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 124,
-    "line_index_2": 236,
-    "heRef_2": "מעילה י., ה",
     "path_2": "מעילה.txt",
     "Conection Type": "commentary"
   },
@@ -794,13 +710,6 @@
     "line_index_1": 135,
     "line_index_2": 233,
     "heRef_2": "מעילה י., ב",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 136,
-    "line_index_2": 247,
-    "heRef_2": "מעילה י:, ו",
     "path_2": "מעילה.txt",
     "Conection Type": "commentary"
   },
@@ -1043,13 +952,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 178,
-    "line_index_2": 323,
-    "heRef_2": "מעילה יג., ז",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 179,
     "line_index_2": 190,
     "heRef_2": "תוספות על מעילה יג., י, א",
@@ -1156,8 +1058,8 @@
   },
   {
     "line_index_1": 197,
-    "line_index_2": 210,
-    "heRef_2": "תוספות על מעילה יד., יא, א",
+    "line_index_2": 212,
+    "heRef_2": "תוספות על מעילה יד:, א, א",
     "path_2": "תוספות על מעילה.txt",
     "Conection Type": "super_commentary"
   },
@@ -1202,13 +1104,6 @@
     "heRef_2": "תוספות על מעילה טו., ב, א",
     "path_2": "תוספות על מעילה.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 206,
-    "line_index_2": 368,
-    "heRef_2": "מעילה טו., ב",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 207,
@@ -1662,13 +1557,6 @@
     "line_index_1": 280,
     "line_index_2": 476,
     "heRef_2": "מעילה יט., ה",
-    "path_2": "מעילה.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 281,
-    "line_index_2": 479,
-    "heRef_2": "מעילה יט., ח",
     "path_2": "מעילה.txt",
     "Conection Type": "commentary"
   },

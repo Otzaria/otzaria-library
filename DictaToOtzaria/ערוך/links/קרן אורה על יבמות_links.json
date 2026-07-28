@@ -1,12 +1,5 @@
 [
   {
-    "line_index_1": 4,
-    "line_index_2": 24,
-    "heRef_2": "יבמות ג., ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 6,
     "line_index_2": 39,
     "heRef_2": "יבמות ג:, ה",
@@ -64,27 +57,6 @@
   },
   {
     "line_index_1": 16,
-    "line_index_2": 45,
-    "heRef_2": "תוספות על יבמות ד:, יד, ב",
-    "path_2": "תוספות על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 18,
-    "line_index_2": 45,
-    "heRef_2": "תוספות על יבמות ד:, יד, ב",
-    "path_2": "תוספות על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 19,
-    "line_index_2": 45,
-    "heRef_2": "תוספות על יבמות ד:, יד, ב",
-    "path_2": "תוספות על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 20,
     "line_index_2": 45,
     "heRef_2": "תוספות על יבמות ד:, יד, ב",
     "path_2": "תוספות על יבמות.txt",
@@ -742,13 +714,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 134,
-    "line_index_2": 473,
-    "heRef_2": "יבמות טז:, ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 135,
     "line_index_2": 473,
     "heRef_2": "יבמות טז:, ב",
@@ -798,13 +763,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 144,
-    "line_index_2": 498,
-    "heRef_2": "יבמות יז:, ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 145,
     "line_index_2": 498,
     "heRef_2": "יבמות יז:, ב",
@@ -826,13 +784,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 148,
-    "line_index_2": 503,
-    "heRef_2": "יבמות יז:, ז",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 149,
     "line_index_2": 508,
     "heRef_2": "יבמות יז:, יב",
@@ -843,13 +794,6 @@
     "line_index_1": 150,
     "line_index_2": 508,
     "heRef_2": "יבמות יז:, יב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 152,
-    "line_index_2": 518,
-    "heRef_2": "יבמות יח., ה",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -913,13 +857,6 @@
     "line_index_1": 163,
     "line_index_2": 544,
     "heRef_2": "יבמות יט., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 165,
-    "line_index_2": 565,
-    "heRef_2": "יבמות יט:, א",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -1106,13 +1043,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 196,
-    "line_index_2": 655,
-    "heRef_2": "יבמות כא:, טו",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 198,
     "line_index_2": 669,
     "heRef_2": "יבמות כב., יא",
@@ -1193,13 +1123,6 @@
     "line_index_1": 210,
     "line_index_2": 688,
     "heRef_2": "יבמות כב:, טז",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 212,
-    "line_index_2": 703,
-    "heRef_2": "יבמות כג., ט",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -1365,16 +1288,9 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 238,
-    "line_index_2": 711,
-    "heRef_2": "יבמות כג:, ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 239,
-    "line_index_2": 711,
-    "heRef_2": "יבמות כג:, ב",
+    "line_index_2": 730,
+    "heRef_2": "יבמות כד., ה",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -1391,13 +1307,6 @@
     "heRef_2": "תוספות על יבמות כד:, א, א",
     "path_2": "תוספות על יבמות.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 243,
-    "line_index_2": 747,
-    "heRef_2": "יבמות כד:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 244,
@@ -1512,13 +1421,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 262,
-    "line_index_2": 776,
-    "heRef_2": "יבמות כה., יג",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 263,
     "line_index_2": 783,
     "heRef_2": "יבמות כה:, ה",
@@ -1620,13 +1522,6 @@
     "line_index_1": 278,
     "line_index_2": 815,
     "heRef_2": "יבמות כו., כב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 280,
-    "line_index_2": 819,
-    "heRef_2": "יבמות כו:, א",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -1821,13 +1716,6 @@
   },
   {
     "line_index_1": 313,
-    "line_index_2": 900,
-    "heRef_2": "יבמות כט., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 314,
     "line_index_2": 900,
     "heRef_2": "יבמות כט., א",
     "path_2": "יבמות.txt",
@@ -2093,13 +1981,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 358,
-    "line_index_2": 988,
-    "heRef_2": "יבמות לב., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 359,
     "line_index_2": 991,
     "heRef_2": "יבמות לב., ד",
@@ -2241,13 +2122,6 @@
   },
   {
     "line_index_1": 382,
-    "line_index_2": 1028,
-    "heRef_2": "יבמות לג:, ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 383,
     "line_index_2": 1028,
     "heRef_2": "יבמות לג:, ד",
     "path_2": "יבמות.txt",
@@ -2611,13 +2485,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 440,
-    "line_index_2": 1107,
-    "heRef_2": "יבמות לו., ו",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 442,
     "line_index_2": 1128,
     "heRef_2": "יבמות לו:, י",
@@ -2640,13 +2507,6 @@
   },
   {
     "line_index_1": 446,
-    "line_index_2": 1140,
-    "heRef_2": "יבמות לז., ה",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 447,
     "line_index_2": 1140,
     "heRef_2": "יבמות לז., ה",
     "path_2": "יבמות.txt",
@@ -2901,13 +2761,6 @@
     "line_index_1": 484,
     "line_index_2": 1173,
     "heRef_2": "יבמות לז:, יט",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 486,
-    "line_index_2": 1193,
-    "heRef_2": "יבמות לח., י",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -3185,13 +3038,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 539,
-    "line_index_2": 1516,
-    "heRef_2": "יבמות מה:, ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 540,
     "line_index_2": 1516,
     "heRef_2": "יבמות מה:, ד",
@@ -3209,13 +3055,6 @@
     "line_index_1": 542,
     "line_index_2": 1521,
     "heRef_2": "יבמות מה:, ט",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 543,
-    "line_index_2": 1523,
-    "heRef_2": "יבמות מה:, יא",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -3381,21 +3220,7 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 569,
-    "line_index_2": 1553,
-    "heRef_2": "יבמות מו:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 570,
-    "line_index_2": 1553,
-    "heRef_2": "יבמות מו:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 571,
     "line_index_2": 1553,
     "heRef_2": "יבמות מו:, א",
     "path_2": "יבמות.txt",
@@ -3552,13 +3377,6 @@
     "line_index_1": 595,
     "line_index_2": 1602,
     "heRef_2": "יבמות מז:, טז",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 597,
-    "line_index_2": 1620,
-    "heRef_2": "יבמות מח:, א",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -3745,13 +3563,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 627,
-    "line_index_2": 1667,
-    "heRef_2": "יבמות נ., ו",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 629,
     "line_index_2": 1686,
     "heRef_2": "יבמות נא., א",
@@ -3767,13 +3578,6 @@
   },
   {
     "line_index_1": 631,
-    "line_index_2": 1690,
-    "heRef_2": "יבמות נא., ה",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 632,
     "line_index_2": 1690,
     "heRef_2": "יבמות נא., ה",
     "path_2": "יבמות.txt",
@@ -4053,13 +3857,6 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 680,
-    "line_index_2": 2363,
-    "heRef_2": "רש\"י על יבמות נד:, כב, א",
-    "path_2": "רשי על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
     "line_index_1": 681,
     "line_index_2": 1828,
     "heRef_2": "יבמות נה., יב",
@@ -4285,13 +4082,6 @@
   },
   {
     "line_index_1": 715,
-    "line_index_2": 1873,
-    "heRef_2": "יבמות נו., יב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 716,
     "line_index_2": 1873,
     "heRef_2": "יבמות נו., יב",
     "path_2": "יבמות.txt",
@@ -4599,13 +4389,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 766,
-    "line_index_2": 1963,
-    "heRef_2": "יבמות נט., יא",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 767,
     "line_index_2": 1963,
     "heRef_2": "יבמות נט., יא",
@@ -4726,13 +4509,6 @@
   },
   {
     "line_index_1": 788,
-    "line_index_2": 2029,
-    "heRef_2": "יבמות סא., יב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 789,
     "line_index_2": 2029,
     "heRef_2": "יבמות סא., יב",
     "path_2": "יבמות.txt",
@@ -4914,13 +4690,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 821,
-    "line_index_2": 2161,
-    "heRef_2": "יבמות סה., ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 822,
     "line_index_2": 2161,
     "heRef_2": "יבמות סה., ב",
@@ -4964,13 +4733,6 @@
   },
   {
     "line_index_1": 829,
-    "line_index_2": 2168,
-    "heRef_2": "יבמות סה:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 830,
     "line_index_2": 2168,
     "heRef_2": "יבמות סה:, א",
     "path_2": "יבמות.txt",
@@ -5257,21 +5019,7 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 879,
-    "line_index_2": 2325,
-    "heRef_2": "יבמות ע., יא",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 881,
-    "line_index_2": 2315,
-    "heRef_2": "יבמות ע., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 882,
     "line_index_2": 2315,
     "heRef_2": "יבמות ע., א",
     "path_2": "יבמות.txt",
@@ -5323,13 +5071,6 @@
     "line_index_1": 890,
     "line_index_2": 2348,
     "heRef_2": "יבמות ע:, יא",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 891,
-    "line_index_2": 2346,
-    "heRef_2": "יבמות ע:, ט",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -5516,13 +5257,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 923,
-    "line_index_2": 2444,
-    "heRef_2": "יבמות עג:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 924,
     "line_index_2": 2446,
     "heRef_2": "יבמות עג:, ג",
@@ -5617,20 +5351,6 @@
     "line_index_1": 940,
     "line_index_2": 2514,
     "heRef_2": "יבמות עה., טו",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 941,
-    "line_index_2": 2521,
-    "heRef_2": "יבמות עה:, ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 942,
-    "line_index_2": 2521,
-    "heRef_2": "יבמות עה:, ב",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -5985,13 +5705,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1003,
-    "line_index_2": 2712,
-    "heRef_2": "יבמות פ:, ג",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1004,
     "line_index_2": 2712,
     "heRef_2": "יבמות פ:, ג",
@@ -6293,13 +6006,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1053,
-    "line_index_2": 2799,
-    "heRef_2": "יבמות פד., ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1055,
     "line_index_2": 2800,
     "heRef_2": "יבמות פד., ה",
@@ -6371,13 +6077,6 @@
   },
   {
     "line_index_1": 1068,
-    "line_index_2": 2854,
-    "heRef_2": "יבמות פה:, ה",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1069,
     "line_index_2": 2854,
     "heRef_2": "יבמות פה:, ה",
     "path_2": "יבמות.txt",
@@ -6485,13 +6184,6 @@
     "line_index_1": 1087,
     "line_index_2": 2901,
     "heRef_2": "יבמות פז., יג",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1088,
-    "line_index_2": 2913,
-    "heRef_2": "יבמות פז:, ח",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -6727,20 +6419,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1124,
-    "line_index_2": 2944,
-    "heRef_2": "יבמות פח:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1126,
-    "line_index_2": 2977,
-    "heRef_2": "יבמות פט:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1127,
     "line_index_2": 2977,
     "heRef_2": "יבמות פט:, א",
@@ -6847,13 +6525,6 @@
   },
   {
     "line_index_1": 1145,
-    "line_index_2": 3988,
-    "heRef_2": "רש\"י על יבמות צא., ו, א",
-    "path_2": "רשי על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 1147,
     "line_index_2": 3988,
     "heRef_2": "רש\"י על יבמות צא., ו, א",
     "path_2": "רשי על יבמות.txt",
@@ -7056,69 +6727,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1180,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1181,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1182,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1183,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1184,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1185,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1186,
-    "line_index_2": 3143,
-    "heRef_2": "יבמות צה., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1187,
-    "line_index_2": 3109,
-    "heRef_2": "יבמות צד., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1188,
-    "line_index_2": 3109,
-    "heRef_2": "יבמות צד., א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1189,
     "line_index_2": 3133,
     "heRef_2": "יבמות צד:, יב",
@@ -7168,30 +6776,9 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1198,
-    "line_index_2": 3184,
-    "heRef_2": "יבמות צו., טז",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1200,
     "line_index_2": 3197,
     "heRef_2": "יבמות צו:, י",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1201,
-    "line_index_2": 3214,
-    "heRef_2": "יבמות צז., ח",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1202,
-    "line_index_2": 3214,
-    "heRef_2": "יבמות צז., ח",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -7749,13 +7336,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1300,
-    "line_index_2": 3569,
-    "heRef_2": "יבמות קז., ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1302,
     "line_index_2": 3566,
     "heRef_2": "יבמות קז., א",
@@ -7931,13 +7511,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1336,
-    "line_index_2": 3722,
-    "heRef_2": "יבמות קיא:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1338,
     "line_index_2": 3746,
     "heRef_2": "יבמות קיב., ב",
@@ -7955,27 +7528,6 @@
     "line_index_1": 1340,
     "line_index_2": 3746,
     "heRef_2": "יבמות קיב., ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1341,
-    "line_index_2": 3746,
-    "heRef_2": "יבמות קיב., ב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1342,
-    "line_index_2": 3763,
-    "heRef_2": "יבמות קיב:, ד",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1343,
-    "line_index_2": 3763,
-    "heRef_2": "יבמות קיב:, ד",
     "path_2": "יבמות.txt",
     "Conection Type": "commentary"
   },
@@ -8071,20 +7623,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1361,
-    "line_index_2": 3845,
-    "heRef_2": "יבמות קיד:, י",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1362,
-    "line_index_2": 3846,
-    "heRef_2": "יבמות קיד:, יא",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1364,
     "line_index_2": 3836,
     "heRef_2": "יבמות קיד:, א",
@@ -8142,13 +7680,6 @@
   },
   {
     "line_index_1": 1373,
-    "line_index_2": 3930,
-    "heRef_2": "יבמות קיז:, א",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1374,
     "line_index_2": 3930,
     "heRef_2": "יבמות קיז:, א",
     "path_2": "יבמות.txt",
@@ -8309,13 +7840,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 1400,
-    "line_index_2": 3989,
-    "heRef_2": "יבמות קיט., יב",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 1402,
     "line_index_2": 3998,
     "heRef_2": "יבמות קיט:, ח",
@@ -8331,13 +7855,6 @@
   },
   {
     "line_index_1": 1404,
-    "line_index_2": 4000,
-    "heRef_2": "יבמות קיט:, י",
-    "path_2": "יבמות.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 1405,
     "line_index_2": 4000,
     "heRef_2": "יבמות קיט:, י",
     "path_2": "יבמות.txt",
@@ -8450,13 +7967,6 @@
   },
   {
     "line_index_1": 1424,
-    "line_index_2": 1539,
-    "heRef_2": "תוספות על יבמות קכא., יז, א",
-    "path_2": "תוספות על יבמות.txt",
-    "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 1426,
     "line_index_2": 1539,
     "heRef_2": "תוספות על יבמות קכא., יז, א",
     "path_2": "תוספות על יבמות.txt",

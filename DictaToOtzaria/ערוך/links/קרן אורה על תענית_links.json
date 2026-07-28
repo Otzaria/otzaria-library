@@ -1,12 +1,5 @@
 [
   {
-    "line_index_1": 5,
-    "line_index_2": 3,
-    "heRef_2": "תענית ב., א",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 6,
     "line_index_2": 11,
     "heRef_2": "תענית ב., ט",
@@ -36,13 +29,6 @@
   },
   {
     "line_index_1": 11,
-    "line_index_2": 19,
-    "heRef_2": "תענית ב:, ג",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 12,
     "line_index_2": 19,
     "heRef_2": "תענית ב:, ג",
     "path_2": "תענית.txt",
@@ -162,8 +148,8 @@
   },
   {
     "line_index_1": 35,
-    "line_index_2": 63,
-    "heRef_2": "תוספות על תענית ו:, י, א",
+    "line_index_2": 57,
+    "heRef_2": "תוספות על תענית ו., יב, א",
     "path_2": "תוספות על תענית.txt",
     "Conection Type": "super_commentary"
   },
@@ -206,13 +192,6 @@
     "line_index_1": 44,
     "line_index_2": 191,
     "heRef_2": "תענית ז:, יג",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 46,
-    "line_index_2": 226,
-    "heRef_2": "תענית ח:, יב",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
   },
@@ -280,13 +259,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 60,
-    "line_index_2": 317,
-    "heRef_2": "תענית יא:, א",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 61,
     "line_index_2": 320,
     "heRef_2": "תענית יא:, ד",
@@ -299,13 +271,6 @@
     "heRef_2": "תוספות על תענית יא:, ד, א",
     "path_2": "תוספות על תענית.txt",
     "Conection Type": "super_commentary"
-  },
-  {
-    "line_index_1": 63,
-    "line_index_2": 321,
-    "heRef_2": "תענית יא:, ה",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
   },
   {
     "line_index_1": 64,
@@ -476,20 +441,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 94,
-    "line_index_2": 399,
-    "heRef_2": "תענית יד., יד",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 95,
-    "line_index_2": 399,
-    "heRef_2": "תענית יד., יד",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 96,
     "line_index_2": 404,
     "heRef_2": "תענית יד:, ד",
@@ -546,30 +497,9 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 107,
-    "line_index_2": 420,
-    "heRef_2": "תענית טו., ד",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 108,
-    "line_index_2": 425,
-    "heRef_2": "תענית טו., ט",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 109,
     "line_index_2": 444,
     "heRef_2": "תענית טו:, טו",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 111,
-    "line_index_2": 450,
-    "heRef_2": "תענית טז., ה",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
   },
@@ -651,21 +581,7 @@
     "Conection Type": "super_commentary"
   },
   {
-    "line_index_1": 125,
-    "line_index_2": 487,
-    "heRef_2": "תענית יז., ח",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 127,
-    "line_index_2": 501,
-    "heRef_2": "תענית יז:, ו",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 128,
     "line_index_2": 501,
     "heRef_2": "תענית יז:, ו",
     "path_2": "תענית.txt",
@@ -966,20 +882,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 186,
-    "line_index_2": 786,
-    "heRef_2": "תענית כו., ב",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 187,
-    "line_index_2": 786,
-    "heRef_2": "תענית כו., ב",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 189,
     "line_index_2": 787,
     "heRef_2": "תענית כו., ג",
@@ -1134,13 +1036,6 @@
     "Conection Type": "commentary"
   },
   {
-    "line_index_1": 218,
-    "line_index_2": 905,
-    "heRef_2": "תענית כט:, ד",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
     "line_index_1": 219,
     "line_index_2": 911,
     "heRef_2": "תענית כט:, י",
@@ -1149,13 +1044,6 @@
   },
   {
     "line_index_1": 221,
-    "line_index_2": 917,
-    "heRef_2": "תענית ל., ב",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 222,
     "line_index_2": 917,
     "heRef_2": "תענית ל., ב",
     "path_2": "תענית.txt",
@@ -1200,20 +1088,6 @@
     "line_index_1": 229,
     "line_index_2": 939,
     "heRef_2": "תענית ל:, ח",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 230,
-    "line_index_2": 955,
-    "heRef_2": "תענית לא., י",
-    "path_2": "תענית.txt",
-    "Conection Type": "commentary"
-  },
-  {
-    "line_index_1": 231,
-    "line_index_2": 955,
-    "heRef_2": "תענית לא., י",
     "path_2": "תענית.txt",
     "Conection Type": "commentary"
   }
