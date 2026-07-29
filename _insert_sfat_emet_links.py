@@ -35,6 +35,11 @@ PAIRS = [
     # בכורות: book exists, no links file yet
 ]
 
+CONNECTION_TYPE_IDS = {
+    "commentary": 1,
+    "super_commentary": 2,
+}
+
 
 def find_links_file(citing: str) -> Path | None:
     candidates = [
@@ -45,6 +50,28 @@ def find_links_file(citing: str) -> Path | None:
     for p in candidates:
         if p.exists():
             return p
+    return None
+
+
+def target_title_from_path(path_2: str) -> str:
+    """Return the actual target title named by a link entry."""
+    name = path_2.replace("\\", "/").rsplit("/", 1)[-1]
+    return name[:-4] if name.endswith(".txt") else name
+
+
+def resolve_book(cur: sqlite3.Cursor, title: str) -> tuple[int, int] | None:
+    """Resolve a JSON filename title, including the repo's Rashi spellings."""
+    variants = [title]
+    if title.startswith("רשי "):
+        variants.append('רש"י ' + title[4:])
+    if title.startswith("רשבם "):
+        variants.append('רשב"ם ' + title[5:])
+    for variant in variants:
+        row = cur.execute(
+            "SELECT id, orderIndex FROM book WHERE title=?", (variant,)
+        ).fetchone()
+        if row:
+            return int(row[0]), int(row[1])
     return None
 
 
@@ -76,14 +103,6 @@ def insert_pair(cur: sqlite3.Cursor, citing: str, target: str, next_id: int) -> 
         f"json={len(data)} ({links_path.name})"
     )
 
-    existing = cur.execute(
-        "SELECT COUNT(*) FROM link WHERE sourceBookId=? AND targetBookId=? AND connectionTypeId=1",
-        (base_id, sfat_id),
-    ).fetchone()[0]
-    if existing:
-        print(f"  SKIP already have {existing} COMMENTARY links")
-        return next_id, 0, 0
-
     sfat_map = {
         li: lid
         for li, lid in cur.execute(
@@ -96,33 +115,70 @@ def insert_pair(cur: sqlite3.Cursor, citing: str, target: str, next_id: int) -> 
             "SELECT lineIndex, id FROM line WHERE bookId=?", (base_id,)
         )
     }
+    # A file may mix Gemara commentary with super-commentary on Rashi/Tosafot.
+    # path_2, rather than the pair's default base title, is the source of truth.
+    target_maps: dict[str, tuple[int, dict[int, int]]] = {
+        target: (base_id, base_map),
+    }
+    existing = {
+        tuple(row)
+        for row in cur.execute(
+            "SELECT sourceLineId, targetLineId, connectionTypeId FROM link WHERE targetBookId=?",
+            (sfat_id,),
+        )
+    }
 
     rows = []
     skipped = []
     seen = set()
+    touched_book_ids = {base_id}
     for i, item in enumerate(data, start=1):
         c_idx = int(item["line_index_1"]) - 1
         s_idx = int(item["line_index_2"]) - 1
-        if c_idx not in sfat_map or s_idx not in base_map:
+        connection_type = item.get("Conection Type")
+        connection_type_id = CONNECTION_TYPE_IDS.get(connection_type)
+        if connection_type_id is None:
+            skipped.append((i, c_idx, s_idx, f"unsupported type {connection_type!r}"))
+            continue
+
+        real_target = target_title_from_path(str(item["path_2"]))
+        if real_target not in target_maps:
+            resolved = resolve_book(cur, real_target)
+            if not resolved:
+                skipped.append((i, c_idx, s_idx, f"target book not found: {real_target}"))
+                continue
+            target_id, _ = resolved
+            target_maps[real_target] = (
+                target_id,
+                {
+                    li: lid
+                    for li, lid in cur.execute(
+                        "SELECT lineIndex, id FROM line WHERE bookId=?", (target_id,)
+                    )
+                },
+            )
+        source_book_id, source_map = target_maps[real_target]
+        if c_idx not in sfat_map or s_idx not in source_map:
             skipped.append((i, c_idx, s_idx, "missing line"))
             continue
-        source_line_id = base_map[s_idx]
+        source_line_id = source_map[s_idx]
         target_line_id = sfat_map[c_idx]
-        key = (source_line_id, target_line_id, 1)
-        if key in seen:
+        key = (source_line_id, target_line_id, connection_type_id)
+        if key in seen or key in existing:
             skipped.append((i, c_idx, s_idx, "duplicate"))
             continue
         seen.add(key)
+        touched_book_ids.add(source_book_id)
         rows.append(
             (
                 next_id,
-                base_id,
+                source_book_id,
                 sfat_id,
                 source_line_id,
                 target_line_id,
                 c_idx,
                 int(sfat_order),
-                1,
+                connection_type_id,
                 1,
             )
         )
@@ -143,7 +199,7 @@ def insert_pair(cur: sqlite3.Cursor, citing: str, target: str, next_id: int) -> 
             rows,
         )
 
-    for book_id in (sfat_id, base_id):
+    for book_id in touched_book_ids | {sfat_id}:
         cur.execute(
             """
             INSERT INTO book_has_links(bookId, hasSourceLinks, hasTargetLinks)
@@ -154,16 +210,17 @@ def insert_pair(cur: sqlite3.Cursor, citing: str, target: str, next_id: int) -> 
             """,
             (book_id,),
         )
+    placeholders = ",".join("?" for _ in touched_book_ids | {sfat_id})
     cur.execute(
-        "UPDATE book SET hasCommentaryConnection=1 WHERE id IN (?, ?)",
-        (base_id, sfat_id),
+        f"UPDATE book SET hasCommentaryConnection=1 WHERE id IN ({placeholders})",
+        tuple(touched_book_ids | {sfat_id}),
     )
 
     verify = cur.execute(
-        "SELECT COUNT(*) FROM link WHERE sourceBookId=? AND targetBookId=? AND connectionTypeId=1",
-        (base_id, sfat_id),
+        "SELECT COUNT(*) FROM link WHERE targetBookId=? AND connectionTypeId IN (1, 2)",
+        (sfat_id,),
     ).fetchone()[0]
-    print(f"  VERIFY {target}->{citing}: {verify}")
+    print(f"  VERIFY all commentary/super links to {citing}: {verify}")
     return next_id, len(rows), len(skipped)
 
 
