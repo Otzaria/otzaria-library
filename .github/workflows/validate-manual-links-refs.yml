@@ -1,0 +1,67 @@
+name: Validate manual link refs
+
+# שער PR מהיר לקובצי הקישורים הידניים.
+#
+# הסאגה השבועית (sync-manual-links.yml) מסרבת לנחש מזהה ספריא יציב: רשומה חדשה
+# שהיעד שלה ספר בבעלות ספריא ואין בה ref_2 מפילה את refreshManualLinks בשגיאת
+# new_target_ref_required — אחרי הורדת ייצוא ספריא ולפני בניית ה-DB. זו נקודה
+# יקרה ומאוחרת לגלות בה רשומה פגומה.
+#
+# הבדיקה כאן משחזרת את החלק הניתן להכרעה מקומית של אותו חוזה, כך שאותה טעות
+# נכשלת תוך שניות ב-PR שמכניס אותה. היא בודקת רק קבצים שה-PR נגע בהם.
+
+on:
+  pull_request:
+    paths:
+      - '**/links/**_links.json'
+      - 'manual_links_sync.json'
+      - '.github/data/sefaria_he_titles.txt'
+      - '.github/scripts/validate_manual_links_refs.py'
+      - '.github/workflows/validate-manual-links-refs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-manual-links-refs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # blobless + sparse: הבדיקה קוראת קובצי links, manual_links_sync.json ותצלום
+      # הכותרות בלבד — אין צורך בתוכן הספרים (~10GiB).
+      - name: Checkout repository (sparse, blobless)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+          filter: blob:none
+          sparse-checkout: |
+            /.github/scripts/
+            /.github/data/
+            /manual_links_sync.json
+            **/links/
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate that new Sefaria-targeted records carry ref_2
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -euo pipefail
+          base="${BASE_SHA:-}"
+          if [ -z "$base" ]; then
+            # workflow_dispatch: אין PR base; משווים מול main.
+            git fetch --no-tags origin main
+            base="$(git rev-parse origin/main)"
+          fi
+          python3 .github/scripts/validate_manual_links_refs.py --base "$base"

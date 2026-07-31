@@ -17,6 +17,15 @@
   | קישורי טווח | ✅ נתמך (`line_index_1_end`/`line_index_2_end` ב־`_links.json`) |
   | כותרות / עליות | ✅ נתמך (`alt_toc/<ספר>_alt_toc.json`) |
 
+  > ⚠️ **לפני הוספת קישורים חדשים:** אם היעד הוא ספר בבעלות ספריא (תלמוד, רש"י,
+  > תוספות, תנ"ך, משנה תורה…) הרשומה **חייבת** לכלול `ref_2` — אחרת הפייפליין
+  > השבועי נופל ב־`new_target_ref_required`. ראו
+  > [פרק 9](קישורים-וכותרות.md#9-refs-ספריא).
+
+- **[מדיניות תורים בפייפליין](PIPELINE_QUEUE_POLICY.md)** — קבוצות ה־concurrency של ה־workflows וכללי ה־`queue: max`.
+- **[סאגה מונחית־אירועים](EVENT_DRIVEN_SAGA_PLAN.md)** — שלבי S0–S3 של הפייפליין השבועי ומנגנון ה־reconciliation.
+- **[דרישות סקריפט התאמת דיבור המתחיל](דרישות-סקריפט-התאמת-דיבור-המתחיל.md)** — מפרט התאמת ד"ה למפרשים.
+
 ## ראו גם
 
 - [`../book-database-architecture.md`](../book-database-architecture.md) — מודל האפליקציה מבוסס־הקבצים (Library/Category/Book/Link/TocEntry).
