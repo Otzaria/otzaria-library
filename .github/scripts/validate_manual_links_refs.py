@@ -54,18 +54,18 @@ def sefaria_he_titles(workspace: Path) -> set[str] | None:
 
 
 def synced_roots(workspace: Path) -> list[str]:
-    """Link roots the weekly sync validates, excluding adapter-backed ones.
+    """Return every root consumed by the recurring manual-link refresh.
 
-    A root listed in ``bootstrap_adapters`` derives its refs from ``heRef_2``
-    through a deterministic adapter instead of a literal ``ref_2``, so a missing
-    ``ref_2`` there is not decidable from this repository alone.
+    Bootstrap adapters may derive ``ref_2`` only during an explicit, lineage-free
+    bootstrap. The weekly refresh is intentionally not allowed to bootstrap new
+    records after lineage exists, so a newly added Sefaria target in an adapter
+    root still needs a committed stable ``ref_2``.
     """
     config = json.loads((workspace / CONFIG_NAME).read_text(encoding="utf-8"))
-    adapters = set(config.get("bootstrap_adapters", {}))
     return [
         entry["path"]
         for entry in config["links_roots"]
-        if entry["expected_state"] == "present" and entry["path"] not in adapters
+        if entry["expected_state"] == "present"
     ]
 
 

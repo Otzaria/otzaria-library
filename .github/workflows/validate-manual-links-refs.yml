@@ -16,6 +16,7 @@ on:
       - '**/links/**_links.json'
       - 'manual_links_sync.json'
       - '.github/data/sefaria_he_titles.txt'
+      - '.github/scripts/test_validate_manual_links_refs.py'
       - '.github/scripts/validate_manual_links_refs.py'
       - '.github/workflows/validate-manual-links-refs.yml'
   workflow_dispatch:
@@ -58,6 +59,7 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: |
           set -euo pipefail
+          python3 .github/scripts/test_validate_manual_links_refs.py -v
           base="${BASE_SHA:-}"
           if [ -z "$base" ]; then
             # workflow_dispatch: אין PR base; משווים מול main.
