@@ -152,9 +152,10 @@ jobs:
         run: |
           set -euo pipefail
           [ -n "$GH_TOKEN" ] || { echo "::error::PIPELINE_TOKEN secret is empty or missing on this repo"; exit 1; }
-          # Newest release INCLUDING pre-releases (the weekly publishes pre-releases;
-          # `gh release view` with no tag would lag far behind).
-          LIB_TAG=$(gh release list -R Otzaria/SeforimLibrary -L1 --json tagName -q '.[0].tagName')
+          # Workflow handoffs are pre-releases and do not contain a database.
+          # Validate only against the newest final Seforim DB release.
+          LIB_TAG=$(gh release list -R Otzaria/SeforimLibrary --exclude-pre-releases \
+            --exclude-drafts -L1 --json tagName -q '.[0].tagName')
           echo "Dry-running against SeforimLibrary release $LIB_TAG"
           gh release download "$LIB_TAG" -R Otzaria/SeforimLibrary -p 'seforim.db.zst' -D dbdir
           DB_ASSET_DIGEST="$(gh release view "$LIB_TAG" -R Otzaria/SeforimLibrary --json assets \

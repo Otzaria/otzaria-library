@@ -328,12 +328,14 @@ jobs:
           done
           [[ "$success" == true ]]
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: manual-links-refresh-report-${{ github.run_attempt }}
-          path: manual-links-refresh-artifact
-          if-no-files-found: error
-          retention-days: 90
+      - name: Publish immutable manual-links refresh report release
+        run: >-
+          bash .github/scripts/publish_release_handoff.sh
+          "manual-links-refresh-report-run-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          "Immutable manual-links refresh report ${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"
+          "$GITHUB_SHA" manual-links-refresh-artifact/manual_links_refresh_report.json
+          manual-links-refresh-artifact/manual_links_lineage.json
+          manual-links-refresh-artifact/.manual-links-refresh-complete
 
   start-saga:
     name: Persist saga state and dispatch Otzaria publisher
@@ -418,18 +420,18 @@ jobs:
               fordb_archive_sha256:$fordb_archive_sha256,fordb_provenance_sha256:$fordb_provenance_sha256}' > saga-state/saga-state.json
           sha256sum saga-state/saga-state.json | cut -d' ' -f1 > saga-state/saga-state.sha256
           echo "correlation_sha=$correlation_sha" >> "$GITHUB_OUTPUT"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: saga-state-${{ steps.state.outputs.correlation_sha }}-attempt-${{ github.run_attempt }}
-          path: saga-state/
-          if-no-files-found: error
-          retention-days: 90
+      - name: Publish immutable saga state release
+        run: >-
+          bash .github/scripts/publish_release_handoff.sh
+          "saga-state-${{ steps.state.outputs.correlation_sha }}-attempt-${GITHUB_RUN_ATTEMPT}"
+          "Immutable weekly saga state ${{ steps.state.outputs.correlation_sha }}:${GITHUB_RUN_ATTEMPT}"
+          "$GITHUB_SHA" saga-state/saga-state.json saga-state/saga-state.sha256
       - name: Dispatch exact Otzaria publisher and return immediately
         shell: bash
         run: |
           set -euo pipefail
           # Submit at most once.  A non-zero response may still have delivered;
-          # the state artifact is already durable and reconcile-sagas will first
+          # the state release is already durable and reconcile-sagas will first
           # search the exact title, then dispatch only if it proves there is none.
           if gh workflow run update-library.yml -R Otzaria/otzaria-library \
             -f mode=links_sync_mode -f expected_links_commit="$EXPECTED_COMMIT" \

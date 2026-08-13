@@ -75,8 +75,8 @@ jobs:
           [[ "$REQUEST_CORRELATION" =~ ^sefaria:[1-9][0-9]*:[1-9][0-9]*:[A-Za-z0-9._-]+:[0-9a-f]{64}$ ]]
           correlation_sha="$(printf '%s' "$REQUEST_CORRELATION" | sha256sum | cut -d' ' -f1)"
           rm -rf saga-state
-          gh run download "$REQUEST_SAGA_RUN_ID" -R Otzaria/otzaria-library \
-            -n "saga-state-$correlation_sha-attempt-$REQUEST_SAGA_RUN_ATTEMPT" -D saga-state
+          gh release download "saga-state-$correlation_sha-attempt-$REQUEST_SAGA_RUN_ATTEMPT" \
+            -R Otzaria/otzaria-library -p saga-state.json -p saga-state.sha256 -D saga-state
           python3 .github/scripts/saga_contract.py --directory saga-state \
             --expected-run-id "$REQUEST_SAGA_RUN_ID" --expected-correlation "$REQUEST_CORRELATION" \
             --expected-run-attempt "$REQUEST_SAGA_RUN_ATTEMPT" \
@@ -188,8 +188,8 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf child-result release-check && mkdir child-result release-check
-          gh run download "$CALLBACK_CHILD_RUN_ID" -R Otzaria/otzaria-library \
-            -n "pipeline-result-$CALLBACK_CHILD_RUN_ATTEMPT" -D child-result
+          gh release download "pipeline-result-run-$CALLBACK_CHILD_RUN_ID-$CALLBACK_CHILD_RUN_ATTEMPT" \
+            -R Otzaria/otzaria-library -p pipeline-result.json -p pipeline-result.sha256 -D child-result
           python3 pipeline_result_contract.py validate-otzaria-result \
             --json child-result/pipeline-result.json --sha256 child-result/pipeline-result.sha256 \
             --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
@@ -329,8 +329,8 @@ jobs:
             *) echo "::error::Successful Otzaria child workflow head does not descend from the saga commit"; exit 1 ;;
           esac
           rm -rf child-result && mkdir child-result
-          gh run download "$run_id" -R Otzaria/otzaria-library \
-            -n "pipeline-result-$attempt" -D child-result
+          gh release download "pipeline-result-run-$run_id-$attempt" \
+            -R Otzaria/otzaria-library -p pipeline-result.json -p pipeline-result.sha256 -D child-result
           python3 pipeline_result_contract.py validate-otzaria-result \
             --json child-result/pipeline-result.json --sha256 child-result/pipeline-result.sha256 \
             --correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT" \
@@ -341,8 +341,8 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf build-result build-release-check && mkdir build-result build-release-check
-          gh run download "$CALLBACK_CHILD_RUN_ID" -R Otzaria/SeforimLibrary \
-            -n "pipeline-result-$CALLBACK_CHILD_RUN_ATTEMPT" -D build-result
+          gh release download "pipeline-result-run-$CALLBACK_CHILD_RUN_ID-$CALLBACK_CHILD_RUN_ATTEMPT" \
+            -R Otzaria/SeforimLibrary -p pipeline-result.json -p pipeline-result.sha256 -D build-result
           FORDB_TAG="$(jq -r .fordb_tag build-result/pipeline-result.json)"
           FORDB_SHA="$(jq -r .fordb_archive_sha256 build-result/pipeline-result.json)"
           [[ "$FORDB_TAG" == "$PINNED_FORDB_TAG" && "$FORDB_SHA" == "$PINNED_FORDB_SHA" ]]
@@ -379,10 +379,10 @@ jobs:
             '{schema_version:1,status:"complete",correlation_id:$correlation_id,correlation_sha256:$correlation_sha256,saga_run_id:$saga_run_id,seforim_run_id:$seforim_run_id,release_tag:$release_tag}' \
             > saga-complete/saga-complete.json
           sha256sum saga-complete/saga-complete.json | cut -d' ' -f1 > saga-complete/saga-complete.sha256
-      - uses: actions/upload-artifact@v4
+      - name: Publish immutable saga completion release
         if: needs.resolve.outputs.stage == 's2' && steps.stage_gate.outputs.done != 'true'
-        with:
-          name: saga-complete-${{ needs.resolve.outputs.correlation_sha256 }}-attempt-${{ github.run_attempt }}
-          path: saga-complete/
-          if-no-files-found: error
-          retention-days: 90
+        run: >-
+          bash .github/scripts/publish_release_handoff.sh
+          "saga-complete-${{ needs.resolve.outputs.correlation_sha256 }}-attempt-${GITHUB_RUN_ATTEMPT}"
+          "Immutable weekly saga completion ${{ needs.resolve.outputs.correlation_sha256 }}:${GITHUB_RUN_ATTEMPT}"
+          "$GITHUB_SHA" saga-complete/saga-complete.json saga-complete/saga-complete.sha256

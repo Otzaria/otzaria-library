@@ -31,6 +31,13 @@ class SagaContinueWorkflowContractTest(unittest.TestCase):
         self.assertIn('validate-otzaria-result', step)
         self.assertNotIn("find_exact_workflow_run.sh", step)
 
+    def test_all_durable_handoffs_use_releases(self):
+        self.assertNotIn("actions/upload-artifact", self.workflow)
+        self.assertNotIn("actions/download-artifact", self.workflow)
+        self.assertNotIn("gh run download", self.workflow)
+        self.assertIn("pipeline-result-run-$CALLBACK_CHILD_RUN_ID-$CALLBACK_CHILD_RUN_ATTEMPT", self.workflow)
+        self.assertIn("saga-state-$correlation_sha-attempt-$REQUEST_SAGA_RUN_ATTEMPT", self.workflow)
+
 
 if __name__ == "__main__":
     unittest.main()

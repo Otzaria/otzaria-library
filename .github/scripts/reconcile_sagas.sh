@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Recover callbacks lost between repositories. Every decision is derived from a
-# strict saga-state artifact plus exact child titles; payloads are lookup keys only.
+# strict saga-state release plus exact child titles; payloads are lookup keys only.
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=${SAGA_REPO:-Otzaria/otzaria-library}
@@ -10,13 +10,17 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 FAILURES=0
 MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
-# The reconciler was introduced together with the durable saga-state artifact.
+# Saga roots created before this instant used Actions artifacts for their state.
+# They cannot satisfy the Release contract and must not poison every scheduled
+# reconciliation tick after the migration. New roots remain fail-closed.
+STATE_RELEASE_ROLLOUT_AT=${SAGA_STATE_RELEASE_ROLLOUT_AT:-2026-08-13T23:25:42Z}
+# The reconciler was introduced together with the durable saga-state handoff.
 # Successful workflow runs from before that rollout used the old synchronous
-# protocol and legitimately have no saga-state artifact.  A rewritten Git
+# protocol and legitimately have no saga-state handoff.  A rewritten Git
 # history can also make an otherwise valid historical root `diverged` from
 # this marker.  In either case, never auto-recover it: that would create a
 # duplicate saga from a foreign control-plane history.  Post-rollout roots on
-# the current lineage still require their state artifact below.
+# the current lineage still require their state release below.
 STATE_CONTRACT_COMMIT=${SAGA_STATE_CONTRACT_COMMIT:-d887f442b3c358da28e62506fae9df3f7c931700}
 CONTROL_HEAD=$(git rev-parse HEAD)
 [[ "$CONTROL_HEAD" =~ ^[0-9a-f]{40}$ ]] || {
@@ -25,6 +29,8 @@ CONTROL_HEAD=$(git rev-parse HEAD)
   echo "::error::SAGA_STATE_CONTRACT_COMMIT must be a full commit SHA"; exit 2; }
 [[ "$MAX_RERUN_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || {
   echo "::error::SAGA_MAX_RERUN_ATTEMPTS must be a positive integer"; exit 2; }
+[[ "$STATE_RELEASE_ROLLOUT_AT" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$ ]] || {
+  echo "::error::SAGA_STATE_RELEASE_ROLLOUT_AT must be an RFC3339 UTC instant"; exit 2; }
 if [ -f "$RETIRED_SAGAS_FILE" ]; then
   awk '
     /^[[:space:]]*(#|$)/ { next }
@@ -38,7 +44,7 @@ fi
 
 if ! RUNS=$(gh api --paginate -X GET "repos/$REPO/actions/workflows/sync-manual-links.yml/runs" \
   -f event=workflow_dispatch -f created=">=$SINCE" -f per_page=100 \
-  --jq '.workflow_runs[] | select(.status=="completed" and .conclusion=="success") | (.id|tostring)'); then
+  --jq ".workflow_runs[] | select(.status==\"completed\" and .conclusion==\"success\" and .created_at >= \"$STATE_RELEASE_ROLLOUT_AT\") | (.id|tostring)"); then
   echo "::error::cannot list saga roots"
   exit 1
 fi
@@ -163,10 +169,10 @@ for saga_run in $RUNS; do
     continue
   fi
   if ! saga_meta=$(gh api "repos/$REPO/actions/runs/$saga_run" \
-      --jq 'select(.status=="completed" and .conclusion=="success" and (.run_attempt|type)=="number" and .run_attempt>=1 and (.head_sha|type)=="string") | [.head_sha,.run_attempt] | @tsv'); then
+      --jq 'select(.status=="completed" and .conclusion=="success" and (.run_attempt|type)=="number" and .run_attempt>=1 and (.head_sha|type)=="string") | [.head_sha,.run_attempt,.display_title] | @tsv'); then
     echo "::warning::cannot resolve current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue
   fi
-  IFS=$'\t' read -r saga_head saga_attempt <<< "$saga_meta"
+  IFS=$'\t' read -r saga_head saga_attempt saga_title <<< "$saga_meta"
   [[ "$saga_head" =~ ^[0-9a-f]{40}$ ]] || {
     echo "::error::invalid head SHA for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
   [[ "$saga_attempt" =~ ^[1-9][0-9]*$ ]] || {
@@ -184,26 +190,22 @@ for saga_run in $RUNS; do
       echo "::error::saga $saga_run head is not on the durable saga-state lineage ($contract_relation)"
       FAILURES=$((FAILURES+1)); continue ;;
   esac
-  artifact_rows=$(gh api --paginate "repos/$REPO/actions/runs/$saga_run/artifacts?per_page=100" \
-    --jq '.artifacts[] | select(.expired==false and (.name|startswith("saga-state-"))) | [.id,.name] | @tsv') || {
-      echo "::warning::cannot list artifacts for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
-  artifact_rows=$(printf '%s\n' "$artifact_rows" | awk -F'\t' -v suffix="-attempt-$saga_attempt" 'NF && substr($2,length($2)-length(suffix)+1)==suffix')
-  count=$(printf '%s\n' "$artifact_rows" | awk 'NF' | wc -l | tr -d ' ')
-  [ "$count" -eq 1 ] || { echo "::error::saga $saga_run has $count live state artifacts"; FAILURES=$((FAILURES+1)); continue; }
-  artifact_name=$(printf '%s\n' "$artifact_rows" | cut -f2)
+  corr=${saga_title#sync-manual-links correlation=}
+  [ "$corr" != "$saga_title" ] || { echo "::error::saga $saga_run title has no correlation"; FAILURES=$((FAILURES+1)); continue; }
+  correlation_sha=$(printf '%s' "$corr" | sha256sum | cut -d' ' -f1)
+  release_tag="saga-state-$correlation_sha-attempt-$saga_attempt"
   state_dir="$TMP/$saga_run"
   mkdir "$state_dir"
-  gh run download "$saga_run" -R "$REPO" -n "$artifact_name" -D "$state_dir" || {
+  gh release download "$release_tag" -R "$REPO" -p saga-state.json -p saga-state.sha256 -D "$state_dir" || {
     FAILURES=$((FAILURES+1)); continue; }
-  corr=$(jq -r .correlation_id "$state_dir/saga-state.json")
   if ! python3 "$HERE/saga_contract.py" --directory "$state_dir" \
       --expected-run-id "$saga_run" --expected-run-attempt "$saga_attempt" \
       --expected-correlation "$corr"; then
     FAILURES=$((FAILURES+1)); continue
   fi
-  expected_artifact="saga-state-$(jq -r .correlation_sha256 "$state_dir/saga-state.json")-attempt-$saga_attempt"
-  if [ "$artifact_name" != "$expected_artifact" ]; then
-    echo "::error::saga $saga_run state artifact name disagrees with its canonical identity"
+  expected_release="saga-state-$(jq -r .correlation_sha256 "$state_dir/saga-state.json")-attempt-$saga_attempt"
+  if [ "$release_tag" != "$expected_release" ]; then
+    echo "::error::saga $saga_run state release tag disagrees with its canonical identity"
     FAILURES=$((FAILURES+1)); continue
   fi
   expected=$(jq -r .expected_links_commit "$state_dir/saga-state.json")

@@ -7,6 +7,18 @@ SCRIPT = Path(__file__).with_name("reconcile_sagas.sh")
 
 
 class ReconcileSagasContractTest(unittest.TestCase):
+    def test_reconciler_reads_release_state_not_actions_artifacts(self):
+        source = SCRIPT.read_text(encoding="utf-8")
+        self.assertIn('gh release download "$release_tag"', source)
+        self.assertIn('release_tag="saga-state-$correlation_sha-attempt-$saga_attempt"', source)
+        self.assertNotIn("/artifacts", source)
+        self.assertNotIn("gh run download", source)
+
+    def test_scheduled_scan_excludes_pre_release_contract_roots(self):
+        source = SCRIPT.read_text(encoding="utf-8")
+        self.assertIn("SAGA_STATE_RELEASE_ROLLOUT_AT", source)
+        self.assertIn('.created_at >= \\"$STATE_RELEASE_ROLLOUT_AT\\"', source)
+
     def test_explicit_retirement_precedes_any_recovery_action(self):
         source = SCRIPT.read_text(encoding="utf-8")
         loop = source.split("for saga_run in $RUNS; do", 1)[1]
