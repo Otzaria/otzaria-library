@@ -317,7 +317,8 @@ jobs:
               mkdir -p manual-links-refresh-artifact
               cp "$output/manual_links_refresh_report.json" manual-links-refresh-artifact/
               cp "$output/manual_links_lineage.json" manual-links-refresh-artifact/
-              cp "$output/.manual-links-refresh-complete" manual-links-refresh-artifact/
+              cp "$output/.manual-links-refresh-complete" \
+                manual-links-refresh-artifact/manual-links-refresh-complete
               echo "expected_links_commit=$expected" >> "$GITHUB_OUTPUT"
               success=true
               git worktree remove --force "$worktree"
@@ -335,7 +336,7 @@ jobs:
           "Immutable manual-links refresh report ${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"
           "$GITHUB_SHA" manual-links-refresh-artifact/manual_links_refresh_report.json
           manual-links-refresh-artifact/manual_links_lineage.json
-          manual-links-refresh-artifact/.manual-links-refresh-complete
+          manual-links-refresh-artifact/manual-links-refresh-complete
 
   start-saga:
     name: Persist saga state and dispatch Otzaria publisher

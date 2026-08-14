@@ -4,7 +4,15 @@ set -euo pipefail
 tag=${1:?tag required}; title=${2:?title required}; target=${3:?target required}; shift 3
 [ "$#" -gt 0 ]; [[ "$tag" =~ ^[A-Za-z0-9._-]{1,240}$ ]]; [[ "$target" =~ ^[0-9a-f]{40}$ ]]
 : "${GH_TOKEN:?GH_TOKEN required}"
-for path in "$@"; do [ -f "$path" ]; [ "$(stat --format='%s' "$path")" -le 2147483647 ]; done
+for path in "$@"; do
+  [ -f "$path" ]
+  name=${path##*/}
+  [[ "$name" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,254}$ ]] || {
+    echo "::error::release asset basename is unsafe or would be normalized by GitHub: $name"
+    exit 2
+  }
+  [ "$(stat --format='%s' "$path")" -le 2147483647 ]
+done
 state="$RUNNER_TEMP/release-handoff-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-0}.json"
 if ! gh release view "$tag" --json isDraft,isPrerelease,targetCommitish,assets > "$state" 2>/dev/null; then
   gh release create "$tag" --target "$target" --title "$title" \
