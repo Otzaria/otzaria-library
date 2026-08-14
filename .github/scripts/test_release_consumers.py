@@ -29,6 +29,9 @@ class ReleaseConsumerContractTest(unittest.TestCase):
         helper = (SCRIPTS / "publish_release_handoff.sh").read_text(encoding="utf-8")
         self.assertIn("release asset basename is unsafe or would be normalized by GitHub", helper)
         self.assertIn("^[A-Za-z0-9][A-Za-z0-9._-]{0,254}$", helper)
+        self.assertIn('repos/$GITHUB_REPOSITORY/releases/tags/$tag', helper)
+        self.assertIn("targetCommitish:.target_commitish", helper)
+        self.assertNotIn('gh release view "$tag" --json', helper)
 
 
 if __name__ == "__main__":

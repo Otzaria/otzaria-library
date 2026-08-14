@@ -14,13 +14,17 @@ for path in "$@"; do
   [ "$(stat --format='%s' "$path")" -le 2147483647 ]
 done
 state="$RUNNER_TEMP/release-handoff-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-0}.json"
-if ! gh release view "$tag" --json isDraft,isPrerelease,targetCommitish,assets > "$state" 2>/dev/null; then
+read_release() {
+  gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" --jq \
+    '{isDraft:.draft,isPrerelease:.prerelease,targetCommitish:.target_commitish,assets:[.assets[]|{name,size,digest}]}'
+}
+if ! read_release > "$state" 2>/dev/null; then
   gh release create "$tag" --target "$target" --title "$title" \
     --notes "Immutable workflow handoff; consumers verify every digest." --prerelease || \
-    gh release view "$tag" --json isDraft,isPrerelease,targetCommitish,assets > "$state"
+    read_release > "$state"
 fi
 check() {
-  gh release view "$tag" --json isDraft,isPrerelease,targetCommitish,assets > "$state"
+  read_release > "$state"
   python3 - "$state" "$target" "$@" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
