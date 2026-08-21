@@ -1,6 +1,7 @@
 import subprocess
 from pathlib import Path
 import unittest
+import os
 
 
 SCRIPT = Path(__file__).with_name("reconcile_sagas.sh")
@@ -62,6 +63,44 @@ class ReconcileSagasContractTest(unittest.TestCase):
                 "b64f8583cc910dc5cd7b5f846fed153c39626751"
             ),
         )
+
+    def test_terminal_failed_seforim_child_is_returned_not_reported_missing(self):
+        """A failed exact child must reach the bounded retry path exactly once."""
+        functions = SCRIPT.read_text(encoding="utf-8").split("for saga_run in $RUNS; do", 1)[0]
+        with self.subTest("failed child is selected"):
+            result = subprocess.run(
+                [
+                    "bash",
+                    "-c",
+                    (
+                        "gh() {\n"
+                        "  case \"$*\" in\n"
+                        "    *sync-manual-links.yml/runs*) printf '' ;;\n"
+                        "    *manual-generate-release.yml/runs*) "
+                        "printf '42\\tcompleted\\tfailure\\tpayload\\n' ;;\n"
+                        "    *compare*) printf 'identical\\n' ;;\n"
+                        "    *) return 99 ;;\n"
+                        "  esac\n"
+                        "}\n"
+                        "source /dev/stdin\n"
+                        "value=$(find_seforim_child title payload); status=$?; "
+                        "printf '%s|%s\\n' \"$status\" \"$value\""
+                    ),
+                ],
+                input=functions,
+                text=True,
+                capture_output=True,
+                env={**os.environ, "SAGA_SINCE": "2026-08-01T00:00:00Z"},
+                check=True,
+            )
+        self.assertEqual(result.stdout.strip(), "0|42")
+
+    def test_exhausted_recovery_is_a_warning_not_a_recurring_failure(self):
+        source = SCRIPT.read_text(encoding="utf-8")
+        self.assertIn("MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-2}", source)
+        self.assertIn("awaiting operator recovery", source)
+        self.assertNotIn('echo "::error::continuation $rid exhausted', source)
+        self.assertNotIn('echo "::error::$label $rid exhausted', source)
 
 
 if __name__ == "__main__":
