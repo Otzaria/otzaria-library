@@ -9,7 +9,10 @@ RETIRED_SAGAS_FILE=${SAGA_RETIRED_FILE:-"$HERE/retired_sagas.txt"}
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 FAILURES=0
-MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-3}
+# One failed delivery is retried once for transient infrastructure faults.  Any
+# second failure is an operator-action state, not a reason to wake the account
+# every fifteen minutes with another identical failure.
+MAX_RERUN_ATTEMPTS=${SAGA_MAX_RERUN_ATTEMPTS:-2}
 # Saga roots created before this instant used Actions artifacts for their state.
 # They cannot satisfy the Release contract and must not poison every scheduled
 # reconciliation tick after the migration. New roots remain fail-closed.
@@ -59,10 +62,11 @@ find_child() {
 # result and the workflow control head in GitHub run metadata.  A hotfix may
 # advance the latter while an expensive build is active.  Accept only control
 # heads that descend from the signed payload pin; prefer an already successful
-# delivery, otherwise require exactly one active delivery.  Failed historical
-# deliveries never hide a newer recovery run.
+# delivery, otherwise require exactly one active delivery.  If all deliveries
+# are terminal failures, return the newest exact child so the bounded retry
+# policy below can act on it instead of treating it as missing forever.
 find_seforim_child() {
-  local title="$1" payload="$2" rows allowed relation id status conclusion head successes active count
+  local title="$1" payload="$2" rows allowed relation id status conclusion head successes active failed count
   if ! rows=$(TITLE="$title" gh api --paginate -X GET \
       "repos/Otzaria/SeforimLibrary/actions/workflows/manual-generate-release.yml/runs" \
       -f event=workflow_dispatch -f per_page=100 \
@@ -93,6 +97,14 @@ find_seforim_child() {
   if [ "$count" -gt 1 ]; then
     echo "::error::multiple active Seforim children descend from the pinned payload; refusing to guess" >&2
     return 3
+  fi
+  failed=$(printf '%s' "$allowed" | awk -F'\t' '$2=="completed" && $3!="success" {print $1}')
+  if [ -n "$failed" ]; then
+    # At-least-once callbacks may have produced several failed attempts of the
+    # same signed child.  The newest databaseId is the sole retry candidate;
+    # never manufacture a second child run.
+    printf '%s\n' "$failed" | sort -n | tail -1
+    return 0
   fi
   return 1
 }
@@ -127,8 +139,12 @@ ensure_continuation() {
     return 0
   fi
   if printf '%s\n' "$rows" | awk -F'\t' '$2=="completed" && $3=="success" {found=1} END{exit !found}'; then
-    echo "::error::an exact continuation succeeded but its downstream stage product is still missing"
-    return 1
+    # Re-running a successful callback with the same immutable inputs cannot
+    # create the missing product. Pause this exact saga instead of producing a
+    # scheduled failure forever; a deliberately dispatched recovery will be
+    # discovered normally on the next tick.
+    echo "::warning::exact continuation succeeded but its downstream stage product is missing; saga is paused for operator recovery"
+    return 0
   fi
   if printf '%s\n' "$rows" | awk -F'\t' '$2!="completed" {bad=1} END{exit bad}'; then :; else
     echo "::error::an exact continuation has an unknown status"
@@ -142,8 +158,8 @@ ensure_continuation() {
   [[ "$run_attempt" =~ ^[1-9][0-9]*$ ]] || {
     echo "::error::invalid run_attempt for continuation $rid"; return 1; }
   if [ "$run_attempt" -ge "$MAX_RERUN_ATTEMPTS" ]; then
-    echo "::error::continuation $rid exhausted $MAX_RERUN_ATTEMPTS attempts"
-    return 1
+    echo "::warning::continuation $rid exhausted the bounded $MAX_RERUN_ATTEMPTS-attempt recovery budget; awaiting operator recovery"
+    return 0
   fi
   gh run rerun "$rid" -R "$REPO"
   echo "reran failed continuation $rid for $stage"
@@ -155,8 +171,11 @@ rerun_failed_child() {
   [[ "$attempt" =~ ^[1-9][0-9]*$ ]] || {
     echo "::error::$label $rid returned an invalid run_attempt"; return 1; }
   if [ "$attempt" -ge "$MAX_RERUN_ATTEMPTS" ]; then
-    echo "::error::$label $rid exhausted $MAX_RERUN_ATTEMPTS attempts"
-    return 1
+    # The exact failed child and its log remain available. Returning success
+    # prevents this scheduled reconciler from emitting the same notification
+    # forever; any further recovery must be intentional.
+    echo "::warning::$label $rid exhausted the bounded $MAX_RERUN_ATTEMPTS-attempt recovery budget; awaiting operator recovery"
+    return 0
   fi
   gh run rerun "$rid" -R "$repo"
   echo "reran failed $label $rid (next attempt $((attempt+1)))"
