@@ -1,0 +1,45 @@
+name: Validate National Library normalizers
+
+on:
+  pull_request:
+    paths:
+      - "National-LibraryToOtzaria/סקריפטים/**"
+      - ".github/workflows/validate-national-library-normalizers.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "National-LibraryToOtzaria/סקריפטים/**"
+      - ".github/workflows/validate-national-library-normalizers.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout normalizer tests
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            /National-LibraryToOtzaria/סקריפטים/fix_marker_breaks.py
+            /National-LibraryToOtzaria/סקריפטים/fix_missing_spaces.py
+            /National-LibraryToOtzaria/סקריפטים/test_fix_marker_breaks.py
+            /National-LibraryToOtzaria/סקריפטים/test_fix_missing_spaces.py
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Run normalizer tests
+        working-directory: National-LibraryToOtzaria/סקריפטים
+        run: |
+          python3 test_fix_marker_breaks.py
+          python3 test_fix_missing_spaces.py

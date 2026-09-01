@@ -9,6 +9,9 @@ from bs4 import BeautifulSoup, Tag
 from gematriapy import gematria
 from pyluach import dates
 
+import fix_marker_breaks
+import fix_missing_spaces
+
 
 @dataclass
 class YearRange:
@@ -202,7 +205,11 @@ def apply_span_styles(html: str) -> str:
             current.append(new_tag)
             current = new_tag
     result = str(soup).replace("\n", " ")
-    return re.sub(r'(\s*<br\s*/?>)+\s*$', '', result).strip()
+    result = re.sub(r'(\s*<br\s*/?>)+\s*$', '', result).strip()
+    # בנתוני המקור כותרת הסימן דבוקה לגוף הקטע (otzaria-library#38)
+    result = fix_marker_breaks.fix_text(result)[0]
+    # בנתוני המקור המילה שאחרי קטע מעוצב דבוקה לתג הסוגר (otzaria/otzaria#1068)
+    return fix_missing_spaces.fix_text(result)[0]
 
 
 input_path = Path(r"C:\Users\Otzaria\Desktop\rambam\output.json")
