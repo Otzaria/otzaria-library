@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fix_marker_breaks import fix_text, is_siman_label
+from fix_marker_breaks import fix_text, is_hebrew_numeral, is_siman_label
 
 H = '<span style="color:#1B1464">'
 
@@ -55,16 +55,39 @@ CASES_UNCHANGED = [
     # פיסוק צמוד שייך לתווית ומפריד בעצמו
     f'{H}סימן יב</span>: <i>מותר להרוג המוסר</i>',
     f'{H}סימן יב</span>. <b>וז"ל </b>',
+    # הרווח נמצא בתוך הכותרת הראשונה — אין להוסיף רווח שני בין התגים
+    f'{H}ז </span>{H}כוורת </span>',
+    # כותרת תיאורית שגלשה לתוך המשך המשפט; המילים הקצרות אינן מספרים
+    f'{H}פרט קמא קמא בטיל אבל </span><i>אם עירה יין</i>',
+    f'{H}פרט טועה בדבר מצוה כל </span><i>העושה מצוה</i>',
+    f'{H}פרט נזקי ממון כל </span><i>נפש חיה</i>',
+    f'{H}שורש מקדש בעל כרחה אין </span><i>האשה מתקדשת</i>',
+    f'{H}שורש אי חופה קונה כיון </span><i>שנכנסה ארוסה</i>',
+    f'{H}שורש רחמי האב על הבן היה </span><i>הדבר ברור</i>',
 ]
 
-LABELS_TRUE = ['סימן א', 'חלק שני סימן א', 'סימן רלג', 'סימן כ"ה', 'רצב.', 'סימן ז\'', 'סימן י"ד']
+LABELS_TRUE = [
+    'סימן א', 'חלק שני סימן א', 'סימן רלג', 'סימן כ"ה', 'רצב.',
+    'סימן ז\'', 'סימן י"ד', 'סימן יוד', 'סימן טוב', 'סימן חי',
+]
 LABELS_FALSE = [
     'בענין השומע ש"ש לבטלה צריך לנדותו',
     'שורש תקרובת ע"א ותקרובת',
     'פרט רוב וקרוב גוזל',
     'בדין מורידין קרוב לנכסי שבוי',
+    'פרט קמא קמא בטיל אבל',
+    'פרט טועה בדבר מצוה כל',
+    'פרט נזקי ממון כל',
+    'שורש אתי עשה ודחי ל"ת',
+    'שורש סוכה שע"ג גמל',
+    'שורש מקדש בעל כרחה אין',
+    'שורש אי חופה קונה כיון',
+    'שורש רחמי האב על הבן היה',
     '',
 ]
+
+NUMERALS_TRUE = ['א', 'יא', 'ט"ו', 'רלג', 'שעג', 'תתקצ"ט', 'יוד', 'טוב', 'חי']
+NUMERALS_FALSE = ['בטיל', 'ממון', 'סוכה', 'מקדש', 'כרחה']
 
 
 def main() -> None:
@@ -87,13 +110,24 @@ def main() -> None:
         if is_siman_label(lbl):
             failures.append(f'  {lbl!r} אינו תווית סימן')
 
+    for numeral in NUMERALS_TRUE:
+        if not is_hebrew_numeral(numeral):
+            failures.append(f'  {numeral!r} אמור להיות מזוהה כמספר עברי')
+    for numeral in NUMERALS_FALSE:
+        if is_hebrew_numeral(numeral):
+            failures.append(f'  {numeral!r} אינו מספר עברי')
+
     # ריצה כפולה אינה משנה דבר (אידמפוטנטיות)
     for src, _ in CASES_BR + CASES_SPACE:
         once = run(src)
         if run(once) != once:
             failures.append(f'  אינו אידמפוטנטי: {src}')
 
-    total = len(CASES_BR) + len(CASES_SPACE) + len(CASES_UNCHANGED) + len(LABELS_TRUE) + len(LABELS_FALSE)
+    total = (
+        len(CASES_BR) + len(CASES_SPACE) + len(CASES_UNCHANGED)
+        + len(LABELS_TRUE) + len(LABELS_FALSE)
+        + len(NUMERALS_TRUE) + len(NUMERALS_FALSE)
+    )
     if failures:
         print(f'נכשלו {len(failures)} בדיקות:')
         print('\n'.join(failures))

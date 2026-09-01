@@ -44,9 +44,18 @@ ORDINALS = (
     r'ראשון|שני|שלישי|רביעי|חמישי|חמשי|ששי|שישי|שביעי|שמיני|תשיעי|עשירי'
     r'|אחד|שנים|עשר|עשרה'
 )
-# אות/ות גימטריה קצרה, עם או בלי גרש/גרשיים
-NUMERAL = r'[א-ת]{1,4}(?:[\'"\u05f3\u05f4][א-ת]{0,2})?'
-TOKEN = re.compile(r'^(?:' + KEYWORDS + r'|' + ORDINALS + r'|' + NUMERAL + r')$')
+# אות/ות גימטריה קצרה, עם או בלי גרש/גרשיים. אי אפשר להסתפק ב-[א-ת]{1,4}:
+# הוא מזהה גם מילים קצרות ("קמא", "אבל", "ממון") כמספרים ושובר משפטים.
+NUMERAL = re.compile(r'^[א-ת\'"\u05f3\u05f4]+$')
+HEBREW_NUMBER_VALUES = {
+    'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5,
+    'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9,
+    'י': 10, 'כ': 20, 'ך': 20, 'ל': 30, 'מ': 40, 'ם': 40,
+    'נ': 50, 'ן': 50, 'ס': 60, 'ע': 70, 'פ': 80, 'ף': 80,
+    'צ': 90, 'ץ': 90, 'ק': 100, 'ר': 200, 'ש': 300, 'ת': 400,
+}
+NUMERAL_ALIASES = {'יוד', 'טוב', 'חי'}
+TOKEN = re.compile(r'^(?:' + KEYWORDS + r'|' + ORDINALS + r')$')
 
 MAX_LABEL_LEN = 24
 
@@ -70,7 +79,20 @@ def is_siman_label(plain: str) -> bool:
     # תווית חייבת להתחיל במילת מפתח או להיות מספור טהור
     if not re.match(r'^(?:' + KEYWORDS + r')$', tokens[0]) and len(tokens) > 1:
         return False
-    return all(TOKEN.match(t) for t in tokens)
+    return all(TOKEN.match(t) or is_hebrew_numeral(t) for t in tokens)
+
+
+def is_hebrew_numeral(token: str) -> bool:
+    """זיהוי שמרני של מספר עברי, בלי לקבל כל מילה עברית קצרה כמספר."""
+    if not NUMERAL.fullmatch(token):
+        return False
+    letters = re.sub(r'[\'"\u05f3\u05f4]', '', token)
+    if not letters or len(letters) > 6:
+        return False
+    if len(letters) == 1 or letters in NUMERAL_ALIASES:
+        return True
+    values = [HEBREW_NUMBER_VALUES[ch] for ch in letters]
+    return all(left >= right for left, right in zip(values, values[1:]))
 
 
 def fix_text(text: str) -> tuple[str, dict]:
@@ -90,8 +112,11 @@ def fix_text(text: str) -> tuple[str, dict]:
         plain = TAG.sub('', inner)
         next_is_header = after.startswith(NEXT_HEADER)
 
-        if next_is_header:
+        if next_is_header and plain == plain.rstrip():
             sep, key = ' ', 'space'
+        elif next_is_header:
+            # רווח בתוך ה-span כבר מפריד אותו מן הכותרת הבאה.
+            continue
         elif is_siman_label(plain):
             sep, key = '<br/>', 'br'
         elif plain == plain.rstrip():
