@@ -67549,5 +67549,53 @@
             "ספרות מודרנית",
             "כתבי הרב קוק"
         ]
+    },
+    {
+        "he_title": "פירוש הרב זקס על הסידור",
+        "en_title": "Rabbi Sacks on Siddur",
+        "path": [
+            "סדר התפילה",
+            "סידור"
+        ]
+    },
+    {
+        "he_title": "סידור קורן השלם; אשכנז",
+        "en_title": "The Koren Shalem Siddur; Ashkenaz",
+        "path": [
+            "סדר התפילה",
+            "סידור"
+        ]
+    },
+    {
+        "he_title": "פירוש הרב זקס על מחזור ראש השנה",
+        "en_title": "Rabbi Sacks on Rosh HaShana Mahzor",
+        "path": [
+            "סדר התפילה",
+            "ימים נוראים"
+        ]
+    },
+    {
+        "he_title": "פירוש הרב זקס על מחזור ליום הכיפורים",
+        "en_title": "Rabbi Sacks on Yom Kippur Mahzor",
+        "path": [
+            "סדר התפילה",
+            "ימים נוראים"
+        ]
+    },
+    {
+        "he_title": "מחזור קורן לראש השנה; אשכנז",
+        "en_title": "The Koren Rosh HaShana Mahzor; Ashkenaz",
+        "path": [
+            "סדר התפילה",
+            "ימים נוראים"
+        ]
+    },
+    {
+        "he_title": "מחזור קורן ליום הכיפורים; אשכנז",
+        "en_title": "The Koren Yom Kippur Mahzor; Ashkenaz",
+        "path": [
+            "סדר התפילה",
+            "ימים נוראים"
+        ]
     }
 ]
