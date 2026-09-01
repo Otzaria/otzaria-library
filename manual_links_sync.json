@@ -18,24 +18,37 @@
   ],
   "bootstrap_adapters": {
     "National-LibraryToOtzaria/links": "national_library_mishneh_torah_v1",
-    "MoreBooks/links": "morebooks_heref_v1"
+    "MoreBooks/links": "morebooks_heref_v1",
+    "DictaToOtzaria/ערוך/links": "dicta_heref_v1"
   },
-  "excluded_files": [
-    {
-      "path": "MoreBooks/links/דרך ה_links.json",
-      "reason": "both-sides-sefaria; owned by SefariaLinksImporter",
-      "raw_file_sha256": "60a867f71bc8faa7d9570f15c306dbdd66224debbd44af4e2dcba07ee97591ac",
-      "expected_record_count": 174,
-      "source_sefaria_primary_en_title": "Derekh Hashem",
-      "source_sefaria_primary_he_title": "דרך ה'",
-      "external_primary_target_count": 86,
-      "legacy_self_target": {
-        "count": 88,
-        "basename": "דרך ה",
-        "required_heRef_prefix": "דרך ה', "
-      }
+  "he_title_aliases": {
+    "DictaToOtzaria/ערוך/links": {
+      "רשי על יבמות": "רש\"י על יבמות",
+      "רשי על שבת": "רש\"י על שבת",
+      "רשי על עירובין": "רש\"י על עירובין",
+      "רשי על פסחים": "רש\"י על פסחים",
+      "רשי על זבחים": "רש\"י על זבחים",
+      "רשי על מנחות": "רש\"י על מנחות",
+      "רשי על נזיר": "רש\"י על נזיר",
+      "רשי על סוטה": "רש\"י על סוטה",
+      "רשי על תענית": "רש\"י על תענית",
+      "רשי על מעילה": "רש\"י על מעילה",
+      "רשבם על בבא בתרא": "רשב\"ם על בבא בתרא",
+      "רשי על נדרים": "רש\"י על נדרים",
+      "רשי על הוריות": "רש\"י על הוריות",
+      "רשי על מועד קטן": "רש\"י על מועד קטן",
+      "רשי על תמורה": "רש\"י על תמורה",
+      "רשי על בבא מציעא": "רש\"י על בבא מציעא",
+      "רשי על כריתות": "רש\"י על כריתות",
+      "רשי על מגילה": "רש\"י על מגילה",
+      "רשי על ערכין": "רש\"י על ערכין",
+      "רשי על ביצה": "רש\"י על ביצה",
+      "רשי על ברכות": "רש\"י על ברכות",
+      "רשי על גיטין": "רש\"י על גיטין",
+      "רשי על חולין": "רש\"י על חולין",
+      "רשי על עבודה זרה": "רש\"י על עבודה זרה"
     }
-  ],
+  },
   "bootstrap_file_renames": [
     {
       "from": "National-LibraryToOtzaria/links/טורי אבן_links.json",

@@ -12,13 +12,16 @@ mistake fails in seconds on the pull request that introduces it.
 
 Ownership rule
 --------------
-This mirrors ``targetTitleOrNull`` + ``primaryHeTitleCount`` in SeforimLibrary:
-the ``path_2`` basename (minus ``.txt``) is looked up **verbatim** against the
-Hebrew titles of the Sefaria corpus.  The comparison is deliberately exact --
-no gershayim folding -- because that is what the tool does.  A target spelled
-``רשי על יבמות`` is therefore NOT Sefaria's ``רש"י על יבמות``; it is the local
-Otzaria copy, needs no ``ref_2``, and adding one would make the weekly sync fail
-with ``ref_2 side classification changed``.
+This mirrors ``targetTitleOrNull`` + ``SefariaTitleAliases`` + ``primaryHeTitleCount``
+in SeforimLibrary: the ``path_2`` basename (minus ``.txt``) is first translated
+through the ``he_title_aliases`` map of ``manual_links_sync.json`` -- an explicit,
+per-links-root Otzaria-title to Sefaria-heTitle bridge -- and only then looked up
+against the Hebrew titles of the Sefaria corpus.  Both steps are exact: there is
+no gershayim folding and no guessing anywhere, because that is what the tool does.
+Otzaria file names are stripped of gershayim, so a target spelled ``רשי על יבמות``
+under a root that declares the alias IS Sefaria's ``רש"י על יבמות`` and therefore
+requires a stable ``ref_2``.  Under a root with no such alias the same spelling is
+a local Otzaria copy that must not carry one.
 
 The Sefaria title list is read from a checked-in snapshot
 (``.github/data/sefaria_he_titles.txt``) because the multi-gigabyte export is
@@ -29,12 +32,14 @@ degrades to a no-op rather than guessing, so it can never invent a failure.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import subprocess
 import sys
 from pathlib import Path
 
 CONFIG_NAME = "manual_links_sync.json"
+PACKAGING_NAME = "manual_links_packaging.py"
 
 
 TITLES_PATH = ".github/data/sefaria_he_titles.txt"
@@ -53,7 +58,23 @@ def sefaria_he_titles(workspace: Path) -> set[str] | None:
     return titles or None
 
 
-def synced_roots(workspace: Path) -> list[str]:
+def load_config(workspace: Path) -> dict:
+    """Parse ``manual_links_sync.json`` through the one committed config validator.
+
+    Reusing ``manual_links_packaging.validate_config`` keeps this gate from
+    drifting into a private idea of a valid config; an unreadable or invalid
+    config raises instead of degrading to a guess.
+    """
+    path = Path(__file__).resolve().parents[2] / PACKAGING_NAME
+    spec = importlib.util.spec_from_file_location("manual_links_packaging", path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"cannot load the config validator from {path}")
+    packaging = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(packaging)
+    return packaging.validate_config(packaging.load_json(workspace / CONFIG_NAME))
+
+
+def synced_roots(config: dict) -> list[str]:
     """Return every root consumed by the recurring manual-link refresh.
 
     Bootstrap adapters may derive ``ref_2`` only during an explicit, lineage-free
@@ -61,11 +82,31 @@ def synced_roots(workspace: Path) -> list[str]:
     records after lineage exists, so a newly added Sefaria target in an adapter
     root still needs a committed stable ``ref_2``.
     """
-    config = json.loads((workspace / CONFIG_NAME).read_text(encoding="utf-8"))
     return [
         entry["path"]
         for entry in config["links_roots"]
         if entry["expected_state"] == "present"
+    ]
+
+
+def sefaria_he_title(aliases: dict, path: str, title: str) -> str:
+    """Mirrors ``SefariaTitleAliases.sefariaHeTitle``: explicit per-root map only."""
+    roots = [root for root in aliases if path.startswith(root + "/")]
+    if len(roots) > 1:
+        raise SystemExit(f"multiple he_title_aliases roots match {path}")
+    if not roots:
+        return title
+    return aliases[roots[0]].get(title, title)
+
+
+def alias_problems(aliases: dict, sefaria: set[str]) -> list[str]:
+    """An alias that no longer names a Sefaria book fails the weekly sync outright."""
+    return [
+        f"manual_links_sync.json: he_title_aliases[{root}][{title}] maps to "
+        f"{he_title!r}, which is not a Sefaria heTitle"
+        for root, entries in aliases.items()
+        for title, he_title in entries.items()
+        if he_title not in sefaria
     ]
 
 
@@ -102,7 +143,7 @@ def target_title(target: str) -> str:
     return name[:-4] if name.endswith(".txt") else name
 
 
-def check_file(workspace: Path, path: str, sefaria: set[str]) -> list[str]:
+def check_file(workspace: Path, path: str, sefaria: set[str], aliases: dict) -> list[str]:
     try:
         records = json.loads((workspace / path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -122,7 +163,7 @@ def check_file(workspace: Path, path: str, sefaria: set[str]) -> list[str]:
             problems.append(f"{path}[{index}]: missing path_2")
             continue
 
-        owned = target_title(target) in sefaria
+        owned = sefaria_he_title(aliases, path, target_title(target)) in sefaria
         if owned and "ref_2" not in record:
             problems.append(
                 f"{path}[{index}]: new_target_ref_required -- target {target!r} is "
@@ -155,23 +196,22 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     workspace = Path(args.workspace).resolve()
-    roots = synced_roots(workspace)
-    files = changed_link_files(workspace, args.base, roots)
-    if not files:
-        print("No added or modified manual-link files; nothing to validate.")
-        return 0
-
+    config = load_config(workspace)
+    aliases = config["he_title_aliases"]
+    files = changed_link_files(workspace, args.base, synced_roots(config))
     sefaria = sefaria_he_titles(workspace)
     if sefaria is None:
         print(f"{TITLES_PATH} is missing; skipping (no guess is better than a wrong one).")
         return 0
 
-    problems: list[str] = []
+    # The alias map is checked even for a config-only PR: a stale alias is fatal to the sync.
+    problems: list[str] = alias_problems(aliases, sefaria)
     for path in files:
-        problems.extend(check_file(workspace, path, sefaria))
+        problems.extend(check_file(workspace, path, sefaria, aliases))
 
     print(
-        f"Validated {len(files)} manual-link file(s) "
+        f"Validated {len(files)} manual-link file(s) and "
+        f"{sum(len(entry) for entry in aliases.values())} title alias(es) "
         f"against {len(sefaria)} Sefaria titles."
     )
     if not problems:

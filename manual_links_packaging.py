@@ -110,7 +110,39 @@ def validate_config(config: object) -> dict:
         seen.add(path)
         if entry["expected_state"] not in {"present", "absent"}:
             raise PackagingError(f"invalid expected_state for {path}")
+    validate_he_title_aliases(config.get("he_title_aliases"), seen)
     return config
+
+
+def checked_book_title(value: object, field: str) -> str:
+    if not isinstance(value, str) or not value.strip() or value.strip() != value:
+        raise PackagingError(f"{field} must be a trimmed non-empty book title")
+    if "/" in value or "\\" in value or "\x00" in value:
+        raise PackagingError(f"{field} must be a bare book title: {value!r}")
+    return value
+
+
+def validate_he_title_aliases(aliases: object, roots: set) -> None:
+    # Otzaria titles are quote-stripped; this per-root map is the only bridge to Sefaria heTitles.
+    if not isinstance(aliases, dict):
+        raise PackagingError("he_title_aliases must be an object keyed by links root")
+    for root, entries in aliases.items():
+        path = str(safe_relative_path(root, "he_title_aliases key"))
+        if path not in roots:
+            raise PackagingError(f"he_title_aliases[{path}] is not a declared links root")
+        if not isinstance(entries, dict) or not entries:
+            raise PackagingError(f"he_title_aliases[{path}] must be a non-empty object")
+        sefaria_titles = set()
+        for title, sefaria_title in entries.items():
+            checked_book_title(title, f"he_title_aliases[{path}] key")
+            checked_book_title(sefaria_title, f"he_title_aliases[{path}][{title}]")
+            if title == sefaria_title:
+                raise PackagingError(f"he_title_aliases[{path}][{title}] must differ from the Otzaria title")
+            if sefaria_title in entries:
+                raise PackagingError(f"he_title_aliases[{path}][{title}] must not chain into another alias")
+            if sefaria_title in sefaria_titles:
+                raise PackagingError(f"duplicate Sefaria heTitle in he_title_aliases[{path}]: {sefaria_title!r}")
+            sefaria_titles.add(sefaria_title)
 
 
 def assert_regular(path: Path) -> None:

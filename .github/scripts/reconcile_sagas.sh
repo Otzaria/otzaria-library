@@ -192,6 +192,12 @@ for saga_run in $RUNS; do
     echo "::warning::cannot resolve current attempt for saga $saga_run"; FAILURES=$((FAILURES+1)); continue
   fi
   IFS=$'\t' read -r saga_head saga_attempt saga_title <<< "$saga_meta"
+  # A migrate run re-issues lineage under operator control: it publishes no saga state
+  # and dispatches no publisher, so it is not a saga root and has nothing to reconcile.
+  case "$saga_title" in
+    "sync-manual-links migrate correlation="*)
+      echo "migrate run=$saga_run is not a saga root; skipped"; continue ;;
+  esac
   [[ "$saga_head" =~ ^[0-9a-f]{40}$ ]] || {
     echo "::error::invalid head SHA for saga $saga_run"; FAILURES=$((FAILURES+1)); continue; }
   [[ "$saga_attempt" =~ ^[1-9][0-9]*$ ]] || {

@@ -1,6 +1,6 @@
 name: Sync manual links
 
-run-name: sync-manual-links correlation=${{ inputs.correlation_id }}
+run-name: ${{ inputs.mode == 'migrate' && format('sync-manual-links migrate correlation={0}', inputs.correlation_id) || format('sync-manual-links correlation={0}', inputs.correlation_id) }}
 
 on:
   workflow_dispatch:
@@ -19,6 +19,24 @@ on:
         type: string
       correlation_id:
         required: true
+        type: string
+      mode:
+        description: refresh is the weekly saga; migrate re-issues lineage after a config or tool change
+        required: false
+        default: refresh
+        type: choice
+        options:
+          - refresh
+          - migrate
+      expected_old_config_sha256:
+        description: migrate only - the config_sha256 the operator expects to find in the committed lineage
+        required: false
+        default: ''
+        type: string
+      expected_old_tool_commit:
+        description: migrate only - the seforim_tool_commit the operator expects to find in the committed lineage
+        required: false
+        default: ''
         type: string
 
 permissions:
@@ -53,6 +71,9 @@ jobs:
       SEFARIA_TAG: ${{ inputs.sefaria_tag }}
       METADATA_SHA: ${{ inputs.sefaria_release_metadata_sha256 }}
       CORRELATION_ID: ${{ inputs.correlation_id }}
+      MODE: ${{ inputs.mode }}
+      EXPECTED_OLD_CONFIG_SHA: ${{ inputs.expected_old_config_sha256 }}
+      EXPECTED_OLD_TOOL_COMMIT: ${{ inputs.expected_old_tool_commit }}
     steps:
       - name: Free disk space for the verified Sefaria export
         uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
@@ -77,6 +98,14 @@ jobs:
           [[ "$SEFARIA_TAG" =~ ^[A-Za-z0-9._-]+$ ]]
           [[ "$METADATA_SHA" =~ ^[0-9a-f]{64}$ ]]
           [[ "$CORRELATION_ID" == "sefaria:${RUN_ID}:${RUN_ATTEMPT}:${SEFARIA_TAG}:${METADATA_SHA}" ]]
+          [[ "$MODE" == refresh || "$MODE" == migrate ]]
+          # The migrate gates are operator-supplied on purpose; refresh must never carry them.
+          if [[ "$MODE" == migrate ]]; then
+            [[ "$EXPECTED_OLD_CONFIG_SHA" =~ ^[0-9a-f]{64}$ ]]
+            [[ "$EXPECTED_OLD_TOOL_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          else
+            [[ -z "$EXPECTED_OLD_CONFIG_SHA" && -z "$EXPECTED_OLD_TOOL_COMMIT" ]]
+          fi
 
       - name: Preflight PIPELINE_TOKEN can push to Otzaria main
         shell: bash
@@ -109,6 +138,24 @@ jobs:
           # exact lineage only after the updater has processed that source tree.
           python3 manual_links_packaging.py check --workspace .
 
+      - name: Prove the migrate gates against the committed lineage
+        if: inputs.mode == 'migrate'
+        env:
+          RUN_ID: ${{ inputs.sefaria_run_id }}
+          RUN_ATTEMPT: ${{ inputs.sefaria_run_attempt }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Verified against the lineage, never derived from it: a wrong expectation stops here.
+          [[ "$(jq -r '.config_sha256' manual_links_lineage.json)" == "$EXPECTED_OLD_CONFIG_SHA" ]]
+          [[ "$(jq -r '.seforim_tool_commit' manual_links_lineage.json)" == "$EXPECTED_OLD_TOOL_COMMIT" ]]
+          # validateMigrationGates forbids moving the Sefaria target, so the dispatch must
+          # name the lineage's own release - fail here instead of after a 500MB download.
+          [[ "$(jq -r '.sefaria.tag' manual_links_lineage.json)" == "$SEFARIA_TAG" ]]
+          [[ "$(jq -r '.sefaria.release_metadata_sha256' manual_links_lineage.json)" == "$METADATA_SHA" ]]
+          [[ "$(jq -r '.sefaria.run_id' manual_links_lineage.json)" == "$RUN_ID" ]]
+          [[ "$(jq -r '.sefaria.run_attempt' manual_links_lineage.json)" == "$RUN_ATTEMPT" ]]
+
       - name: Resolve one authorized Seforim tool commit
         id: tool
         shell: bash
@@ -116,7 +163,9 @@ jobs:
           set -euo pipefail
           lineage_tag="$(jq -r '.sefaria.tag' manual_links_lineage.json)"
           lineage_digest="$(jq -r '.sefaria.release_metadata_sha256' manual_links_lineage.json)"
-          if [[ "$lineage_tag" == "$SEFARIA_TAG" && "$lineage_digest" == "$METADATA_SHA" ]]; then
+          # migrate exists to adopt a new config/tool at the pinned Sefaria target, so it
+          # always resolves the authorized branch head instead of the lineage's old pin.
+          if [[ "$MODE" == refresh && "$lineage_tag" == "$SEFARIA_TAG" && "$lineage_digest" == "$METADATA_SHA" ]]; then
             sha="$(jq -r '.seforim_tool_commit' manual_links_lineage.json)"
           else
             ref="$(jq -r '.seforim_tool_ref' manual_links_sync.json)"
@@ -195,6 +244,11 @@ jobs:
           export_root="$(realpath "$(cat sefaria-chain/export-root.txt)")"
           auth="$(printf 'x-access-token:%s' "$PIPELINE_TOKEN" | base64 | tr -d '\n')"
           success=false
+          migrate_args=()
+          if [[ "$MODE" == migrate ]]; then
+            migrate_args=(-PexpectedOldConfigSha256="$EXPECTED_OLD_CONFIG_SHA"
+                          -PexpectedOldToolCommit="$EXPECTED_OLD_TOOL_COMMIT")
+          fi
 
           for attempt in 1 2 3; do
             git fetch origin main
@@ -205,7 +259,8 @@ jobs:
             mkdir "$output"
 
             ./seforim-tool/gradlew -p seforim-tool :sefariasqlite:refreshManualLinks \
-              -PmanualLinksMode=refresh \
+              -PmanualLinksMode="$MODE" \
+              "${migrate_args[@]}" \
               -PmanualLinksRepo="$worktree" \
               -PmanualLinksConfig="$worktree/manual_links_sync.json" \
               -PmanualLinksLineage="$worktree/manual_links_lineage.json" \
@@ -308,8 +363,10 @@ jobs:
           if forbidden:
               raise SystemExit(f"staged paths outside strict allowlist: {forbidden}")
           PY
+            message="chore(manual-links): sync Sefaria $SEFARIA_TAG"
+            [[ "$MODE" == refresh ]] || message="chore(manual-links): migrate lineage at Sefaria $SEFARIA_TAG"
             if ! git -C "$worktree" diff --cached --quiet; then
-              git -C "$worktree" commit -m "chore(manual-links): sync Sefaria $SEFARIA_TAG"
+              git -C "$worktree" commit -m "$message"
             fi
             expected="$(git -C "$worktree" rev-parse HEAD)"
 
@@ -341,6 +398,9 @@ jobs:
   start-saga:
     name: Persist saga state and dispatch Otzaria publisher
     needs: sync-and-commit
+    # A migrate is operator maintenance, not a saga root: it publishes no saga state and
+    # dispatches no publisher; its links reach the DB through the next weekly refresh.
+    if: inputs.mode == 'refresh'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:

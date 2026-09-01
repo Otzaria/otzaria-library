@@ -11,13 +11,13 @@ import manual_links_packaging as packaging
 
 
 class ManualLinksPackagingTest(unittest.TestCase):
-    def write_config(self, root: Path, roots):
+    def write_config(self, root: Path, roots, aliases=None):
         config = {
             "schema_version": 1,
             "seforim_tool_ref": "refs/heads/otzaria",
             "links_roots": roots,
             "bootstrap_adapters": {},
-            "excluded_files": [],
+            "he_title_aliases": aliases or {},
             "bootstrap_file_renames": [],
             "bootstrap_record_overrides": [],
         }
@@ -27,6 +27,41 @@ class ManualLinksPackagingTest(unittest.TestCase):
     def test_boolean_config_schema_version_is_rejected(self):
         with self.assertRaises(packaging.PackagingError):
             packaging.validate_config({"schema_version": True})
+
+    def test_he_title_aliases_are_an_explicit_per_root_one_to_one_bridge(self):
+        roots = [{"path": "links", "expected_state": "present"}]
+        base = {
+            "schema_version": 1,
+            "seforim_tool_ref": "refs/heads/otzaria",
+            "links_roots": roots,
+            "bootstrap_adapters": {},
+            "bootstrap_file_renames": [],
+            "bootstrap_record_overrides": [],
+        }
+        rejected = [
+            None,
+            [],
+            {"links": {}},
+            {"other": {"רשי על שבת": "רש\"י על שבת"}},
+            {"links": {"רשי על שבת": "רשי על שבת"}},
+            {"links": {"רשי על שבת": "רש\"י על שבת", "רשי על עירובין": "רש\"י על שבת"}},
+            {"links": {"רשי על שבת": "רש\"י על שבת", "רש\"י על שבת": "רשבם"}},
+            {"links": {"רשי על שבת": " רש\"י על שבת "}},
+            {"links": {"a/b": "רש\"י על שבת"}},
+            {"links": {"רשי על שבת": 1}},
+        ]
+        for index, aliases in enumerate(rejected):
+            config = dict(base)
+            if aliases is not None:
+                config["he_title_aliases"] = aliases
+            with self.assertRaises(packaging.PackagingError, msg=f"alias case {index} must fail"):
+                packaging.validate_config(config)
+
+        accepted = dict(base, he_title_aliases={"links": {"רשי על שבת": "רש\"י על שבת"}})
+        self.assertEqual(
+            {"links": {"רשי על שבת": "רש\"י על שבת"}},
+            packaging.validate_config(accepted)["he_title_aliases"],
+        )
 
     def test_collision_after_flattening_is_fatal(self):
         with tempfile.TemporaryDirectory() as directory:

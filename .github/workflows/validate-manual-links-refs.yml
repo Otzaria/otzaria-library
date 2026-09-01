@@ -8,13 +8,15 @@ name: Validate manual link refs
 # יקרה ומאוחרת לגלות בה רשומה פגומה.
 #
 # הבדיקה כאן משחזרת את החלק הניתן להכרעה מקומית של אותו חוזה, כך שאותה טעות
-# נכשלת תוך שניות ב-PR שמכניס אותה. היא בודקת רק קבצים שה-PR נגע בהם.
+# נכשלת תוך שניות ב-PR שמכניס אותה. היא בודקת רק קבצים שה-PR נגע בהם, אחרי
+# תרגום הכותרת דרך he_title_aliases שב-manual_links_sync.json — בדיוק כמו הכלי.
 
 on:
   pull_request:
     paths:
       - '**/links/**_links.json'
       - 'manual_links_sync.json'
+      - 'manual_links_packaging.py'
       - '.github/data/sefaria_he_titles.txt'
       - '.github/scripts/test_validate_manual_links_refs.py'
       - '.github/scripts/validate_manual_links_refs.py'
@@ -33,8 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      # blobless + sparse: הבדיקה קוראת קובצי links, manual_links_sync.json ותצלום
-      # הכותרות בלבד — אין צורך בתוכן הספרים (~10GiB).
+      # blobless + sparse: הבדיקה קוראת קובצי links, manual_links_sync.json, מאמת
+      # הקונפיג ותצלום הכותרות בלבד — אין צורך בתוכן הספרים (~10GiB).
       - name: Checkout repository (sparse, blobless)
         uses: actions/checkout@v4
         with:
@@ -45,6 +47,7 @@ jobs:
             /.github/scripts/
             /.github/data/
             /manual_links_sync.json
+            /manual_links_packaging.py
             **/links/
           sparse-checkout-cone-mode: false
           persist-credentials: false
