@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup, Tag
 from gematriapy import gematria
 from pyluach import dates
 
+import fix_marker_breaks
 import fix_missing_spaces
 
 
@@ -205,6 +206,8 @@ def apply_span_styles(html: str) -> str:
             current = new_tag
     result = str(soup).replace("\n", " ")
     result = re.sub(r'(\s*<br\s*/?>)+\s*$', '', result).strip()
+    # בנתוני המקור כותרת הסימן דבוקה לגוף הקטע (otzaria-library#38)
+    result = fix_marker_breaks.fix_text(result)[0]
     # בנתוני המקור המילה שאחרי קטע מעוצב דבוקה לתג הסוגר (otzaria/otzaria#1068)
     return fix_missing_spaces.fix_text(result)[0]
 
