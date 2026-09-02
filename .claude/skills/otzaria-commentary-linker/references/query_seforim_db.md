@@ -60,11 +60,24 @@ shipping, do not ship and hope.
 
 Use `=`, never `LIKE '%…%'`. A `LIKE` search is the right tool for *discovering* a title you
 don't know yet, but it is useless as a verification: `רשי על שבת` matches nothing under `=`
-while a sloppy `LIKE` probe on a shorter fragment can still look like a hit. The real failure
-this guards against is exactly that gap — Otzaria `.txt` filenames are commonly stripped of
-gershayim, but Sefaria book titles keep them, so `רשי על שבת.txt` looks plausible and resolves
-to nothing while `רש"י על שבת.txt` is the row that exists. 739 entries were lost this way in
-one past run.
+while a sloppy `LIKE` probe on a shorter fragment can still look like a hit.
+
+**This query is not a formality — it is the only way to know how a title is spelled.** No rule
+of thumb replaces it, and "which source the book comes from" is emphatically not one:
+
+- **Otzaria-native books** (every source that isn't Sefaria) go through the importer's
+  `normalizeBookTitle`, which folds `"`, `''` and `׳׳` into Hebrew gershayim `״` (U+05F4). Their
+  DB title always carries `״` and **never** ASCII `"`, however the `.txt` on disk is spelled.
+  `הערות על וזה לשונו - שובבי''ם.txt` resolves to nothing; the row is
+  `הערות על וזה לשונו - שובבי״ם`. 116 entries in `MoreBooks` were lost this way.
+- **Sefaria books** keep Sefaria's own raw title. Most use ASCII `"` (~1,150 titles in the
+  current build), but over a hundred use `״` and a few even use `''` — no pattern to lean on.
+  `רשי על שבת.txt` looks plausible and resolves to nothing while `רש"י על שבת.txt` is the row
+  that exists. 739 entries were lost this way in one past run.
+
+When the exact spelling is unknown, use `LIKE` (or strip the quote characters on both sides) to
+*discover* the candidate row, then copy that `book.title` back into `path_2` verbatim and
+re-verify with `=`. Never adjust the query to make a wrong `path_2` "match".
 
 While you have the row, note that Sefaria-sourced targets also require `ref_2` in each entry
 (see the linker SKILL's criterion 2) — check `book.sourceId` against the `source` table if

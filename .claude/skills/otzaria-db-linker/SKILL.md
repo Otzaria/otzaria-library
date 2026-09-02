@@ -42,7 +42,10 @@ entry does not get written.
 "`path_2` resolves" means **exact title match** — `SELECT title FROM book WHERE title = ?` with
 `path_2` minus `.txt`, never `LIKE`. Book titles keep their gershayim (`רש"י על שבת`) even where
 the `.txt` filename on disk drops them (`רשי על שבת.txt`), and a `path_2` written the filename
-way matches nothing. Also confirm each Sefaria-target entry carries a `ref_2` before importing:
+way matches nothing. Which gershayim character to use is not guessable from the book's source:
+Otzaria-native titles are normalized on import and always carry `״` (`הערות על וזה לשונו - שובבי״ם`,
+never the on-disk `''` form), while Sefaria titles keep Sefaria's own spelling — usually ASCII
+`"`, sometimes `״`. The DB decides; ask it. Also confirm each Sefaria-target entry carries a `ref_2` before importing:
 the importer ignores it, but the weekly sync tool needs it to re-anchor `line_index_2` after
 each Sefaria release, so a batch imported without it starts drifting onto wrong lines on its
 own. Both are cheap to fix in the `_links.json` and expensive to find after import.
@@ -188,9 +191,11 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
    or to leave it alone. A nonzero "skipped_target_book_not_found" means some entries' `path_2`
    names a book that isn't in `seforim.db` at all. Before concluding the book is genuinely
    missing, check the far more common cause: a title spelled the *filename* way instead of the
-   DB way — gershayim stripped (`רשי על שבת.txt` where the book is `רש"י על שבת`). Look up the
-   intended book by `LIKE` to find its real title, then fix `path_2` in the `_links.json` to
-   match `book.title` exactly. Only if no such book exists at all should you confirm with the
+   DB way — gershayim stripped (`רשי על שבת.txt` where the book is `רש"י על שבת`), or written
+   with `"`/`''` where the importer normalized an Otzaria-native title to `״`
+   (`הערות על וזה לשונו - שובבי''ם.txt` where the book is `הערות על וזה לשונו - שובבי״ם`). Look
+   up the intended book by `LIKE` to find its real title, then fix `path_2` in the `_links.json`
+   to match `book.title` exactly. Only if no such book exists at all should you confirm with the
    user whether it needs to be added first, rather than silently dropping those entries. Note
    the generator that builds `seforim.db` from the repo does **not** report this at all — it
    drops unresolvable entries in silence — so this dry-run count is often the only place the

@@ -85,7 +85,7 @@ A links file passes only if all of these hold:
 | 6 | **Super-commentary attribution** — when applicable: lines that open by naming an intermediate commentary + ד"ה (or any continuation of that run — `בד"ה`, or any other connective/resumptive opening that links to the previous passage and names no new subject) must be `super_commentary` into that book, **not** `commentary`→primary base text | `major` |
 | 7 | **Preserve `linker`** — pre-existing `"Conection Type": "linker"` entries stay untouched; do not count them toward commentary coverage | `major` if stripped/altered |
 | 8 | **Daf agreement** — the daf heading the citing line sits under must equal the daf in `heRef_2` | `major` |
-| 9 | **`path_2` resolves** — every **distinct** `path_2` (minus `.txt`) returns a row from `SELECT title FROM book WHERE title = ?` — **exact match, not `LIKE`**. A miss means the generator drops those entries silently (F18) | `blocker` |
+| 9 | **`path_2` resolves** — every **distinct** `path_2` (minus `.txt`) returns a row from `SELECT title FROM book WHERE title = ?` — **exact match, not `LIKE`**. A miss means the generator drops those entries silently (F18). The spelling can't be inferred from the source: Otzaria-native titles are normalized on import and always carry `״`, Sefaria titles keep Sefaria's own `"` **or** `״` | `blocker` |
 | 10 | **`ref_2` present on Sefaria targets** — every commentary/super_commentary entry whose target is a Sefaria book carries a `ref_2` that names the same address as `heRef_2`; Otzaria-native targets correctly have none (F19) | `major` |
 
 ### Check 8 in detail — the highest-precision check available
@@ -213,10 +213,13 @@ intermediate books):
    `.txt` as the parameter, **exact match, never `LIKE`** (check 9). **Zero rows is a
    `blocker`, not a "book missing from this build":** the generator resolves targets by exact
    title, so every entry with that `path_2` is discarded silently — no error anywhere, the
-   links just never appear in the DB. The usual cause is gershayim: Otzaria `.txt` filenames
-   are commonly stripped of them while Sefaria titles keep them, so `רשי על שבת.txt` resolves
-   to nothing where `רש"י על שבת.txt` is the real row (F18). Run this over **every distinct**
-   `path_2`, not a sample — it is cheap and deterministic.
+   links just never appear in the DB. The usual cause is gershayim, in either direction: a
+   Sefaria target written the on-disk way (`רשי על שבת.txt` where the real row is
+   `רש"י על שבת`), or an Otzaria-native target written with `"`/`''` where the importer
+   normalized the title to `״` (`הערות על וזה לשונו - שובבי''ם.txt` where the real row is
+   `הערות על וזה לשונו - שובבי״ם`) — Otzaria-native titles always carry `״`, Sefaria titles keep
+   Sefaria's own `"` or `״`, so the spelling is never guessable from the source (F18). Run this
+   over **every distinct** `path_2`, not a sample — it is cheap and deterministic.
 2. **`ref_2` presence (check 10).** If the resolved book is Sefaria-sourced, every
    commentary/super_commentary entry targeting it must carry a `ref_2` — the English Sefaria
    ref (`"Shabbat 2a:2"`, `"Rashi on Shabbat 6a:13:1"`) naming the same address `heRef_2`

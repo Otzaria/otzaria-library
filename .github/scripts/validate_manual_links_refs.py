@@ -78,6 +78,16 @@ def load_config(workspace: Path) -> dict:
     return packaging.validate_config(packaging.load_json(workspace / CONFIG_NAME))
 
 
+def assert_roots_intact(workspace: Path, config: dict) -> None:
+    """Reuse the packaging scan, which is the same structural contract the sync runs.
+
+    Deletions carry no records to validate, but deleting a required root's last
+    file (or renaming the root away) aborts ``refreshManualLinks`` just as late as
+    a missing ref_2 does, and no per-file check can see it.
+    """
+    packaging_module().scan_roots(workspace, config)
+
+
 def synced_roots(config: dict) -> list[str]:
     """Return every root consumed by the recurring manual-link refresh.
 
@@ -94,13 +104,16 @@ def synced_roots(config: dict) -> list[str]:
 
 
 def changed_link_files(workspace: Path, base: str, roots: list[str]) -> list[str]:
-    """Link files added or modified relative to ``base``.
+    """Link files that exist at head and differ from ``base``.
 
     Only new/edited files are inspected: records already on main are the
     lineage's problem, not this pull request's.
     """
+    # Lowercase ``d`` selects every change except a deletion. Enumerating A/M is
+    # what let a renamed-and-rewritten file (git says R) through unvalidated;
+    # ``--name-only`` reports the destination path, so the decoding is unchanged.
     result = subprocess.run(
-        ["git", "diff", "--name-only", "--diff-filter=AM", "-z", base, "--"],
+        ["git", "diff", "--name-only", "--diff-filter=d", "-z", base, "--"],
         cwd=workspace,
         capture_output=True,
         check=True,
@@ -169,7 +182,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     workspace = Path(args.workspace).resolve()
-    files = changed_link_files(workspace, args.base, synced_roots(load_config(workspace)))
+    config = load_config(workspace)
+    assert_roots_intact(workspace, config)
+    files = changed_link_files(workspace, args.base, synced_roots(config))
     if not files:
         print("No added or modified manual-link files; nothing to validate.")
         return 0

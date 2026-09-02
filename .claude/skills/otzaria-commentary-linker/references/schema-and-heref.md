@@ -24,8 +24,11 @@ One array per commentary/citing book, at `<source root>/links/<title>_links.json
   in this repo (Sefaria-only books resolve by title alone). Because resolution is **by exact
   title**, this string must equal `book.title` in `seforim.db` character for character —
   gershayim included: `רש"י על שבת.txt`, **not** `רשי על שבת.txt`, even though the `.txt` on
-  disk may well be spelled the latter way. A `path_2` that resolves to nothing is not an error:
-  the generator drops the entry silently.
+  disk may well be spelled the latter way. Which gershayim character a title uses cannot be
+  guessed from the book's source: Otzaria-native titles are normalized on import and always
+  carry `״` (`הערות על וזה לשונו - שובבי״ם`, never the on-disk `''` form), while Sefaria titles
+  keep Sefaria's own spelling — usually ASCII `"`, sometimes `״`. Ask the DB. A `path_2` that
+  resolves to nothing is not an error: the generator drops the entry silently.
 - `ref_2` — the target line's canonical Sefaria reference, e.g. `"Shabbat 2a:2"`,
   `"Rashi on Shabbat 6a:13:1"`; `heRef_2` is the Hebrew rendering of the same address.
   **Required whenever the target is a Sefaria book** (omit only for Otzaria-native targets,

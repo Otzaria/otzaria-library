@@ -106,18 +106,27 @@ following hold:
    `"<target title>.txt"`, where `<target title>` equals `book.title` in `seforim.db`
    **character for character**. The generator resolves the target book by exact title match on
    that string; when it doesn't match, **the entry is dropped silently** — no error, no warning,
-   no link in the DB. The trap: Otzaria `.txt` filenames on disk are often stripped of
-   gershayim, so the intuition "the file is named `רשי על שבת.txt`, so that's what I write" is
-   exactly backwards here. Sefaria-sourced books carry ASCII gershayim (`"`) in their title, and
-   the title is what gets matched:
+   no link in the DB. The trap: the `.txt` filename on disk is not the authority on the
+   spelling — and **neither is the book's source**. There is no rule of thumb that tells you
+   which gershayim character a title uses; two different mechanisms are at play:
+
+   - **Otzaria-native targets** (every source that isn't Sefaria) are run through the importer's
+     `normalizeBookTitle`, which folds `"`, `''` and `׳׳` into Hebrew gershayim `״` (U+05F4).
+     Their DB title therefore **always** carries `״` and never ASCII `"`, no matter how the file
+     on disk is spelled — so writing the on-disk form resolves to nothing.
+   - **Sefaria targets** keep Sefaria's own raw title, which may be ASCII `"` (~1,150 titles in
+     the current build) or `״` (over a hundred). Nothing about the book predicts which.
 
    ```json
-   "path_2": "רש\"י על שבת.txt"      // correct — equals book.title
-   "path_2": "רשי על שבת.txt"        // WRONG — matches no book; entry silently dropped
+   "path_2": "רש\"י על שבת.txt"                   // correct — Sefaria title, ASCII gershayim
+   "path_2": "רשי על שבת.txt"                     // WRONG — matches no book; silently dropped
+   "path_2": "הערות על וזה לשונו - שובבי״ם.txt"    // correct — Otzaria title, normalized to ״
+   "path_2": "הערות על וזה לשונו - שובבי''ם.txt"   // WRONG — matches no book; silently dropped
    ```
 
-   This exact mistake produced 739 dead entries across 33 files in one past run. Verify **every
-   distinct `path_2`** you write before delivering — an exact-match query, never `LIKE`; see
+   These two mistakes produced 739 dead entries across 33 files (Sefaria target) and 116 more in
+   `MoreBooks` (Otzaria target). Verify **every distinct `path_2`** you write before delivering —
+   an exact-match query against the DB is the only way to know, never `LIKE`; see
    "Verifying `path_2` resolves" in `references/query_seforim_db.md`.
 
    **`ref_2` is mandatory whenever the target is a Sefaria book.** `ref_2` is the target line's
@@ -270,9 +279,11 @@ resolves both sides of a link by title against its own book cache (confirmed by 
 `קרן אורה על מועד קטן_links.json`, which already targets `מועד קטן.txt` correctly).
 **But precisely because resolution is by title, the local filename is not the authority on how
 to spell it** — write the title exactly as `book.title` has it, gershayim and all
-(`רש"י על שבת.txt`, not the de-gershayim'd `רשי על שבת.txt`), and verify it with an exact-match
-query per criterion 2. Likewise, when the target is a Sefaria book, derive `ref_2` alongside
-`heRef_2` in the same pass — not as an afterthought.
+(`רש"י על שבת.txt`, not the de-gershayim'd `רשי על שבת.txt`; `הערות על וזה לשונו - שובבי״ם.txt`
+with `״`, not the on-disk `''` form), and verify it with an exact-match query per criterion 2.
+The book's source tells you nothing about which gershayim character to use — only the DB does.
+Likewise, when the target is a Sefaria book, derive `ref_2` alongside `heRef_2` in the same
+pass — not as an afterthought.
 
 **The DB access route — used every run, not just as a fallback.** `seforim.db` is
 confirmed to live at
@@ -365,9 +376,10 @@ directly. For those lines:
 
 1. Resolve `path_2` to the Rashi or Tosafot book for this masechet (not the Gemara `.txt`) —
    spelled as that book's **exact DB title, gershayim included**: `רש"י על שבת.txt`,
-   `רשב"ם על בבא בתרא.txt`, `תוספות על בבא בתרא.txt`. These are Sefaria books, so never the
-   de-gershayim'd filename form (`רשי על שבת.txt`) — that matches no book and the entry is
-   dropped silently (criterion 2). Confirm each one with an exact-title query before shipping.
+   `רשב"ם על בבא בתרא.txt`, `תוספות על בבא בתרא.txt`. Never the de-gershayim'd filename form
+   (`רשי על שבת.txt`) — that matches no book and the entry is dropped silently (criterion 2).
+   The exact-title query, not the filename and not the book's source, decides how each of these
+   is spelled; run it on every one before shipping.
 2. Set `line_index_2` / `heRef_2` / `ref_2` to the specific line **in that book** whose
    opening/dibbur matches the lemma after ד"ה (e.g. the Rashi line that starts with `אפילו`).
    `ref_2` here is the intermediate book's own Sefaria ref — `"Rashi on Shabbat 6a:13:1"`,
