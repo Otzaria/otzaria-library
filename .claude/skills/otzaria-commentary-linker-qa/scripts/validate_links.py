@@ -378,6 +378,7 @@ def main() -> int:
         required_ok = EXPECTED_KEYS <= keys
         unknown = keys - EXPECTED_KEYS - {
             "start", "end", "line_index_1_end", "line_index_2_end", "heRef_1", "path_1",
+            "ref_2",  # Sefaria anchor: required on Sefaria targets, not an "unexpected" key
         }
         # Prefer exactly 5 keys for commentary/super_commentary
         if keys != EXPECTED_KEYS:

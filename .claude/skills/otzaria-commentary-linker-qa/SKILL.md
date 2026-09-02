@@ -79,12 +79,14 @@ A links file passes only if all of these hold:
 | 0 | **Source integrity** — citing `.txt` exists, size > 0, opens with expected `<h1>` (the citing title), real Hebrew content; links filename is `*_links.json` (not `*.links.json`) | `blocker` |
 | 1 | **Completeness** — every non-heading, non-blank, non-front-matter, non-colophon citing line has **exactly one** commentary/super_commentary entry | `blocker` |
 | 2 | **No duplicates** — no `line_index_1` more than once among commentary+super_commentary (`linker` duplicates allowed) | `blocker` |
-| 3 | **Schema** — commentary/super_commentary entries have exactly the five keys `line_index_1`, `line_index_2`, `heRef_2`, `path_2`, `"Conection Type"` (missing second `n`); `linker` may keep extra `start`/`end` | `blocker` / `major` |
+| 3 | **Schema** — commentary/super_commentary entries have the five keys `line_index_1`, `line_index_2`, `heRef_2`, `path_2`, `"Conection Type"` (missing second `n`), plus `ref_2` on a Sefaria target (check 9); `linker` may keep extra `start`/`end` | `blocker` / `major` |
 | 4 | **heRef** — `heRef_2` matches `seforim.db` for `path_2` at `line_index_2 - 1` (0-based DB) | `major` |
 | 5 | **Semantic match** — citing content discusses the chosen target line, not merely the same section/daf/perek | `major` / `minor` / `info` |
 | 6 | **Super-commentary attribution** — when applicable: lines that open by naming an intermediate commentary + ד"ה (or any continuation of that run — `בד"ה`, or any other connective/resumptive opening that links to the previous passage and names no new subject) must be `super_commentary` into that book, **not** `commentary`→primary base text | `major` |
 | 7 | **Preserve `linker`** — pre-existing `"Conection Type": "linker"` entries stay untouched; do not count them toward commentary coverage | `major` if stripped/altered |
 | 8 | **Daf agreement** — the daf heading the citing line sits under must equal the daf in `heRef_2` | `major` |
+| 9 | **`path_2` resolves** — every **distinct** `path_2` (minus `.txt`) returns a row from `SELECT title FROM book WHERE title = ?` — **exact match, not `LIKE`**. A miss means the generator drops those entries silently (F18) | `blocker` |
+| 10 | **`ref_2` present on Sefaria targets** — every commentary/super_commentary entry whose target is a Sefaria book carries a `ref_2` that names the same address as `heRef_2`; Otzaria-native targets correctly have none (F19) | `major` |
 
 ### Check 8 in detail — the highest-precision check available
 
@@ -133,6 +135,8 @@ QA Progress:
 - [ ] 0. Source integrity (txt + links filename)
 - [ ] 1. Resolve paths + load JSON/texts
 - [ ] 2. Run deterministic script / structural pass
+- [ ] 2b. Resolve EVERY distinct path_2 by exact title in DB (check 9) + ref_2 present on
+       every Sefaria target (check 10)
 - [ ] 3. Verify heRef vs seforim.db (sample ≥15–20, not only start of file)
 - [ ] 4. Super-commentary attribution FULL SCAN (if the citing book uses it)
 - [ ] 5. Semantic sample (regular + all low-conf + flagged supers)
@@ -205,12 +209,28 @@ Default DB:
 For **each distinct `path_2` title** used in the file (primary target **and** any
 intermediate books):
 
-1. `SELECT id, title, totalLines, isBaseBook FROM book WHERE title = ?`
-2. Sample **≥15–20 random** commentary/super_commentary entries (not only the head of the
+1. `SELECT id, title, totalLines, isBaseBook FROM book WHERE title = ?` — with `path_2` minus
+   `.txt` as the parameter, **exact match, never `LIKE`** (check 9). **Zero rows is a
+   `blocker`, not a "book missing from this build":** the generator resolves targets by exact
+   title, so every entry with that `path_2` is discarded silently — no error anywhere, the
+   links just never appear in the DB. The usual cause is gershayim: Otzaria `.txt` filenames
+   are commonly stripped of them while Sefaria titles keep them, so `רשי על שבת.txt` resolves
+   to nothing where `רש"י על שבת.txt` is the real row (F18). Run this over **every distinct**
+   `path_2`, not a sample — it is cheap and deterministic.
+2. **`ref_2` presence (check 10).** If the resolved book is Sefaria-sourced, every
+   commentary/super_commentary entry targeting it must carry a `ref_2` — the English Sefaria
+   ref (`"Shabbat 2a:2"`, `"Rashi on Shabbat 6a:13:1"`) naming the same address `heRef_2`
+   renders in Hebrew. Missing `ref_2` is a `major`: the weekly sync tool re-resolves
+   `line_index_2` from `ref_2` after each Sefaria release, so an entry without it keeps a stale
+   line number and silently drifts onto the wrong line (F19). Report it as a count per
+   `path_2`. An Otzaria-native target has no Sefaria ref — absence there is correct, not a
+   finding.
+3. Sample **≥15–20 random** commentary/super_commentary entries (not only the head of the
    file); force-include some `super_commentary` if present.
-3. For each sample: `line` where `bookId=? AND lineIndex=line_index_2-1`; require
+4. For each sample: `line` where `bookId=? AND lineIndex=line_index_2-1`; require
    `heRef == heRef_2` exactly.
-4. If DB unreachable: continue, mark DB gate as **limitation** (not a silent pass).
+5. If DB unreachable: continue, mark DB gate as **limitation** (not a silent pass). Note that
+   step 2 (`ref_2` presence) is a pure JSON check and still runs without the DB.
 
 heRef shape depends on the target genre. For Talmud-daf books it is usually
 `"<title> <label>, <gematria>"` (often **without** `דף`). For Tanakh / codes / other

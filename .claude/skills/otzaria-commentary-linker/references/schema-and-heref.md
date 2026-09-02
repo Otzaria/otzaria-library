@@ -10,17 +10,29 @@ One array per commentary/citing book, at `<source root>/links/<title>_links.json
 ```json
 {
   "line_index_1": 39,
-  "line_index_2": 1,
-  "heRef_2": "רש\"י",
-  "path_2": "רש\"י על צלח על פסחים.txt",
-  "Conection Type": "commentary"
+  "line_index_2": 410,
+  "ref_2": "Tosafot on Bava Batra 29a:16:1",
+  "heRef_2": "תוספות על בבא בתרא כט., טז, א",
+  "path_2": "תוספות על בבא בתרא.txt",
+  "Conection Type": "super_commentary"
 }
 ```
 
 - `line_index_1` / `line_index_2` — **1-based** line numbers (line 1 = first line of the file).
 - `path_2` — relative filename of the target book; only the filename (minus extension) is used
   to resolve the title against the app's book cache. The file does not strictly need to exist
-  in this repo (Sefaria-only books resolve by title alone).
+  in this repo (Sefaria-only books resolve by title alone). Because resolution is **by exact
+  title**, this string must equal `book.title` in `seforim.db` character for character —
+  gershayim included: `רש"י על שבת.txt`, **not** `רשי על שבת.txt`, even though the `.txt` on
+  disk may well be spelled the latter way. A `path_2` that resolves to nothing is not an error:
+  the generator drops the entry silently.
+- `ref_2` — the target line's canonical Sefaria reference, e.g. `"Shabbat 2a:2"`,
+  `"Rashi on Shabbat 6a:13:1"`; `heRef_2` is the Hebrew rendering of the same address.
+  **Required whenever the target is a Sefaria book** (omit only for Otzaria-native targets,
+  which have no Sefaria ref). The weekly sync tool re-resolves `line_index_2` from `ref_2`
+  after each Sefaria release; without it the line number silently goes stale and the link ends
+  up pointing at the wrong line. The generator itself ignores `ref_2` — it is there for the
+  sync tool, which is why omitting it costs nothing today and breaks the link later.
 - `heRef_2` — display string shown for the link in the app.
 - `Conection Type` — sic, this typo is intentional/load-bearing, matches Sefaria's original CSV
   column name. Unrecognized values silently become `OTHER`.

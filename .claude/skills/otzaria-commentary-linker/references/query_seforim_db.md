@@ -44,6 +44,32 @@ The DB path itself, if not otherwise known: `%APPDATA%\io.github.kdroidfilter.se
 Check it exists first with `Test-Path` before assuming this fallback path is even available —
 not every machine running this skill will have the Otzaria desktop app (and its DB) installed.
 
+## Verifying `path_2` resolves (mandatory, every run)
+
+The generator finds the target book by **exact title match**. Any `path_2` that doesn't match
+is dropped with no error and no log line — the link simply never reaches the DB. So for every
+**distinct** `path_2` in the file you're about to deliver, strip the `.txt` and confirm it
+comes back:
+
+```sql
+SELECT title FROM book WHERE title = ?;   -- exact match; NOT LIKE
+```
+
+One row → good. Zero rows → the link would be silently discarded; fix the spelling before
+shipping, do not ship and hope.
+
+Use `=`, never `LIKE '%…%'`. A `LIKE` search is the right tool for *discovering* a title you
+don't know yet, but it is useless as a verification: `רשי על שבת` matches nothing under `=`
+while a sloppy `LIKE` probe on a shorter fragment can still look like a hit. The real failure
+this guards against is exactly that gap — Otzaria `.txt` filenames are commonly stripped of
+gershayim, but Sefaria book titles keep them, so `רשי על שבת.txt` looks plausible and resolves
+to nothing while `רש"י על שבת.txt` is the row that exists. 739 entries were lost this way in
+one past run.
+
+While you have the row, note that Sefaria-sourced targets also require `ref_2` in each entry
+(see the linker SKILL's criterion 2) — check `book.sourceId` against the `source` table if
+you're unsure whether a given target is a Sefaria book or an Otzaria-native one.
+
 ## Schema quick-reference (tables relevant to this skill)
 
 - `book(id, categoryId, sourceId, title, heRef, ..., totalLines, isBaseBook, hasCommentaryConnection, ...)`

@@ -39,6 +39,14 @@ at `line_index_2 - 1`, and the daf in `heRef_2` agrees with the daf heading the 
 sits under (`otzaria-commentary-linker-qa/scripts/check_daf.py`). If any of those fail, the
 entry does not get written.
 
+"`path_2` resolves" means **exact title match** — `SELECT title FROM book WHERE title = ?` with
+`path_2` minus `.txt`, never `LIKE`. Book titles keep their gershayim (`רש"י על שבת`) even where
+the `.txt` filename on disk drops them (`רשי על שבת.txt`), and a `path_2` written the filename
+way matches nothing. Also confirm each Sefaria-target entry carries a `ref_2` before importing:
+the importer ignores it, but the weekly sync tool needs it to re-anchor `line_index_2` after
+each Sefaria release, so a batch imported without it starts drifting onto wrong lines on its
+own. Both are cheap to fix in the `_links.json` and expensive to find after import.
+
 ## What this does, and what it doesn't
 
 This is the second half of a two-step workflow. The first half — matching a commentary's
@@ -169,6 +177,7 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
    which target book was resolved, how many rows would be inserted, skipped for a missing
    line match, skipped as an in-file duplicate, skipped because matching rows already exist,
    or skipped because the real target book from `path_2` couldn't be found in `seforim.db`.
+   Treat that last count as a spelling bug until proven otherwise — see step 4.
 
 4. **Resolve anything the dry run flags before going further.** A large "skipped_missing_line"
    count usually means the `_links.json` was built against a different edition/line-count of
@@ -177,8 +186,15 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
    "skipped_existing" means this exact base/commentary/type combination is already linked;
    tell the user and ask whether they want a `replace_existing: true` re-run (see criterion 5)
    or to leave it alone. A nonzero "skipped_target_book_not_found" means some entries' `path_2`
-   names a book that isn't in `seforim.db` at all — confirm with the user whether that book
-   needs to be added first, rather than silently dropping those entries.
+   names a book that isn't in `seforim.db` at all. Before concluding the book is genuinely
+   missing, check the far more common cause: a title spelled the *filename* way instead of the
+   DB way — gershayim stripped (`רשי על שבת.txt` where the book is `רש"י על שבת`). Look up the
+   intended book by `LIKE` to find its real title, then fix `path_2` in the `_links.json` to
+   match `book.title` exactly. Only if no such book exists at all should you confirm with the
+   user whether it needs to be added first, rather than silently dropping those entries. Note
+   the generator that builds `seforim.db` from the repo does **not** report this at all — it
+   drops unresolvable entries in silence — so this dry-run count is often the only place the
+   mistake is visible.
 
 5. **Rewrite the job config with `dry_run: false`** (and `replace_existing: true` only if the
    user just confirmed it) and run the exact same command again.

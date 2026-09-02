@@ -9,7 +9,7 @@ import validate_manual_links_refs as validator
 DICTA = "DictaToOtzaria/ערוך/links"
 
 
-def config(aliases=None):
+def config():
     return {
         "schema_version": 1,
         "seforim_tool_ref": "refs/heads/otzaria",
@@ -20,14 +20,13 @@ def config(aliases=None):
             {"path": "Absent/links", "expected_state": "absent"},
         ],
         "bootstrap_adapters": {"MoreBooks/links": "morebooks_heref_v1"},
-        "he_title_aliases": aliases if aliases is not None else {},
     }
 
 
-def workspace_with(temporary, aliases=None):
+def workspace_with(temporary):
     workspace = Path(temporary)
     (workspace / validator.CONFIG_NAME).write_text(
-        json.dumps(config(aliases), ensure_ascii=False), encoding="utf-8"
+        json.dumps(config(), ensure_ascii=False), encoding="utf-8"
     )
     return workspace
 
@@ -53,7 +52,7 @@ class ValidateManualLinksRefsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             workspace = Path(temporary)
             broken = config()
-            del broken["he_title_aliases"]
+            broken["links_roots"][0]["expected_state"] = "maybe"
             (workspace / validator.CONFIG_NAME).write_text(
                 json.dumps(broken, ensure_ascii=False), encoding="utf-8"
             )
@@ -70,78 +69,62 @@ class ValidateManualLinksRefsTest(unittest.TestCase):
                 [{"path_2": "כתובות.txt", "line_index_2": 3}],
             )
 
-            problems = validator.check_file(workspace, relative, {"כתובות"}, {})
+            problems = validator.check_file(workspace, relative, {"כתובות"})
 
             self.assertEqual(1, len(problems))
             self.assertIn("new_target_ref_required", problems[0])
 
-    def test_aliased_target_is_sefaria_owned_and_needs_ref_2(self):
-        aliases = {DICTA: {"רשי על שבת": 'רש"י על שבת'}}
+    def test_a_gershayim_target_is_sefaria_owned_and_needs_ref_2(self):
         with tempfile.TemporaryDirectory() as temporary:
-            workspace = workspace_with(temporary, aliases)
+            workspace = workspace_with(temporary)
             relative = write_records(
                 workspace,
                 f"{DICTA}/ערוך_links.json",
-                [{"path_2": "רשי על שבת.txt", "line_index_2": 3}],
+                [{"path_2": 'רש"י על שבת.txt', "line_index_2": 3}],
             )
 
-            problems = validator.check_file(
-                workspace, relative, {'רש"י על שבת'}, aliases
-            )
+            problems = validator.check_file(workspace, relative, {'רש"י על שבת'})
 
             self.assertEqual(1, len(problems))
             self.assertIn("new_target_ref_required", problems[0])
 
-    def test_aliased_target_with_ref_2_passes(self):
-        aliases = {DICTA: {"רשי על שבת": 'רש"י על שבת'}}
+    def test_a_gershayim_target_with_ref_2_passes(self):
         with tempfile.TemporaryDirectory() as temporary:
-            workspace = workspace_with(temporary, aliases)
+            workspace = workspace_with(temporary)
+            relative = write_records(
+                workspace,
+                f"{DICTA}/ערוך_links.json",
+                [{"path_2": 'רש"י על שבת.txt', "line_index_2": 3, "ref_2": "Rashi on Shabbat 2a:1"}],
+            )
+
+            self.assertEqual([], validator.check_file(workspace, relative, {'רש"י על שבת'}))
+
+    def test_the_quote_stripped_spelling_is_not_a_sefaria_book(self):
+        # The comparison is verbatim: no gershayim folding in either direction.
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = workspace_with(temporary)
             relative = write_records(
                 workspace,
                 f"{DICTA}/ערוך_links.json",
                 [{"path_2": "רשי על שבת.txt", "line_index_2": 3, "ref_2": "Rashi on Shabbat 2a:1"}],
             )
 
-            self.assertEqual(
-                [], validator.check_file(workspace, relative, {'רש"י על שבת'}, aliases)
-            )
-
-    def test_same_spelling_outside_the_aliased_root_stays_local(self):
-        aliases = {DICTA: {"רשי על שבת": 'רש"י על שבת'}}
-        with tempfile.TemporaryDirectory() as temporary:
-            workspace = workspace_with(temporary, aliases)
-            relative = write_records(
-                workspace,
-                "MoreBooks/links/example_links.json",
-                [{"path_2": "רשי על שבת.txt", "line_index_2": 3, "ref_2": "Rashi on Shabbat 2a:1"}],
-            )
-
-            problems = validator.check_file(
-                workspace, relative, {'רש"י על שבת'}, aliases
-            )
+            problems = validator.check_file(workspace, relative, {'רש"י על שבת'})
 
             self.assertEqual(1, len(problems))
             self.assertIn("ref_2 side classification changed", problems[0])
 
-    def test_alias_that_no_longer_names_a_sefaria_book_is_reported(self):
-        aliases = {DICTA: {"רשי על שבת": 'רש"י על שבת'}}
+    def test_extensionless_target_names_no_book(self):
+        # Mirrors targetTitleOrNull: without .txt the value addresses no book at all.
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = workspace_with(temporary)
+            relative = write_records(
+                workspace,
+                f"{DICTA}/ערוך_links.json",
+                [{"path_2": 'רש"י על שבת', "line_index_2": 3}],
+            )
 
-        self.assertEqual([], validator.alias_problems(aliases, {'רש"י על שבת'}))
-        problems = validator.alias_problems(aliases, {"כתובות"})
-        self.assertEqual(1, len(problems))
-        self.assertIn("is not a Sefaria heTitle", problems[0])
-
-    def test_alias_applies_only_under_its_own_root(self):
-        aliases = {DICTA: {"רשי על שבת": 'רש"י על שבת'}}
-
-        self.assertEqual(
-            'רש"י על שבת',
-            validator.sefaria_he_title(aliases, f"{DICTA}/ערוך_links.json", "רשי על שבת"),
-        )
-        self.assertEqual(
-            "רשי על שבת",
-            validator.sefaria_he_title(aliases, "MoreBooks/links/x_links.json", "רשי על שבת"),
-        )
+            self.assertEqual([], validator.check_file(workspace, relative, {'רש"י על שבת'}))
 
 
 if __name__ == "__main__":

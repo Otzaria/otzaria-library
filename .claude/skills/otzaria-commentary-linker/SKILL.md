@@ -29,6 +29,7 @@ app's side-by-side view. This is the exact input format the app's DB generator
 {
   "line_index_1": 5,
   "line_index_2": 3,
+  "ref_2": "Moed Katan 2a:1",
   "heRef_2": "מועד קטן ב., א",
   "path_2": "מועד קטן.txt",
   "Conection Type": "commentary"
@@ -90,8 +91,10 @@ following hold:
    physical line numbering (see criterion 2), but never receive a link entry themselves, and
    any front-matter you skip still gets named in your report.
 
-2. **Correct, complete entries.** Every entry has exactly these five fields: `line_index_1`,
-   `line_index_2`, `heRef_2`, `path_2`, and the literal key `"Conection Type"` — spelled
+2. **Correct, complete entries.** Every entry has these five fields: `line_index_1`,
+   `line_index_2`, `heRef_2`, `path_2`, and the literal key `"Conection Type"` — plus a sixth,
+   `ref_2`, whenever the target is a Sefaria book (see the two sub-rules below; both are
+   mandatory, and both fail *silently* when you get them wrong). `"Conection Type"` is spelled
    exactly that way (missing the second "n"). This mirrors Sefaria's original CSV column name
    and is what the app's parser expects; writing `"Connection Type"` instead silently fails to
    register the link. `line_index_1` and `line_index_2` are 1-based physical file line
@@ -99,6 +102,43 @@ following hold:
    headings and blank lines, even though headings themselves never become a `line_index`
    value.
    
+   **`path_2` must be the target's exact DB title — gershayim included.** `path_2` is
+   `"<target title>.txt"`, where `<target title>` equals `book.title` in `seforim.db`
+   **character for character**. The generator resolves the target book by exact title match on
+   that string; when it doesn't match, **the entry is dropped silently** — no error, no warning,
+   no link in the DB. The trap: Otzaria `.txt` filenames on disk are often stripped of
+   gershayim, so the intuition "the file is named `רשי על שבת.txt`, so that's what I write" is
+   exactly backwards here. Sefaria-sourced books carry ASCII gershayim (`"`) in their title, and
+   the title is what gets matched:
+
+   ```json
+   "path_2": "רש\"י על שבת.txt"      // correct — equals book.title
+   "path_2": "רשי על שבת.txt"        // WRONG — matches no book; entry silently dropped
+   ```
+
+   This exact mistake produced 739 dead entries across 33 files in one past run. Verify **every
+   distinct `path_2`** you write before delivering — an exact-match query, never `LIKE`; see
+   "Verifying `path_2` resolves" in `references/query_seforim_db.md`.
+
+   **`ref_2` is mandatory whenever the target is a Sefaria book.** `ref_2` is the target line's
+   canonical Sefaria reference in English — `"Shabbat 2a:2"`, `"Ketubot 2a:1"`,
+   `"Rashi on Shabbat 6a:13:1"`, `"Tosafot on Bava Batra 29a:16:1"` — and `heRef_2` is the
+   Hebrew rendering of that *same* address (`"Rashbam on Bava Batra 86a:1:2"` ↔
+   `"רשב\"ם על בבא בתרא פו., א, ב"`). Write both; they must name the same place.
+
+   Why it isn't optional: `line_index_2` is a *physical line number*, and each Sefaria release
+   can add or remove lines in the target text, shifting every line number after it. The weekly
+   sync tool re-resolves `line_index_2` from `ref_2` after each release — **`ref_2` is the
+   stable anchor; `line_index_2` is only a perishable cache of it.** An entry with no `ref_2`
+   cannot be re-anchored: it keeps its stale `line_index_2` and starts pointing at the wrong
+   line, silently, with nothing to flag it. Take `ref_2` from the same DB/precedent lookup that
+   gave you `heRef_2`, and copy the convention from an existing `_links.json` targeting the
+   same book.
+
+   A target that is **not** a Sefaria book (an Otzaria-native book such as
+   `הערות על שות רבי משולם איגרא.txt`) has no Sefaria reference and correctly carries no
+   `ref_2` — omit the field there rather than inventing a value.
+
    **Critical for multiple links to the same line:** If you have multiple citing-book lines
    pointing at the same target line (e.g., several commentary snippets on one source passage),
    they **must appear consecutively in the JSON file** (one after another with the same
@@ -157,7 +197,9 @@ following hold:
 6. **Verified before delivery.** Before handing over the finished file, you cross-checked it
    against `seforim.db` directly (Windows-MCP PowerShell route, not bash — see below) —
    confirming derived `heRef` values and spot-checking that target lines you matched against
-   actually correspond to real rows in the DB. This is a mandatory final gate for every run,
+   actually correspond to real rows in the DB. This gate also covers the two silent-failure
+   fields from criterion 2: **every distinct `path_2` returned an exact-title match** in
+   `book`, and **every entry with a Sefaria target carries a `ref_2`**. This is a mandatory final gate for every run,
    not a step reserved for when a result looks doubtful. If the DB is genuinely unreachable —
    wrong path, tool unavailable, permission denied — this gate becomes a disclosed limitation
    instead of a blocker: deliver the file-derived result anyway, but say explicitly in your
@@ -190,7 +232,8 @@ When a script produces the links, distinguish **coverage** from **approval**:
   matches in one run that the score alone would have shipped.
 - Reviewed manual decisions belong in a deterministic override JSON, not only in generated
   output. The format is an object keyed by citing `line_index_1`; each value is either a complete
-  five-field link entry or `null` for a verified legitimate skip. Re-running must reapply and
+  link entry (all five fields, plus `ref_2` on a Sefaria target) or `null` for a verified
+  legitimate skip. Re-running must reapply and
   report every override.
 - A `null` override does not prove that a line is skippable. QA must still confirm it is a
   heading/front-matter/placeholder/colophon under criterion 1.
@@ -225,6 +268,11 @@ never do that subtraction yourself. `path_2` in the output is just
 `"<target title>.txt"`; it doesn't need to physically exist in this repo, since the app
 resolves both sides of a link by title against its own book cache (confirmed by the existing
 `קרן אורה על מועד קטן_links.json`, which already targets `מועד קטן.txt` correctly).
+**But precisely because resolution is by title, the local filename is not the authority on how
+to spell it** — write the title exactly as `book.title` has it, gershayim and all
+(`רש"י על שבת.txt`, not the de-gershayim'd `רשי על שבת.txt`), and verify it with an exact-match
+query per criterion 2. Likewise, when the target is a Sefaria book, derive `ref_2` alongside
+`heRef_2` in the same pass — not as an afterthought.
 
 **The DB access route — used every run, not just as a fallback.** `seforim.db` is
 confirmed to live at
@@ -315,9 +363,15 @@ intermediate commentary plus ד"ה — e.g. `רש"י ד"ה אפילו`, `ברש"
 `תוספות בד"ה …` — that line is interpreting **that commentary's own lemma**, not the Gemara
 directly. For those lines:
 
-1. Resolve `path_2` to the Rashi or Tosafot book for this masechet (not the Gemara `.txt`).
-2. Set `line_index_2` / `heRef_2` to the specific line **in that book** whose opening/dibbur
-   matches the lemma after ד"ה (e.g. the Rashi line that starts with `אפילו`).
+1. Resolve `path_2` to the Rashi or Tosafot book for this masechet (not the Gemara `.txt`) —
+   spelled as that book's **exact DB title, gershayim included**: `רש"י על שבת.txt`,
+   `רשב"ם על בבא בתרא.txt`, `תוספות על בבא בתרא.txt`. These are Sefaria books, so never the
+   de-gershayim'd filename form (`רשי על שבת.txt`) — that matches no book and the entry is
+   dropped silently (criterion 2). Confirm each one with an exact-title query before shipping.
+2. Set `line_index_2` / `heRef_2` / `ref_2` to the specific line **in that book** whose
+   opening/dibbur matches the lemma after ד"ה (e.g. the Rashi line that starts with `אפילו`).
+   `ref_2` here is the intermediate book's own Sefaria ref — `"Rashi on Shabbat 6a:13:1"`,
+   `"Tosafot on Bava Batra 29a:16:1"` — not the Gemara's, and it is required (criterion 2).
 3. Write `"Conection Type": "super_commentary"`.
 
 Do **not** link such lines as `commentary` onto the Gemara even if the sugya is related.

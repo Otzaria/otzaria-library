@@ -45,6 +45,8 @@ Applies to **any** citing book. Named titles below are examples from past audits
 | F14 | Heuristic false positive | Automated dibbur/overlap checker says miss because of abbreviations, nikud, or continuation sparsity — re-read before filing `major` |
 | F15 | Trigger-regex blind spot | The automated super-attribution scanner's own trigger pattern misses a real opener, so the check silently reports 0 problems even though F8/F9 is present — e.g. requiring bare "ד\"ה" right after the name when the source actually writes "בד\"ה" (ב fused onto ד"ה) almost everywhere, or missing a commentator name the book actually uses (רשב"ם, or a print/OCR variant like חוס' for תוס'). A clean `super_wrong_count: 0` from `validate_links.py` only means "no problems among the openers this version's regex can see" — periodically re-derive the trigger list from what the book's own bold openers actually say (see "Deriving the trigger list" below), don't assume the bundled regex already covers every name/spelling this book uses |
 | F16 | Forced best candidate | Matcher writes the highest-scoring candidate even though the absolute score is weak, the dibbur has only one informative token, or several candidates are effectively tied. Preserve full final coverage, but route this decision through the QA sidecar/manual-review flow before treating it as production-approved |
+| **F18** | **`path_2` resolves to no book** | The target title in `path_2` isn't `book.title` in `seforim.db` character for character, so the generator drops every entry with that `path_2` — **silently: no error, no warning, no log line, the links simply never exist in the DB**. Structural QA, heRef QA and semantic QA can all be green while 100% of the file is dead. Almost always gershayim: the Otzaria `.txt` on disk is `רשי על שבת.txt` but the Sefaria book is `רש"י על שבת` — the filename is not the authority on the spelling. Confirm with `SELECT title FROM book WHERE title = ?` (exact, **not** `LIKE`) for **every distinct** `path_2`; zero rows = `blocker`. Real case: 739 entries across 33 files |
+| **F19** | **Missing `ref_2` on a Sefaria target** | Entry has the five core fields but no `ref_2`. Harmless at import — the generator ignores `ref_2` — and then degrades on its own: the weekly sync tool re-resolves `line_index_2` from `ref_2` after each Sefaria release, so an entry without an anchor keeps its now-stale line number and starts pointing at the wrong line, with nothing to flag it. `major`. `ref_2` is the English Sefaria ref (`Shabbat 2a:2`, `Rashi on Shabbat 6a:13:1`) naming the same address `heRef_2` renders in Hebrew; the two must agree. Absence is **correct** for an Otzaria-native target (no Sefaria ref exists) — check `book.sourceId` before filing. Found together with F18 in the same 739-entry run |
 | F17 | Regeneration loses hand fixes | Correct targets were edited only in the generated `_links.json`; the next matcher run silently restores the old guesses. Store reviewed choices in the deterministic override input and verify that the run reports them as applied |
 
 ## How to confirm a miss
@@ -61,6 +63,12 @@ Applies to **any** citing book. Named titles below are examples from past audits
    primary-text reset label / new section heading.
 7. When DB is available, `LIKE '%lemma%'` on the intermediate book's `line.content` often
    finds the exact row quickly.
+8. **F18:** collect the set of distinct `path_2` values first (a one-liner over the JSON), then
+   exact-match each against `book.title`. If a miss is a gershayim variant, the fix is the DB
+   spelling — never rename the target or drop to `LIKE` to make it "match".
+9. **F19:** for each `path_2` that resolved to a Sefaria-sourced book, count entries lacking
+   `ref_2`. Report the count per `path_2`; it is a fixable-by-lookup gap, not a reason to
+   delete otherwise-correct links.
 
 ## heRef quick check
 
@@ -110,6 +118,8 @@ scope limit — only a concrete illustration of F8–F14.
 - All 11 citing texts present; sizes sane; Hebrew content real.
 - No leftover `*.links.json` names (those had already been fixed for two volumes).
 - JSON schema (5 fields), no commentary/super dupe `line_index_1`, full content coverage.
+  (That audit predates checks 9/10 — a 5-field-clean file can still be entirely dead under F18
+  or quietly rotting under F19, so a green schema line means less than it looks like here.)
 - DB `heRef_2` samples: 100% match across books.
 - Pre-existing `linker` counts preserved where expected.
 - Several volumes: super-attribution scan clean.
@@ -134,4 +144,6 @@ scope limit — only a concrete illustration of F8–F14.
 
 > Structural green + heRef green **does not** imply import-ready when the citing book
 > uses intermediate attributions / continuations after them. Always run the full F8+F9 scan
-> before approving import into `seforim.db`.
+> before approving import into `seforim.db`. And note that heRef QA can only run on entries
+> whose `path_2` resolved at all — clear F18 first (every distinct `path_2` exact-matched) and
+> check F19 alongside it, or you may be validating a file that imports nothing.
