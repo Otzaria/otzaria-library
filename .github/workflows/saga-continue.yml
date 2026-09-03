@@ -302,7 +302,8 @@ jobs:
             -f fordb_tag="$FORDB_TAG" -f fordb_archive_sha256="$FORDB_ARCHIVE_SHA" \
             -f expected_links_commit="$EXPECTED_COMMIT" -f otzaria_target_commit="$EXPECTED_COMMIT" \
             -f correlation_id="$CORRELATION_ID" -f saga_run_id="$SAGA_RUN_ID" \
-            -f saga_run_attempt="$SAGA_RUN_ATTEMPT"
+            -f saga_run_attempt="$SAGA_RUN_ATTEMPT" \r
+            -f prerelease=true
           echo "Seforim child submission accepted; S1 complete."
       - name: Re-download authoritative Otzaria result for S2
         id: s2_otzaria
