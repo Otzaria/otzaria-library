@@ -3,6 +3,7 @@ from pathlib import Path
 
 
 WORKFLOW = Path(__file__).parents[1] / "workflows" / "saga-continue.yml"
+RULE_SCRIPT = Path(__file__).with_name("select_earliest_successful_child.sh")
 
 
 class SagaContinueWorkflowContractTest(unittest.TestCase):
@@ -22,14 +23,44 @@ class SagaContinueWorkflowContractTest(unittest.TestCase):
         self.assertIn("            .github/scripts\n", self.workflow)
         self.assertIn("            pipeline_result_contract.py\n", self.workflow)
 
-    def test_s2_selects_one_successful_child_then_checks_ancestry(self):
+    def test_s2_selects_the_canonical_child_then_checks_ancestry(self):
         step = self.step("Re-download authoritative Otzaria result for S2")
         self.assertIn("gh api --paginate", step)
-        self.assertIn('.status=="completed" and .conclusion=="success"', step)
-        self.assertIn('[ "$count" -ne 1 ]', step)
+        self.assertIn(
+            "bash .github/scripts/select_earliest_successful_child.sh", step
+        )
         self.assertIn('compare/$EXPECTED_COMMIT...$child_head', step)
+        self.assertIn('pipeline-result-run-$run_id-$attempt', step)
         self.assertIn('validate-otzaria-result', step)
+        self.assertIn('--correlation-id "$CORRELATION_ID" --expected-commit "$EXPECTED_COMMIT"', step)
         self.assertNotIn("find_exact_workflow_run.sh", step)
+
+    def test_s2_fails_closed_when_no_child_of_the_correlation_succeeded(self):
+        """Adopting a duplicate is not the same as accepting an empty set."""
+        step = self.step("Re-download authoritative Otzaria result for S2")
+        self.assertIn('if [ "$scan_rc" -eq 1 ]; then', step)
+        self.assertIn(
+            '::error::Expected a successful Otzaria child for the canonical '
+            'correlation; found none.',
+            step,
+        )
+        self.assertIn('[ "$scan_rc" -eq 0 ] || exit "$scan_rc"', step)
+
+    def test_s2_delegates_the_canonical_child_rule_to_the_shared_script(self):
+        """S2 must name the child reconcile_sagas.sh names: a gate that refuses
+        what the reconciler already adopted can never be satisfied, and the
+        saga then fails on every scheduled tick until an operator intervenes."""
+        step = self.step("Re-download authoritative Otzaria result for S2")
+        self.assertNotIn('$4=="success"', step)
+        self.assertNotIn('[ "$count" -ne 1 ]', step)
+        self.assertIn("-f event=workflow_dispatch -f per_page=100", step)
+        self.assertIn(
+            "select(.display_title==env.TITLE) | "
+            "[(.id|tostring),.created_at,.status,(.conclusion//\"-\")] | @tsv",
+            step,
+        )
+        rule = "awk -F'\\t' '$3==\"completed\" && $4==\"success\" && !found++ {print $1}'"
+        self.assertEqual(RULE_SCRIPT.read_text(encoding="utf-8").count(rule), 1)
 
     def test_all_durable_handoffs_use_releases(self):
         self.assertNotIn("actions/upload-artifact", self.workflow)

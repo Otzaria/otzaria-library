@@ -314,14 +314,22 @@ jobs:
           rows="$(TITLE="$title" gh api --paginate -X GET \
             "repos/Otzaria/otzaria-library/actions/workflows/update-library.yml/runs" \
             -f event=workflow_dispatch -f per_page=100 \
-            --jq '.workflow_runs[] | select(.display_title==env.TITLE and .status=="completed" and .conclusion=="success") | (.id|tostring)')"
-          matches="$(printf '%s\n' "$rows" | awk 'NF && !seen[$0]++')"
-          count="$(printf '%s\n' "$matches" | awk 'NF' | wc -l | tr -d ' ')"
-          if [ "$count" -ne 1 ]; then
-            echo "::error::Expected exactly one successful Otzaria child for the canonical correlation; found $count."
+            --jq '.workflow_runs[] | select(.display_title==env.TITLE) | [(.id|tostring),.created_at,.status,(.conclusion//"-")] | @tsv')"
+          # A second successful child of this exact identity can never be merged
+          # back into one, so refusing every set larger than one only wedges the
+          # saga forever.  Adopt the child reconcile_sagas.sh adopts, by the same
+          # shared rule; every per-run check below still binds that run to this
+          # correlation and to EXPECTED_COMMIT, so adoption proves nothing on its
+          # own.  No successful child at all remains a hard failure.
+          set +e
+          run_id="$(printf '%s\n' "$rows" | bash .github/scripts/select_earliest_successful_child.sh)"
+          scan_rc=$?
+          set -e
+          if [ "$scan_rc" -eq 1 ]; then
+            echo "::error::Expected a successful Otzaria child for the canonical correlation; found none."
             exit 1
           fi
-          run_id="$matches"
+          [ "$scan_rc" -eq 0 ] || exit "$scan_rc"
           attempt="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .run_attempt)"
           child_head="$(gh api "repos/Otzaria/otzaria-library/actions/runs/$run_id" --jq .head_sha)"
           relation="$(gh api "repos/Otzaria/otzaria-library/compare/$EXPECTED_COMMIT...$child_head" --jq .status)"
