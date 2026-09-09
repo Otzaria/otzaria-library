@@ -10,11 +10,18 @@ name: Validate ForDB book names
 # כל כשל שאינו ניתן לתיקון בטוח, או כשל בשכבת ה-runtime, מפיל את ה-CI וחוסם בנייה.
 
 on:
+  # רק main. תגי ה-handoff של הסאגה (manual-links-refresh-report-*, saga-state-*,
+  # library-links-*, pipeline-result-*, saga-complete-*) מצביעים על אותו עץ, וכל תג
+  # הפעיל ריצה מלאה נוספת ש-concurrency לא יכול לאחד כי כל תג הוא ref נפרד.
+  # ענפים נבדקים דרך pull_request, וה-auto-fix דוחף ל-main ולכן ממשיך לאמת את עצמו.
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
 permissions:
+  # נדרש רק ל-auto-fix push שרץ ב-main; מאז סינון ה-branches ההרשאה כבר לא ניתנת
+  # על ref של תג שרירותי, וב-PR ובהרצה ידנית אין כתיבה בפועל.
   contents: write
 
 concurrency:
@@ -44,6 +51,7 @@ jobs:
             /ForDB/
             /.github/scripts/
             /all_metadata_with_file_paths.json
+            /manual_links_packaging.py
           sparse-checkout-cone-mode: false
           # PAT ב-main גורם ל-auto-fix push להפעיל את השערים מחדש. ב-fork PR אין
           # גישה לסוד ולכן נופלים ל-token המובנה, המשמש לקריאה בלבד בפועל.
@@ -58,9 +66,24 @@ jobs:
           test -f all_metadata_with_file_paths.json
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      # בדיקות ה-offline של המאמת עצמו (db_title, find_spelling_drift,
+      # find_dead_renames) מול קבצי ForDB ועץ הספרים המחויב — שניות ספורות, אותו
+      # runner, ללא רשת וללא seforim.db. רצות לפני הכלי כדי שבאג במאמת ייפול כאן.
+      # manual_links_packaging.py נמשך ב-sparse בדיוק עבור הצעד הזה:
+      # PackagedRootsContractTest הוא האכיפה היחידה של DB_BOOK_PREFIXES ≡ BOOK_ROOTS,
+      # והוא מדלג על עצמו כשהקובץ חסר.
+      - name: Self-test the ForDB name validator
+        working-directory: .github/scripts
+        env:
+          SEFARIA_FETCH: "0"
+          PYTHONIOENCODING: "utf-8"
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_validate_fordb_book_names -v
 
       # exit 1 = נשארה בעיה שאסור לתקן בניחוש; exit 2 = ספריא לא זמינה. במקרה
       # השני --fix יוצא לפני כל כתיבה, ולכן כשל רשת לעולם לא מוחק נתון תקין.
@@ -157,7 +180,7 @@ jobs:
           haskell: true
 
       - name: Set up Java 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "25"

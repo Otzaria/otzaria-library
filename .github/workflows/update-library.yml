@@ -83,6 +83,10 @@ jobs:
         with:
           lfs: true
           token: ${{ secrets.PIPELINE_TOKEN || github.token }}
+          # send_update/main.py needs the previous "גרסת ספרייה" commit in view (~5 land per
+          # cycle) and now deepens itself up to 200 rather than guess when 25 misses. Measured
+          # on run 33987363603: filter=blob:none saves nothing — the 24 older commits add 5MiB
+          # to the 2.03GiB HEAD tree this checkout has to materialise anyway.
           fetch-depth: 25
       - uses: actions/setup-python@v5
         with:
@@ -147,12 +151,15 @@ jobs:
       - name: Free disk space for reproducible archives
         uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
         with:
+          # Measured on run 33990868742: these four free 25.3GiB in 151s of the step's
+          # 154s; large-packages (4.4GiB/49s) and docker-images (1.9GiB/26s) are the two
+          # costliest per GiB and the source of all its apt noise. Same set as update-fordb.yml.
           tool-cache: true
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
-          docker-images: true
+          large-packages: false
+          docker-images: false
           swap-storage: false
       - name: Checkout exact detached commit
         uses: actions/checkout@v4

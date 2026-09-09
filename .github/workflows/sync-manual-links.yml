@@ -78,12 +78,15 @@ jobs:
       - name: Free disk space for the verified Sefaria export
         uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
         with:
+          # Measured on run 33990185407: these four free 25.3GiB in 151s. large-packages
+          # (4.4GiB/49s) and docker-images (1.9GiB/26s) printed 1,453 of the step's 1,793
+          # lines for headroom this job never needs — its preflight below asserts 12GiB.
           tool-cache: true
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
-          docker-images: true
+          large-packages: false
+          docker-images: false
           swap-storage: false
 
       - name: Validate dispatch identity
@@ -119,19 +122,33 @@ jobs:
           [ "$push" = true ] || { echo "::error::PIPELINE_TOKEN cannot push to otzaria-library (permissions.push=$push) — the classic PAT needs the 'repo' scope (public_repo is not enough for cross-repo automation) and must belong to a user with write access"; exit 1; }
 
       - name: Checkout current Otzaria main
-        uses: actions/checkout@v4
+        # fetch-depth: 0 always fetches every tag: checkout hard-codes the tags
+        # refspec on the full-history path and ignores `fetch-tags` there
+        # (git-source-provider.ts "if (settings.fetchDepth <= 0)" -> ref-helper
+        # getRefSpecForAllHistory, identical in v5/v6/v7).  The one `* [new tag]`
+        # line per repository tag (87 in otzaria-library today, ~5 more per cycle)
+        # therefore cannot be removed here without giving up full
+        # history - an operator decision, not a logging one.  Every *explicit*
+        # fetch below carries --no-tags instead.
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           lfs: true
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12.10'
 
       - name: Validate committed synchronization contract
         run: |
           python3 -m unittest -v test_manual_links_packaging.py test_sefaria_release_chain.py
+          # Not -v: this one asserts the observability contract of the step below,
+          # and a per-test roll call is exactly the log noise it exists to remove.
+          # The observability suite loads this workflow with PyYAML and would
+          # silently skip that guard without it (setup-python ships no PyYAML).
+          python3 -m pip install --quiet pyyaml
+          python3 .github/scripts/test_manual_links_observability.py
           test -f manual_links_lineage.json
           # Source roots may legitimately differ from the previous lineage after
           # prepare_only.  Validate config/state/collisions now; require the new
@@ -175,7 +192,7 @@ jobs:
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
 
       - name: Checkout the exact updater tool
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: Otzaria/SeforimLibrary
           ref: ${{ steps.tool.outputs.sha }}
@@ -193,7 +210,9 @@ jobs:
           [[ "$(git rev-parse HEAD)" == "$TOOL_SHA" ]]
           ref="$(jq -r '.seforim_tool_ref' ../manual_links_sync.json)"
           branch="${ref#refs/heads/}"
-          git fetch origin "$branch"
+          # Only the branch head is needed; --no-tags keeps every handoff tag the
+          # pipeline creates out of this step's log.
+          git fetch --no-tags origin "$branch"
           git merge-base --is-ancestor "$TOOL_SHA" "origin/$branch"
 
       - name: Preflight resources before downloading the export
@@ -217,6 +236,10 @@ jobs:
             --target-metadata-sha256 "$METADATA_SHA" \
             --lineage manual_links_lineage.json \
             --output sefaria-chain
+          # 33s of a 534MB download, a SHA-256 verification and an extract used to
+          # emit zero lines (audit OBS-2): name the hops that were walked, the
+          # archive that was verified and what came out of it.
+          bash .github/scripts/sefaria_chain_summary.sh sefaria-chain
           archive_sha="$(jq -r '.archive.sha256' sefaria-chain/chain-result.json)"
           echo "archive_sha256=$archive_sha" >> "$GITHUB_OUTPUT"
           mapfile -t parts < <(jq -r '.archive.parts[].name' sefaria-chain/chain-result.json)
@@ -225,12 +248,15 @@ jobs:
             cat "sefaria-chain/target-assets/$part" >> sefaria-chain/combined.tar.zst
           done
           [[ "$(sha256sum sefaria-chain/combined.tar.zst | cut -d' ' -f1)" == "$archive_sha" ]]
+          echo "sefaria chain: verified sha256 ok - $archive_sha over $(stat --format='%s' sefaria-chain/combined.tar.zst) combined byte(s)"
           mkdir sefaria-chain/export
           tar --zstd -xf sefaria-chain/combined.tar.zst -C sefaria-chain/export
           # The export root is the single directory holding both json/ and schemas/
           # (the Docker-Compose archives no longer ship a database_export folder).
           mapfile -t export_roots < <(find sefaria-chain/export -type d -name schemas -print | sort | while read -r s; do d="$(dirname "$s")"; [[ -d "$d/json" ]] && printf '%s\n' "$d"; done)
           [[ ${#export_roots[@]} -eq 1 ]]
+          extracted="$(find sefaria-chain/export -mindepth 1 -printf '%y\n' | awk '$0=="f"{f++} $0=="d"{d++} END{printf "%d file(s) in %d director(ies)", f, d}')"
+          echo "sefaria chain: extracted $extracted; export root ${export_roots[0]}"
           printf '%s\n' "${export_roots[0]}" > sefaria-chain/export-root.txt
 
       - name: Refresh, apply, commit and push atomically
@@ -243,6 +269,9 @@ jobs:
           set -euo pipefail
           export_root="$(realpath "$(cat sefaria-chain/export-root.txt)")"
           auth="$(printf 'x-access-token:%s' "$PIPELINE_TOKEN" | base64 | tr -d '\n')"
+          # Actions masks the secret, never its base64 transform: register the
+          # transform too, so a future `set -x`/GIT_TRACE cannot print the token.
+          echo "::add-mask::$auth"
           success=false
           migrate_args=()
           if [[ "$MODE" == migrate ]]; then
@@ -251,7 +280,9 @@ jobs:
           fi
 
           for attempt in 1 2 3; do
-            git fetch origin main
+            # Only origin/main is needed here; --no-tags keeps the handoff tags the
+            # pipeline keeps creating out of this step's log.
+            git fetch --no-tags origin main
             worktree="$RUNNER_TEMP/otzaria-attempt-$attempt"
             output="$RUNNER_TEMP/manual-links-output-$attempt"
             rm -rf "$worktree" "$output"
@@ -316,16 +347,58 @@ jobs:
               raise SystemExit("completion marker status differs from report")
           PY
 
+            # The refresh's own four result lines say nothing about what it did:
+            # print the report's counters, warn on the anchor/collision ones, and
+            # decide from `files.changed`/`files.renamed` plus both tree digests
+            # whether the link trees are provably untouched (audit OBS-1/NOOP-1).
+            identical="$RUNNER_TEMP/manual-links-tree-identical-$attempt"
+            bash .github/scripts/manual_links_refresh_summary.sh \
+              "$output/manual_links_refresh_report.json" "$identical" \
+              "$GITHUB_WORKSPACE/seforim-tool"
+
+            # `ManualLinksTreeHash.copyConfiguredRoots` seeds $output from the
+            # worktree byte for byte, and only persistChangedDocuments (changed++)
+            # and the rename paths (renamed++) touch it afterwards.  changed=0 and
+            # renamed=0 therefore prove $output/<root> == $worktree/<root>, so the
+            # rsync --delete over all 9 present roots and the `git add` of every
+            # root can only cost time.  The `--require-lineage` gate below still
+            # re-hashes the worktree against the new lineage either way, so a wrong
+            # decision here fails loudly instead of committing a stale tree.
+            # `no_op` stays as it is: the tool returns it only when the whole input
+            # lineage round-trips unchanged, which a weekly refresh (new Sefaria tag)
+            # never does but a re-dispatch of an already-synced target does - and the
+            # branch below is already correct for it, lineage copy included.
+            sync_trees=false
             if [[ "$status" == ok ]]; then
-              while IFS= read -r root; do
-                test -d "$output/$root"
-                mkdir -p "$worktree/$root"
-                rsync --archive --delete "$output/$root/" "$worktree/$root/"
-              done < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+              if [[ "$(cat "$identical")" != true ]]; then
+                sync_trees=true
+                while IFS= read -r root; do
+                  test -d "$output/$root"
+                  mkdir -p "$worktree/$root"
+                  rsync --archive --delete "$output/$root/" "$worktree/$root/"
+                done < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+              fi
               cp "$output/manual_links_lineage.json" "$worktree/manual_links_lineage.json"
             fi
 
-            python3 "$worktree/manual_links_packaging.py" check --workspace "$worktree" --require-lineage >/dev/null
+            # This gate reports the packaging collisions and the flattening result;
+            # discarding its stdout on success left the run with no record at all
+            # (audit SWAL-1).  It prints one JSON line, so it is simply printed.
+            check_result="$RUNNER_TEMP/manual-links-packaging-check-$attempt.json"
+            if ! python3 "$worktree/manual_links_packaging.py" check \
+                --workspace "$worktree" --require-lineage > "$check_result" 2> "$check_result.err"; then
+              echo "::error::manual-links packaging gate failed for $worktree"
+              # The tool writes its diagnostics to stderr; show both streams.
+              cat "$check_result" "$check_result.err" 2>/dev/null || true
+              exit 1
+            fi
+            # Every field is defaulted.  jq slices null to null instead of erroring, so a
+            # field the tool stops emitting rendered the literal `null` where a digest
+            # belongs: the line stayed green while its only record of the gate was untrue.
+            # `// "?"` and not `|| true` on the line: the gate's own exit status stays
+            # authoritative above, and a check_result jq cannot even parse must still be
+            # loud rather than silently unprinted.
+            jq -r '"manual-links packaging: \(.packaged_file_count // "?") packaged file(s) · source tree \((.source_links_tree_sha256 // "?")[0:12]) · packaged tree \((.packaged_links_tree_sha256 // "?")[0:12]) · config \((.config_sha256 // "?")[0:12]) · lineage \((.lineage_sha256 // "?")[0:12])"' "$check_result"
             python3 - "$worktree" <<'PY'
           import json
           import subprocess
@@ -344,10 +417,17 @@ jobs:
               raise SystemExit(f"updater changed paths outside the strict allowlist: {forbidden}")
           PY
 
-            mapfile -t roots < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+            # Nothing was rsynced into the roots, so staging them can only re-stat
+            # the 462 packaged link files; the lineage is the whole commit.  The
+            # staged-allowlist gate below and `git diff --cached` both still see
+            # exactly what is committed.
+            roots=()
+            if [[ "$sync_trees" == true ]]; then
+              mapfile -t roots < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
+            fi
             git -C "$worktree" config user.name github-actions[bot]
             git -C "$worktree" config user.email github-actions[bot]@users.noreply.github.com
-            git -C "$worktree" add -- manual_links_lineage.json "${roots[@]}"
+            git -C "$worktree" add -- manual_links_lineage.json ${roots[@]+"${roots[@]}"}
             python3 - "$worktree" <<'PY'
           import json
           import subprocess
@@ -387,11 +467,20 @@ jobs:
           [[ "$success" == true ]]
 
       - name: Publish immutable manual-links refresh report release
+        # The report describes the tree this run produced, so it is tagged at the
+        # commit that was actually pushed.  $GITHUB_SHA is the dispatch-time head,
+        # i.e. the parent of the sync commit, and left auditors on the pre-sync
+        # tree (audit PROV-1).  The saga-state release below keeps $GITHUB_SHA on
+        # purpose: it is run state, and the reconciler establishes its contract
+        # ancestry from exactly that run head (reconcile_sagas.sh: compare
+        # $STATE_CONTRACT_COMMIT...$saga_head, where saga_head is the run's head_sha).
+        env:
+          SYNC_COMMIT: ${{ steps.apply.outputs.expected_links_commit }}
         run: >-
           bash .github/scripts/publish_release_handoff.sh
           "manual-links-refresh-report-run-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           "Immutable manual-links refresh report ${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"
-          "$GITHUB_SHA" manual-links-refresh-artifact/manual_links_refresh_report.json
+          "$SYNC_COMMIT" manual-links-refresh-artifact/manual_links_refresh_report.json
           manual-links-refresh-artifact/manual_links_lineage.json
           manual-links-refresh-artifact/manual-links-refresh-complete
 
@@ -417,7 +506,7 @@ jobs:
       SEFARIA_RUN_ID: ${{ inputs.sefaria_run_id }}
       SEFARIA_RUN_ATTEMPT: ${{ inputs.sefaria_run_attempt }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ needs.sync-and-commit.outputs.expected_links_commit }}
           sparse-checkout: |

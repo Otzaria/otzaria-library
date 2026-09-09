@@ -3,6 +3,9 @@ run-name: reconcile-sagas
 
 on:
   schedule:
+    # GitHub delivers roughly eight of these a day (median gap ~3 h), not the
+    # 96 this expression asks for.  Every recovery budget in the scripts counts
+    # delivered ticks, never wall-clock minutes.
     - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
@@ -23,12 +26,29 @@ jobs:
         with:
           # Reconciliation only evaluates the control scripts.  The repository
           # contains the multi-gigabyte book corpus, so a full checkout would
-          # delay every 15-minute recovery tick and waste runner bandwidth.
-          sparse-checkout: .github/scripts
+          # delay every recovery tick and waste runner bandwidth.
+          # `.github/workflows` is in the checkout because the contract
+          # self-test asserts this workflow's own step layout; cone mode
+          # would otherwise drop every sibling directory of `scripts`.
+          sparse-checkout: |
+            .github/scripts
+            .github/workflows
           persist-credentials: false
+      # The contract self-test guards the reconciler, but it must never stand
+      # between a stuck saga and its recovery: it reports separately and the
+      # job is failed at the end instead of before any API call is made.
+      - name: Self-test the reconciler contract
+        id: selftest
+        continue-on-error: true
+        run: python3 .github/scripts/test_reconcile_sagas.py
       - name: Reconcile every open retained saga
         env:
           GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+        run: bash .github/scripts/reconcile_sagas.sh
+      - name: Fail on a failed reconciler self-test
+        # `always()`: the annotation must survive a reconciler failure in the
+        # same job, or a broken self-test would be invisible exactly when it matters.
+        if: always() && steps.selftest.outcome == 'failure'
         run: |
-          python3 .github/scripts/test_reconcile_sagas.py
-          bash .github/scripts/reconcile_sagas.sh
+          echo "::error::the reconciler contract self-test failed; recovery still ran"
+          exit 1

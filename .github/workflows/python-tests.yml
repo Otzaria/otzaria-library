@@ -1,0 +1,95 @@
+name: Python tests
+
+# כל חבילות ה-unittest של המאגר שאף workflow אחר לא מריץ ב-PR. כולן offline
+# לחלוטין — אין רשת (מלבד התקנת PyYAML לפני ההרצה), אין gh
+# (החבילות שמריצות סקריפט שותלות gh מזויף ב-PATH), אין LFS ואין runner פרטי —
+# ולכן הן רצות על כל PR ללא paths filter: חבילה שבודקת workflow או
+# סקריפט shell נשברת גם משינוי שלא נגע בקובץ שלה.
+#
+# מה לא רץ כאן ולמה:
+#   .github/scripts/test_validate_fordb_book_names.py — רץ ב-validate-fordb-book-names.yml,
+#     ה-job היחיד שכבר מושך את ForDB מ-LFS (RepositoryForDbTest קורא את ה-CSV-ים).
+#   .github/scripts/test_validate_manual_links_refs.py — כבר שער PR ב-validate-manual-links-refs.yml.
+#   National-LibraryToOtzaria/סקריפטים/test_*.py — כבר שער PR ב-validate-national-library-normalizers.yml.
+#   linker-eval/matcher_b26/test_dibur_matcher.py — עותק זהה בית-לבית של חבילת ה-linker,
+#     שמייבא את linker.dibur_matcher החי; אינו מוסיף כיסוי.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # blobless + sparse: החבילות קוראות את ה-workflows, את .github/scripts,
+      # את send_update/main.py, את linker ואת מודולי השורש שהן מייבאות בלבד —
+      # תוכן הספרים (~10GiB) לא נדרש לאף אחת מהן.
+      - name: Checkout the tested sources (sparse, blobless)
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          lfs: false
+          filter: blob:none
+          sparse-checkout: |
+            /.github/
+            /send_update/
+            /linker/
+            /manual_links_packaging.py
+            /pipeline_result_contract.py
+            /sefaria_release_chain.py
+            /verify_packaging_toolchain.py
+            /test_manual_links_packaging.py
+            /test_pipeline_result_contract.py
+            /test_saga_contract.py
+            /test_sefaria_release_chain.py
+            /test_verify_packaging_toolchain.py
+            /test_workflow_run_finder.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # discover מוצא רק את test_*.py בשורש: אין __init__.py בשום תיקייה, ולכן
+      # הוא אינו נכנס ל-linker/ ול-.github/ — אלה מורצות במפורש.
+      - name: Repository-root and linker suites
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -v -s . -t . -p 'test_*.py'
+          python3 -m unittest -v linker.tests.test_dibur_matcher
+
+      # רשימה מפורשת ולא discover: test_validate_fordb_book_names ו-
+      # test_validate_manual_links_refs יושבות באותה תיקייה ורצות ב-workflows אחרים.
+      - name: .github/scripts suites
+        working-directory: .github/scripts
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -euo pipefail
+          # setup-python אינו מביא PyYAML, ובלעדיו שתי הבדיקות שטוענות על פענוח
+          # ה-workflows (test_the_workflow_parses ו-
+          # test_every_run_body_is_valid_yaml_and_valid_bash) מדלגות בשקט — בדיוק
+          # החור ש-sync-manual-links.yml סוגר באותה שורה. זו הנגיעה היחידה ברשת;
+          # הבדיקות עצמן עדיין offline לחלוטין.
+          python3 -m pip install --quiet pyyaml
+          python3 -m unittest -v \
+            test_manual_links_observability \
+            test_reconcile_sagas \
+            test_release_consumers \
+            test_saga_continue_workflow \
+            test_send_update \
+            test_weekly_pipeline

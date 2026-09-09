@@ -36,6 +36,16 @@ sefariaToOtzaria/.../otzaria/utils.py):
   * כפילויות שם בתוך ה-ZIP: שני קבצי ספרים שונים עם אותו שם מנוקה בתיקיות הנארזות
     יחד ל-otzaria_latest.zip (SAME_ZIP_PREFIXES) מתנגשים ב-DB (book.title זהה) ולכן
     נחשבים שגיאה. DictaToOtzaria/לא ערוך נארז ל-ZIP נפרד ואינו משתתף בבדיקה זו.
+  * איות מדויק (db_title): כל הבדיקות שמעל משוות במרחב ה-*מנוקה*, שבו מרכאות נמחקות.
+    הצרכנים בפועל (applyGenerations / renameBookTitle / applyMetadata) משווים ל-
+    book.title בהשוואת מחרוזות מדויקת, ו-book.title של ספר אוצריא נגזר מ-
+    normalizeHebrewLabel של Generator.kt - הממירה מרכאות לגרשיים ואינה מוחקת אותן.
+    לכן 'הגהות הב"ח על מסכת ברכות' עבר את כל הבדיקות ובכל זאת דולג בשקט. כל שם
+    ForDB שמזהה קובץ ספר נארז יחיד חייב להיות מאויית בדיוק כמו db_title שלו.
+    ForDB/sefaria_metadata_changes.csv מוחרג: שמותיו הם כותרות ספריא שעשויות
+    להתנגש במרחב המנוקה עם קובץ אוצריא ולהיות שני ספרים נפרדים ב-DB.
+  * שינויי-שם מתים: שורת book_renames שגם המקור וגם היעד שלה אינם book.title קיים,
+    בעוד קיים ספר שנבדל מהמקור רק בפיסוק - no-op ודאי שחוזר בכל מחזור.
 
 ללא --fix: יציאה בקוד 1 אם נמצא ולו שם אחד שאינו קיים, כפילות שם בתיקיות הנארזות,
 או דליפת-מקור ב-all_metadata.json. במצב --fix מוסרות רק בעיות שהתיקון שלהן
@@ -113,7 +123,12 @@ def col_index(header, name):
 #   * הסרת טעמים/ניקוד (֑-ׇ)
 #   * הסרת התווים \ / : * " ״ ? < > |
 #   * המרת '_' לרווח, והסרת ' ו-''
-# כך למשל 'גליון הש"ס' הופך ל'גליון השס' - כפי שהספר נשמר ב-DB.
+# כך למשל 'גליון הש"ס' הופך ל'גליון השס' - כך *שם הקובץ* נבנה.
+#
+# שימו לב: זו התאמה חסרת-רגישות למרכאות, ולכן היא *אינה* שם הספר ב-DB. שם הספר
+# ב-DB נגזר מ-normalizeHebrewLabel של Generator.kt (ראו db_title למטה), הממירה
+# מרכאות לגרשיים במקום להסיר אותן. sanitize_title משמש כאן כמפתח *התאמה* בלבד
+# ("איזה קובץ ספר מדובר"), ו-db_title קובע את *האיות המדויק* הנדרש.
 # ---------------------------------------------------------------------------
 def sanitize_title(name):
     if name is None:
@@ -122,6 +137,42 @@ def sanitize_title(name):
     s = re.sub("[\\\\/:*\"״?<>|]", "", s)          # \ / : * " ״ ? < > |
     s = s.replace("_", " ").replace("''", "").replace("'", "")
     return s.strip()
+
+
+# ---------------------------------------------------------------------------
+# איות שם הספר *כפי שהוא נכתב ל-book.title* - העתק מדויק של
+# Generator.normalizeHebrewLabel + normalizeBookTitle
+# (generator/otzariasqlite/.../Generator.kt), שהן שממירות שם קובץ אוצריא לכותרת:
+#   'הגהות הב"ח על מסכת ברכות'  -> 'הגהות הב״ח על מסכת ברכות'
+#   "חידושי ופירושי מהרי''ק"    -> 'חידושי ופירושי מהרי״ק'
+# הצרכנים (applyGenerations, renameBookTitle, applyMetadata) משווים ל-book.title
+# בהשוואת מחרוזות *מדויקת*, ולכן ForDB חייב לאיית בדיוק כך.
+# ---------------------------------------------------------------------------
+GERESH = "׳"
+GERSHAYIM = "״"
+# הצמצום ב-Kotlin הוא "\\s+".toRegex() - java.util.regex ללא UNICODE_CHARACTER_CLASS,
+# כלומר [ \t\n\x0B\f\r] בלבד. ל-re של פייתון \s מודע-יוניקוד וגם בולע NBSP (U+00A0)
+# ורווחים יוניקודיים אחרים; לכן שם קובץ המכיל NBSP היה מקבל כאן db_title ש-Generator.kt
+# לעולם לא מייצר, ו-find_spelling_drift היה דורש איות שה-DB אינו יכול להחזיק.
+ASCII_WHITESPACE_RUN = re.compile(r"[ \t\n\x0b\f\r]+")
+
+
+def db_title(name):
+    """שם הספר ב-DB עבור קובץ ספר אוצריא ששמו (ללא סיומת) הוא name."""
+    if name is None:
+        return None
+    s = name.strip()
+    s = s.replace("“", '"').replace("”", '"')
+    s = s.replace("‘", "'").replace("’", "'")
+    s = s.replace('"', GERSHAYIM)
+    s = s.replace("''", GERSHAYIM)
+    s = s.replace(GERESH + GERESH, GERSHAYIM)
+    s = s.replace("`", GERESH)
+    s = ASCII_WHITESPACE_RUN.sub(" ", s).strip()
+    # normalizeBookTitle: 'תנך' / 'תנ"ך' -> 'תנ״ך' (המרכאות כבר הומרו מעל)
+    if s == "תנך":
+        s = "תנ" + GERSHAYIM + "ך"
+    return s
 
 
 # ---------------------------------------------------------------------------
@@ -156,6 +207,88 @@ PACKAGED_PREFIXES = (
 SAME_ZIP_PREFIXES = tuple(
     p for p in PACKAGED_PREFIXES if not p.startswith("DictaToOtzaria/לא ערוך/")
 )
+
+# התיקיות שספריהן באמת מגיעות ל-DB: אלה הנארזות ל-otzaria_latest.zip - הנכס
+# היחיד ש-manual-generate-release מוריד ומחלץ ל-otzaria-extract. חייב להישאר
+# זהה ל-manual_links_packaging.BOOK_ROOTS (נאכף ב-test_validate_fordb_book_names).
+# otzaria_dicta_latest.zip (DictaToOtzaria/לא ערוך) הוא נכס נפרד שהבנייה אינה
+# צורכת, ולכן אינו כאן. הרשימה משוכפלת ולא מיובאת בכוונה: ה-workflow עושה
+# sparse-checkout של /ForDB/ ו-/.github/scripts/ בלבד, כך ש-manual_links_packaging.py
+# אינו קיים בעץ העבודה בזמן הריצה.
+DB_BOOK_PREFIXES = tuple(p for p in SAME_ZIP_PREFIXES)
+
+# רק .txt הופך לספר ב-DB (createAndProcessBook); PDF/DOCX נארזים אך אינם ספרים.
+DB_BOOK_EXTS = (".txt",)
+
+
+def packaged_db_titles():
+    """
+    ממפה מפתח-התאמה (sanitize_title של שם הקובץ) -> קבוצת שמות ה-DB (db_title)
+    של קבצי הספרים הנארזים ל-otzaria_latest.zip. מפתח עם יותר משם DB אחד הוא
+    דו-משמעי ואינו נבדק (הכפילות עצמה נתפסת ב-find_packaged_duplicates).
+    """
+    titles = {}
+    for p in list_tracked_paths():
+        if not p:
+            continue
+        norm = p.replace("\\", "/")
+        if not any(norm.startswith(prefix) for prefix in DB_BOOK_PREFIXES):
+            continue
+        base, ext = os.path.splitext(norm.rsplit("/", 1)[-1])
+        if ext.lower() not in DB_BOOK_EXTS:
+            continue
+        key = sanitize_title(base)
+        if key:
+            titles.setdefault(key, set()).add(db_title(base))
+    return titles
+
+
+def find_spelling_drift(entries, packaged):
+    """
+    מאתר שמות ForDB שמזהים קובץ ספר נארז אך *מאויתים אחרת* ממה שייכתב ל-book.title.
+    זו בדיוק תקלת DROP-2: 'הגהות הב"ח על מסכת ברכות' (מרכאה ASCII) מול
+    'הגהות הב״ח על מסכת ברכות' (גרשיים) - sanitize_title מזהה התאמה, אך
+    applyGenerations משווה מחרוזות מדויקות ולכן מדלג על השורה בשקט.
+
+    entries = איטרטור של (מזהה, שם גולמי). מחזיר [(מזהה, גולמי, נדרש)].
+    """
+    drift = []
+    for identifier, raw in entries:
+        if not raw:
+            continue
+        candidates = packaged.get(sanitize_title(raw))
+        if not candidates or len(candidates) != 1:
+            continue
+        expected = next(iter(candidates))
+        if raw != expected:
+            drift.append((identifier, raw, expected))
+    return drift
+
+
+def find_dead_renames(rename_pairs, db_raw_titles):
+    """
+    מאתר שורות ב-book_renames.csv שהן no-op *ודאי*: לא שם המקור ולא שם היעד קיימים
+    כמחרוזת מדויקת ב-book.title, אך קיים שם אחד בדיוק שנבדל מהם רק בפיסוק. אז ידוע
+    בוודאות שהספר קיים תחת איות אחר, והשורה לעולם לא תתפוס
+    (renameBookTitle: "Book rename: 'X' not found; no rows changed").
+
+    הבדיקה נופלת רק כשאפשר *לנקוב* באיות הנכון, ולכן רשימת שמות חלקית (למשל
+    SEFARIA_FETCH=0, שאז db_raw_titles מכיל רק ספרי אוצריא) גורמת לדילוג ולא
+    להאשמת-שווא. מחזיר [(line_no, old, new, actual)].
+    """
+    by_key = {}
+    for title in db_raw_titles:
+        key = sanitize_title(title)
+        if key:
+            by_key.setdefault(key, set()).add(title)
+    dead = []
+    for line_no, old, new in rename_pairs:
+        if not old or old in db_raw_titles or new in db_raw_titles:
+            continue
+        variants = by_key.get(sanitize_title(old), set())
+        if len(variants) == 1:
+            dead.append((line_no, old, new, next(iter(variants))))
+    return dead
 
 
 def list_tracked_paths():
@@ -265,7 +398,7 @@ def load_canonical(srename):
 
     sefaria = set(sefaria_meta)
     if SEFARIA_FETCH:
-        live = fetch_sefaria_titles()
+        live = sefaria_live_titles()
         # A failed fetch must NEVER silently fall back to the local list: the canonical
         # set would be incomplete and real ForDB rows would look like orphans. Since this
         # validator gates ForDB publishing, validating against a partial list is unsafe —
@@ -287,6 +420,16 @@ def load_canonical(srename):
     # `sefaria` (מנוקה, כולל שינויי-שם) משמש לבדיקת דליפת-מקור ב-all_metadata.json.
     sefaria_final = {srename.get(s, s) for s in sefaria}
     return sources, final_canon, db_final, sefaria_final
+
+
+_SEFARIA_LIVE = []  # cache בן איבר אחד: [set] אחרי משיכה, [] לפני
+
+
+def sefaria_live_titles():
+    """fetch_sefaria_titles ממוזערת לקריאה אחת בלבד (נצרכת גם ע"י בדיקת ה-renames)."""
+    if not _SEFARIA_LIVE:
+        _SEFARIA_LIVE.append(fetch_sefaria_titles())
+    return _SEFARIA_LIVE[0]
 
 
 def fetch_sefaria_titles():
@@ -478,6 +621,53 @@ def main():
     #    אוטומטי (אי אפשר להחליט איזה עותק להסיר) ולכן מפיל את הריצה.
     duplicates = find_packaged_duplicates()
 
+    # 7) איות מדויק מול קבצי הספרים הנארזים. הבדיקות 1-5 מתבצעות במרחב ה-*מנוקה*
+    #    (sanitize_title מסיר מרכאות), ולכן שם שנכתב "הגהות הב"ח..." עובר אותן אף
+    #    שהספר נשמר ב-DB כ-"הגהות הב״ח...". הצרכנים משווים מחרוזות מדויקות, אז
+    #    השורה נופלת בשקט (SeedGenerations: "unmatched book title(s) (skipped)").
+    #    נבדק רק כשקיים קובץ ספר נארז יחיד עם אותו מפתח מנוקה - אז האיות הנדרש ידוע.
+    #    ForDB/sefaria_metadata_changes.csv מוחרג בכוונה: שמותיו הם כותרות *ספריא*
+    #    שעשויות להתנגש במרחב המנוקה עם קובץ אוצריא ולהיות שתיהן ב-DB. דוגמה חיה:
+    #    'תשובות הריטב"א' (ספריא) מול 'תשובות הריטב״א' (MoreBooks) - שני ספרים שונים.
+    packaged_titles = packaged_db_titles()
+    spelling = {}
+
+    def collect_spelling(file_label, entries):
+        drift = find_spelling_drift(entries, packaged_titles)
+        if drift:
+            spelling[file_label] = drift
+
+    collect_spelling(
+        "ForDB/book_renames.csv",
+        [(f"שורה {line_no} (שם מקור)", old) for line_no, old, _new in load_rename_pairs()]
+        + [(f"שורה {line_no} (שם יעד)", new) for line_no, _old, new in load_rename_pairs()],
+    )
+    for file_label, path, col in (
+        ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
+        ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
+    ):
+        header, rows = read_csv_rows(path, has_header=True)
+        c_idx = col_index(header, col)
+        collect_spelling(
+            file_label,
+            [(f"שורה {line_no}", row[c_idx]) for line_no, row in enumerate(rows, start=2) if len(row) > c_idx],
+        )
+    collect_spelling(
+        "ForDB/all_metadata.json",
+        [(f"רשומה {idx}", entry.get("title")) for idx, entry in enumerate(read_json(FORDB_METADATA))],
+    )
+
+    # 8) שינויי-שם מתים: המקור אינו book.title קיים, אך קיים ספר שנבדל ממנו רק
+    #    בפיסוק. זהו בדיוק המצב של 'רדק על דברי הימים א׳' מול 'רד"ק על דברי הימים א׳'
+    #    שנשאר no-op בכל מחזור. בדיקה 1 עובדת במרחב המנוקה ולכן אינה רואה זאת.
+    db_raw_titles = set()
+    for candidates in packaged_titles.values():
+        db_raw_titles |= candidates
+    live_titles = sefaria_live_titles() if SEFARIA_FETCH else None
+    if live_titles:
+        db_raw_titles |= set(live_titles)
+    dead_renames = find_dead_renames(rename_pairs, db_raw_titles)
+
     if args.fix and removed:
         with open(REMOVED_REPORT, "w", encoding="utf-8") as f:
             json.dump(
@@ -493,8 +683,11 @@ def main():
 
     # ----- דוח -----
     total = sum(len(v) for v in failures.values())
-    if total == 0 and not duplicates and not source_leaks:
-        print("\n✅ כל שמות הספרים ב-ForDB קיימים ברשימת הספרים הקנונית, אין כפילויות שם בתיקיות הנארזות, ואין דליפת-מקור.")
+    if total == 0 and not duplicates and not source_leaks and not spelling and not dead_renames:
+        print(
+            "\n✅ כל שמות הספרים ב-ForDB קיימים ברשימת הספרים הקנונית, מאויתים כפי שייכתבו "
+            "ל-book.title, אין כפילויות שם בתיקיות הנארזות, ואין דליפת-מקור."
+        )
         return 0
 
     if total:
@@ -525,6 +718,25 @@ def main():
         print("   ב-PR זו בדיקת report-only; יש להסיר את הרשומה או למזג תיקון שמאפשר ל-main להסירה אוטומטית:\n")
         for idx, title, sf in sorted(source_leaks, key=lambda x: x[1]):
             print(f"     - רשומה {idx}: {title!r}  (Sourcefolder={sf!r} → אמור להיות 'sefaria')")
+        print()
+
+    if spelling:
+        drift_total = sum(len(v) for v in spelling.values())
+        print(f"\n❌ נמצאו {drift_total} שמות ב-ForDB שמזהים קובץ ספר נארז אך מאויתים אחרת מ-book.title.")
+        print("   הצרכנים (applyGenerations / renameBookTitle / applyMetadata) משווים מחרוזות *מדויקות*,")
+        print("   ולכן שורות אלה נופלות בשקט. יש להעתיק את האיות הנדרש כלשונו:\n")
+        for file_label in sorted(spelling):
+            print(f"  📄 {file_label} ({len(spelling[file_label])}):")
+            for identifier, raw_name, expected in spelling[file_label]:
+                print(f"     - {identifier}: {raw_name!r} → נדרש {expected!r}")
+            print()
+
+    if dead_renames:
+        print(f"\n❌ נמצאו {len(dead_renames)} שורות ב-ForDB/book_renames.csv שהן no-op ודאי:")
+        print("   שם המקור אינו book.title קיים, והספר קיים תחת איות שנבדל רק בפיסוק.")
+        print("   יש לתקן את שם המקור לאיות האמיתי, או להסיר את השורה אם השינוי כבר לא רצוי:\n")
+        for line_no, old, new, actual in dead_renames:
+            print(f"     - שורה {line_no}: {old!r} -> {new!r};  הכותרת בפועל: {actual!r}")
         print()
 
     return 1
