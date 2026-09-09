@@ -43,6 +43,21 @@ class DbTitleTest(unittest.TestCase):
     def test_whitespace_is_collapsed_and_trimmed(self):
         self.assertEqual(validator.db_title("  ראש יוסף על  ברכות "), "ראש יוסף על ברכות")
 
+    def test_non_ascii_whitespace_survives_the_collapse(self):
+        """Kotlin's `"\\s+".toRegex()` is java.util.regex without
+        UNICODE_CHARACTER_CLASS, so it never matches NBSP.  A Unicode-aware `\\s`
+        here would invent a title the generator cannot produce, and
+        `find_spelling_drift` would then demand a spelling the DB cannot hold."""
+        nbsp = "\u00a0"
+        self.assertEqual(validator.db_title("שער" + nbsp + "המלך"), "שער" + nbsp + "המלך")
+        # ASCII runs on either side still collapse; the NBSP between them does not.
+        self.assertEqual(
+            validator.db_title("שער  " + nbsp + "  המלך"), "שער " + nbsp + " המלך"
+        )
+        # Kotlin's trim() (isWhitespace || isSpaceChar) and Python's strip() both do
+        # treat NBSP as an edge space, so the two agree there and nothing is needed.
+        self.assertEqual(validator.db_title(nbsp + "שער המלך" + nbsp), "שער המלך")
+
     def test_tanakh_special_case(self):
         self.assertEqual(validator.db_title("תנך"), "תנ" + GERSHAYIM + "ך")
         self.assertEqual(validator.db_title('תנ"ך'), "תנ" + GERSHAYIM + "ך")

@@ -272,6 +272,19 @@ class DispatchStepVerificationTest(unittest.TestCase):
         self.assertIn("STATUS=1", result.stdout, result.stderr)
         self.assertIn(f'reports no step named "{DISPATCH_STEP}"', result.stdout)
 
+    def test_every_page_of_a_multi_page_listing_is_verified(self):
+        """`gh api --paginate --jq` runs the filter once per page and concatenates the
+        outputs, so a paginated answer reaches the caller as extra lines — which is
+        exactly how these rows collect."""
+        result = self.verify("printf 'success\\nsuccess\\nsuccess\\n'")
+        self.assertIn("STATUS=0", result.stdout, result.stderr)
+        self.assertNotIn("::error::", result.stdout)
+
+    def test_a_bad_conclusion_on_a_later_page_is_not_dropped(self):
+        result = self.verify("printf 'success\\nskipped\\n'")
+        self.assertIn("STATUS=1", result.stdout, result.stderr)
+        self.assertIn(f'its "{DISPATCH_STEP}" step concluded skipped', result.stdout)
+
     def test_an_unreadable_jobs_listing_is_not_a_pass(self):
         result = self.verify("echo 'gh: Not Found (HTTP 404)' >&2; return 1")
         self.assertIn("STATUS=1", result.stdout, result.stderr)
@@ -434,6 +447,15 @@ class WorkflowContractTest(unittest.TestCase):
         self.assertIn("GIT_CONFIG_COUNT: '1'", text)
         self.assertIn("GIT_CONFIG_KEY_0: init.defaultBranch", text)
         self.assertIn("GIT_CONFIG_VALUE_0: main", text)
+
+    def test_every_jobs_listing_paginates(self):
+        """`?per_page=100` alone drops job 101 onwards; for require_child_step_success
+        that surfaces as the misleading "reports no step named …" rename accusation."""
+        body = step_body()
+        calls = [line for line in body.splitlines() if "/jobs?per_page=100" in line]
+        self.assertEqual(len(calls), 2, body)
+        for call in calls:
+            self.assertIn("gh api --paginate ", call, call)
 
     def test_the_watch_loop_prints_every_poll_error_it_classifies(self):
         body = step_body()

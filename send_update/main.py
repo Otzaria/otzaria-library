@@ -1,6 +1,7 @@
 import codecs
 import os
 import subprocess
+import time
 from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
@@ -15,6 +16,8 @@ TZ = ZoneInfo("Asia/Jerusalem")
 VERSION_FILE = "MoreBooks/ספרים/אוצריא/אודות התוכנה/גירסת ספריה.txt"
 DEEPEN_STEP = 25
 DEEPEN_MAX = 200
+DEEPEN_RETRIES = 2          # extra attempts per step; 3 fetches in all before going red
+DEEPEN_BACKOFF_SECONDS = 3  # multiplied by the attempt number: 3s, then 6s
 
 
 def run_git(*args: str) -> subprocess.CompletedProcess:
@@ -36,6 +39,23 @@ def find_version_commit_sha() -> str:
     return result.stdout.strip()
 
 
+def deepen_history() -> subprocess.CompletedProcess:
+    """One deepening step, retried before it is allowed to fail the prepare child.
+
+    Failing here turns the whole cycle red (the weekly head watches this child), so a
+    transient runner-side fetch failure must not be treated like the genuine "no version
+    commit in range" answer below. `--no-tags` keeps every step from re-negotiating the
+    ~87 saga handoff tags this repository carries; deepening only needs commits."""
+    for attempt in range(1, DEEPEN_RETRIES + 2):
+        result = run_git("fetch", "--no-tags", f"--deepen={DEEPEN_STEP}")
+        if result.returncode == 0:
+            return result
+        if attempt <= DEEPEN_RETRIES:
+            print(f"Warning: git fetch --no-tags --deepen={DEEPEN_STEP} failed (attempt {attempt}/{DEEPEN_RETRIES + 1}), retrying: {result.stderr.strip()}")
+            time.sleep(DEEPEN_BACKOFF_SECONDS * attempt)
+    return result
+
+
 def get_last_version_commit_sha() -> str:
     sha = find_version_commit_sha()
     if sha:
@@ -48,9 +68,9 @@ def get_last_version_commit_sha() -> str:
     # Google Chat, the forum and Yemot on a green build.
     depth = DEEPEN_STEP
     while depth < DEEPEN_MAX and is_shallow_repository():
-        deepen = run_git("fetch", f"--deepen={DEEPEN_STEP}")
+        deepen = deepen_history()
         if deepen.returncode != 0:
-            print(f"::error::git fetch --deepen={DEEPEN_STEP} failed while searching for the previous 'גרסת ספרייה' commit: {deepen.stderr.strip()}")
+            print(f"::error::git fetch --no-tags --deepen={DEEPEN_STEP} failed {DEEPEN_RETRIES + 1} times while searching for the previous 'גרסת ספרייה' commit: {deepen.stderr.strip()}")
             raise SystemExit(1)
         depth += DEEPEN_STEP
         sha = find_version_commit_sha()

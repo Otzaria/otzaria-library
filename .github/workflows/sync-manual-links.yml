@@ -392,7 +392,13 @@ jobs:
               cat "$check_result" "$check_result.err" 2>/dev/null || true
               exit 1
             fi
-            jq -r '"manual-links packaging: \(.packaged_file_count) packaged file(s) · source tree \(.source_links_tree_sha256[0:12]) · packaged tree \(.packaged_links_tree_sha256[0:12]) · config \(.config_sha256[0:12]) · lineage \(.lineage_sha256[0:12])"' "$check_result"
+            # Every field is defaulted.  jq slices null to null instead of erroring, so a
+            # field the tool stops emitting rendered the literal `null` where a digest
+            # belongs: the line stayed green while its only record of the gate was untrue.
+            # `// "?"` and not `|| true` on the line: the gate's own exit status stays
+            # authoritative above, and a check_result jq cannot even parse must still be
+            # loud rather than silently unprinted.
+            jq -r '"manual-links packaging: \(.packaged_file_count // "?") packaged file(s) · source tree \((.source_links_tree_sha256 // "?")[0:12]) · packaged tree \((.packaged_links_tree_sha256 // "?")[0:12]) · config \((.config_sha256 // "?")[0:12]) · lineage \((.lineage_sha256 // "?")[0:12])"' "$check_result"
             python3 - "$worktree" <<'PY'
           import json
           import subprocess

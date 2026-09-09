@@ -394,6 +394,78 @@ class ChainSummaryTest(ScriptTestCase):
         self.assertIn("::error::sefaria chain result is unusable", result.stdout)
 
 
+class PackagingSummaryLineTest(ScriptTestCase):
+    """The gate's pretty-printer, run for real.  It sits under `set -euo pipefail`
+    inside the retry loop; jq slices null to null instead of erroring, so one field
+    the tool stops emitting used to print the literal `null` where a digest belongs -
+    a gate whose only record in the log was untrue."""
+
+    def summary_line(self):
+        body = step_body(REFRESH_STEP)
+        lines = [line for line in body.splitlines() if line.lstrip().startswith("jq -r ")]
+        self.assertEqual(len(lines), 1, body)
+        return lines[0].strip()
+
+    def render(self, document):
+        report = self.tmp / "check_result.json"
+        if isinstance(document, (dict, list)):
+            report.write_text(json.dumps(document, ensure_ascii=False), encoding="utf-8")
+        else:
+            report.write_text(document, encoding="utf-8")
+        script = self.tmp / "summary.sh"
+        script.write_text(
+            'set -euo pipefail\ncheck_result="$1"\n' + self.summary_line() + "\n",
+            encoding="utf-8",
+        )
+        return run_script(script, report)
+
+    def complete(self):
+        return {
+            "packaged_file_count": 4211,
+            "source_links_tree_sha256": "a" * 64,
+            "packaged_links_tree_sha256": "b" * 64,
+            "config_sha256": "c" * 64,
+            "lineage_sha256": "d" * 64,
+        }
+
+    def test_a_complete_result_is_rendered_the_way_it_always_was(self):
+        result = self.render(self.complete())
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("manual-links packaging: 4211 packaged file(s)", result.stdout)
+        for prefix in ("a", "b", "c", "d"):
+            self.assertIn(prefix * 12, result.stdout)
+        self.assertNotIn("?", result.stdout)
+
+    def test_a_missing_digest_is_named_rather_than_printed_as_null(self):
+        """The line already exited 0 without the defaults; what it printed was `null`."""
+        for field in sorted(self.complete()):
+            document = self.complete()
+            del document[field]
+            result = self.render(document)
+            self.assertEqual(result.returncode, 0, f"{field}: {result.stderr}")
+            self.assertIn("manual-links packaging: ", result.stdout)
+            self.assertIn("?", result.stdout, field)
+            self.assertNotIn("null", result.stdout, field)
+
+    def test_an_empty_object_still_prints_a_line(self):
+        result = self.render({})
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.count("?"), 5, result.stdout)
+
+    def test_a_zero_count_is_not_defaulted_away(self):
+        """`// "?"` fires on null and false only; 0 packaged files is a real answer."""
+        document = self.complete()
+        document["packaged_file_count"] = 0
+        result = self.render(document)
+        self.assertIn("manual-links packaging: 0 packaged file(s)", result.stdout)
+
+    def test_a_check_result_that_is_not_json_is_still_loud(self):
+        """Why `// "?"` and not `|| true` on the line: the defaults cover a field the
+        tool stopped emitting, they do not swallow an unreadable gate result."""
+        result = self.render("this is not json")
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+
+
 class SyncWorkflowContractTest(unittest.TestCase):
     def test_the_refresh_step_prints_the_report_and_obeys_its_decision(self):
         body = step_body(REFRESH_STEP)

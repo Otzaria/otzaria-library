@@ -65,8 +65,13 @@ jobs:
           # One jobs listing per call, and never fatal: job and step names decorate the
           # log, so an API hiccup must not fail an otherwise healthy wait, nor abort the
           # terminal message it is called from.
+          # `--paginate` because a run with more than 100 jobs silently loses the rest of
+          # them otherwise.  With `--jq` gh applies the filter once per page and
+          # concatenates the outputs, so every caller's filter must emit one line per
+          # match — the filters below and in require_child_step_success do — and the pages
+          # then collect by plain line concatenation.
           child_jobs() {
-            gh api "repos/$1/actions/runs/$2/jobs?per_page=100" --jq "$3" 2>/dev/null || true
+            gh api --paginate "repos/$1/actions/runs/$2/jobs?per_page=100" --jq "$3" 2>/dev/null || true
           }
 
           child_where() {
@@ -181,7 +186,11 @@ jobs:
           require_child_step_success() {
             local repo="$1" rid="$2" step="$3" url rows bad
             url="$(run_url "$repo" "$rid")"
-            if ! rows="$(STEP="$step" gh api "repos/$repo/actions/runs/$rid/jobs?per_page=100" \
+            # `--paginate`: past job 100 the step would be missing from the answer and the
+            # "reports no step named" error below would blame a rename that never happened.
+            # The filter emits one conclusion per match, so the per-page outputs gh
+            # concatenates are already the complete row set.
+            if ! rows="$(STEP="$step" gh api --paginate "repos/$repo/actions/runs/$rid/jobs?per_page=100" \
                 --jq '.jobs[] | .steps[]? | select(.name == env.STEP) | .conclusion' 2>"$WATCH_ERR")"; then
               echo "::error::cannot list the jobs of $url to verify its \"$step\" step: $(head -n 1 "$WATCH_ERR")"
               return 1

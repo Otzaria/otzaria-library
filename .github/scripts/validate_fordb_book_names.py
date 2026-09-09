@@ -150,6 +150,11 @@ def sanitize_title(name):
 # ---------------------------------------------------------------------------
 GERESH = "׳"
 GERSHAYIM = "״"
+# הצמצום ב-Kotlin הוא "\\s+".toRegex() - java.util.regex ללא UNICODE_CHARACTER_CLASS,
+# כלומר [ \t\n\x0B\f\r] בלבד. ל-re של פייתון \s מודע-יוניקוד וגם בולע NBSP (U+00A0)
+# ורווחים יוניקודיים אחרים; לכן שם קובץ המכיל NBSP היה מקבל כאן db_title ש-Generator.kt
+# לעולם לא מייצר, ו-find_spelling_drift היה דורש איות שה-DB אינו יכול להחזיק.
+ASCII_WHITESPACE_RUN = re.compile(r"[ \t\n\x0b\f\r]+")
 
 
 def db_title(name):
@@ -163,7 +168,7 @@ def db_title(name):
     s = s.replace("''", GERSHAYIM)
     s = s.replace(GERESH + GERESH, GERSHAYIM)
     s = s.replace("`", GERESH)
-    s = re.sub(r"\s+", " ", s).strip()
+    s = ASCII_WHITESPACE_RUN.sub(" ", s).strip()
     # normalizeBookTitle: 'תנך' / 'תנ"ך' -> 'תנ״ך' (המרכאות כבר הומרו מעל)
     if s == "תנך":
         s = "תנ" + GERSHAYIM + "ך"

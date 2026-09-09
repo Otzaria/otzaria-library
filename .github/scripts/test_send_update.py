@@ -315,6 +315,142 @@ class AnnouncementTest(unittest.TestCase):
         self.assertIn("notifications: chat=FAILED forum=FAILED yemot=FAILED", result.stdout)
 
 
+class DeepenTest(unittest.TestCase):
+    """`get_last_version_commit_sha` deepens a shallow checkout until the previous
+    'גרסת ספרייה' commit is genuinely in view.  It runs in the prepare child the weekly
+    head watches, so a transient fetch failure must be retried rather than treated like
+    the genuine "no version commit in range" answer.  Everything here is local git — an
+    origin repository and `--depth=1` clones of it over `file://` — and no network."""
+
+    # main.py publishes at import, so only the region above `BEFORE_SHA = …` is exec'd;
+    # it needs nothing but subprocess and time.  The overrides file is exec'd into the
+    # same namespace afterwards, which is how the deepen loop's `run_git` is made flaky
+    # and its backoff made instant without a knob in the shipped script.
+    DRIVER = '''\
+import subprocess
+import sys
+import time
+
+source = open(sys.argv[1], encoding="utf-8").read()
+prelude = source[source.index("VERSION_FILE = "):source.index("BEFORE_SHA = ")]
+namespace = {"subprocess": subprocess, "time": time}
+exec(compile(prelude, sys.argv[1], "exec"), namespace)
+exec(compile(open(sys.argv[2], encoding="utf-8").read(), sys.argv[2], "exec"), namespace)
+print("SHA=" + namespace["get_last_version_commit_sha"]())
+'''
+
+    INSTANT = "DEEPEN_BACKOFF_SECONDS = 0\n"
+    FLAKY_FETCH = INSTANT + '''\
+_real_run_git = run_git
+_failures = {failures}
+
+
+def run_git(*args):
+    global _failures
+    if args[0] == "fetch" and _failures > 0:
+        _failures -= 1
+        return subprocess.CompletedProcess(args, 1, "", "fatal: the remote end hung up unexpectedly")
+    return _real_run_git(*args)
+'''
+
+    VERSION_MESSAGE = "גרסת ספרייה 167"
+    HISTORY = 30
+    VERSION_AT = 2   # 27 commits behind HEAD: two 25-commit steps away, never one
+    TAGGED = 5       # handoff tags on the oldest commits, out of the depth-1 window
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory()
+        root = Path(cls._tmp.name)
+        cls.with_version, cls.version_sha = cls.build_origin(root / "with-version", True)
+        cls.without_version, _ = cls.build_origin(root / "without-version", False)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    @staticmethod
+    def build_origin(root, with_version_commit):
+        """Empty commits: the deepen loop only ever reads commit messages."""
+        root.mkdir(parents=True)
+        git(root, "init", "-q", "-b", "main")
+        sha = None
+        for index in range(DeepenTest.HISTORY):
+            versioned = with_version_commit and index == DeepenTest.VERSION_AT
+            message = DeepenTest.VERSION_MESSAGE if versioned else f"sync {index}"
+            git(root, "commit", "-q", "--allow-empty", "-m", message)
+            if versioned:
+                sha = git(root, "rev-parse", "HEAD").strip()
+            if index < DeepenTest.TAGGED:
+                git(root, "tag", f"handoff-{index}")
+        return root, sha
+
+    def setUp(self):
+        self._case = tempfile.TemporaryDirectory()
+        self.addCleanup(self._case.cleanup)
+        self.case = Path(self._case.name)
+        (self.case / "drive.py").write_text(self.DRIVER, encoding="utf-8")
+
+    def clone(self, origin):
+        target = self.case / "checkout"
+        git(self.case, "clone", "-q", "--depth=1", "--branch", "main",
+            origin.as_uri(), str(target))
+        return target
+
+    def deepen(self, origin, overrides=INSTANT):
+        checkout = self.clone(origin)
+        script = self.case / "overrides.py"
+        script.write_text(overrides, encoding="utf-8")
+        result = subprocess.run(
+            [sys.executable, str(self.case / "drive.py"), str(MAIN), str(script)],
+            cwd=checkout,
+            env=dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8"),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+        result.checkout = checkout
+        return result
+
+    def test_a_version_commit_beyond_the_window_is_found_by_deepening(self):
+        result = self.deepen(self.with_version)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(f"SHA={self.version_sha}", result.stdout)
+        self.assertIn("after deepening the history to 30 commits", result.stdout)
+
+    def test_the_deepen_fetch_leaves_the_handoff_tags_alone(self):
+        """~87 handoff tags live in this repository; re-negotiating them on every
+        25-commit step is pure cost, and a plain `--deepen` does drag in the ones the
+        newly fetched commits carry."""
+        result = self.deepen(self.with_version)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(git(result.checkout, "tag", "-l").split(), [])
+
+    def test_a_transient_fetch_failure_is_retried_instead_of_failing_the_child(self):
+        result = self.deepen(self.with_version, self.FLAKY_FETCH.format(failures=2))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(f"SHA={self.version_sha}", result.stdout)
+        self.assertIn("(attempt 1/3), retrying", result.stdout)
+        self.assertIn("(attempt 2/3), retrying", result.stdout)
+        self.assertNotIn("::error::", result.stdout)
+
+    def test_a_fetch_that_never_recovers_is_still_a_hard_error(self):
+        result = self.deepen(self.with_version, self.FLAKY_FETCH.format(failures=99))
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn(
+            "::error::git fetch --no-tags --deepen=25 failed 3 times", result.stdout
+        )
+        self.assertEqual(result.stdout.count("), retrying"), 2, result.stdout)
+        self.assertNotIn("SHA=", result.stdout)
+
+    def test_no_version_commit_in_range_stays_a_hard_error(self):
+        """The retry must not soften the case the deepen loop exists to catch."""
+        result = self.deepen(self.without_version)
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn("::error::no 'גרסת ספרייה' commit", result.stdout)
+        self.assertIn("refusing to fall back to HEAD^", result.stdout)
+
+
 class DedupeTest(unittest.TestCase):
     def setUp(self):
         self.dedupe = load_function("dedupe_preserving_order")
