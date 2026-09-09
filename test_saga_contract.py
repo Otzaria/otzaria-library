@@ -107,7 +107,21 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertEqual(1, segment.count("gh workflow run update-library.yml"))
         self.assertNotIn("for attempt in", segment)
         self.assertIn("reconciler will observe before retrying", segment)
-        self.assertIn("retention-days: 90", workflow)
+        # The state used to be an `upload-artifact` with `retention-days: 90`;
+        # 8167c0ce ("fix(ci): store saga handoffs in releases") replaced every saga
+        # handoff with an immutable release, so persistence-before-dispatch is now
+        # the saga-state release and that is what this pins.
+        self.assertIn(
+            'bash .github/scripts/publish_release_handoff.sh\n'
+            '          "saga-state-${{ steps.state.outputs.correlation_sha }}'
+            '-attempt-${GITHUB_RUN_ATTEMPT}"',
+            workflow,
+        )
+        self.assertLess(
+            workflow.index("      - name: Publish immutable saga state release\n"),
+            workflow.index("      - name: Dispatch exact Otzaria publisher and return immediately\n"),
+            "the saga state must be durable before the child is dispatched",
+        )
 
     def test_s1_never_blindly_retries_an_ambiguous_dispatch(self):
         workflow = self.workflow("saga-continue.yml")
