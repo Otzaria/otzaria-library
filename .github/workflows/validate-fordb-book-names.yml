@@ -10,11 +10,18 @@ name: Validate ForDB book names
 # כל כשל שאינו ניתן לתיקון בטוח, או כשל בשכבת ה-runtime, מפיל את ה-CI וחוסם בנייה.
 
 on:
+  # רק main. תגי ה-handoff של הסאגה (manual-links-refresh-report-*, saga-state-*,
+  # library-links-*, pipeline-result-*, saga-complete-*) מצביעים על אותו עץ, וכל תג
+  # הפעיל ריצה מלאה נוספת ש-concurrency לא יכול לאחד כי כל תג הוא ref נפרד.
+  # ענפים נבדקים דרך pull_request, וה-auto-fix דוחף ל-main ולכן ממשיך לאמת את עצמו.
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
 permissions:
+  # נדרש רק ל-auto-fix push שרץ ב-main; מאז סינון ה-branches ההרשאה כבר לא ניתנת
+  # על ref של תג שרירותי, וב-PR ובהרצה ידנית אין כתיבה בפועל.
   contents: write
 
 concurrency:
