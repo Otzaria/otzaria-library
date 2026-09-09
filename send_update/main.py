@@ -12,25 +12,64 @@ from pyluach import dates
 from yemot import split_and_send
 
 TZ = ZoneInfo("Asia/Jerusalem")
+VERSION_FILE = "MoreBooks/ספרים/אוצריא/אודות התוכנה/גירסת ספריה.txt"
+DEEPEN_STEP = 25
+DEEPEN_MAX = 200
+
+
+def run_git(*args: str) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", *args], capture_output=True, text=True, encoding="utf-8")
+
+
+def is_shallow_repository() -> bool:
+    return run_git("rev-parse", "--is-shallow-repository").stdout.strip() == "true"
+
+
+def commits_in_view() -> int:
+    count = run_git("rev-list", "--count", "HEAD").stdout.strip()
+    return int(count) if count.isdigit() else 0
+
+
+def find_version_commit_sha() -> str:
+    cmd = ["git", "log", "--grep=גרסת ספרייה", "-n", "1", "--pretty=%H"]
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
+    return result.stdout.strip()
 
 
 def get_last_version_commit_sha() -> str:
-    cmd = ["git", "log", "--grep=גרסת ספרייה", "-n", "1", "--pretty=%H"]
-    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
-    sha = result.stdout.strip()
+    sha = find_version_commit_sha()
     if sha:
         return sha
 
-    version_file = "MoreBooks/ספרים/אוצריא/אודות התוכנה/גירסת ספריה.txt"
-    cmd = ["git", "log", "-n", "1", "--pretty=%H", "--", version_file]
-    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
-    sha = result.stdout.strip()
-    if sha:
-        print(f"Warning: no 'גרסת ספרייה' commit found, using last commit that modified {version_file}")
-        return sha
+    # The checkout is a fixed shallow window (update-library.yml fetch-depth), and inside
+    # one every path looks created by the boundary commit — so the VERSION_FILE fallback
+    # would answer with the boundary instead of the real previous version. Deepen until
+    # the commit is genuinely in view; a wrong BEFORE_SHA publishes a wrong diff to
+    # Google Chat, the forum and Yemot on a green build.
+    depth = DEEPEN_STEP
+    while depth < DEEPEN_MAX and is_shallow_repository():
+        deepen = run_git("fetch", f"--deepen={DEEPEN_STEP}")
+        if deepen.returncode != 0:
+            print(f"::error::git fetch --deepen={DEEPEN_STEP} failed while searching for the previous 'גרסת ספרייה' commit: {deepen.stderr.strip()}")
+            raise SystemExit(1)
+        depth += DEEPEN_STEP
+        sha = find_version_commit_sha()
+        if sha:
+            print(f"Info: found the previous 'גרסת ספרייה' commit after deepening the history to {commits_in_view()} commits")
+            return sha
 
-    print("Warning: no fallback found, using HEAD^")
-    return "HEAD^"
+    complete = not is_shallow_repository()
+    if complete:
+        cmd = ["git", "log", "-n", "1", "--pretty=%H", "--", VERSION_FILE]
+        result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
+        sha = result.stdout.strip()
+        if sha:
+            print(f"Warning: no 'גרסת ספרייה' commit found, using last commit that modified {VERSION_FILE}")
+            return sha
+
+    searched = "the full history" if complete else f"the newest {commits_in_view()} commits"
+    print(f"::error::no 'גרסת ספרייה' commit and no usable {VERSION_FILE} fallback in {searched}; refusing to fall back to HEAD^ and publish a wrong update range")
+    raise SystemExit(1)
 
 
 BEFORE_SHA = get_last_version_commit_sha()
@@ -59,6 +98,22 @@ def heb_date() -> str:
 
 def decode_git_output_line(line: str) -> str:
     return codecs.escape_decode(line.strip())[0].decode("utf-8").strip('''"''')
+
+
+def dedupe_preserving_order(paths: Sequence[str]) -> list[str]:
+    """Keep the first occurrence of every path, in the order the diffs produced it.
+
+    The announcement is read by people, so the order the two diffs below produce is
+    part of the message; a set would scramble it and sorting would not match the
+    other three sections."""
+    seen: set[str] = set()
+    unique: list[str] = []
+    for path in paths:
+        if path in seen:
+            continue
+        seen.add(path)
+        unique.append(path)
+    return unique
 
 
 def get_moves_from_outside(folders: Sequence[str]) -> tuple[list[str], list[str], list[str]]:
@@ -111,13 +166,24 @@ added_files = get_changed_files("A", folders)
 modified_files = get_changed_files("M", folders)
 deleted_files = get_changed_files("D", folders)
 from_external_moves, renamed_files, to_external_moves = get_moves_from_outside(folders)
-deleted_files.extend(to_external_moves)
-added_files.extend(from_external_moves)
+# A rename that crosses the watched-folder boundary is reported TWICE.  get_changed_files
+# runs its diff under a `-- folders` pathspec, and git cannot pair a rename whose other
+# half the pathspec removed, so the half that is inside already appears there as a plain
+# A or D; get_moves_from_outside then names that same path again from the unrestricted
+# rename diff.  Union the two views instead of appending one to the other: version 168
+# published 4 bullets for 2 deleted files, both of them
+# DictaToOtzaria/…/שות אגודת אזוב… moved to extraBooks/….
+deleted_files = dedupe_preserving_order(deleted_files + to_external_moves)
+added_files = dedupe_preserving_order(added_files + from_external_moves)
+modified_files = dedupe_preserving_order(modified_files)
+renamed_files = dedupe_preserving_order(renamed_files)
 date = heb_date()
-print(added_files)
-print(modified_files)
-print(deleted_files)
-print(renamed_files)
+# Four bare list reprs cannot be told apart in a log; the duplicate delete above was
+# visible in one of them a full step before it was published.
+print(f"added: {added_files}")
+print(f"modified: {modified_files}")
+print(f"deleted: {deleted_files}")
+print(f"renamed: {renamed_files}")
 
 info_folder_path = Path(__file__).parent.parent / "MoreBooks" / "ספרים" / "אוצריא" / "אודות התוכנה"
 ver_file_path = info_folder_path / "גירסת ספריה.txt"
@@ -163,19 +229,46 @@ if any([added_files, modified_files, deleted_files, renamed_files]):
     if md_file_path.exists():
         existing_text = md_file_path.read_text(encoding="utf-8").lstrip("\ufeff")
     md_file_path.write_text(f"{content_text}\n---\n" + existing_text, encoding="utf-8")
-    requests.post(google_chat_url, json={"text": content_forum})
-    client = OtzariaForumClient(username.strip().replace(" ", "+"), password.strip())
 
-    try:
-        client.login()
+    # By the time these run the library update itself has already succeeded, and the
+    # commit is pushed one step later.  So no channel may fail the step: a red prepare
+    # child makes the saga reconciler re-run the whole cycle, which is far worse than a
+    # missed notification.  But nothing may be swallowed either — the previous version
+    # printed forum and Yemot exceptions to bare stdout on a green step and posted to
+    # Google Chat with no timeout, no status check and no guard at all, so a Chat outage
+    # took down the prepare child and the weekly head with it.
+    delivery = {}
+
+    def notify(channel: str, send) -> None:
+        try:
+            send()
+        except Exception as exc:
+            delivery[channel] = "FAILED"
+            print(f"::warning::{channel} notification failed: {exc!r}")
+        else:
+            delivery[channel] = "ok"
+
+    def send_chat() -> None:
+        response = requests.post(google_chat_url, json={"text": content_forum}, timeout=30)
+        response.raise_for_status()
+
+    def send_forum() -> None:
+        client = OtzariaForumClient(username.strip().replace(" ", "+"), password.strip())
         topic_id = 20
-        client.send_post(content_forum, topic_id)
-    except Exception as e:
-        print(e)
-    finally:
-        client.logout()
+        try:
+            client.login()
+            client.send_post(content_forum, topic_id)
+        finally:
+            # A logout that fails after the post landed is not a failed delivery.
+            try:
+                client.logout()
+            except Exception as exc:
+                print(f"::warning::forum logout failed: {exc!r}")
 
-    try:
+    def send_yemot() -> None:
         split_and_send(content_yemot, date_yemot, yemot_token, yemot_path, tzintuk_list_name)
-    except Exception as e:
-        print(e)
+
+    notify("chat", send_chat)
+    notify("forum", send_forum)
+    notify("yemot", send_yemot)
+    print("notifications: " + " ".join(f"{name}={state}" for name, state in delivery.items()))

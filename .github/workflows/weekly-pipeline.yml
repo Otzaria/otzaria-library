@@ -23,6 +23,13 @@ jobs:
     timeout-minutes: 240
     env:
       GH_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+      # actions/checkout runs its own `git init`, and an unset init.defaultBranch makes
+      # git print 13 `hint:` lines about 'master' into a log whose orchestration content
+      # is 3 lines.  This job calls no `git init` of its own, so the only way to configure
+      # that one is git's env-var config: read by every git invocation in the job.
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: init.defaultBranch
+      GIT_CONFIG_VALUE_0: main
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,15 +43,202 @@ jobs:
         run: |
           set -euo pipefail
 
-          find_exact_run() {
-            local repo="$1" workflow="$2" title="$3" head_sha="$4" dispatched_at="$5"
-            bash .github/scripts/find_exact_workflow_run.sh "$repo" "$workflow" "$title" "$head_sha" "$dispatched_at"
+          # Every poll captures gh's stderr here.  The loop needs the CLASS of a failure
+          # (a dead token cannot heal, a 502 can) and the operator needs its text: the
+          # previous version grepped this file for HTTP 401 and never printed it, so a
+          # 49-minute watch could hide every 403, 404 and 5xx it saw.
+          WATCH_ERR="$RUNNER_TEMP/wait-err.txt"
+          : >"$WATCH_ERR"
+          # Consecutive-response budgets, per failure class.  A state that cannot heal by
+          # itself fails fast; one that can gets a bounded retry instead of polling in
+          # silence to the job's 240-minute ceiling.
+          WATCH_TRANSIENT_MAX=30   # 5xx / DNS / TLS: ~30 min of API outage
+          WATCH_THROTTLED_MAX=20   # rate limited; the nap below backs off as well
+          WATCH_FORBIDDEN_MAX=5    # 403 that is not throttling: the PAT lost actions:read
+          WATCH_MISSING_MAX=3      # 404: a deleted run never comes back
+          WATCH_BEAT_SECONDS=600   # one heartbeat line per 10 minutes
+
+          hhmm() { printf '%02d:%02d' $(( $1 / 3600 )) $(( $1 % 3600 / 60 )); }
+
+          run_url() { printf 'https://github.com/%s/actions/runs/%s' "$1" "$2"; }
+
+          # One jobs listing per call, and never fatal: job and step names decorate the
+          # log, so an API hiccup must not fail an otherwise healthy wait, nor abort the
+          # terminal message it is called from.
+          child_jobs() {
+            gh api "repos/$1/actions/runs/$2/jobs?per_page=100" --jq "$3" 2>/dev/null || true
+          }
+
+          child_where() {
+            local where
+            where="$(child_jobs "$1" "$2" '.jobs[] | select(.status != "completed") | .name + " · " + ([.steps[]? | select(.status == "in_progress") | .name] | join(" + "))' | paste -sd ';' -)"
+            printf '%s' "${where:-no running job reported}"
+          }
+
+          # Classify a failed poll from the stderr gh just wrote.  401, and a 403 that is
+          # not throttling, are credential states no amount of waiting repairs; a 404 is a
+          # run that was deleted and cannot reappear; everything else is infrastructure.
+          classify_watch_error() {
+            local err
+            err="$(tr '\n' ' ' <"$WATCH_ERR" | tr '[:upper:]' '[:lower:]')"
+            case "$err" in
+              *"http 401"*) echo fatal-auth ;;
+              *"http 404"*) echo missing ;;
+              *"http 429"*) echo throttled ;;
+              *"http 403"*)
+                case "$err" in
+                  *"rate limit"*|*"retry-after"*|*"retry after"*|*abuse*) echo throttled ;;
+                  *) echo forbidden ;;
+                esac ;;
+              *) echo transient ;;
+            esac
+          }
+
+          # Low-frequency resilient wait (gh run watch polls every 3s and can exhaust the
+          # shared API quota; transient errors must not kill the run).  The poll stays at
+          # 60s, but the LOG gets one line per 10 minutes: the export watch spent 49m29s
+          # without printing a character, and a wedged loop looks exactly the same.
+          watch_run() {
+            local repo="$1" rid="$2" label="$3"
+            local url state waited started next_beat last_class class_streak cap reason nap
+            url="$(run_url "$repo" "$rid")"
+            echo "$label run $rid: $url — polling every 60s, heartbeat every $(( WATCH_BEAT_SECONDS / 60 )) min"
+            started=$SECONDS
+            next_beat=$WATCH_BEAT_SECONDS
+            last_class=""
+            class_streak=0
+            while :; do
+              waited=$(( SECONDS - started ))
+              nap=60
+              state="$(gh api "repos/$repo/actions/runs/$rid" --jq '.status + ":" + (.conclusion // "")' 2>"$WATCH_ERR" || classify_watch_error)"
+              case "$state" in
+                completed:success)
+                  echo "$label succeeded after $(hhmm "$waited") — $url"
+                  return 0 ;;
+                completed:*)
+                  # The whole post-mortem used to be the ::error:: line below, with the
+                  # child URL printed minutes earlier and screens away.  Name the run, the
+                  # elapsed time and the jobs and steps that actually failed.
+                  echo "$label concluded ${state#completed:} after $(hhmm "$waited") — $url"
+                  echo "$label failed jobs · steps:"
+                  child_jobs "$repo" "$rid" '.jobs[] | select(.conclusion != "success" and .conclusion != "skipped") | "  " + .name + " [" + (.conclusion // "?") + "] · " + ([.steps[]? | select(.conclusion != "success" and .conclusion != "skipped") | .name] | join(", "))'
+                  echo "::error::$label run $rid concluded ${state#completed:} — $url"
+                  return 1 ;;
+                fatal-auth)
+                  echo "::error::$label watch: token rejected (HTTP 401) — dead credentials cannot heal, failing fast — $url: $(head -n 1 "$WATCH_ERR")"
+                  return 1 ;;
+                missing|forbidden|throttled|transient)
+                  if [ "$state" = "$last_class" ]; then
+                    class_streak=$(( class_streak + 1 ))
+                  else
+                    # Print on every CHANGE of class, never once per 60s poll: a sustained
+                    # outage costs one line plus the heartbeat, and a flap costs one line.
+                    class_streak=1
+                    echo "$label poll $state at $(hhmm "$waited"): $(head -n 1 "$WATCH_ERR")"
+                  fi
+                  last_class="$state"
+                  case "$state" in
+                    missing)
+                      cap=$WATCH_MISSING_MAX
+                      reason="run $rid is not there (HTTP 404) and a deleted run cannot reappear" ;;
+                    forbidden)
+                      cap=$WATCH_FORBIDDEN_MAX
+                      reason="HTTP 403 that is not throttling — this token cannot read $repo runs (actions:read)" ;;
+                    throttled)
+                      cap=$WATCH_THROTTLED_MAX
+                      reason="rate limited"
+                      nap=$(( 60 * class_streak ))
+                      [ "$nap" -le 600 ] || nap=600 ;;
+                    *)
+                      cap=$WATCH_TRANSIENT_MAX
+                      reason="the run API is unreachable" ;;
+                  esac
+                  if [ "$class_streak" -ge "$cap" ]; then
+                    echo "::error::$label watch: $class_streak consecutive $state polls — $reason — $url: $(head -n 1 "$WATCH_ERR")"
+                    return 1
+                  fi ;;
+                *)
+                  if [ -n "$last_class" ]; then
+                    echo "$label poll recovered at $(hhmm "$waited") after $class_streak $last_class poll(s)"
+                  fi
+                  last_class=""
+                  class_streak=0 ;;
+              esac
+              if [ "$waited" -ge "$next_beat" ]; then
+                # Re-derive the next beat from elapsed rather than accumulating, so poll
+                # latency cannot drift the cadence over an hour of iterations.
+                next_beat=$(( (waited / WATCH_BEAT_SECONDS + 1) * WATCH_BEAT_SECONDS ))
+                echo "$label $(hhmm "$waited") elapsed · ${state%%:*} · $(child_where "$repo" "$rid") · $url"
+              fi
+              sleep "$nap"
+            done
+          }
+
+          # `completed:success` proves the child's jobs passed, not that the step this head
+          # depends on ran.  SefariaExport's dispatch step is conditional
+          # (`if: steps.previous.outputs.is_initial == 'false'`), so a green export that
+          # skipped it printed exactly the same success line as one that dispatched.
+          require_child_step_success() {
+            local repo="$1" rid="$2" step="$3" url rows bad
+            url="$(run_url "$repo" "$rid")"
+            if ! rows="$(STEP="$step" gh api "repos/$repo/actions/runs/$rid/jobs?per_page=100" \
+                --jq '.jobs[] | .steps[]? | select(.name == env.STEP) | .conclusion' 2>"$WATCH_ERR")"; then
+              echo "::error::cannot list the jobs of $url to verify its \"$step\" step: $(head -n 1 "$WATCH_ERR")"
+              return 1
+            fi
+            rows="$(printf '%s\n' "$rows" | awk 'NF')"
+            if [ -z "$rows" ]; then
+              echo "::error::$url succeeded but reports no step named \"$step\"; this head cannot confirm the chain progressed — was the step renamed in SefariaExport release.yml?"
+              return 1
+            fi
+            bad="$(printf '%s\n' "$rows" | grep -vx success | paste -sd, -)" || true
+            if [ -n "$bad" ]; then
+              echo "::error::$url succeeded but its \"$step\" step concluded $bad, so no manual-link synchronization was dispatched and the weekly chain stops here"
+              return 1
+            fi
+            echo "verified: \"$step\" concluded success in $url"
+          }
+
+          # find_exact_workflow_run.sh answers 0 (one exact run), 1 (none), 3 (several) or
+          # 2 (the listing itself failed).  Under `set -euo pipefail` every non-zero used
+          # to abort this step with no message at all, and exit 3 here is the loudest case
+          # of the four: the identity embeds ${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}, so a
+          # collision means THIS head dispatched twice.  Never guess a winner — name the
+          # identity and every run that carries it, and stop.
+          resolve_child() {
+            local label="$1" repo="$2" workflow="$3" title="$4" head_sha="$5" run rc ids urls id
+            set +e
+            run="$(bash .github/scripts/find_exact_workflow_run.sh "$repo" "$workflow" "$title" "$head_sha")"
+            rc=$?
+            set -e
+            case "$rc" in
+              0) printf '%s\n' "$run"; return 0 ;;
+              1) echo "::error::$label: no run carries the exact dispatch identity \"$title\" at $head_sha; the dispatch never reached GitHub" >&2 ;;
+              3)
+                ids="$(TITLE="$title" gh api --paginate -X GET \
+                  "repos/$repo/actions/workflows/$workflow/runs" -f event=workflow_dispatch -f per_page=100 \
+                  --jq '.workflow_runs[] | select(.display_title == env.TITLE) | (.id|tostring)' 2>/dev/null \
+                  | awk 'NF && !seen[$0]++' || true)"
+                urls=""
+                while read -r id; do
+                  [ -n "$id" ] || continue
+                  urls="$urls $(run_url "$repo" "$id")"
+                done <<< "$ids"
+                echo "::error::$label: more than one run carries the exact dispatch identity \"$title\"; that identity embeds ${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}, so this head dispatched twice — refusing to guess which child is the cycle. Matching runs:${urls:- none could be listed}" >&2 ;;
+              *) echo "::error::$label: cannot resolve the exact dispatch identity \"$title\" (helper exit $rc)" >&2 ;;
+            esac
+            return 1
           }
 
           prepare_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}:prepare"
           prepare_title="update-library mode=prepare_only correlation=${prepare_correlation}"
-          prepare_head="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)"
-          prepare_time="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          # Every other failure in this step now names itself; a `set -e` death here
+          # would still abort the cycle with nothing but gh's own stderr and no
+          # annotation, which is the state items 1-3 above exist to remove.
+          prepare_head="$(gh api repos/Otzaria/otzaria-library/commits/main --jq .sha)" || {
+            echo "::error::cannot read Otzaria/otzaria-library main HEAD, so the prepare child has no exact identity to be adopted by; not dispatching"
+            exit 1
+          }
           # Submit once. A non-zero response is delivery-ambiguous; exact-title
           # discovery below adopts a request that reached GitHub without replying.
           if ! gh workflow run update-library.yml -R Otzaria/otzaria-library \
@@ -52,33 +246,23 @@ jobs:
             -f correlation_id="$prepare_correlation"; then
             echo "::warning::prepare dispatch returned non-zero; checking exact identity before any retry"
           fi
-          prepare_run="$(find_exact_run Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head" "$prepare_time")"
-          # Low-frequency resilient wait (gh run watch polls every 3s and can
-          # exhaust the shared API quota; transient errors must not kill the run).
-          watch_run() {
-            local repo="$1" rid="$2" label="$3" state
-            while :; do
-              state="$(gh api "repos/$repo/actions/runs/$rid" --jq '.status + ":" + (.conclusion // "")' 2>"$RUNNER_TEMP/wait-err.txt" || { grep -q "HTTP 401" "$RUNNER_TEMP/wait-err.txt" && echo fatal-auth || echo transient; })"
-              case "$state" in
-                completed:success) return 0 ;;
-                completed:*) echo "::error::$label run $rid concluded ${state#completed:}"; return 1 ;;
-                fatal-auth) echo "::error::$label watch: token rejected (HTTP 401) — dead credentials cannot heal, failing fast"; return 1 ;;
-                *) sleep 60 ;;
-              esac
-            done
-          }
+          prepare_run="$(resolve_child update-library Otzaria/otzaria-library update-library.yml "$prepare_title" "$prepare_head")"
           watch_run Otzaria/otzaria-library "$prepare_run" update-library
 
           # SefariaExport publishes an immutable release and dispatches the link
           # sync itself.  The weekly orchestrator neither races a publisher nor
           # chooses downstream release inputs.
-          export_head="$(gh api repos/Otzaria/SefariaExport/commits/master --jq .sha)"
+          export_head="$(gh api repos/Otzaria/SefariaExport/commits/master --jq .sha)" || {
+            echo "::error::cannot read Otzaria/SefariaExport master HEAD, so the export child has no exact identity to be adopted by; not dispatching — the prepare child already ran and pushed"
+            exit 1
+          }
           export_correlation="weekly:${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}"
           export_title="Sefaria immutable export orchestration=$export_correlation"
           if ! gh workflow run release.yml -R Otzaria/SefariaExport \
             -f orchestration_id="$export_correlation"; then
             echo "::warning::SefariaExport dispatch returned non-zero; adopting only an exact run"
           fi
-          export_run="$(find_exact_run Otzaria/SefariaExport release.yml "$export_title" "$export_head" "unused")"
+          export_run="$(resolve_child sefaria-export Otzaria/SefariaExport release.yml "$export_title" "$export_head")"
           watch_run Otzaria/SefariaExport "$export_run" sefaria-export
-          echo "SefariaExport succeeded and dispatched exact manual-link synchronization."
+          require_child_step_success Otzaria/SefariaExport "$export_run" 'Dispatch exact manual-link synchronization'
+          echo "SefariaExport succeeded and dispatched exact manual-link synchronization: $(run_url Otzaria/SefariaExport "$export_run")"

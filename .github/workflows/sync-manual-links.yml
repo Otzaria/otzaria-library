@@ -78,12 +78,15 @@ jobs:
       - name: Free disk space for the verified Sefaria export
         uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
         with:
+          # Measured on run 33990185407: these four free 25.3GiB in 151s. large-packages
+          # (4.4GiB/49s) and docker-images (1.9GiB/26s) printed 1,453 of the step's 1,793
+          # lines for headroom this job never needs — its preflight below asserts 12GiB.
           tool-cache: true
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
-          docker-images: true
+          large-packages: false
+          docker-images: false
           swap-storage: false
 
       - name: Validate dispatch identity
