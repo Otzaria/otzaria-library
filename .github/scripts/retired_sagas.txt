@@ -6,3 +6,7 @@
 # Lineage superseded by operator migrate run 33635772841 (commit 778603e6);
 # a reconciler false negative left it with two exact Otzaria children.
 33550764239
+# Abandoned 2026-08-30 cycle: its Seforim child 33282121922 failed because the
+# Kaggle relink run 33288091632 concluded failure, and later weekly cycles
+# superseded the lineage. Not worth recovering.
+33281342283
