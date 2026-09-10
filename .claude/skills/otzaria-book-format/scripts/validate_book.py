@@ -7,7 +7,7 @@
   * איזון תגים בכל שורה בנפרד; מבנים מרובי-חלקים בשורה אחת
   * כותרות: בתחילת השורה, שורה שלמה, בלי דילוג רמות, בלי h7+, בלי Markdown
   * הערות שוליים inline: סמן+גוף צמודים
-  * מלכודת ההיפוך RTL: לכל היותר "תיבה" אחת בשורה
+  * מלכודת ההיפוך RTL: לכל היותר "תיבה" אחת בשורה (ראו count_boxes)
   * CSS/תגים שאינם נתמכים; class-ים שמורים
 
 שימוש:
@@ -52,6 +52,9 @@ MD_HEADING_RE = re.compile(r"^\s*#{1,6}\s+\S")
 FOOTNOTE_MARKER_RE = re.compile(r"<sup\b[^>]*\bfootnote-marker\b[^>]*>(.*?)</sup>", re.I | re.S)
 FOOTNOTE_BODY_RE = re.compile(r"<i\b[^>]*\bclass\s*=\s*\"[^\"]*\bfootnote\b[^\"]*\"[^>]*>", re.I)
 SUP_SUB_RE = re.compile(r"<(sup|sub)\b([^>]*)>(.*?)</\1>", re.I | re.S)
+FOOTNOTE_MARKER_CLASS_RE = re.compile(
+    r"\bclass\s*=\s*\"[^\"]*\bfootnote-marker\b[^\"]*\"", re.I
+)
 STYLE_ATTR_RE = re.compile(r"style\s*=\s*\"([^\"]*)\"", re.I)
 CLASS_ATTR_RE = re.compile(r"class\s*=\s*\"([^\"]*)\"", re.I)
 
@@ -121,12 +124,35 @@ def check_balance(line: str, rep: Report, n: int) -> None:
 
 
 def count_boxes(line: str) -> list[str]:
-    """מחזיר תיאור לכל 'תיבה' בשורה — מעל אחת = היפוך טקסט ב-RTL."""
+    """מחזיר תיאור לכל 'תיבה' בשורה — מעל אחת = היפוך טקסט ב-RTL.
+
+    מה נחשב תיבה נקבע ב-`TextRendererService._fixFootnoteMarkers` ו-`_fixSubscripts`
+    ב-repo התוכנה, ולא לפי מספריות התוכן:
+
+    * `<sub>` — **לעולם לא תיבה.** `_fixSubscripts` ממיר כל sub לספרות-תחתיות
+      יוניקוד או ל-`<span class="subscript-text">`, ומתעלם מהאטריביוטים.
+    * `<sup class="footnote-marker">` — לא תיבה; נפלט כ-`<span
+      class="footnote-marker-number">`.
+    * `<sup>` **חשוף** (בלי אטריביוטים ובלי תג מקונן) — לא תיבה; נפלט כ-`<span
+      class="raised-sup">` טקסט טהור, שסדרו מובטח. לכן כמה סמנים חשופים בשורה
+      בטוחים גם כשתוכנם אות עברית.
+    * `<sup>` **עם אטריביוט או עם תג מקונן** — כן תיבה: הוא נשאר `<sup>`, ו-fwfh
+      מממש אותו ב-WidgetSpan שמנוע Flutter משבץ בסדר ויזואלי. זה כולל
+      `<sup style="color: gray;">5</sup>` — סמן ההערות של מנגנון הקובץ הנפרד —
+      גם כשתוכנו מספר.
+    """
     boxes = []
     for m in SUP_SUB_RE.finditer(line):
-        inner = strip_tags(m.group(3))
-        if inner and not inner.isdigit():
-            boxes.append(f"<{m.group(1).lower()}> לא-מספרי ({inner[:12]})")
+        if m.group(1).lower() == "sub":
+            continue
+        attrs, inner_html = m.group(2), m.group(3)
+        if FOOTNOTE_MARKER_CLASS_RE.search(attrs):
+            continue
+        if not attrs.strip() and not TAG_RE.search(inner_html):
+            continue
+        inner = strip_tags(inner_html)
+        why = "עם אטריביוט" if attrs.strip() else "עם תג מקונן"
+        boxes.append(f"<sup> {why} ({inner[:12]})")
     for m in STYLE_ATTR_RE.finditer(line):
         if re.search(r"display\s*:\s*inline-block", m.group(1), re.I):
             boxes.append("display:inline-block")
