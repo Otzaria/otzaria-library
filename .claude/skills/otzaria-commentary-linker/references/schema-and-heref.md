@@ -14,9 +14,19 @@ One array per commentary/citing book, at `<source root>/links/<title>_links.json
   "ref_2": "Tosafot on Bava Batra 29a:16:1",
   "heRef_2": "תוספות על בבא בתרא כט., טז, א",
   "path_2": "תוספות על בבא בתרא.txt",
-  "Conection Type": "super_commentary"
+  "Conection Type": "source"
 }
 ```
+
+**Direction.** The file is named after the citing book and `line_index_1` is a line *in* it,
+but `seforim.db` stores the pair the other way round: `sourceBookId` = the base text,
+`targetBookId` = the מפרש. `"source"` is what makes the generator flip it
+(`Generator.kt`: `flip = declaredType == SOURCE` → stored as `COMMENTARY`), so it is the
+only correct dependent-text value in a citing-named file. `commentary` /
+`super_commentary` here get no flip and store the מפרש as the base — the מפרש then vanishes
+from the commentary panel and the base text shows up as a "פירוש" on it. Whether the entry
+is a plain פירוש or a super-commentary is expressed by `path_2` alone. See the direction
+section in `SKILL.md`.
 
 - `line_index_1` / `line_index_2` — **1-based** line numbers (line 1 = first line of the file).
 - `path_2` — relative filename of the target book; only the filename (minus extension) is used
@@ -51,14 +61,22 @@ completeness):
 ## Connection types (14 total)
 
 ```
-commentary       — פירוש/מפרש רגיל (Rashi, Tosafot, קרן אורה, etc. onto Gemara/base text)
-super_commentary  — פירוש על פירוש (e.g. a line opening `רש"י ד"ה …` / `תוס' ד"ה …` must
-                     target that Rashi/Tosafot book + lemma line, not the Gemara)
-targum            — תרגום
-reference          — הפניה כללית (this is what the automated linker/ pipeline emits under the
+source             — **the value a citing-named file writes for every dependent-text link**
+                     (פירוש, פירוש על פירוש, תרגום, מדרש…). Not stored as-is: the generator
+                     flips the pair into canonical base→מפרש order and stores COMMENTARY.
+                     `path_2` says which relation it is — the base text, or the intermediate
+                     book (רש"י/תוספות) for a super-commentary line.
+commentary       — פירוש/מפרש רגיל. Correct **only** in a base-named file, where
+                     `line_index_1` is already a line of the base text (MoreBooks/ToratEmet/
+                     Ben-Yehuda/tashma/wikiJewishBooks convention). In a citing-named file it
+                     is the reversed-direction bug.
+super_commentary  — פירוש על פירוש. Same caveat as `commentary`; stored SUPER_COMMENTARY is
+                     treated identically to COMMENTARY by every app query, only the Hebrew
+                     label differs.
+targum            — תרגום (same base-named caveat)
+reference          — הפניה כללית, lateral — no flip, written under its own name from either
+                     side (this is what the automated linker/ pipeline emits under the
                      hood before to_otzaria_links.py relabels it "linker")
-source             — virtual only, never stored — derived at read time by inverting a
-                     commentary link. Never write this value yourself.
 midrash
 quotation
 mesorat_hashas
@@ -70,10 +88,10 @@ related
 other              — fallback for unrecognized/empty strings
 ```
 
-If the user's request doesn't map cleanly to one of these (e.g. they say "מקור" — meaning "link
-X as the base text under Y", which is the *reverse* direction and not a type you store — swap
-which book is line_index_1/commentary and which is path_2/target instead of trying to write a
-"source" type).
+If the user says "מקור", pin down which book they mean before choosing a form: "מקור" is used
+in this project both for the base text and for the citing book. It does *not* by itself decide
+the file's direction — a citing-named file with `"source"` entries and a base-named file with
+`"commentary"` entries produce the identical row in `seforim.db`.
 
 ## Deriving heRef from a physical text file (Talmud-style books)
 

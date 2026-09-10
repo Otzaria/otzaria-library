@@ -125,8 +125,10 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
 
 8. **Verified per real target book, not just per declared type.** A single `_links.json`
    file can contain entries that target *different* books, not one fixed base text — most
-   commonly a `commentary` entry pointing at the Gemara alongside a `super_commentary` entry
-   pointing at a *different* book entirely, like Tosafot or Rashi (the sibling
+   commonly an entry pointing at the Gemara alongside one pointing at a *different* book
+   entirely, like Tosafot or Rashi (in a citing-named file both are `source`, and only
+   `path_2` tells them apart; older files may still spell them `commentary` /
+   `super_commentary`). This is the sibling
    otzaria-commentary-linker skill's "ד"ה" special case: a citing-book line that comments on
    a commentary rather than on the base text itself). The job config's `target_title` is only
    guaranteed correct for the file's default/primary type — never assume it covers every
@@ -137,8 +139,8 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
    target's line-numbering is longer than the Gemara's. The script now groups entries by
    (`Conection Type`, real target book resolved from `path_2`) and resolves each group's own
    book id and line map independently — see `references/db_write_notes.md` for the full story
-   and the resolution rule. Before considering a run done, spot-check that a sample of any
-   non-default-type entries (e.g. `super_commentary`) landed with `sourceBookId` matching the
+   and the resolution rule. Before considering a run done, spot-check that a sample of the
+   entries whose `path_2` is *not* the default target landed with `sourceBookId` matching the
    book their own `path_2` actually names.
 
 ## How to actually run it
@@ -150,8 +152,10 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
    LIKE '%...%'` via the same Windows-MCP PowerShell route (see step 3) will confirm it;
    don't guess from the links file's `path_2` field alone, since that's a filename, not
    necessarily an exact title match. Before assuming the whole file targets one book, skim
-   the file's distinct `Conection Type` values and their `path_2`s — if `super_commentary` (or
-   any other non-default type) appears, expect a mixed-target file and read criterion 8.
+   the file's distinct `path_2` values — if more than one book appears, expect a mixed-target
+   file and read criterion 8. (Do the same with the distinct `Conection Type` values: a
+   citing-named file should be all `source`; any `commentary`/`super_commentary` left in it is
+   the reversed-direction bug and must be repaired before importing, not imported as-is.)
 
 2. **Write a job config JSON** (via the `Write` tool, not by typing it into a shell command —
    see "why job config, not CLI args" in `references/db_write_notes.md`) to a Windows temp
@@ -216,7 +220,7 @@ slower and more deliberate than the JSON-producing sibling skill, not less.
      --citing "<citing title>" \
      --target "<real target title>" \
      --links "<the _links.json path>" \
-     --type-id <1 for commentary, 2 for super_commentary, ...>
+     --type-id <1 for source and commentary, 2 for super_commentary, ...>
    ```
 
    Report PASS/FAIL per pair in Hebrew to the user, and tell them to **restart Otzaria**
@@ -247,9 +251,14 @@ first run in a conversation, and again any time a result looks surprising — th
 specifically so you don't have to re-derive any of this from scratch or guess.
 
 `references/db_write_notes.md` also has the full `"Conection Type"` → `connectionTypeId`
-table (14 rows — commentary, super_commentary, targum, reference, source [virtual, never
-written], midrash, quotation, mesorat_hashas, ein_mishpat, dibur_hamatchil, parshanut,
-mishnah_in_talmud, related, other/linker) if you need to confirm a type id directly.
+table if you need to confirm a type id directly. `connection_type` has grown past the
+original 14 rows (23 in `db_version=27`), so read the id from the DB rather than from
+memory. **One entry there is load-bearing: `source`.** It is the canonical value of a links
+file named after the citing book, and it is *not* skipped — `normalize_type_name()` maps it
+to COMMENTARY before the id lookup, because this script already writes every link flipped
+(`sourceBookId` = the real target, `targetBookId` = the citing book), which is exactly the
+direction `source` declares. Same rule as the library generator
+(`Generator.kt`: `flip = declaredType == SOURCE` → `storedType = COMMENTARY`).
 
 ## Related skills
 

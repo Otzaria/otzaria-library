@@ -32,7 +32,7 @@ app's side-by-side view. This is the exact input format the app's DB generator
   "ref_2": "Moed Katan 2a:1",
   "heRef_2": "מועד קטן ב., א",
   "path_2": "מועד קטן.txt",
-  "Conection Type": "commentary"
+  "Conection Type": "source"
 }
 ```
 
@@ -40,14 +40,96 @@ Note the field name is `"Conection Type"` — missing the second "n". That's not
 it mirrors Sefaria's original CSV column name and is exactly what the app's parser expects.
 Writing `"Connection Type"` instead silently fails to register the link.
 
+## The one rule that decides whether any of this works: link direction
+
+**In a file named after the citing book, every dependent-text entry is
+`"Conection Type": "source"` — never `commentary`, never `super_commentary`.**
+
+`seforim.db` stores a dependent-text link in exactly one canonical direction:
+`sourceBookId` = the **base text**, `targetBookId` = the **מפרש**. The app's commentator
+panel is literally `WHERE l.sourceBookId = <the book being read>` returning `targetBookId`
+(`LinkQueries.sq`, `selectCommentatorsByBook`). A row stored the other way round is not
+displayed as a מפרש at all: the reverse query relabels it `SOURCE` and shows it in the
+**מקורות** panel instead (`database_library_provider.dart`, `_loadInverseSourceRows` +
+`inverseConnectionTypeExpr`). So a backwards row does not just lose a label — the מפרש
+disappears from the commentary panel, and the base text starts appearing as a "פירוש" on
+the מפרש.
+
+The links file, though, is named after the **citing** book and its `line_index_1` is a line
+in the citing book — the opposite narrative. `"source"` is the value that bridges the two:
+the DB generator reads it as "the thing in `path_2` is my line's source" and flips the pair
+into canonical order before storing it as `COMMENTARY`:
+
+```kotlin
+// SeforimLibrary  generator/otzariasqlite/.../Generator.kt
+val flip = declaredType == ConnectionType.SOURCE
+val storedType = if (flip) ConnectionType.COMMENTARY else declaredType
+insertLinkStable(
+    sourceBookId = if (flip) targetBook.id else sourceBook.id,   // base
+    targetBookId = if (flip) sourceBook.id else targetBook.id,   // מפרש
+    ...
+)
+```
+
+`commentary` gets **no flip**. Written into a citing-named file it stores
+`מפרש → base`, which is backwards. This is not hypothetical: it is what happened to
+קרן אורה, שפת אמת, ערוך לנר על יבמות, אבן העוזר, ריטב"א על גיטין and חידושי רמב״ן על כתובות —
+16,093 entries across 46 files (11,395 `commentary` + 4,698 `super_commentary`, ≈15,894 rows
+once the generator's usual heading/missing-line drops are applied) shipped inverted through
+`db_version=27`, with the Gemara listed as a commentary on קרן אורה. Fixed Sept 2026 by
+rewriting those entries to `source`.
+
+The precedent to copy is `National-LibraryToOtzaria/links` — 63,107 entries, every one of
+them a citing-named file with `"Conection Type": "source"`, and every one of them lands in
+the commentary panel correctly.
+
+### Super-commentary lines under this rule
+
+A line commenting on רש"י/תוספות rather than on the Gemara is still `"source"` — the flip's
+hardcoded COMMENTARY is harmless here (see criterion 4 for the types where it is *not*).
+The relation
+is carried entirely by `path_2`: point it at the **intermediate book** (`תוספות על נזיר.txt`)
+instead of the base (`נזיר.txt`), and the link stores as `תוספות על נזיר → <your מפרש>`. The
+stored type is `COMMENTARY` rather than `SUPER_COMMENTARY`. Every query that builds the
+commentary panel lists the two side by side in the same `ct.name IN (...)` clause
+(`LinkQueries.sq`), neither gets a filter chip (`link_types.dart:99-107` excludes both on
+purpose), and the differing Hebrew label — "פירוש" vs "פירוש על פירוש" — is only ever read
+through the chip machinery, so it is not displayed for either. The user-visible difference is
+nil; what is lost is semantic precision in the stored data. A correct base beats an accurate
+label on an inverted link.
+
+### The one case where `commentary` is right
+
+If you are instead writing a **base-named** file — `line_index_1` is a line of the base text
+and `path_2` points at the מפרש — then the stored direction already matches and the type is
+`commentary` (or `super_commentary`, `targum`, `midrash`, …) with no flip. That is the
+convention in `ToratEmetToOtzaria/links`, `Ben-YehudaToOtzaria/links`,
+`tashmaToOtzaria/links`, `wikiJewishBooksToOtzaria/links` and `pninimToOtzaria/links`.
+`MoreBooks/links` is mostly base-named but now holds one citing-named `source` file
+(`חידושי רמב״ן על כתובות`), so check the file, not the root. Prefer the base-named form only when the base
+book's title is a safe filename; titles carrying an ASCII `"` (`רש"י על שבת`, `רשב"ם על בבא
+בתרא`) cannot be used as filenames on Windows, which is one more reason the citing-named
+`source` form is the default for this skill.
+
+**Before writing a single entry, decide which of the two forms you are producing and say so
+out loud.** Mixing them inside one file is always a bug.
+
 ## Terminology used in this doc
 
 To avoid the project's own confusing usage (its docs call the commentary the "ספר־מקור"),
 this skill always uses two fixed terms:
 
-- **citing book** = the מפרש/commentary/תרגום/מדרש being linked. This is `line_index_1`.
-- **target book** = the base text being commented on (Gemara/Mishnah/Tanakh/etc.). This is
-  `line_index_2` / `heRef_2` / `path_2`.
+- **citing book** = the מפרש/commentary/תרגום/מדרש being linked. This is `line_index_1`,
+  and it is what the file is named after.
+- **target book** = the base text being commented on (Gemara/Mishnah/Tanakh/etc.), or the
+  intermediate commentary for a super-commentary line. This is `line_index_2` / `heRef_2` /
+  `path_2`.
+
+These two names describe the **file**, not the database. In `seforim.db` the roles are
+reversed — `sourceBookId` is the base text and `targetBookId` is the מפרש — and
+`"Conection Type": "source"` is what performs that reversal at import time. See "The one
+rule that decides whether any of this works" above; never reason about the stored link from
+the file's own `_1`/`_2` numbering.
 
 Whenever a user or a project doc says "מקור", check contextually whether they mean the
 citing book or the target book — do not assume "מקור" = target.
@@ -172,36 +254,57 @@ following hold:
    `seforim.db` (see the DB access route below). This precedent check is mandatory every time,
    not something you only do when a book looks unusual or the pattern seems off.
 
-4. **The right connection type**, resolved to one of the app's stored values — `commentary`
-   (פירוש/מפרש רגיל, the default for generic phrasing like "שיהיה מפרש"), `super_commentary`,
-   `targum`, `reference`, `midrash`, `quotation`, `mesorat_hashas`, `ein_mishpat`,
-   `dibur_hamatchil`, `parshanut`, `mishnah_in_talmud`, `related`, or `other` as a last resort.
-   Use `super_commentary` (not `commentary`) whenever the citing line is commenting on an
-   intermediate commentary such as Rashi or Tosafot — especially lines that open
-   `רש"י ד"ה …` / `תוס' ד"ה …` (see matching rules below); those must target the Rashi/Tosafot
-   book itself, not the Gemara. Don't confuse `reference` with `"Conection Type": "linker"` —
-   `linker` is the literal
+4. **The right connection type.** For a citing-named file — the form this skill produces —
+   every dependent-text entry is `"Conection Type": "source"`, whether the line comments on
+   the Gemara or on רש"י/תוספות. Whether it is a plain פירוש or a super-commentary is
+   expressed by `path_2` alone: the base text's file, or the intermediate book's file. This
+   is not a stylistic choice; `commentary`/`super_commentary` in a citing-named file store
+   the link backwards and the מפרש never reaches the commentary panel. See "The one rule that
+   decides whether any of this works" above for the mechanism and for the one case
+   (a base-named file) where `commentary` is the right value.
+
+   **`source` applies to `commentary` and `super_commentary` only.** The flip hardcodes the
+   stored type — `storedType = if (flip) COMMENTARY else declaredType` — so it cannot carry a
+   semantic type across. For `commentary`/`super_commentary` that costs nothing (COMMENTARY is
+   what they store anyway, and the app runs both through identical queries). For `targum`,
+   `midrash`, `parshanut`, `dibur_hamatchil` and `elucidation` it is **lossy**: those five are
+   exactly `LinkTypes.commentaryFilterTypes`, the types that get their own filter chip and
+   Hebrew label in the commentary panel (`link_types.dart:101-107`). Flattening one to
+   COMMENTARY silently drops its chip and relabels it "פירוש". So for those five, do **not**
+   write `source` — write a **base-named** file (`line_index_1` = a line of the base text,
+   `path_2` = the מפרש) carrying the real type, which needs no flip. Say so in your report
+   when the request forces that form.
+
+   The lateral types keep their own names from either side and are never rewritten, because
+   they are not a base/dependant relation at all: `reference`, `quotation`, `mesorat_hashas`,
+   `ein_mishpat`, `mishnah_in_talmud`, `related`, or `other` as a last resort. Note that
+   `validate_links.py` still reports any type other than `source`/`linker` in a citing-named
+   file — that is expected for a deliberate lateral entry; confirm it rather than "fixing" it.
+
+   Don't confuse `reference` with `"Conection Type": "linker"` — `linker` is the literal
    string the automated Sefaria-citation pipeline (the `linker/` folder) writes into existing
    files; it is not one of the app's recognized values at all, and gets silently stored as
    `OTHER` internally (its word-anchor still works, since that depends on `start`/`end`, not on
    the type being recognized). You never write `linker` by hand — it isn't a type choice
    available to you, only something you preserve untouched when it's already present (see
-   criterion 5). `source` is never a correct value to write either — it's virtual-only,
-   derived automatically by the app by inverting a commentary link. If the user's request is
-   actually the reverse direction ("מקור" meaning "put X as the base text under Y"), the
-   correct result is achieved by swapping which book is the citing book and which is the
-   target — not by writing a `source` entry.
+   criterion 5).
 
 5. **A merge the user approved before it happened.** If `links/<commentary title>_links.json`
    already exists, the pre-existing file is left untouched except for the specific stale
    subset that shares both the same `path_2` and the same `Conection Type` you just produced.
+   Since every dependent-text entry you write is `source`, in practice `path_2` is the key.
    Before writing anything, show the user exactly which existing entries you're about to drop
-   (e.g. "these 40 existing `commentary`→`מועד קטן.txt` entries will be replaced by the new
-   set; the 5 `targum`→`תרגום ירושלמי.txt` entries and any `"Conection Type": "linker"`
+   (e.g. "these 40 existing `source`→`מועד קטן.txt` entries will be replaced by the new set;
+   the 5 `reference`→`תרגום ירושלמי.txt` entries and any `"Conection Type": "linker"`
    entries stay untouched") and get their go-ahead before performing the replacement — don't
    drop-and-replace silently even though the matching rule itself is deterministic. Output is
    written with `indent=2, ensure_ascii=False`, matching the existing files' formatting, at
    `<source root>/links/<commentary title>_links.json`.
+
+   **If the existing file still carries `commentary`/`super_commentary` entries**, it predates
+   the direction fix and every one of those entries is stored backwards. Say so, and offer to
+   rewrite them to `source` in the same pass — merging new correct entries alongside old
+   inverted ones leaves the book half-broken in the app.
 
 6. **Verified before delivery.** Before handing over the finished file, you cross-checked it
    against `seforim.db` directly (Windows-MCP PowerShell route, not bash — see below) —
@@ -350,7 +453,8 @@ label. Common examples include "שם", "והנה", "ונלע"ד", "אמנם", "�
 the same rule. Confirm by checking whether the line actually introduces a **new** citation or
 subject before treating it as a continuation. Critically, "the same target line as the line
 before it" means the same **book**, not just the same line number: if the previous line was
-itself a `super_commentary` onto Rashi/Tosafot, any such continuation — whether it opens with
+itself a super-commentary entry onto Rashi/Tosafot (i.e. its `path_2` was that book), any
+such continuation — whether it opens with
 "בד"ה" or with any other connective that names no new subject — inherits that same
 Rashi/Tosafot target, not the Gemara. See "Continuation lines within a super-commentary run"
 below for the full rule.
@@ -384,13 +488,16 @@ directly. For those lines:
    opening/dibbur matches the lemma after ד"ה (e.g. the Rashi line that starts with `אפילו`).
    `ref_2` here is the intermediate book's own Sefaria ref — `"Rashi on Shabbat 6a:13:1"`,
    `"Tosafot on Bava Batra 29a:16:1"` — not the Gemara's, and it is required (criterion 2).
-3. Write `"Conection Type": "super_commentary"`.
+3. Keep `"Conection Type": "source"` — same as every other entry in the file. The
+   super-commentary relation is carried by `path_2` pointing at the intermediate book, not
+   by the type string; the entry stores as `רש"י על שבת → <your מפרש>`. Writing
+   `super_commentary` here stores the pair backwards (see the direction rule above).
 
-Do **not** link such lines as `commentary` onto the Gemara even if the sugya is related.
+Do **not** point such lines' `path_2` at the Gemara even if the sugya is related.
 
 **Continuation lines within a super-commentary run (critical).** When the citing book is in
 the middle of discussing an intermediate commentary (רש"י/תוס'/etc.) — i.e. the immediately
-preceding line(s) are `super_commentary` onto that book — the run does not end just because a
+preceding line(s) point their `path_2` at that book — the run does not end just because a
 later line drops the explicit `ד"ה` / commentator name. **Any** line that continues the
 previous passage (no new subject named) stays inside the same intermediate book. This is the
 **same** continuation rule as ordinary target-line inheritance above, applied to book as well
@@ -405,26 +512,26 @@ Shapes that all stay in the intermediate book (illustrative, not exhaustive):
    "וע"ע מש"כ" when it isn't a fresh citation, or any equivalent phrasing that clearly means
    "still elaborating on what was just said."
 
-In all such cases: treat it like the explicit `ד"ה` case (`super_commentary` into that book;
-inherit which one from the nearest prior explicit `בתוס'/ברש"י ד"ה` or prior
-`super_commentary` `path_2`), resetting only on a primary-text label like `<b>גמרא</b>` /
+In all such cases: treat it like the explicit `ד"ה` case (`path_2` into that book; inherit
+which one from the nearest prior explicit `בתוס'/ברש"י ד"ה` or prior intermediate `path_2`),
+resetting only on a primary-text label like `<b>גמרא</b>` /
 `<b>במשנה</b>`, a line that explicitly names a different commentary, or a new section heading.
 The trap is treating "no `ד"ה` / no commentator name" as if it meant "back to the Gemara" —
 it doesn't; a bare continuation after a Rashi/Tosafot run almost always still means
 "[Rashi/Tosafot] wrote further," not "the Gemara says further." Do **not** require the line
 to match a fixed trigger list — judge continuity from the wording. A late fix that converts
-only explicit intermediate+ד"ה and leaves other continuations as `commentary`→primary text is
+only explicit intermediate+ד"ה and leaves other continuations pointed at the primary text is
 incomplete (this is exactly how ~169 lines were mislinked in a past שפת אמת run). Only if the
 work never attributes to intermediate commentaries at all should such openings be read as
 ordinary primary-text continuations.
 
-A single `_links.json` may therefore mix `commentary`→Gemara entries and
-`super_commentary`→Rashi/Tosafot entries; when merging (criterion 5), replace only the stale
-subset that shares **both** the same `path_2` **and** the same `Conection Type`. If the user
+A single `_links.json` may therefore mix entries whose `path_2` is the Gemara with entries
+whose `path_2` is Rashi/Tosafot — all of them `"Conection Type": "source"`. When merging
+(criterion 5), the replacement key is therefore effectively `path_2` alone. If the user
 asked only to link onto the Gemara, still do not mis-target these attribution lines — either
-produce the correct `super_commentary` entries (and say so in the report) or leave them out
+produce the correct intermediate-`path_2` entries (and say so in the report) or leave them out
 of the Gemara replacement set and flag them explicitly as needing a separate Rashi/Tosafot
-pass. After any super_commentary pass, run the QA skill's full F8+F9 scan
+pass. After any super-commentary pass, run the QA skill's full F8+F9 scan
 (`.claude/skills/otzaria-commentary-linker-qa`) before calling the work done.
 
 **Pitfalls in extracting the anchor phrase.** These come from debugging a related

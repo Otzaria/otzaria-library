@@ -35,7 +35,14 @@ PAIRS = [
     # בכורות: book exists, no links file yet
 ]
 
+# This script already writes every link flipped (sourceBookId = the book named by
+# path_2, targetBookId = the citing book), which is the direction "source" declares —
+# so a "source" entry stores as COMMENTARY, exactly like the library generator does
+# (Generator.kt: `flip = declaredType == SOURCE` -> `storedType = COMMENTARY`).
+# Without this mapping every entry in a post-direction-fix links file is silently
+# skipped as "unsupported type" and the run reports 0 inserts without failing.
 CONNECTION_TYPE_IDS = {
+    "source": 1,
     "commentary": 1,
     "super_commentary": 2,
 }

@@ -36,7 +36,7 @@ link(id, sourceBookId, targetBookId, sourceLineId, targetLineId,
      targetBookOrderIndex [= the target/citing book's own orderIndex],
      connectionTypeId, isDeclaredBase)
 
-connection_type(id, name)   -- 14 rows, name is UPPER_SNAKE_CASE:
+connection_type(id, name)   -- 23 rows in db_version=27, name is UPPER_SNAKE_CASE:
   COMMENTARY, SUPER_COMMENTARY, TARGUM, REFERENCE, SOURCE, MIDRASH, QUOTATION,
   MESORAT_HASHAS, EIN_MISHPAT, DIBUR_HAMATCHIL, PARSHANUT, MISHNAH_IN_TALMUD, RELATED, OTHER
 
@@ -52,11 +52,11 @@ ignored) maps onto `connectionTypeId` as:
 
 | JSON string | id | Notes |
 |---|---|---|
-| `commentary` | 1 | |
-| `super_commentary` | 2 | Intermediate targets (Rashi/Tosafot) via `path_2` |
+| `commentary` | 1 | Only correct in a **base-named** file (`line_index_1` = the base text). In a citing-named file it is the reversed-direction bug — use `source`. |
+| `super_commentary` | 2 | Same caveat as `commentary`. From a citing-named file write `source` with `path_2` = the intermediate book (Rashi/Tosafot); it stores as `COMMENTARY` off that book. The app treats COMMENTARY and SUPER_COMMENTARY identically in every query — only the displayed Hebrew label differs. |
 | `targum` | 3 | |
 | `reference` | 4 | |
-| `source` | — | **Virtual — never write** |
+| `source` | 1 (**not** 5) | **The canonical value of a citing-named links file.** `SOURCE` itself is id 5, but no row is ever stored with it — SOURCE is virtual and is never stored; this script already writes every link flipped (`sourceBookId` = the real target, `targetBookId` = the citing book), which *is* the direction `source` declares, so the row lands as `COMMENTARY`. `normalize_type_name()` does the mapping — same rule as the library generator (`flip = declaredType == SOURCE` → `storedType = COMMENTARY`). |
 | `midrash` | 6 | |
 | `quotation` | 7 | |
 | `mesorat_hashas` | 8 | |

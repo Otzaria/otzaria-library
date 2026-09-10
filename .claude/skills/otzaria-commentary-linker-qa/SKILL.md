@@ -7,8 +7,9 @@ description: >
   a links file ("תבדוק את הקישורים", "אמת את קובץ הקישורים", "QA על הלינקים", "בדיקת
   קישורים של X על Y", "ביקורת על הקישורים"), after a linker run reports low-confidence
   lines, for batch audits of many books, or when reviewing whether רש"י/תוס'/בד"ה lines
-  are wrongly linked as commentary→base text instead of super_commentary→that intermediate
-  book. Not when creating or rewriting the links themselves (that is
+  point their `path_2` at the base text instead of at that intermediate book, or when a
+  citing-named file still carries `commentary`/`super_commentary` instead of `source`
+  (reversed link direction). Not when creating or rewriting the links themselves (that is
   otzaria-commentary-linker).
 ---
 
@@ -43,7 +44,7 @@ illustrative only — never assume the citing title, author byline, or target ge
 ## Companion docs
 
 - Creation rules (must re-read before QA): `.claude/skills/otzaria-commentary-linker/SKILL.md`
-  — especially criterion 4 (super_commentary via ד"ה).
+  — especially criterion 4 (the direction rule, and super-commentary via ד"ה → `path_2`).
 - Condensed schema/heRef: `../otzaria-commentary-linker/references/schema-and-heref.md`
 - DB access: `../otzaria-commentary-linker/references/query_seforim_db.md`
 - Failure modes + optional case study: `references/failure-modes.md` (this skill)
@@ -70,23 +71,46 @@ For a **batch** (many volumes of one series, or many unrelated books), resolve a
 `(title, citing.txt, links.json, primary target, expected linker count)` first, then run
 the same checklist per book and one summary table at the end.
 
+## Link direction — read this before every audit
+
+In a **citing-named** file (`<מפרש>_links.json`, `line_index_1` = a line of the מפרש), the
+only correct dependent-text value is `"Conection Type": "source"`. `seforim.db` stores such a
+link as base→מפרש (`sourceBookId` = the base text), and `source` is the value the generator
+flips into that order (`Generator.kt`: `flip = declaredType == SOURCE` → stored `COMMENTARY`).
+`commentary` / `super_commentary` in a citing-named file get **no flip**: they store the מפרש
+as the base, the מפרש disappears from the commentary panel, and the base text starts showing
+up as a "פירוש" on the מפרש. Sept 2026: 16,093 such entries across 46 files (קרן אורה,
+שפת אמת, ערוך לנר על יבמות, אבן העוזר, ריטב"א על גיטין, חידושי רמב״ן על כתובות) shipped
+inverted through `db_version=27` before this was caught.
+
+**Consequence for this checklist:** the plain-פירוש vs super-commentary distinction is
+carried by `path_2` alone — the base text's file, or the intermediate book's file — not by
+the type string, and the checks below are written that way. `validate_links.py` enforces it
+and raises a `link_direction` **blocker** on any surviving `commentary`/`super_commentary`
+value in a citing-named file.
+
+A **base-named** file (`line_index_1` is a line of the base text, `path_2` is the מפרש) is the
+other valid form — there the stored direction already matches and `commentary` is correct.
+Determine which form the file is before running check 1; a file that mixes both is broken.
+
 ## What "correct" means
 
 A links file passes only if all of these hold:
 
 | # | Check | Severity if broken |
 |---|---|---|
+| -1 | **Direction** — in a citing-named file every dependent-text entry is `"Conection Type": "source"`; no `commentary` / `super_commentary` values survive | `blocker` |
 | 0 | **Source integrity** — citing `.txt` exists, size > 0, opens with expected `<h1>` (the citing title), real Hebrew content; links filename is `*_links.json` (not `*.links.json`) | `blocker` |
-| 1 | **Completeness** — every non-heading, non-blank, non-front-matter, non-colophon citing line has **exactly one** commentary/super_commentary entry | `blocker` |
-| 2 | **No duplicates** — no `line_index_1` more than once among commentary+super_commentary (`linker` duplicates allowed) | `blocker` |
-| 3 | **Schema** — commentary/super_commentary entries have the five keys `line_index_1`, `line_index_2`, `heRef_2`, `path_2`, `"Conection Type"` (missing second `n`), plus `ref_2` on a Sefaria target (check 9); `linker` may keep extra `start`/`end` | `blocker` / `major` |
+| 1 | **Completeness** — every non-heading, non-blank, non-front-matter, non-colophon citing line has **exactly one** dependent-text entry (`source`; in a pre-fix file, `commentary`/`super_commentary`) | `blocker` |
+| 2 | **No duplicates** — no `line_index_1` more than once among the dependent-text entries (`linker` duplicates allowed) | `blocker` |
+| 3 | **Schema** — dependent-text entries have the five keys `line_index_1`, `line_index_2`, `heRef_2`, `path_2`, `"Conection Type"` (missing second `n`), plus `ref_2` on a Sefaria target (check 9); `linker` may keep extra `start`/`end` | `blocker` / `major` |
 | 4 | **heRef** — `heRef_2` matches `seforim.db` for `path_2` at `line_index_2 - 1` (0-based DB) | `major` |
 | 5 | **Semantic match** — citing content discusses the chosen target line, not merely the same section/daf/perek | `major` / `minor` / `info` |
-| 6 | **Super-commentary attribution** — when applicable: lines that open by naming an intermediate commentary + ד"ה (or any continuation of that run — `בד"ה`, or any other connective/resumptive opening that links to the previous passage and names no new subject) must be `super_commentary` into that book, **not** `commentary`→primary base text | `major` |
+| 6 | **Super-commentary attribution** — when applicable: lines that open by naming an intermediate commentary + ד"ה (or any continuation of that run — `בד"ה`, or any other connective/resumptive opening that links to the previous passage and names no new subject) must have `path_2` = that intermediate book, **not** the primary base text | `major` |
 | 7 | **Preserve `linker`** — pre-existing `"Conection Type": "linker"` entries stay untouched; do not count them toward commentary coverage | `major` if stripped/altered |
 | 8 | **Daf agreement** — the daf heading the citing line sits under must equal the daf in `heRef_2` | `major` |
 | 9 | **`path_2` resolves** — every **distinct** `path_2` (minus `.txt`) returns a row from `SELECT title FROM book WHERE title = ?` — **exact match, not `LIKE`**. A miss means the generator drops those entries silently (F18). The spelling can't be inferred from the source: Otzaria-native titles are normalized on import and always carry `״`, Sefaria titles keep Sefaria's own `"` **or** `״` | `blocker` |
-| 10 | **`ref_2` present on Sefaria targets** — every commentary/super_commentary entry whose target is a Sefaria book carries a `ref_2` that names the same address as `heRef_2`; Otzaria-native targets correctly have none (F19) | `major` |
+| 10 | **`ref_2` present on Sefaria targets** — every dependent-text entry whose target is a Sefaria book carries a `ref_2` that names the same address as `heRef_2`; Otzaria-native targets correctly have none (F19) | `major` |
 
 ### Check 8 in detail — the highest-precision check available
 
@@ -196,9 +220,9 @@ Structural rules the auditor must enforce:
 
 - JSON loads; root is an array.
 - Split entries by `"Conection Type"`:
-  - `commentary` / `super_commentary` → coverage + duplicate checks; prefer exactly 5 keys.
+  - `source` (and, in a pre-fix file, `commentary` / `super_commentary`) → coverage + duplicate checks; prefer exactly 5 keys.
   - `linker` → preserve; optional count vs expected; **exclude** from coverage/dupe rules.
-- Coverage = every linkable citing line has one commentary **or** super_commentary entry.
+- Coverage = every linkable citing line has exactly one dependent-text entry, whatever its `path_2`.
 - Do **not** stop at green structural output — steps 3–5 are mandatory.
 
 ### 2. heRef / DB gate
@@ -221,15 +245,15 @@ intermediate books):
    Sefaria's own `"` or `״`, so the spelling is never guessable from the source (F18). Run this
    over **every distinct** `path_2`, not a sample — it is cheap and deterministic.
 2. **`ref_2` presence (check 10).** If the resolved book is Sefaria-sourced, every
-   commentary/super_commentary entry targeting it must carry a `ref_2` — the English Sefaria
+   dependent-text entry targeting it must carry a `ref_2` — the English Sefaria
    ref (`"Shabbat 2a:2"`, `"Rashi on Shabbat 6a:13:1"`) naming the same address `heRef_2`
    renders in Hebrew. Missing `ref_2` is a `major`: the weekly sync tool re-resolves
    `line_index_2` from `ref_2` after each Sefaria release, so an entry without it keeps a stale
    line number and silently drifts onto the wrong line (F19). Report it as a count per
    `path_2`. An Otzaria-native target has no Sefaria ref — absence there is correct, not a
    finding.
-3. Sample **≥15–20 random** commentary/super_commentary entries (not only the head of the
-   file); force-include some `super_commentary` if present.
+3. Sample **≥15–20 random** dependent-text entries (not only the head of the file);
+   force-include some whose `path_2` is an intermediate book (רש"י/תוספות), if present.
 4. For each sample: `line` where `bookId=? AND lineIndex=line_index_2-1`; require
    `heRef == heRef_2` exactly.
 5. If DB unreachable: continue, mark DB gate as **limitation** (not a silent pass). Note that
@@ -250,7 +274,7 @@ Scan **every** citing content line, not a sample.
 
 #### Trigger patterns (after stripping outer whitespace; allow `<b>…</b>`)
 
-**Explicit** (always expect `super_commentary` → intermediate book):
+**Explicit** (always expect `path_2` → the intermediate book):
 
 - `רש"י ד"ה` / `ברש"י ד"ה` / `רש"י בד"ה` / `ורש"י ד"ה`
 - `תוס' ד"ה` / `בתוס' ד"ה` / `ותוס' ד"ה` / `תוספות ד"ה` / `בתוספות ד"ה`
@@ -258,19 +282,19 @@ Scan **every** citing content line, not a sample.
 - Any other named intermediate book in the same shape (e.g. `תוספות ישנים`, מהרש"א, …)
   when the line is clearly commenting on that book's lemma
 
-**Continuation (any link to the previous passage) after a super_commentary run:**
+**Continuation (any link to the previous passage) after a super-commentary run:**
 
 - Line opens with `<b>בד"ה</b>` / `בד"ה …`, **or** with **any** connective / resumptive /
   elaborative opening that clearly continues the prior line and names no new subject.
   Continuity is semantic, not a closed trigger list. Familiar examples include `שם`, `והנה`,
   `ונלע"ד`, `אמנם`, `עוד שם`, `עוד כתב`, `שוב כתב`, `בא"ד`, `ועוד` — but an unfamiliar
   equivalent that still means "still on what was just said" is the same rule. Applies when
-  the line immediately follows a line already linked `super_commentary`.
+  the line immediately follows a line already pointed at an intermediate book.
 - When the surrounding block is discussing an intermediate commentary, this is an **implied
   continuation** of that commentator — **not** a primary-text lemma, and **not** a plain
   Gemara continuation either, even though the line carries no `ד"ה` / commentator name.
-- Expect `super_commentary` into that intermediate book (inherit which one from the nearest
-  prior explicit label / prior `super_commentary` `path_2`; reset on a primary-text label
+- Expect `path_2` into that intermediate book (inherit which one from the nearest
+  prior explicit label / prior intermediate `path_2`; reset on a primary-text label
   like `<b>גמרא</b>` / `<b>במשנה</b>` / `<b>פסוק</b>` / a line naming a different commentary /
   new section heading, as appropriate to the genre).
 - Fail as `major` if type is `commentary` and `path_2` is the primary base text — this
@@ -281,7 +305,8 @@ Scan **every** citing content line, not a sample.
 
 **What must be true for triggered lines:**
 
-1. `"Conection Type"` = `super_commentary`
+1. `"Conection Type"` = `source` (as everywhere in the file — the super-commentary relation
+   is in `path_2`, not the type)
 2. `path_2` = the intermediate book (e.g. `תוספות על <מסכת>.txt`, `רש"י על <מסכת>.txt`) —
    **not** the primary base text
 3. `line_index_2` / `heRef_2` point at the lemma line whose דיבור matches the words after ד"ה
@@ -294,7 +319,7 @@ nikud-insensitive), put it in the report as the suggested fix.
 
 #### Partial-fix trap
 
-A pass that converts only **explicit** `בתוס'/ברש"י ד"ה` to `super_commentary` but leaves
+A pass that repoints only the **explicit** `בתוס'/ברש"י ד"ה` lines at the intermediate book but leaves
 continuation lines (`בד"ה` **or** any other connective that continues the prior passage) as
 `commentary`→primary text will look green on structure + heRef and still fail check 6.
 **Never treat "explicit-only" super fixes as done without a full continuation scan** when the
@@ -311,7 +336,7 @@ citing book uses that pattern — and do not limit that scan to the word `בד"�
   new subject (genre-typical examples for Talmudic אחרונים: `שם`, `והנה`, `ונלע"ד`, `אמנם`,
   `עוד שם`, `עוד כתב`, `שוב כתב`, `בא"ד`, and equivalents) — should usually inherit the
   previous target **book**, not just the previous line number, unless a new quote appears. If
-  the previous target was itself `super_commentary`, the inherited target stays in that same
+  the previous target was itself an intermediate book, the inherited target stays in that same
   intermediate book — this is the same trap as check 6/F9, so cross-reference that scan when
   sampling these lines. Judge continuity from the wording; do not require a fixed trigger list.
 
@@ -382,11 +407,11 @@ investigate with nearby lines (classic off-by-one on the same section).
 **סטטוס**: ✅ תקין / ⚠️ דורש תיקונים / ❌ חוסם
 
 ## סיכום
-- רשומות: N (commentary=…, super_commentary=…, linker=…)
+- רשומות: N (source=…, linker=…; כל ערך `commentary`/`super_commentary` = כיוון הפוך, blocker)
 - שורות תוכן צפויות: M | חסרות: … | עודפות: …
 - מקור txt: תקין / … | שם קובץ links: תקין / …
 - heRef מול DB: ok/n (או: DB לא זמין — …)
-- ייחוס ביניים (super_commentary): A מועמדים | B שגויים (type/path)
+- ייחוס ביניים (path_2 → רש"י/תוספות): A מועמדים | B שגויים (path_2)
 - סמנטי: X major, Y minor (מתוך … שנדגמו / כל ה-low-conf)
 
 ## חוסמים (blocker)

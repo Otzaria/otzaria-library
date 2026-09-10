@@ -32,6 +32,12 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 EXPECTED_KEYS = {"line_index_1", "line_index_2", "heRef_2", "path_2", "Conection Type"}
+# Lateral (non base/dependant) references. Written under their own name from either side,
+# never rewritten to "source" — the flip would be meaningless for them.
+LATERAL_TYPES = {
+    "reference", "quotation", "mesorat_hashas", "ein_mishpat", "mishnah_in_talmud",
+    "related", "other", "sifrei_mitzvot", "essay", "allusion", "liturgy", "law", "summary",
+}
 HEADER_RE = re.compile(r"^<h([1-6])>(.*?)</h\1>\s*$", re.I)
 # Generic placeholders / colophons. Author bylines are book-specific — pass --skip-line
 # and/or rely on short-line-after-h1 heuristics via --auto-byline-max-len.
@@ -398,7 +404,32 @@ def main() -> int:
                 # has extras that are known optional — already handled
                 pass
 
-        if ctype not in ("commentary", "super_commentary"):
+        # A citing-named file states the link from the מפרש's side, so the only
+        # correct value is "source" — the one the DB generator flips to the
+        # canonical base→מפרש direction. "commentary"/"super_commentary" here are
+        # the reversed-direction bug: the DB stores the מפרש as the base and the
+        # מפרש never reaches the commentary panel.
+        if ctype == "source":
+            pass
+        elif ctype in ("commentary", "super_commentary"):
+            issues.append({
+                "severity": "blocker", "check": "link_direction",
+                "line_index_1": e.get("line_index_1"),
+                "summary": (
+                    f"Conection Type={ctype!r} in a citing-named file stores the link "
+                    f"backwards (מפרש as base) — must be 'source'"
+                ),
+            })
+        elif ctype in LATERAL_TYPES:
+            # Lateral references are not a base/dependant relation, so they are written
+            # under their own name from either side and get no flip. Legitimate, but
+            # worth surfacing since they don't count toward commentary coverage.
+            issues.append({
+                "severity": "info", "check": "schema",
+                "line_index_1": e.get("line_index_1"),
+                "summary": f"lateral Conection Type {ctype!r} (not a dependent-text link)",
+            })
+        else:
             issues.append({
                 "severity": "major", "check": "schema",
                 "line_index_1": e.get("line_index_1"),
@@ -413,23 +444,18 @@ def main() -> int:
                     "summary": f"{k} is not int: {e[k]!r}",
                 })
 
-        # path_2 may be Gemara OR intermediate book for super_commentary
+        # path_2 may be the base text OR an intermediate book (super-commentary).
+        # Since every entry is "source", path_2 alone carries that distinction.
         path2 = e.get("path_2")
-        if path2 and path2 != expected_path2:
-            if ctype == "super_commentary" and is_intermediate_path(path2):
-                pass  # expected
-            elif ctype == "super_commentary":
-                issues.append({
-                    "severity": "major", "check": "schema",
-                    "line_index_1": e.get("line_index_1"),
-                    "summary": f"super_commentary path_2={path2!r} is not Rashi/Tosafot-like",
-                })
-            else:
-                issues.append({
-                    "severity": "major", "check": "schema",
-                    "line_index_1": e.get("line_index_1"),
-                    "summary": f"path_2={path2!r} (expected {expected_path2!r} for commentary)",
-                })
+        if path2 and path2 != expected_path2 and not is_intermediate_path(path2):
+            issues.append({
+                "severity": "major", "check": "schema",
+                "line_index_1": e.get("line_index_1"),
+                "summary": (
+                    f"path_2={path2!r} is neither the base {expected_path2!r} nor a "
+                    f"Rashi/Tosafot-like intermediate book"
+                ),
+            })
 
     stats["type_counts"] = dict(type_counts)
     if args.expected_linker is not None:
@@ -565,7 +591,9 @@ def main() -> int:
                 continue
             ctype = e.get("Conection Type")
             path2 = e.get("path_2") or ""
-            ok = ctype == "super_commentary" and is_intermediate_path(path2)
+            # The super-commentary relation now lives entirely in path_2: the entry
+            # must point at the intermediate book, not at the base text.
+            ok = is_intermediate_path(path2)
             if ok:
                 super_ok += 1
             else:
@@ -585,8 +613,8 @@ def main() -> int:
                     "check": "super_commentary",
                     "line_index_1": i,
                     "summary": (
-                        f"{kind} label but type={ctype!r} path_2={path2!r} "
-                        f"(expected super_commentary → Rashi/Tosafot)"
+                        f"{kind} label but path_2={path2!r} type={ctype!r} "
+                        f"(expected path_2 → the Rashi/Tosafot book itself)"
                     ),
                     "preview": first_words(raw),
                 })
@@ -608,8 +636,10 @@ def main() -> int:
         conn = sqlite3.connect(f"file:{Path(db_path).as_posix()}?mode=ro", uri=True)
         sample_n = min(args.db_sample, len(commentary_like))
         sample = random.sample(commentary_like, sample_n)
-        # force some supers
-        supers = [e for e in commentary_like if e.get("Conection Type") == "super_commentary"]
+        # Force-sample some entries pointing at an intermediate book (רש"י/תוספות) —
+        # identified by path_2, not by the type: every entry in a citing-named file
+        # is "source".
+        supers = [e for e in commentary_like if is_intermediate_path(e.get("path_2") or "")]
         for e in random.sample(supers, min(5, len(supers))):
             if e not in sample:
                 sample.append(e)

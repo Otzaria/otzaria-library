@@ -29,6 +29,7 @@ Applies to **any** citing book. Named titles below are examples from past audits
 
 | Code | Pattern | What it looks like |
 |---|---|---|
+| **F0** | **Reversed link direction** | A citing-named file carries `"Conection Type": "commentary"` / `"super_commentary"` instead of `"source"`. The generator only flips `source`, so the pair stores as מפרש→base: the מפרש never appears in the commentary panel and the base text shows up as a "פירוש" on it. `blocker`, and it invalidates every other check on the file. Sept 2026: 16,093 entries across 46 files (קרן אורה, שפת אמת, ערוך לנר על יבמות, אבן העוזר, ריטב"א, חידושי רמב״ן על כתובות) shipped this way through `db_version=27`. |
 | F1 | Section-start fallback | `heRef` is the first letter/line of the section but dibbur quotes a later line |
 | F2 | Same section, wrong line | Right daf/perek/siman; target text is a different statement |
 | F3 | Broken continuation chain | Several consecutive citing lines share one wrong `line_index_2` after a bad first guess (`שם` / `בא"ד` / …) |
@@ -36,9 +37,9 @@ Applies to **any** citing book. Named titles below are examples from past audits
 | F5 | Label pollution | Match driven by `שם`/`בגמ'`/`אר"ה` instead of the quote after it |
 | F6 | Plain `בד"ה` on a **direct** base-text commentary | No prior intermediate-commentary context in the book/block; `בד"ה X` means the primary-text lemma — land on that line, not a random nearby line |
 | F7 | Secondary citation | Linked to a work/line mentioned in passing, not the primary subject under the current heading |
-| F8 | Explicit super-commentary → primary text | Line opens `רש"י ד"ה X` / `תוס' ד"ה X` (etc.) but `path_2` is the base text and/or type is `commentary`; should be `super_commentary` onto the intermediate lemma line for X |
-| **F9** | **Continuation (any link to prior passage) → primary text** | Line continues a prior intermediate-commentary discussion — opens with `<b>בד"ה</b> …`, **or** with any other connective/resumptive phrasing that names no new subject (examples: `עוד כתב`, `שוב כתב`, `עוד שם`, `שם`, `והנה`, `ונלע"ד`, `אמנם`, …) — but is still `commentary`→base text. Continuity is semantic, not a closed trigger list; the non-`בד"ה` case is the easier miss. Inherit the intermediate book from the nearest prior explicit label / prior `super_commentary` target |
-| F10 | Partial super-fix | Explicit intermediate+ד"ה converted to `super_commentary`, but later continuations of that run (including non-`בד"ה` openings) left as `commentary`→primary — structural+heRef QA still green |
+| F8 | Explicit super-commentary → primary text | Line opens `רש"י ד"ה X` / `תוס' ד"ה X` (etc.) but `path_2` is the base text; should point at the intermediate lemma line for X. The type stays `source` either way — the relation lives in `path_2` |
+| **F9** | **Continuation (any link to prior passage) → primary text** | Line continues a prior intermediate-commentary discussion — opens with `<b>בד"ה</b> …`, **or** with any other connective/resumptive phrasing that names no new subject (examples: `עוד כתב`, `שוב כתב`, `עוד שם`, `שם`, `והנה`, `ונלע"ד`, `אמנם`, …) — but its `path_2` is still the base text. Continuity is semantic, not a closed trigger list; the non-`בד"ה` case is the easier miss. Inherit the intermediate book from the nearest prior explicit label / prior intermediate `path_2` |
+| F10 | Partial super-fix | Explicit intermediate+ד"ה repointed at the intermediate book, but later continuations of that run (including non-`בד"ה` openings) left pointing at the primary text — structural+heRef QA still green |
 | F11 | Wrong intermediate book | e.g. should be `תוספות ישנים על …` but linked to regular Tosafot or base text (verify lemma in DB) |
 | F12 | Source-file / filename integrity | Citing `.txt` missing/empty/wrong content; or links saved as `*.links.json` instead of `*_links.json` |
 | F13 | False "missing coverage" on front-matter | Author byline (any spelling variant) or colophon (`סליק…` / `תם ונשלם…`) flagged as missing — classify as skip/`info`, not blocker |
@@ -57,9 +58,9 @@ Applies to **any** citing book. Named titles below are examples from past audits
 3. If a better line exists in-window, mark `major` and suggest that `line_index_2` + heRef.
 4. If the citing heading says section X but the link is section Y → almost always `major` (F4).
 5. **F8:** open the intermediate commentary for the same section; find the line headed by
-   `<lemma>`. Suggest that `path_2`, `line_index_2`/`heRef_2`, type `super_commentary`.
+   `<lemma>`. Suggest that `path_2` and its `line_index_2`/`heRef_2`; the type stays `source`.
 6. **F9:** same as F8, but first decide **which** intermediate book by scanning upward for
-   the last explicit intermediate+ד"ה (or last `super_commentary` `path_2`) before a
+   the last explicit intermediate+ד"ה (or last intermediate `path_2`) before a
    primary-text reset label / new section heading.
 7. When DB is available, `LIKE '%lemma%'` on the intermediate book's `line.content` often
    finds the exact row quickly.
@@ -78,7 +79,7 @@ Confirm convention from DB or an existing `_links.json` with the same `path_2`. 
 Talmud-daf targets, Otzaria often stores `"<מסכת> ב., א"` (no word `דף`). If the links file
 disagrees with the DB spelling, that is a real `major` even when the line index is right.
 
-Sample **≥15–20 random** entries per book (and force some `super_commentary`); matching only
+Sample **≥15–20 random** entries per book (and force some with an intermediate `path_2`); matching only
 the first N entries hides drift later in the file.
 
 ## Deriving the trigger list (do this before trusting a clean super-scan)

@@ -22,8 +22,12 @@ if hasattr(sys.stdout, "reconfigure"):
 
 HEADING_RE = re.compile(r"^\s*<\s*h[1-6]\b", re.I)
 REQUIRED = {"line_index_1", "line_index_2", "heRef_2", "path_2", "Conection Type"}
-DEPENDENT_TYPES = {"commentary", "super_commentary", "targum", "midrash", "parshanut",
-                   "dibur_hamatchil", "elucidation", "explication"}
+# "source" = the canonical value of a links file named after the CITING book: the
+# generator flips the pair into base→מפרש order and stores it as COMMENTARY
+# (Generator.kt: `flip = declaredType == SOURCE`). It is a dependent-text link like
+# the rest, not an unknown value, and never reaches the DB as SOURCE.
+DEPENDENT_TYPES = {"source", "commentary", "super_commentary", "targum", "midrash",
+                   "parshanut", "dibur_hamatchil", "elucidation", "explication"}
 REFERENCE_TYPES = {"reference", "quotation", "mesorat hashas", "ein mishpat",
                    "ein mishpat / ner mitsvah", "mishnah in talmud", "related",
                    "related passage", "allusion", "liturgy", "law", "summary",
@@ -78,8 +82,18 @@ def check_links(path: Path, book: Path | None, target: Path | None,
         ctype = str(entry.get("Conection Type", "")).strip().lower()
         if ctype and ctype not in DEPENDENT_TYPES and ctype not in REFERENCE_TYPES:
             warn(f"{tag}: סוג קשר לא מוכר ({ctype!r}) — ייכתב כ-OTHER")
-        if ctype == "source":
-            err(f"{tag}: 'source' וירטואלי ולעולם אינו נשמר — החליפו כיוון בין המקור ליעד")
+        # Direction: a citing-named file (line_index_1 = the מפרש) must declare "source";
+        # "commentary"/"super_commentary" there get no flip and store the pair backwards.
+        # A base-named file (line_index_1 = the base text) is the opposite. The file name
+        # decides which is right, so warn rather than fail.
+        stem = path.name[: -len("_links.json")] if path.name.endswith("_links.json") else ""
+        raw_p2 = str(entry.get("path_2", "")).replace("\\", "/")
+        tgt = raw_p2.rsplit("/", 1)[-1]
+        if tgt.endswith(".txt"):
+            tgt = tgt[:-4]
+        if ctype in {"commentary", "super_commentary"} and tgt and tgt in stem and tgt != stem:
+            err(f"{tag}: הקובץ קרוי על שם המפרש ו-{ctype!r} נשמר בכיוון הפוך — "
+                f"הערך הנכון הוא 'source'")
 
         p2 = str(entry.get("path_2", ""))
         if p2 and not p2.endswith(".txt"):

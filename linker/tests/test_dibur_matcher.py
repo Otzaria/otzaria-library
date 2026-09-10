@@ -91,9 +91,11 @@ class MatchingRegressionTests(unittest.TestCase):
                 "line_index_2": 3,
                 "heRef_2": "בסיס א, א",
                 "path_2": "בסיס.txt",
-                "Conection Type": "commentary",
+                "Conection Type": "source",
             }
-            self.assertEqual(self_check_super_commentary(str(citing), [entry], set()), [3])
+            self.assertEqual(
+                self_check_super_commentary(str(citing), [entry], set(), "בסיס.txt"), [3]
+            )
 
 
 class OverrideTests(unittest.TestCase):
@@ -103,7 +105,7 @@ class OverrideTests(unittest.TestCase):
             "line_index_2": 9,
             "heRef_2": "בסיס א, א",
             "path_2": "בסיס.txt",
-            "Conection Type": "commentary",
+            "Conection Type": "source",
         }
         result = MatchResult(
             entries=[{**entry, "line_index_2": 2}],

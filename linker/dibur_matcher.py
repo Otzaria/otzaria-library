@@ -593,6 +593,9 @@ def match_citing_book(
                 return href
         return f"{title} {fallback_daf}, {fallback_count}"
 
+    # `conn_type` is retained in the signature (and at the call sites) purely as the
+    # caller's own base/intermediate classification — the written entry is always
+    # "source", and the base/super distinction is carried by `path_2`.
     def push_entry(citing_idx: int, target_line: Line, book_key: str, conn_type: str, low_conf: bool,
                    end_line_index: Optional[int] = None, review: Optional[MatchAssessment] = None):
         _cands, title, path, counts = pools_for(book_key)
@@ -602,7 +605,14 @@ def match_citing_book(
             "line_index_2": target_line.line_index,
             "heRef_2": heref,
             "path_2": path.split("/")[-1].split("\\")[-1],
-            "Conection Type": conn_type,
+            # Always "source", never "commentary"/"super_commentary": this file is
+            # named after the citing book, so line_index_1 is the מפרש and path_2 is
+            # what it comments on. "source" is the one value the DB generator flips
+            # to the canonical base→מפרש direction (Generator.kt: `flip = declaredType
+            # == ConnectionType.SOURCE`). Writing "commentary" here stores the pair
+            # backwards and the מפרש never reaches the commentary panel.
+            # `conn_type` stays as the internal base/intermediate distinction.
+            "Conection Type": "source",
         }
         if end_line_index is not None:
             entry["line_index_2_end"] = end_line_index
@@ -826,7 +836,15 @@ def match_citing_book(
     return result
 
 
-def self_check_super_commentary(citing_path: str, entries: List[dict], known_labels: set) -> List[int]:
+def self_check_super_commentary(
+    citing_path: str, entries: List[dict], known_labels: set, base_path_2: str,
+) -> List[int]:
+    """Lines that read as super-commentary but were not pointed at an intermediate book.
+
+    Since every entry is written as "source" (see push_entry), a super-commentary
+    entry is identified by its `path_2` — the intermediate book (רש"י/תוספות/…)
+    rather than `base_path_2`, the base text.
+    """
     by_line = {e["line_index_1"]: e for e in entries}
     flagged: List[int] = []
     for ln in parse_book(citing_path):
@@ -844,7 +862,7 @@ def self_check_super_commentary(citing_path: str, entries: List[dict], known_lab
         explicit = detect_super_commentary_opener(trigger_text, active_intermediate=None)
         bare_dh = bool(_BARE_DH_RE.match(trigger_text))
         entry = by_line.get(ln.line_index)
-        is_super_entry = bool(entry and entry.get("Conection Type") == "super_commentary")
+        is_super_entry = bool(entry and entry.get("path_2") != base_path_2)
 
         # Explicit names are definite F8 candidates. Bare ד"ה lines are F9/F6
         # candidates: some are direct-base or split-parenthesis false positives,
@@ -945,13 +963,25 @@ def load_existing_links(path: str) -> List[dict]:
         return []
 
 
+# Dependent-text types collapse to one merge key. A file written before the
+# direction fix carries "commentary"/"super_commentary" where we now write
+# "source"; without this the stale entries match no new key, survive the merge,
+# and end up duplicated alongside the new ones — in both directions.
+_DEPENDENT_MERGE_TYPES = {"source", "commentary", "super_commentary"}
+
+
+def _merge_key(entry: dict) -> Tuple[Optional[str], str]:
+    conn = entry.get("Conection Type")
+    return entry.get("path_2"), "dependent" if conn in _DEPENDENT_MERGE_TYPES else str(conn)
+
+
 def merge_entries(existing: List[dict], new_entries: List[dict]) -> Tuple[List[dict], dict]:
-    new_keys = {(e["path_2"], e["Conection Type"]) for e in new_entries}
+    new_keys = {_merge_key(e) for e in new_entries}
     kept: List[dict] = []
     removed_count = 0
     insert_at: Optional[int] = None
     for e in existing:
-        key = (e.get("path_2"), e.get("Conection Type"))
+        key = _merge_key(e)
         if key in new_keys:
             removed_count += 1
             if insert_at is None:
@@ -1007,7 +1037,10 @@ def main():
 
     citing_lines_for_check = parse_book(args.citing)
     known_labels = (set(FIXED_KNOWN_LABELS) | build_frequent_labels(citing_lines_for_check)) - _DH_MARKER_KEYS
-    flagged = self_check_super_commentary(args.citing, result.entries, known_labels)
+    base_path_2 = args.target.split("/")[-1].split("\\")[-1]
+    flagged = self_check_super_commentary(
+        args.citing, result.entries, known_labels, base_path_2
+    )
 
     if args.qa_report:
         write_qa_report(args.qa_report, result, args.citing, flagged)
@@ -1024,7 +1057,8 @@ def main():
         print("existing entries: " + str(summary['existing_total']))
         print("stale entries that will be replaced: " + str(summary['removed_stale']))
         for path_2, conn in summary["replaced_keys"]:
-            print("  - path_2=" + repr(path_2) + " Conection Type=" + repr(conn))
+            label = "commentary/super_commentary/source" if conn == "dependent" else conn
+            print("  - path_2=" + repr(path_2) + " Conection Type=" + repr(label))
         print("entries kept untouched: " + str(summary['kept_untouched']))
         print("new entries being written in their place: " + str(summary['added_new']))
         if args.confirm_merge:
@@ -1043,7 +1077,7 @@ def main():
     for idx, why in result.unresolved[:40]:
         print("  line " + str(idx) + ": " + why)
     print("skipped as front-matter: " + str(result.skipped_frontmatter))
-    print("self-check F8/F9 flags (opener text but typed commentary): " + str(flagged))
+    print("self-check F8/F9 flags (opener text but path_2 = the base text): " + str(flagged))
     return 0
 
 

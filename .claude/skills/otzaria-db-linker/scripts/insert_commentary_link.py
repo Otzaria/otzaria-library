@@ -288,7 +288,23 @@ def write_satellites(
     return anchors, ranges
 
 
+def normalize_type_name(name: str) -> str:
+    """Map a `_links.json` "Conection Type" onto the name actually stored in `link`.
+
+    A citing-named links file states the relation from the מפרש's side, so its
+    canonical value is `source`. SOURCE is a *virtual* type -- the app derives it by
+    inverting a stored link and never reads a stored SOURCE row. This script already
+    writes every link flipped (sourceBookId = the real target, targetBookId = the
+    citing book), which is exactly the direction `source` asks for; so the value that
+    must land in the row is COMMENTARY. This mirrors the library generator:
+    `flip = declaredType == ConnectionType.SOURCE; storedType = COMMENTARY`
+    (SeforimLibrary otzariasqlite/Generator.kt).
+    """
+    return "commentary" if name.strip().lower() == "source" else name
+
+
 def resolve_connection_type_id(cur: sqlite3.Cursor, name: str) -> int:
+    name = normalize_type_name(name)
     row = cur.execute(
         "SELECT id FROM connection_type WHERE upper(name) = upper(?)", (name,)
     ).fetchone()
@@ -420,10 +436,14 @@ def run(config_path: Path) -> int:
                     report["deleted_for_replace"][label] = cnt
                     print(f'Deleted {cnt} stale "{label}" links before re-inserting (full wipe for this citing book).')
 
-        for (type_name, real_target_title), entries in groups.items():
+        verify_targets: dict[str, tuple[int, int]] = {}
+        for (json_type_name, real_target_title), entries in groups.items():
+            type_name = normalize_type_name(json_type_name)
             type_id = resolve_connection_type_id(cur, type_name)
             type_upper = type_name.upper()
-            group_label = f"{type_name} -> {real_target_title}"
+            group_label = f"{json_type_name} -> {real_target_title}"
+            if type_name != json_type_name:
+                group_label += f" (stored as {type_upper})"
 
             try:
                 real_target_id, real_target_order, real_target_lines = resolve_target(
@@ -496,6 +516,10 @@ def run(config_path: Path) -> int:
                     [p["tuple"] for p in pending],
                 )
                 report["inserted"][group_label] = len(pending)
+                # Keep the resolved identity: `group_label` is a display string and
+                # may carry a suffix (e.g. "(stored as COMMENTARY)"), so it must never
+                # be split back apart to recover these.
+                verify_targets[group_label] = (type_id, real_target_id)
                 print(f'Inserted {len(pending)} "{group_label}" links.')
 
                 # Optional satellite tables (link_anchor / link_range / link_coverage) —
@@ -562,10 +586,7 @@ def run(config_path: Path) -> int:
         print(json.dumps(report, ensure_ascii=False, indent=2))
 
         if not dry_run:
-            for group_label in report["inserted"]:
-                type_name, real_target_title = group_label.split(" -> ", 1)
-                type_id = resolve_connection_type_id(cur, type_name)
-                real_target_id = target_book_cache[real_target_title][0]
+            for group_label, (type_id, real_target_id) in verify_targets.items():
                 verify = cur.execute(
                     "SELECT COUNT(*) FROM link WHERE sourceBookId=? AND targetBookId=? AND connectionTypeId=?",
                     (real_target_id, citing_id, type_id),
