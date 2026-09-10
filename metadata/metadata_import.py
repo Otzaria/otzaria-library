@@ -18,6 +18,53 @@ def get_source(csv_file_path: str) -> dict[str, str]:
     return all_sources
 
 
+# Line 2 of an Otzaria book is the author, but only when the book actually opens with
+# the <h1> title line — and even then the author line may simply be absent, leaving the
+# book's first content line in its place. Taking content[1] unconditionally is what made
+# "(א) מטור" the author of שער הציון (no <h1> at all) and "(א) בפ\"ג מה' ציצית הלכה ז':"
+# the author of הערות על שות רבי משולם איגרא (<h1>, no author line).
+#
+# The job here is only to reject lines that are structurally *content*, not to validate
+# author names: plenty of legitimate author lines carry inline markup
+# ("<b>רבי יעקב בן יעקב משה לורברבוים מליסא</b>") or a wrapped/BOM-prefixed title above
+# them ("<u><h1>משמרות כהונה חלק א</h1></u>"), and those must keep working.
+_H1_LINE = re.compile(r"^(?:<[a-zA-Z][^>]*>\s*)*<h1[\s>]", re.IGNORECASE)
+# a few books head themselves with <h3> instead of <h1> (פנים מאירות על זבחים); accept
+# any heading whose text *is* the book title, which a content heading never is
+_ANY_HEADING = re.compile(r"^(?:<[a-zA-Z][^>]*>\s*)*<h[1-6][\s>](.*?)</h[1-6]>",
+                          re.IGNORECASE | re.DOTALL)
+# a heading, a footnote marker or a line break opens content, never an author
+_CONTENT_LINE = re.compile(r"^<(?:h[1-6]|sup|br)\b", re.IGNORECASE)
+# "(א) ..." / "1 ..." — the note markers of the הערות-על-X books
+_NOTE_MARKER = re.compile(r"^(?:[0-9]|\([^)]{1,4}\))")
+_INLINE_TAG = re.compile(r"</?[a-zA-Z][^>]*>")
+
+
+def _is_title_line(line: str, title: str | None) -> bool:
+    """True when line 1 is the book's title line rather than its first content line."""
+    if _H1_LINE.match(line):
+        return True
+    m = _ANY_HEADING.match(line)
+    return bool(m and title and _INLINE_TAG.sub("", m.group(1)).strip() == title.strip())
+
+
+def extract_author(content: list[str], title: str | None = None) -> str | None:
+    """content = the file's lines, title = the book's title (used to recognise a
+    non-<h1> title line). Returns the author from line 2 with any inline markup
+    stripped, or None when the book carries no author line."""
+    if len(content) < 2:
+        return None
+    if not _is_title_line(content[0].lstrip("\ufeff").strip(), title):
+        return None
+    line = content[1].lstrip("\ufeff").strip()
+    if _CONTENT_LINE.match(line) or _NOTE_MARKER.match(line):
+        return None
+    author = _INLINE_TAG.sub("", line).strip()
+    if not author or author.endswith(":") or "\u00a9" in author or _NOTE_MARKER.match(author):
+        return None
+    return author
+
+
 def files_list(base_folder: str) -> tuple[dict[str, str], list[str]]:
     files_list = {}
     folders_list = []
@@ -162,7 +209,7 @@ def main():
             content = file.read().split("\n")
         if len(content) < 2:
             continue
-        author = content[1]
+        author = extract_author(content, key)
         title = content[0].replace("<h1>", "").replace("</h1>", "").strip()
         if title != key and dif_metadata.get(title):
             new_entry = dif_metadata[title]

@@ -32,6 +32,12 @@ MB_BOOK_ID = 5832
 F_OTZ = "otzaria_mb.txt"
 F_TASH = "תא שמע.txt"
 F_SH = "שער הציון.txt"
+# Otzaria book preamble: line 1 = <h1> title, line 2 = author. Every packaged book
+# carries it, and metadata.json's author is scraped from line 2 — emitting the notes
+# without it made "(א) מטור" the author of שער הציון. The notes therefore start at
+# file line 3, which every "line_index_2" below accounts for automatically (they are
+# derived from len(sh_lines), so seeding the list is the only change needed).
+SH_PREAMBLE = ["<h1>שער הציון</h1>", "רבי ישראל מאיר הכהן"]
 OUT_LINKS = HERE / "shaar_links.json"
 OUT_INDEX = HERE / "viewer_index.json"
 
@@ -198,7 +204,7 @@ def main():
     # ---------- 2. export Tashma MB (markers inline) + שער הציון notes ----------
     print("exporting", F_TASH, "and", F_SH, "...")
     tash_lines = []
-    sh_lines = []
+    sh_lines = list(SH_PREAMBLE)
     tash_hdr_gem = {}      # siman_gem -> file line (0-based)
     sh_hdr_gem = {}        # siman_gem -> file line
     note_lines = []        # k-th שער-הציון match -> its 1-based file line (document order)
