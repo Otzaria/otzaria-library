@@ -10,6 +10,11 @@ name: Validate manual link refs
 # הבדיקה כאן משחזרת את החלק הניתן להכרעה מקומית של אותו חוזה, כך שאותה טעות
 # נכשלת תוך שניות ב-PR שמכניס אותה. היא בודקת רק קבצים שה-PR נגע בהם, בהשוואה
 # מילולית מדויקת של שם היעד מול תצלום כותרות ספריא — בדיוק כמו הכלי.
+#
+# ב-10/09/2026 הפייפליין השבועי נעצר שלוש פעמים ברצף על טעויות שכולן ניתנות
+# להכרעה כאן: קובץ שנשמר ב-CRLF, ו-ref_1/ref_2 בצורה הקנונית של ספריא במקום
+# בצורה שהמחולל מייצר (פסיק ושני רווחים, ולספרי הזוהר גם index_offsets_by_depth
+# שמוחל על ה-ref האנגלי בלבד). שלוש הבדיקות האלה נוספו כאן בעקבות זה.
 
 on:
   pull_request:
@@ -18,6 +23,8 @@ on:
       - 'manual_links_sync.json'
       - 'manual_links_packaging.py'
       - '.github/data/sefaria_he_titles.txt'
+      - '.github/data/sefaria_ref_prefixes.tsv'
+      - '.github/scripts/refresh_sefaria_ref_prefixes.py'
       - '.github/scripts/test_validate_manual_links_refs.py'
       - '.github/scripts/validate_manual_links_refs.py'
       - '.github/workflows/validate-manual-links-refs.yml'
@@ -57,7 +64,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate that new Sefaria-targeted records carry ref_2
+      - name: Validate byte contract, ref shapes and ref_2 ownership
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           PYTHONIOENCODING: utf-8

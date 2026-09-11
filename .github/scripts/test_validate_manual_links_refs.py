@@ -56,6 +56,88 @@ def git_fixture(workspace):
     git(workspace, "config", "diff.renames", "true")
 
 
+PREFIXES = {
+    # A complex schema: the node loop appends ", " and processNode one more space.
+    "Zohar Chadash, Vaetchanan,  ": [],
+    "Zohar, Noach,  ": [0, 14, 17, 21, 27, 34, 38, 45, 54, 60, 68, 74, 83, 93, 117, 121],
+    # A simple schema whose *title* happens to contain a comma: single space.
+    "Shulchan Arukh, Orach Chayim ": [],
+    "Genesis ": [],
+}
+
+
+class RefShapeTest(unittest.TestCase):
+    """The separator and offset rules, which are what resolveRef actually keys on."""
+
+    def shape(self, ref):
+        return validator.check_ref_shape("f[0].ref_1", ref, PREFIXES)
+
+    def test_generator_form_is_accepted(self):
+        self.assertEqual(self.shape("Zohar Chadash, Vaetchanan,  1"), [])
+        self.assertEqual(self.shape("Zohar, Noach,  16:122"), [])
+        self.assertEqual(self.shape("Genesis 1:1"), [])
+
+    def test_a_comma_inside_a_book_title_keeps_its_single_space(self):
+        # The bug this guards against is "fixing" it into the node form.
+        self.assertEqual(self.shape("Shulchan Arukh, Orach Chayim 50:1"), [])
+        self.assertTrue(self.shape("Shulchan Arukh, Orach Chayim,  50:1"))
+
+    def test_sefaria_canonical_separator_is_rejected_with_the_exact_fix(self):
+        problems = self.shape("Zohar Chadash, Vaetchanan 1")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("Zohar Chadash, Vaetchanan,  ", problems[0])
+
+    def test_local_paragraph_number_under_an_offset_is_rejected(self):
+        problems = self.shape("Zohar, Noach,  16:1")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("122", problems[0])
+
+    def test_a_section_beyond_the_offset_table_is_rejected(self):
+        self.assertTrue(self.shape("Zohar, Noach,  99:1"))
+
+    def test_an_unknown_book_is_skipped_rather_than_guessed(self):
+        # A snapshot older than the corpus must never invent a failure.
+        self.assertEqual(self.shape("Totally New Book, Some Node 3"), [])
+        self.assertEqual(self.shape("Totally New Book 3"), [])
+
+
+class ByteContractTest(unittest.TestCase):
+    """ManualLinksDocument.read rejects these before JSON parsing even starts."""
+
+    def check(self, payload: bytes):
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = Path(temporary)
+            (workspace / "a_links.json").write_bytes(payload)
+            return validator.check_bytes(workspace, "a_links.json")
+
+    def test_lf_only_is_accepted(self):
+        self.assertEqual(self.check(b'[\n  {}\n]\n'), [])
+
+    def test_crlf_is_rejected(self):
+        problems = self.check(b'[\r\n  {}\r\n]\r\n')
+        self.assertEqual(len(problems), 1)
+        self.assertIn("CRLF", problems[0])
+
+    def test_bom_is_rejected(self):
+        self.assertTrue(any("BOM" in p for p in self.check(b'\xef\xbb\xbf[]\n')))
+
+    def test_a_second_trailing_newline_is_rejected(self):
+        self.assertTrue(any("trailing" in p for p in self.check(b'[]\n\n')))
+
+
+class SnapshotIsRealTest(unittest.TestCase):
+    """The committed snapshot must describe the corpus the refs actually use."""
+
+    def test_committed_prefixes_cover_the_shapes_the_gate_depends_on(self):
+        workspace = Path(__file__).resolve().parents[2]
+        prefixes = validator.ref_prefixes(workspace)
+        if prefixes is None:
+            self.skipTest(f"{validator.PREFIXES_PATH} is not checked in")
+        for prefix in PREFIXES:
+            self.assertIn(prefix, prefixes, f"{prefix!r} missing from the snapshot")
+        self.assertEqual(prefixes["Zohar, Noach,  "][15], 121)
+
+
 class ValidateManualLinksRefsTest(unittest.TestCase):
     def test_adapter_roots_are_checked_after_lineage_exists(self):
         with tempfile.TemporaryDirectory() as temporary:

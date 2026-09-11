@@ -24,6 +24,38 @@ The Sefaria title list is read from a checked-in snapshot
 (``.github/data/sefaria_he_titles.txt``) because the multi-gigabyte export is
 not available to a pull-request runner.  When the snapshot is missing the check
 degrades to a no-op rather than guessing, so it can never invent a failure.
+
+Byte contract
+-------------
+``ManualLinksDocument.read`` rejects a UTF-8 BOM, any CR, and more than one
+trailing LF before it even parses the JSON.  Those are reproduced verbatim here:
+a file saved with Windows line endings aborts the weekly sync just as late as a
+missing ref_2, and the diff that introduces it is invisible in review.
+
+Ref shape
+---------
+``resolveRef`` looks a ref up in ``refsByRef``, whose keys the generator builds
+as ``<prefix><numeric address>``.  The prefix is *not* derivable from the ref
+text: a comma may separate a node (``Zohar Chadash`` + ``Vaetchanan`` ->
+``"Zohar Chadash, Vaetchanan,  "``, comma and two spaces) or may belong to the
+book's own title (``"Shulchan Arukh, Orach Chayim "`` is one simple-schema book,
+single space).  ``.github/data/sefaria_ref_prefixes.tsv`` is a snapshot of every
+legal prefix, produced from the export by ``refresh_sefaria_ref_prefixes.py``.
+
+A ref that exactly matches a known prefix plus a numeric address is accepted.
+One that matches no prefix even after collapsing separators is *skipped* -- it
+names a book this snapshot does not know, and inventing a failure there would be
+guessing.  Only the middle case fails: the ref names a prefix we do know but
+spells its separators differently, which is precisely the Sefaria-canonical form
+(``Zohar Chadash, Vaetchanan 1``) that resolves to zero rows.
+
+Offsets
+-------
+For a node carrying ``index_offsets_by_depth`` the generator adds the offset to
+the *English* paragraph number and not to the Hebrew heRef, so heRef
+``ספר הזהר, נח,  טז, א`` is ref ``Zohar, Noach,  16:122`` and never ``16:1``.
+A legal paragraph is therefore always greater than its section's offset; a
+smaller one is impossible, so rejecting it cannot produce a false failure.
 """
 
 from __future__ import annotations
@@ -32,6 +64,7 @@ import argparse
 import functools
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -41,6 +74,15 @@ PACKAGING_NAME = "manual_links_packaging.py"
 
 
 TITLES_PATH = ".github/data/sefaria_he_titles.txt"
+PREFIXES_PATH = ".github/data/sefaria_ref_prefixes.tsv"
+
+# The address the generator appends after a prefix: integers, or a Talmud daf
+# such as "2a", joined by ":" (see toEnglishDaf / shiftedIdx).
+ADDRESS_RE = re.compile(r"\d+[ab]?(?::\d+[ab]?)*$")
+# Separator-insensitive view of a prefix: every run of commas and spaces becomes
+# a single space. Two prefixes that differ only in punctuation collapse together,
+# which is exactly the confusion this gate exists to catch.
+SEPARATORS_RE = re.compile(r"[,\s]+")
 
 
 def sefaria_he_titles(workspace: Path) -> set[str] | None:
@@ -54,6 +96,92 @@ def sefaria_he_titles(workspace: Path) -> set[str] | None:
         if line and not line.startswith("#"):
             titles.add(line)
     return titles or None
+
+
+def ref_prefixes(workspace: Path) -> dict[str, list[int]] | None:
+    """Legal ref prefixes mapped to their offsets, or None when absent.
+
+    Returning None (not an empty dict) keeps a missing snapshot a no-op, the same
+    way the title list behaves: a gate that cannot see the corpus must stay quiet.
+    """
+    path = workspace / PREFIXES_PATH
+    if not path.is_file():
+        return None
+    table: dict[str, list[int]] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line or line.startswith("#"):
+            continue
+        prefix, _, offsets = line.partition("\t")
+        if not prefix:
+            continue
+        table[prefix] = [int(v) for v in offsets.split(",")] if offsets else []
+    return table or None
+
+
+@functools.cache
+def collapsed(text: str) -> str:
+    return SEPARATORS_RE.sub(" ", text).strip()
+
+
+def check_ref_shape(
+    where: str, ref: str, prefixes: dict[str, list[int]]
+) -> list[str]:
+    """Reject a ref the generator could never have emitted. Never guess."""
+    problems: list[str] = []
+    exact = [p for p in prefixes if ref.startswith(p) and ADDRESS_RE.fullmatch(ref[len(p):])]
+    if not exact:
+        stem = ref[: ref.rfind(" ") + 1] if " " in ref else ""
+        # Find the prefix the author meant, ignoring how they punctuated it. A
+        # hit here is proof of a wrong spelling, not a guess about a new book.
+        near = sorted({p for p in prefixes if collapsed(p) == collapsed(stem)})
+        if near:
+            suggestion = near[0] if len(near) == 1 else " | ".join(near)
+            problems.append(
+                f"{where}: ref {ref!r} is not the form the generator emits; "
+                f"resolveRef would find 0 rows. Expected prefix {suggestion!r} "
+                f"(note the exact commas and spaces)"
+            )
+        # No near match at all: a book outside this snapshot. Stay silent.
+        return problems
+
+    prefix = max(exact, key=len)
+    offsets = prefixes[prefix]
+    address = ref[len(prefix):].split(":")
+    if offsets and len(address) == 2 and address[0].isdigit() and address[1].isdigit():
+        section, paragraph = int(address[0]), int(address[1])
+        if section > len(offsets):
+            problems.append(
+                f"{where}: ref {ref!r} names section {section} but "
+                f"{prefix!r} has only {len(offsets)}"
+            )
+        elif paragraph <= offsets[section - 1]:
+            problems.append(
+                f"{where}: ref {ref!r} ignores index_offsets_by_depth -- section "
+                f"{section} starts after {offsets[section - 1]}, so the first "
+                f"paragraph is {offsets[section - 1] + 1}, not {paragraph}. The "
+                f"offset applies to the English ref only, never to heRef"
+            )
+    return problems
+
+
+def check_bytes(workspace: Path, path: str) -> list[str]:
+    """Mirror ``ManualLinksDocument.read``'s pre-parse gate, byte for byte."""
+    try:
+        raw = (workspace / path).read_bytes()
+    except OSError as exc:
+        return [f"{path}: cannot read ({exc})"]
+    problems: list[str] = []
+    if raw.startswith(b"\xef\xbb\xbf"):
+        problems.append(f"{path}: UTF-8 BOM is forbidden")
+    if b"\r" in raw:
+        lines = raw.count(b"\r")
+        problems.append(
+            f"{path}: CRLF/CR is forbidden ({lines} line(s)); save with LF endings"
+        )
+    trailing = len(raw) - len(raw.rstrip(b"\n"))
+    if trailing > 1:
+        problems.append(f"{path}: more than one trailing LF ({trailing})")
+    return problems
 
 
 @functools.cache
@@ -127,21 +255,36 @@ def changed_link_files(workspace: Path, base: str, roots: list[str]) -> list[str
     ]
 
 
-def check_file(workspace: Path, path: str, sefaria: set[str]) -> list[str]:
+def check_file(
+    workspace: Path,
+    path: str,
+    sefaria: set[str],
+    prefixes: dict[str, list[int]] | None = None,
+) -> list[str]:
+    # The byte gate runs before parsing, exactly as the tool does: a CR makes the
+    # document illegal even though json.loads is perfectly happy with it.
+    byte_problems = check_bytes(workspace, path)
     try:
         records = json.loads((workspace / path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        return [f"{path}: cannot parse ({exc})"]
+        return byte_problems + [f"{path}: cannot parse ({exc})"]
     if not isinstance(records, list):
         return [f"{path}: top level must be an array"]
 
-    problems: list[str] = []
+    problems: list[str] = list(byte_problems)
     for index, record in enumerate(records):
         if not isinstance(record, dict):
             problems.append(f"{path}[{index}]: record must be an object")
             continue
         if "ref_1" in record and "ref_2" in record:
             problems.append(f"{path}[{index}]: has both ref_1 and ref_2")
+        if prefixes is not None:
+            for field in ("ref_1", "ref_2"):
+                value = record.get(field)
+                if isinstance(value, str) and value:
+                    problems.extend(
+                        check_ref_shape(f"{path}[{index}].{field}", value, prefixes)
+                    )
         target = record.get("path_2")
         if not isinstance(target, str) or not target:
             problems.append(f"{path}[{index}]: missing path_2")
@@ -194,13 +337,21 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{TITLES_PATH} is missing; skipping (no guess is better than a wrong one).")
         return 0
 
+    prefixes = ref_prefixes(workspace)
+    if prefixes is None:
+        print(f"{PREFIXES_PATH} is missing; ref shapes are not checked this run.")
+
     problems: list[str] = []
     for path in files:
-        problems.extend(check_file(workspace, path, sefaria))
+        problems.extend(check_file(workspace, path, sefaria, prefixes))
 
-    print(f"Validated {len(files)} manual-link file(s) against {len(sefaria)} Sefaria titles.")
+    known = len(prefixes) if prefixes else 0
+    print(
+        f"Validated {len(files)} manual-link file(s) against {len(sefaria)} Sefaria "
+        f"titles and {known} ref prefixes."
+    )
     if not problems:
-        print("OK: ref_2 presence matches Sefaria ownership on every record.")
+        print("OK: byte contract, ref shapes and ref_2 ownership all hold.")
         return 0
 
     for problem in problems[: args.max_report]:
