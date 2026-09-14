@@ -1,0 +1,3449 @@
+<!doctype html>
+<!--
+  ========================================================
+  מקשר הערות אוטומטי - כלי יחיד (Single File Application)
+  ========================================================
+  הקובץ כולל את כל ממשק המשתמש (HTML), העיצוב (CSS) והלוגיקה (JavaScript).
+  הוא נבנה כך שניתן יהיה להוריד אותו ולעבוד איתו בצורה מקומית (Offline).
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>מקשר הערות אוטומטי</title>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y=".9em" font-size="52">🔗</text></svg>' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* 
+      ========================
+      משתני עיצוב גלובליים
+      ========================
+    */
+    :root{
+      /* פלטת הצבעים מותאמת לשפת העיצוב של otzaria.org (חם, גווני חום-קרם) */
+      --bg:#fefbf6;
+      --card:#ffffff;
+      --text:#1c1b1a;
+      --muted:#78716c;
+      --line:#e7e0d8;
+      --accent:#6b5d4f;
+      --accent2:#544539;
+      --secondary:#8b7355;
+      --gold:#9c7c4f;
+      --ok:#16a34a;
+      --warn:#f59e0b;
+      --err:#ef4444;
+      --shadow:0 10px 24px rgba(28,25,20,.08);
+      --radius:16px;
+      --radiusSm:12px;
+      --panelBg:#f4ede3;
+      --panelBorder:#e3d4bd;
+      --panelShadow:0 10px 22px rgba(107,93,79,.12);
+      --font-heading:"Frank Ruhl Libre","Segoe UI",Georgia,serif;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:"Segoe UI",system-ui,-apple-system,Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      padding:24px;
+      line-height:1.55;
+    }
+
+    .wrap{max-width:1320px;margin:0 auto}
+
+    /* 
+      ========================
+      אזור הכותרת (Hero)
+      ========================
+    */
+    .hero{
+      background:
+        radial-gradient(120% 140% at 15% 0%, rgba(107,93,79,.08), transparent 60%),
+        radial-gradient(120% 140% at 100% 100%, rgba(139,115,85,.08), transparent 60%),
+        var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:20px;
+      margin-bottom:16px;
+      text-align:center;
+    }
+
+    .heroTitleRow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      direction:ltr;
+      margin-bottom:6px;
+    }
+
+    .heroTitleRow h1{
+      margin:0;
+      font-family:var(--font-heading);
+      font-size:34px; /* טקסט מוגדל */
+      font-weight:900;
+      letter-spacing:.2px;
+      color:var(--text);
+      direction:rtl;
+    }
+
+    .heroTitleRow .icon{
+      width:36px;height:36px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--panelBg);
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;
+      box-shadow:0 6px 14px rgba(107,93,79,.10);
+      flex:0 0 auto;
+    }
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px; /* טקסט מוגדל */
+      max-width:860px;
+      margin-inline:auto;
+    }
+
+    .hero a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .hero a:hover{ text-decoration:underline; }
+    .hero a.smallLink{ font-size:15px; font-weight:900; }
+
+    /* 
+      ========================
+      מבנה כרטיסיות
+      ========================
+    */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hd{
+      padding:14px 16px;
+      background:var(--panelBg);
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .hd b{font-size:13px;font-family:var(--font-heading);font-weight:700;color:var(--accent2);letter-spacing:.2px}
+    .bd{padding:18px}
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .row + .row{margin-top:12px}
+    .row.center{justify-content:center;text-align:center}
+    .row.stackOnMobile{justify-content:center}
+
+    @media (max-width:560px){
+      .row.stackOnMobile > *{flex:1 1 100%}
+      .row.stackOnMobile button{width:100%;justify-content:center}
+      input[type="text"]{min-width:0;width:100%}
+      .rightTools{width:100%;justify-content:center}
+      .hero{padding:16px 14px}
+      .heroTitleRow h1{font-size:28px} /* התאמה למובייל */
+    }
+
+    .hint{color:var(--muted);font-size:12px}
+
+    /* 
+      ========================
+      עיצוב כפתורים ושדות קלט
+      ========================
+    */
+    button{
+      cursor:pointer;
+      padding:10px 14px;
+      border-radius:var(--radiusSm);
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      transition:background .15s ease,border-color .15s ease,transform .06s ease,box-shadow .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+      font-weight:650;
+    }
+
+    button:hover{
+      background:var(--panelBg);
+      border-color:var(--panelBorder);
+      box-shadow:0 6px 14px rgba(107,93,79,.08);
+    }
+
+    button:active{transform:translateY(1px)}
+    button:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+    .primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(107,93,79,.18)}
+    .primary:hover{background:var(--accent2);border-color:var(--accent2);box-shadow:0 8px 20px rgba(107,93,79,.24)}
+    .ghost{background:#fff}
+    .ghost:not(:disabled){border-color:var(--accent);color:var(--accent)}
+    .ghost:not(:disabled):hover{background:var(--panelBg)}
+
+    /* כפתור בולט להורדת אופליין */
+    .btn-offline {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      font-weight: 700;
+    }
+    .btn-offline:hover {
+      background: #dcfce7;
+      border-color: #4ade80;
+    }
+
+    .rightTools{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    input[type="text"]{
+      padding:10px 12px;
+      border-radius:var(--radiusSm);
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      min-width:320px;
+      outline:none;
+    }
+
+    input[type="text"]:focus{
+      border-color:rgba(107,93,79,.5);
+      box-shadow:0 0 0 3px rgba(107,93,79,.14);
+    }
+
+    select.styledSelect {
+      padding: 8px 12px;
+      border-radius: var(--radiusSm);
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      max-width: 320px;
+      cursor: pointer;
+    }
+
+    select.styledSelect:focus {
+      border-color: rgba(107,93,79,.5);
+      box-shadow: 0 0 0 3px rgba(107,93,79,.14);
+    }
+
+    /* 
+      ========================
+      אזור הגדרות והגדרות מתקדמות
+      ========================
+    */
+    .miniPanel{
+      width:100%;
+      max-width:1120px;
+      margin-inline:auto;
+      border:1px solid var(--panelBorder);
+      border-radius:18px;
+      background:var(--panelBg);
+      box-shadow:var(--panelShadow);
+      padding:18px 16px;
+    }
+
+    .miniPanel .ttl{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-bottom:14px;
+      color:var(--accent2);
+      font-family:var(--font-heading);
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .miniGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      align-items:end;
+    }
+
+    @media (max-width:700px){
+      .miniGrid{grid-template-columns:1fr}
+    }
+
+    .fRow{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      text-align:right;
+    }
+
+    .fRow label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .fRow input{
+      min-width:0;
+      width:100%;
+      background:#ffffffcc;
+    }
+
+    .tagInputWrap{
+      position:relative;
+      display:flex;
+      align-items:center;
+    }
+
+    .tagInputWrap input{
+      padding-inline-end:84px;
+    }
+
+    .tagModeBadge{
+      position:absolute;
+      inset-inline-end:6px;
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      font-size:11px;
+      font-weight:700;
+      padding:3px 8px;
+      border-radius:999px;
+      pointer-events:none;
+      white-space:nowrap;
+      transition:background-color .15s ease, color .15s ease;
+    }
+
+    .tagModeBadge-tag{
+      background:#eef2f1;
+      color:var(--accent2);
+    }
+
+    .tagModeBadge-regex{
+      background:#eef4ff;
+      color:#1d4ed8;
+    }
+
+    .tinyHint{
+      margin:0;
+      font-size:11.5px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      font-size:12.5px;
+      color:var(--muted);
+      justify-content:center;
+      text-align:center;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#d1d5db;
+    }
+
+    .ok .dot{background:var(--ok)}
+    .warn .dot{background:var(--warn)}
+    .err .dot{background:var(--err)}
+
+    /* מחוון "עובד" - ספינר קטן שמחליף את הנקודה, כדי שיהיה ברור שהכלי פעיל
+       ולא תקוע, גם בפעולות שלוקחות כמה שניות על קבצים גדולים */
+    .busy .dot{
+      background:transparent;
+      border:2px solid var(--line);
+      border-top-color:var(--accent);
+      animation:busySpin .7s linear infinite;
+    }
+    @keyframes busySpin{
+      to{transform:rotate(360deg)}
+    }
+
+    .statusWrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+
+    /* אזור התצוגה של פלט ה-JSON */
+    pre{
+      margin:0;
+      padding:14px 14px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#241f19;
+      color:#f2e9dd;
+      white-space:pre-wrap;
+      word-break:break-word;
+      max-height:520px;
+      overflow:auto;
+      font-size:12.5px;
+      direction:ltr;
+      text-align:left;
+    }
+
+    /* התראה צפה (Toast) */
+    .toast{
+      position:fixed;
+      inset-inline-start:24px;
+      bottom:24px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:var(--shadow);
+      color:var(--text);
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .18s ease,transform .18s ease;
+      pointer-events:none;
+      font-size:13px;
+      max-width:min(92vw,520px);
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* 
+      ========================
+      אזור פוטר וקרדיטים
+      ========================
+    */
+    .footerActions{
+      margin-top:16px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .footerNote{
+      color:var(--muted);
+      font-size:14px; /* טקסט מוגדל */
+      text-align:center;
+      margin-top: 8px;
+    }
+
+    .footerDivider {
+      margin: 32px 0 16px 0;
+      border: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .footerCredits {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .footerCredits a {
+      color: var(--accent);
+      text-decoration: underline dotted;
+      font-weight: 700;
+    }
+
+    .footerCredits a:hover {
+      text-decoration: underline;
+    }
+
+    /* הגדרות מתקדמות (Accordion) */
+    details.advancedSettings{
+      margin-top:14px;
+      border:1px solid var(--panelBorder);
+      border-radius:14px;
+      background:#fff;
+      overflow:hidden;
+    }
+
+    details.advancedSettings > summary{
+      list-style:none;
+      cursor:pointer;
+      padding:12px 14px;
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      user-select:none;
+    }
+
+    details.advancedSettings > summary::-webkit-details-marker{display:none}
+    details.advancedSettings > summary::before{content:"⚙️ הגדרות מתקדמות";color:var(--accent2)}
+    details.advancedSettings > summary::after{content:"▾";font-size:12px;color:var(--muted);transition:transform .18s ease}
+    details.advancedSettings[open] > summary::after{transform:rotate(180deg)}
+
+    /*
+      ========================
+      מדריך שימוש מהיר
+      ========================
+    */
+    details.guideBox{
+      margin-bottom:16px;
+      border:1px solid var(--panelBorder);
+      border-radius:18px;
+      background:var(--panelBg);
+      box-shadow:var(--panelShadow);
+      overflow:hidden;
+    }
+
+    details.guideBox > summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      user-select:none;
+      font-family:var(--font-heading);
+      font-weight:700;
+      font-size:15px;
+      color:var(--accent2);
+    }
+
+    details.guideBox > summary::-webkit-details-marker{display:none}
+    details.guideBox > summary::after{content:"▾";font-size:13px;color:var(--muted);transition:transform .18s ease;font-family:inherit}
+    details.guideBox[open] > summary::after{transform:rotate(180deg)}
+
+    .guideBody{
+      margin:0 14px 14px;
+      padding:14px 18px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+    }
+
+    .guideBody ol{
+      margin:0;
+      padding-inline-start:22px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .guideBody li::marker{font-weight:800;color:var(--accent)}
+
+    @media (max-width:560px){
+      details.guideBox > summary{font-size:14px;padding:12px 14px}
+      .guideBody{margin:0 10px 10px;padding:12px 14px}
+    }
+
+    .advancedBody{
+      padding:14px;
+      border-top:1px solid var(--line);
+      background:#fffdfa;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .advancedInner{
+      width:min(100%, 960px);
+      margin-inline:auto;
+    }
+
+    .advancedGrid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+      align-items:start;
+      width:100%;
+    }
+
+    .advancedGrid .fRow{
+      text-align:center;
+    }
+
+    .advancedGrid .hint{
+      text-align:center;
+    }
+
+    .modeGroup{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:8px;
+      margin-top:8px;
+      align-items:stretch;
+    }
+
+    @media (max-width:820px){
+      .modeGroup{grid-template-columns:1fr}
+    }
+
+    .modeOption{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      column-gap:8px;
+      row-gap:2px;
+      align-items:start;
+      border:1px solid var(--line);
+      border-radius:var(--radiusSm);
+      background:#fff;
+      padding:8px 12px;
+      cursor:pointer;
+      text-align:right;
+      transition:border-color .15s ease,background .15s ease;
+    }
+
+    .modeOption:has(input:checked){
+      border-color:var(--accent);
+      background:var(--panelBg);
+    }
+
+    .modeOption input[type="radio"]{
+      grid-row:1 / span 2;
+      margin-top:3px;
+      cursor:pointer;
+    }
+
+    .modeOption .modeTtl{font-weight:800;font-size:13.5px}
+    .modeOption .modeDesc{font-size:12px;color:var(--muted)}
+
+    @media (max-width:700px){
+      .advancedGrid{grid-template-columns:1fr;}
+    }
+
+    /*
+      ========================
+      עורך מתקדם: שלושה טורים חיים
+      ========================
+    */
+    .editorLegend{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:8px;
+      font-size:12.5px;
+      color:var(--muted);
+    }
+
+    .legendItem{display:inline-flex;align-items:center;gap:6px}
+
+    .dotLg{width:10px;height:10px;border-radius:3px;display:inline-block;flex:0 0 auto}
+    .dotLg.linked{background:#16a34a}
+    .dotLg.unlinked{background:#f59e0b}
+    .dotLg.orphan{background:#ef4444}
+    .dotLg.duplicate{background:var(--gold)}
+    .dotLg.pending{background:var(--accent)}
+    .dotLg.flashDot{background:#60a5fa}
+
+    .editorGrid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1.1fr;
+      gap:12px;
+    }
+
+    @media (max-width:900px){
+      .editorGrid{grid-template-columns:1fr}
+    }
+
+    .editorCol{
+      border:1px solid var(--line);
+      border-radius:var(--radiusSm);
+      overflow:hidden;
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+
+    .editorColHd{
+      padding:8px 10px;
+      background:var(--panelBg);
+      font-weight:800;
+      font-size:13px;
+      border-bottom:1px solid var(--line);
+      color:var(--accent2);
+    }
+
+    .editorList{
+      max-height:460px;
+      overflow:auto;
+      font-size:12.5px;
+    }
+
+    .editorEmpty{padding:14px;color:var(--muted);text-align:center;font-size:12.5px}
+
+    /* שורת "טען עוד / טען הכל" בתחתית טור מקוצר (pagination) - ראו EDITOR_PAGE_SIZE */
+    .editorLoadMore{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      padding:12px 8px;
+      border-top:1px dashed var(--line);
+      background:var(--panelBg);
+    }
+
+    .editorLoadMoreHint{
+      font-size:11px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .editorLoadMore button{
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:8px;
+    }
+
+    .lnRow{
+      display:flex;
+      gap:8px;
+      padding:4px 8px;
+      border-bottom:1px solid #f1ece4;
+      cursor:pointer;
+      align-items:flex-start;
+    }
+
+    .lnRow:hover{background:var(--panelBg)}
+
+    .lnRow .lnNum{
+      color:var(--muted);
+      min-width:30px;
+      text-align:end;
+      flex:0 0 auto;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:11px;
+      padding-top:1px;
+    }
+
+    .lnRow .lnText{
+      white-space:pre-wrap;
+      word-break:break-word;
+      direction:rtl;
+      text-align:right;
+      flex:1;
+      min-width:0;
+    }
+
+    .lnRow .lnText mark.tagHl{
+      background:#fde047;
+      color:#111827;
+      padding:0 1px;
+      border-radius:3px;
+      box-decoration-break:clone;
+      -webkit-box-decoration-break:clone;
+    }
+
+    .lnRow.status-linked{background:#eef7f0}
+    .lnRow.status-linked:hover{background:#e2f1e6}
+    .lnRow.status-unlinked{background:#fff8ec}
+    .lnRow.status-unlinked:hover{background:#fdf0d8}
+    .lnRow.status-orphan{background:#fdeeee}
+    .lnRow.status-orphan:hover{background:#fbdede}
+    .lnRow.status-duplicate{background:#f7f0e3}
+    .lnRow.status-duplicate:hover{background:#f1e6cc}
+    .lnRow.status-pending{outline:2px solid var(--accent);outline-offset:-2px}
+    .lnRow.status-activeSel{outline:2px solid var(--gold);outline-offset:-2px}
+    .lnRow.status-flash{
+      background:#dbeafe;
+      outline:2px solid #60a5fa;
+      outline-offset:-2px;
+      transition:background .2s ease;
+    }
+    .lnRow.status-flash:hover{background:#cfe4fd}
+
+    .linkRow{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      padding:10px 12px;
+      margin:6px 4px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      box-shadow:0 1px 2px rgba(28,25,20,.04);
+      transition:background .2s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    .linkRow:hover{box-shadow:0 2px 8px rgba(28,25,20,.09)}
+    .linkRow.active{background:var(--panelBg);border-color:var(--gold)}
+    .linkRow.flash{
+      background:#dbeafe;
+      outline:2px solid #60a5fa;
+      outline-offset:-2px;
+      transition:background .2s ease;
+    }
+
+    .linkCardTop{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      align-items:center;
+    }
+
+    .linkRow .liIdx{font-weight:800;color:var(--muted);min-width:22px;text-align:center;font-size:12px}
+    .linkRow .liArrow{color:var(--muted)}
+
+    .linkRow .liGroup{display:inline-flex;gap:4px;align-items:center;font-size:11.5px;color:var(--muted)}
+
+    .linkRow input[type="number"]{
+      width:56px;
+      min-width:0;
+      padding:6px;
+      text-align:center;
+      border-radius:8px;
+    }
+
+    .linkRow input[type="text"].liText{
+      min-width:80px;
+      flex:1;
+      padding:6px 8px;
+      border-radius:8px;
+    }
+
+    .linkRow select{
+      padding:6px;
+      border-radius:8px;
+      border:1px solid var(--line);
+      font-size:12px;
+      max-width:150px;
+      background:#fff;
+    }
+
+    .liActions{
+      display:inline-flex;
+      gap:4px;
+      align-items:center;
+      margin-inline-start:auto;
+    }
+
+    .linkRow button{padding:6px 8px;font-size:13px;border-radius:8px;line-height:1}
+    .linkRow button.liPick.active{background:var(--gold);border-color:var(--gold);color:#fff}
+    .linkRow button.liDel{border-color:#fecaca;color:#b91c1c}
+    .linkRow button.liDel:hover{background:#fef2f2}
+
+    .linkRow button.liChip{
+      font-size:13px;
+      padding:5px 7px;
+      color:var(--muted);
+      background:#fff;
+      white-space:nowrap;
+    }
+    .linkRow button.liChip:hover{color:var(--accent);border-color:var(--accent)}
+    .linkRow button.liChip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+    .linkCardExtra{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding-top:8px;
+      border-top:1px dashed var(--line);
+    }
+
+    .extraRow{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+    }
+
+    .extraRow.extraRange{color:var(--accent2)}
+    .extraRow.extraAnchor{color:#1d4ed8}
+
+    .extraLabel{
+      font-weight:700;
+      white-space:nowrap;
+      font-size:11.5px;
+    }
+
+    .linkRow .extraRow input[type="number"]{
+      width:52px;
+      font-size:11px;
+      background:var(--panelBg);
+      color:var(--muted);
+    }
+
+    .extraRow.extraAnchor input[type="number"]{
+      background:#eef4ff;
+      color:#1d4ed8;
+    }
+
+    .extraTo{font-size:11px;color:var(--muted)}
+
+    /*
+      ========================
+      התאמה למסכים צרים / מובייל
+      ========================
+    */
+    @media (max-width:700px){
+      body{padding:14px 10px}
+      .wrap{max-width:100%}
+      .editorList{max-height:340px}
+      .editorLegend{gap:8px 12px;font-size:11.5px}
+    }
+
+    @media (max-width:600px){
+      .linkRow{padding:8px;gap:6px}
+      .linkRow input[type="number"]{width:44px;padding:5px;font-size:12px}
+      .linkRow .extraRow input[type="number"]{width:38px}
+      .linkRow select.liType{max-width:96px;font-size:11px;padding:5px}
+      .linkRow button{padding:5px 6px;font-size:11px}
+      .linkRow .liIdx{min-width:16px;font-size:11px}
+      .lnRow .lnNum{min-width:22px;font-size:10px}
+      .lnRow .lnText{font-size:12.5px}
+      details.guideBox > summary{font-size:13px;padding:10px 12px}
+      .guideBody{margin:0 8px 8px;padding:10px 12px}
+      .guideBody ol{font-size:13px;gap:8px}
+      .miniPanel{padding:14px 10px}
+    }
+
+    @media (max-width:420px){
+      .liActions{width:100%;justify-content:flex-end;order:2}
+      .linkCardTop .liArrow{display:none}
+      .linkCardTop select.liType{order:1;flex:1 1 100%}
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    
+    <!-- אזור ההסבר בראש הדף -->
+    <div class="hero">
+      <div class="heroTitleRow">
+        <div class="icon" aria-hidden="true">🔗</div>
+        <h1>מקשר הערות אוטומטי</h1>
+      </div>
+      <p>
+        מזהה ומקשר הערות בצורה אוטומטית בין קבצי הספר לקבצי ההערות, עבור
+        <a class="smallLink" href="https://www.otzaria.org/" target="_blank" rel="noopener noreferrer">תוכנת אוצריא</a>
+      </p>
+    </div>
+
+    <!-- מדריך שימוש מהיר, בעיקר עבור משתמשים חדשים -->
+    <details class="guideBox" open>
+      <summary>
+        <span>📖 מדריך שימוש מהיר — 5 צעדים</span>
+      </summary>
+      <div class="guideBody">
+        <ol>
+          <li><b>הכינו שני קבצי טקסט:</b> קובץ הספר וקובץ ההערות. בשניהם צריך לסמן את מספרי ההערות בתגית כמו <span class="mono">&lt;sup&gt;1&lt;/sup&gt;</span> — בדיוק במקום שבו אמורה להופיע ההפניה. אם הסימון בקבצים שלכם אינו תגית HTML (למשל "(א)" בסוגריים) — אפשר להזין בשדה התג ביטוי רגולרי (regex) במקום שם תגית, והכלי יזהה זאת אוטומטית.</li>
+          <li><b>ייבאו את שני הקבצים</b> בעזרת הכפתורים "📘 יבוא קובץ הספר" ו-"📝 יבוא קובץ ההערות" למטה.</li>
+          <li><b>לחצו על "⚙️ יצירת ה-JSON"</b> — הכלי יזהה אוטומטית את ההתאמות בין הספר להערות, ויצור את קובץ הקישורים.</li>
+          <li><b>בדקו את התוצאה.</b> אם משהו לא מדויק, פתחו את "🧩 עורך מתקדם" כדי לראות את הספר, ההערות והקישורים זה לצד זה, ולתקן במקום שצריך.</li>
+          <li><b>הורידו את קובץ ה-JSON הסופי,</b> הכנסו באוצריא להגדרות > ספרייה > ייבוא דורות וקישורים ובחרו בקובץ ה-JSON.</li>
+        </ol>
+        <div class="hint" style="text-align:center;margin-top:10px">
+          טיפ למתחילים: לא בטוחים איך בדיוק לסמן את התגיות? כדאי לנסות קודם על דוגמה קטנה של כמה שורות, ולוודא שהתוצאה נראית הגיונית לפני הרצה על ספר שלם.
+        </div>
+      </div>
+    </details>
+
+    <div class="grid">
+      
+      <!-- אזור טעינת הקבצים והגדרות -->
+      <section class="card">
+        <div class="hd"><b>שלב 1 — קלט</b></div>
+        <div class="bd">
+          <div class="row center stackOnMobile">
+            <button id="btnBook" class="primary" title="בחירת קובץ הטקסט הראשי (הספר) מהמחשב">📘 יבוא קובץ הספר</button>
+            <input id="fileBook" type="file" accept=".txt,text/plain" hidden />
+
+            <button id="btnNotes" class="primary" title="בחירת קובץ ההערות מהמחשב">📝 יבוא קובץ ההערות</button>
+            <input id="fileNotes" type="file" accept=".txt,text/plain" hidden />
+          </div>
+
+          <div class="statusWrap">
+            <div id="bookStatus" class="status"><span class="dot"></span><span>ספר: לא נטען</span></div>
+            <span class="hint">|</span>
+            <div id="notesStatus" class="status"><span class="dot"></span><span>הערות: לא נטען</span></div>
+          </div>
+
+          <div class="miniPanel" style="margin-top:14px">
+            <div class="ttl">⚙️ הגדרות</div>
+
+            <div class="miniGrid">
+              <div class="fRow">
+                <label for="tagBook">תג בספר (ברירת מחדל: <span class="mono">sup</span>)</label>
+                <div class="tagInputWrap">
+                  <input id="tagBook" type="text" value="sup" spellcheck="false" autocomplete="off"
+                    title="שם תגית HTML לזיהוי (למשל sup) — או ביטוי רגולרי (regex) לזיהוי לפי תבנית טקסט חופשית" />
+                  <span id="tagBookMode" class="tagModeBadge tagModeBadge-tag" title="הזיהוי מתבצע כרגע לפי שם תגית HTML">🏷️ תגית</span>
+                </div>
+                <p class="tinyHint">אפשר גם ביטוי רגולרי (regex) במקום תגית, למשל: <span class="mono" dir="ltr">\([א-ת"'׳״]{1,3}\**\)</span></p>
+              </div>
+
+              <div class="fRow">
+                <label for="tagNotes">תג בהערות (ברירת מחדל: <span class="mono">sup</span>)</label>
+                <div class="tagInputWrap">
+                  <input id="tagNotes" type="text" value="sup" spellcheck="false" autocomplete="off"
+                    title="שם תגית HTML לזיהוי (למשל sup) — או ביטוי רגולרי (regex) לזיהוי לפי תבנית טקסט חופשית" />
+                  <span id="tagNotesMode" class="tagModeBadge tagModeBadge-tag" title="הזיהוי מתבצע כרגע לפי שם תגית HTML">🏷️ תגית</span>
+                </div>
+                <p class="tinyHint">אפשר גם ביטוי רגולרי (regex) במקום תגית, למשל: <span class="mono" dir="ltr">\([א-ת"'׳״]{1,3}\**\)</span></p>
+              </div>
+            </div>
+
+            <details class="advancedSettings">
+              <summary></summary>
+              <div class="advancedBody">
+                <div class="advancedInner" style="text-align: center;">
+                  <div class="fRow" style="align-items: center;">
+                    <label for="connectionTypeSelect" style="font-size: 14px;">הגדר את ההערות כ:</label>
+                    <select id="connectionTypeSelect" class="styledSelect">
+                      <optgroup label="סוגי מפרש — יופיעו בפאנל המפרשים">
+                        <option value="commentary" selected>פירוש / מפרשים (commentary)</option>
+                        <option value="super_commentary">פירוש על פירוש (super_commentary)</option>
+                        <option value="targum">תרגום (targum)</option>
+                        <option value="midrash">מדרש (midrash)</option>
+                        <option value="parshanut">פרשנות (parshanut)</option>
+                        <option value="dibur_hamatchil">דיבור המתחיל (dibur_hamatchil)</option>
+                      </optgroup>
+                      <optgroup label="סוגי קישור — יופיעו בפאנל הקישורים">
+                        <option value="reference">הפניה (reference)</option>
+                        <option value="quotation">ציטוט (quotation)</option>
+                        <option value="quotation_auto">ציטוט אוטומטי (quotation_auto)</option>
+                        <option value="quotation_auto_tanakh">ציטוט אוטומטי מהתנ״ך (quotation_auto_tanakh)</option>
+                        <option value="explication">ביאור (explication)</option>
+                        <option value="related passage">קטע קשור (related passage)</option>
+                        <option value="related">קשור (related)</option>
+                        <option value="allusion">רמז (allusion)</option>
+                        <option value="mesorat hashas">מסורת הש״ס (mesorat hashas)</option>
+                        <option value="ein mishpat">עין משפט (ein mishpat)</option>
+                        <option value="ein mishpat / ner mitsvah">עין משפט / נר מצווה</option>
+                        <option value="mishnah in talmud">משנה בתלמוד (mishnah in talmud)</option>
+                        <option value="law">הלכה (law)</option>
+                        <option value="footnotes">הערות שוליים (footnotes)</option>
+                        <option value="liturgy">ליטורגיה — נוסח תפילה (liturgy)</option>
+                        <option value="linker">קישור אוטומטי — linker</option>
+                        <option value="summary">סיכום (summary)</option>
+                        <option value="sifrei mitsvot">ספרי מצוות (sifrei mitsvot)</option>
+                        <option value="none">לא מוגדר (none)</option>
+                        <option value="">לא ידוע (ריק)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="hint" style="margin-top:6px">
+                    בחירה האם ההערות יוצגו בפנאל המפרשים או בפנאל הקישורים.
+                  </div>
+                </div>
+
+                <div class="advancedInner">
+                  <div class="advancedGrid">
+                    <div class="fRow">
+                      <label for="heRef2"><span class="mono">heRef_2</span> (כותרת ההערה)</label>
+                      <input id="heRef2" type="text" value="הערות" spellcheck="false" autocomplete="off" />
+                      <div class="hint" style="margin-top:2px">לתווית על עוגן-מילה (למשל "אות ג"), כללו כאן את הצירוף " אות X"</div>
+                    </div>
+
+                    <div class="fRow">
+                      <label for="path2">path_2 (שם הקובץ / נתיב ב):</label>
+                      <input id="path2" type="text" value="" spellcheck="false" autocomplete="off" placeholder="שם קובץ ההערות" />
+                      <div class="hint" style="margin-top:2px">ברירת מחדל: שם קובץ ההערות שנטען</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="advancedInner">
+                  <div class="fRow" style="text-align:center">
+                    <label style="font-size:14px;text-align:center">איזה מידע נוסף ייווצר אוטומטית לכל קישור?</label>
+                    <div class="modeGroup">
+                      <label class="modeOption">
+                        <input type="radio" name="linkGenerationMode" value="regular" checked />
+                        <span class="modeTtl">קישורים רגילים (שורה שורה)</span>
+                        <span class="modeDesc">שורה↔שורה בלבד, שורה (מקטע) בספר מול שורה (מקטע) בהערות בלי מידע נוסף</span>
+                      </label>
+                      <label class="modeOption">
+                        <input type="radio" name="linkGenerationMode" value="anchor" />
+                        <span class="modeTtl">קישור למילה ספציפית (מילה↔שורה)</span>
+                        <span class="modeDesc">מקשר מילה אחת או יותר בתוך שורת (מקטע) הספר (לא את כל השורה) — מול שורת ההערה השלמה. מוסיף start/end לפי מיקום הסימון בספר (תגית כמו <span class="mono">sup</span>, או ההתאמה לביטוי הרגולרי שהוגדר)</span>
+                      </label>
+                      <label class="modeOption">
+                        <input type="radio" name="linkGenerationMode" value="range" />
+                        <span class="modeTtl">קישור-טווח אוטומטי</span>
+                        <span class="modeDesc">מקשר כמה שורות (מקטעים) רצופים בספר להערה אחת. מוסיף line_index_1_end: מכסה מהשורה המסומנת ועד לפני הסימון הבא בספר</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="hint" style="text-align:center;margin-top:8px">
+                    ניתן גם לשנות טווח (עד שורה) עבור כל קישור בנפרד בעורך המתקדם, ללא קשר לבחירה כאן.
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div class="row center stackOnMobile" style="margin-top:14px">
+            <button id="btnMake" disabled title="הרצת הזיהוי האוטומטי בין הספר להערות ויצירת קובץ הקישורים">⚙️ יצירת ה-JSON</button>
+          </div>
+
+          <div class="row center" style="margin-top:10px">
+            <div id="makeStatus" class="status">
+              <span class="dot"></span>
+              <span>טען קבצים כדי להתחיל</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- אזור הצגת התוצאה -->
+      <section class="card">
+        <div class="hd">
+          <b>שלב 2 — פלט</b>
+          <div class="rightTools">
+            <button id="btnAdvancedEditor" class="ghost" disabled title="פתיחת עורך תלת-טורי לצפייה ותיקון ידני של הקישורים">🧩 פתיחת עורך מתקדם</button>
+            <button id="btnCopy" class="ghost" disabled title="העתקת תוכן ה-JSON ללוח">📋 העתקת JSON</button>
+            <button id="btnDownload" disabled title="הורדת קובץ ה-JSON שנוצר">⬇️ הורדת JSON</button>
+          </div>
+        </div>
+        <div class="bd">
+          <pre id="out">[]</pre>
+        </div>
+      </section>
+
+      <!-- אזור העורך המתקדם: תצוגה חיה של שלושת הטורים ועריכה ידנית של הקישורים -->
+      <section id="advEditor" class="card" style="display:none">
+        <div class="hd">
+          <b>🧩 עורך מתקדם — תיקון קישורים ידני</b>
+          <div class="rightTools">
+            <button id="btnAddLink" class="ghost" title="הוספת קישור ריק חדש לעריכה ידנית">➕ קישור חדש</button>
+            <button id="btnResetEditor" class="ghost" title="ביטול כל השינויים הידניים וחזרה לתוצאה האוטומטית האחרונה">🔄 איפוס שינויים</button>
+            <button id="btnCloseEditor" class="ghost" title="סגירת העורך המתקדם">✕ סגירה</button>
+          </div>
+        </div>
+        <div class="bd">
+          <div class="editorLegend">
+            <span class="legendItem"><span class="dotLg linked"></span> מקושר</span>
+            <span class="legendItem"><span class="dotLg unlinked"></span> מסומן אך לא מקושר</span>
+            <span class="legendItem"><span class="dotLg orphan"></span> קיים בהערות בלבד (לא נמצא בספר)</span>
+            <span class="legendItem"><span class="dotLg duplicate"></span> כפילות בתוך אותו פרק בהערות</span>
+            <span class="legendItem"><span class="dotLg pending"></span> ממתין לבחירת שורה (מקטע) מתאימה</span>
+            <span class="legendItem"><span class="dotLg flashDot"></span> הודגש עכשיו (לחיצה על שורה מקושרת)</span>
+          </div>
+          <div class="hint" style="text-align:center;margin-bottom:10px">
+            <b>ליצירת קישור חדש:</b> לחצו על שורה (מקטע) בטור הספר ואז על שורה בטור ההערות (או להפך).
+            <b>לתיקון קישור קיים:</b> ערכו את מספרי השורות ישירות בטור הקישורים, או לחצו על 🎯 בשורת קישור כדי "להפעיל" אותה ואז לבחור לה שורות חדשות מהטורים.
+            <b>למעקב מהיר:</b> לחיצה על שורה שכבר מקושרת מדגישה לרגע בכחול את השורה המקבילה ואת שורת ה-JSON שלה, בלי לפגוע בקישור עצמו.
+            הצ'יפים 📏 טווח ו-📍 עוגן ליד כל קישור ניתנים להפעלה גם יחד: טווח מקשר כמה שורות רצופות, ועוגן-מילה מצמצם את צד הספר למילה אחת או יותר בתוך השורה (ולא כל השורה) מול שורת ההערה השלמה.
+            השתמשו ב"🔄 איפוס שינויים" כדי לבטל את כל העריכות הידניות ולחזור לתוצאה האוטומטית האחרונה.
+          </div>
+          <div class="editorGrid">
+            <div class="editorCol">
+              <div class="editorColHd">📘 טור הספר (שורות / מקטעים)</div>
+              <div id="editorBookCol" class="editorList"></div>
+            </div>
+            <div class="editorCol">
+              <div class="editorColHd">📝 טור ההערות (שורות / מקטעים)</div>
+              <div id="editorNotesCol" class="editorList"></div>
+            </div>
+            <div class="editorCol editorColWide">
+              <div class="editorColHd">🔗 קישורים (JSON)</div>
+              <div id="editorLinksCol" class="editorList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- פוטר פעולות נוספות -->
+      <div class="footerActions">
+        <button id="btnOffline" class="btn-offline" title="הורדת עותק עצמאי של הדף לעבודה ללא חיבור לרשת">💾 הורדת הקובץ לעבודה אופליין</button>
+      </div>
+      <div class="footerNote">הורדה זו מורידה ושומרת עותק עדכני ונקי של הדף לשימוש מקומי ללא חיבור לרשת, ללא תוכן JSON שנוצר במסך.</div>
+      
+      <hr class="footerDivider" />
+      <div class="footerCredits">
+        לפרטים נוספים על הכלי, שאלות, הערות או הצעות לשיפור הכנסו <a href="https://otzaria.org/forum/post/10170" target="_blank" rel="noopener noreferrer">לפורום</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  /*
+    ========================================================================
+    סקירה כללית — מקשר הערות אוטומטי (Link-Notes)
+    ========================================================================
+    כלי סטטי (קובץ HTML בודד, ללא תלויות/בילד) שמייצר קבצי _links.json
+    עבור ספריית אוצריא (otzaria.org), על סמך שני קבצי טקסט: "ספר" ו-"הערות".
+    האלגוריתם המרכזי: איתור מספרי הפניה (למשל <sup>1</sup> או "(א)") בכל
+    קובץ, וקישור בין מופע בספר לבין השורה התואמת בהערות, פרק-פרק.
+
+    הלוגיקה מחולקת לחמישה חלקים עיקריים (מסומנים "חלק N" בקוד למטה):
+      1. אחיזת אלמנטים מה-DOM ומצב הריצה (els, state, logger).
+      2. פונקציות עזר: נרמול טקסט/מספרים עבריים, וזיהוי הפניות בשורה —
+         לפי שם תגית HTML (extractRefsFromLineByTag) או לפי ביטוי רגולרי
+         חופשי (extractRefsFromLineByRegex) שהמשתמש מזין במקום שם תגית.
+      3. בניית המבנה: חלוקת ההערות לפרקים (splitNotesIntoChapters),
+         והתאמה בין מופעי הספר לפרקי ההערות (buildLinks) — כולל שלושת
+         מצבי היצירה: רגיל (שורה↔שורה), עוגן-מילה (start/end) וטווח
+         (line_index_1_end/line_index_2_end).
+      4. אירועי ממשק: טעינת קבצים, הרצת התהליך (makeJson), הורדה/העתקה.
+      5. עורך מתקדם: תצוגה חיה של שלושה טורים (ספר/הערות/JSON) לתיקון
+         ידני של קישורים, כולל הדגשת (flash) קישורים קיימים ואיפוס שינויים.
+
+    מערכת הלוגים (logger, מוגדר בחלק 1) כותבת למסוף המפתחים (F12) בכל
+    שלב, כדי לאפשר דיבוג וניתוח מקרי קצה. במיוחד — reportLinkingResult
+    ו-collectMissingInBook מפרטים *סיבה ספציפית* לכל הפניה שלא קושרה
+    אוטומטית (ולא רק "לא נמצא"), כדי לקצר את מעגל האבחון והתיקון.
+
+    הערת תאימות: השדה "Conection Type" (עם n אחת) בפלט ה-JSON הוא שגיאת
+    כתיב היסטורית מכוונת של ספריא שנשמרת בכוונה — ראו cleanLinkForExport
+    ו-buildLinks. שימוש ב-"Connection Type" (n כפולה) יגרום לערך להתעלם.
+    ========================================================================
+  */
+
+  /* חלק 1: אלמנטים קבועים מהממשק ומצב הריצה */
+  const els = {
+    btnBook: document.getElementById("btnBook"),
+    btnNotes: document.getElementById("btnNotes"),
+    fileBook: document.getElementById("fileBook"),
+    fileNotes: document.getElementById("fileNotes"),
+    bookStatus: document.getElementById("bookStatus"),
+    notesStatus: document.getElementById("notesStatus"),
+    btnMake: document.getElementById("btnMake"),
+    btnDownload: document.getElementById("btnDownload"),
+    btnCopy: document.getElementById("btnCopy"),
+    btnOffline: document.getElementById("btnOffline"),
+    out: document.getElementById("out"),
+    path2: document.getElementById("path2"),
+    tagBook: document.getElementById("tagBook"),
+    tagNotes: document.getElementById("tagNotes"),
+    tagBookMode: document.getElementById("tagBookMode"),
+    tagNotesMode: document.getElementById("tagNotesMode"),
+    heRef2: document.getElementById("heRef2"),
+    connectionTypeSelect: document.getElementById("connectionTypeSelect"),
+    makeStatus: document.getElementById("makeStatus"),
+    toast: document.getElementById("toast"),
+    btnAdvancedEditor: document.getElementById("btnAdvancedEditor"),
+    advEditor: document.getElementById("advEditor"),
+    btnAddLink: document.getElementById("btnAddLink"),
+    btnResetEditor: document.getElementById("btnResetEditor"),
+    btnCloseEditor: document.getElementById("btnCloseEditor"),
+    editorBookCol: document.getElementById("editorBookCol"),
+    editorNotesCol: document.getElementById("editorNotesCol"),
+    editorLinksCol: document.getElementById("editorLinksCol"),
+  };
+
+  const state = {
+    bookText: "",
+    notesText: "",
+    bookBaseName: "שם הספר",
+    notesFileName: "",
+    lastJsonText: "[]",
+    /* מצב העורך המתקדם (תצוגת שלושת הטורים החיה) — נבנה מחדש בכל יצירת JSON */
+    editor: null,
+  };
+
+  /* מערכת לוגים מרוכזת למסוף מפתחים (F12) לבקרה ודיבוג נח */
+  const logger = (() => {
+    const ns = "🔗 מקשר הערות אוטומטי";
+    const time = () => new Date().toLocaleTimeString("he-IL", { hour12: false });
+
+    const chip = "padding:2px 8px;border-radius:999px;font-weight:900;letter-spacing:.2px";
+    const styles = {
+      ns:   `${chip};background:#111827;color:#fff`,
+      ok:   `${chip};background:#16a34a;color:#fff`,
+      warn: `${chip};background:#f59e0b;color:#111827`,
+      err:  `${chip};background:#ef4444;color:#fff`,
+      info: `${chip};background:#2563eb;color:#fff`,
+      dim:  "color:#6b7280;font-weight:700",
+      msg:  "color:#111827;font-weight:800"
+    };
+
+    function label(level) {
+      if (level === "ok") return "הצלחה";
+      if (level === "warn") return "אזהרה";
+      if (level === "err") return "שגיאה";
+      return "מידע";
+    }
+
+    function line(level, message, data) {
+      const levelStyle =
+        level === "ok"   ? styles.ok   :
+        level === "warn" ? styles.warn :
+        level === "err"  ? styles.err  :
+                           styles.info;
+
+      const head = `%c${ns}%c ${label(level)}%c ${time()}%c ${message}`;
+      if (data !== undefined) {
+        console.log(head, styles.ns, levelStyle, styles.dim, styles.msg, data);
+      } else {
+        console.log(head, styles.ns, levelStyle, styles.dim, styles.msg);
+      }
+    }
+
+    function group(title, data, collapsed = true) {
+      const open = collapsed ? console.groupCollapsed : console.group;
+      open(`%c${ns} · ${title}`, "color:#2563eb;font-weight:900");
+      if (data !== undefined) console.log(data);
+      console.groupEnd();
+    }
+
+    return {
+      ok:   (m, d) => line("ok", m, d),
+      warn: (m, d) => line("warn", m, d),
+      err:  (m, d) => line("err", m, d),
+      info: (m, d) => line("info", m, d),
+      group
+    };
+  })();
+
+  /* חלק 2: פונקציות עזר כלליות לממשק ולטקסט */
+  function setStatus(rootEl, text, cls) {
+    rootEl.className = "status" + (cls ? (" " + cls) : "");
+    const spanText = rootEl.querySelector("span:last-child");
+    if (spanText) spanText.textContent = text;
+  }
+
+  /* מחזיר שליטה לדפדפן לרגע (שתי מסגרות ציור) לפני עבודה סינכרונית כבדה,
+     כדי שמצב "עובד..." (ספינר/טקסט) שהוצג רגע קודם יספיק להצטייר על המסך
+     במקום שהתהליך הכבד "יחטוף" את ה-thread לפני שהמשתמש רואה משהו */
+  function yieldToBrowser() {
+    return new Promise(resolve => {
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+  }
+
+  let toastTimer = null;
+  function showToast(msg) {
+    els.toast.textContent = msg;
+    els.toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => els.toast.classList.remove("show"), 1800);
+  }
+
+  function updateButtons() {
+    const ready = state.bookText.trim().length > 0 && state.notesText.trim().length > 0;
+    els.btnMake.disabled = !ready;
+    els.btnAdvancedEditor.disabled = !ready;
+    updateMakeStatusForFiles();
+  }
+
+  /*
+    מעדכן את הודעת הסטטוס מתחת לכפתור "יצירת ה-JSON" בהתאם למצב טעינת הקבצים
+    בפועל - כדי שלא תישאר תקועה על "טען קבצים כדי להתחיל" גם אחרי שהקבצים
+    כבר נטענו. לא דורס הודעת הצלחה/אזהרה/שגיאה שכבר מוצגת אחרי ריצה בפועל.
+  */
+  function updateMakeStatusForFiles() {
+    if (state.editor) return; // כבר רצה יצירת JSON - משאירים את סיכום התוצאה על המסך
+
+    const hasBook = state.bookText.trim().length > 0;
+    const hasNotes = state.notesText.trim().length > 0;
+
+    if (hasBook && hasNotes) {
+      setStatus(els.makeStatus, 'שני הקבצים נטענו - לחצו על "⚙️ יצירת ה-JSON" כדי להתחיל', "ok");
+    } else if (hasBook || hasNotes) {
+      setStatus(els.makeStatus, `נטען קובץ אחד בלבד - טענו גם את ${hasBook ? "קובץ ההערות" : "קובץ הספר"}`, "");
+    } else {
+      setStatus(els.makeStatus, "טען קבצים כדי להתחיל", "");
+    }
+  }
+
+  function getLinkGenerationMode() {
+    const checked = document.querySelector('input[name="linkGenerationMode"]:checked');
+    return checked ? checked.value : "regular";
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  /*
+    בונה HTML של שורה (מקטע) כשמקטעי תגית הזיהוי (למשל <sup>...</sup>) מודגשים בצהוב.
+    ranges הם אופסטים גולמיים [start,end) בתוך הטקסט הגולמי של השורה (rawStart/rawEnd
+    שכבר מחושבים בזיהוי המופעים) — כלומר בדיוק הטקסט שעל פיו מזוהה הקישור.
+  */
+  function highlightRawRanges(rawText, ranges) {
+    const text = String(rawText || "");
+    if (!ranges || !ranges.length) return escapeHtml(text) || "&nbsp;";
+
+    const sorted = ranges
+      .filter(r => Number.isInteger(r.start) && Number.isInteger(r.end) && r.end > r.start)
+      .sort((a, b) => a.start - b.start);
+
+    let html = "";
+    let cursor = 0;
+
+    for (const r of sorted) {
+      if (r.start < cursor) continue; // דילוג על חפיפות (לא אמור לקרות בפועל)
+      html += escapeHtml(text.slice(cursor, r.start));
+      html += `<mark class="tagHl">${escapeHtml(text.slice(r.start, r.end))}</mark>`;
+      cursor = r.end;
+    }
+
+    html += escapeHtml(text.slice(cursor));
+    return html || "&nbsp;";
+  }
+
+  /*
+    מכינה רשומת קישור לייצוא: מסירה את מזהה־העריכה הפנימי (_id), ומשמיטה שדות
+    אופציונליים (start/end, line_index_1_end/line_index_2_end) כשהם ריקים או
+    כשהטווח מנוון (end==start) — תואם לכלל בתיעוד: "טווח מנוון = קישור רגיל".
+  */
+  function cleanLinkForExport(link) {
+    const { _id, ...rest } = link;
+    const out = { ...rest };
+
+    if (out.line_index_1_end != null && out.line_index_1_end === out.line_index_1) {
+      delete out.line_index_1_end;
+    }
+    if (out.line_index_2_end != null && out.line_index_2_end === out.line_index_2) {
+      delete out.line_index_2_end;
+    }
+
+    ["start", "end", "line_index_1_end", "line_index_2_end"].forEach(k => {
+      if (out[k] === null || out[k] === undefined || out[k] === "") delete out[k];
+    });
+
+    return out;
+  }
+
+  function readFileAsText(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onerror = () => reject(new Error("שגיאה בקריאת הקובץ"));
+      fr.onload = () => resolve(String(fr.result || ""));
+      fr.readAsText(file);
+    });
+  }
+
+  function normalizeNewlines(s) {
+    return String(s || "").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  }
+
+  function splitToLines(s) {
+    return normalizeNewlines(s).split("\n");
+  }
+
+  function safeFileStem(name) {
+    let stem = String(name || "").trim();
+    stem = stem.replace(/\.[^/.\\]+$/g, "");
+    stem = stem.replace(/[<>:"/\\|?*\u0000-\u001F]/g, "");
+    stem = stem.replace(/\s+/g, " ").trim();
+    return stem || "שם הספר";
+  }
+
+  function sanitizeTagName(raw) {
+    let t = String(raw || "").trim();
+    t = t.replace(/[<>\s/]/g, "");
+    t = t.replace(/[^a-zA-Z0-9:_-]/g, "");
+    return t || "";
+  }
+
+  /* זיהוי אוטומטי: האם שדה התג הוא בעצם ביטוי רגולרי (regex) ולא שם תגית HTML פשוט.
+     ההיגיון: שם תגית תקין מכיל רק אותיות/ספרות/':_-'. כל תו נוסף (מתווי המטא של regex
+     כמו \ ( ) [ ] { } . * + ? ^ $ |) מעיד שהמשתמש הקליד ביטוי חיפוש ולא שם תגית. */
+  function isLikelyRegexPattern(raw) {
+    const s = String(raw || "").trim();
+    if (!s) return false;
+    return /[\\^$.*+?()[\]{}|]/.test(s);
+  }
+
+  /* בדיקת תקינות ביטוי רגולרי לפני שימוש בו, כדי להציג שגיאה ברורה במקום קריסה */
+  function validateRegexPattern(patternStr) {
+    try {
+      new RegExp(patternStr, "g");
+      return { ok: true };
+    } catch (e) {
+      return { ok: false, message: e && e.message ? e.message : "ביטוי רגולרי לא תקין" };
+    }
+  }
+
+  function formatTagForDisplay(tag) {
+    const s = String(tag || "");
+    return isLikelyRegexPattern(s) ? `regex: ${s}` : `<${s}>`;
+  }
+
+  function uniqSortedNumbers(arr) {
+    return Array.from(new Set(arr)).sort((a, b) => a - b);
+  }
+
+  function summarizeLineNumbers(items, lineKey = "lineIndex", max = 20) {
+    const lines = items
+      .map(x => x && x[lineKey])
+      .filter(x => Number.isInteger(x));
+
+    const uniq = Array.from(new Set(lines)).sort((a, b) => a - b);
+    if (!uniq.length) return "ללא שורות";
+
+    const shown = uniq.slice(0, max).join(", ");
+    return uniq.length > max ? `${shown} ... (+${uniq.length - max} נוספות)` : shown;
+  }
+
+  /* תוויות קצרות בעברית לכל קוד "reason" יציב, לשימוש בתקציר התמציתי
+     שמוצג למשתמש (הקוד היציב עצמו משמש בלוגים המפורטים לקונסולה) */
+  const REASON_SHORT_LABELS = {
+    "not-found-at-all": "לא נמצא כלל",
+    "decoration-mismatch": "עיטור שונה",
+    "wrong-chapter": "פרק שגוי",
+    "unknown": "לא ידוע"
+  };
+
+  /* מקבץ פריטי אבחון (עם שדה reason/reasonLabel) לפי סיבה, לצורך לוג מסודר
+     שמראה כמה מקרים נופלים בכל קטגוריית סיבה, ולא רק רשימה שטוחה */
+  function groupDiagnosticsByReason(items) {
+    const groups = new Map();
+
+    for (const item of items) {
+      const reason = item.reason || "unknown";
+      if (!groups.has(reason)) {
+        groups.set(reason, { reason, label: item.reasonLabel || reason, count: 0, items: [] });
+      }
+      const g = groups.get(reason);
+      g.count += 1;
+      g.items.push(item);
+    }
+
+    return Array.from(groups.values()).sort((a, b) => b.count - a.count);
+  }
+
+  function downloadText(filename, text) {
+    const blob = new Blob([text], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1200);
+  }
+
+  /* נרמול הפניות ומספור, כולל ספרות ואותיות עבריות */
+  function stripWrapperChars(token) {
+    let out = String(token || "").trim();
+    const wrapperChars = `"'״׳()[]{}<>«»`;
+    /* שים לב: כוכבית (*) אינה תו-עטיפה — היא חלק מהמזהה ("סג*" ≠ "סג") ולכן אסור לקלף אותה כאן. */
+    while (out.length >= 2 && wrapperChars.includes(out[0]) && wrapperChars.includes(out[out.length - 1])) {
+      out = out.slice(1, -1).trim();
+    }
+    return out;
+  }
+
+  function normalizeHebrewNumeralLetters(s) {
+    return String(s || "")
+      .replace(/["'״׳\u05F3\u05F4]/g, "")
+      .replace(/\s+/g, "")
+      .replace(/[־-]/g, "")
+      .replace(/ך/g, "כ")
+      .replace(/ם/g, "מ")
+      .replace(/ן/g, "נ")
+      .replace(/ף/g, "פ")
+      .replace(/ץ/g, "צ");
+  }
+
+  function hebrewLettersToNumber(rawLetters) {
+    const s = normalizeHebrewNumeralLetters(rawLetters);
+    if (!s || /[^אבגדהוזחטיכלמנסעפצקרשת]/.test(s)) return null;
+
+    const map = {
+      "א": 1, "ב": 2, "ג": 3, "ד": 4, "ה": 5, "ו": 6, "ז": 7, "ח": 8, "ט": 9,
+      "י": 10, "כ": 20, "ל": 30, "מ": 40, "נ": 50, "ס": 60, "ע": 70, "פ": 80, "צ": 90,
+      "ק": 100, "ר": 200, "ש": 300, "ת": 400
+    };
+
+    let total = 0;
+    for (const ch of s) {
+      if (!map[ch]) return null;
+      total += map[ch];
+    }
+
+    return total > 0 ? total : null;
+  }
+
+  function normalizeRefToken(rawToken) {
+    let token = String(rawToken || "");
+    token = token.replace(/\u200e|\u200f|\u202a|\u202b|\u202c|\u202d|\u202e/g, "");
+    token = token.replace(/\s+/g, "");
+    token = stripWrapperChars(token);
+
+    if (!token) return null;
+
+    const m = token.match(/^([^0-9א-תךםןףץ]*)([0-9]+|[א-תךםןףץ"'״׳\u05F3\u05F4-]+)([^0-9א-תךםןףץ]*)$/);
+    if (!m) return null;
+
+    const prefix = m[1] || "";
+    const core = m[2] || "";
+    const suffix = m[3] || "";
+
+    let num = null;
+
+    if (/^\d+$/.test(core)) {
+      num = parseInt(core, 10);
+    } else {
+      num = hebrewLettersToNumber(core);
+    }
+
+    if (!Number.isFinite(num)) return null;
+
+    const key = `${prefix}${num}${suffix}`;
+    const hasDecoration = (prefix + suffix).length > 0;
+
+    return {
+      key,
+      num,
+      prefix,
+      suffix,
+      hasDecoration,
+      raw: token
+    };
+  }
+
+  function isPlainNumericKey(key) {
+    return /^\d+$/.test(String(key || ""));
+  }
+
+  function extractRefsFromLineByTag(line, tagName) {
+    const tag = sanitizeTagName(tagName);
+    if (!tag) return[];
+
+    const openRe = new RegExp(`<\\s*${tag}\\b[^>]*>`, "gi");
+    const closeAnyRe = new RegExp(`<\\s*\\/\\s*${tag}\\s*>`, "i");
+
+    const refs =[];
+    let m;
+
+    while ((m = openRe.exec(line)) !== null) {
+      const tagStart = m.index;
+      const openEnd = openRe.lastIndex;
+      const tail = line.slice(openEnd);
+
+      const closeMatch = tail.match(closeAnyRe);
+      const rawInside = closeMatch ? tail.slice(0, closeMatch.index) : tail.slice(0, 220);
+      const insidePlain = rawInside.replace(/<[^>]*>/g, " ").trim();
+
+      /* הכמתים כאן חייבים להיות חמדניים (greedy) ולא עצלים (*?).
+         עם כמתים עצלים "(סג*)" נקטע ל-"(סג" — הכוכבית נבלעת, ולכן
+         "(סג*)" ו-"(סג)" מקבלים בדיוק אותו מפתח, וההערה עם הכוכבית לא מקושרת.
+         בנוסף, המפתח יצא "(63" (עם עיטור) במקום "63", ולכן גם isPlainNumericKey
+         נכשל ואיתור איפוס-המספור בין פרקים מפסיק לעבוד.
+         חמדנות כאן בטוחה: מחלקות התווים מדירות רווחים, אותיות, ספרות ו-<>,
+         כך שההרחבה חסומה בגבולות האסימון וסופגת רק פיסוק/כוכביות שצמודות למספר. */
+      const tokenMatch = insidePlain.match(/([^0-9א-תךםןףץ\s<>\u200e\u200f\u202a-\u202e]*(?:\d+|[א-תךםןףץ"'״׳\u05F3\u05F4-]+)[^0-9א-תךםןףץ\s<>\u200e\u200f\u202a-\u202e]*)/);
+      if (tokenMatch && tokenMatch[1]) {
+        const ref = normalizeRefToken(tokenMatch[1]);
+        if (ref) {
+          /* מיקום גולמי (raw) של תגית הסימון כולה בשורה — משמש לעוגן-מילה (start/end) */
+          const tagEnd = closeMatch ? (openEnd + closeMatch.index + closeMatch[0].length) : null;
+          refs.push({ ...ref, rawStart: tagStart, rawEnd: tagEnd });
+        }
+      }
+
+      if (closeMatch) {
+        openRe.lastIndex = openEnd + closeMatch.index + closeMatch[0].length;
+      }
+    }
+
+    return refs;
+  }
+
+  /* מצב regex: המשתמש הזין ביטוי רגולרי במקום שם תגית (למשל \([א-ת"'׳״]{1,3}\)).
+     כל התאמה בשורה נחשבת סימון הערה בפני עצמו. אם בביטוי יש קבוצת לכידה ראשונה - היא
+     משמשת כטקסט ההפניה (כדי לאפשר למשתמשים מתקדמים להצביע בדיוק על החלק הרלוונטי);
+     אחרת נעשה שימוש בהתאמה המלאה, שעוברת בכל מקרה ניקוי עטיפה (סוגריים וכדומה) באמצעות
+     normalizeRefToken/stripWrapperChars - כך ש"(א)" יתפרש נכון כ-"א" גם בלי קבוצת לכידה. */
+  function extractRefsFromLineByRegex(line, patternStr) {
+    const check = validateRegexPattern(patternStr);
+    if (!check.ok) return [];
+
+    const regex = new RegExp(patternStr, "g");
+    const refs = [];
+    let m;
+
+    while ((m = regex.exec(line)) !== null) {
+      const rawToken = m[1] !== undefined ? m[1] : m[0];
+      const ref = normalizeRefToken(rawToken);
+      if (ref) {
+        refs.push({ ...ref, rawStart: m.index, rawEnd: m.index + m[0].length });
+      }
+      /* הגנה מפני לולאה אינסופית אם הביטוי מתאים למחרוזת ריקה */
+      if (m[0].length === 0) regex.lastIndex += 1;
+    }
+
+    return refs;
+  }
+
+  /* נקודת הכניסה המאוחדת: מזהה אוטומטית האם tagOrPattern הוא שם תגית או ביטוי רגולרי,
+     ומפנה לפונקציית החילוץ המתאימה. */
+  function extractRefsFromLine(line, tagOrPattern) {
+    if (isLikelyRegexPattern(tagOrPattern)) {
+      return extractRefsFromLineByRegex(line, tagOrPattern);
+    }
+    return extractRefsFromLineByTag(line, tagOrPattern);
+  }
+
+  function extractOccurrences(lines, tagName, sideName) {
+    const out =[];
+    let globalIndex = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+      const refs = extractRefsFromLine(lines[i], tagName);
+
+      for (let j = 0; j < refs.length; j++) {
+        globalIndex += 1;
+        out.push({
+          key: refs[j].key,
+          num: refs[j].num,
+          prefix: refs[j].prefix,
+          suffix: refs[j].suffix,
+          hasDecoration: refs[j].hasDecoration,
+          rawRef: refs[j].raw,
+          rawStart: refs[j].rawStart,
+          rawEnd: refs[j].rawEnd,
+          lineIndex: i + 1,
+          occurrenceIndex: globalIndex,
+          side: sideName,
+          rawLine: lines[i]
+        });
+      }
+    }
+
+    return out;
+  }
+
+  /* חלק 3: בניית מבני פרקים והתאמות בין הספר להערות */
+  function splitNotesIntoChapters(noteOccs) {
+    if (!noteOccs.length) return [];
+
+    const chapters =[];
+    let current =[];
+
+    for (let i = 0; i < noteOccs.length; i++) {
+      const occ = noteOccs[i];
+
+      if (current.length > 0 && occ.num === 1 && isPlainNumericKey(occ.key)) {
+        chapters.push(current);
+        current = [occ];
+      } else {
+        current.push(occ);
+      }
+    }
+
+    if (current.length) chapters.push(current);
+    return chapters;
+  }
+
+  function buildChapterInfo(chapterOccs, chapterNo) {
+    const keyToLine = new Map();
+    const keyToAllLines = new Map();
+    const seenKeys = new Set();
+    const dupEntries =[];
+    let maxNum = 0;
+
+    for (const occ of chapterOccs) {
+      if (!keyToAllLines.has(occ.key)) keyToAllLines.set(occ.key,[]);
+      keyToAllLines.get(occ.key).push(occ.lineIndex);
+
+      if (seenKeys.has(occ.key)) {
+        dupEntries.push({
+          chapter: chapterNo,
+          key: occ.key,
+          num: occ.num,
+          prefix: occ.prefix,
+          suffix: occ.suffix,
+          lineIndex: occ.lineIndex,
+          rawLine: occ.rawLine
+        });
+      }
+
+      seenKeys.add(occ.key);
+
+      if (!keyToLine.has(occ.key)) {
+        keyToLine.set(occ.key, occ.lineIndex);
+      }
+
+      if (occ.num > maxNum) maxNum = occ.num;
+    }
+
+    const dupKeys = Array.from(new Set(dupEntries.map(x => x.key))).sort((a, b) => {
+      const an = parseInt(String(a).match(/\d+/)?.[0] || "0", 10);
+      const bn = parseInt(String(b).match(/\d+/)?.[0] || "0", 10);
+      if (an !== bn) return an - bn;
+      return String(a).localeCompare(String(b), "he");
+    });
+
+    return {
+      chapterNo,
+      occs: chapterOccs,
+      keyToLine,
+      keyToAllLines,
+      nums: uniqSortedNumbers(chapterOccs.map(x => x.num)),
+      keys: Array.from(new Set(chapterOccs.map(x => x.key))),
+      maxNum,
+      dupNums: uniqSortedNumbers(dupEntries.map(x => x.num)),
+      dupKeys,
+      dupEntries,
+      firstLine: chapterOccs[0]?.lineIndex || null,
+      lastLine: chapterOccs[chapterOccs.length - 1]?.lineIndex || null
+    };
+  }
+
+  function shouldAdvanceBookChapter({ bookOccs, idx, currentState, activeChapter, nextChapter }) {
+    if (!nextChapter) return { advance: false, reason: "" };
+
+    const curr = bookOccs[idx];
+    if (!curr) return { advance: false, reason: "" };
+
+    const prev = idx > 0 ? bookOccs[idx - 1] : null;
+    const next1 = idx + 1 < bookOccs.length ? bookOccs[idx + 1] : null;
+    const next2 = idx + 2 < bookOccs.length ? bookOccs[idx + 2] : null;
+    const next3 = idx + 3 < bookOccs.length ? bookOccs[idx + 3] : null;
+
+    const currExistsHere = activeChapter.keyToLine.has(curr.key);
+    const currExistsNext = nextChapter.keyToLine.has(curr.key);
+
+    if (
+      curr.num === 1 &&
+      isPlainNumericKey(curr.key) &&
+      currentState.linkedCount >= 2 &&
+      currentState.maxSeen >= 3 &&
+      prev &&
+      prev.key !== "1"
+    ) {
+      const future =[next1?.key, next2?.key, next3?.key].filter(Boolean);
+      const hasPlain2 = future.includes("2");
+      const hasPlain3 = future.includes("3");
+
+      if (hasPlain2 || hasPlain3) {
+        return { advance: true, reason: "איפוס מספור קלאסי בספר" };
+      }
+    }
+
+    if (
+      prev &&
+      prev.num >= 5 &&
+      curr.num <= 3 &&
+      currentState.maxSeen >= 5 &&
+      !currExistsHere &&
+      currExistsNext
+    ) {
+      return { advance: true, reason: "נפילת מספור חדה והמספר נמצא רק בפרק הבא" };
+    }
+
+    if (
+      currentState.linkedCount >= 3 &&
+      !currExistsHere &&
+      currExistsNext
+    ) {
+      return { advance: true, reason: "המזהה לא קיים בפרק הנוכחי אך קיים בפרק הבא" };
+    }
+
+    return { advance: false, reason: "" };
+  }
+
+  /*
+    ------------------------------------------------------------------------
+    מנוע אבחון (diagnostics): לכל הפניה שלא קיבלה קישור אוטומטי, הפונקציות
+    הבאות מחפשות את הסיבה הסבירה ביותר — כדי שנוכל (כמפתחים) להבין במבט
+    אחד בקונסולה אם מדובר בבעיית תגית/רגקס, עיטור (prefix/suffix) שונה,
+    יישור פרקים שגוי, או שההערה/ההפניה באמת חסרה בקובץ המקור. כל פונקציה
+    מחזירה { reason, label, ...פרטים תומכים } - "reason" הוא מזהה יציב
+    לקיבוץ סטטיסטי בלוג (reportLinkingResult), ו-"label" הוא הסבר בעברית.
+    ------------------------------------------------------------------------
+  */
+
+  /* אבחון עבור missingInBook: מזהה שמופיע בהערות אך לא נמצא באף מקום בספר */
+  function diagnoseMissingInBook(key, num, bookOccs) {
+    const sameNumOtherDecoration = bookOccs.filter(o => o.num === num && o.key !== key);
+
+    if (sameNumOtherDecoration.length) {
+      return {
+        reason: "decoration-mismatch",
+        label: "המספר קיים בספר, אך בעיטור שונה (למשל גרשיים/מקף/סוגריים) - המפתחות אינם זהים באופן מדויק",
+        examples: sameNumOtherDecoration.slice(0, 3).map(o => ({ key: o.key, line: o.lineIndex, raw: o.rawRef }))
+      };
+    }
+
+    return {
+      reason: "not-found-at-all",
+      label: "המזהה לא נמצא בספר כלל - בדקו את הגדרת התג/הרגקס של הספר, או שייתכן שההערה מיותרת בקובץ",
+      examples: []
+    };
+  }
+
+  /* אבחון עבור missingInNotes: מופע בספר שלא נמצאה לו התאמה בפרק ההערות הפעיל */
+  function diagnoseMissingInNotes(occ, activeChapterIdx, noteChapterInfos) {
+    const foundInChapters = [];
+    noteChapterInfos.forEach((ch, idx) => {
+      if (ch.keyToLine.has(occ.key)) foundInChapters.push(idx + 1);
+    });
+
+    if (foundInChapters.length) {
+      return {
+        reason: "wrong-chapter",
+        label: `המזהה נמצא בפרק/י הערות אחר/ים (${foundInChapters.join(", ")}) ולא בפרק שהיה פעיל בזמן הסריקה (${activeChapterIdx + 1}) - ייתכן יישור פרקים שגוי`,
+        foundInChapters
+      };
+    }
+
+    const sameNumOtherDecoration = noteChapterInfos
+      .flatMap(ch => ch.occs)
+      .filter(o => o.num === occ.num && o.key !== occ.key);
+
+    if (sameNumOtherDecoration.length) {
+      return {
+        reason: "decoration-mismatch",
+        label: "המספר קיים בהערות, אך בעיטור שונה - המפתחות אינם זהים באופן מדויק",
+        examples: sameNumOtherDecoration.slice(0, 3).map(o => ({ key: o.key, line: o.lineIndex }))
+      };
+    }
+
+    return {
+      reason: "not-found-at-all",
+      label: "המזהה לא נמצא באף פרק בקובץ ההערות - בדקו את הגדרת התג/הרגקס של ההערות, או שההערה חסרה בקובץ",
+      examples: []
+    };
+  }
+
+  function buildLinks({ bookOccs, noteChapterInfos, bookLines, heRef2, path2, connectionType, linkGenerationMode }) {
+    const outArr = [];
+    let anchorCount = 0;
+    let rangeCount = 0;
+    const missingInNotes =[];
+    const chapterTransitions =[];
+
+    if (!bookOccs.length || !noteChapterInfos.length) {
+      return {
+        outArr,
+        missingInNotes,
+        chapterTransitions,
+        linkedRepeats: 0,
+        bookChaptersUsed: noteChapterInfos.length ? 1 : 0,
+        anchorCount: 0,
+        rangeCount: 0
+      };
+    }
+
+    let activeChapterIdx = 0;
+    let linkedRepeats = 0;
+
+    const seenKeysInCurrentBookChapter = new Map();
+    let currentBookChapterState = {
+      linkedCount: 0,
+      maxSeen: 0,
+      missesInRow: 0
+    };
+
+    function moveToNextBookChapter(reason, occ) {
+      chapterTransitions.push({
+        fromChapter: activeChapterIdx + 1,
+        toChapter: activeChapterIdx + 2,
+        atBookLine: occ.lineIndex,
+        key: occ.key,
+        num: occ.num,
+        reason
+      });
+
+      logger.info(`מעבר מפרק ${activeChapterIdx + 1} לפרק ${activeChapterIdx + 2}`, {
+        סיבה: reason,
+        שורת_ספר: occ.lineIndex,
+        מזהה: occ.key
+      });
+
+      activeChapterIdx += 1;
+      seenKeysInCurrentBookChapter.clear();
+      currentBookChapterState = {
+        linkedCount: 0,
+        maxSeen: 0,
+        missesInRow: 0
+      };
+    }
+
+    for (let i = 0; i < bookOccs.length; i++) {
+      const occ = bookOccs[i];
+      const activeChapter = noteChapterInfos[activeChapterIdx];
+      const nextChapter = noteChapterInfos[activeChapterIdx + 1];
+
+      const decision = shouldAdvanceBookChapter({
+        bookOccs,
+        idx: i,
+        currentState: currentBookChapterState,
+        activeChapter,
+        nextChapter
+      });
+
+      if (decision.advance) {
+        moveToNextBookChapter(decision.reason, occ);
+      }
+
+      const currentChapter = noteChapterInfos[activeChapterIdx];
+      let noteLine = currentChapter ? currentChapter.keyToLine.get(occ.key) : undefined;
+
+      if (!noteLine && activeChapterIdx < noteChapterInfos.length - 1) {
+        const next = noteChapterInfos[activeChapterIdx + 1];
+        const existsInNext = next.keyToLine.has(occ.key);
+
+        if (
+          existsInNext &&
+          (
+            currentBookChapterState.missesInRow >= 2 ||
+            (occ.num <= 3 && currentBookChapterState.maxSeen >= 5) ||
+            (occ.key === "1" && currentBookChapterState.linkedCount >= 3)
+          )
+        ) {
+          moveToNextBookChapter("מעבר הצלה לאחר פספוסים", occ);
+          noteLine = noteChapterInfos[activeChapterIdx].keyToLine.get(occ.key);
+        }
+      }
+
+      if (noteLine) {
+        const linkEntry = {
+          "line_index_1": occ.lineIndex,
+          "heRef_2": heRef2,
+          "path_2": path2,
+          "line_index_2": noteLine,
+          "Conection Type": connectionType
+        };
+
+        /* עוגן-מילה (start/end): אופסטים גולמיים של תגית הסימון בשורת המקור */
+        if (linkGenerationMode === "anchor" && Number.isInteger(occ.rawStart) && Number.isInteger(occ.rawEnd)) {
+          linkEntry.start = occ.rawStart;
+          linkEntry.end = occ.rawEnd;
+          anchorCount += 1;
+        }
+
+        /* קישור-טווח אוטומטי: מהשורה המסומנת ועד לפני מופע-הספר הבא (או עד סוף הספר) */
+        if (linkGenerationMode === "range") {
+          const nextOcc = bookOccs[i + 1];
+          const rangeEnd = nextOcc ? Math.max(occ.lineIndex, nextOcc.lineIndex - 1) : (bookLines ? bookLines.length : occ.lineIndex);
+
+          if (rangeEnd > occ.lineIndex) {
+            linkEntry.line_index_1_end = rangeEnd;
+            rangeCount += 1;
+          }
+        }
+
+        outArr.push(linkEntry);
+
+        const prevCount = seenKeysInCurrentBookChapter.get(occ.key) || 0;
+        if (prevCount >= 1) linkedRepeats += 1;
+        seenKeysInCurrentBookChapter.set(occ.key, prevCount + 1);
+
+        currentBookChapterState.linkedCount += 1;
+        currentBookChapterState.missesInRow = 0;
+
+        if (occ.num > currentBookChapterState.maxSeen) {
+          currentBookChapterState.maxSeen = occ.num;
+        }
+      } else {
+        currentBookChapterState.missesInRow += 1;
+
+        const diagnosis = diagnoseMissingInNotes(occ, activeChapterIdx, noteChapterInfos);
+
+        missingInNotes.push({
+          chapter: activeChapterIdx + 1,
+          key: occ.key,
+          num: occ.num,
+          lineIndex: occ.lineIndex,
+          occurrenceIndex: occ.occurrenceIndex,
+          rawLine: occ.rawLine,
+          missesInRow: currentBookChapterState.missesInRow,
+          reason: diagnosis.reason,
+          reasonLabel: diagnosis.label,
+          foundInChapters: diagnosis.foundInChapters
+        });
+      }
+    }
+
+    return {
+      outArr,
+      missingInNotes,
+      chapterTransitions,
+      linkedRepeats,
+      bookChaptersUsed: activeChapterIdx + 1,
+      anchorCount,
+      rangeCount
+    };
+  }
+
+  function collectMissingInBook(noteChapterInfos, bookOccs) {
+    const keysInBook = new Set(bookOccs.map(x => x.key));
+    const missingInBook =[];
+
+    for (const chapterInfo of noteChapterInfos) {
+      for (const key of chapterInfo.keys) {
+        if (!keysInBook.has(key)) {
+          const lines = chapterInfo.keyToAllLines.get(key) ||[];
+          const num = parseInt(String(key).match(/\d+/)?.[0] || "0", 10);
+          const diagnosis = diagnoseMissingInBook(key, num, bookOccs);
+
+          missingInBook.push({
+            chapter: chapterInfo.chapterNo,
+            key,
+            num,
+            lineIndex: lines[0] || null,
+            allLines: lines,
+            reason: diagnosis.reason,
+            reasonLabel: diagnosis.label,
+            reasonExamples: diagnosis.examples
+          });
+        }
+      }
+    }
+
+    return missingInBook;
+  }
+
+  function reportDuplicateNotes(noteChapterInfos) {
+    const chaptersWithDup = noteChapterInfos.filter(ch => ch.dupEntries.length > 0);
+    if (!chaptersWithDup.length) return;
+
+    const detailed = chaptersWithDup.map(ch => ({
+      chapter: ch.chapterNo,
+      linesRange: `${ch.firstLine} - ${ch.lastLine}`,
+      duplicateKeys: ch.dupKeys,
+      duplicateLines: ch.dupEntries.map(x => ({
+        key: x.key,
+        line: x.lineIndex
+      }))
+    }));
+
+    logger.warn(
+      "נמצאו כפילויות מזהים בתוך פרק בקובץ ההערות. זה חריג ועשוי להעיד על קלט לא נקי.",
+      detailed
+    );
+  }
+
+  function reportLinkingResult(info) {
+    const {
+      outCount,
+      tagBook,
+      tagNotes,
+      totalBookMarks,
+      totalNotesMarks,
+      notesChaptersCount,
+      bookChaptersUsed,
+      missingInBook,
+      missingInNotes,
+      linkedRepeats,
+      chapterTransitions,
+      noteChapterInfos,
+      anchorCount,
+      rangeCount
+    } = info;
+
+    /* קיבוץ הפערים (מזהים שלא קושרו) לפי הסיבה הסבירה, לשימוש גם בלוג המפורט
+       וגם בתקציר הקצר שמוצג למשתמש - כך שרואים מיד אם הבעיה שיטתית (למשל
+       כל המקרים מאותה סיבה) או נקודתית */
+    const missingInBookByReason = groupDiagnosticsByReason(missingInBook);
+    const missingInNotesByReason = groupDiagnosticsByReason(missingInNotes);
+
+    if (outCount > 0) {
+      const warnParts =[];
+
+      if (missingInBook.length) {
+        const breakdown = missingInBookByReason
+          .map(g => `${REASON_SHORT_LABELS[g.reason] || g.reason}: ${g.count}`)
+          .join(", ");
+        warnParts.push(
+          `מזהים שמופיעים בהערות אך לא נמצאו בספר: ${missingInBook.length} (${breakdown}) — שורות בהערות: ${summarizeLineNumbers(missingInBook)}`
+        );
+      }
+
+      if (missingInNotes.length) {
+        const breakdown = missingInNotesByReason
+          .map(g => `${REASON_SHORT_LABELS[g.reason] || g.reason}: ${g.count}`)
+          .join(", ");
+        warnParts.push(
+          `מופעים בספר שלא קיבלו התאמה בהערות: ${missingInNotes.length} (${breakdown}) — שורות בספר: ${summarizeLineNumbers(missingInNotes)}`
+        );
+      }
+
+      const dupCount = noteChapterInfos.reduce((sum, ch) => sum + ch.dupEntries.length, 0);
+      if (dupCount > 0) {
+        const dupEntriesFlat = noteChapterInfos.flatMap(ch => ch.dupEntries);
+        warnParts.push(
+          `כפילויות בהערות: ${dupCount} (שורות בהערות: ${summarizeLineNumbers(dupEntriesFlat)})`
+        );
+      }
+
+      if (linkedRepeats > 0) {
+        warnParts.push(`חזרות שקושרו בספר: ${linkedRepeats}`);
+      }
+
+      const extraNoteParts = [];
+      if (anchorCount > 0) extraNoteParts.push(`${anchorCount} עם עוגן-מילה`);
+      if (rangeCount > 0) extraNoteParts.push(`${rangeCount} עם טווח`);
+      const extraNote = extraNoteParts.length ? ` (מתוכם ${extraNoteParts.join(", ")})` : "";
+
+      if (warnParts.length) {
+        setStatus(els.makeStatus, `נוצרו ${outCount} קישורים${extraNote}. שים לב: ${warnParts.join(" · ")}.`, "warn");
+      } else {
+        setStatus(els.makeStatus, `נוצרו ${outCount} קישורים בהצלחה${extraNote}.`, "ok");
+      }
+    } else {
+      if (totalBookMarks === 0 && totalNotesMarks === 0) {
+        setStatus(els.makeStatus, "לא נוצרו קישורים: לא זוהו מספרי הערות באף אחד מהקבצים. בדוק את תגי הזיהוי.", "err");
+      } else if (totalBookMarks === 0) {
+        setStatus(els.makeStatus, `לא נוצרו קישורים: לא זוהו מספרי הערות בקובץ הספר לפי ${formatTagForDisplay(tagBook)}.`, "err");
+      } else if (totalNotesMarks === 0) {
+        setStatus(els.makeStatus, `לא נוצרו קישורים: לא זוהו מספרי הערות בקובץ ההערות לפי ${formatTagForDisplay(tagNotes)}.`, "err");
+      } else {
+        setStatus(els.makeStatus, "לא נוצרו קישורים: נמצאו מספרי הערות, אך לא נמצאו התאמות תקינות בין הספר להערות.", "err");
+      }
+    }
+
+    logger.group("סיכום ריצה", {
+      תג_בספר: formatTagForDisplay(tagBook),
+      תג_בהערות: formatTagForDisplay(tagNotes),
+      מופעים_בספר: totalBookMarks,
+      מופעים_בהערות: totalNotesMarks,
+      פרקים_שזוהו_בהערות: notesChaptersCount,
+      פרקים_ששומשו_בספר: bookChaptersUsed,
+      קישורים_שנוצרו: outCount,
+      עוגני_מילה_שנוצרו: anchorCount || 0,
+      קישורי_טווח_שנוצרו: rangeCount || 0,
+      חזרות_שקושרו: linkedRepeats,
+      מופעים_שדולגו_בספר: missingInNotes.length,
+      מזהים_שחסרים_בספר: missingInBook.length
+    });
+
+    if (outCount > 0) {
+      logger.ok(`נוצרו ${outCount} קישורים.`, {
+        פרקים_בהערות: notesChaptersCount,
+        פרקים_בשימוש_בספר: bookChaptersUsed,
+        חזרות_שקושרו: linkedRepeats
+      });
+    }
+
+    if (chapterTransitions.length) {
+      logger.group("מעברי פרקים שזוהו בספר", chapterTransitions, false);
+    }
+
+    /*
+      לוג האבחון המפורט ביותר בכלי: לכל קבוצת-סיבה (reason) של מזהים שלא
+      קושרו, מוצגים ההסבר המילולי (reasonLabel), מספר המקרים, ורשימת
+      דוגמאות קונקרטיות (שורה/מפתח/פרק) - כדי לזהות מיד אם הבעיה נעוצה
+      בהגדרת התג/רגקס, בעיטור (prefix/suffix) שלא תואם, או ביישור פרקים.
+    */
+    if (missingInBook.length) {
+      logger.warn(
+        `דילוג: ${missingInBook.length} מזהים הופיעו בהערות אך לא נמצאו בספר.`,
+        { שורות_בהערות: summarizeLineNumbers(missingInBook) }
+      );
+
+      missingInBookByReason.forEach(g => {
+        logger.group(
+          `↳ סיבה: ${g.label} (${g.count} מקרים)`,
+          g.items.slice(0, 30).map(x => ({
+            chapter: x.chapter,
+            key: x.key,
+            lineInNotes: x.lineIndex,
+            allLinesInNotes: x.allLines,
+            reasonExamples: x.reasonExamples && x.reasonExamples.length ? x.reasonExamples : undefined
+          })),
+          false
+        );
+      });
+    }
+
+    if (missingInNotes.length) {
+      logger.warn(
+        `דילוג: ${missingInNotes.length} מופעים בספר לא קיבלו התאמה בהערות.`,
+        { שורות_בספר: summarizeLineNumbers(missingInNotes) }
+      );
+
+      missingInNotesByReason.forEach(g => {
+        logger.group(
+          `↳ סיבה: ${g.label} (${g.count} מקרים)`,
+          g.items.slice(0, 30).map(x => ({
+            chapter: x.chapter,
+            key: x.key,
+            lineInBook: x.lineIndex,
+            occurrence: x.occurrenceIndex,
+            missesInRow: x.missesInRow,
+            foundInChapters: x.foundInChapters
+          })),
+          false
+        );
+      });
+    }
+
+    reportDuplicateNotes(noteChapterInfos);
+
+    if (outCount === 0) {
+      logger.err("לא נוצרו קישורים.");
+    }
+  }
+
+  /* חלק 4: אירועי ממשק פעילים */
+  async function handleBookFileChange() {
+    const f = els.fileBook.files && els.fileBook.files[0];
+    if (!f) return;
+
+    try {
+      state.bookText = await readFileAsText(f);
+      state.bookBaseName = safeFileStem(f.name);
+
+      setStatus(els.bookStatus, `ספר: נטען (${f.name})`, "ok");
+      showToast("קובץ הספר נטען");
+
+      logger.ok(`קובץ הספר נטען: ${f.name}`, {
+        שורות: splitToLines(state.bookText).length,
+        תווים: state.bookText.length
+      });
+    } catch (e) {
+      state.bookText = "";
+      state.bookBaseName = "שם הספר";
+      setStatus(els.bookStatus, "ספר: שגיאה בטעינה", "err");
+      logger.err("טעינת קובץ הספר נכשלה.", e);
+      alert("שגיאה בקריאת קובץ הספר");
+    }
+
+    updateButtons();
+  }
+
+  async function handleNotesFileChange() {
+    const f = els.fileNotes.files && els.fileNotes.files[0];
+    if (!f) return;
+
+    try {
+      state.notesText = await readFileAsText(f);
+      state.notesFileName = f.name;
+      els.path2.value = f.name;
+
+      setStatus(els.notesStatus, `הערות: נטען (${f.name})`, "ok");
+      showToast("קובץ ההערות נטען");
+
+      logger.ok(`קובץ ההערות נטען: ${f.name}`, {
+        שורות: splitToLines(state.notesText).length,
+        תווים: state.notesText.length
+      });
+    } catch (e) {
+      state.notesText = "";
+      state.notesFileName = "";
+      setStatus(els.notesStatus, "הערות: שגיאה בטעינה", "err");
+      logger.err("טעינת קובץ ההערות נכשלה.", e);
+      alert("שגיאה בקריאת קובץ ההערות");
+    }
+
+    updateButtons();
+  }
+
+  /* הליבה הסינכרונית של זיהוי וקישור (ראו makeJson למטה לעטיפה עם מחוון "עובד").
+     מופרד מ-makeJson כדי שבדיקת ה-confirm על מחיקת שינויים ידניים תתבצע *לפני*
+     שמוצג מצב "עובד" - אחרת ביטול ה-confirm היה משאיר את הסטטוס תקוע על "מעבד..." */
+  function makeJsonCore() {
+    els.btnDownload.disabled = true;
+    els.btnCopy.disabled = true;
+
+    const bookLines = splitToLines(state.bookText);
+    const noteLines = splitToLines(state.notesText);
+
+    const rawTagBook = String(els.tagBook.value || "").trim();
+    const rawTagNotes = String(els.tagNotes.value || "").trim();
+    const tagBookIsRegex = isLikelyRegexPattern(rawTagBook);
+    const tagNotesIsRegex = isLikelyRegexPattern(rawTagNotes);
+
+    /* אם המשתמש הזין ביטוי רגולרי - משתמשים בו בדיוק כפי שהוקלד (לא מנקים תווים!),
+       אחרת ממשיכים בהתנהגות הקודמת: ניקוי לשם תגית תקין. */
+    let tagBook = tagBookIsRegex ? rawTagBook : (sanitizeTagName(rawTagBook) || "sup");
+    let tagNotes = tagNotesIsRegex ? rawTagNotes : (sanitizeTagName(rawTagNotes) || "sup");
+
+    if (tagBookIsRegex) {
+      const check = validateRegexPattern(tagBook);
+      if (!check.ok) {
+        setStatus(els.makeStatus, `ביטוי הרגקס בשדה "תג בספר" אינו תקין: ${check.message}`, "err");
+        logger.err(`ביטוי רגקס לא תקין בשדה תג בספר: ${tagBook}`, check.message);
+        els.btnDownload.disabled = true;
+        els.btnCopy.disabled = true;
+        return;
+      }
+    } else {
+      els.tagBook.value = tagBook;
+    }
+
+    if (tagNotesIsRegex) {
+      const check = validateRegexPattern(tagNotes);
+      if (!check.ok) {
+        setStatus(els.makeStatus, `ביטוי הרגקס בשדה "תג בהערות" אינו תקין: ${check.message}`, "err");
+        logger.err(`ביטוי רגקס לא תקין בשדה תג בהערות: ${tagNotes}`, check.message);
+        els.btnDownload.disabled = true;
+        els.btnCopy.disabled = true;
+        return;
+      }
+    } else {
+      els.tagNotes.value = tagNotes;
+    }
+
+    const heRef2 = String(els.heRef2.value || "").trim() || "הערות";
+    els.heRef2.value = heRef2;
+
+    let path2 = String(els.path2.value || "").trim();
+    if (!path2 && state.notesFileName) path2 = state.notesFileName;
+    els.path2.value = path2;
+
+    const connectionType = els.connectionTypeSelect.value;
+
+    logger.info("מתחיל תהליך זיהוי וקישור", {
+      תג_בספר: tagBook,
+      תג_בהערות: tagNotes,
+      heRef_2: heRef2,
+      path_2: path2,
+      Conection_Type: connectionType || "(ריק)"
+    });
+
+    const bookOccs = extractOccurrences(bookLines, tagBook, "book");
+    const noteOccs = extractOccurrences(noteLines, tagNotes, "notes");
+
+    logger.info("זוהו מופעים ראשוניים", {
+      מופעים_בספר: bookOccs.length,
+      מופעים_בהערות: noteOccs.length,
+      מצב_זיהוי_בספר: tagBookIsRegex ? "regex" : "תגית",
+      מצב_זיהוי_בהערות: tagNotesIsRegex ? "regex" : "תגית"
+    });
+
+    /* דגימת "sanity check": כמה מהמופעים הראשונים שזוהו בכל צד, כדי לוודא
+       חזותית ובמהירות שהזיהוי תפס את הדבר הנכון (ולא, למשל, טקסט מקרי
+       שמתאים בטעות לביטוי הרגולרי) - בלי צורך לחפש ידנית בקבצים */
+    if (bookOccs.length) {
+      logger.group("דוגמית מופעים שזוהו בספר (5 ראשונים)", bookOccs.slice(0, 5).map(o => ({
+        line: o.lineIndex, key: o.key, raw: o.rawRef
+      })), true);
+    }
+    if (noteOccs.length) {
+      logger.group("דוגמית מופעים שזוהו בהערות (5 ראשונים)", noteOccs.slice(0, 5).map(o => ({
+        line: o.lineIndex, key: o.key, raw: o.rawRef
+      })), true);
+    }
+
+    /* אבחון למקרה הקצה השכיח ביותר: אפס מופעים באחד הצדדים.
+       מבדילים בין מצב תגית למצב regex, כי הסיבות השכיחות שונות. */
+    if (bookOccs.length === 0) {
+      logger.warn(
+        tagBookIsRegex
+          ? `הביטוי הרגולרי בשדה "תג בספר" תקין תחבירית אך לא תאם אף מחרוזת בקובץ הספר.`
+          : `לא נמצאו תגיות <${tagBook}>...</${tagBook}> בקובץ הספר.`,
+        tagBookIsRegex
+          ? { בדקו: "האם התבנית תואמת את התווים בפועל בקובץ (רווחים/גרשיים/כיוון), והאם יש תווים מיוחדים שדורשים בריחה (\\)" }
+          : { בדקו: "האם התגית אכן כתובה עם סוגריים משולשים בקובץ, ושיש תגית סוגרת תואמת" }
+      );
+    }
+    if (noteOccs.length === 0) {
+      logger.warn(
+        tagNotesIsRegex
+          ? `הביטוי הרגולרי בשדה "תג בהערות" תקין תחבירית אך לא תאם אף מחרוזת בקובץ ההערות.`
+          : `לא נמצאו תגיות <${tagNotes}>...</${tagNotes}> בקובץ ההערות.`,
+        tagNotesIsRegex
+          ? { בדקו: "האם התבנית תואמת את התווים בפועל בקובץ (רווחים/גרשיים/כיוון), והאם יש תווים מיוחדים שדורשים בריחה (\\)" }
+          : { בדקו: "האם התגית אכן כתובה עם סוגריים משולשים בקובץ, ושיש תגית סוגרת תואמת" }
+      );
+    }
+
+    const noteChaptersRaw = splitNotesIntoChapters(noteOccs);
+    const noteChapterInfos = noteChaptersRaw.map((chapter, idx) => buildChapterInfo(chapter, idx + 1));
+
+    logger.group("פרקי הערות שזוהו", noteChapterInfos.map(ch => ({
+      chapter: ch.chapterNo,
+      fromLine: ch.firstLine,
+      toLine: ch.lastLine,
+      occurrences: ch.occs.length,
+      maxNum: ch.maxNum,
+      duplicateKeys: ch.dupKeys
+    })));
+
+    const missingInBook = collectMissingInBook(noteChapterInfos, bookOccs);
+    const linkGenerationMode = getLinkGenerationMode();
+
+    const {
+      outArr,
+      missingInNotes,
+      chapterTransitions,
+      linkedRepeats,
+      bookChaptersUsed,
+      anchorCount,
+      rangeCount
+    } = buildLinks({
+      bookOccs,
+      noteChapterInfos,
+      bookLines,
+      heRef2,
+      path2,
+      connectionType,
+      linkGenerationMode
+    });
+
+    state.lastJsonText = JSON.stringify(outArr.map(cleanLinkForExport), null, 2);
+    els.out.textContent = state.lastJsonText;
+
+    /* בניית מצב העורך המתקדם (שלושת הטורים החיים) מחדש מהתוצאה הנוכחית */
+    let nextId = 1;
+    state.editor = {
+      bookLines,
+      noteLines,
+      bookOccs,
+      noteOccs,
+      noteChapterInfos,
+      missingInBook,
+      linksArr: outArr.map(link => ({ _id: nextId++, ...link })),
+      /* עותק "נקי" של התוצאה האוטומטית, לשחזור מלא בלחיצה על "איפוס שינויים" */
+      originalLinksSnapshot: JSON.parse(JSON.stringify(outArr)),
+      nextId,
+      dirty: false,
+      pendingBookLine: null,
+      pendingNotesLine: null,
+      activeLinkId: null,
+      /* הדגשה זמנית (flash) של שורות/קישור בעקבות לחיצה על שורה מקושרת קיימת */
+      flashBookLines: new Set(),
+      flashNotesLines: new Set(),
+      flashLinkIds: new Set(),
+      flashToken: 0,
+      /* קישורים שבהם המשתמש חשף ידנית שדות טווח (עד) ו/או עוגן-מילה (start/end), לצד המצב הנוכחי בפועל */
+      expandedRangeIds: new Set(),
+      expandedAnchorIds: new Set(),
+      /* טעינה מדורגת (pagination) לכל טור - ראו EDITOR_PAGE_SIZE, חיוני בקבצים גדולים */
+      bookVisible: EDITOR_PAGE_SIZE,
+      notesVisible: EDITOR_PAGE_SIZE,
+      linksVisible: EDITOR_PAGE_SIZE
+    };
+
+    if (els.advEditor.style.display !== "none") {
+      renderEditor();
+    }
+
+    reportLinkingResult({
+      outCount: outArr.length,
+      tagBook,
+      tagNotes,
+      totalBookMarks: bookOccs.length,
+      totalNotesMarks: noteOccs.length,
+      notesChaptersCount: noteChapterInfos.length,
+      bookChaptersUsed,
+      missingInBook,
+      missingInNotes,
+      linkedRepeats,
+      chapterTransitions,
+      noteChapterInfos,
+      anchorCount,
+      rangeCount
+    });
+
+    els.btnDownload.disabled = (outArr.length === 0);
+    els.btnCopy.disabled = (outArr.length === 0);
+
+    showToast(outArr.length ? "ה-JSON נוצר" : "לא נוצרו קישורים");
+  }
+
+  /*
+    עטיפה של makeJsonCore עם מחוון "עובד" גלוי: משנה את טקסט הכפתור והסטטוס,
+    ונותנת לדפדפן הזדמנות לצייר את זה (yieldToBrowser) *לפני* שמתחיל העיבוד
+    הסינכרוני הכבד - כדי שבקבצים גדולים לא ייראה כאילו הכלי "נתקע" בלי תגובה.
+  */
+  async function makeJson() {
+    if (state.editor && state.editor.dirty) {
+      const proceed = confirm(
+        "יצירת ה-JSON מחדש תמחק את השינויים הידניים שביצעת בעורך המתקדם. להמשיך?"
+      );
+      if (!proceed) return;
+    }
+
+    const originalLabel = els.btnMake.textContent;
+    els.btnMake.disabled = true;
+    els.btnMake.textContent = "⏳ מעבד...";
+    setStatus(els.makeStatus, "⏳ מעבד ומקשר... (בקבצים גדולים זה עשוי לקחת כמה שניות)", "busy");
+
+    await yieldToBrowser();
+
+    try {
+      makeJsonCore();
+    } finally {
+      els.btnMake.textContent = originalLabel;
+      updateButtons();
+    }
+  }
+
+  /*
+    ========================================================================
+    חלק 5: עורך מתקדם — תצוגה חיה של שלושת הטורים (ספר / הערות / JSON)
+    ומחיקה/יצירה/תיקון ידניים של קישורים, ללא שינוי באלגוריתם ההתאמה עצמו.
+    ========================================================================
+  */
+
+  function computeBookLineStatuses() {
+    const map = new Map();
+    if (!state.editor) return map;
+
+    for (const occ of state.editor.bookOccs) {
+      if (!map.has(occ.lineIndex)) map.set(occ.lineIndex, "unlinked");
+    }
+
+    for (const link of state.editor.linksArr) {
+      if (Number.isInteger(link.line_index_1)) map.set(link.line_index_1, "linked");
+    }
+
+    return map;
+  }
+
+  function computeNotesLineStatuses() {
+    const map = new Map();
+    if (!state.editor) return map;
+
+    for (const occ of state.editor.noteOccs) {
+      if (!map.has(occ.lineIndex)) map.set(occ.lineIndex, "unlinked");
+    }
+
+    for (const m of state.editor.missingInBook) {
+      for (const ln of (m.allLines || [])) map.set(ln, "orphan");
+    }
+
+    for (const link of state.editor.linksArr) {
+      if (Number.isInteger(link.line_index_2) && map.get(link.line_index_2) !== "orphan") {
+        map.set(link.line_index_2, "used");
+      }
+    }
+
+    for (const ch of state.editor.noteChapterInfos) {
+      for (const d of ch.dupEntries) map.set(d.lineIndex, "duplicate");
+    }
+
+    return map;
+  }
+
+  /*
+    ------------------------------------------------------------------------
+    טעינה מדורגת (pagination) בעורך המתקדם.
+    בספר גדול מאוד (עשרות אלפי שורות/הערות), בניית ה-HTML וקישור מאזין
+    (event listener) לכל שורה בבת אחת עלולים "לתקוע" את הדפדפן לזמן ארוך,
+    ולתת רושם שהעורך "לא נפתח" בכלל. לכן כל טור מציג כברירת מחדל רק חלון
+    ראשוני (EDITOR_PAGE_SIZE שורות/קישורים), עם כפתור "טען עוד" ו"טען הכל"
+    להרחבה מודעת. הגלילה/ההדגשה האוטומטית (flashRelated) מרחיבה את החלון
+    אוטומטית אם היעד חורג ממנו, כדי שהתכונה תמשיך לעבוד נכון גם בקבצים גדולים.
+    ------------------------------------------------------------------------
+  */
+  const EDITOR_PAGE_SIZE = 500;
+
+  /* מרחיב חלון תצוגה קיים כך שיכלול אינדקס יעד (1-based), בקפיצות של
+     EDITOR_PAGE_SIZE - עקבי עם מה שכפתור "טען עוד" היה עושה בעצמו */
+  function expandVisibleToInclude(currentVisible, total, targetIndexOneBased) {
+    if (!Number.isInteger(targetIndexOneBased) || targetIndexOneBased <= currentVisible) return currentVisible;
+    let visible = currentVisible || EDITOR_PAGE_SIZE;
+    while (visible < targetIndexOneBased && visible < total) visible += EDITOR_PAGE_SIZE;
+    return Math.min(visible, total);
+  }
+
+  /* בונה את שורת "טען עוד / טען הכל" שמופיעה בתחתית טור מקוצר */
+  function loadMoreRowHtml(remaining, className) {
+    if (remaining <= 0) return "";
+    const nextChunk = Math.min(EDITOR_PAGE_SIZE, remaining);
+    return `<div class="editorLoadMore">
+      <span class="editorLoadMoreHint">מוצגות רק השורות הראשונות מטעמי ביצועים בקבצים גדולים</span>
+      <button type="button" class="${className}Btn" title="טעינת ${nextChunk} שורות נוספות">⬇️ טען עוד ${nextChunk} (נותרו ${remaining})</button>
+      <button type="button" class="${className}All" title="טעינת כל השורות הנותרות בבת אחת - עלול להאט בקבצים ענקיים">טען הכל</button>
+    </div>`;
+  }
+
+  function renderEditor() {
+    if (!state.editor) return;
+    renderEditorBookCol();
+    renderEditorNotesCol();
+    renderEditorLinksCol();
+  }
+
+  function renderEditorBookCol() {
+    const statuses = computeBookLineStatuses();
+    const { bookLines, pendingBookLine, activeLinkId, linksArr, flashBookLines, bookOccs } = state.editor;
+    const activeLink = activeLinkId ? linksArr.find(l => l._id === activeLinkId) : null;
+
+    /* מיקומי תגית הזיהוי (למשל <sup>) לכל שורה, להדגשה צהובה של הטקסט שעל פיו מזוהה הקישור */
+    const tagRangesByLine = new Map();
+    for (const occ of bookOccs) {
+      if (!Number.isInteger(occ.rawStart) || !Number.isInteger(occ.rawEnd)) continue;
+      if (!tagRangesByLine.has(occ.lineIndex)) tagRangesByLine.set(occ.lineIndex, []);
+      tagRangesByLine.get(occ.lineIndex).push({ start: occ.rawStart, end: occ.rawEnd });
+    }
+
+    /* חלון טעינה מדורגת - ראו הסבר ליד EDITOR_PAGE_SIZE למעלה */
+    const total = bookLines.length;
+    const visible = Math.min(state.editor.bookVisible || EDITOR_PAGE_SIZE, total);
+
+    const html = bookLines.slice(0, visible).map((text, idx) => {
+      const lineIndex = idx + 1;
+      const baseStatus = statuses.get(lineIndex);
+      let statusClass = baseStatus ? `status-${baseStatus}` : "";
+
+      if (pendingBookLine === lineIndex) statusClass += " status-pending";
+      if (activeLink && activeLink.line_index_1 === lineIndex) statusClass += " status-activeSel";
+      if (flashBookLines && flashBookLines.has(lineIndex)) statusClass += " status-flash";
+
+      return `<div class="lnRow ${statusClass}" data-line="${lineIndex}">` +
+        `<span class="lnNum">${lineIndex}</span>` +
+        `<span class="lnText">${highlightRawRanges(text, tagRangesByLine.get(lineIndex))}</span>` +
+        `</div>`;
+    }).join("");
+
+    els.editorBookCol.innerHTML =
+      (html || `<div class="editorEmpty">אין שורות בספר</div>`) +
+      loadMoreRowHtml(total - visible, "loadMoreBook");
+
+    els.editorBookCol.querySelectorAll(".lnRow").forEach(row => {
+      row.addEventListener("click", () => handleBookLineClick(parseInt(row.dataset.line, 10)));
+    });
+
+    const moreBtn = els.editorBookCol.querySelector(".loadMoreBookBtn");
+    if (moreBtn) moreBtn.addEventListener("click", () => {
+      state.editor.bookVisible = Math.min(total, visible + EDITOR_PAGE_SIZE);
+      renderEditorBookCol();
+    });
+    const allBtn = els.editorBookCol.querySelector(".loadMoreBookAll");
+    if (allBtn) allBtn.addEventListener("click", () => {
+      if (total > 3000 && !confirm(`טעינת כל ${total} השורות בבת אחת עלולה להאט את הדפדפן. להמשיך?`)) return;
+      state.editor.bookVisible = total;
+      renderEditorBookCol();
+    });
+  }
+
+  function renderEditorNotesCol() {
+    const statuses = computeNotesLineStatuses();
+    const { noteLines, pendingNotesLine, activeLinkId, linksArr, flashNotesLines } = state.editor;
+    const activeLink = activeLinkId ? linksArr.find(l => l._id === activeLinkId) : null;
+
+    const total = noteLines.length;
+    const visible = Math.min(state.editor.notesVisible || EDITOR_PAGE_SIZE, total);
+
+    const html = noteLines.slice(0, visible).map((text, idx) => {
+      const lineIndex = idx + 1;
+      const baseStatus = statuses.get(lineIndex);
+      const cssStatus = baseStatus === "used" ? "linked" : baseStatus;
+      let statusClass = cssStatus ? `status-${cssStatus}` : "";
+
+      if (pendingNotesLine === lineIndex) statusClass += " status-pending";
+      if (activeLink && activeLink.line_index_2 === lineIndex) statusClass += " status-activeSel";
+      if (flashNotesLines && flashNotesLines.has(lineIndex)) statusClass += " status-flash";
+
+      return `<div class="lnRow ${statusClass}" data-line="${lineIndex}">` +
+        `<span class="lnNum">${lineIndex}</span>` +
+        `<span class="lnText">${escapeHtml(text) || "&nbsp;"}</span>` +
+        `</div>`;
+    }).join("");
+
+    els.editorNotesCol.innerHTML =
+      (html || `<div class="editorEmpty">אין שורות בהערות</div>`) +
+      loadMoreRowHtml(total - visible, "loadMoreNotes");
+
+    els.editorNotesCol.querySelectorAll(".lnRow").forEach(row => {
+      row.addEventListener("click", () => handleNotesLineClick(parseInt(row.dataset.line, 10)));
+    });
+
+    const moreBtn = els.editorNotesCol.querySelector(".loadMoreNotesBtn");
+    if (moreBtn) moreBtn.addEventListener("click", () => {
+      state.editor.notesVisible = Math.min(total, visible + EDITOR_PAGE_SIZE);
+      renderEditorNotesCol();
+    });
+    const allBtn = els.editorNotesCol.querySelector(".loadMoreNotesAll");
+    if (allBtn) allBtn.addEventListener("click", () => {
+      if (total > 3000 && !confirm(`טעינת כל ${total} השורות בבת אחת עלולה להאט את הדפדפן. להמשיך?`)) return;
+      state.editor.notesVisible = total;
+      renderEditorNotesCol();
+    });
+  }
+
+  function renderEditorLinksCol() {
+    const { linksArr, activeLinkId, flashLinkIds, expandedRangeIds, expandedAnchorIds } = state.editor;
+    const optionsHtml = els.connectionTypeSelect.innerHTML;
+
+    if (!linksArr.length) {
+      els.editorLinksCol.innerHTML =
+        `<div class="editorEmpty">אין עדיין קישורים. לחצו על "➕ קישור חדש", או בחרו שורה (מקטע) בטור הספר ולאחריה בטור ההערות.</div>`;
+      return;
+    }
+
+    const total = linksArr.length;
+    const visible = Math.min(state.editor.linksVisible || EDITOR_PAGE_SIZE, total);
+
+    const html = linksArr.slice(0, visible).map((link, idx) => {
+      const isActive = link._id === activeLinkId;
+      const isFlash = !!(flashLinkIds && flashLinkIds.has(link._id));
+      const hasAnchor = Number.isInteger(link.start) || Number.isInteger(link.end);
+      const hasRange = Number.isInteger(link.line_index_1_end) || Number.isInteger(link.line_index_2_end);
+
+      /* טווח ועוגן-מילה הם צ'יפים עצמאיים לכל קישור — אפשר להפעיל את שניהם יחד על אותו קישור */
+      const rangeOn = hasRange || expandedRangeIds.has(link._id);
+      const anchorOn = hasAnchor || expandedAnchorIds.has(link._id);
+
+      const extraRangeRow = rangeOn
+        ? `<div class="extraRow extraRange">
+            <span class="extraLabel">📏 טווח:</span>
+            <span class="liGroup">עד <input type="number" class="liLine1End" data-id="${link._id}" value="${link.line_index_1_end ?? ""}" placeholder="שורה" title="עד שורה (מקטע) בספר — טווח, אופציונלי" /></span>
+            <span class="liArrow">↔</span>
+            <span class="liGroup">עד <input type="number" class="liLine2End" data-id="${link._id}" value="${link.line_index_2_end ?? ""}" placeholder="שורה" title="עד שורה (מקטע) בהערות — טווח, אופציונלי" /></span>
+          </div>`
+        : "";
+
+      const extraAnchorRow = anchorOn
+        ? `<div class="extraRow extraAnchor">
+            <span class="extraLabel">📍 עוגן (תווים גולמיים בשורת המקור):</span>
+            <input type="number" class="liAnchorStart" data-id="${link._id}" value="${link.start ?? ""}" placeholder="מ-תו" title="עוגן-מילה: מאיזה תו גולמי בשורת המקור (כולל תגיות)" />
+            <span class="extraTo">עד</span>
+            <input type="number" class="liAnchorEnd" data-id="${link._id}" value="${link.end ?? ""}" placeholder="עד-תו" title="עוגן-מילה: עד איזה תו גולמי בשורת המקור" />
+          </div>`
+        : "";
+
+      const extraBlock = (rangeOn || anchorOn)
+        ? `<div class="linkCardExtra">${extraRangeRow}${extraAnchorRow}</div>`
+        : "";
+
+      return `
+        <div class="linkRow ${isActive ? "active" : ""} ${isFlash ? "flash" : ""}" data-id="${link._id}">
+          <div class="linkCardTop">
+            <span class="liIdx">#${idx + 1}</span>
+            <span class="liGroup">
+              <input type="number" class="liLine1" data-id="${link._id}" value="${link.line_index_1 ?? ""}" placeholder="שורה" title="שורה (מקטע) בספר" />
+            </span>
+            <span class="liArrow">↔</span>
+            <span class="liGroup">
+              <input type="number" class="liLine2" data-id="${link._id}" value="${link.line_index_2 ?? ""}" placeholder="שורה" title="שורה (מקטע) בהערות" />
+            </span>
+            <select class="liType" data-id="${link._id}" title="סוג הקשר בין הספר להערה">${optionsHtml}</select>
+            <span class="liActions">
+              <button type="button" class="liChip liChipRange ${rangeOn ? "on" : ""}" data-id="${link._id}" title="${rangeOn ? "כיבוי טווח (חזרה לקישור שורה בודדת)" : "הפעלת טווח: קישור כמה שורות (מקטעים) רצופים במקום שורה בודדת"}">📏</button>
+              <button type="button" class="liChip liChipAnchor ${anchorOn ? "on" : ""}" data-id="${link._id}" title="${anchorOn ? "כיבוי עוגן-מילה" : "הפעלת עוגן-מילה: קישור מילה אחת או יותר בתוך השורה, ולא את כולה"}">📍</button>
+              <button type="button" class="liPick ${isActive ? "active" : ""}" data-id="${link._id}" title="${isActive ? "כיבוי בחירה מהטורים" : "הפעלת בחירה: לחצו על שורה בספר ואז בהערות כדי לעדכן קישור זה"}">🎯</button>
+              <button type="button" class="liDel" data-id="${link._id}" title="מחיקת קישור זה">🗑</button>
+            </span>
+          </div>
+          ${extraBlock}
+        </div>`;
+    }).join("");
+
+    els.editorLinksCol.innerHTML = html + loadMoreRowHtml(total - visible, "loadMoreLinks");
+
+    const moreLinksBtn = els.editorLinksCol.querySelector(".loadMoreLinksBtn");
+    if (moreLinksBtn) moreLinksBtn.addEventListener("click", () => {
+      state.editor.linksVisible = Math.min(total, visible + EDITOR_PAGE_SIZE);
+      renderEditorLinksCol();
+    });
+    const allLinksBtn = els.editorLinksCol.querySelector(".loadMoreLinksAll");
+    if (allLinksBtn) allLinksBtn.addEventListener("click", () => {
+      if (total > 3000 && !confirm(`טעינת כל ${total} הקישורים בבת אחת עלולה להאט את הדפדפן. להמשיך?`)) return;
+      state.editor.linksVisible = total;
+      renderEditorLinksCol();
+    });
+
+    els.editorLinksCol.querySelectorAll(".liType").forEach(sel => {
+      const id = parseInt(sel.dataset.id, 10);
+      const link = linksArr.find(l => l._id === id);
+      if (link) sel.value = link["Conection Type"] || "";
+      sel.addEventListener("change", () => updateLinkField(id, "Conection Type", sel.value));
+    });
+
+    els.editorLinksCol.querySelectorAll(".liLine1").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "line_index_1", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liLine2").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "line_index_2", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liLine1End").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "line_index_1_end", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liLine2End").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "line_index_2_end", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liAnchorStart").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "start", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liAnchorEnd").forEach(inp => {
+      inp.addEventListener("change", () => {
+        const id = parseInt(inp.dataset.id, 10);
+        const v = inp.value.trim();
+        updateLinkField(id, "end", v ? parseInt(v, 10) : null);
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liChipRange").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.dataset.id, 10);
+        const link = linksArr.find(l => l._id === id);
+        if (!link) return;
+
+        const isOn = Number.isInteger(link.line_index_1_end) || Number.isInteger(link.line_index_2_end) || state.editor.expandedRangeIds.has(id);
+        if (isOn) {
+          link.line_index_1_end = null;
+          link.line_index_2_end = null;
+          state.editor.expandedRangeIds.delete(id);
+        } else {
+          state.editor.expandedRangeIds.add(id);
+        }
+        state.editor.dirty = true;
+        logger.info(`צ'יפ טווח ${isOn ? "כובה" : "הופעל"} ידנית לקישור #${id}`, { id, טווח_פעיל: !isOn });
+        syncAndRerenderEditor();
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liChipAnchor").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.dataset.id, 10);
+        const link = linksArr.find(l => l._id === id);
+        if (!link) return;
+
+        const isOn = Number.isInteger(link.start) || Number.isInteger(link.end) || state.editor.expandedAnchorIds.has(id);
+        if (isOn) {
+          link.start = null;
+          link.end = null;
+          state.editor.expandedAnchorIds.delete(id);
+        } else {
+          state.editor.expandedAnchorIds.add(id);
+        }
+        state.editor.dirty = true;
+        logger.info(`צ'יפ עוגן-מילה ${isOn ? "כובה" : "הופעל"} ידנית לקישור #${id}`, { id, עוגן_פעיל: !isOn });
+        syncAndRerenderEditor();
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liPick").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = parseInt(btn.dataset.id, 10);
+        state.editor.activeLinkId = state.editor.activeLinkId === id ? null : id;
+        state.editor.pendingBookLine = null;
+        state.editor.pendingNotesLine = null;
+        renderEditor();
+      });
+    });
+
+    els.editorLinksCol.querySelectorAll(".liDel").forEach(btn => {
+      btn.addEventListener("click", () => deleteLink(parseInt(btn.dataset.id, 10)));
+    });
+  }
+
+  /*
+    הדגשה זמנית (flash) בכחול עדין, למשך כ-2 שניות, של השורה המקבילה בטור השני
+    ושל שורת/שורות ה-JSON האחראיות — כדי לעזור לעקוב אחר קישור קיים בלחיצה אחת,
+    בלי לפגוע בזרימת יצירת/עריכת הקישורים הרגילה (שממשיכה לפעול באותה לחיצה).
+  */
+  function flashRelated(side, lineIndex) {
+    if (!state.editor) return false;
+
+    const related = state.editor.linksArr.filter(l =>
+      side === "book" ? l.line_index_1 === lineIndex : l.line_index_2 === lineIndex
+    );
+    if (!related.length) return false;
+
+    const flashBookLines = new Set();
+    const flashNotesLines = new Set();
+    const flashLinkIds = new Set();
+
+    related.forEach(link => {
+      if (Number.isInteger(link.line_index_1)) flashBookLines.add(link.line_index_1);
+      if (Number.isInteger(link.line_index_2)) flashNotesLines.add(link.line_index_2);
+      flashLinkIds.add(link._id);
+    });
+
+    state.editor.flashBookLines = flashBookLines;
+    state.editor.flashNotesLines = flashNotesLines;
+    state.editor.flashLinkIds = flashLinkIds;
+
+    /* בקבצים גדולים הטורים טעונים בהדרגה (pagination) - אם היעד שצריך להדגיש
+       נמצא מעבר לחלון הטעון כרגע, מרחיבים את החלון כדי שההדגשה/הגלילה
+       האוטומטית ימשיכו לעבוד נכון גם כשלא כל הקובץ טעון על המסך */
+    if (flashBookLines.size) {
+      const maxLine = Math.max(...flashBookLines);
+      state.editor.bookVisible = expandVisibleToInclude(state.editor.bookVisible, state.editor.bookLines.length, maxLine);
+    }
+    if (flashNotesLines.size) {
+      const maxLine = Math.max(...flashNotesLines);
+      state.editor.notesVisible = expandVisibleToInclude(state.editor.notesVisible, state.editor.noteLines.length, maxLine);
+    }
+    if (flashLinkIds.size) {
+      let maxIdx = -1;
+      state.editor.linksArr.forEach((l, idx) => { if (flashLinkIds.has(l._id) && idx > maxIdx) maxIdx = idx; });
+      if (maxIdx >= 0) {
+        state.editor.linksVisible = expandVisibleToInclude(state.editor.linksVisible, state.editor.linksArr.length, maxIdx + 1);
+      }
+    }
+
+    const token = ++state.editor.flashToken;
+    renderEditor();
+
+    /* גלילה אוטומטית רק כשהיעד חד-משמעי (התאמה יחידה) בכל טור בנפרד — אם יש כמה, לא גוללים */
+    if (flashBookLines.size === 1) {
+      const el = els.editorBookCol.querySelector(".status-flash");
+      if (el) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+    if (flashNotesLines.size === 1) {
+      const el = els.editorNotesCol.querySelector(".status-flash");
+      if (el) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+    if (flashLinkIds.size === 1) {
+      const el = els.editorLinksCol.querySelector(".linkRow.flash");
+      if (el) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+
+    setTimeout(() => {
+      if (!state.editor || state.editor.flashToken !== token) return; // הוחלף על-ידי הדגשה חדשה יותר בינתיים
+      state.editor.flashBookLines = new Set();
+      state.editor.flashNotesLines = new Set();
+      state.editor.flashLinkIds = new Set();
+      renderEditor();
+    }, 4000);
+
+    return true;
+  }
+
+  function handleBookLineClick(lineIndex) {
+    if (!state.editor) return;
+
+    flashRelated("book", lineIndex);
+
+    if (state.editor.activeLinkId) {
+      updateLinkField(state.editor.activeLinkId, "line_index_1", lineIndex);
+      return;
+    }
+
+    if (state.editor.pendingNotesLine != null) {
+      const notesLine = state.editor.pendingNotesLine;
+      state.editor.pendingNotesLine = null;
+      createLink(lineIndex, notesLine);
+      return;
+    }
+
+    state.editor.pendingBookLine = state.editor.pendingBookLine === lineIndex ? null : lineIndex;
+    renderEditor();
+  }
+
+  function handleNotesLineClick(lineIndex) {
+    if (!state.editor) return;
+
+    flashRelated("notes", lineIndex);
+
+    if (state.editor.activeLinkId) {
+      updateLinkField(state.editor.activeLinkId, "line_index_2", lineIndex);
+      return;
+    }
+
+    if (state.editor.pendingBookLine != null) {
+      const bookLine = state.editor.pendingBookLine;
+      state.editor.pendingBookLine = null;
+      createLink(bookLine, lineIndex);
+      return;
+    }
+
+    state.editor.pendingNotesLine = state.editor.pendingNotesLine === lineIndex ? null : lineIndex;
+    renderEditor();
+  }
+
+  function createLink(lineIndex1, lineIndex2) {
+    const heRef2 = String(els.heRef2.value || "").trim() || "הערות";
+    let path2 = String(els.path2.value || "").trim();
+    if (!path2 && state.notesFileName) path2 = state.notesFileName;
+
+    const link = {
+      _id: state.editor.nextId++,
+      line_index_1: lineIndex1,
+      heRef_2: heRef2,
+      path_2: path2,
+      line_index_2: lineIndex2,
+      "Conection Type": els.connectionTypeSelect.value
+    };
+
+    state.editor.linksArr.push(link);
+    state.editor.dirty = true;
+
+    logger.ok("קישור נוצר ידנית בעורך המתקדם", { שורת_ספר: lineIndex1, שורת_הערה: lineIndex2 });
+    showToast(`נוצר קישור: מקטע ${lineIndex1} ↔ מקטע ${lineIndex2}`);
+    syncAndRerenderEditor();
+  }
+
+  function updateLinkField(id, field, value) {
+    if (!state.editor) return;
+    const link = state.editor.linksArr.find(l => l._id === id);
+    if (!link) return;
+
+    const prevValue = link[field];
+    link[field] = value;
+    state.editor.dirty = true;
+
+    logger.info("שדה קישור עודכן ידנית בעורך המתקדם", { id, field, מ: prevValue ?? null, ל: value ?? null });
+
+    if (field === "line_index_1_end" && Number.isInteger(value) && Number.isInteger(link.line_index_1) && value < link.line_index_1) {
+      showToast("⚠️ שורת הסיום בספר קטנה משורת ההתחלה");
+      logger.warn("טווח לא תקין: שורת הסיום בספר קטנה משורת ההתחלה", { id, line_index_1: link.line_index_1, line_index_1_end: value });
+    }
+    if (field === "line_index_2_end" && Number.isInteger(value) && Number.isInteger(link.line_index_2) && value < link.line_index_2) {
+      showToast("⚠️ שורת הסיום בהערות קטנה משורת ההתחלה");
+      logger.warn("טווח לא תקין: שורת הסיום בהערות קטנה משורת ההתחלה", { id, line_index_2: link.line_index_2, line_index_2_end: value });
+    }
+
+    syncAndRerenderEditor();
+  }
+
+  function deleteLink(id) {
+    if (!state.editor) return;
+    const removed = state.editor.linksArr.find(l => l._id === id);
+    state.editor.linksArr = state.editor.linksArr.filter(l => l._id !== id);
+    if (state.editor.activeLinkId === id) state.editor.activeLinkId = null;
+    state.editor.dirty = true;
+
+    logger.info("קישור נמחק ידנית בעורך המתקדם", removed ? { id, line_index_1: removed.line_index_1, line_index_2: removed.line_index_2 } : { id });
+    showToast("הקישור נמחק");
+    syncAndRerenderEditor();
+  }
+
+  function addBlankLink() {
+    if (!state.editor) return;
+
+    const heRef2 = String(els.heRef2.value || "").trim() || "הערות";
+    let path2 = String(els.path2.value || "").trim();
+    if (!path2 && state.notesFileName) path2 = state.notesFileName;
+
+    const link = {
+      _id: state.editor.nextId++,
+      line_index_1: null,
+      heRef_2: heRef2,
+      path_2: path2,
+      line_index_2: null,
+      "Conection Type": els.connectionTypeSelect.value
+    };
+
+    state.editor.linksArr.push(link);
+    state.editor.activeLinkId = link._id;
+    state.editor.dirty = true;
+
+    showToast("קישור חדש נוצר — לחצו על שורה בספר ולאחריה בהערות (או להפך)");
+    syncAndRerenderEditor();
+  }
+
+  /* מחזיר את כל הקישורים למצב שנוצר אוטומטית ב"יצירת ה-JSON" האחרונה, ומבטל כל עריכה ידנית */
+  function resetEditorChanges() {
+    if (!state.editor) return;
+
+    if (state.editor.dirty) {
+      const proceed = confirm(
+        "איפוס השינויים יחזיר את כל הקישורים למצב שנוצר אוטומטית ב'יצירת ה-JSON' האחרונה, ויבטל כל עריכה ידנית שביצעת בעורך המתקדם. להמשיך?"
+      );
+      if (!proceed) return;
+    }
+
+    let nextId = 1;
+    state.editor.linksArr = state.editor.originalLinksSnapshot.map(link => ({ _id: nextId++, ...link }));
+    state.editor.nextId = nextId;
+    state.editor.dirty = false;
+    state.editor.pendingBookLine = null;
+    state.editor.pendingNotesLine = null;
+    state.editor.activeLinkId = null;
+    state.editor.expandedRangeIds = new Set();
+    state.editor.expandedAnchorIds = new Set();
+    state.editor.flashBookLines = new Set();
+    state.editor.flashNotesLines = new Set();
+    state.editor.flashLinkIds = new Set();
+
+    logger.info("השינויים בעורך המתקדם אופסו לתוצאה האוטומטית האחרונה.");
+    showToast("השינויים אופסו לתוצאה האוטומטית");
+    syncAndRerenderEditor();
+  }
+
+  function syncAndRerenderEditor() {
+    const cleanArr = state.editor.linksArr.map(cleanLinkForExport);
+    state.lastJsonText = JSON.stringify(cleanArr, null, 2);
+    els.out.textContent = state.lastJsonText;
+    els.btnDownload.disabled = cleanArr.length === 0;
+    els.btnCopy.disabled = cleanArr.length === 0;
+    renderEditor();
+  }
+
+  /* פלייסהולדר זמני בשלושת הטורים לפני רינדור כבד, כדי שהמשתמש יראה מיד
+     שמשהו קורה במקום מסך ריק/קפוא (במיוחד חשוב בספרים גדולים) */
+  function showEditorLoadingPlaceholders() {
+    const placeholder = `<div class="editorEmpty">⏳ טוען עורך מתקדם...</div>`;
+    if (els.editorBookCol) els.editorBookCol.innerHTML = placeholder;
+    if (els.editorNotesCol) els.editorNotesCol.innerHTML = placeholder;
+    if (els.editorLinksCol) els.editorLinksCol.innerHTML = placeholder;
+  }
+
+  function setEditorVisible(show) {
+    els.advEditor.style.display = show ? "" : "none";
+    els.btnAdvancedEditor.textContent = show ? "🧩 סגירת עורך מתקדם" : "🧩 עורך מתקדם";
+    if (show) renderEditor();
+  }
+
+  async function toggleAdvancedEditor() {
+    const isOpen = els.advEditor.style.display !== "none";
+
+    if (isOpen) {
+      setEditorVisible(false);
+      return;
+    }
+
+    if (!state.editor) {
+      await makeJson();
+      if (!state.editor) return; // המשתמש ביטל את יצירת ה-JSON באישור
+    }
+
+    els.btnAdvancedEditor.disabled = true;
+    const originalLabel = els.btnAdvancedEditor.textContent;
+    els.btnAdvancedEditor.textContent = "⏳ טוען...";
+    showEditorLoadingPlaceholders();
+
+    /* בספר גדול מאוד, רינדור כל שלושת הטורים (גם המקוצרים לעמוד ראשון) עדיין
+       דורש עבודה סינכרונית לא-זניחה - נותנים לדפדפן לצייר את הפלייסהולדר קודם */
+    await yieldToBrowser();
+
+    try {
+      setEditorVisible(true);
+    } finally {
+      if (els.advEditor.style.display === "none") els.btnAdvancedEditor.textContent = originalLabel;
+      updateButtons();
+    }
+  }
+
+  function downloadJson() {
+    const filename = `${state.bookBaseName}_links.json`;
+    downloadText(filename, state.lastJsonText);
+    showToast(`ירד: ${filename}`);
+    logger.ok(`הורדת JSON: ${filename}`);
+  }
+
+  async function copyJson() {
+    try {
+      await navigator.clipboard.writeText(state.lastJsonText);
+      showToast("הועתק ללוח");
+      logger.ok("ה-JSON הועתק ללוח.");
+    } catch (e) {
+      logger.warn("Clipboard API נכשל. מנסה שיטת גיבוי.", e);
+
+      const ta = document.createElement("textarea");
+      ta.value = state.lastJsonText;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+
+      try {
+        document.execCommand("copy");
+        showToast("הועתק ללוח");
+        logger.ok("ה-JSON הועתק ללוח בשיטת גיבוי.");
+      } catch (e2) {
+        logger.err("גם שיטת הגיבוי נכשלה.", e2);
+        alert("ההעתקה נכשלה. אפשר להעתיק ידנית מהמסך.");
+      } finally {
+        ta.remove();
+      }
+    }
+  }
+
+  /* יצירת עותק HTML נקי לעבודה אופליין */
+  function buildOfflineHtml() {
+    const clone = document.documentElement.cloneNode(true);
+
+    const out = clone.querySelector("#out");
+    if (out) out.textContent = "[]";
+
+    const makeStatus = clone.querySelector("#makeStatus span:last-child");
+    if (makeStatus) makeStatus.textContent = "טען קבצים כדי להתחיל";
+
+    const bookStatus = clone.querySelector("#bookStatus span:last-child");
+    if (bookStatus) bookStatus.textContent = "ספר: לא נטען";
+
+    const notesStatus = clone.querySelector("#notesStatus span:last-child");
+    if (notesStatus) notesStatus.textContent = "הערות: לא נטען";
+
+    const path2 = clone.querySelector("#path2");
+    if (path2) path2.value = "";
+
+    const fileBook = clone.querySelector("#fileBook");
+    if (fileBook) fileBook.value = "";
+
+    const fileNotes = clone.querySelector("#fileNotes");
+    if (fileNotes) fileNotes.value = "";
+    
+    const connectionTypeSelect = clone.querySelector("#connectionTypeSelect");
+    if (connectionTypeSelect) connectionTypeSelect.value = "footnotes";
+
+    const btnDownload = clone.querySelector("#btnDownload");
+    if (btnDownload) btnDownload.setAttribute("disabled", "disabled");
+
+    const btnCopy = clone.querySelector("#btnCopy");
+    if (btnCopy) btnCopy.setAttribute("disabled", "disabled");
+
+    const btnAdvancedEditor = clone.querySelector("#btnAdvancedEditor");
+    if (btnAdvancedEditor) {
+      btnAdvancedEditor.setAttribute("disabled", "disabled");
+      btnAdvancedEditor.textContent = "🧩 עורך מתקדם";
+    }
+
+    const advEditor = clone.querySelector("#advEditor");
+    if (advEditor) advEditor.style.display = "none";
+
+    const editorBookCol = clone.querySelector("#editorBookCol");
+    if (editorBookCol) editorBookCol.innerHTML = "";
+
+    const editorNotesCol = clone.querySelector("#editorNotesCol");
+    if (editorNotesCol) editorNotesCol.innerHTML = "";
+
+    const editorLinksCol = clone.querySelector("#editorLinksCol");
+    if (editorLinksCol) editorLinksCol.innerHTML = "";
+
+    const toast = clone.querySelector("#toast");
+    if (toast) {
+      toast.textContent = "";
+      toast.className = "toast";
+    }
+
+    /* אין טעם בכפתור "הורדת הקובץ לעבודה אופליין" (וההערה הנלווית) בתוך קובץ
+       שכבר הורד ונפתח אופליין - מסירים אותם לגמרי מהעותק (לא רק מסתירים) */
+    const footerActions = clone.querySelector(".footerActions");
+    if (footerActions) footerActions.remove();
+
+    const footerNote = clone.querySelector(".footerNote");
+    if (footerNote) footerNote.remove();
+
+    return "<!doctype html>\n" + clone.outerHTML;
+  }
+
+  function downloadOfflineCopy() {
+    const offlineName = "מקשר הערות אוטומטי.html";
+    const blob = new Blob([buildOfflineHtml()], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = offlineName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1200);
+    showToast("ירד עותק אופליין נקי");
+    logger.ok("הורד עותק אופליין של הדף.", { קובץ: offlineName, מצב: "ללא JSON נטען" });
+  }
+
+  /* עדכון תג/תגית חי מול תגית "🏷️ תגית" / "🧩 regex" ליד שדה קלט התג, כדי שהמשתמש
+     יראה מיידית איך הקלט שלו מתפרש - עוד לפני לחיצה על "צור JSON" */
+  function updateTagModeBadge(inputEl, badgeEl) {
+    if (!inputEl || !badgeEl) return;
+    const isRegex = isLikelyRegexPattern(inputEl.value);
+    if (isRegex) {
+      badgeEl.textContent = "🧩 regex";
+      badgeEl.className = "tagModeBadge tagModeBadge-regex";
+      const check = validateRegexPattern(inputEl.value.trim());
+      badgeEl.title = check.ok
+        ? "הזיהוי יתבצע לפי הביטוי הרגולרי שהוזן"
+        : `ביטוי רגולרי לא תקין: ${check.message}`;
+    } else {
+      badgeEl.textContent = "🏷️ תגית";
+      badgeEl.className = "tagModeBadge tagModeBadge-tag";
+      badgeEl.title = "הזיהוי מתבצע לפי שם תגית HTML";
+    }
+  }
+
+  /* אתחול ראשוני וחיבור אירועי הממשק */
+  function init() {
+    els.btnBook.addEventListener("click", () => els.fileBook.click());
+    els.btnNotes.addEventListener("click", () => els.fileNotes.click());
+    els.fileBook.addEventListener("change", handleBookFileChange);
+    els.fileNotes.addEventListener("change", handleNotesFileChange);
+    els.btnMake.addEventListener("click", makeJson);
+    els.btnDownload.addEventListener("click", downloadJson);
+    els.btnCopy.addEventListener("click", copyJson);
+    /* בעותק האופליין המורד (ראו buildOfflineHtml) האלמנטים הבאים מוסרים מה-DOM
+       לגמרי כי אין בהם טעם בקובץ שכבר עובד אופליין - הבדיקה כאן מונעת שגיאת
+       "cannot read property of null" שהייתה עוצרת את כל תהליך האתחול באמצע */
+    if (els.btnOffline) els.btnOffline.addEventListener("click", downloadOfflineCopy);
+    els.btnAdvancedEditor.addEventListener("click", toggleAdvancedEditor);
+    els.btnCloseEditor.addEventListener("click", () => setEditorVisible(false));
+    els.btnAddLink.addEventListener("click", addBlankLink);
+    els.btnResetEditor.addEventListener("click", resetEditorChanges);
+
+    document.querySelectorAll('input[name="linkGenerationMode"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        if (state.editor && els.advEditor.style.display !== "none") renderEditor();
+      });
+    });
+
+    els.tagBook.addEventListener("input", () => updateTagModeBadge(els.tagBook, els.tagBookMode));
+    els.tagNotes.addEventListener("input", () => updateTagModeBadge(els.tagNotes, els.tagNotesMode));
+    updateTagModeBadge(els.tagBook, els.tagBookMode);
+    updateTagModeBadge(els.tagNotes, els.tagNotesMode);
+
+    setStatus(els.bookStatus, "ספר: לא נטען", "");
+    setStatus(els.notesStatus, "הערות: לא נטען", "");
+    setStatus(els.makeStatus, "טען קבצים כדי להתחיל", "");
+
+    logger.info("העמוד נטען ומוכן לעבודה.");
+    updateButtons();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
