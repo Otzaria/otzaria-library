@@ -29,10 +29,23 @@ REQUIRED = {"line_index_1", "line_index_2", "heRef_2", "path_2", "Conection Type
 DEPENDENT_TYPES = {"source", "commentary", "super_commentary", "targum", "midrash",
                    "parshanut", "dibur_hamatchil", "elucidation", "explication"}
 REFERENCE_TYPES = {"reference", "quotation", "mesorat hashas", "ein mishpat",
-                   "ein mishpat / ner mitsvah", "mishnah in talmud", "related",
+                   "ein mishpat / ner mitsvah", "ein mishpat / ner mitzvah",
+                   "mishnah in talmud", "related",
                    "related passage", "allusion", "liturgy", "law", "summary",
-                   "sifrei mitsvot", "essay", "linker", "other", "quotation_auto",
-                   "quotation_auto_tanakh", "midrash", "footnotes"}
+                   "sifrei mitzvot", "essay", "linker", "other", "none",
+                   "quotation_auto", "quotation_auto_tanakh", "midrash"}
+
+# ערכים שנראים נכונים אבל אינם ConnectionType (Link.kt `fromKnownStringOrNull`).
+# הם נופלים ל-OTHER, ו-OTHER נפסל ב-`LinkTypes.isDependentTextLink` — כלומר
+# הקישור לא יוצג כמפרש, ולא ייכנס למנגנון סמני-ההערות הממוספרות.
+TRAP_TYPES = {
+    "footnotes": 'אינו ConnectionType. הערך הנכון הוא "commentary" '
+                 '(או "source" בקובץ הקרוי על שם המפרש)',
+    "sifrei mitsvot": 'איות שגוי — הערך המוכר הוא "sifrei mitzvot" (z, לא s)',
+    "footnote": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
+    "note": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
+    "notes": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
+}
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -80,7 +93,10 @@ def check_links(path: Path, book: Path | None, target: Path | None,
         if "Connection Type" in entry:
             err(f"{tag}: הכתיב חייב להיות 'Conection Type' (n אחת) — אחרת הסוג נקרא ריק")
         ctype = str(entry.get("Conection Type", "")).strip().lower()
-        if ctype and ctype not in DEPENDENT_TYPES and ctype not in REFERENCE_TYPES:
+        if ctype in TRAP_TYPES:
+            err(f"{tag}: סוג קשר {ctype!r} — {TRAP_TYPES[ctype]}. "
+                f"הוא ייכתב כ-OTHER, ו-isDependentTextLink יפסול אותו: הקישור לא יוצג כמפרש")
+        elif ctype and ctype not in DEPENDENT_TYPES and ctype not in REFERENCE_TYPES:
             warn(f"{tag}: סוג קשר לא מוכר ({ctype!r}) — ייכתב כ-OTHER")
         # Direction: a citing-named file (line_index_1 = the מפרש) must declare "source";
         # "commentary"/"super_commentary" there get no flip and store the pair backwards.
