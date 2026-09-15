@@ -26,8 +26,11 @@ REQUIRED = {"line_index_1", "line_index_2", "heRef_2", "path_2", "Conection Type
 # generator flips the pair into base→מפרש order and stores it as COMMENTARY
 # (Generator.kt: `flip = declaredType == SOURCE`). It is a dependent-text link like
 # the rest, not an unknown value, and never reaches the DB as SOURCE.
+# "footnotes" = הערות שוליים בספר נלווה "הערות על X". סוג תלוי-טקסט ככל השאר,
+# והוא מה שמזהה את הצמד ספר↔הערות בלי לנחש לפי כותרת הספר הנלווה.
 DEPENDENT_TYPES = {"source", "commentary", "super_commentary", "targum", "midrash",
-                   "parshanut", "dibur_hamatchil", "elucidation", "explication"}
+                   "parshanut", "dibur_hamatchil", "elucidation", "explication",
+                   "footnotes"}
 REFERENCE_TYPES = {"reference", "quotation", "mesorat hashas", "ein mishpat",
                    "ein mishpat / ner mitsvah", "ein mishpat / ner mitzvah",
                    "mishnah in talmud", "related",
@@ -39,12 +42,9 @@ REFERENCE_TYPES = {"reference", "quotation", "mesorat hashas", "ein mishpat",
 # הם נופלים ל-OTHER, ו-OTHER נפסל ב-`LinkTypes.isDependentTextLink` — כלומר
 # הקישור לא יוצג כמפרש, ולא ייכנס למנגנון סמני-ההערות הממוספרות.
 TRAP_TYPES = {
-    "footnotes": 'אינו ConnectionType. הערך הנכון הוא "commentary" '
-                 '(או "source" בקובץ הקרוי על שם המפרש)',
     "sifrei mitsvot": 'איות שגוי — הערך המוכר הוא "sifrei mitzvot" (z, לא s)',
-    "footnote": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
-    "note": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
-    "notes": 'אינו ConnectionType. הערך הנכון הוא "commentary"',
+    "note": 'אינו ConnectionType. הערך הנכון הוא "footnotes"',
+    "notes": 'אינו ConnectionType. הערך הנכון הוא "footnotes"',
 }
 
 errors: list[str] = []

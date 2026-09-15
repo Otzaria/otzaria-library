@@ -53,7 +53,7 @@
 
 **מפרשים** (מוצגים בפאנל המפרשים, `LinkTypes.dependentTextTypes`):
 `commentary`, `super_commentary`, `targum`, `midrash`, `parshanut`, `dibur_hamatchil`,
-`elucidation`, `explication`.
+`elucidation`, `explication`, `footnotes`.
 
 **הפניות** (פאנל הקישורים): `reference`, `quotation`, `mesorat hashas`, `ein mishpat`,
 `mishnah in talmud`, `related`, `allusion`, `liturgy`, `law`, `summary`, `sifrei mitsvot`,
@@ -64,7 +64,12 @@
   `commentary`. רוצים "X יהיה מקור של Y"? החליפו מי המקור ומי היעד.
 - `linker` נכתב רק ע"י פייפליין ה-linker האוטומטי — לא כותבים אותו ביד, אבל **לא
   נוגעים** ברשומות קיימות שלו.
-- להצגה כמפרש חייבים בדיוק אחד משמונת ערכי המפרשים. `allusion`/`essay`/`law` יופיעו
+- `footnotes` = הערות שוליים בספר נלווה `הערות על X`. **זה הערך הנכון לכל קישור
+  אל ספר הערות**, ולא `commentary`. הוא מה שגורם לגנרטור להציב את ספר ההערות כמפרש
+  ברירת מחדל של ספר הבסיס (`setHearotAsDefaultCommentators`) — בלעדיו הקורא צריך
+  לדעת לבחור את ספר ההערות ביד, ובפועל ההערות לא נפתחות. הוא גם מה שמזהה את ספר
+  ההערות במנגנון סמני-ההערות הממוספרות, במקום ניחוש לפי כותרת שמתחילה ב"הערות".
+- להצגה כמפרש חייבים בדיוק אחד מתשעת ערכי המפרשים. `allusion`/`essay`/`law` יופיעו
   בפאנל הקישורים, לא כמפרש.
 
 ### `ref_2` — הכלל שמפיל את הפייפליין השבועי
