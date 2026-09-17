@@ -36,6 +36,7 @@ wikisourceToOtzaria/ספרים/אוצריא
 ToratEmetToOtzaria/ספרים/אוצריא
 pninimToOtzaria/ספרים/אוצריא
 National-LibraryToOtzaria/ספרים/אוצריא
+yam-HaHachmaToOtzaria/ספרים/אוצריא
 ```
 
 אותה רשימה משוכפלת כ־`PACKAGED_PREFIXES` ב־[validate_fordb_book_names.py:135](.github/scripts/validate_fordb_book_names.py#L135)
@@ -61,7 +62,8 @@ National-LibraryToOtzaria/ספרים/אוצריא
 תלוי במקור הספר (עמודת `source` ב־`seforim.db`):
 
 - **ספר של המאגר הזה** (Dicta / MoreBooks / OnYourWay / Orayta / ToratEmet /
-  pninim / Ben-Yehuda / wikisource / tashma / wikiJewishBooks / National-Library):
+  pninim / Ben-Yehuda / wikisource / tashma / wikiJewishBooks / National-Library /
+  yam-HaHachma):
   הקטגוריה נגזרת מ**נתיב התיקייה הפיזי בתוך `BOOK_ROOTS`**. מזיזים את הקובץ ב־git.
   `ForDB/book_moves.csv` **לא** מיועד לספרים אלה.
 - **ספר של ספריא** (`source.name='Sefaria'`): אין קובץ מקומי, הוא נוצר בזמן הבנייה

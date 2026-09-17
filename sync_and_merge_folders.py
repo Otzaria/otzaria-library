@@ -14,7 +14,8 @@ mapping = {
     "wikiJewishBooksToOtzaria": "wiki_jewish_books",
     "ToratEmetToOtzaria": "ToratEmet",
     "wikisourceToOtzaria": "wikiSource",
-    "pninimToOtzaria": "Pninim"
+    "pninimToOtzaria": "Pninim",
+    "yam-HaHachmaToOtzaria": "yam-HaHachma"
 }
 
 
@@ -52,6 +53,7 @@ folders = (
     "ToratEmetToOtzaria/ספרים/אוצריא",
     "wikisourceToOtzaria/ספרים/אוצריא",
     "pninimToOtzaria/ספרים/אוצריא",
+    "yam-HaHachmaToOtzaria/ספרים/אוצריא",
     # "National-LibraryToOtzaria/ספרים/אוצריא"
 )
 

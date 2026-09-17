@@ -108,6 +108,7 @@ folders = [
     "ToratEmetToOtzaria/ספרים/אוצריא",
     "wikisourceToOtzaria/ספרים/אוצריא",
     "pninimToOtzaria/ספרים/אוצריא",
+    "yam-HaHachmaToOtzaria/ספרים/אוצריא",
     # "National-LibraryToOtzaria/ספרים/אוצריא"
 ]
 

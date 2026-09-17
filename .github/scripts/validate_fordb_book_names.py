@@ -198,6 +198,7 @@ PACKAGED_PREFIXES = (
     "ToratEmetToOtzaria/ספרים/אוצריא/",
     "pninimToOtzaria/ספרים/אוצריא/",
     "National-LibraryToOtzaria/ספרים/אוצריא/",
+    "yam-HaHachmaToOtzaria/ספרים/אוצריא/",
 )
 
 # תיקיות הנארזות יחד ל-otzaria_latest.zip (בדיקת כפילויות שמות בתוך אותו ZIP).

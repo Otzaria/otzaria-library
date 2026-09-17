@@ -385603,7 +385603,7 @@
   },
   {
     "heAuthors": [
-      "לבסקי, ברוך בן שמואל מאיר"
+      "לאבסקי, ברוך בן שמואל מאיר"
     ],
     "title": "נחלת ברוך",
     "enTitle": "Nachlat Boruch",
@@ -399106,5 +399106,150 @@
       "מהר\"ל"
     ],
     "Sourcefolder": "MoreBooks"
+  },
+  {
+    "heAuthors": [
+      "אליהו דוד רבינוביץ' תאומים"
+    ],
+    "title": "קונטרס זכר למקדש",
+    "enTitle": "Kuntres Zekher LaMikdash",
+    "authors": [
+      "Eliyahu David Rabinowitz-Teomim"
+    ],
+    "pubDate": [
+      1889
+    ],
+    "pubDateHeb": [
+      "ה׳תרמ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "הלכה",
+      "מערכות ועניינים"
+    ],
+    "categories": [
+      "Halakhah"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
+  },
+  {
+    "heAuthors": [
+      "נתן נטע לנדא"
+    ],
+    "title": "קונטרס מחול הכרם על מסכת סוטה",
+    "enTitle": "Mechol HaKerem on Sotah",
+    "authors": [
+      "Natan Neta Landau"
+    ],
+    "pubDate": [
+      1895
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״ה"
+    ],
+    "pubPlaceStringEn": null,
+    "pubPlaceStringHe": null,
+    "heCategories": [
+      "תלמוד בבלי",
+      "אחרונים"
+    ],
+    "categories": [
+      "Talmud"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
+  },
+  {
+    "heAuthors": [
+      "אריה ליב מאלין"
+    ],
+    "title": "חידושי רבי אריה ליב מאלין",
+    "enTitle": null,
+    "authors": [],
+    "pubDate": null,
+    "pubDateHeb": null,
+    "pubPlaceStringEn": null,
+    "pubPlaceStringHe": null,
+    "heCategories": [
+      "תלמוד בבלי",
+      "אחרונים"
+    ],
+    "categories": [
+      "Talmud"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
+  },
+  {
+    "heAuthors": [
+      "ישועה בן יוסף הלוי"
+    ],
+    "title": "הליכות עולם - כללי הגמרא",
+    "enTitle": "Halichot Olam",
+    "authors": [
+      "Yeshua ben Joseph ha-Levi"
+    ],
+    "pubDate": null,
+    "pubDateHeb": null,
+    "pubPlaceStringEn": null,
+    "pubPlaceStringHe": null,
+    "heCategories": [
+      "ספרות עזר",
+      "כללי הש\"ס"
+    ],
+    "categories": [
+      "Reference",
+      "Talmudic Methodology"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
+  },
+  {
+    "heAuthors": [
+      "לאבסקי, ברוך בן שמואל מאיר"
+    ],
+    "title": "מנחת ברוך אורח חיים",
+    "enTitle": "Minchat Boruch Orach Chaim",
+    "authors": [
+      "Levski, Boruch"
+    ],
+    "pubDate": null,
+    "pubDateHeb": null,
+    "pubPlaceStringEn": null,
+    "pubPlaceStringHe": null,
+    "heCategories": [
+      "שו\"ת"
+    ],
+    "categories": [
+      "Responsa"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
+  },
+  {
+    "heAuthors": [
+      "חיים חזקיהו מדיני"
+    ],
+    "title": "שדי חמד כללים מערכת נ",
+    "enTitle": "Sdei Chemed Kelalim Maarechet Nun",
+    "authors": [
+      "Chaim Hezekiah Medini"
+    ],
+    "pubDate": null,
+    "pubDateHeb": null,
+    "pubPlaceStringEn": null,
+    "pubPlaceStringHe": null,
+    "heCategories": [
+      "ספרות עזר",
+      "אנציקלופדיות",
+      "שדי חמד"
+    ],
+    "categories": [
+      "Reference"
+    ],
+    "publisher": "ים החכמה",
+    "Sourcefolder": "yam-HaHachma"
   }
 ]
