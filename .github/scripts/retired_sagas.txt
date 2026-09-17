@@ -10,3 +10,11 @@
 # Kaggle relink run 33288091632 concluded failure, and later weekly cycles
 # superseded the lineage. Not worth recovering.
 33281342283
+# Duplicate 2026-09-17 cycle. The weekly export 35256623320 failed on an upload
+# HTTP 500, so both the scheduled weekly (cycle 35268246765, this root) and an
+# operator standalone dispatch (cycle 35273364506) exported and each opened a
+# saga. The operator cycle is the newer one and its manual-links commit is
+# already on main, above this cycle's; letting this older cycle publish a DB
+# pinned to inputs from before that commit would ship a library main no longer
+# describes. Its Seforim child 35282267160 was cancelled deliberately.
+35278510961
