@@ -139,6 +139,7 @@ jobs:
               "ForDB/category_moves.csv",
               "ForDB/category_renames.csv",
               "ForDB/generations.csv",
+              "ForDB/sefaria_author_changes.csv",
               "ForDB/sefaria_category_changes.csv",
               "ForDB/sefaria_metadata_changes.csv",
           }
