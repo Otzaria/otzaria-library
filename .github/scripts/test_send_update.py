@@ -358,9 +358,15 @@ def run_git(*args):
     VERSION_AT = 2   # 27 commits behind HEAD: two 25-commit steps away, never one
     TAGGED = 5       # handoff tags on the oldest commits, out of the depth-1 window
 
+    # Every directory here is scratch git repositories, and git writes into a
+    # repository from processes the test never waits on -- auto maintenance
+    # after a fetch is the usual one.  Losing that race leaves a file inside a
+    # `.git` that rmtree has already walked, and the rmdir then fails with
+    # ENOTEMPTY *after* the case itself passed.  A runner's /tmp is thrown away
+    # whole, so a stray object file is nothing; failing a green test over it is.
     @classmethod
     def setUpClass(cls):
-        cls._tmp = tempfile.TemporaryDirectory()
+        cls._tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         root = Path(cls._tmp.name)
         cls.with_version, cls.version_sha = cls.build_origin(root / "with-version", True)
         cls.without_version, _ = cls.build_origin(root / "without-version", False)
@@ -386,7 +392,7 @@ def run_git(*args):
         return root, sha
 
     def setUp(self):
-        self._case = tempfile.TemporaryDirectory()
+        self._case = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         self.addCleanup(self._case.cleanup)
         self.case = Path(self._case.name)
         (self.case / "drive.py").write_text(self.DRIVER, encoding="utf-8")
