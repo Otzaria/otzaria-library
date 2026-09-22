@@ -148,7 +148,11 @@ class SagaWorkflowContractTest(unittest.TestCase):
         self.assertIn('compare/$payload...$head', reconciler)
         self.assertIn('multiple active Seforim children', reconciler)
         self.assertIn('$2=="completed" && $3=="success"', reconciler)
-        self.assertIn('.head_sha==env.HEAD_SHA', reconciler)
+        # The exact control-head match was deliberately dropped: a hotfix may
+        # advance the workflow head while the pinned build is still running, so
+        # the payload pin is now enforced by descent, not by equality.
+        self.assertNotIn('.head_sha==env.HEAD_SHA', reconciler)
+        self.assertIn('identical|ahead)', reconciler)
 
     def test_reconciler_skips_historical_roots_outside_current_lineage(self):
         reconciler = (self.root / ".github" / "scripts" / "reconcile_sagas.sh").read_text()
