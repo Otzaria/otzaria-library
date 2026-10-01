@@ -420,6 +420,8 @@ class JsonTarget:
 
 # כל קובץ שמזהה ספר *לפי שם*. תיאור הצרכן של כל אחד:
 #   generations / book_moves - SeedGenerations / RenameCategories, התאמה מדויקת ל-book.title.
+#   book_info                - מידע על ספרים מהאתר (דור, שנים, מחבר), אותה התאמה. כמה שורות לאותו
+#                              ספר (מחברים שונים) תקינות, וכולן עוברות יחד לשם החדש.
 #   sefaria_metadata_changes - SeedAllMetadata (תיאור), לפי title.
 #   ForDB/all_metadata.json  - SeedAllMetadata (שנת/מקום דפוס), לפי title.
 #   metadata.json            - Generator.loadMetadata (מחבר, תיאור), לפי שם הקובץ הגולמי.
@@ -427,6 +429,7 @@ class JsonTarget:
 # קבצי *_links.json בשורשי ה-links הנארזים מטופלים בנפרד (plan_links).
 CSV_TARGETS = (
     CsvTarget("ForDB/generations.csv", "שם ספר", "db", True),
+    CsvTarget("ForDB/book_info.csv", "bookName", "db", True),
     CsvTarget("ForDB/book_moves.csv", "name", "db", True),
     CsvTarget("ForDB/sefaria_metadata_changes.csv", "title", "db", False),
 )
@@ -512,7 +515,11 @@ def _conflicts(rename, target_value, values, key):
 
 
 class _Collisions:
-    """שתי רשומות באותו קובץ שהיו מקבלות אותו שם חדש: לא מנחשים איזו נכונה."""
+    """שתי רשומות באותו קובץ שהיו מקבלות אותו שם חדש: לא מנחשים איזו נכונה.
+
+    רק כששני שינויי-שם *שונים* מתנקזים לאותו שם. כמה רשומות של אותו שם ישן (ב-book_info:
+    שורה לכל מחבר של הספר) עוברות יחד לשם החדש, ואין כאן מה לנחש.
+    """
 
     def __init__(self):
         self.by_target = {}
@@ -523,7 +530,7 @@ class _Collisions:
     def blocked(self):
         out = {}
         for (path, target_value), rids in self.by_target.items():
-            if len(rids) > 1:
+            if len(set(rids)) > 1:
                 for rid in rids:
                     out[rid] = f"כמה רשומות ב-{path} היו מקבלות את השם '{target_value}'"
         return out

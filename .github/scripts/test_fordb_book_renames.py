@@ -88,6 +88,13 @@ def base_files():
             "name,Source path,Destination path\n"
             f'"{OLD}",חסידות,חסידות/נוספים\n'
         ),
+        # כמו הקובץ שהאתר כותב: הכול במירכאות, ושורה לכל מחבר של אותו ספר.
+        "ForDB/book_info.csv": (
+            "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
+            f'"{OLD}","מנחם מנדל מקוצק","אחרונים","אחרוני האחרונים","1787","1859"\n'
+            f'"{OLD}","עורך ""הוצאה""","אחרונים","","",""\n'
+            f'"{OTHER}","","ראשונים","","",""\n'
+        ),
         "ForDB/book_renames.csv": "ספר ישן מספריא,ספר חדש מספריא\n",
         "ForDB/sefaria_metadata_changes.csv": (
             '"categoryPath","title","author","heShortDesc","heDesc","heDescNew"\n'
@@ -262,6 +269,12 @@ class IncidentReplayTest(FixtureTestCase):
              [SEFARIA_ONLY, "אחרונים"], [LEAVES, "אחרונים"]],
         )
 
+    def test_every_book_info_row_of_the_book_follows_it_and_keeps_its_quoting(self):
+        self.assertEqual(
+            self.repo.read("ForDB/book_info.csv"),
+            base_files()["ForDB/book_info.csv"].replace(f'"{OLD}",', f'"{NEW}",'),
+        )
+
     def test_book_moves_keeps_its_quoting(self):
         self.assertEqual(
             self.repo.read("ForDB/book_moves.csv"),
@@ -305,7 +318,8 @@ class IncidentReplayTest(FixtureTestCase):
 
     def test_exactly_the_title_keyed_files_are_touched(self):
         self.assertOnlyTouched([
-            "ForDB/generations.csv", "ForDB/book_moves.csv", "ForDB/sefaria_metadata_changes.csv",
+            "ForDB/generations.csv", "ForDB/book_info.csv", "ForDB/book_moves.csv",
+            "ForDB/sefaria_metadata_changes.csv",
             "ForDB/all_metadata.json", "metadata.json", "all_metadata_with_file_paths.json",
             f"{LINKS}/{OLD}_links.json", f"{LINKS}/{NEW}_links.json", f"{LINKS}/{OTHER}_links.json",
         ])
@@ -352,6 +366,19 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
         removed = json.loads(self.repo.read("fordb_removed.json"))
         self.assertIn({"file": "ForDB/generations.csv", "name": OLD, "reason": "orphan"}, removed)
         self.assertFalse(self.repo.exists("fordb_renamed.json"))
+
+    def test_every_book_info_row_of_an_orphan_is_removed_and_the_rest_keep_their_bytes(self):
+        rename_commit = rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", rename_commit)
+        self.assertEqual(code, 0, output)
+        removed = json.loads(self.repo.read("fordb_removed.json"))
+        self.assertEqual([r for r in removed if r["file"] == "ForDB/book_info.csv"],
+                         [{"file": "ForDB/book_info.csv", "name": OLD, "reason": "orphan"}] * 2)
+        self.assertEqual(
+            self.repo.read("ForDB/book_info.csv"),
+            "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
+            f'"{OTHER}","","ראשונים","","",""\n',
+        )
 
     def test_a_book_moved_out_of_the_library_is_removed_not_renamed(self):
         self.repo.move(f"{RISHONIM}/{LEAVES}.txt", f"extraBooks/ישנים/{LEAVES} (ישן).txt")
@@ -555,7 +582,7 @@ class SparsePartialCloneTest(unittest.TestCase):
         status = origin.git("show", "--format=", "--name-status", "-M", "HEAD", cwd=work)
         entries = sorted(line.split("\t", 1)[1] for line in status.splitlines() if line)
         self.assertEqual(entries, sorted([
-            "ForDB/all_metadata.json", "ForDB/book_moves.csv", "ForDB/generations.csv",
+            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_moves.csv", "ForDB/generations.csv",
             "ForDB/sefaria_metadata_changes.csv", "all_metadata_with_file_paths.json", "metadata.json",
             f"{LINKS}/{OTHER}_links.json", f"{LINKS}/{OLD}_links.json\t{LINKS}/{NEW}_links.json",
         ]))
