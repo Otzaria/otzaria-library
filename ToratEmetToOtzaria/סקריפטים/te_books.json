@@ -39,7 +39,10 @@
   "src": "100_MUSAR/023_igeret_teiman.txt"
  },
  "ספרי מוסר/ראשונים/מנורת המאור (אבוהב).txt": {
-  "src": "100_MUSAR/300_menorat_hamaor.txt"
+  "src": "100_MUSAR/300_menorat_hamaor.txt",
+  "unbalanced": [
+   7047
+  ]
  },
  "שות/מחברי זמננו/הרב גמליאל רבינוביץ/שות בכל דרכיך דעהו.txt": {
   "src": "125_SHUT/240_bechol_drachecha.txt"
@@ -50,7 +53,11 @@
  },
  "שות/מחברי זמננו/הרב גמליאל רבינוביץ/שות גם אני אודך - ב.txt": {
   "src": "125_SHUT/231_ShutGamAniOdecha2.txt",
-  "headings": "new"
+  "headings": "new",
+  "unbalanced": [
+   801,
+   1371
+  ]
  },
  "שות/מחברי זמננו/הרב גמליאל רבינוביץ/שות גם אני אודך - ג.txt": {
   "src": "125_SHUT/232_ShutGamAniOdecha3.txt"
@@ -110,7 +117,10 @@
   "src": "030_BAVLI/28_MAS_HORAYOT/HavTempNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על זבחים.txt": {
-  "src": "030_BAVLI/30_MAS_ZEVACHIM/HavTempNoNotes.txt"
+  "src": "030_BAVLI/30_MAS_ZEVACHIM/HavTempNoNotes.txt",
+  "unbalanced": [
+   731
+  ]
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על זבחים.txt": {
   "src": "030_BAVLI/30_MAS_ZEVACHIM/HavTempNotes.txt"
@@ -122,7 +132,11 @@
   "src": "030_BAVLI/13_MAS_HAGIGA/HavTempNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על חולין.txt": {
-  "src": "030_BAVLI/32_MAS_CHULIN/HavTempNoNotes.txt"
+  "src": "030_BAVLI/32_MAS_CHULIN/HavTempNoNotes.txt",
+  "unbalanced": [
+   10853,
+   10995
+  ]
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על חולין.txt": {
   "src": "030_BAVLI/32_MAS_CHULIN/HavTempNotes.txt"

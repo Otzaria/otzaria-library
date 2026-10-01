@@ -15,7 +15,11 @@ replace the files: the current file is the baseline, and from a fresh conversion
 The current file's characters, line structure (links point at line numbers) and
 heading wording win everywhere else. Lines that cannot be aligned to the source are
 left untouched. --check verifies that every text difference is a rule token removed
-or rule text added, and writes nothing.
+or rule text added, and that the formatting is sound: no source tag left unclosed at
+a heading or at the end of the book (te_convert renders such a tag as literal text;
+one the source really has is listed in the book's "unbalanced" in te_books.json, by
+source line), none running over more than --max-carry source lines, and no output
+line with a tag open at its end. It writes nothing; --write skips a book that fails.
 
 Usage (from the repo root):
     python ToratEmetToOtzaria/סקריפטים/te_reapply.py --src "<Torat Emet dir>" --check
@@ -444,7 +448,54 @@ def allowed(removed, added, froms, tos):
     return not added.strip() or all(any(p in t for t in tos) for p in added.split())
 
 
-def process(rel, spec):
+FX_TAG_RE = re.compile(r'<(/?)(b|strong|i|em|u|big|small|sup|sub)\b[^<>]*>', re.I)
+
+
+def leaking_tags(line):
+    """Formatting tags opened in an output line and not closed before text that follows
+    them in the same line. Every Otzaria line stands alone, so such a tag is a
+    formatting run that was cut at a line end instead of being closed and reopened."""
+    def has_text(t):
+        return bool(re.sub(r'<[^<>]*>', '', t).strip())
+    stack, pos = [], 0
+    for m in FX_TAG_RE.finditer(line):
+        if has_text(line[pos:m.start()]):
+            for t in stack:
+                t[1] = True
+        pos = m.end()
+        name = EFFECT_TAGS[m.group(2).lower()]
+        if m.group(1):
+            for j in range(len(stack) - 1, -1, -1):
+                if stack[j][0] == name:
+                    del stack[j]
+                    break
+        else:
+            stack.append([name, False])
+    if has_text(line[pos:]):
+        for t in stack:
+            t[1] = True
+    return [name for name, covers in stack if covers]
+
+
+def format_problems(conv, out, spec, max_carry):
+    """The formatting checks of --check. conv: the report of E.convert."""
+    known = set(spec.get('unbalanced', []))
+    probs = []
+    for line, tag, effs, where in conv['unbalanced']:
+        if line not in known:
+            probs.append(f'source line {line}: <{tag}> ({"+".join(effs)}) is not closed '
+                         + {'heading': 'before the heading after it', 'eof': 'by the end of the book',
+                            'in heading': 'inside its heading'}[where])
+    for o, c, tag, effs in conv['carried']:
+        if c - o > max_carry:
+            probs.append(f'source lines {o}-{c}: <{tag}> ({"+".join(effs)}) runs over {c - o} lines')
+    for i, line in enumerate(out):
+        for tag in leaking_tags(line):
+            probs.append(f'line {i + 1}: <{tag}> is not closed at the end of the line')
+    return probs
+
+
+def process(rel, spec, max_carry=300):
     path = os.path.join(BOOKS_ROOT, rel)
     raw = open(path, encoding='utf-8').read()
     bom = raw.startswith('\ufeff')
@@ -452,12 +503,15 @@ def process(rel, spec):
     trail = cur and cur[-1] == ''
     if trail:
         cur = cur[:-1]
-    _, new = E.convert(spec['src'], markers=True)
+    conv = {}
+    _, new = E.convert(spec['src'], markers=True, report=conv)
     out, rep = merge_book(new, cur, heading_levels=spec.get('headings', 'cur'))
     assert len(out) == len(cur)
     froms, tos = rule_texts(spec['src'])
     bad = [(i + 1, d, a) for i, (x, y) in enumerate(zip(cur, out))
            for d, a in textdiff(plain(x), plain(y)) if not allowed(d, a, froms, tos)]
+    rep['format'] = format_problems(conv, out, spec, max_carry)
+    rep['unbalanced_known'] = [u for u in conv['unbalanced'] if u[0] in set(spec.get('unbalanced', []))]
     text = ('\ufeff' if bom else '') + '\n'.join(out) + ('\n' if trail else '')
     return path, text, raw, rep, bad, sum(1 for x, y in zip(cur, out) if x != y)
 
@@ -466,6 +520,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--src', required=True, help='the Torat Emet books directory')
     ap.add_argument('--only', help='process only books whose path contains this')
+    ap.add_argument('--max-carry', type=int, default=300, metavar='N',
+                    help='fail when a formatting tag of the source runs over more than N source '
+                         'lines (default 300)')
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument('--check', action='store_true')
     g.add_argument('--write', action='store_true')
@@ -477,17 +534,25 @@ def main():
     for rel, spec in books.items():
         if a.only and a.only not in rel:
             continue
-        path, text, raw, rep, bad, changed = process(rel, spec)
+        path, text, raw, rep, bad, changed = process(rel, spec, a.max_carry)
         gen = sum(rep['generated'].values())
         con = sum(rep['consumed'].values())
         print(f'{rel}: {changed} lines changed, {con} tokens removed, {gen} rule texts added'
-              + (f', {len(rep["unaligned_cur"])} lines left as is' if rep['unaligned_cur'] else ''))
+              + (f', {len(rep["unaligned_cur"])} lines left as is' if rep['unaligned_cur'] else '')
+              + (f', {len(rep["unbalanced_known"])} known unbalanced source tags left literal'
+                 if rep['unbalanced_known'] else ''))
         for k, v in list(rep['consumed'].items()) + list(rep['generated'].items()):
             total[k] += v
         if bad:
             failed = True
             print('  UNEXPECTED TEXT CHANGE:', bad[:10])
-        elif a.write and text != raw:
+        if rep['format']:
+            failed = True
+            for p in rep['format'][:10]:
+                print('  FORMATTING:', p)
+            if len(rep['format']) > 10:
+                print(f'  FORMATTING: ... {len(rep["format"]) - 10} more')
+        if a.write and not bad and not rep['format'] and text != raw:
             open(path, 'w', encoding='utf-8').write(text)
     print('totals:', dict(total.most_common(25)))
     sys.exit(1 if failed else 0)
