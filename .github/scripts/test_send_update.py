@@ -388,6 +388,46 @@ def run_git(*args):
         self.assertIn("refusing to fall back to HEAD^", result.stdout)
 
 
+class VersionCommitMatchTest(unittest.TestCase):
+    """Only the bot's subject line marks a version.  A newer commit whose body quotes
+    the phrase (b49ce978 did, and so did the first draft of the National-Library fix)
+    must not become BEFORE_SHA: everything between the two would vanish from the
+    changelog on a green build."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls._tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
+        root = Path(cls._tmp.name) / "decoy"
+        root.mkdir(parents=True)
+        git(root, "init", "-q", "-b", "main")
+        git(root, "commit", "-q", "--allow-empty", "-m", "sync 0")
+        git(root, "commit", "-q", "--allow-empty", "-m", cls.VERSION_MESSAGE)
+        cls.version_sha = git(root, "rev-parse", "HEAD").strip()
+        git(root, "commit", "-q", "--allow-empty", "-m", "rename books")
+        for decoy in (
+            "fix(weekly): diff from the previous\n\nthe previous \"גרסת ספרייה\" commit is the base",
+            "גרסת ספרייה הבאה תכלול את השינוי",
+            "chore\n\nגרסת ספרייה 999",
+        ):
+            git(root, "commit", "-q", "--allow-empty", "-m", decoy)
+        cls.origin = root
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmp.cleanup()
+
+    VERSION_MESSAGE = DeepenTest.VERSION_MESSAGE
+    DRIVER = DeepenTest.DRIVER
+    setUp = DeepenTest.setUp
+    clone = DeepenTest.clone
+    deepen = DeepenTest.deepen
+
+    def test_a_body_or_subject_that_only_quotes_the_phrase_is_not_a_version(self):
+        result = self.deepen(self.origin)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(f"SHA={self.version_sha}", result.stdout)
+
+
 class DedupeTest(unittest.TestCase):
     def setUp(self):
         self.dedupe = load_function("dedupe_preserving_order")
