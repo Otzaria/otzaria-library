@@ -30749,7 +30749,9 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Aigeś, Hanokh Henikh,"
+    ],
     "categories": [
       "Responsa"
     ],
@@ -30760,10 +30762,16 @@
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1931,
+      1935
+    ],
+    "pubDateHeb": [
+      "ה׳תרצ״א",
+      "ה׳תרצ״ה"
+    ],
+    "pubPlaceStringEn": "Bilgoraj",
+    "pubPlaceStringHe": "בילגורי",
     "publisher": "ספריית דיקטה",
     "title": "שות מרחשת"
   },
@@ -31648,6 +31656,968 @@
     ],
     "categories": [
       "Commentaries on Shulchan Aruch"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן הערות על ספר חוקי חיים",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על בבא מציעא",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על בבא קמא",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על ביצה",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על ברכות",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על זבחים",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על יבמות",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על יומא",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על כתובות",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על נדה",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על נדרים",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על סוטה",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על סוכה",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על עבודה זרה",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על פסחים",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על קידושין",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על תענית",
+    "enTitle": "Kappei Aharon shas",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על טור אורח חיים",
+    "enTitle": "Kappei Aharon tur",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הטור"
+    ],
+    "categories": [
+      "Tur Commentaries"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' אהרן בן עזריאל"
+    ],
+    "title": "כפי אהרן על טור חושן משפט",
+    "enTitle": "Kappei Aharon tur",
+    "authors": [
+      "Azriel, Aharon"
+    ],
+    "pubDate": [
+      1874
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ד"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
+    "heCategories": [
+      "מפרשי הטור"
+    ],
+    "categories": [
+      "Tur Commentaries"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "יעקב יצחק בן אשר מפשיסחה"
+    ],
+    "title": "כתבי קודש על השולחן ערוך",
+    "enTitle": "Kitvei Kodesh",
+    "authors": [
+      "Yaakov Yitzchak Rabinowicz of Peshischa"
+    ],
+    "pubDate": [
+      1926
+    ],
+    "pubDateHeb": [
+      "ה׳תרפ״ו"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ורשה",
+    "heCategories": [
+      "מפרשים וחיבורים סביב שולחן ערוך"
+    ],
+    "categories": [
+      "Commentaries on Shulchan Aruch"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "יעקב יצחק בן אשר מפשיסחה"
+    ],
+    "title": "כתבי קודש על השס",
+    "enTitle": "Kitvei Kodesh",
+    "authors": [
+      "Yaakov Yitzchak Rabinowicz of Peshischa"
+    ],
+    "pubDate": [
+      1926
+    ],
+    "pubDateHeb": [
+      "ה׳תרפ״ו"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ורשה",
+    "heCategories": [
+      "מפרשים וחיבורים סביב שולחן ערוך"
+    ],
+    "categories": [
+      "Commentaries on Shulchan Aruch"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי יוסף בר מאיר תאומים"
+    ],
+    "title": "פורת יוסף הקדמה וכללים",
+    "enTitle": "Porat Yosef",
+    "authors": [
+      "Teumim Yosef ben Meir"
+    ],
+    "pubDate": [
+      1899
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי יוסף בר מאיר תאומים"
+    ],
+    "title": "פורת יוסף על בבא קמא",
+    "enTitle": "Porat Yosef",
+    "authors": [
+      "Teumim Yosef ben Meir"
+    ],
+    "pubDate": [
+      1899
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי יוסף בר מאיר תאומים"
+    ],
+    "title": "פורת יוסף על יבמות",
+    "enTitle": "Porat Yosef",
+    "authors": [
+      "Teumim Yosef ben Meir"
+    ],
+    "pubDate": [
+      1899
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי יוסף בר מאיר תאומים"
+    ],
+    "title": "פורת יוסף על כתובות",
+    "enTitle": "Porat Yosef",
+    "authors": [
+      "Teumim Yosef ben Meir"
+    ],
+    "pubDate": [
+      1899
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה העתק מדרשה לשבת שובה",
+    "enTitle": "Hidushei Hemdas Shlomo part 1",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1877
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על בבא מציעא",
+    "enTitle": "Hidushei Hemdas Shlomo part 1",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1877
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על גיטין",
+    "enTitle": "Hidushei Hemdas Shlomo part 1",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1877
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על זבחים",
+    "enTitle": "Hidushei Hemdas Shlomo part 1",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1877
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על קידושין",
+    "enTitle": "Hidushei Hemdas Shlomo part 1",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1877
+    ],
+    "pubDateHeb": [
+      "ה׳תרל״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על ביצה",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על יבמות",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על יומא",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על כתובות",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על פסחים",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על ראש השנה",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "ר' שלמה זלמן ליפשיץ"
+    ],
+    "title": "חמדת שלמה על שבת",
+    "enTitle": "Hidushei Hemdas Shlomo part 2",
+    "authors": [
+      "Shlomo Zalman Lipshtiz"
+    ],
+    "pubDate": [
+      1851
+    ],
+    "pubDateHeb": [
+      "ה׳תרי״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ווארשא",
+    "heCategories": [
+      "מפרשי הש\"ס (אחרונים)"
+    ],
+    "categories": [
+      "Acharonim on Talmud Bavli"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
