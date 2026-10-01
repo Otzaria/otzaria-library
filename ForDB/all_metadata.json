@@ -885,32 +885,6 @@
   },
   {
     "heAuthors": [
-      "טריווש, הילל דוד בן עוזר הכהן"
-    ],
-    "title": "עבודת הכהן",
-    "enTitle": "Avodat haCohen",
-    "authors": [
-      "Travis, Hillel Dovid"
-    ],
-    "pubDate": [
-      1889
-    ],
-    "pubDateHeb": [
-      "ה׳תרמ״ט"
-    ],
-    "pubPlaceStringEn": "Warsaw",
-    "pubPlaceStringHe": "ורשה",
-    "heCategories": [
-      "ספרי הלכה ומנהג"
-    ],
-    "categories": [
-      "Halachah and Minhagim"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי גרשון בן יצחק אשכנזי"
     ],
     "title": "עבודת הגרשוני",
@@ -1327,32 +1301,6 @@
   },
   {
     "heAuthors": [
-      "רבי יצחק אייזק חבר"
-    ],
-    "title": "בית נאמן",
-    "enTitle": "Bayit Ne’eman",
-    "authors": [
-      "Rabbi Yitzchak Isaac Hever"
-    ],
-    "pubDate": [
-      1891
-    ],
-    "pubDateHeb": [
-      "ה׳תרנ״א"
-    ],
-    "pubPlaceStringEn": "Warsaw",
-    "pubPlaceStringHe": "וורשה",
-    "heCategories": [
-      "ספרי מערכות ועניינים"
-    ],
-    "categories": [
-      "Chiddushim by Topic"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "ר' חיים נוסינסון"
     ],
     "title": "באר מים חיים (נוסינזון)",
@@ -1446,32 +1394,6 @@
     ],
     "pubPlaceStringEn": "Vilna",
     "pubPlaceStringHe": "וילנא",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "רבי משה נחום ירושלמסקי"
-    ],
-    "title": "באר משה",
-    "enTitle": "Be’er Moshe responsa",
-    "authors": [
-      "Moshe Nachum Yerushalamski"
-    ],
-    "pubDate": [
-      1901
-    ],
-    "pubDateHeb": [
-      "ה׳תרס״א"
-    ],
-    "pubPlaceStringEn": "Warsaw",
-    "pubPlaceStringHe": " ווארשא",
     "heCategories": [
       "שו\"ת"
     ],
@@ -3253,7 +3175,7 @@
     "heAuthors": [
       "הרב יעקב דוד וילובסקי"
     ],
-    "title": "חנה דוד",
+    "title": "חנה דוד על חלה",
     "enTitle": "Chana David",
     "authors": [
       "rabbi yaakov david vilvovski"
@@ -4369,32 +4291,6 @@
   },
   {
     "heAuthors": [
-      "רבי חיים בן אברהם נתנזון"
-    ],
-    "title": "דברי חן חלק א",
-    "enTitle": "Divrei Hen part 1",
-    "authors": [
-      "Natenzohn, Hayim"
-    ],
-    "pubDate": [
-      1904
-    ],
-    "pubDateHeb": [
-      "ה׳תרס״ד"
-    ],
-    "pubPlaceStringEn": "Piotrkov",
-    "pubPlaceStringHe": "פיוטרקוב",
-    "heCategories": [
-      "מפרשים וחיבורים על הרמב\"ם"
-    ],
-    "categories": [
-      "Commentaries on the Rambam"
-    ],
-    "publisher": null,
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי מלכיאל צבי טננבוים"
     ],
     "title": "דברי מלכיאל א",
@@ -5253,32 +5149,6 @@
   },
   {
     "heAuthors": [
-      "קלאצקין, אליהו בן נפתלי הירץ"
-    ],
-    "title": "אבן הראשה",
-    "enTitle": "Even Hareisho",
-    "authors": [
-      "Eliyahu Ben Naftali Hertz Klatzkin"
-    ],
-    "pubDate": [
-      1887
-    ],
-    "pubDateHeb": [
-      "ה׳תרמ״ז"
-    ],
-    "pubPlaceStringEn": "Warsaw",
-    "pubPlaceStringHe": "ורשה",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "הרב אליעזר דון יחיא"
     ],
     "title": "אבן שתיה",
@@ -5671,7 +5541,7 @@
     "heAuthors": [
       "ר' פארוז קרסינטי"
     ],
-    "title": "גושפנקא דמלכא (ליקוטים)",
+    "title": "גושפנקא דמלכא ליקוטים",
     "enTitle": "Gushpanka De-Malka (likutim)",
     "authors": [
       "Pariz Keresinti"
@@ -5853,7 +5723,7 @@
     "heAuthors": [
       null
     ],
-    "title": "הגהות שות רבינו משולם איגרא",
+    "title": "הערות על שות רבי משולם איגרא",
     "enTitle": "Hagahot Shut Rabeinu Meshulam Igra",
     "authors": [
       null
@@ -6867,7 +6737,7 @@
     "heAuthors": [
       "רבי אליהו בן שלמה זלמן (הגאון מוילנא)"
     ],
-    "title": "אמרי נועם (הגרא)",
+    "title": "אמרי נועם",
     "enTitle": "Imrei Noam Hagra",
     "authors": [
       "Elijah ben Solomon Zalman"
@@ -7647,7 +7517,7 @@
     "heAuthors": [
       "הרב יצחק מינקובסקי"
     ],
-    "title": "קרן אורה סוטה",
+    "title": "קרן אורה על סוטה",
     "enTitle": "Keren Orah Sotah",
     "authors": [
       "Isaac Minkovski"
@@ -8081,32 +7951,6 @@
     ],
     "categories": [
       null
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "רבי ישראל איסרלן בן פתחיה אשכנזי"
-    ],
-    "title": "ל”ו שערים",
-    "enTitle": "Lamed-Vav She’arim",
-    "authors": [
-      "Israel Isserlin"
-    ],
-    "pubDate": [
-      1940
-    ],
-    "pubDateHeb": [
-      "ה׳ת״ש"
-    ],
-    "pubPlaceStringEn": "Jerusalem",
-    "pubPlaceStringHe": "ירושלים",
-    "heCategories": [
-      "ספרי הלכה ומנהג"
-    ],
-    "categories": [
-      "Halachah and Minhagim"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
@@ -10219,32 +10063,6 @@
   },
   {
     "heAuthors": [
-      "רבי יעקב בן יעקב משה לורברבוים מליסא"
-    ],
-    "title": "מילי דאגדתא ושות",
-    "enTitle": "Mile da-agadeta u-sheelot u-teshuvot",
-    "authors": [
-      "Yaakov ben Yaakov Moshe Lorberbaum of Lissa"
-    ],
-    "pubDate": [
-      1904
-    ],
-    "pubDateHeb": [
-      "ה׳תרס״ד"
-    ],
-    "pubPlaceStringEn": "Munkatch",
-    "pubPlaceStringHe": "מונקץ",
-    "heCategories": [
-      "שו\"ת, אגדה"
-    ],
-    "categories": [
-      "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "ר' פנחס אפשטיין"
     ],
     "title": "מנחה חריבה",
@@ -10449,32 +10267,6 @@
       "Responsa"
     ],
     "publisher": null,
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "ר' עוזיאל לחאייך"
-    ],
-    "title": "משכנות הרועים",
-    "enTitle": "Mishkanot Ha-Ro’im",
-    "authors": [
-      "Uziel Lachaich"
-    ],
-    "pubDate": [
-      1860
-    ],
-    "pubDateHeb": [
-      "ה׳תר״כ"
-    ],
-    "pubPlaceStringEn": "Levorno",
-    "pubPlaceStringHe": "ליוורנו",
-    "heCategories": [
-      "ספרי מערכות ועניינים"
-    ],
-    "categories": [
-      "Chiddushim by Topic"
-    ],
-    "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
   },
   {
@@ -14903,7 +14695,7 @@
     "heAuthors": [
       "משה משולם בן שמשון איגרא"
     ],
-    "title": "שות ר' משולם איגרא",
+    "title": "שות רבי משולם איגרא",
     "enTitle": "Shut Rabeinu Meshulam Igra",
     "authors": [
       "Igra, Meshulam"
@@ -15423,7 +15215,7 @@
     "heAuthors": [
       "יעקב בן יצחק הלוי פולאק"
     ],
-    "title": "תשובת הגאונים (מהרל יעקב בן הרב יצחק הלוי פולק)",
+    "title": "תשובת הגאונים (מהרל, והרב יעקב בן הרב יצחק הלוי פולק)",
     "enTitle": "Teshuvos haGaonim (maharl Rabbi Jacob Pollak)",
     "authors": [
       "Rabbi Jacob Pollak"
@@ -17007,32 +16799,6 @@
   },
   {
     "heAuthors": [
-      "נימן, שמעון בצלאל"
-    ],
-    "title": "ילקוט הרועים",
-    "enTitle": "Yilkut HaRo'im",
-    "authors": [
-      "Yalkut ha-roim"
-    ],
-    "pubDate": [
-      1908
-    ],
-    "pubDateHeb": [
-      "ה׳תרס״ח"
-    ],
-    "pubPlaceStringEn": "Lemberg",
-    "pubPlaceStringHe": "לעמברג",
-    "heCategories": [
-      "נושאים שונים"
-    ],
-    "categories": [
-      "Others"
-    ],
-    "publisher": null,
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי משה בן רבי שלמה אבן חביב"
     ],
     "title": "יום תרועה",
@@ -17813,32 +17579,6 @@
   },
   {
     "heAuthors": [
-      "ר' ישכר בריש גרויברט"
-    ],
-    "title": "דברי יששכר",
-    "enTitle": "Divre Yiśakhar",
-    "authors": [
-      "Yiśakhar Berish"
-    ],
-    "pubDate": [
-      1910
-    ],
-    "pubDateHeb": [
-      "ה׳תר״ע"
-    ],
-    "pubPlaceStringEn": "Petrikow",
-    "pubPlaceStringHe": "פיוטרקוב",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי יצחק טייב"
     ],
     "title": "ערך השולחן אבן העזר",
@@ -18041,32 +17781,6 @@
     ],
     "categories": [
       "Derashot"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "הולנדר, יחיאל מיכל"
-    ],
-    "title": "אמרי כהן",
-    "enTitle": "Imrei Cohen",
-    "authors": [
-      "Yechiel Michel haCohel Holner"
-    ],
-    "pubDate": [
-      1937
-    ],
-    "pubDateHeb": [
-      "ה׳תרצ״ז"
-    ],
-    "pubPlaceStringEn": "Petrikow",
-    "pubPlaceStringHe": "פיוטרקוב",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
@@ -18593,32 +18307,6 @@
   },
   {
     "heAuthors": [
-      "רבי חיים אלעזר שפירא"
-    ],
-    "title": "מנחת אלעזר חלק ד",
-    "enTitle": "Minchat Elazar part 4",
-    "authors": [
-      "Chaim Elazar Spira"
-    ],
-    "pubDate": [
-      1930
-    ],
-    "pubDateHeb": [
-      "ה׳תר״צ"
-    ],
-    "pubPlaceStringEn": "Bratislava",
-    "pubPlaceStringHe": "בראטיסלאווא",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי נפתלי צבי יהודה ברלין"
     ],
     "title": "משיב דבר חלק ג",
@@ -18985,7 +18673,7 @@
     "heAuthors": [
       "מזרחי, ישראל מאיר בן יוסף"
     ],
-    "title": "פרי הארץ (שות) חלק ג",
+    "title": "שות פרי הארץ חלק ג",
     "enTitle": "Shut Peri ha-arets part 3",
     "authors": [
       "Mizrahi, Yiśrael Meir,"
@@ -19055,32 +18743,6 @@
     ],
     "categories": [
       "Bible Commentaries"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "פישמן, גרשון חנוך הניך"
-    ],
-    "title": "שמחת החג",
-    "enTitle": "Śimhat he-hag",
-    "authors": [
-      "Fishman, Gershon Hanokh Henikh"
-    ],
-    "pubDate": [
-      1937
-    ],
-    "pubDateHeb": [
-      "ה׳תרצ״ז"
-    ],
-    "pubPlaceStringEn": "Bilgoraj",
-    "pubPlaceStringHe": "בילגורייא",
-    "heCategories": [
-      "מפרשי הש\"ס (אחרונים)"
-    ],
-    "categories": [
-      "Acharonim on Talmud Bavli"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
@@ -19237,32 +18899,6 @@
     ],
     "categories": [
       "Commentaries on Shulchan Aruch"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "ר' צבי יחזקאל מיקלסון"
-    ],
-    "title": "תירוש ויצהר (שות)",
-    "enTitle": "Tirosh veYitzhar",
-    "authors": [
-      "Tzvi Yechezkel Ben Avraham Chaim Michaelson"
-    ],
-    "pubDate": [
-      1937
-    ],
-    "pubDateHeb": [
-      "ה׳תרצ״ז"
-    ],
-    "pubPlaceStringEn": "Bilgory",
-    "pubPlaceStringHe": "בילגורי",
-    "heCategories": [
-      "שו\"ת"
-    ],
-    "categories": [
-      "Responsa"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
@@ -19575,32 +19211,6 @@
     ],
     "categories": [
       "Responsa"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
-      "ר' חיים ברודא"
-    ],
-    "title": "זרע חיים",
-    "enTitle": "Zerah Chaim",
-    "authors": [
-      "Broda, Chaim"
-    ],
-    "pubDate": [
-      1906
-    ],
-    "pubDateHeb": [
-      "ה׳תרס״ו"
-    ],
-    "pubPlaceStringEn": "Petrikow",
-    "pubPlaceStringHe": "פיוטריקוב",
-    "heCategories": [
-      "מפרשים וחיבורים סביב שולחן ערוך"
-    ],
-    "categories": [
-      "Commentaries on Shulchan Aruch"
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta"
@@ -27623,32 +27233,6 @@
   },
   {
     "heAuthors": [
-      "רבי ישראל איסרלן בן פתחיה אשכנזי"
-    ],
-    "title": "לו שערים",
-    "enTitle": "Lamed-Vav She’arim",
-    "authors": [
-      "Israel Isserlin"
-    ],
-    "pubDate": [
-      1940
-    ],
-    "pubDateHeb": [
-      "ה׳ת״ש"
-    ],
-    "pubPlaceStringEn": "Jerusalem",
-    "pubPlaceStringHe": "ירושלים",
-    "heCategories": [
-      "ספרי הלכה ומנהג"
-    ],
-    "categories": [
-      "Halachah and Minhagim"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "ר' י-הודה נג'אר"
     ],
     "title": "למודי ד",
@@ -29635,13 +29219,6 @@
     "Sourcefolder": "wiki_jewish_books"
   },
   {
-    "title": "אמרי נועם",
-    "heAuthors": [
-      "<h1>אמרי נועם</h1>"
-    ],
-    "Sourcefolder": "wiki_jewish_books"
-  },
-  {
     "title": "הערות על טורי אבן",
     "heAuthors": [
       "1 הנה גם המהרש\"א עמד בזה על דברי תוס' אלו דהא י\"ל דהאי שני לחדשים הוא. והוא ז\"ל כתב ע\"ז ויש ליישב. ולכאורה היה נראה ליישב דכוונת התוס' הוא. דכיון דהאי קרא מקרא מסורס הוא כפירש\"י ז\"ל דה\"ל למכתב בחודש השני בשנה הרביעית למלוך שלמה כדכתיב באידך קרא דויחל המלך שלמה. ומדסרס הכתוב למיכתב האי בחודש השני סמיך למלוך שלמה ש\"מ דה\"פ בחודש זיו שהיא אייר הוא החודש השני למלוך שלמה. והיינו שלשלמה מנינן. ואי האי חודש שני שני לחדשים הוא הו\"ל למכתב בחודש השני בשנה הד' כנ\"ל. וע\"ז כתבו התוס' שפיר די\"ל דאין מנינן לשאר מלכים מניסן כ\"א לשלמה מטעם שמלך בניסן כפשטי' דקרא למלוך שלמה היינו שמלך בניסן: אלא שמ\"מ דברי התוס' תמוהים ממה שתמה רבינו. דא\"כ מאי פריך הש\"ס ואימא אייר וכו'. הא כיון דמוכח דשלמה עמד בניסן וממילא גם דליצ\"מ מונין מניסן. ועוד ק\"ל לפ\"ד התוס' מאי עדיפותי' דקרא דויחל המלך שלמה דמיני' מוכיח הש\"ס לבסוף דלשלמה מונין מניסן וממילא מונין לכל המלכי' מניסן. שהרי י\"ל דדוקא שלמה מונין מניסן מטעם שעמד בניסן כמ\"ש התו' דהכא ובד\"ה תניא. ומש\"ה מנה להם הכתוב מנין אחד. ועוד הא י\"ל איפכא דנקיש יצ\"מ למלכות שלמה. דליצ\"מ מניסן מונין ולא למלכים. וע\"כ האי בחודש השני שני לחדשים הוא ומקרא מסורס הוא כפרש\"י ז\"ל ולא מוכח כלל דשלמה מלך בניסן אלא דמונין למלכים מניסן מטעם דהוקש ליצ\"מ והשתא פריך שפיר ויצ\"מ גופא. וכ\"ד רבינו: ומ\"מ יש ליישב דברי התוס'. דגם כוונות התו' לפי האמת שהמקרא מקרא מסורס הוא וכדפרש\"י והאי חודש השני שני לחדשים הוא ולא קאי אלמלוך שלמה וכ\"ד רבינו. אלא שהתוס' מפרשים דר\"י הוה מצי למילף בלא הקישא אלא מפשט הכתוב מדסמך הכתוב להחודש השני סמוך למלוך שלמה ש\"מ דמונין למלכים מניסן. ולמה לי' לר\"י לבוא עלה מדין הקיש. ע\"ז כתבו דה\"א דהכי הוה מעשה פי' די\"ל דהכתוב מנה מנין א' להם מטעם דשלמה מלך בניסן והי' מנינו מכוון עם חשבון יצ\"מ ומ\"מ אין לנו דמונין למלכי' מניסן. ע\"כ הוצרך ר\"י לבוא עלה מדין הקיש ומקיש מלכות שלמה ליצ\"מ וההיקש אתי לאשמועינן לכל המלכים דמונין מניסן ומקרא מסורס הוא וי\"ל דשלמה לא עמד כלל בניסן: ואין להקשות לפי האמת מנ\"ל לר\"י דהכתוב אתי להקיש מלכות שלמה ליצ\"מ כדי למילף מינה דמונין למלכים מניסן ולומר מקרא מסורס הוא. אימא דאה\"נ כפשטי' דקרא והכתוב מונה מנין אחד לשלמה וליצ\"מ מטעם שמלך בניסן כנ\"ל בדברינו. די\"ל דא\"כ ה\"ל למיכתב להאי חודש השני מיד בחשבון של יצ\"מ וממילא הוה ידעינן כיון דחודש אייר הוא שני ליציאת מצרי' ה\"ה דהוא שני למלכות שלחה דהכתוב כללן במנין אחד אלא מדכתב הכתוב להאי חודש שני במנין דמלכות שלמה ע\"כ לדרשא אתי ולהקישא אתי. דנקיש מלכות שלמה ליצ\"מ. והוה כמ\"ש לצאת בני ישראל מארץ מצרים בחודש השני כו' למלוך שלמה דאתי להקיש מנין החדשי' דשלמה למנין חדשים דיצ\"מ דמניסן מנינן. ועוד י\"ל דמסתבר יותר לר\"י דמקרא מסורס הוא ושלמה לא מלך בניסן ואתי לדרשא להא דמנינן למלכים מניסן ממה שנאמר דקאי אלמלוך שלמה שמלך בניסן והכתוב אתי לסיפור חשבון בעלמא. והתו' לא כתבו די\"ל דהכי הוה מעשה ולא אתי לדרשא אלא לפי הס\"ד דר\"י הוה מ\"ל מפשטא דקרא מטעם דמנין אחד להם. דבאמת מפשטי' דקרא י\"ל כנ\"ל לכן מפרש לי' ר\"י בלשון הקישא כדי להודיענו שהכתוב משמיע לנו בזה דמונין למלכים מניסן. והשתא פריך שפיר הש\"ס כיון דמפשטא דקרא לא מצית למילף ומקשת מלכות שלמה ליצ\"מ א\"כ יצ\"מ גופא מנ\"ל דמניסן מנינן כו' וכיון דמסיק לבסוף מקרא דויחל המלך שלמה דמונין לשלמה מניסן והאי חודש שני אייר שמעינן שפיר דמה שהקיש הכתוב מלכות שלמה ליצ\"מ היינו למנות מניסן א\"כ ה\"ה נמי לכל המלכים דמאי שנא: אפור <b>קונטרס אחרון</b>"
@@ -29706,13 +29283,6 @@
     "title": "פני אריה",
     "heAuthors": [
       "<h1>פני אריה</h1>"
-    ],
-    "Sourcefolder": "wiki_jewish_books"
-  },
-  {
-    "title": "קרן אורה על סוטה",
-    "heAuthors": [
-      "הרב יצחק מינקובסקי"
     ],
     "Sourcefolder": "wiki_jewish_books"
   },
@@ -30467,21 +30037,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Rabbi Yitzchak Isaac Hever"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Bayit Ne’eman",
     "heAuthors": [
       "יצחק אייזק חבר"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1891
+    ],
+    "pubDateHeb": [
+      "ה׳תרנ״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "וורשה",
     "publisher": "ספריית דיקטה",
     "title": "ספר בית נאמן"
   },
@@ -30507,101 +30083,131 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Yalkut ha-roim"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Yilkut HaRo'im",
     "heAuthors": [
       "רבי שמעון בצלאל ניימן"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1908
+    ],
+    "pubDateHeb": [
+      "ה׳תרס״ח"
+    ],
+    "pubPlaceStringEn": "Lemberg",
+    "pubPlaceStringHe": "לעמברג",
     "publisher": "ספריית דיקטה",
     "title": "ספר ילקוט הרועים"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Israel Isserlin"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Lamed-Vav She’arim",
     "heAuthors": [
       "ישראל איסרלן"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1940
+    ],
+    "pubDateHeb": [
+      "ה׳ת״ש"
+    ],
+    "pubPlaceStringEn": "Jerusalem",
+    "pubPlaceStringHe": "ירושלים",
     "publisher": "ספריית דיקטה",
     "title": "ספר לו שערים"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Yaakov ben Yaakov Moshe Lorberbaum of Lissa"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Mile da-agadeta u-sheelot u-teshuvot",
     "heAuthors": [
       "רבי יעקב בן יעקב משה לורברבוים מליסא"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1904
+    ],
+    "pubDateHeb": [
+      "ה׳תרס״ד"
+    ],
+    "pubPlaceStringEn": "Munkatch",
+    "pubPlaceStringHe": "מונקץ",
     "publisher": "ספריית דיקטה",
     "title": "ספר מילי דאגדתא ושות"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Uziel Lachaich"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Mishkanot Ha-Ro’im",
     "heAuthors": [
       "רבי עוזיאל לחאייך"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1860
+    ],
+    "pubDateHeb": [
+      "ה׳תר״כ"
+    ],
+    "pubPlaceStringEn": "Levorno",
+    "pubPlaceStringHe": "ליוורנו",
     "publisher": "ספריית דיקטה",
     "title": "ספר משכנות הרועים"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Eliyahu Ben Naftali Hertz Klatzkin"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Even Hareisho",
     "heAuthors": [
       "אליהו קלצ'קין"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1887
+    ],
+    "pubDateHeb": [
+      "ה׳תרמ״ז"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ורשה",
     "publisher": "ספריית דיקטה",
     "title": "שות אבן הראשה"
   },
@@ -30647,21 +30253,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Yechiel Michel haCohel Holner"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Imrei Cohen",
     "heAuthors": [
       "רבי יחיאל מיכל הולנדר"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1937
+    ],
+    "pubDateHeb": [
+      "ה׳תרצ״ז"
+    ],
+    "pubPlaceStringEn": "Petrikow",
+    "pubPlaceStringHe": "פיוטרקוב",
     "publisher": "ספריית דיקטה",
     "title": "שות אמרי כהן"
   },
@@ -30687,21 +30299,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Moshe Nachum Yerushalamski"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Be’er Moshe responsa",
     "heAuthors": [
       "רבי משה נחום ירושלמסקי"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1901
+    ],
+    "pubDateHeb": [
+      "ה׳תרס״א"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": " ווארשא",
     "publisher": "ספריית דיקטה",
     "title": "שות באר משה (ירושלמסקי)"
   },
@@ -30907,41 +30525,53 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Natenzohn, Hayim"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Divrei Hen part 1",
     "heAuthors": [
       "רבי חיים בן אברהם נתנזון"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1904
+    ],
+    "pubDateHeb": [
+      "ה׳תרס״ד"
+    ],
+    "pubPlaceStringEn": "Piotrkov",
+    "pubPlaceStringHe": "פיוטרקוב",
     "publisher": "ספריית דיקטה",
     "title": "שות דברי חן"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Yiśakhar Berish"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Divre Yiśakhar",
     "heAuthors": [
       "רבי ישכר בעריש גרויברט"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1910
+    ],
+    "pubDateHeb": [
+      "ה׳תר״ע"
+    ],
+    "pubPlaceStringEn": "Petrikow",
+    "pubPlaceStringHe": "פיוטרקוב",
     "publisher": "ספריית דיקטה",
     "title": "שות דברי יששכר"
   },
@@ -30987,21 +30617,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Broda, Chaim"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Zerah Chaim",
     "heAuthors": [
       "רבי חיים ברודא"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1906
+    ],
+    "pubDateHeb": [
+      "ה׳תרס״ו"
+    ],
+    "pubPlaceStringEn": "Petrikow",
+    "pubPlaceStringHe": "פיוטריקוב",
     "publisher": "ספריית דיקטה",
     "title": "שות זרע חיים"
   },
@@ -31087,21 +30723,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Chaim Elazar Spira"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Minchat Elazar part 4",
     "heAuthors": [
       "רבי חיים אלעזר שפירא"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1930
+    ],
+    "pubDateHeb": [
+      "ה׳תר״צ"
+    ],
+    "pubPlaceStringEn": "Bratislava",
+    "pubPlaceStringHe": "בראטיסלאווא",
     "publisher": "ספריית דיקטה",
     "title": "שות מנחת אלעזר חד"
   },
@@ -31147,21 +30789,27 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Travis, Hillel Dovid"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Avodat haCohen",
     "heAuthors": [
       "טריווש, הילל דוד בן עוזר הכהן"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1889
+    ],
+    "pubDateHeb": [
+      "ה׳תרמ״ט"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ורשה",
     "publisher": "ספריית דיקטה",
     "title": "שות עבודת הכהן"
   },
@@ -31307,41 +30955,53 @@
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Fishman, Gershon Hanokh Henikh"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Śimhat he-hag",
     "heAuthors": [
       "רבי גרשון חנוך הניך פישמן"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1937
+    ],
+    "pubDateHeb": [
+      "ה׳תרצ״ז"
+    ],
+    "pubPlaceStringEn": "Bilgoraj",
+    "pubPlaceStringHe": "בילגורייא",
     "publisher": "ספריית דיקטה",
     "title": "שות שמחת החג"
   },
   {
     "Sourcefolder": "Dicta",
-    "authors": null,
+    "authors": [
+      "Tzvi Yechezkel Ben Avraham Chaim Michaelson"
+    ],
     "categories": [
       "Responsa"
     ],
-    "enTitle": null,
+    "enTitle": "Tirosh veYitzhar",
     "heAuthors": [
       "רבי צבי יחזקאל מיכלזון"
     ],
     "heCategories": [
       "שו\"ת"
     ],
-    "pubDate": null,
-    "pubDateHeb": [],
-    "pubPlaceStringEn": null,
-    "pubPlaceStringHe": null,
+    "pubDate": [
+      1937
+    ],
+    "pubDateHeb": [
+      "ה׳תרצ״ז"
+    ],
+    "pubPlaceStringEn": "Bilgory",
+    "pubPlaceStringHe": "בילגורי",
     "publisher": "ספריית דיקטה",
     "title": "שות תירוש ויצהר"
   },
