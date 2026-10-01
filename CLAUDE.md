@@ -112,7 +112,7 @@ yam-HaHachmaToOtzaria/ספרים/אוצריא
 שם ספר אוצריא ב־DB הוא שם הקובץ, ולכן שינוי שם מנתק אותו מכל שורה שמזהה אותו לפי
 שם. ב־push ל־main ה־CI (`validate-fordb-book-names.yml`, [fordb_book_renames.py](.github/scripts/fordb_book_renames.py))
 עוקב אחרי זה בעצמו: לכל קובץ `.txt` נארז ששונה בשמו מאז הריצה המוצלחת האחרונה, הוא
-מחליף את השם הישן בחדש ב־`generations.csv`, `book_info.csv` (כל השורות של הספר), `book_moves.csv`,
+מחליף את השם הישן בחדש ב־`book_info.csv` (כל השורות של הספר), `book_moves.csv`,
 `sefaria_metadata_changes.csv`, `ForDB/all_metadata.json`, `metadata.json`,
 `all_metadata_with_file_paths.json`, ובשורשי ה־links הנארזים (שם קובץ ה־`_links.json`,
 `path_2`, ו־`heRef_2` כשהוא מתחיל בשם). שינוי שמשנה רק גרשיים (`הבח` → `הב”ח`) מתוקן

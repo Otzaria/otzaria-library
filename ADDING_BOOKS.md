@@ -75,8 +75,7 @@
 | --- | --- | --- |
 | `metadata.json` (שורש) | אובייקט דחוס אחד **בשורה**, `separators=(',',':')`, newline בסוף | **זה** מזין את טבלת המחברים (לא שורה 2 בקובץ) |
 | `ForDB/all_metadata.json` | `indent=2`, newline בסוף; שורת MoreBooks = `title`/`heAuthors`(רשימה)/`Sourcefolder` | קל לשכוח |
-| `ForDB/generations.csv` | **LF**, לא ה־CRLF של `csv.writer` | |
-| `ForDB/book_info.csv` | **LF**, כל שדה במירכאות (`csv.QUOTE_ALL`), ממוין לפי `bookName` ואז `authorName`, בלי BOM | נערך מדף "מידע על ספרים" באתר אוצריא, PR לכל עריכה, ועדיף לערוך דרכו ולא ידנית. `bookName` חייב להיות book.title בדיוק, כמו ב־generations |
+| `ForDB/book_info.csv` | **LF**, כל שדה במירכאות (`csv.QUOTE_ALL`), ממוין לפי `bookName` ואז `authorName`, בלי BOM | נערך מדף "מידע על ספרים" באתר אוצריא, PR לכל עריכה, ועדיף לערוך דרכו ולא ידנית. `bookName` חייב להיות book.title בדיוק. הוא מקור הדור (במקום `generations.csv` שהוסר) |
 
 פורמט אחר משכתב כל שורה בקובץ (`indent=1` הפך 8,415 שורות ל־109,516).
 
@@ -84,8 +83,9 @@
 # metadata.json
 f.write('[\n' + ',\n'.join(json.dumps(m, ensure_ascii=False, separators=(',', ':'))
                            for m in meta) + '\n]\n')
-# generations.csv
-csv.writer(f, lineterminator='\n').writerows(rows)
+# ForDB/book_info.csv: כותרת בלי מירכאות, שאר השורות QUOTE_ALL, ממוינות לפי (bookName, authorName)
+f.write(','.join(header) + '\n')
+csv.writer(f, quoting=csv.QUOTE_ALL, lineterminator='\n').writerows(sorted(rows, key=lambda r: (r[0], r[1])))
 ```
 
 לפני כתיבה: ודא round-trip זהה בית־בבית לקובץ הקיים.

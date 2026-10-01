@@ -4,9 +4,9 @@ name: Validate ForDB book names
 #   1. בדיקת שמות מהירה מול קבצי הספרים הנארזים והקטלוג החי של ספריא.
 #   2. validateForDbInputs של SeforimLibrary על מסד הנתונים האחרון: אותם parsers,
 #      אותם appliers ובאותו סדר כמו בריצה האמיתית. השכבה הזו מכסה category/book
-#      renames+moves, generations, all_metadata ושינויי המטא-דאטה של ספרים וקטגוריות.
+#      renames+moves, book_info (דורות), all_metadata ושינויי המטא-דאטה של ספרים וקטגוריות.
 # ב-push ל-main השכבה המהירה מסירה ודוחפת תיקונים דטרמיניסטיים בלבד (שורות ספר
-# יתומות ב-generations/book_info/book_moves וכפילויות מקור-ספריא). ב-PR היא report-only.
+# יתומות ב-book_info/book_moves וכפילויות מקור-ספריא). ב-PR היא report-only.
 # לפני ההסרה היא עוקבת אחרי שינויי-שם של קבצי ספרים בקומיטים שטרם אומתו: שורה
 # שהתייתמה רק כי הקובץ שונה בשמו מקבלת את השם החדש בכל קובץ שמזהה ספר לפי שם
 # (ForDB, metadata.json, קבצי הקישורים) במקום להימחק (fordb_book_renames.py).
@@ -165,14 +165,12 @@ jobs:
           root = Path("ForDB")
           expected = {
               "ForDB/all_metadata.json",
-              # מידע על ספרים מהאתר. יחליף את generations.csv כמקור הדור כשהצרכן שלו
-              # ב-SeforimLibrary (seedGenerations/validateForDbInputs) ימוזג.
+              # מידע על ספרים מהאתר; מקור הדור של seedGenerations (במקום generations.csv).
               "ForDB/book_info.csv",
               "ForDB/book_moves.csv",
               "ForDB/book_renames.csv",
               "ForDB/category_moves.csv",
               "ForDB/category_renames.csv",
-              "ForDB/generations.csv",
               "ForDB/sefaria_author_changes.csv",
               "ForDB/sefaria_category_changes.csv",
               "ForDB/sefaria_metadata_changes.csv",

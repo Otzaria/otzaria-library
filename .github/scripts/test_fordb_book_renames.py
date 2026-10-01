@@ -79,13 +79,6 @@ def base_files():
         f"{RISHONIM}/{OTHER}.txt": book_text(OTHER),
         f"{RISHONIM}/{LEAVES}.txt": book_text(LEAVES),
         "extraBooks/ישנים/placeholder.txt": book_text("placeholder"),
-        "ForDB/generations.csv": (
-            "שם ספר,קבוצת דור\n"
-            f"{OTHER},ראשונים\n"
-            f"{OLD},אחרונים\n"
-            f"{SEFARIA_ONLY},אחרונים\n"
-            f"{LEAVES},אחרונים\n"
-        ),
         "ForDB/book_moves.csv": (
             "name,Source path,Destination path\n"
             f'"{OLD}",חסידות,חסידות/נוספים\n'
@@ -93,9 +86,11 @@ def base_files():
         # כמו הקובץ שהאתר כותב: הכול במירכאות, ושורה לכל מחבר של אותו ספר.
         "ForDB/book_info.csv": (
             "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
+            f'"{OTHER}","","ראשונים","","",""\n'
             f'"{OLD}","מנחם מנדל מקוצק","אחרונים","אחרוני האחרונים","1787","1859"\n'
             f'"{OLD}","עורך ""הוצאה""","אחרונים","","",""\n'
-            f'"{OTHER}","","ראשונים","","",""\n'
+            f'"{SEFARIA_ONLY}","","אחרונים","","",""\n'
+            f'"{LEAVES}","","אחרונים","","",""\n'
         ),
         "ForDB/book_renames.csv": "ספר ישן מספריא,ספר חדש מספריא\n",
         "ForDB/sefaria_metadata_changes.csv": (
@@ -221,6 +216,11 @@ def csv_rows(text):
     return list(csv.reader(io.StringIO(text, newline="")))
 
 
+def generation_rows(text):
+    """[שם ספר, דור] לכל שורת book_info.csv, בלי הכותרת."""
+    return [[row[0], row[2]] for row in csv_rows(text)[1:]]
+
+
 def rename_incident(repo):
     """e6bb6a79 (rename + heading edit, R099) then 884e5f79 (folder move) then noise."""
     repo.move(f"{HASIDUT}/{OLD}.txt", f"{HASIDUT}/{NEW}.txt")
@@ -266,11 +266,10 @@ class IncidentReplayTest(FixtureTestCase):
         self.assertEqual(self.code, 0, self.output)
         self.assertFalse(self.repo.exists("fordb_removed.json"), self.output)
 
-    def test_generations_row_is_renamed_in_place(self):
-        rows = csv_rows(self.repo.read("ForDB/generations.csv"))
+    def test_book_info_rows_are_renamed_in_place(self):
         self.assertEqual(
-            rows,
-            [["שם ספר", "קבוצת דור"], [OTHER, "ראשונים"], [NEW, "אחרונים"],
+            generation_rows(self.repo.read("ForDB/book_info.csv")),
+            [[OTHER, "ראשונים"], [NEW, "אחרונים"], [NEW, "אחרונים"],
              [SEFARIA_ONLY, "אחרונים"], [LEAVES, "אחרונים"]],
         )
 
@@ -323,8 +322,7 @@ class IncidentReplayTest(FixtureTestCase):
 
     def test_exactly_the_title_keyed_files_are_touched(self):
         self.assertOnlyTouched([
-            "ForDB/generations.csv", "ForDB/book_info.csv", "ForDB/book_moves.csv",
-            "ForDB/sefaria_metadata_changes.csv",
+            "ForDB/book_info.csv", "ForDB/book_moves.csv", "ForDB/sefaria_metadata_changes.csv",
             "ForDB/all_metadata.json", "metadata.json", "all_metadata_with_file_paths.json",
             f"{LINKS}/{OLD}_links.json", f"{LINKS}/{NEW}_links.json", f"{LINKS}/{OTHER}_links.json",
         ])
@@ -369,7 +367,7 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
         code, output = self.repo.run_validator("--fix", "--rename-base", rename_commit)
         self.assertEqual(code, 0, output)
         removed = json.loads(self.repo.read("fordb_removed.json"))
-        self.assertIn({"file": "ForDB/generations.csv", "name": OLD, "reason": "orphan"}, removed)
+        self.assertIn({"file": "ForDB/book_info.csv", "name": OLD, "reason": "orphan"}, removed)
         self.assertFalse(self.repo.exists("fordb_renamed.json"))
 
     def test_every_book_info_row_of_an_orphan_is_removed_and_the_rest_keep_their_bytes(self):
@@ -382,7 +380,9 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
         self.assertEqual(
             self.repo.read("ForDB/book_info.csv"),
             "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
-            f'"{OTHER}","","ראשונים","","",""\n',
+            f'"{OTHER}","","ראשונים","","",""\n'
+            f'"{SEFARIA_ONLY}","","אחרונים","","",""\n'
+            f'"{LEAVES}","","אחרונים","","",""\n',
         )
 
     def test_a_book_moved_out_of_the_library_is_removed_not_renamed(self):
@@ -391,8 +391,8 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
         self.assertEqual(json.loads(self.repo.read("fordb_removed.json")),
-                         [{"file": "ForDB/generations.csv", "name": LEAVES, "reason": "orphan"}])
-        self.assertOnlyTouched(["ForDB/generations.csv"])
+                         [{"file": "ForDB/book_info.csv", "name": LEAVES, "reason": "orphan"}])
+        self.assertOnlyTouched(["ForDB/book_info.csv"])
         self.assertTrue(self.repo.read("fordb_commit_message.txt").startswith(
             "ci(fordb): remove inputs that cannot be applied\n"))
 
@@ -402,7 +402,7 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
             "--fix", "--rename-base", "0" * 40, "--rename-base", "deadbeef")
         self.assertEqual(code, 0, output)
         self.assertIn("אין בסיס זמין למעקב", output)
-        self.assertIn({"file": "ForDB/generations.csv", "name": OLD, "reason": "orphan"},
+        self.assertIn({"file": "ForDB/book_info.csv", "name": OLD, "reason": "orphan"},
                       json.loads(self.repo.read("fordb_removed.json")))
 
     def test_the_first_usable_base_wins(self):
@@ -411,7 +411,7 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
             "--fix", "--rename-base", "", "--rename-base", "deadbeef", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
         self.assertFalse(self.repo.exists("fordb_removed.json"))
-        self.assertIn([NEW, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([NEW, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
 
 
 class HistoryShapesTest(FixtureTestCase):
@@ -423,7 +423,7 @@ class HistoryShapesTest(FixtureTestCase):
         self.repo.commit("2")
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
-        self.assertIn([NEW, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([NEW, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
         self.assertTrue(self.repo.exists(f"{LINKS}/{NEW}_links.json"))
 
     def test_delete_and_re_add_in_separate_commits_is_seen_by_the_net_diff(self):
@@ -435,7 +435,7 @@ class HistoryShapesTest(FixtureTestCase):
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
         self.assertFalse(self.repo.exists("fordb_removed.json"), output)
-        self.assertIn([NEW, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([NEW, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
 
     def test_a_split_into_several_books_is_not_a_rename(self):
         content = self.repo.read(f"{HASIDUT}/{OLD}.txt").splitlines(keepends=True)
@@ -448,7 +448,7 @@ class HistoryShapesTest(FixtureTestCase):
         self.repo.commit("פיצול")
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
-        self.assertIn({"file": "ForDB/generations.csv", "name": OLD, "reason": "orphan"},
+        self.assertIn({"file": "ForDB/book_info.csv", "name": OLD, "reason": "orphan"},
                       json.loads(self.repo.read("fordb_removed.json")))
         self.assertFalse(self.repo.exists("fordb_renamed.json"))
 
@@ -459,7 +459,7 @@ class UnsafeRenamesAreHeldTest(FixtureTestCase):
     def assertHeld(self, code, output):
         self.assertEqual(code, 1, output)
         self.assertIn("לא יושרו אוטומטית ולא נמחקו", output)
-        self.assertIn([OLD, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([OLD, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
         self.assertFalse(self.repo.exists("fordb_removed.json"))
 
     def test_an_old_name_that_went_two_ways_is_ambiguous(self):
@@ -480,7 +480,7 @@ class UnsafeRenamesAreHeldTest(FixtureTestCase):
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 1, output)
         self.assertIn("book_renames.csv", output)
-        self.assertIn([OLD, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([OLD, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
 
     def test_a_links_file_already_taken_by_the_new_name_blocks_everything_for_that_name(self):
         self.repo.write({f"{LINKS}/{NEW}_links.json": "[]\n"})
@@ -495,9 +495,9 @@ class UnsafeRenamesAreHeldTest(FixtureTestCase):
 
 
 class ExistingEntriesForTheNewNameTest(FixtureTestCase):
-    def test_a_generations_row_already_written_for_the_new_name_supersedes_the_old_one(self):
-        rows = self.repo.read("ForDB/generations.csv") + f"{NEW},ראשונים\n"
-        self.repo.write({"ForDB/generations.csv": rows})
+    def test_a_book_info_row_already_written_for_the_new_name_supersedes_the_old_ones(self):
+        rows = self.repo.read("ForDB/book_info.csv") + f'"{NEW}","","ראשונים","","",""\n'
+        self.repo.write({"ForDB/book_info.csv": rows})
         self.repo.write({"metadata.json": one_record_per_line([
             {"title": OTHER, "author": "מחבר אחר", "heDesc": None},
             {"title": OLD, "author": "מנחם מנדל מקוצק", "heDesc": "תיאור"},
@@ -507,7 +507,7 @@ class ExistingEntriesForTheNewNameTest(FixtureTestCase):
         rename_incident(self.repo)
         code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
         self.assertEqual(code, 0, output)
-        generations = csv_rows(self.repo.read("ForDB/generations.csv"))
+        generations = generation_rows(self.repo.read("ForDB/book_info.csv"))
         self.assertNotIn([OLD, "אחרונים"], generations)
         self.assertIn([NEW, "ראשונים"], generations)  # the human's row wins
         self.assertEqual([r for r in generations if r[0] == NEW], [[NEW, "ראשונים"]])
@@ -649,7 +649,7 @@ class RespellTest(FixtureTestCase):
         super().setUp()
         self.repo.write({
             f"{RISHONIM}/{self.PLAIN}.txt": book_text(self.PLAIN),
-            "ForDB/generations.csv": self.repo.read("ForDB/generations.csv") + f"{self.PLAIN},אחרונים\n",
+            "ForDB/book_info.csv": self.repo.read("ForDB/book_info.csv") + f'"{self.PLAIN}","","אחרונים","","",""\n',
         })
         self.base = self.repo.commit("הגהות")
 
@@ -658,7 +658,7 @@ class RespellTest(FixtureTestCase):
         self.repo.commit("גרשיים")
         code, output = self.repo.run_validator("--fix", "--rename-base", self.base)
         self.assertEqual(code, 0, output)
-        self.assertIn([self.DB, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([self.DB, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
         self.assertIn("[איות בלבד]", output)
 
     def test_a_spelling_still_used_by_sefaria_is_not_touched(self):
@@ -669,7 +669,7 @@ class RespellTest(FixtureTestCase):
         # left to the spelling check, which reports it and fails the run — as before
         self.assertEqual(code, 1, output)
         self.assertIn("מאויתים אחרת מ-book.title", output)
-        self.assertIn([self.PLAIN, "אחרונים"], csv_rows(self.repo.read("ForDB/generations.csv")))
+        self.assertIn([self.PLAIN, "אחרונים"], generation_rows(self.repo.read("ForDB/book_info.csv")))
         self.assertFalse(self.repo.exists("fordb_renamed.json"), output)
         self.assertNotIn("[איות בלבד]", output)
 
@@ -709,7 +709,7 @@ class SparsePartialCloneTest(unittest.TestCase):
         status = origin.git("show", "--format=", "--name-status", "-M", "HEAD", cwd=work)
         entries = sorted(line.split("\t", 1)[1] for line in status.splitlines() if line)
         self.assertEqual(entries, sorted([
-            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_info_identity.json", "ForDB/book_moves.csv", "ForDB/generations.csv",
+            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_info_identity.json", "ForDB/book_moves.csv",
             "ForDB/sefaria_metadata_changes.csv", "all_metadata_with_file_paths.json", "metadata.json",
             f"{LINKS}/{OTHER}_links.json", f"{LINKS}/{OLD}_links.json\t{LINKS}/{NEW}_links.json",
         ]))

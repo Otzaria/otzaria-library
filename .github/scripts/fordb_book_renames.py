@@ -439,16 +439,15 @@ class JsonTarget:
 
 
 # כל קובץ שמזהה ספר *לפי שם*. תיאור הצרכן של כל אחד:
-#   generations / book_moves - SeedGenerations / RenameCategories, התאמה מדויקת ל-book.title.
-#   book_info                - מידע על ספרים מהאתר (דור, שנים, מחבר), אותה התאמה. כמה שורות לאותו
-#                              ספר (מחברים שונים) תקינות, וכולן עוברות יחד לשם החדש.
+#   book_info / book_moves   - SeedGenerations / RenameCategories, התאמה מדויקת ל-book.title.
+#                              ב-book_info (מידע על ספרים מהאתר) כמה שורות לאותו ספר (מחברים
+#                              שונים) תקינות, וכולן עוברות יחד לשם החדש.
 #   sefaria_metadata_changes - SeedAllMetadata (תיאור), לפי title.
 #   ForDB/all_metadata.json  - SeedAllMetadata (שנת/מקום דפוס), לפי title.
 #   metadata.json            - Generator.loadMetadata (מחבר, תיאור), לפי שם הקובץ הגולמי.
 #   all_metadata_with_file_paths.json - הרשימה הקנונית של המאמת עצמו (לא מגיע ל-DB).
 # קבצי *_links.json בשורשי ה-links הנארזים מטופלים בנפרד (plan_links).
 CSV_TARGETS = (
-    CsvTarget("ForDB/generations.csv", "שם ספר", "db", True),
     CsvTarget("ForDB/book_info.csv", "bookName", "db", True),
     CsvTarget("ForDB/book_moves.csv", "name", "db", True),
     CsvTarget("ForDB/sefaria_metadata_changes.csv", "title", "db", False),

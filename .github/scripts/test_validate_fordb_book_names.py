@@ -171,14 +171,6 @@ class RepositoryForDbTest(unittest.TestCase):
         entries += [(f"שורה {line} (יעד)", new) for line, _old, new in pairs]
         self.assertEqual(validator.find_spelling_drift(entries, self.packaged), [])
 
-    def test_generations_titles_use_the_packaged_spelling(self):
-        header, rows = validator.read_csv_rows(validator.GENERATIONS, has_header=True)
-        index = validator.col_index(header, "שם ספר")
-        entries = [
-            (f"שורה {line}", row[index]) for line, row in enumerate(rows, start=2) if len(row) > index
-        ]
-        self.assertEqual(validator.find_spelling_drift(entries, self.packaged), [])
-
     def test_book_info_titles_use_the_packaged_spelling(self):
         header, rows = validator.read_csv_rows(validator.BOOK_INFO, has_header=True)
         index = validator.col_index(header, "bookName")
