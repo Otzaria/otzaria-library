@@ -16,7 +16,8 @@ mapping = {
     "ToratEmetToOtzaria": "ToratEmet",
     "wikisourceToOtzaria": "wikiSource",
     "pninimToOtzaria": "Pninim",
-    "yam-HaHachmaToOtzaria": "yam-HaHachma"
+    "yam-HaHachmaToOtzaria": "yam-HaHachma",
+    "National-LibraryToOtzaria": "National-Library",
 }
 
 
@@ -56,7 +57,7 @@ folders = (
     "wikisourceToOtzaria/ספרים/אוצריא",
     "pninimToOtzaria/ספרים/אוצריא",
     "yam-HaHachmaToOtzaria/ספרים/אוצריא",
-    # "National-LibraryToOtzaria/ספרים/אוצריא"
+    "National-LibraryToOtzaria/ספרים/אוצריא",
 )
 
 folders_path = [Path(folder) for folder in folders]
