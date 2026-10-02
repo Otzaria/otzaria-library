@@ -14,12 +14,26 @@ replace the files: the current file is the baseline, and from a fresh conversion
 
 The current file's characters, line structure (links point at line numbers) and
 heading wording win everywhere else. Lines that cannot be aligned to the source are
-left untouched. --check verifies that every text difference is a rule token removed
-or rule text added, and that the formatting is sound: no source tag left unclosed at
-a heading or at the end of the book (te_convert renders such a tag as literal text;
-one the source really has is listed in the book's "unbalanced" in te_books.json, by
-source line), none running over more than --max-carry source lines, and no output
-line with a tag open at its end. It writes nothing; --write skips a book that fails.
+left untouched. A closer of the current file with no opener in its line formats
+nothing (it is a stray closer of the source). Text that only the current file has
+takes the conversion's formatting only where the conversion has it on both sides;
+an element a maintainer added (the gray '(תחילת העמוד)' page mark) keeps its own
+formatting, and a line listed in the book's "keep" (fixed by hand in a way the
+conversion would undo) is left exactly as it is.
+Run on its own output, the script changes nothing.
+
+--check verifies that every text difference is a rule token removed or rule text
+added, and that the formatting is sound:
+  * every source tag left unclosed at a heading or at the end of the book (te_convert
+    renders it as literal text) is listed in the book's "unbalanced" as [source line,
+    tag], once per such tag, and every entry still matches one;
+  * no tag runs over more than --max-carry source lines (10) unless the span is listed
+    in "carried" as [open line, close line, tag], and every entry still matches one;
+  * every "keep" entry [line, text] still names a line with that text;
+  * in every line it changes: no tag open at the end of the line, no <b>/<i>/<u>/<sup>/
+    <sub> inside itself, no char with formatting that neither the current line nor the
+    conversion of its source line has, and a second run would not change the line again.
+It writes nothing; --write skips a book that fails.
 
 Usage (from the repo root):
     python ToratEmetToOtzaria/סקריפטים/te_reapply.py --src "<Torat Emet dir>" --check
@@ -107,12 +121,12 @@ def parse_cur(html):
             if closing:
                 if e in stack:
                     stack.reverse(); stack.remove(e); stack.reverse()
-                else:
-                    # closes something opened on an earlier line (the old conversion
-                    # did not reopen it): the text before it carried that formatting
-                    for it in items:
-                        if isinstance(it, Ch):
-                            it.eff = it.eff + (e,)
+                # A closer with no opener in the line formats nothing, as in the
+                # reader. It is a stray closer of the source ('{a} b}' in Chavruta,
+                # '}}(ל, א)}}' in מנורת המאור), not formatting carried from the line
+                # before: what the source really carries over lines comes from the
+                # conversion. Applying it to the text before it bolded or shrank
+                # whole lines (a1f39803: 773 lines in 13 books).
             else:
                 stack.append(e)
         elif name == 'br':
@@ -146,8 +160,11 @@ def align(a, b):
     tok = r'[\u05d0-\u05ea\u0591-\u05c7\u05f3\u05f4A-Za-z0-9\'"]+|[^\s]'
     ta = [(m.start(), m.end()) for m in re.finditer(tok, a)]
     tb = [(m.start(), m.end()) for m in re.finditer(tok, b)]
-    sa = [a[x:y] for x, y in ta]
-    sb = [b[x:y] for x, y in tb]
+    # a word matches whatever its gershayim are written with: רש''י / רש"י / רש״י
+    def norm(t):
+        return t.replace("''", '"').replace('\u05f4', '"').replace('\u05f3', "'")
+    sa = [norm(a[x:y]) for x, y in ta]
+    sb = [norm(b[x:y]) for x, y in tb]
     ops = []
     pa = pb = 0                # char positions already covered
 
@@ -190,6 +207,32 @@ def consumed_near(nitems_pos, markers, i, run):
     return all(pc in joined or any(pc in f for f in window) for pc in pieces)
 
 
+def own_elements(C, eq_cur):
+    """Cur-char indices inside an element of the current file (<span>, <div>...) none of
+    whose letters is source text: markup a maintainer added, such as the page mark
+    '<span style="color:Gray;"><small><small>(תחילת העמוד)</small></small></span>'.
+    Its formatting is the maintainer's; the conversion has nothing to say about it."""
+    own, stack, k = set(), [], 0
+    for it in C:
+        if isinstance(it, Ch):
+            k += 1
+            continue
+        m = re.match(r'<(/?)([a-z][a-z0-9]*)', it[1])
+        if not m or m.group(2) in ('br', 'img', 'hr'):
+            continue
+        if not m.group(1):
+            stack.append((m.group(2), k))
+        else:
+            for x in range(len(stack) - 1, -1, -1):
+                if stack[x][0] == m.group(2):
+                    _, start = stack.pop(x)
+                    span = range(start, k)
+                    if span and not any(j in eq_cur for j in span):
+                        own.update(span)
+                    break
+    return own
+
+
 def merge_line(new_html, cur_html, report):
     N = parse_new(new_html)
     C = parse_cur(cur_html)
@@ -225,7 +268,41 @@ def merge_line(new_html, cur_html, report):
     def left_eff(i):
         return nch[i - 1].eff if i > 0 else (nch[0].eff if nch else ())
 
+    def common(effs):
+        """The effects all of effs share (big/small at their smallest depth)."""
+        if not effs:
+            return ()
+        left = collections.Counter(effs[0])
+        for e in effs[1:]:
+            left &= collections.Counter(e)
+        out = []
+        for e in effs[0]:                  # in the order of the first
+            if left[e] > 0:
+                left[e] -= 1
+                out.append(e)
+        return tuple(out)
+
+    def run_eff(i1, i2):
+        """Formatting for text the current file has in place of new[i1:i2] (nothing, for an
+        insertion): what the conversion has on both sides of it, or all over it. Text
+        inserted at the edge of a formatted run stays out of the run."""
+        if i2 > i1:
+            inner = [nch[i].eff for i in range(i1, i2) if not nch[i].c.isspace()]
+            return common(inner or [nch[i].eff for i in range(i1, i2)])
+        lft = next((nch[i].eff for i in range(i1 - 1, -1, -1) if not nch[i].c.isspace()), None)
+        rgt = next((nch[i].eff for i in range(i1, len(nch)) if not nch[i].c.isspace()), None)
+        return common([e for e in (lft, rgt) if e is not None])
+
     ops = align(''.join(c.c for c in nch), ''.join(c.c for c in cch))
+    eq_cur = {j for op, i1, i2, j1, j2 in ops if op == 'equal'
+              for j in range(j1, j2) if not cch[j].c.isspace()}
+    own = own_elements(C, eq_cur)
+
+    def merged(new_eff, j):
+        if j in own:
+            return union((), cch[j].eff)
+        return union(new_eff, cch[j].eff)
+
     present = set()            # generated groups the current file already renders in part
     for op, i1, i2, j1, j2 in ops:
         if op == 'equal':
@@ -241,7 +318,7 @@ def merge_line(new_html, cur_html, report):
                     pending.clear()
                 if i in nbr and j not in cbr and '<br>' not in [x[1] for x in out[-1:] if not isinstance(x, Ch)]:
                     pass       # a <br> only the new conversion has: current line structure wins
-                out.append(Ch(cch[j].c, union(nch[i].eff, cch[j].eff)))
+                out.append(Ch(cch[j].c, merged(nch[i].eff, j)))
             continue
         # new-only chars: keep rule-generated text, drop the rest (cur wins)
         gen = ''.join(nch[i].c for i in range(i1, i2) if nch[i].gen and nch[i].gen not in present)
@@ -277,23 +354,45 @@ def merge_line(new_html, cur_html, report):
                     if cch[j].c.isspace():
                         out.append(Ch(' ', left_eff(i1)))
             else:
+                base = run_eff(i1, i2 if op == 'replace' else i1)
                 for j in range(j1, j2):
                     emit_anchors(j)
-                    base = left_eff(i1) if op == 'insert' else (nch[i1].eff if i1 < len(nch) else left_eff(i1))
-                    out.append(Ch(cch[j].c, union(base, cch[j].eff)))
+                    # an extra space of the current file takes nothing from the conversion:
+                    # between two runs it would join them ('<b>(32)</b>  <b>רשב''ם</b>')
+                    sp = op == 'insert' and cch[j].c.isspace()
+                    out.append(Ch(cch[j].c, merged((), j) if sp else merged(base, j)))
                 if op == 'replace' and run.strip():
                     key = (''.join(nch[i].c for i in range(i1, i2)), run)
                     report['kept_cur'][key] = report['kept_cur'].get(key, 0) + 1
     out.extend(pending)
     emit_anchors(len(cch))
-    return serialize(out)
+    return serialize(collapse_spaces(out))
+
+
+def collapse_spaces(items):
+    """One space for a run of spaces, carrying what any of them carried. tidy() would
+    collapse them anyway, keeping whichever it meets first ('<b>X </b> <b>(Y)</b>' ->
+    '<b>X</b> <b>(Y)</b>'), and the next run would then bold that space from the
+    conversion again: the output would not be a fixed point."""
+    out = []
+    for it in items:
+        if (isinstance(it, Ch) and it.c.isspace() and out and isinstance(out[-1], Ch)
+                and out[-1].c.isspace()):
+            prev = out[-1]
+            out[-1] = Ch(' ', union(it.eff, prev.eff), prev.gen and it.gen)
+        else:
+            out.append(it)
+    return out
 
 
 def union(new, cur):
     """Effects of both sides, in the current file's order. For big/small the nesting
     depth of the current file wins when it has that effect at all (an editor may
-    have toned it down)."""
-    out = list(cur)
+    have toned it down). Any other effect appears once: <b> inside <b> is no bolder."""
+    out = []
+    for e in cur:
+        if e in ('big', 'small') or e not in out:
+            out.append(e)
     for e in new:
         if e in ('big', 'small'):
             if e not in cur and out.count(e) < new.count(e):
@@ -359,10 +458,40 @@ def key(s):
     return re.sub(r'[^א-ת0-9]', '', html_mod.unescape(s))
 
 
-def merge_book(new_lines, cur_lines, report=None, heading_levels='cur'):
-    """new_lines: engine dicts; cur_lines: list of str. Returns (lines, report)."""
-    report = report or {'generated': {}, 'consumed': {}, 'kept_cur': {}, 'unaligned_cur': [],
-                        'heading_level': {}, 'kind_mismatch': []}
+def new_report():
+    return {'generated': {}, 'consumed': {}, 'kept_cur': {}, 'unaligned_cur': [],
+            'heading_level': {}, 'kind_mismatch': [], 'pairs': {}, 'unstable': []}
+
+
+def merge_pair(n, c, report, heading_levels):
+    """The merged line for source line n and current line c, or None to leave c as is."""
+    hm = HEAD_RE.match(c)
+    if not hm and re.match(r'\s*<h[1-6]', c, re.I):
+        report['unaligned_cur'].append(c)              # heading with text glued after it:
+        return None                                    # would lose the heading, leave it
+    if n['kind'] == 'h' and hm:
+        inner = merge_line(n['html'], hm.group(3), report)
+        inner = re.sub(r'</?(b|i|u|big|small)>', '', inner).strip()
+        lvl = n['level'] if heading_levels == 'new' else int(hm.group(1))
+        if str(n['level']) != hm.group(1):
+            k = (hm.group(1), str(lvl))
+            report['heading_level'][k] = report['heading_level'].get(k, 0) + 1
+        return f'<h{lvl}{hm.group(2)}>{inner}</h{lvl}>'
+    if hm or n['kind'] == 'h':
+        report['kind_mismatch'].append(c)
+        return None if hm else merge_line(n['html'], c, report)
+    return merge_line(n['html'], c, report)
+
+
+def merge_book(new_lines, cur_lines, report=None, heading_levels='cur', keep=()):
+    """new_lines: engine dicts; cur_lines: list of str. Returns (lines, report).
+    keep: 1-based lines fixed by hand that are left as they are (te_books.json "keep").
+    report['pairs'] maps every merged line (0-based) to its source line in new_lines;
+    report['unstable'] lists the lines a second run would change again."""
+    report = report or new_report()
+    for k, v in new_report().items():
+        report.setdefault(k, v)
+    keep = {int(l) - 1 for l in keep}
     nk = [key(l['html']) for l in new_lines]
     ck = [key(l) for l in cur_lines]
     out = list(cur_lines)
@@ -388,24 +517,21 @@ def merge_book(new_lines, cur_lines, report=None, heading_levels='cur'):
         n, c = new_lines[a], cur_lines[b]
         if b < 2 and c.lstrip().startswith('<h1') or (b == 1):
             continue                                   # title and author lines: as edited
-        hm = HEAD_RE.match(c)
-        if not hm and re.match(r'\s*<h[1-6]', c, re.I):
-            report['unaligned_cur'].append(b)          # heading with text glued after it:
-            continue                                   # would lose the heading, leave it
-        if n['kind'] == 'h' and hm:
-            inner = merge_line(n['html'], hm.group(3), report)
-            inner = re.sub(r'</?(b|i|u|big|small)>', '', inner).strip()
-            lvl = n['level'] if heading_levels == 'new' else int(hm.group(1))
-            if str(n['level']) != hm.group(1):
-                k = (hm.group(1), str(lvl))
-                report['heading_level'][k] = report['heading_level'].get(k, 0) + 1
-            out[b] = f'<h{lvl}{hm.group(2)}>{inner}</h{lvl}>'
-        elif hm or n['kind'] == 'h':
-            report['kind_mismatch'].append(b)
-            if not hm:
-                out[b] = merge_line(n['html'], c, report)
-        else:
-            out[b] = merge_line(n['html'], c, report)
+        side = new_report()
+        if b in keep:
+            continue                                   # fixed by hand: as it is
+        m = merge_pair(n, c, side, heading_levels)
+        for k in ('unaligned_cur', 'kind_mismatch'):
+            report[k] += [b for _ in side[k]]
+        for k in ('generated', 'consumed', 'kept_cur', 'heading_level'):
+            for x, v in side[k].items():
+                report[k][x] = report[k].get(x, 0) + v
+        if m is None:
+            continue
+        out[b] = m
+        report['pairs'][b] = a
+        if m != c and merge_pair(n, m, new_report(), heading_levels) != m:
+            report['unstable'].append(b)               # not a fixed point: a bug of the merge
     return out, report
 
 
@@ -477,25 +603,140 @@ def leaking_tags(line):
     return [name for name, covers in stack if covers]
 
 
-def format_problems(conv, out, spec, max_carry):
-    """The formatting checks of --check. conv: the report of E.convert."""
-    known = set(spec.get('unbalanced', []))
+def rendered(html):
+    """(text, [Counter of effects per char]) of a line as the reader shows it: a closer
+    with no opener does nothing, and an opener left open runs to the end of the line.
+    Written apart from parse_cur on purpose, so that --check does not trust the merge."""
+    html = re.sub(r'</?(tex|teg)\b[^<>]*>', '', html)
+    text, effs, stack, pos = [], [], [], 0
+    def put(t):
+        t = html_mod.unescape(re.sub(r'<[^<>]*>', '', t)).replace('\xa0', ' ')
+        for ch in t:
+            text.append(ch)
+            effs.append(collections.Counter(stack))
+    for m in FX_TAG_RE.finditer(html):
+        put(html[pos:m.start()])
+        pos = m.end()
+        e = EFFECT_TAGS[m.group(2).lower()]
+        if not m.group(1):
+            stack.append(e)
+        elif e in stack:
+            del stack[len(stack) - 1 - stack[::-1].index(e)]
+    put(html[pos:])
+    return ''.join(text), effs
+
+
+def foreign_effects(new_html, cur_line, out_line):
+    """Formatting of out_line that is neither in the current line nor in the conversion
+    of its source line: [(char index, effect)]. Text the merge kept from the current file
+    only (no source text under it) may take the conversion's formatting of the text
+    around it. Spaces are not checked: their formatting cannot be seen."""
+    ot, oe = rendered(out_line)
+    ct, ce = rendered(cur_line)
+    nt, ne = rendered(new_html)
+    cmap = {}
+    for op, i1, i2, j1, j2 in align(ot, ct):
+        if op == 'equal':
+            cmap.update(zip(range(i1, i2), range(j1, j2)))
+    nallow = [None] * len(ot)
+    for op, i1, i2, j1, j2 in align(ot, nt):
+        if op == 'equal':
+            for i, j in zip(range(i1, i2), range(j1, j2)):
+                nallow[i] = ne[j]
+        elif i2 > i1:
+            near = collections.Counter()
+            for j in range(max(j1 - 1, 0), min(j2 + 1, len(nt))):
+                near |= ne[j]
+            for i in range(i1, i2):
+                nallow[i] = near
+    bad = []
+    for i, ch in enumerate(ot):
+        if ch.isspace():
+            continue
+        have = ce[cmap[i]] if i in cmap else collections.Counter()
+        allow = have | (nallow[i] or collections.Counter())
+        for e, n in oe[i].items():
+            if n > allow[e]:
+                bad.append((i, e))
+    return bad
+
+
+def nested_tags(line):
+    """Effects opened again inside themselves in a line (<b>..<b>..</b>..</b>);
+    only big/small nest meaningfully."""
+    stack, out = [], []
+    for m in FX_TAG_RE.finditer(line):
+        e = EFFECT_TAGS[m.group(2).lower()]
+        if m.group(1):
+            if e in stack:
+                del stack[len(stack) - 1 - stack[::-1].index(e)]
+        else:
+            if e in stack and e not in ('big', 'small') and e not in out:
+                out.append(e)
+            stack.append(e)
+    return out
+
+
+def allowlist(spec, name, width):
+    """Entries of spec[name], each a list of `width` items: line numbers, then the tag."""
+    out = []
+    for ent in spec.get(name, []):
+        if not isinstance(ent, list) or len(ent) != width:
+            raise SystemExit(f'te_books.json: "{name}" entry {ent!r} must be a list of {width} items')
+        out.append(tuple(ent))
+    return out
+
+
+def format_problems(conv, out, spec, max_carry, cur=None, new=None, pairs=None, unstable=()):
+    """The formatting checks of --check. conv: the report of E.convert; cur, new, pairs:
+    the current lines, the converted lines and report['pairs'] of merge_book."""
     probs = []
+    # unclosed source tags: each must be listed in "unbalanced" as [source line, tag],
+    # once for every such tag, and every entry must still match one
+    found = collections.Counter((line, tag) for line, tag, effs, where in conv['unbalanced'])
+    known = collections.Counter(allowlist(spec, 'unbalanced', 2))
     for line, tag, effs, where in conv['unbalanced']:
-        if line not in known:
+        if known[(line, tag)] < found[(line, tag)]:
             probs.append(f'source line {line}: <{tag}> ({"+".join(effs)}) is not closed '
                          + {'heading': 'before the heading after it', 'eof': 'by the end of the book',
                             'in heading': 'inside its heading'}[where])
+    for (line, tag), n in (known - found).items():
+        probs.append(f'te_books.json "unbalanced" {[line, tag]}: no such unclosed tag in the source'
+                     + (f' ({n} listed beyond the {found[(line, tag)]} found)' if found[(line, tag)] else ''))
+    # long carries: each one over max_carry source lines must be listed in "carried"
+    spans = {(o, c, tag) for o, c, tag, effs in conv['carried']}
+    listed = set(allowlist(spec, 'carried', 3))
     for o, c, tag, effs in conv['carried']:
-        if c - o > max_carry:
+        if c - o > max_carry and (o, c, tag) not in listed:
             probs.append(f'source lines {o}-{c}: <{tag}> ({"+".join(effs)}) runs over {c - o} lines')
+    for ent in sorted(listed - spans):
+        probs.append(f'te_books.json "carried" {list(ent)}: no such span in the source')
+    # hand-fixed formatting: the line must still be the one that was fixed
+    for line, snippet in allowlist(spec, 'keep', 2):
+        if cur is not None and (line > len(cur) or snippet not in plain(cur[line - 1])):
+            probs.append(f'te_books.json "keep" {[line, snippet]}: line {line} no longer has this text')
     for i, line in enumerate(out):
         for tag in leaking_tags(line):
             probs.append(f'line {i + 1}: <{tag}> is not closed at the end of the line')
+    if cur is None:
+        return probs
+    for i in sorted(unstable):
+        probs.append(f'line {i + 1}: a second run would change it again')
+    for i, (c, o) in enumerate(zip(cur, out)):
+        if c == o:
+            continue
+        for tag in nested_tags(o):
+            probs.append(f'line {i + 1}: <{tag}> inside <{tag}>')
+        if new is not None and pairs is not None and i in pairs:
+            bad = foreign_effects(new[pairs[i]]['html'], c, o)
+            if bad:
+                effs = sorted({e for _, e in bad})
+                probs.append(f'line {i + 1}: {len(bad)} chars get <{">, <".join(effs)}> '
+                             'that neither the line nor the source has')
     return probs
 
 
-def process(rel, spec, max_carry=300):
+def process(rel, spec, max_carry=10):
     path = os.path.join(BOOKS_ROOT, rel)
     raw = open(path, encoding='utf-8').read()
     bom = raw.startswith('\ufeff')
@@ -505,13 +746,14 @@ def process(rel, spec, max_carry=300):
         cur = cur[:-1]
     conv = {}
     _, new = E.convert(spec['src'], markers=True, report=conv)
-    out, rep = merge_book(new, cur, heading_levels=spec.get('headings', 'cur'))
+    out, rep = merge_book(new, cur, heading_levels=spec.get('headings', 'cur'),
+                          keep=[l for l, _ in allowlist(spec, 'keep', 2)])
     assert len(out) == len(cur)
     froms, tos = rule_texts(spec['src'])
     bad = [(i + 1, d, a) for i, (x, y) in enumerate(zip(cur, out))
            for d, a in textdiff(plain(x), plain(y)) if not allowed(d, a, froms, tos)]
-    rep['format'] = format_problems(conv, out, spec, max_carry)
-    rep['unbalanced_known'] = [u for u in conv['unbalanced'] if u[0] in set(spec.get('unbalanced', []))]
+    rep['format'] = format_problems(conv, out, spec, max_carry, cur, new, rep['pairs'], rep['unstable'])
+    rep['unbalanced_known'] = conv['unbalanced'] if spec.get('unbalanced') else []
     text = ('\ufeff' if bom else '') + '\n'.join(out) + ('\n' if trail else '')
     return path, text, raw, rep, bad, sum(1 for x, y in zip(cur, out) if x != y)
 
@@ -520,9 +762,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument('--src', required=True, help='the Torat Emet books directory')
     ap.add_argument('--only', help='process only books whose path contains this')
-    ap.add_argument('--max-carry', type=int, default=300, metavar='N',
+    ap.add_argument('--max-carry', type=int, default=10, metavar='N',
                     help='fail when a formatting tag of the source runs over more than N source '
-                         'lines (default 300)')
+                         'lines and the span is not listed in the book\'s "carried" (default 10)')
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument('--check', action='store_true')
     g.add_argument('--write', action='store_true')
