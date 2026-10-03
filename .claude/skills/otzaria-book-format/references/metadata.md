@@ -174,4 +174,4 @@ python .github/scripts/validate_fordb_book_names.py --fix    # רק תיקוני
 
 `book_info.csv` מכיל שש עמודות ושורה לכל `(bookName,authorName)`. סדר קנוני: שם ספר ואז מחבר; LF וכל שדה נתון מצוטט. דורות נתמכים: תורה שבכתב, חז"ל, ראשונים, אחרונים, מחברי זמננו. שדות לא ידועים ריקים. אין להשתמש בשנות הדפוס בתור שנות חיי המחבר.
 
-`make_metadata.py --title "שם" --author "מחבר" --generation אחרונים --book-info-csv /path/ForDB/book_info.csv` מוסיף רק זהויות חסרות ומשמר כל מחבר, דור ושנים קיימים. `--sub-generation`, `--start-year`, `--end-year` מיועדים לערכים ידועים. בשלב המעבר בלבד הכותב מעדכן גם קובץ דורות ישן קיים מתוך המידע הקנוני; אין לערוך אותו בנפרד.
+`make_metadata.py --title "שם" --author "מחבר" --generation אחרונים --book-info-csv /path/ForDB/book_info.csv` מוסיף רק זהויות חסרות ומשמר כל מחבר, דור ושנים קיימים. `--sub-generation`, `--start-year`, `--end-year` מיועדים לערכים ידועים. קובץ הדורות הישן הוסר; אין ליצור אותו מחדש.

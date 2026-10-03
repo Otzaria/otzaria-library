@@ -269,14 +269,14 @@ class IncidentReplayTest(FixtureTestCase):
     def test_book_info_rows_are_renamed_in_place(self):
         self.assertEqual(
             generation_rows(self.repo.read("ForDB/book_info.csv")),
-            [[OTHER, "ראשונים"], [NEW, "אחרונים"], [NEW, "אחרונים"],
+            [[NEW, "אחרונים"], [NEW, "אחרונים"], [OTHER, "ראשונים"],
              [SEFARIA_ONLY, "אחרונים"], [LEAVES, "אחרונים"]],
         )
 
     def test_every_book_info_row_of_the_book_follows_it_and_keeps_its_quoting(self):
         self.assertEqual(
             self.repo.read("ForDB/book_info.csv"),
-            base_files()["ForDB/book_info.csv"].replace(f'"{OLD}",', f'"{NEW}",'),
+            renames.sort_csv_records(base_files()["ForDB/book_info.csv"].replace(f'"{OLD}",', f'"{NEW}",').encode("utf-8"), ("bookName", "authorName")).decode("utf-8"),
         )
 
     def test_book_moves_keeps_its_quoting(self):
@@ -495,7 +495,7 @@ class UnsafeRenamesAreHeldTest(FixtureTestCase):
 
 
 class ExistingEntriesForTheNewNameTest(FixtureTestCase):
-    def test_a_book_info_row_already_written_for_the_new_name_supersedes_the_old_ones(self):
+    def test_a_new_blank_author_row_preserves_every_existing_coauthor(self):
         rows = self.repo.read("ForDB/book_info.csv") + f'"{NEW}","","ראשונים","","",""\n'
         self.repo.write({"ForDB/book_info.csv": rows})
         self.repo.write({"metadata.json": one_record_per_line([
@@ -509,8 +509,8 @@ class ExistingEntriesForTheNewNameTest(FixtureTestCase):
         self.assertEqual(code, 0, output)
         generations = generation_rows(self.repo.read("ForDB/book_info.csv"))
         self.assertNotIn([OLD, "אחרונים"], generations)
-        self.assertIn([NEW, "ראשונים"], generations)  # the human's row wins
-        self.assertEqual([r for r in generations if r[0] == NEW], [[NEW, "ראשונים"]])
+        self.assertIn([NEW, "ראשונים"], generations)
+        self.assertEqual([r for r in generations if r[0] == NEW], [[NEW, "ראשונים"], [NEW, "אחרונים"], [NEW, "אחרונים"]])
         # metadata is never deleted: the stale entry stays, the explicit one is untouched
         metadata = json.loads(self.repo.read("metadata.json"))
         self.assertEqual([m["title"] for m in metadata], [OTHER, OLD, NEW])

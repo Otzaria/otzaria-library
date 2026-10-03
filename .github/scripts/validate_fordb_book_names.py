@@ -649,8 +649,6 @@ def preflight_csv_inputs():
     for target in book_renames_follow.CSV_TARGETS:
         path = os.path.join(REPO_ROOT, target.path)
         if not os.path.exists(path):
-            if path == BOOK_INFO:
-                continue  # PR55 transition; mandatory in PR56.
             raise FileNotFoundError(path)
         if path == BOOK_INFO:
             with open(path, "rb") as handle:

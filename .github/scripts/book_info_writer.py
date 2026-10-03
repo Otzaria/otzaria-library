@@ -8,7 +8,6 @@ import csv
 import io
 import os
 import tempfile
-from collections import Counter
 from pathlib import Path
 
 from fordb_book_renames import _split_bom, _csv_value, csv_records, EditVerificationError
@@ -21,13 +20,11 @@ def encode_rows(rows):
     return out.getvalue()
 
 
-def plan_registration(repo, entries, *, legacy_compat=True):
+def plan_registration(repo, entries):
     """Return {relative path: bytes} after validating all CSVs, without writing.
 
     entries contain all six supported fields. New distinct coauthors are added;
     a blank-author fallback never creates an extra row for an attributed book.
-    During PR55 only, existing legacy generations is updated from the canonical
-    new source (majority generation, first sorted author tie), never conversely.
     """
     path = Path(repo) / 'ForDB/book_info.csv'
     data = path.read_bytes()
@@ -74,39 +71,6 @@ def plan_registration(repo, entries, *, legacy_compat=True):
     validate_book_info(encoded)
     if encoded != data:
         writes['ForDB/book_info.csv'] = encoded
-    legacy = Path(repo) / 'ForDB/generations.csv'
-    if legacy_compat and legacy.exists():
-        old_data = legacy.read_bytes()
-        old_bom, old_text = _split_bom(old_data)
-        csv_records(old_text)
-        generations = list(csv.reader(io.StringIO(old_text, newline=''), strict=True))
-        if not generations or generations[0] != ['שם ספר', 'קבוצת דור'] or any(r and len(r) != 2 for r in generations[1:]):
-            raise ValueError(f'{legacy}: invalid legacy table')
-        grouped = {}
-        for row in rows:
-            if row[2]:
-                grouped.setdefault(row[0], []).append(row[2])
-        legacy_by_title = {}
-        for row in generations[1:]:
-            if row:
-                legacy_by_title.setdefault(row[0], []).append(row)
-        for title in sorted(requested_titles):
-            candidates = grouped.get(title, [])
-            if not candidates:
-                continue
-            counts = Counter(candidates)
-            gen = max(candidates, key=counts.get)
-            hits = legacy_by_title.get(title, [])
-            if hits:
-                for row in hits:
-                    row[1] = gen
-            else:
-                generations.append([title, gen])
-        out = io.StringIO(newline='')
-        csv.writer(out, lineterminator='\n').writerows(generations)
-        encoded = (old_bom + out.getvalue()).encode('utf-8')
-        if encoded != old_data:
-            writes['ForDB/generations.csv'] = encoded
     return writes
 
 

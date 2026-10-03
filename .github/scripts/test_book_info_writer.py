@@ -68,9 +68,9 @@ class WriterTest(unittest.TestCase):
                 plan_registration(tmp, [['חדש', '', 'ראשונים', '', '', '']])
             self.assertFalse((Path(tmp) / 'ForDB/book_info.csv').exists())
 
-    def test_production_installers_with_and_without_legacy_source(self):
+    def test_production_installers_with_only_canonical_source(self):
         for relative in INSTALLERS:
-            for legacy in (False, True):
+            for legacy in (False,):
                 with self.subTest(script=relative, legacy=legacy), tempfile.TemporaryDirectory() as tmp:
                     module = load_script(relative)
                     repo = Path(tmp) / 'repo'
