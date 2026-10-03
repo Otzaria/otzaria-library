@@ -17,6 +17,7 @@ import csv
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -568,14 +569,43 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
                  {"schemaVersion": 1, "events": [dict(event, commit=None)]},
                  {"schemaVersion": 1, "events": [dict(event, commit="source-not-sha")]},
                  {"schemaVersion": 1, "events": [dict(event, new={"bookName": "rewritten", "authorName": "מחבר"})]},
-                 {"schemaVersion": 1, "events": []}]
+                 {"schemaVersion": 1, "events": []},
+                 {"schemaVersion": 1, "events": [dict(event, new={"bookName": "יעד", "authorName": "A\ud800B"})]}]
         for malformed in cases:
             with self.subTest(ledger=malformed):
-                self.repo.write({"ForDB/book_info_identity.json": json.dumps(malformed, ensure_ascii=False) + "\n"})
+                self.repo.write({"ForDB/book_info_identity.json": json.dumps(malformed, ensure_ascii=True) + "\n"})
                 code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
                 self.assertNotEqual(code, 0, output)
                 self.assertEqual(self.repo.read("metadata.json"), before)
                 self.assertIn(OLD, self.repo.read("ForDB/book_info.csv"))
+
+    def test_identity_ledger_allows_well_formed_astral_unicode(self):
+        ledger = {"schemaVersion": 1, "events": [{"id": 1, "kind": "rename",
+                  "old": {"bookName": "ספר 📖", "authorName": "מחבר 😀"},
+                  "new": {"bookName": "ספר 📖", "authorName": "מחבר 😃"},
+                  "commit": self.repo.base}]}
+        self.assertEqual(validator.validate_identity_ledger(ledger), ledger)
+
+    def test_publisher_checkout_rejects_committed_identity_history_rewrite(self):
+        workflow = Path(SCRIPTS).parent / "workflows" / "update-fordb.yml"
+        checkout = workflow.read_text(encoding="utf-8").split("uses: actions/checkout@", 1)[1].split("- name:", 1)[0]
+        depth_match = re.search(r"fetch-depth:\s*(\d+)", checkout)
+        depth = int(depth_match.group(1)) if depth_match else 1
+        event = {"id": 1, "kind": "rename", "old": {"bookName": "מקור", "authorName": "מחבר"},
+                 "new": {"bookName": "יעד", "authorName": "מחבר"}, "commit": self.repo.base}
+        ledger = {"schemaVersion": 1, "events": [event]}
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("trusted ledger prefix")
+        event["new"]["bookName"] = "שכתוב"
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("rewrite historical destination")
+        clone = Path(self.tmp) / "publisher-checkout"
+        self.repo.git("clone", "-q", "--depth", str(depth), Path(self.repo.root).as_uri(), str(clone))
+        before = {str(path.relative_to(clone)): path.read_bytes() for path in (clone / "ForDB").iterdir()}
+        code, output = self.repo.run_validator("--fix", cwd=str(clone))
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("append-only", output)
+        self.assertEqual({str(path.relative_to(clone)): path.read_bytes() for path in (clone / "ForDB").iterdir()}, before)
 
     def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
         for newline in ("\n", "\r", "\r\n"):

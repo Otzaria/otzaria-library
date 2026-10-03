@@ -551,6 +551,12 @@ def validate_identity_ledger(ledger):
             or type(ledger["schemaVersion"]) is not int or ledger["schemaVersion"] != 1
             or not isinstance(ledger["events"], list)):
         raise ValueError("Invalid book_info identity ledger")
+    # Escaped lone UTF-16 surrogates are legal JSON strings but cannot be CSV
+    # identities in UTF-8. Reject the entire ledger before any auto-fix write.
+    try:
+        json.dumps(ledger, ensure_ascii=False).encode("utf-8")
+    except UnicodeEncodeError as error:
+        raise ValueError("Identity ledger contains text that cannot be encoded as UTF-8") from error
     for idx, event in enumerate(ledger["events"], start=1):
         if (not isinstance(event, dict) or type(event.get("id")) is not int
                 or event["id"] != idx or event.get("kind") not in ("rename", "remove")):

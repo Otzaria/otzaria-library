@@ -41,6 +41,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
+          # The identity ledger gate compares HEAD^ to reject rewritten history.
+          fetch-depth: 2
           # The gate only reads ForDB, the validator, and its canonical metadata.
           # Fetching every LFS object in this multi-GB repository dominated runtime.
           lfs: false
