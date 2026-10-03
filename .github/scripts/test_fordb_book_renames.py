@@ -22,6 +22,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 import fordb_book_renames as renames
 import validate_fordb_book_names as validator
@@ -239,6 +240,9 @@ class FixtureTestCase(unittest.TestCase):
         self.repo = FixtureRepo(os.path.join(self.tmp, "repo"))
 
     def assertOnlyTouched(self, expected, cwd=None):
+        expected = list(expected)
+        if "ForDB/book_info.csv" in expected:
+            expected.append("ForDB/book_info_identity.json")
         self.assertEqual(sorted(self.repo.touched(cwd)), sorted(expected))
         status = self.repo.git("status", "--porcelain", "-z", "--untracked-files=all", cwd=cwd)
         changed = set()
@@ -511,6 +515,55 @@ class ExistingEntriesForTheNewNameTest(FixtureTestCase):
         self.assertEqual([m["title"] for m in metadata], [OTHER, OLD, NEW])
 
 
+class BookInfoIdentityRegressionTest(FixtureTestCase):
+    def test_target_author_deduplicates_only_itself_and_preserves_other_authors(self):
+        source = self.repo.read("ForDB/book_info.csv")
+        rows = csv_rows(source)
+        original = [r for r in rows[1:] if r[0] == OLD]
+        target = [NEW, *original[0][1:]]
+        target[2] = "ראשונים"
+        buf = io.StringIO(newline="")
+        csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(target)
+        self.repo.write({"ForDB/book_info.csv": source + buf.getvalue()})
+        self.repo.commit("target author metadata")
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertEqual(code, 0, output)
+        actual = csv_rows(self.repo.read("ForDB/book_info.csv"))
+        self.assertEqual([r for r in actual if r[0] == NEW], sorted([[NEW, *original[1][1:]], target], key=lambda r: tuple(r[:2])))
+        ledger = json.loads(self.repo.read("ForDB/book_info_identity.json"))
+        self.assertEqual([e["old"]["authorName"] for e in ledger["events"]], sorted(r[1] for r in original))
+        first = self.repo.read("ForDB/book_info_identity.json")
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertEqual(code, 0, output)
+        self.assertEqual(self.repo.read("ForDB/book_info_identity.json"), first)
+
+    def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
+        for newline in ("\n", "\r", "\r\n"):
+            with self.subTest(newline=newline):
+                source = self.repo.read("ForDB/book_info.csv")
+                # Restore the fixture for each independently executed prune.
+                source = base_files()["ForDB/book_info.csv"].replace(f'"{OTHER}","",', f'"{OTHER}","עורך' + newline + 'הוצאה",')
+                source += '"יתום","עורך\nאחר","ראשונים","","",""\n'
+                self.repo.write({"ForDB/book_info.csv": source})
+                code, output = self.repo.run_validator("--fix")
+                self.assertEqual(code, 0, output)
+                self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source[:source.rindex('"יתום"')].encode("utf-8"))
+
+    def test_malformed_source_rejects_before_any_rename_write(self):
+        rename_incident(self.repo)
+        for suffix in ('"יתום","unterminated', '"יתום","author"junk,"ראשונים","","",""\n',
+                       '"יתום","author","ראשונים"\n'):
+            with self.subTest(suffix=suffix):
+                malformed = base_files()["ForDB/book_info.csv"] + suffix
+                self.repo.write({"ForDB/book_info.csv": malformed})
+                before = self.repo.read("metadata.json")
+                code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+                self.assertNotEqual(code, 0, output)
+                self.assertEqual(self.repo.read("metadata.json"), before)
+                self.assertEqual(self.repo.read("ForDB/book_info.csv"), malformed)
+
+
 class RespellTest(FixtureTestCase):
     """6cdb121d gave 'הגהות הבח' a curly ” and the CI deleted its row (3d96022b)."""
 
@@ -582,7 +635,7 @@ class SparsePartialCloneTest(unittest.TestCase):
         status = origin.git("show", "--format=", "--name-status", "-M", "HEAD", cwd=work)
         entries = sorted(line.split("\t", 1)[1] for line in status.splitlines() if line)
         self.assertEqual(entries, sorted([
-            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_moves.csv", "ForDB/generations.csv",
+            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_info_identity.json", "ForDB/book_moves.csv", "ForDB/generations.csv",
             "ForDB/sefaria_metadata_changes.csv", "all_metadata_with_file_paths.json", "metadata.json",
             f"{LINKS}/{OTHER}_links.json", f"{LINKS}/{OLD}_links.json\t{LINKS}/{NEW}_links.json",
         ]))

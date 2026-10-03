@@ -44,6 +44,9 @@ import zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
+sys.path.insert(0, os.path.join(REPO, ".github", "scripts"))
+from book_info_writer import plan_registration, apply_registration
+from validate_fordb_book_names import db_title as normalize_book_title
 
 import dicta_convert as DC  # noqa: E402
 import dicta_fp  # noqa: E402
@@ -831,10 +834,21 @@ def _roundtrip_ok(path, writer) -> bool:
 
 def register_packaged(book: dict, rel_path: str, repo=REPO) -> list[str]:
     """מוסיף שורות ל־metadata.json, ForDB/all_metadata.json, all_metadata_with_file_paths.json,
-    ForDB/generations.csv עבור ספר בנתיב rel_path (יחסי ל־אוצריא/). מחזיר את הקבצים ששונו.
+    ForDB/book_info.csv עבור ספר בנתיב rel_path (יחסי ל־אוצריא/). מחזיר את הקבצים ששונו.
     מסרב (ValueError) אם קובץ אינו חוזר בית־בבית בפורמט הצפוי — כדי לא לשכתב אותו כולו."""
     title = os.path.basename(rel_path)[:-4]
     md = DC.build_metadata(book)
+    # Plan the canonical CSV and check all registries before any mutation.
+    existing_meta = read_json(os.path.join(repo, "metadata.json"))
+    known = {m.get("author") for m in existing_meta if m.get("author")}
+    existing_author = next((m.get("author") for m in existing_meta if m.get("title") == title and m.get("author")), None)
+    authors = [existing_author] if existing_author else [canonical_author(a, known) for a in md.get("heAuthors", []) if a]
+    if not authors:
+        authors = [canonical_author(md.get("author", ""), known)]
+    csv_plan = plan_registration(repo, [[normalize_book_title(title), author, generation_of(book.get("subcategory")), "", "", ""] for author in authors])
+    for rel, writer in (("metadata.json", _write_compact_list), ("ForDB/all_metadata.json", _write_indent2), ("all_metadata_with_file_paths.json", _write_indent2)):
+        if not _roundtrip_ok(os.path.join(repo, rel), writer):
+            raise ValueError(f"{rel} registry format would change")
     touched = []
     p = os.path.join(repo, "metadata.json")
     if not _roundtrip_ok(p, _write_compact_list):
@@ -862,16 +876,7 @@ def register_packaged(book: dict, rel_path: str, repo=REPO) -> list[str]:
             items.append({**rec, **extra})
             _write_indent2(p, items)
             touched.append(rel)
-    gen = generation_of(book.get("subcategory"))
-    p = os.path.join(repo, "ForDB/generations.csv")
-    with open(p, encoding="utf-8", newline="") as f:
-        rows = list(csv.reader(f))
-    if gen and not any(r and r[0] == title for r in rows):
-        rows.append([title, gen])
-        buf = io.StringIO()
-        csv.writer(buf, lineterminator="\n").writerows(rows)
-        write_atomic(p, buf.getvalue())
-        touched.append("ForDB/generations.csv")
+    touched.extend(apply_registration(repo, csv_plan))
     return touched
 
 

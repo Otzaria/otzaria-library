@@ -211,8 +211,8 @@ class RegistryTest(unittest.TestCase):
         for rel in ("ForDB/all_metadata.json", "all_metadata_with_file_paths.json"):
             with open(os.path.join(self.d, rel), "w", encoding="utf-8") as f:
                 f.write(json.dumps([{"title": "קיים"}], ensure_ascii=False, indent=2) + "\n")
-        with open(os.path.join(self.d, "ForDB/generations.csv"), "w", encoding="utf-8", newline="") as f:
-            f.write("שם ספר,קבוצת דור\nקיים,אחרונים\n")
+        with open(os.path.join(self.d, "ForDB/book_info.csv"), "w", encoding="utf-8", newline="") as f:
+            f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"קיים","רבי יוסף קארו","אחרונים","","",""\n')
 
     def tearDown(self):
         shutil.rmtree(self.d)
@@ -228,11 +228,37 @@ class RegistryTest(unittest.TestCase):
         fp = json.load(open(os.path.join(self.d, "all_metadata_with_file_paths.json"), encoding="utf-8"))
         self.assertEqual(fp[-1]["file_path"], "הלכה\\ראשונים\\ספר חדש.txt")
         self.assertEqual(fp[-1]["pubDate"], [1925])
-        rows = list(csv.reader(open(os.path.join(self.d, "ForDB/generations.csv"), encoding="utf-8")))
-        self.assertEqual(rows[-1], ["ספר חדש", "ראשונים"])
-        self.assertNotIn(b"\r", open(os.path.join(self.d, "ForDB/generations.csv"), "rb").read())
+        rows = list(csv.reader(open(os.path.join(self.d, "ForDB/book_info.csv"), encoding="utf-8", newline="")))
+        self.assertIn(["ספר חדש", "רבי יוסף קארו", "ראשונים", "", "", ""], rows)
+        self.assertEqual(rows[1:], sorted(rows[1:], key=lambda r: (r[0], r[1])))
+        self.assertNotIn(b"\r", open(os.path.join(self.d, "ForDB/book_info.csv"), "rb").read())
+        self.assertFalse(os.path.exists(os.path.join(self.d, "ForDB/generations.csv")))
         # אידמפוטנטי
         self.assertEqual(SY.register_packaged(book, "הלכה/ראשונים/ספר חדש.txt", repo=self.d), [])
+
+    def test_transition_projects_new_source_to_existing_legacy_without_overwriting_coauthors(self):
+        info = os.path.join(self.d, "ForDB/book_info.csv")
+        with open(info, "w", encoding="utf-8", newline="") as f:
+            f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"ספר חדש","עורך","מחברי זמננו","","1900","1980"\n"ספר חדש","רבי יוסף קארו","מחברי זמננו","אחר","1800","1888"\n')
+        with open(info, "rb") as f:
+            before = f.read()
+        legacy = os.path.join(self.d, "ForDB/generations.csv")
+        with open(legacy, "w", encoding="utf-8", newline="") as f:
+            f.write("שם ספר,קבוצת דור\nספר חדש,ראשונים\n")
+        SY.register_packaged({"author": "יוסף קארו", "subcategory": "ראשונים"}, "ספר חדש.txt", repo=self.d)
+        with open(info, "rb") as f:
+            self.assertEqual(f.read(), before)
+        with open(legacy, encoding="utf-8") as f:
+            self.assertIn(["ספר חדש", "מחברי זמננו"], list(csv.reader(f)))
+
+    def test_malformed_book_info_fails_before_other_registries_are_written(self):
+        paths = [os.path.join(self.d, p) for p in ("metadata.json", "ForDB/all_metadata.json", "all_metadata_with_file_paths.json")]
+        before = [open(p, "rb").read() for p in paths]
+        with open(os.path.join(self.d, "ForDB/book_info.csv"), "w", encoding="utf-8") as f:
+            f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"ספר","unterminated')
+        with self.assertRaises(ValueError):
+            SY.register_packaged({"author": "מחבר", "subcategory": "ראשונים"}, "ספר חדש.txt", repo=self.d)
+        self.assertEqual([open(p, "rb").read() for p in paths], before)
 
     def test_refuses_foreign_format(self):
         with open(os.path.join(self.d, "metadata.json"), "w", encoding="utf-8") as f:

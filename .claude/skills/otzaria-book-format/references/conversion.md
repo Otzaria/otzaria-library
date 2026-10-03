@@ -126,7 +126,7 @@ DOCX, EPUB, ODT, RTF, Markdown, Word ישן) מייצרים לפיו את **או
 ### שלב 7 — מטא-דאטה
 
 רשומה ב-`all_metadata.json` (ובמקורות שיש להם `otzaria_metadata.json` משלהם), ולפי
-הצורך שורות ב-`ForDB/generations.csv` וכו׳. הפירוט והשדות: `metadata.md`.
+הצורך שורות ב-`ForDB/book_info.csv` וכו׳. הפירוט והשדות: `metadata.md`.
 `scripts/make_metadata.py` מייצר רשומה מלאה, בודק התנגשות שם, וממזג לקובץ.
 **תיאור** (`heShortDesc` / `heDesc`) **לא** נכנס לרשומה הזו: `heDesc` ב־`metadata.json` נזרק
 בשקט (אין לו שדה ב־`BookMetadata` של המחולל), ו־`ForDB/all_metadata.json` בלי שדות תיאור.

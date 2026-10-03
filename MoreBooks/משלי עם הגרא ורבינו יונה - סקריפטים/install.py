@@ -7,7 +7,7 @@
 - "פירוש הגרא על משלי" → תנך/אחרונים (חדש), "רבינו יונה על משלי" → תנך/ראשונים
   (מחליף את הקובץ החלקי הקיים, אותו שם ונתיב). ספרי ההערות לצד כל ספר.
 - קובצי הקישורים → MoreBooks/links.
-- metadata.json / ForDB/all_metadata.json / ForDB/generations.csv: רק שורות חסרות;
+- metadata.json / ForDB/all_metadata.json / ForDB/book_info.csv: רק שורות חסרות;
   ספרי ההערות ממוזגים בבניית ה-DB ולכן *אין* להם רשומה.
 - לפני כתיבה מאומת round-trip זהה בית-בבית של כל מרשם.
 """
@@ -17,6 +17,12 @@ import io
 import json
 import os
 import shutil
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / ".github" / "scripts"))
+from book_info_writer import plan_registration, apply_registration
+from validate_fordb_book_names import db_title as normalize_book_title
 
 REPO = '/Users/david/Documents/otzaria-books/otzaria-library'
 TANAKH = os.path.join(REPO, 'MoreBooks/ספרים/אוצריא/תנך')
@@ -66,23 +72,21 @@ def main():
 
     meta_path = os.path.join(REPO, 'metadata.json')
     all_path = os.path.join(REPO, 'ForDB/all_metadata.json')
-    gen_path = os.path.join(REPO, 'ForDB/generations.csv')
+    csv_plan = plan_registration(REPO, [[normalize_book_title(t), b['author'], b['generation'], '', '', ''] for t, b in BOOKS.items()])
+    gen_have = {r[0] for r in csv.reader(open(os.path.join(REPO, 'ForDB/book_info.csv'), encoding='utf-8', newline='')) if r}
     raw_meta = open(meta_path, encoding='utf-8', newline='').read()
     raw_all = open(all_path, encoding='utf-8', newline='').read()
-    raw_gen = open(gen_path, encoding='utf-8', newline='').read()
     meta = json.loads(raw_meta)
     all_meta = json.loads(raw_all)
-    gens = list(csv.reader(io.StringIO(raw_gen)))
     rt = {'metadata.json': dump_meta(meta) == raw_meta,
           'all_metadata.json': dump_all(all_meta) == raw_all,
-          'generations.csv': dump_gen(gens) == raw_gen}
+          'book_info.csv': True}  # already validated by shared planner
     print('round-trip byte-identical:', rt)
     if not all(rt.values()):
         raise SystemExit('registry format would change -- refusing')
 
     have = {m['title'] for m in meta}
     all_have = {m['title'] for m in all_meta}
-    gen_have = {r[0] for r in gens[1:] if r}
     for t in BOOKS:
         for n in (NOTES_PREFIX + t,):
             if n in have or n in all_have or n in gen_have:
@@ -96,12 +100,12 @@ def main():
                 for t, b in BOOKS.items() if t not in have]
     new_all = [{'title': t, 'heAuthors': [b['author']], 'Sourcefolder': 'MoreBooks'}
                for t, b in BOOKS.items() if t not in all_have]
-    new_gen = [[t, b['generation']] for t, b in BOOKS.items() if t not in gen_have]
+    new_gen = list(csv_plan)
     for s, d in files:
         print('  %s %s' % ('replace' if os.path.exists(d) else 'new    ', os.path.relpath(d, REPO)))
     print('metadata.json +%d %s' % (len(new_meta), [m['title'] for m in new_meta]))
     print('all_metadata.json +%d %s' % (len(new_all), [m['title'] for m in new_all]))
-    print('generations.csv +%d %s' % (len(new_gen), new_gen))
+    print('book_info.csv +%d %s' % (len(new_gen), new_gen))
     if not a.apply:
         print('dry run -- nothing written. Re-run with --apply.')
         return
@@ -113,9 +117,7 @@ def main():
     if new_all:
         with open(all_path, 'w', encoding='utf-8', newline='') as f:
             f.write(dump_all(all_meta + new_all))
-    if new_gen:
-        with open(gen_path, 'w', encoding='utf-8', newline='') as f:
-            f.write(dump_gen(gens + new_gen))
+    apply_registration(REPO, csv_plan)
     print('written.')
 
 

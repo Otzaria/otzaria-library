@@ -34,7 +34,7 @@
    קיים היא שגיאה קשה שמפילה את האריזה (כך נולד השם `הליכות עולם - כללי הגמרא`).
 4. להוסיף רשומה ל-`metadata.json`, `all_metadata.json`,
    `all_metadata_with_file_paths.json`, `ForDB/all_metadata.json`
-   ושורה ל-`ForDB/generations.csv`.
+   ושורה ל-`ForDB/book_info.csv`.
 
 ## התאמות שנדרשו לספרים
 

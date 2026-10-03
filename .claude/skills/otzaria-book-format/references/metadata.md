@@ -22,7 +22,7 @@
 | `ForDB/book_moves.csv` | `name,Source path,Destination path` — **רק לספרי ספריא**. |
 | `ForDB/category_renames.csv` | `שם ישן,שם חדש` לקטגוריות. |
 | `ForDB/category_moves.csv` | `Source path,Destination parent path`. |
-| `ForDB/generations.csv` | `שם ספר,קבוצת דור`. |
+| `ForDB/book_info.csv` | `bookName,authorName,generationName,subGenerationName,startYear,endYear`. |
 | `ForDB/sefaria_metadata_changes.csv` | **הדרך היחידה של תיאור ספר ל־DB — לכל ספר**, גם ממקורות אוצריא (למרות השם). ר' "תיאור הספר" בסעיף 2. |
 | `ForDB/sefaria_category_changes.csv` | דריסת תיאורי קטגוריות של ספריא. |
 | `SourcesBooks.csv` | אינוונטר: `שם הקובץ,נתיב הקובץ,תיקיית המקור,מספר שורות`. |
@@ -133,7 +133,7 @@ filename.strip()
 
 ## 5. דורות
 
-`ForDB/generations.csv` = `שם ספר,קבוצת דור` (ראשונים/אחרונים/…). משמש לסינון ותצוגה
+`ForDB/book_info.csv` = `bookName,authorName,generationName,subGenerationName,startYear,endYear` (ראשונים/אחרונים/…). משמש לסינון ותצוגה
 (`lib/data/cache/generation_cache.dart`). השם חייב להתאים **בדיוק** לשם הספר במאגר,
 אחרת השורה יתומה וה-CI מסיר/מפיל אותה.
 
@@ -143,7 +143,7 @@ filename.strip()
 
 | בעיה | מה קורה |
 |---|---|
-| שם ב-`generations.csv` / `book_moves.csv` שאינו קיים | שורה יתומה → מוסרת ב-`--fix`. |
+| שם ב-`book_info.csv` / `book_moves.csv` שאינו קיים | שורה יתומה → מוסרת ב-`--fix`. |
 | **דליפת מקור**: רשומת ספר ספריא עם `Sourcefolder` שאינו `sefaria` | שלב ה-seed דורס את `book.sourceId`, ו"אודות הספר" מציג מקור שגוי. |
 | שני קבצים באותו שם מנוקה | התנגשות `title` — שגיאה. |
 | `book_renames.csv` שהמקור שלו לא קיים | שינוי-שם יתום. |
@@ -169,3 +169,9 @@ python .github/scripts/validate_fordb_book_names.py --fix    # רק תיקוני
 ממקור חדש — ודאו שהרישיון מתועד ב-`README.md` של הספרייה.
 
 </div>
+
+### רישום מידע קנוני
+
+`book_info.csv` מכיל שש עמודות ושורה לכל `(bookName,authorName)`. סדר קנוני: שם ספר ואז מחבר; LF וכל שדה נתון מצוטט. דורות נתמכים: תורה שבכתב, חז"ל, ראשונים, אחרונים, מחברי זמננו. שדות לא ידועים ריקים. אין להשתמש בשנות הדפוס בתור שנות חיי המחבר.
+
+`make_metadata.py --title "שם" --author "מחבר" --generation אחרונים --book-info-csv /path/ForDB/book_info.csv` מוסיף רק זהויות חסרות ומשמר כל מחבר, דור ושנים קיימים. `--sub-generation`, `--start-year`, `--end-year` מיועדים לערכים ידועים. בשלב המעבר בלבד הכותב מעדכן גם קובץ דורות ישן קיים מתוך המידע הקנוני; אין לערוך אותו בנפרד.

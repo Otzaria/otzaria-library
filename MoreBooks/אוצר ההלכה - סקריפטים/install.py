@@ -5,6 +5,12 @@ import json
 import os
 import re
 import shutil
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / ".github" / "scripts"))
+from book_info_writer import plan_registration, apply_registration
+from validate_fordb_book_names import db_title as normalize_book_title
 
 REPO = '/Users/david/Documents/otzaria-books/otzaria-library'
 BOOK_DIR = os.path.join(
@@ -105,10 +111,8 @@ def main():
     all_path = os.path.join(REPO, 'ForDB/all_metadata.json')
     all_meta = json.load(open(all_path, encoding='utf-8'))
     all_have = {m['title'] for m in all_meta}
-    gen_path = os.path.join(REPO, 'ForDB/generations.csv')
-    with open(gen_path, encoding='utf-8') as f:
-        gens = list(csv.reader(f))
-    gen_titles = {r[0] for r in gens[1:] if r}
+    csv_plan = plan_registration(REPO, [[normalize_book_title(t), AUTHOR, GENERATION, '', '', ''] for t in titles])
+    gen_titles = {r[0] for r in csv.reader(open(os.path.join(REPO, 'ForDB/book_info.csv'), encoding='utf-8', newline='')) if r}
     desc_path = os.path.join(REPO, 'ForDB/sefaria_metadata_changes.csv')
     with open(desc_path, encoding='utf-8', newline='') as f:
         descs = list(csv.reader(f))
@@ -119,7 +123,7 @@ def main():
     for t in titles:
         clash = sanitize(t) != t
         print('  %-52s sanitized-differs=%s  metadata=%s  all_metadata=%s'
-              '  generations=%s'
+              '  book_info=%s'
               % (t, clash, t in have, t in all_have, t in gen_titles))
 
     new_meta = [{'title': t, 'author': AUTHOR, 'pubDate': None,
@@ -138,12 +142,12 @@ def main():
     # source folder.
     new_all = [{'title': t, 'heAuthors': [AUTHOR], 'Sourcefolder': 'MoreBooks'}
                for t in titles if t not in all_have]
-    new_gen = [[t, GENERATION] for t in titles if t not in gen_titles]
+    new_gen = list(csv_plan)
     sidecars = [t + '_links.json' for t in titles
                 if os.path.isfile(os.path.join(a.src, t + '_links.json'))]
     print('\nmetadata.json rows to add:   %d' % len(new_meta))
     print('all_metadata.json rows to add: %d' % len(new_all))
-    print('generations.csv rows to add: %d' % len(new_gen))
+    print('book_info.csv rows to add: %d' % len(new_gen))
     print('books to write:              %d' % len(books))
     print('link sidecars to add:        %d' % len(sidecars))
     print('desc csv rows add/update:    %d/%d'
@@ -163,7 +167,7 @@ def main():
     # Each of the four registries has its own on-disk shape, and re-encoding
     # one of them differently rewrites every line of a file with thousands of
     # rows. metadata.json is one compact object per line; all_metadata.json is
-    # indented by two; generations.csv is LF, not the csv module's default;
+    # indented by two; book_info.csv is LF, not the csv module's default;
     # sefaria_metadata_changes.csv is LF with every field quoted.
     if new_meta:
         meta.extend(new_meta)
@@ -176,10 +180,7 @@ def main():
         with open(all_path, 'w', encoding='utf-8') as f:
             json.dump(all_meta, f, ensure_ascii=False, indent=2)
             f.write('\n')
-    if new_gen:
-        gens.extend(new_gen)
-        with open(gen_path, 'w', encoding='utf-8', newline='') as f:
-            csv.writer(f, lineterminator='\n').writerows(gens)
+    apply_registration(REPO, csv_plan)
     if any(desc_changes):
         with open(desc_path, 'w', encoding='utf-8', newline='') as f:
             csv.writer(f, quoting=csv.QUOTE_ALL,

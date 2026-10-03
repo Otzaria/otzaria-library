@@ -58,6 +58,10 @@ jobs:
           sparse-checkout: |
             /ForDB/
             /.github/scripts/
+            /MoreBooks/אוצר ההלכה - סקריפטים/install.py
+            /MoreBooks/משנה הלכות - סקריפטים/install.py
+            /MoreBooks/משלי עם הגרא ורבינו יונה - סקריפטים/install.py
+            /.claude/skills/otzaria-book-format/scripts/make_metadata.py
             /all_metadata_with_file_paths.json
             /manual_links_packaging.py
           sparse-checkout-cone-mode: false
@@ -91,7 +95,7 @@ jobs:
           PYTHONIOENCODING: "utf-8"
         run: |
           set -euo pipefail
-          python3 -m unittest test_validate_fordb_book_names test_fordb_book_renames -v
+          python3 -m unittest test_validate_fordb_book_names test_fordb_book_renames test_book_info_writer -v
 
       # שינויי-שם נעקבים מהקומיט האחרון שהזרימה הזו אימתה *בהצלחה*, לא רק מ-
       # github.event.before: ריצה שנכשלה (למשל כשה-push של ה-auto-fix הפסיד במרוץ, כמו
@@ -146,25 +150,6 @@ jobs:
             echo "fixed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # המאמת כותב את הנתיבים שנגע בהם (כולל metadata.json וקבצי קישורים ששמם שונה)
-      # ואת הודעת הקומיט. אם ה-push מפסיד במרוץ, הריצה נכשלת ואינה "מוצלחת", ולכן
-      # הריצה הבאה עוקבת שוב מאותו בסיס — שום שינוי-שם לא הולך לאיבוד.
-      - name: Commit and push safe ForDB fixes
-        if: ${{ steps.names.outputs.fixed == 'true' }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A --pathspec-from-file=fordb_touched.txt --pathspec-file-nul
-          if git diff --cached --quiet; then
-            echo "::error::fordb_touched.txt exists but no change was staged"
-            exit 1
-          fi
-          git commit -F fordb_commit_message.txt
-          git push origin HEAD:main
-
-      # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
-      # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.
       - name: Create deterministic candidate archive
         run: |
           set -euo pipefail
@@ -190,7 +175,7 @@ jobs:
               "ForDB/sefaria_metadata_changes.csv",
           }
           paths = sorted(
-              (path for path in root.rglob("*") if path.name != ".DS_Store"),
+              (path for path in root.rglob("*") if path.name not in (".DS_Store", "book_info_identity.json")),
               key=lambda path: path.as_posix().encode(),
           )
           if any(path.is_symlink() for path in paths):
@@ -281,3 +266,24 @@ jobs:
               -PforDbSha256="$CANDIDATE_SHA" \
               --no-daemon
           )
+
+      # Commit only after candidate archive and runtime validation succeed.
+      # המאמת כותב את הנתיבים שנגע בהם (כולל metadata.json וקבצי קישורים ששמם שונה)
+      # ואת הודעת הקומיט. אם ה-push מפסיד במרוץ, הריצה נכשלת ואינה "מוצלחת", ולכן
+      # הריצה הבאה עוקבת שוב מאותו בסיס — שום שינוי-שם לא הולך לאיבוד.
+      - name: Commit and push safe ForDB fixes
+        if: ${{ steps.names.outputs.fixed == 'true' }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A --pathspec-from-file=fordb_touched.txt --pathspec-file-nul
+          if git diff --cached --quiet; then
+            echo "::error::fordb_touched.txt exists but no change was staged"
+            exit 1
+          fi
+          git commit -F fordb_commit_message.txt
+          git push origin HEAD:main
+
+      # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
+      # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.

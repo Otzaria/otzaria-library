@@ -291,6 +291,8 @@ def csv_records(text):
             if i < n and text[i] == ",":
                 i += 1
                 continue
+            if i < n and text[i] not in "\r\n":
+                raise EditVerificationError("Unexpected text after quoted CSV field")
             break
         if i < n and text[i] == "\r":
             i += 1
@@ -313,7 +315,7 @@ def _csv_token(value, quoted):
 
 
 def _parse_csv(text):
-    return [row for row in csv.reader(io.StringIO(text, newline=""))]
+    return [row for row in csv.reader(io.StringIO(text, newline=""), strict=True)]
 
 
 def edit_csv(data, edits, drop_records=()):
@@ -347,6 +349,24 @@ def edit_csv(data, edits, drop_records=()):
     if [r for r in got if r != []] != [r for r in want if r != [""]]:
         raise EditVerificationError("עריכת CSV שינתה יותר מהשדות המבוקשים")
     return (bom + new_text).encode("utf-8")
+
+
+def sort_csv_records(data, columns):
+    """Sort logical data records by exact identity without re-encoding fields."""
+    bom, text = _split_bom(data)
+    records = csv_records(text)
+    if len(records) < 2:
+        return data
+    header = [_csv_value(text, field) for field in records[0][2]]
+    indices = [header.index(column) for column in columns]
+    populated = [record for record in records[1:] if len(record[2]) == len(header)]
+    ordered = iter(sorted(populated, key=lambda record: tuple(_csv_value(text, record[2][col]) for col in indices)))
+    pieces = [bom, text[records[0][0]:records[0][1]]]
+    for record in records[1:]:
+        current = next(ordered) if len(record[2]) == len(header) else record
+        token = text[current[0]:current[1]]
+        pieces.append(token if token.endswith(("\n", "\r")) else token + "\n")
+    return ''.join(pieces).encode('utf-8')
 
 
 def _json_string_tokens(text, name):
@@ -507,11 +527,11 @@ def _boundary_rewrite(value, old, new):
     return None
 
 
-def _conflicts(rename, target_value, values, key):
+def _conflicts(rename, target_value, values, key, keyed_values=None):
     """כבר קיימת רשומה נפרדת בשם החדש? ב-respell (אותו מפתח) — רק באיות המדויק."""
     if rename.respell:
         return target_value in values
-    return key(target_value) in {key(v) for v in values}
+    return key(target_value) in (keyed_values if keyed_values is not None else {key(v) for v in values})
 
 
 class _Collisions:
@@ -617,6 +637,17 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             raise EditVerificationError(f"{target.path}: אין עמודה '{target.column}'")
         col = header.index(target.column)
         values = [_csv_value(text, f[col]) for _s, _e, f in records[1:] if len(f) > col]
+        values = set(values)
+        keyed_values = {key(v) for v in values}
+        author_col = header.index("authorName") if target.path == "ForDB/book_info.csv" else None
+        identities = {
+            (key(_csv_value(text, f[col])), _csv_value(text, f[author_col]))
+            for _s, _e, f in records[1:] if author_col is not None and len(f) > author_col
+        }
+        exact_identities = {
+            (_csv_value(text, f[col]), _csv_value(text, f[author_col]))
+            for _s, _e, f in records[1:] if author_col is not None and len(f) > author_col
+        }
         edits, drop = {}, []
         for idx, (_s, _e, fields) in enumerate(records[1:], start=1):
             if len(fields) <= col:
@@ -629,7 +660,12 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             new_value = _title_for(rename, target.spelling, db_title)
             if old_value == new_value:
                 continue
-            if _conflicts(rename, new_value, values, key):
+            conflict = _conflicts(rename, new_value, values, key, keyed_values)
+            if author_col is not None:
+                author = _csv_value(text, fields[author_col])
+                conflict = ((new_value, author) in exact_identities if rename.respell
+                            else (key(new_value), author) in identities)
+            if conflict:
                 if target.drop_superseded:
                     drop.append(idx)
                     plan.changes.append(Change(rid, target.path, "dropped_superseded", old_value))
@@ -640,7 +676,10 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             collisions.add(target.path, new_value, rid)
             plan.changes.append(Change(rid, target.path, "renamed", f"{old_value} -> {new_value}"))
         if edits or drop:
-            plan.writes[target.path] = edit_csv(data, edits, drop)
+            result = edit_csv(data, edits, drop)
+            if author_col is not None:
+                result = sort_csv_records(result, ("bookName", "authorName"))
+            plan.writes[target.path] = result
 
     for target in JSON_TARGETS:
         full = os.path.join(repo, target.path)
@@ -651,6 +690,8 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
         records = json.loads(data.decode("utf-8-sig"))
         values = [r.get(target.field) for r in records if isinstance(r, dict)]
         values = [v for v in values if isinstance(v, str)]
+        values = set(values)
+        keyed_values = {key(v) for v in values}
         edits = {}
         for idx, record in enumerate(records):
             if not isinstance(record, dict):
@@ -663,7 +704,7 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             new_value = _title_for(rename, target.spelling, db_title)
             if old_value == new_value:
                 continue
-            if _conflicts(rename, new_value, values, key):
+            if _conflicts(rename, new_value, values, key, keyed_values):
                 plan.changes.append(Change(rid, target.path, "kept_conflict", old_value))
                 continue
             edits[(idx, target.field)] = new_value

@@ -21,7 +21,7 @@
       --he-short-desc "…" --he-desc "…" \
       --desc-csv D:/otzaria-library/ForDB/sefaria_metadata_changes.csv
 
-  # שורת דור ל-ForDB/generations.csv
+  # שורת דור ל-ForDB/book_info.csv
   python -X utf8 make_metadata.py --title "…" --generation אחרונים --print-fordb
 
 השדות והמשמעויות: references/metadata.md.
@@ -34,6 +34,10 @@ import json
 import re
 import sys
 from pathlib import Path
+import io
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / ".github" / "scripts"))
+from book_info_writer import HEADER as BOOK_INFO_HEADER, GENERATIONS, plan_registration, apply_registration, encode_rows
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -214,13 +218,26 @@ def main() -> int:
     ap.add_argument("--extra-title", action="append", default=[], help="שם נוסף (חזרתי)")
     ap.add_argument("--order", type=int, help="סדר בקטגוריה (ריק = 999)")
     ap.add_argument("--source-folder", default="MoreBooks", help="תיקיית המקור")
-    ap.add_argument("--generation", help="קבוצת דור ל-ForDB/generations.csv")
+    ap.add_argument("--generation", choices=sorted(GENERATIONS - {""}), help="קבוצת דור ל-ForDB/book_info.csv")
+    ap.add_argument("--sub-generation", default="")
+    ap.add_argument("--start-year", default="")
+    ap.add_argument("--end-year", default="")
+    ap.add_argument("--book-info-csv", help="רישום מחברים במקור הקנוני בלי לדרוס מידע קיים")
     ap.add_argument("--check-name", action="store_true", help="בדיקת התנגשות שם בקורפוס")
     ap.add_argument("--repo", default=".", help="שורש otzaria-library לבדיקת השם")
     ap.add_argument("--merge", help="קובץ all_metadata.json למיזוג")
     ap.add_argument("--print-fordb", action="store_true", help="הדפסת שורות ForDB מוצעות")
     args = ap.parse_args()
 
+    info_rows = [[normalize_hebrew_label(sanitize_filename(args.title)), author,
+                  args.generation or "", args.sub_generation, args.start_year, args.end_year]
+                 for author in args.author or [""]]
+    info_plan = None
+    if args.book_info_csv:
+        target = Path(args.book_info_csv).resolve()
+        if target.name != "book_info.csv" or target.parent.name != "ForDB":
+            ap.error("--book-info-csv must point to ForDB/book_info.csv")
+        info_plan = plan_registration(target.parent.parent, info_rows)
     status = 0
     if args.check_name:
         status = check_name(args.title, Path(args.repo))
@@ -242,10 +259,14 @@ def main() -> int:
                   "ForDB/sefaria_metadata_changes.csv", file=sys.stderr)
             status = status or 2
 
+    if info_plan is not None:
+        apply_registration(Path(args.book_info_csv).resolve().parent.parent, info_plan)
+
     if args.print_fordb:
         print("\n--- ForDB ---")
         if args.generation:
-            print(f'generations.csv:  "{args.title}","{args.generation}"')
+            print("book_info.csv:")
+            print(encode_rows(info_rows), end="")
         print("שם הספר בכל שורת ForDB חייב להתאים תו-בתו לשם הספר במאגר.")
 
     expected = sanitize_filename(args.title)
