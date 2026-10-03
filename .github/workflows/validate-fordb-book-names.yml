@@ -58,6 +58,7 @@ jobs:
           sparse-checkout: |
             /ForDB/
             /.github/scripts/
+            /.github/workflows/update-fordb.yml
             /MoreBooks/אוצר ההלכה - סקריפטים/install.py
             /MoreBooks/משנה הלכות - סקריפטים/install.py
             /MoreBooks/משלי עם הגרא ורבינו יונה - סקריפטים/install.py
