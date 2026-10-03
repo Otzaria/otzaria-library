@@ -40,6 +40,26 @@ class WriterTest(unittest.TestCase):
             self.assertEqual(rows, [HEADER, entries[2], *existing])
             self.assertEqual(plan_registration(tmp, entries), {})
 
+    def test_storage_contract_rejects_invalid_source_and_proposal_before_writes(self):
+        valid = encode_rows([HEADER, ["ספר", "מחבר", "ראשונים", "", "100", "200"]])
+        corrupt = ["\ufeff" + valid, valid.replace("\n", "\r\n"), valid.replace("מחבר", "מח\0בר"),
+                   valid.replace('"100"', '"100.5"'), valid.replace('"100"', '"2147483648"'),
+                   valid.replace('"100"', '"300"')]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'ForDB/book_info.csv'
+            path.parent.mkdir()
+            for text in corrupt:
+                with self.subTest(source=text):
+                    path.write_bytes(text.encode('utf-8'))
+                    with self.assertRaises(ValueError):
+                        plan_registration(tmp, [["חדש", "מחבר", "ראשונים", "", "", ""]])
+                    self.assertEqual(path.read_bytes(), text.encode('utf-8'))
+            path.write_bytes(valid.encode('utf-8'))
+            for year in ('1.5', '2147483648', '-2147483649'):
+                with self.subTest(proposalYear=year), self.assertRaises(ValueError):
+                    plan_registration(tmp, [["חדש", "מחבר", "ראשונים", "", year, ""]])
+            self.assertEqual(path.read_bytes(), valid.encode('utf-8'))
+
     def test_missing_new_source_is_not_created_from_empty_import(self):
         with tempfile.TemporaryDirectory() as tmp:
             (Path(tmp) / 'ForDB').mkdir()

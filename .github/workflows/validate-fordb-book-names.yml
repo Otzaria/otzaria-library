@@ -150,6 +150,8 @@ jobs:
             echo "fixed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
+      # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.
       - name: Create deterministic candidate archive
         run: |
           set -euo pipefail
@@ -175,7 +177,7 @@ jobs:
               "ForDB/sefaria_metadata_changes.csv",
           }
           paths = sorted(
-              (path for path in root.rglob("*") if path.name not in (".DS_Store", "book_info_identity.json")),
+              (path for path in root.rglob("*") if path.name != ".DS_Store" and path.as_posix() != "ForDB/book_info_identity.json"),
               key=lambda path: path.as_posix().encode(),
           )
           if any(path.is_symlink() for path in paths):
@@ -284,6 +286,3 @@ jobs:
           fi
           git commit -F fordb_commit_message.txt
           git push origin HEAD:main
-
-      # אורזים בדיוק את המועמד הנוכחי, כדי שכל תהליכי SeforimLibrary יקראו payload
-      # יחיד וממוען-תוכן — ללא תלות ב-fordb_latest_pointer.json שעדיין מצביע ל-last-good.

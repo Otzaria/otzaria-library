@@ -73,6 +73,7 @@ import subprocess
 import sys
 import urllib.request
 
+from book_info_contract import validate_book_info
 import fordb_book_renames as book_renames_follow
 
 # ---------------------------------------------------------------------------
@@ -611,6 +612,9 @@ def preflight_csv_inputs():
             if path == BOOK_INFO:
                 continue  # PR55 transition; mandatory in PR56.
             raise FileNotFoundError(path)
+        if path == BOOK_INFO:
+            with open(path, "rb") as handle:
+                validate_book_info(handle.read())
         header, rows = read_csv_rows(path, True)
         col_index(header, target.column)
         if path == BOOK_INFO and header != ["bookName", "authorName", "generationName",

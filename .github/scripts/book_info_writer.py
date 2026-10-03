@@ -12,9 +12,7 @@ from collections import Counter
 from pathlib import Path
 
 from fordb_book_renames import _split_bom, _csv_value, csv_records, EditVerificationError
-
-HEADER = ['bookName', 'authorName', 'generationName', 'subGenerationName', 'startYear', 'endYear']
-GENERATIONS = {'', 'תורה שבכתב', 'חז"ל', 'ראשונים', 'אחרונים', 'מחברי זמננו'}
+from book_info_contract import HEADER, GENERATIONS, validate_book_info
 
 
 def encode_rows(rows):
@@ -33,12 +31,12 @@ def plan_registration(repo, entries, *, legacy_compat=True):
     """
     path = Path(repo) / 'ForDB/book_info.csv'
     data = path.read_bytes()
+    parsed = validate_book_info(data)
     bom, text = _split_bom(data)
     try:
         tokens = csv_records(text)
     except EditVerificationError as error:
         raise ValueError(str(error)) from error
-    parsed = list(csv.reader(io.StringIO(text, newline=''), strict=True))
     if not parsed or parsed[0] != HEADER:
         raise ValueError(f'{path}: expected supported six-column header')
     rows = [r for r in parsed[1:] if r]
@@ -73,6 +71,7 @@ def plan_registration(repo, entries, *, legacy_compat=True):
         pieces.extend([token.rstrip('\r\n'), '\n'])
     writes = {}
     encoded = ''.join(pieces).encode('utf-8')
+    validate_book_info(encoded)
     if encoded != data:
         writes['ForDB/book_info.csv'] = encoded
     legacy = Path(repo) / 'ForDB/generations.csv'

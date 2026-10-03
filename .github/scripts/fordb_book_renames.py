@@ -648,6 +648,15 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             (_csv_value(text, f[col]), _csv_value(text, f[author_col]))
             for _s, _e, f in records[1:] if author_col is not None and len(f) > author_col
         }
+        identity_rows = {}
+        exact_identity_rows = {}
+        if author_col is not None:
+            for _start, _end, fields in records[1:]:
+                if len(fields) != len(header):
+                    continue
+                row = [_csv_value(text, f) for f in fields]
+                identity_rows.setdefault((key(row[col]), row[author_col]), []).append(row)
+                exact_identity_rows.setdefault((row[col], row[author_col]), []).append(row)
         edits, drop = {}, []
         for idx, (_s, _e, fields) in enumerate(records[1:], start=1):
             if len(fields) <= col:
@@ -665,6 +674,14 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
                 author = _csv_value(text, fields[author_col])
                 conflict = ((new_value, author) in exact_identities if rename.respell
                             else (key(new_value), author) in identities)
+                if conflict:
+                    target_rows = (exact_identity_rows.get((new_value, author), []) if rename.respell
+                                   else identity_rows.get((key(new_value), author), []))
+                    source_row = [_csv_value(text, f) for f in fields]
+                    if any(row[:col] + row[col + 1:] != source_row[:col] + source_row[col + 1:]
+                           for row in target_rows):
+                        plan.blocked[rid] = f"{target.path}: conflicting metadata for author {author!r} at {new_value!r}"
+                        continue
             if conflict:
                 if target.drop_superseded:
                     drop.append(idx)

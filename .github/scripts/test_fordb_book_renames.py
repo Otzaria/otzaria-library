@@ -157,7 +157,7 @@ class FixtureRepo:
         os.makedirs(root)
         self.git("init", "-q", "-b", "main")
         files = dict(base_files())
-        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py"):
+        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py", "book_info_contract.py"):
             with open(os.path.join(SCRIPTS, name), encoding="utf-8") as handle:
                 files[f".github/scripts/{name}"] = handle.read()
         self.write(files)
@@ -521,7 +521,6 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
         rows = csv_rows(source)
         original = [r for r in rows[1:] if r[0] == OLD]
         target = [NEW, *original[0][1:]]
-        target[2] = "ראשונים"
         buf = io.StringIO(newline="")
         csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(target)
         self.repo.write({"ForDB/book_info.csv": source + buf.getvalue()})
@@ -538,6 +537,24 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
         self.assertEqual(code, 0, output)
         self.assertEqual(self.repo.read("ForDB/book_info_identity.json"), first)
 
+    def test_conflicting_same_author_metadata_blocks_entire_rename_without_pruning(self):
+        source = self.repo.read("ForDB/book_info.csv")
+        row = next(r for r in csv_rows(source)[1:] if r[0] == OLD)
+        row[0], row[2], row[4] = NEW, "ראשונים", "100"
+        buf = io.StringIO(newline="")
+        csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(row)
+        source += buf.getvalue()
+        self.repo.write({"ForDB/book_info.csv": source})
+        self.repo.commit("conflicting target author")
+        rename_incident(self.repo)
+        before = self.repo.read("metadata.json")
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("conflicting metadata", output)
+        self.assertEqual(self.repo.read("ForDB/book_info.csv"), source)
+        self.assertEqual(self.repo.read("metadata.json"), before)
+        self.assertFalse(self.repo.exists("ForDB/book_info_identity.json"))
+
     def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
         for newline in ("\n", "\r", "\r\n"):
             with self.subTest(newline=newline):
@@ -547,8 +564,13 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
                 source += '"יתום","עורך\nאחר","ראשונים","","",""\n'
                 self.repo.write({"ForDB/book_info.csv": source})
                 code, output = self.repo.run_validator("--fix")
-                self.assertEqual(code, 0, output)
-                self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source[:source.rindex('"יתום"')].encode("utf-8"))
+                if newline == "\n":
+                    self.assertEqual(code, 0, output)
+                    self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source[:source.rindex('"יתום"')].encode("utf-8"))
+                else:
+                    self.assertNotEqual(code, 0, output)
+                    self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source.encode("utf-8"))
+
 
     def test_malformed_source_rejects_before_any_rename_write(self):
         rename_incident(self.repo)
