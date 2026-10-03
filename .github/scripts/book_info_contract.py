@@ -7,6 +7,13 @@ from fordb_book_renames import _csv_value, csv_records, EditVerificationError
 
 HEADER = ['bookName', 'authorName', 'generationName', 'subGenerationName', 'startYear', 'endYear']
 GENERATIONS = {'', 'תורה שבכתב', 'חז"ל', 'ראשונים', 'אחרונים', 'מחברי זמננו'}
+SUBGENERATIONS = {
+    '': set(), 'תורה שבכתב': set(),
+    'חז"ל': {'תקופת המקרא', 'חז"ל', 'תנאים', 'אמוראים'},
+    'ראשונים': {'גאונים', 'ראשוני הראשונים', 'אחרוני הראשונים'},
+    'אחרונים': {'ראשוני האחרונים', 'אחרוני האחרונים', 'ראשי הישיבות'},
+    'מחברי זמננו': {'מחברי זמננו'},
+}
 YEAR = re.compile(r'-?[0-9]+\Z')
 
 
@@ -17,7 +24,7 @@ def validate_book_info(data):
     Years are empty or signed Int32 integers. Identity is the exact book+author.
     """
     text = data.decode('utf-8')
-    if text.startswith('\ufeff') or '\r' in text or '\0' in text:
+    if '\ufeff' in text or '\r' in text or '\0' in text:
         raise ValueError('book_info.csv requires UTF-8 without BOM, LF, and no CR/NUL')
     try:
         records = csv_records(text)
@@ -31,8 +38,6 @@ def validate_book_info(data):
             raise ValueError('book_info.csv: quote in an unquoted field')
     identities = set()
     for index, row in enumerate(rows[1:], start=2):
-        if not row:
-            continue
         if len(row) != len(HEADER) or not row[0]:
             raise ValueError(f'book_info.csv record {index}: expected six fields and nonempty bookName')
         identity = tuple(row[:2])
@@ -41,6 +46,8 @@ def validate_book_info(data):
         identities.add(identity)
         if row[2] not in GENERATIONS:
             raise ValueError(f'book_info.csv record {index}: unsupported generation')
+        if row[3] and row[3] not in SUBGENERATIONS[row[2]]:
+            raise ValueError(f'book_info.csv record {index}: incompatible generation/subgeneration')
         for value in row[4:]:
             if value and (not YEAR.fullmatch(value) or not -2147483648 <= int(value) <= 2147483647):
                 raise ValueError(f'book_info.csv record {index}: year must be a signed Int32 integer or empty')

@@ -540,7 +540,7 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
     def test_conflicting_same_author_metadata_blocks_entire_rename_without_pruning(self):
         source = self.repo.read("ForDB/book_info.csv")
         row = next(r for r in csv_rows(source)[1:] if r[0] == OLD)
-        row[0], row[2], row[4] = NEW, "ראשונים", "100"
+        row[0], row[2], row[3], row[4] = NEW, "ראשונים", "ראשוני הראשונים", "100"
         buf = io.StringIO(newline="")
         csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(row)
         source += buf.getvalue()
@@ -554,6 +554,28 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
         self.assertEqual(self.repo.read("ForDB/book_info.csv"), source)
         self.assertEqual(self.repo.read("metadata.json"), before)
         self.assertFalse(self.repo.exists("ForDB/book_info_identity.json"))
+
+    def test_identity_ledger_schema_and_historical_prefix_fail_before_any_write(self):
+        event = {"id": 1, "kind": "rename", "old": {"bookName": "מקור", "authorName": "מחבר"},
+                 "new": {"bookName": "יעד", "authorName": "מחבר"}, "commit": self.repo.base}
+        ledger = {"schemaVersion": 1, "events": [event]}
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("trusted ledger prefix")
+        rename_incident(self.repo)
+        before = self.repo.read("metadata.json")
+        cases = [dict(ledger, schemaVersion=True), dict(ledger, extra=True),
+                 {"schemaVersion": 1, "events": [dict(event, id=True)]},
+                 {"schemaVersion": 1, "events": [dict(event, commit=None)]},
+                 {"schemaVersion": 1, "events": [dict(event, commit="source-not-sha")]},
+                 {"schemaVersion": 1, "events": [dict(event, new={"bookName": "rewritten", "authorName": "מחבר"})]},
+                 {"schemaVersion": 1, "events": []}]
+        for malformed in cases:
+            with self.subTest(ledger=malformed):
+                self.repo.write({"ForDB/book_info_identity.json": json.dumps(malformed, ensure_ascii=False) + "\n"})
+                code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+                self.assertNotEqual(code, 0, output)
+                self.assertEqual(self.repo.read("metadata.json"), before)
+                self.assertIn(OLD, self.repo.read("ForDB/book_info.csv"))
 
     def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
         for newline in ("\n", "\r", "\r\n"):

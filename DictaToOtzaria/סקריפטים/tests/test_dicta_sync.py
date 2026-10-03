@@ -239,7 +239,7 @@ class RegistryTest(unittest.TestCase):
     def test_transition_projects_new_source_to_existing_legacy_without_overwriting_coauthors(self):
         info = os.path.join(self.d, "ForDB/book_info.csv")
         with open(info, "w", encoding="utf-8", newline="") as f:
-            f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"ספר חדש","עורך","מחברי זמננו","","1900","1980"\n"ספר חדש","רבי יוסף קארו","מחברי זמננו","אחר","1800","1888"\n')
+            f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"ספר חדש","עורך","מחברי זמננו","","1900","1980"\n"ספר חדש","רבי יוסף קארו","מחברי זמננו","מחברי זמננו","1800","1888"\n')
         with open(info, "rb") as f:
             before = f.read()
         legacy = os.path.join(self.d, "ForDB/generations.csv")

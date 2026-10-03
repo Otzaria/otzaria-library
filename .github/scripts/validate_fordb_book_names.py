@@ -546,22 +546,56 @@ def remove_orphans(path, col_name, db_final, srename, protected=frozenset()):
 IDENTITY_PATH = "ForDB/book_info_identity.json"
 
 
-def read_identity_ledger():
-    path = os.path.join(REPO_ROOT, IDENTITY_PATH)
-    if not os.path.exists(path):
-        return {"schemaVersion": 1, "events": []}
-    ledger = read_json(path)
-    if not isinstance(ledger, dict) or ledger.get("schemaVersion") != 1 or not isinstance(ledger.get("events"), list):
+def validate_identity_ledger(ledger):
+    if (not isinstance(ledger, dict) or set(ledger) != {"schemaVersion", "events"}
+            or type(ledger["schemaVersion"]) is not int or ledger["schemaVersion"] != 1
+            or not isinstance(ledger["events"], list)):
         raise ValueError("Invalid book_info identity ledger")
     for idx, event in enumerate(ledger["events"], start=1):
-        if not isinstance(event, dict) or event.get("id") != idx or event.get("kind") not in ("rename", "remove"):
+        if (not isinstance(event, dict) or type(event.get("id")) is not int
+                or event["id"] != idx or event.get("kind") not in ("rename", "remove")):
             raise ValueError("Invalid identity event/order")
+        required = {"id", "kind", "old", "commit", "new" if event["kind"] == "rename" else "reason"}
+        if not required <= set(event) or set(event) - required - {"changeSetId"}:
+            raise ValueError("Invalid identity event field set")
         for field in (["old", "new"] if event["kind"] == "rename" else ["old"]):
-            value = event.get(field)
-            if not isinstance(value, dict) or set(value) != {"bookName", "authorName"} or not all(isinstance(v, str) for v in value.values()):
+            value = event[field]
+            if (not isinstance(value, dict) or set(value) != {"bookName", "authorName"}
+                    or not all(isinstance(v, str) and not any(c in v for c in "\r\0\ufeff") for v in value.values())
+                    or not value["bookName"]):
                 raise ValueError("Invalid identity key")
-        if event.get("commit") is not None and not isinstance(event["commit"], str):
-            raise ValueError("Invalid identity provenance")
+        change_set = event.get("changeSetId")
+        if change_set is not None and (not isinstance(change_set, str) or not change_set):
+            raise ValueError("Invalid identity changeSetId")
+        commit = event["commit"]
+        if commit is None:
+            if not change_set:
+                raise ValueError("Identity event needs commit or changeSetId provenance")
+        elif not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            raise ValueError("Invalid identity commit provenance")
+        if event["kind"] == "remove" and (not isinstance(event["reason"], str) or not event["reason"]):
+            raise ValueError("Invalid identity removal reason")
+    return ledger
+
+
+def read_identity_ledger(rename_bases=()):
+    path = os.path.join(REPO_ROOT, IDENTITY_PATH)
+    ledger = (read_json(path) if os.path.exists(path) else {"schemaVersion": 1, "events": []})
+    validate_identity_ledger(ledger)
+    # Preserve every event from the worktree base, parent and last validated head.
+    # The workflow supplies its last successful commit as the first rename base.
+    refs = ["HEAD", "HEAD^"]
+    base = book_renames_follow.pick_rename_base(REPO_ROOT, rename_bases)
+    if base:
+        refs.append(base)
+    for ref in refs:
+        previous = book_renames_follow._git(REPO_ROOT, "show", f"{ref}:{IDENTITY_PATH}", check=False)
+        if previous.returncode:
+            continue  # Initial introduction/first commit has no previous ledger.
+        trusted = validate_identity_ledger(json.loads(previous.stdout.decode("utf-8")))
+        events = trusted["events"]
+        if ledger["events"][:len(events)] != events:
+            raise ValueError(f"Identity ledger is append-only: historical prefix from {ref} changed")
     return ledger
 
 
@@ -589,7 +623,7 @@ def record_identity_changes(before, ledger, resolution, removed, plan):
         if hit and (db_title(hit[1].new_title), author) in after:
             event = {"kind": "rename", "old": old,
                      "new": {"bookName": db_title(hit[1].new_title), "authorName": author},
-                     "commit": hit[1].commit}
+                     "commit": hit[1].commit if re.fullmatch(r"[0-9a-f]{40}", hit[1].commit) else source_head}
         elif title in orphan_titles:
             event = {"kind": "remove", "old": old, "reason": "orphan", "commit": source_head}
         else:
@@ -598,6 +632,7 @@ def record_identity_changes(before, ledger, resolution, removed, plan):
         ledger["events"].append(event)
         changed = True
     if changed:
+        validate_identity_ledger(ledger)
         data = (json.dumps(ledger, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
         with open(os.path.join(REPO_ROOT, IDENTITY_PATH), "wb") as f:
             f.write(data)
@@ -853,7 +888,7 @@ def main():
                 os.unlink(stale)
 
     preflight_csv_inputs()
-    identity_ledger = read_identity_ledger()
+    identity_ledger = read_identity_ledger(args.rename_base)
     identities_before = book_info_identities()
     rename_pairs = load_rename_pairs()
     srename = build_sanitized_rename(rename_pairs)

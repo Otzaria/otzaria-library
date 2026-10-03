@@ -30,7 +30,7 @@ class WriterTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'ForDB/book_info.csv'
             path.parent.mkdir()
-            existing = [['קיים', 'אחד', 'ראשונים', 'ערך', '100', '200'],
+            existing = [['קיים', 'אחד', 'ראשונים', 'ראשוני הראשונים', '100', '200'],
                         ['קיים', 'שני', 'מחברי זמננו', '', '', '']]
             path.write_text(encode_rows([HEADER, *existing]), encoding='utf-8')
             entries = [['קיים', '', 'אחרונים', '', '', ''], ['קיים', 'אחד', 'אחרונים', '', '', ''],
@@ -44,7 +44,7 @@ class WriterTest(unittest.TestCase):
         valid = encode_rows([HEADER, ["ספר", "מחבר", "ראשונים", "", "100", "200"]])
         corrupt = ["\ufeff" + valid, valid.replace("\n", "\r\n"), valid.replace("מחבר", "מח\0בר"),
                    valid.replace('"100"', '"100.5"'), valid.replace('"100"', '"2147483648"'),
-                   valid.replace('"100"', '"300"')]
+                   valid.replace('"100"', '"300"'), valid + "\n", valid.replace("מחבר", "מח\ufeffבר"), valid.replace('"ראשונים",""', '"ראשונים","ראשוני האחרונים"')]
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'ForDB/book_info.csv'
             path.parent.mkdir()
@@ -97,7 +97,7 @@ class WriterTest(unittest.TestCase):
                     (repo / 'metadata.json').write_text('[\n\n]\n')
                     (repo / 'ForDB/all_metadata.json').write_text('[]\n')
                     (repo / 'ForDB/sefaria_metadata_changes.csv').write_text(encode_rows([['categoryPath', 'title', 'author', 'heShortDesc', 'heDesc', 'heDescNew']]))
-                    existing = [[books[0], author, 'ראשונים', 'ישן', '100', '200'],
+                    existing = [[books[0], author, 'ראשונים', 'ראשוני הראשונים', '100', '200'],
                                 [books[0], 'עורך נוסף', 'אחרונים', '', '300', '400']]
                     existing.sort(key=lambda r: tuple(r[:2]))
                     info = repo / 'ForDB/book_info.csv'
