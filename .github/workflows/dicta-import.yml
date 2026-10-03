@@ -51,6 +51,7 @@ jobs:
           filter: blob:none
           sparse-checkout: |
             /DictaToOtzaria/סקריפטים/
+            /.github/scripts/
             /manual_links_packaging.py
           sparse-checkout-cone-mode: false
           persist-credentials: false

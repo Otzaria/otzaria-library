@@ -41,6 +41,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
+          # The identity ledger gate compares HEAD^ to reject rewritten history.
+          fetch-depth: 2
           # The gate only reads ForDB, the validator, and its canonical metadata.
           # Fetching every LFS object in this multi-GB repository dominated runtime.
           lfs: false
@@ -96,7 +98,7 @@ jobs:
           from pathlib import Path
           import zipfile
           root=Path("ForDB")
-          paths=sorted((p for p in root.rglob("*") if p.name!=".DS_Store"),key=lambda p:p.as_posix().encode())
+          paths=sorted((p for p in root.rglob("*") if p.name != ".DS_Store" and p.as_posix() != "ForDB/book_info_identity.json"),key=lambda p:p.as_posix().encode())
           if any(p.is_symlink() for p in paths): raise SystemExit("ForDB archive refuses symlinks")
           with zipfile.ZipFile("fordb_latest.zip","w",compression=zipfile.ZIP_STORED) as archive:
               for path in paths:

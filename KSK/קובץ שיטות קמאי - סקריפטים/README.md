@@ -93,7 +93,7 @@ using the name from the matching `names.json` (Menachot is in `סדר קדשים
 The metadata registries key on that name: `metadata.json` (author),
 `ForDB/all_metadata.json` and `all_metadata*.json` (Sourcefolder `KSK`; the
 `file_path` in `all_metadata_with_file_paths.json` is library-relative with `\`),
-`SourcesBooks.csv` (`אוצריא/...` path, source `KSK`) and `ForDB/generations.csv`
+`SourcesBooks.csv` (`אוצריא/...` path, source `KSK`) and `ForDB/book_info.csv`
 (`ראשונים`).
 
 ## Single-rishon books (`split_rishonim.py`)
@@ -141,4 +141,4 @@ author and copyright notice) have no source line and are not listed.
 After re-running, update the registries if an output path or line count
 changed: `SourcesBooks.csv` (line count), and for a new book also
 `metadata.json` (author), `all_metadata*.json`, `ForDB/all_metadata.json` and
-`ForDB/generations.csv`, like the tractates above.
+`ForDB/book_info.csv`, like the tractates above.

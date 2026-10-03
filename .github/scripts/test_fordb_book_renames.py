@@ -17,11 +17,13 @@ import csv
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
+from pathlib import Path
 
 import fordb_book_renames as renames
 import validate_fordb_book_names as validator
@@ -88,6 +90,13 @@ def base_files():
             "name,Source path,Destination path\n"
             f'"{OLD}",חסידות,חסידות/נוספים\n'
         ),
+        # כמו הקובץ שהאתר כותב: הכול במירכאות, ושורה לכל מחבר של אותו ספר.
+        "ForDB/book_info.csv": (
+            "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
+            f'"{OLD}","מנחם מנדל מקוצק","אחרונים","אחרוני האחרונים","1787","1859"\n'
+            f'"{OLD}","עורך ""הוצאה""","אחרונים","","",""\n'
+            f'"{OTHER}","","ראשונים","","",""\n'
+        ),
         "ForDB/book_renames.csv": "ספר ישן מספריא,ספר חדש מספריא\n",
         "ForDB/sefaria_metadata_changes.csv": (
             '"categoryPath","title","author","heShortDesc","heDesc","heDescNew"\n'
@@ -149,7 +158,7 @@ class FixtureRepo:
         os.makedirs(root)
         self.git("init", "-q", "-b", "main")
         files = dict(base_files())
-        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py"):
+        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py", "book_info_contract.py"):
             with open(os.path.join(SCRIPTS, name), encoding="utf-8") as handle:
                 files[f".github/scripts/{name}"] = handle.read()
         self.write(files)
@@ -232,6 +241,9 @@ class FixtureTestCase(unittest.TestCase):
         self.repo = FixtureRepo(os.path.join(self.tmp, "repo"))
 
     def assertOnlyTouched(self, expected, cwd=None):
+        expected = list(expected)
+        if "ForDB/book_info.csv" in expected:
+            expected.append("ForDB/book_info_identity.json")
         self.assertEqual(sorted(self.repo.touched(cwd)), sorted(expected))
         status = self.repo.git("status", "--porcelain", "-z", "--untracked-files=all", cwd=cwd)
         changed = set()
@@ -260,6 +272,12 @@ class IncidentReplayTest(FixtureTestCase):
             rows,
             [["שם ספר", "קבוצת דור"], [OTHER, "ראשונים"], [NEW, "אחרונים"],
              [SEFARIA_ONLY, "אחרונים"], [LEAVES, "אחרונים"]],
+        )
+
+    def test_every_book_info_row_of_the_book_follows_it_and_keeps_its_quoting(self):
+        self.assertEqual(
+            self.repo.read("ForDB/book_info.csv"),
+            base_files()["ForDB/book_info.csv"].replace(f'"{OLD}",', f'"{NEW}",'),
         )
 
     def test_book_moves_keeps_its_quoting(self):
@@ -305,7 +323,8 @@ class IncidentReplayTest(FixtureTestCase):
 
     def test_exactly_the_title_keyed_files_are_touched(self):
         self.assertOnlyTouched([
-            "ForDB/generations.csv", "ForDB/book_moves.csv", "ForDB/sefaria_metadata_changes.csv",
+            "ForDB/generations.csv", "ForDB/book_info.csv", "ForDB/book_moves.csv",
+            "ForDB/sefaria_metadata_changes.csv",
             "ForDB/all_metadata.json", "metadata.json", "all_metadata_with_file_paths.json",
             f"{LINKS}/{OLD}_links.json", f"{LINKS}/{NEW}_links.json", f"{LINKS}/{OTHER}_links.json",
         ])
@@ -352,6 +371,19 @@ class OldBehaviourIsKeptTest(FixtureTestCase):
         removed = json.loads(self.repo.read("fordb_removed.json"))
         self.assertIn({"file": "ForDB/generations.csv", "name": OLD, "reason": "orphan"}, removed)
         self.assertFalse(self.repo.exists("fordb_renamed.json"))
+
+    def test_every_book_info_row_of_an_orphan_is_removed_and_the_rest_keep_their_bytes(self):
+        rename_commit = rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", rename_commit)
+        self.assertEqual(code, 0, output)
+        removed = json.loads(self.repo.read("fordb_removed.json"))
+        self.assertEqual([r for r in removed if r["file"] == "ForDB/book_info.csv"],
+                         [{"file": "ForDB/book_info.csv", "name": OLD, "reason": "orphan"}] * 2)
+        self.assertEqual(
+            self.repo.read("ForDB/book_info.csv"),
+            "bookName,authorName,generationName,subGenerationName,startYear,endYear\n"
+            f'"{OTHER}","","ראשונים","","",""\n',
+        )
 
     def test_a_book_moved_out_of_the_library_is_removed_not_renamed(self):
         self.repo.move(f"{RISHONIM}/{LEAVES}.txt", f"extraBooks/ישנים/{LEAVES} (ישן).txt")
@@ -484,6 +516,128 @@ class ExistingEntriesForTheNewNameTest(FixtureTestCase):
         self.assertEqual([m["title"] for m in metadata], [OTHER, OLD, NEW])
 
 
+class BookInfoIdentityRegressionTest(FixtureTestCase):
+    def test_target_author_deduplicates_only_itself_and_preserves_other_authors(self):
+        source = self.repo.read("ForDB/book_info.csv")
+        rows = csv_rows(source)
+        original = [r for r in rows[1:] if r[0] == OLD]
+        target = [NEW, *original[0][1:]]
+        buf = io.StringIO(newline="")
+        csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(target)
+        self.repo.write({"ForDB/book_info.csv": source + buf.getvalue()})
+        self.repo.commit("target author metadata")
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertEqual(code, 0, output)
+        actual = csv_rows(self.repo.read("ForDB/book_info.csv"))
+        self.assertEqual([r for r in actual if r[0] == NEW], sorted([[NEW, *original[1][1:]], target], key=lambda r: tuple(r[:2])))
+        ledger = json.loads(self.repo.read("ForDB/book_info_identity.json"))
+        self.assertEqual([e["old"]["authorName"] for e in ledger["events"]], sorted(r[1] for r in original))
+        first = self.repo.read("ForDB/book_info_identity.json")
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertEqual(code, 0, output)
+        self.assertEqual(self.repo.read("ForDB/book_info_identity.json"), first)
+
+    def test_conflicting_same_author_metadata_blocks_entire_rename_without_pruning(self):
+        source = self.repo.read("ForDB/book_info.csv")
+        row = next(r for r in csv_rows(source)[1:] if r[0] == OLD)
+        row[0], row[2], row[3], row[4] = NEW, "ראשונים", "ראשוני הראשונים", "100"
+        buf = io.StringIO(newline="")
+        csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerow(row)
+        source += buf.getvalue()
+        self.repo.write({"ForDB/book_info.csv": source})
+        self.repo.commit("conflicting target author")
+        rename_incident(self.repo)
+        before = self.repo.read("metadata.json")
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("conflicting metadata", output)
+        self.assertEqual(self.repo.read("ForDB/book_info.csv"), source)
+        self.assertEqual(self.repo.read("metadata.json"), before)
+        self.assertFalse(self.repo.exists("ForDB/book_info_identity.json"))
+
+    def test_identity_ledger_schema_and_historical_prefix_fail_before_any_write(self):
+        event = {"id": 1, "kind": "rename", "old": {"bookName": "מקור", "authorName": "מחבר"},
+                 "new": {"bookName": "יעד", "authorName": "מחבר"}, "commit": self.repo.base}
+        ledger = {"schemaVersion": 1, "events": [event]}
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("trusted ledger prefix")
+        rename_incident(self.repo)
+        before = self.repo.read("metadata.json")
+        cases = [dict(ledger, schemaVersion=True), dict(ledger, extra=True),
+                 {"schemaVersion": 1, "events": [dict(event, id=True)]},
+                 {"schemaVersion": 1, "events": [dict(event, commit=None)]},
+                 {"schemaVersion": 1, "events": [dict(event, commit="source-not-sha")]},
+                 {"schemaVersion": 1, "events": [dict(event, new={"bookName": "rewritten", "authorName": "מחבר"})]},
+                 {"schemaVersion": 1, "events": []},
+                 {"schemaVersion": 1, "events": [dict(event, new={"bookName": "יעד", "authorName": "A\ud800B"})]}]
+        for malformed in cases:
+            with self.subTest(ledger=malformed):
+                self.repo.write({"ForDB/book_info_identity.json": json.dumps(malformed, ensure_ascii=True) + "\n"})
+                code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+                self.assertNotEqual(code, 0, output)
+                self.assertEqual(self.repo.read("metadata.json"), before)
+                self.assertIn(OLD, self.repo.read("ForDB/book_info.csv"))
+
+    def test_identity_ledger_allows_well_formed_astral_unicode(self):
+        ledger = {"schemaVersion": 1, "events": [{"id": 1, "kind": "rename",
+                  "old": {"bookName": "ספר 📖", "authorName": "מחבר 😀"},
+                  "new": {"bookName": "ספר 📖", "authorName": "מחבר 😃"},
+                  "commit": self.repo.base}]}
+        self.assertEqual(validator.validate_identity_ledger(ledger), ledger)
+
+    def test_publisher_checkout_rejects_committed_identity_history_rewrite(self):
+        workflow = Path(SCRIPTS).parent / "workflows" / "update-fordb.yml"
+        checkout = workflow.read_text(encoding="utf-8").split("uses: actions/checkout@", 1)[1].split("- name:", 1)[0]
+        depth_match = re.search(r"fetch-depth:\s*(\d+)", checkout)
+        depth = int(depth_match.group(1)) if depth_match else 1
+        event = {"id": 1, "kind": "rename", "old": {"bookName": "מקור", "authorName": "מחבר"},
+                 "new": {"bookName": "יעד", "authorName": "מחבר"}, "commit": self.repo.base}
+        ledger = {"schemaVersion": 1, "events": [event]}
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("trusted ledger prefix")
+        event["new"]["bookName"] = "שכתוב"
+        self.repo.write({"ForDB/book_info_identity.json": json.dumps(ledger, ensure_ascii=False) + "\n"})
+        self.repo.commit("rewrite historical destination")
+        clone = Path(self.tmp) / "publisher-checkout"
+        self.repo.git("clone", "-q", "--depth", str(depth), Path(self.repo.root).as_uri(), str(clone))
+        before = {str(path.relative_to(clone)): path.read_bytes() for path in (clone / "ForDB").iterdir()}
+        code, output = self.repo.run_validator("--fix", cwd=str(clone))
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("append-only", output)
+        self.assertEqual({str(path.relative_to(clone)): path.read_bytes() for path in (clone / "ForDB").iterdir()}, before)
+
+    def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
+        for newline in ("\n", "\r", "\r\n"):
+            with self.subTest(newline=newline):
+                source = self.repo.read("ForDB/book_info.csv")
+                # Restore the fixture for each independently executed prune.
+                source = base_files()["ForDB/book_info.csv"].replace(f'"{OTHER}","",', f'"{OTHER}","עורך' + newline + 'הוצאה",')
+                source += '"יתום","עורך\nאחר","ראשונים","","",""\n'
+                self.repo.write({"ForDB/book_info.csv": source})
+                code, output = self.repo.run_validator("--fix")
+                if newline == "\n":
+                    self.assertEqual(code, 0, output)
+                    self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source[:source.rindex('"יתום"')].encode("utf-8"))
+                else:
+                    self.assertNotEqual(code, 0, output)
+                    self.assertEqual(Path(self.repo.root, "ForDB/book_info.csv").read_bytes(), source.encode("utf-8"))
+
+
+    def test_malformed_source_rejects_before_any_rename_write(self):
+        rename_incident(self.repo)
+        for suffix in ('"יתום","unterminated', '"יתום","author"junk,"ראשונים","","",""\n',
+                       '"יתום","author","ראשונים"\n'):
+            with self.subTest(suffix=suffix):
+                malformed = base_files()["ForDB/book_info.csv"] + suffix
+                self.repo.write({"ForDB/book_info.csv": malformed})
+                before = self.repo.read("metadata.json")
+                code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+                self.assertNotEqual(code, 0, output)
+                self.assertEqual(self.repo.read("metadata.json"), before)
+                self.assertEqual(self.repo.read("ForDB/book_info.csv"), malformed)
+
+
 class RespellTest(FixtureTestCase):
     """6cdb121d gave 'הגהות הבח' a curly ” and the CI deleted its row (3d96022b)."""
 
@@ -555,7 +709,7 @@ class SparsePartialCloneTest(unittest.TestCase):
         status = origin.git("show", "--format=", "--name-status", "-M", "HEAD", cwd=work)
         entries = sorted(line.split("\t", 1)[1] for line in status.splitlines() if line)
         self.assertEqual(entries, sorted([
-            "ForDB/all_metadata.json", "ForDB/book_moves.csv", "ForDB/generations.csv",
+            "ForDB/all_metadata.json", "ForDB/book_info.csv", "ForDB/book_info_identity.json", "ForDB/book_moves.csv", "ForDB/generations.csv",
             "ForDB/sefaria_metadata_changes.csv", "all_metadata_with_file_paths.json", "metadata.json",
             f"{LINKS}/{OTHER}_links.json", f"{LINKS}/{OLD}_links.json\t{LINKS}/{NEW}_links.json",
         ]))

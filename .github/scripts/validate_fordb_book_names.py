@@ -25,7 +25,8 @@ sefariaToOtzaria/.../otzaria/utils.py):
   שינויי השם (srename) נלקחים מ-book_renames.csv: sanitize(old)->sanitize(new).
 
 אופן הבדיקה:
-  * generations / book_moves: חייבים להתאים בדיוק ל-book.title שב-DB -> נבדקים מול db_final.
+  * generations / book_info / book_moves: חייבים להתאים בדיוק ל-book.title שב-DB -> נבדקים מול
+    db_final.
   * sefaria_metadata_changes / ForDB/all_metadata.json: מטא-דאטה -> נבדקים מול final_canon.
   * דליפת-מקור ב-ForDB/all_metadata.json: רשומה של ספר *ספריא* עם Sourcefolder שאינו
     "sefaria" היא שגיאה — שלב seed-המטא-דאטה (SeedAllMetadataPostProcess) מתאים לפי
@@ -49,7 +50,7 @@ sefariaToOtzaria/.../otzaria/utils.py):
 
 ללא --fix: יציאה בקוד 1 אם נמצא ולו שם אחד שאינו קיים, כפילות שם בתיקיות הנארזות,
 או דליפת-מקור ב-all_metadata.json. במצב --fix מוסרות רק בעיות שהתיקון שלהן
-דטרמיניסטי ובטוח: שורות ספר יתומות ב-generations.csv וב-book_moves.csv, ורשומות
+דטרמיניסטי ובטוח: שורות ספר יתומות ב-generations.csv, ב-book_info.csv וב-book_moves.csv, ורשומות
 לא-ספריא כפולות של ספרי ספריא ב-all_metadata.json. שינויי rename/category ובעיות
 סמנטיות אחרות נשארים report-only ומפילים את הריצה, כי הסרתם תאבד כוונה אנושית.
 משיכת ספריא חיה היא תנאי מוקדם ל--fix; כשל API יוצא בקוד 2 לפני כל כתיבה, כדי שכשל
@@ -64,6 +65,7 @@ sefariaToOtzaria/.../otzaria/utils.py):
 
 import argparse
 import csv
+import io
 import json
 import os
 import re
@@ -71,6 +73,7 @@ import subprocess
 import sys
 import urllib.request
 
+from book_info_contract import validate_book_info
 import fordb_book_renames as book_renames_follow
 
 # ---------------------------------------------------------------------------
@@ -83,6 +86,9 @@ CANONICAL_METADATA = os.path.join(REPO_ROOT, "all_metadata_with_file_paths.json"
 
 BOOK_RENAMES = os.path.join(FORDB, "book_renames.csv")
 GENERATIONS = os.path.join(FORDB, "generations.csv")
+# מידע על ספרים (דור, תת-דור, שנים, מחבר) שנערך באתר אוצריא, PR לכל עריכה. כמה שורות לאותו
+# ספר (מחברים שונים) הן תקינות; עמודת השם היא bookName.
+BOOK_INFO = os.path.join(FORDB, "book_info.csv")
 SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
 BOOK_MOVES = os.path.join(FORDB, "book_moves.csv")
 FORDB_METADATA = os.path.join(FORDB, "all_metadata.json")
@@ -112,7 +118,8 @@ def read_json(path):
 def read_csv_rows(path, has_header):
     """מחזיר (header_or_None, list_of_rows). שומר על השם בדיוק כפי שהוא בקובץ."""
     with open(path, "r", encoding="utf-8-sig", newline="") as f:
-        reader = csv.reader(f)
+        text = f.read()
+        reader = csv.reader(io.StringIO(text, newline=""), strict=True)
         rows = list(reader)
     if not rows:
         return (None, [])
@@ -413,7 +420,7 @@ def load_canonical(srename):
                       דליפת-מקור: ספר ספריא הרשום ב-all_metadata.json עם Sourcefolder
                       לא-"sefaria" יידרס ל-Dicta/וכו' בשלב seed-המטא-דאטה.
     ספרי ספריא נוצרים בבנייה (אין להם קובץ מקומי), לכן הם נלקחים מה-API החי + המטא-דאטה.
-    book_renames נבדק מול sources; generations/book_moves מול db_final; השאר מול final_canon.
+    book_renames נבדק מול sources; generations/book_info/book_moves מול db_final; השאר מול final_canon.
     """
     def clean_titles(raws):
         return {c for c in (sanitize_title(r) for r in raws) if c}
@@ -508,40 +515,155 @@ def load_rename_pairs():
 
 
 def remove_orphans(path, col_name, db_final, srename, protected=frozenset()):
-    """מסיר שורות CSV ששם ספרן לא יגיע ל-DB, בלי לשכתב שורות תקינות.
-
-    הקבצים האלה אינם מכילים שדות מרובי-שורות. שומרים את הטקסט המדויק של כל שורה
-    שנשארת כדי ש-auto-fix לא ייצור diff מכני גדול של quoting/סדר.
-    protected: מפתחות מנוקים של שמות ששונו בטווח אך לא ניתן היה ליישרם בבטחה. הם
-    נשארים (ומדווחים ככשל), כי מחיקתם היא בדיוק אובדן המידע שהמעקב נועד למנוע.
-    """
-    with open(path, "r", encoding="utf-8-sig", newline="") as f:
-        physical_lines = f.read().splitlines(keepends=True)
-    if not physical_lines:
+    """Remove logical CSV records while preserving every retained byte (including BOM)."""
+    with open(path, "rb") as f:
+        data = f.read()
+    _bom, text = book_renames_follow._split_bom(data)
+    records = book_renames_follow.csv_records(text)
+    if not records:
         return []
-
-    header = next(csv.reader([physical_lines[0].rstrip("\r\n")]))
+    header = [book_renames_follow._csv_value(text, f) for f in records[0][2]]
     c_idx = col_index(header, col_name)
-    kept = [physical_lines[0]]
-    removed = []
-    for line_no, physical in enumerate(physical_lines[1:], start=2):
-        raw_line = physical.rstrip("\r\n")
-        if not raw_line.strip():
-            kept.append(physical)
+    removed, drop = [], []
+    for idx, (start, _end, fields) in enumerate(records[1:], start=1):
+        if len(fields) == 1 and book_renames_follow._csv_value(text, fields[0]) == "":
             continue
-        row = next(csv.reader([raw_line]))
-        raw_name = row[c_idx] if len(row) > c_idx else ""
+        if len(fields) != len(header):
+            raise ValueError(f"{path}: record {idx + 1}: expected {len(header)} columns")
+        raw_name = book_renames_follow._csv_value(text, fields[c_idx])
         clean = sanitize_title(raw_name)
         final = srename.get(clean, clean)
         if raw_name and final not in db_final and clean not in protected:
-            removed.append((line_no, raw_name))
-        else:
-            kept.append(physical)
-
+            removed.append((idx + 1, raw_name))
+            drop.append(idx)
     if removed:
-        with open(path, "w", encoding="utf-8", newline="") as f:
-            f.writelines(kept)
+        result = book_renames_follow.edit_csv(data, {}, drop)
+        with open(path, "wb") as f:
+            f.write(result)
     return removed
+
+
+IDENTITY_PATH = "ForDB/book_info_identity.json"
+
+
+def validate_identity_ledger(ledger):
+    if (not isinstance(ledger, dict) or set(ledger) != {"schemaVersion", "events"}
+            or type(ledger["schemaVersion"]) is not int or ledger["schemaVersion"] != 1
+            or not isinstance(ledger["events"], list)):
+        raise ValueError("Invalid book_info identity ledger")
+    # Escaped lone UTF-16 surrogates are legal JSON strings but cannot be CSV
+    # identities in UTF-8. Reject the entire ledger before any auto-fix write.
+    try:
+        json.dumps(ledger, ensure_ascii=False).encode("utf-8")
+    except UnicodeEncodeError as error:
+        raise ValueError("Identity ledger contains text that cannot be encoded as UTF-8") from error
+    for idx, event in enumerate(ledger["events"], start=1):
+        if (not isinstance(event, dict) or type(event.get("id")) is not int
+                or event["id"] != idx or event.get("kind") not in ("rename", "remove")):
+            raise ValueError("Invalid identity event/order")
+        required = {"id", "kind", "old", "commit", "new" if event["kind"] == "rename" else "reason"}
+        if not required <= set(event) or set(event) - required - {"changeSetId"}:
+            raise ValueError("Invalid identity event field set")
+        for field in (["old", "new"] if event["kind"] == "rename" else ["old"]):
+            value = event[field]
+            if (not isinstance(value, dict) or set(value) != {"bookName", "authorName"}
+                    or not all(isinstance(v, str) and not any(c in v for c in "\r\0\ufeff") for v in value.values())
+                    or not value["bookName"]):
+                raise ValueError("Invalid identity key")
+        change_set = event.get("changeSetId")
+        if change_set is not None and (not isinstance(change_set, str) or not change_set):
+            raise ValueError("Invalid identity changeSetId")
+        commit = event["commit"]
+        if commit is None:
+            if not change_set:
+                raise ValueError("Identity event needs commit or changeSetId provenance")
+        elif not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            raise ValueError("Invalid identity commit provenance")
+        if event["kind"] == "remove" and (not isinstance(event["reason"], str) or not event["reason"]):
+            raise ValueError("Invalid identity removal reason")
+    return ledger
+
+
+def read_identity_ledger(rename_bases=()):
+    path = os.path.join(REPO_ROOT, IDENTITY_PATH)
+    ledger = (read_json(path) if os.path.exists(path) else {"schemaVersion": 1, "events": []})
+    validate_identity_ledger(ledger)
+    # Preserve every event from the worktree base, parent and last validated head.
+    # The workflow supplies its last successful commit as the first rename base.
+    refs = ["HEAD", "HEAD^"]
+    base = book_renames_follow.pick_rename_base(REPO_ROOT, rename_bases)
+    if base:
+        refs.append(base)
+    for ref in refs:
+        previous = book_renames_follow._git(REPO_ROOT, "show", f"{ref}:{IDENTITY_PATH}", check=False)
+        if previous.returncode:
+            continue  # Initial introduction/first commit has no previous ledger.
+        trusted = validate_identity_ledger(json.loads(previous.stdout.decode("utf-8")))
+        events = trusted["events"]
+        if ledger["events"][:len(events)] != events:
+            raise ValueError(f"Identity ledger is append-only: historical prefix from {ref} changed")
+    return ledger
+
+
+def book_info_identities():
+    if not os.path.exists(BOOK_INFO):
+        return set()
+    _header, rows = read_csv_rows(BOOK_INFO, True)
+    return {(r[0], r[1]) for r in rows if r}
+
+
+def record_identity_changes(before, ledger, resolution, removed, plan):
+    """Append exact per-author rename/removal events for the same autofix commit.
+
+    IDs are monotonic revisions. Consumers replay events AFTER the proposal's
+    base revision; historical mappings must never redirect a newly reused key.
+    """
+    after = book_info_identities()
+    matcher = book_renames_follow._Matcher(resolution.renames, sanitize_title, db_title)
+    orphan_titles = {name for path, name, reason in removed if path == "ForDB/book_info.csv" and reason == "orphan"}
+    source_head = book_renames_follow._git(REPO_ROOT, "rev-parse", "HEAD").stdout.decode().strip()
+    changed = False
+    for title, author in sorted(before - after):
+        old = {"bookName": title, "authorName": author}
+        hit = matcher.find(title)
+        if hit and (db_title(hit[1].new_title), author) in after:
+            event = {"kind": "rename", "old": old,
+                     "new": {"bookName": db_title(hit[1].new_title), "authorName": author},
+                     "commit": hit[1].commit if re.fullmatch(r"[0-9a-f]{40}", hit[1].commit) else source_head}
+        elif title in orphan_titles:
+            event = {"kind": "remove", "old": old, "reason": "orphan", "commit": source_head}
+        else:
+            continue
+        event = {"id": len(ledger["events"]) + 1, **event}
+        ledger["events"].append(event)
+        changed = True
+    if changed:
+        validate_identity_ledger(ledger)
+        data = (json.dumps(ledger, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        with open(os.path.join(REPO_ROOT, IDENTITY_PATH), "wb") as f:
+            f.write(data)
+        plan.writes[IDENTITY_PATH] = data
+
+
+def preflight_csv_inputs():
+    """Validate all editable tables before the first rename/prune write."""
+    for target in book_renames_follow.CSV_TARGETS:
+        path = os.path.join(REPO_ROOT, target.path)
+        if not os.path.exists(path):
+            if path == BOOK_INFO:
+                continue  # PR55 transition; mandatory in PR56.
+            raise FileNotFoundError(path)
+        if path == BOOK_INFO:
+            with open(path, "rb") as handle:
+                validate_book_info(handle.read())
+        header, rows = read_csv_rows(path, True)
+        col_index(header, target.column)
+        if path == BOOK_INFO and header != ["bookName", "authorName", "generationName",
+                                           "subGenerationName", "startYear", "endYear"]:
+            raise ValueError("book_info.csv must have the supported six-column header")
+        for idx, row in enumerate(rows, start=2):
+            if row and len(row) != len(header):
+                raise ValueError(f"{path}: record {idx}: expected {len(header)} columns")
 
 
 # ---------------------------------------------------------------------------
@@ -740,7 +862,7 @@ def main():
     parser.add_argument(
         "--fix",
         action="store_true",
-        help="הסרת שורות יתומות דטרמיניסטיות מ-generations/book_moves וכפילויות מקור-ספריא",
+        help="הסרת שורות יתומות דטרמיניסטיות מ-generations/book_info/book_moves וכפילויות מקור-ספריא",
     )
     parser.add_argument(
         "--rename-base",
@@ -771,6 +893,9 @@ def main():
             if os.path.exists(stale):
                 os.unlink(stale)
 
+    preflight_csv_inputs()
+    identity_ledger = read_identity_ledger(args.rename_base)
+    identities_before = book_info_identities()
     rename_pairs = load_rename_pairs()
     srename = build_sanitized_rename(rename_pairs)
     sources, final_canon, db_final, sefaria_final = load_canonical(srename)
@@ -810,14 +935,17 @@ def main():
                 (f"שורה {line_no} (שם מקור)", old, clean)
             )
 
-    # 2) generations.csv + 4) book_moves.csv - עמודות "שם ספר"/"name". חייבים להתאים
+    # 2) generations.csv + book_info.csv + 4) book_moves.csv - עמודות "שם ספר"/"bookName"/"name". חייבים להתאים
     #    בדיוק ל-book.title שב-DB (db_final); ספר שאינו נארז (כגון שהוזז ל-extraBooks) ייתפס.
     #    ב--fix שורות יתומות מוסרות; במצב report-only הן מדווחות ומפילות.
     removed = []  # [(file_label, name, reason)]
     for file_label, path, col in (
         ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
+        ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
     ):
+        if path == BOOK_INFO and not os.path.exists(path):
+            continue
         if args.fix:
             removed.extend(
                 (file_label, name, "orphan")
@@ -898,8 +1026,11 @@ def main():
     )
     for file_label, path, col in (
         ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
+        ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
     ):
+        if path == BOOK_INFO and not os.path.exists(path):
+            continue
         header, rows = read_csv_rows(path, has_header=True)
         c_idx = col_index(header, col)
         collect_spelling(
@@ -924,6 +1055,7 @@ def main():
 
     print_rename_report(resolution, rename_plan, applied=args.fix)
     if args.fix:
+        record_identity_changes(identities_before, identity_ledger, resolution, removed, rename_plan)
         write_fix_outputs(removed, resolution, rename_plan)
     if args.fix and removed:
         print(f"\n🧹 הוסרו אוטומטית {len(removed)} רשומות ForDB שלא היו מיושמות בריצה:")

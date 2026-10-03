@@ -34,7 +34,7 @@ python3 dicta_sync.py report             # ספירה לפי סטטוס
 
 | שער האיכות | מיקום | יעד | מרשמים |
 | --- | --- | --- | --- |
-| עובר | בטוח (סדרה קיימת / רמב"ם / שו"ע — 97.7% ב־leave-one-out) | `ערוך/ספרים/אוצריא/<נתיב>` | metadata.json, ForDB/all_metadata.json, all_metadata_with_file_paths.json, generations.csv |
+| עובר | בטוח (סדרה קיימת / רמב"ם / שו"ע — 97.7% ב־leave-one-out) | `ערוך/ספרים/אוצריא/<נתיב>` | metadata.json, ForDB/all_metadata.json, all_metadata_with_file_paths.json, book_info.csv |
 | עובר | לא בטוח | `ערוך/ספרים/לא ממויין/<קטגוריה של דיקטה>/` (לא נארז) | אין, עד `sort`/`reconcile` |
 | נכשל | כל מיקום | `לא ערוך/ספרים/אוצריא/<נתיב>` או `…/אוצריא/לא ממויין/<קטגוריה>/` | אין |
 
