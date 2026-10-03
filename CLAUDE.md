@@ -48,6 +48,12 @@ yam-HaHachmaToOtzaria/ספרים/אוצריא
 (שם היא כוללת גם את `DictaToOtzaria/לא ערוך/`, שנכנס רק ל־zip הדיקטה). **אם משנים
 אחת — צריך לעדכן את השנייה.**
 
+יש עוד שני עותקים, בשלב ה־prepare: `folders` ב־`send_update/main.py` (יומן `עדכוני ספריה.md`)
+ו־`folders` + `mapping` ב־`sync_and_merge_folders.py` (`SourcesBooks.csv`, `library_csv/` ומונה
+הגרסה). מקור שחסר שם נארז כרגיל, אבל השינויים בו לא מופיעים ביומן. כך היה עם National-Library
+מיוני עד אוקטובר 2026. `test_source_lists_contract.py` אוכף ששתי הרשימות שוות ל־`BOOK_ROOTS`,
+חוץ משני שורשי ספריא הריקים.
+
 ### מה *לא* נארז
 
 - `extraBooks/`, `docxToOtzaria/`, `MoreBooks/ספרים/` שאינו תחת `אוצריא/`

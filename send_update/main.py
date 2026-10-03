@@ -29,10 +29,21 @@ def commits_in_view() -> int:
     return int(count) if count.isdigit() else 0
 
 
+VERSION_SUBJECT_PREFIX = "גרסת ספרייה "
+
+
 def find_version_commit_sha() -> str:
-    cmd = ["git", "log", "--grep=גרסת ספרייה", "-n", "1", "--pretty=%H"]
+    # Only the bot's own subject ("גרסת ספרייה N", update-library.yml) marks a version.
+    # A plain --grep matched the phrase anywhere in a message, so a commit whose body
+    # merely quoted it (b49ce978) became the diff base and hid everything before it.
+    cmd = ["git", "log", "-E", "--grep=^גרסת ספרייה [0-9]+$", "--pretty=%H%x09%s"]
     result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
-    return result.stdout.strip()
+    for line in result.stdout.splitlines():
+        sha, _, subject = line.partition("\t")
+        number = subject.strip()[len(VERSION_SUBJECT_PREFIX):]
+        if subject.strip().startswith(VERSION_SUBJECT_PREFIX) and number.isdigit():
+            return sha
+    return ""
 
 
 def deepen_history() -> subprocess.CompletedProcess:
@@ -106,7 +117,7 @@ folders = [
     "wikisourceToOtzaria/ספרים/אוצריא",
     "pninimToOtzaria/ספרים/אוצריא",
     "yam-HaHachmaToOtzaria/ספרים/אוצריא",
-    # "National-LibraryToOtzaria/ספרים/אוצריא"
+    "National-LibraryToOtzaria/ספרים/אוצריא",
 ]
 
 

@@ -17,6 +17,7 @@ are TOC levels, '!' an inline label that is not a TOC entry. The default order
 
 Usage:
     python te_convert.py --src "<Torat Emet dir>" 042_IYUNIM/030_RavZilber1.txt -o out.txt
+    python te_convert.py --src "<Torat Emet dir>" 042_IYUNIM/030_RavZilber1.txt --check
 """
 import argparse
 import sys
@@ -170,21 +171,29 @@ class LineRenderer:
     """Turns Torat Emet HTML (after rules) into balanced Otzaria lines.
 
     Open inline effects are carried across lines: closed at each line end and
-    reopened at the next line start, because every Otzaria line stands alone.
+    reopened at the next line start, because every Otzaria line stands alone (a
+    quote or a parenthesis may run over two source lines). A carried effect must
+    still be closed before the next heading, or at the latest by the paragraph right
+    after it: convert() finds the openers that are not (`ignore`, keyed by (source
+    line, tag index in the line)), and they render as if absent, so their text stays
+    literal. One unbalanced '(' or '{' in the source would otherwise format the whole
+    rest of the book.
     """
 
-    def __init__(self):
-        self.stack = []        # list of (tagname, [effects]) for every open source tag
+    def __init__(self, ignore=()):
+        self.stack = []        # (tagname, [effects], (source line, tag index)) for every open source tag
         self.skip = 0          # inside <script>
+        self.ignore = set(ignore)
+        self.closed = []       # (tagname, effects, opening (line, index), closing line) of every effect closed
 
     def active(self):
         out = []
-        for _, effs in self.stack:
+        for _, effs, _ in self.stack:
             for e in effs:
                 out.append(e)
         return out
 
-    def render(self, line):
+    def render(self, line, lineno=None):
         out = []
         cur = []               # effects currently open in the output
         def sync(target):
@@ -199,7 +208,7 @@ class LineRenderer:
                 out.append(f'<{e}>')
                 cur.append(e)
         pos = 0
-        for m in TAG_RE.finditer(line):
+        for k, m in enumerate(TAG_RE.finditer(line)):
             text = line[pos:m.start()]
             pos = m.end()
             if text and not self.skip:
@@ -225,10 +234,12 @@ class LineRenderer:
             if closing:
                 for j in range(len(self.stack) - 1, -1, -1):
                     if self.stack[j][0] == name:
-                        del self.stack[j]
+                        ent = self.stack.pop(j)
+                        if ent[1]:
+                            self.closed.append((ent[0], tuple(ent[1]), ent[2], lineno))
                         break
-            else:
-                self.stack.append((name, tag_effects(name, attrs)))
+            elif (lineno, k) not in self.ignore:
+                self.stack.append((name, tag_effects(name, attrs), (lineno, k)))
         text = line[pos:]
         if text and not self.skip:
             sync(self.dedupe(self.active()))
@@ -275,11 +286,17 @@ def strip_tags(s):
     return re.sub(r'<[^<>]*>', '', s)
 
 
-def convert(rel, text=None, markers=False, levels=None):
+def convert(rel, text=None, markers=False, levels=None, report=None):
     """Returns (params, lines); each line is a dict(src=index, kind, level, html).
 
     markers=True keeps <tex>/<teg> bookkeeping tags for te_reapply.py.
     levels: sigils from the top TOC level down, e.g. '^#@~' (default: Orayta order).
+    report: a dict to fill with the source's formatting spans (source lines are 1-based):
+        'carried':    (open line, close line, tag, effects) of every effect that runs
+                      over more than one source line and is closed in time;
+        'unbalanced': (open line, tag, effects, where) of every effect left open at a
+                      heading ('heading'), at the end of the book ('eof') or at the end
+                      of a heading line ('in heading'), rendered as if absent.
     """
     text = read_source(rel) if text is None else text
     raw = text.splitlines()
@@ -298,16 +315,51 @@ def convert(rel, text=None, markers=False, levels=None):
     if levels:
         sigils = [c for c in levels if c in sigils] + [c for c in sigils if c not in levels]
     level_of = {c: i + 2 for i, c in enumerate(s for s in sigils if s != '!')}
-    rend = LineRenderer()
-    out = []
+    items = []                 # (source line, sigil or None, html after the rules)
     for i, line in enumerate(body, start=body_start):
         line = line.strip()
         if not line or line.startswith('**INDEX_WRITE') or line.startswith('@PicWidth'):
             continue
         m = SIGIL_RE.match(line)
         if m:
-            sig, rest = m.groups()
-            h = rend.render(apply_rules(rest, rules, markers))
+            items.append((i, m.group(1), apply_rules(m.group(2), rules, markers)))
+        else:
+            items.append((i, None, apply_rules(line, rules, markers)))
+    # first pass: find the source tags that have no closer. A heading is rendered on its
+    # own, so nothing it opens or closes reaches the text around it. A tag still open
+    # at a heading may only be closed by the first paragraph after it (a Chavruta quote
+    # that runs over the page heading '~ דף נא - א'); otherwise, or at the end of the
+    # book, it is unbalanced.
+    probe, ignore, unbalanced = LineRenderer(), set(), []
+    pending = None             # origins of the tags that were open at the last heading
+    def drop(origins, where):
+        for ent in [e for e in probe.stack if e[2] in origins]:
+            probe.stack.remove(ent)
+            ignore.add(ent[2])
+            if ent[1]:
+                unbalanced.append((ent[2][0] + 1, ent[0], tuple(ent[1]), where))
+    for i, sig, h in items:
+        if sig:
+            if pending:
+                drop(pending, 'heading')
+            pending = {e[2] for e in probe.stack}
+            hp = LineRenderer()
+            hp.render(h, i)
+            unbalanced += [(o[0] + 1, n, tuple(e), 'in heading') for n, e, o in hp.stack if e]
+        else:
+            probe.render(h, i)
+            if pending:
+                drop(pending, 'heading')
+            pending = None
+    drop({e[2] for e in probe.stack}, 'eof')
+    if report is not None:
+        report['unbalanced'] = sorted(unbalanced)
+        report['carried'] = sorted((o[0] + 1, c + 1, n, e) for n, e, o, c in probe.closed if c > o[0])
+    rend = LineRenderer(ignore)
+    out = []
+    for i, sig, h in items:
+        if sig:
+            h = LineRenderer().render(h, i)
             h = tidy(html_mod.unescape(strip_tags(h)))
             if sig == '$':
                 out.append(dict(src=i, kind='h', level=1, html=h))
@@ -316,7 +368,7 @@ def convert(rel, text=None, markers=False, levels=None):
             else:
                 out.append(dict(src=i, kind='h', level=level_of[sig], html=h))
             continue
-        h = rend.render(apply_rules(line, rules, markers))
+        h = rend.render(h, i)
         if h:
             out.append(dict(src=i, kind='p', level=0, html=h))
     return params, out
@@ -339,6 +391,9 @@ def main():
     ap.add_argument('-o', '--out', help='output file (default: stdout)')
     ap.add_argument('--levels', help="TOC sigils from the top level down, e.g. '^#@~'")
     ap.add_argument('--rules', action='store_true', help="print the book's rules and exit")
+    ap.add_argument('--check', action='store_true',
+                    help='list the formatting tags of the source that are not closed in their section '
+                         'or that run over several lines, and exit (status 1 if any is not closed)')
     a = ap.parse_args()
     global SRC_ROOT
     SRC_ROOT = a.src
@@ -347,6 +402,14 @@ def main():
         for frm, to in rep_rules(cosmetics(params)):
             print(f'{frm!r:>16} -> {to}')
         return
+    if a.check:
+        rep = {}
+        convert(a.book, levels=a.levels, report=rep)
+        for line, tag, effs, where in rep['unbalanced']:
+            print(f'not closed ({where}): source line {line} <{tag}> {"+".join(effs)}')
+        for o, c, tag, effs in sorted(rep['carried'], key=lambda x: x[0] - x[1])[:10]:
+            print(f'over {c - o + 1} lines: source lines {o}-{c} <{tag}> {"+".join(effs)}')
+        sys.exit(1 if rep['unbalanced'] else 0)
     _, lines = convert(a.book, levels=a.levels)
     text = to_text(lines)
     if a.out:
