@@ -236,20 +236,16 @@ class RegistryTest(unittest.TestCase):
         # אידמפוטנטי
         self.assertEqual(SY.register_packaged(book, "הלכה/ראשונים/ספר חדש.txt", repo=self.d), [])
 
-    def test_transition_projects_new_source_to_existing_legacy_without_overwriting_coauthors(self):
+    def test_registration_preserves_existing_coauthors_and_years_without_legacy_source(self):
         info = os.path.join(self.d, "ForDB/book_info.csv")
         with open(info, "w", encoding="utf-8", newline="") as f:
             f.write('bookName,authorName,generationName,subGenerationName,startYear,endYear\n"ספר חדש","עורך","מחברי זמננו","","1900","1980"\n"ספר חדש","רבי יוסף קארו","מחברי זמננו","מחברי זמננו","1800","1888"\n')
         with open(info, "rb") as f:
             before = f.read()
-        legacy = os.path.join(self.d, "ForDB/generations.csv")
-        with open(legacy, "w", encoding="utf-8", newline="") as f:
-            f.write("שם ספר,קבוצת דור\nספר חדש,ראשונים\n")
         SY.register_packaged({"author": "יוסף קארו", "subcategory": "ראשונים"}, "ספר חדש.txt", repo=self.d)
         with open(info, "rb") as f:
             self.assertEqual(f.read(), before)
-        with open(legacy, encoding="utf-8") as f:
-            self.assertIn(["ספר חדש", "מחברי זמננו"], list(csv.reader(f)))
+        self.assertFalse(os.path.exists(os.path.join(self.d, "ForDB/generations.csv")))
 
     def test_malformed_book_info_fails_before_other_registries_are_written(self):
         paths = [os.path.join(self.d, p) for p in ("metadata.json", "ForDB/all_metadata.json", "all_metadata_with_file_paths.json")]

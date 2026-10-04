@@ -25,8 +25,7 @@ sefariaToOtzaria/.../otzaria/utils.py):
   שינויי השם (srename) נלקחים מ-book_renames.csv: sanitize(old)->sanitize(new).
 
 אופן הבדיקה:
-  * generations / book_info / book_moves: חייבים להתאים בדיוק ל-book.title שב-DB -> נבדקים מול
-    db_final.
+  * book_info / book_moves: חייבים להתאים בדיוק ל-book.title שב-DB -> נבדקים מול db_final.
   * sefaria_metadata_changes / ForDB/all_metadata.json: מטא-דאטה -> נבדקים מול final_canon.
   * דליפת-מקור ב-ForDB/all_metadata.json: רשומה של ספר *ספריא* עם Sourcefolder שאינו
     "sefaria" היא שגיאה — שלב seed-המטא-דאטה (SeedAllMetadataPostProcess) מתאים לפי
@@ -50,7 +49,7 @@ sefariaToOtzaria/.../otzaria/utils.py):
 
 ללא --fix: יציאה בקוד 1 אם נמצא ולו שם אחד שאינו קיים, כפילות שם בתיקיות הנארזות,
 או דליפת-מקור ב-all_metadata.json. במצב --fix מוסרות רק בעיות שהתיקון שלהן
-דטרמיניסטי ובטוח: שורות ספר יתומות ב-generations.csv, ב-book_info.csv וב-book_moves.csv, ורשומות
+דטרמיניסטי ובטוח: שורות ספר יתומות ב-book_info.csv וב-book_moves.csv, ורשומות
 לא-ספריא כפולות של ספרי ספריא ב-all_metadata.json. שינויי rename/category ובעיות
 סמנטיות אחרות נשארים report-only ומפילים את הריצה, כי הסרתם תאבד כוונה אנושית.
 משיכת ספריא חיה היא תנאי מוקדם ל--fix; כשל API יוצא בקוד 2 לפני כל כתיבה, כדי שכשל
@@ -85,8 +84,8 @@ FORDB = os.path.join(REPO_ROOT, "ForDB")
 CANONICAL_METADATA = os.path.join(REPO_ROOT, "all_metadata_with_file_paths.json")
 
 BOOK_RENAMES = os.path.join(FORDB, "book_renames.csv")
-GENERATIONS = os.path.join(FORDB, "generations.csv")
-# מידע על ספרים (דור, תת-דור, שנים, מחבר) שנערך באתר אוצריא, PR לכל עריכה. כמה שורות לאותו
+# מידע על ספרים (דור, תת-דור, שנים, מחבר) שנערך באתר אוצריא, PR לכל עריכה; מקור הדור של
+# SeedGenerations (במקום generations.csv שהוסר). כמה שורות לאותו
 # ספר (מחברים שונים) הן תקינות; עמודת השם היא bookName.
 BOOK_INFO = os.path.join(FORDB, "book_info.csv")
 SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
@@ -420,7 +419,7 @@ def load_canonical(srename):
                       דליפת-מקור: ספר ספריא הרשום ב-all_metadata.json עם Sourcefolder
                       לא-"sefaria" יידרס ל-Dicta/וכו' בשלב seed-המטא-דאטה.
     ספרי ספריא נוצרים בבנייה (אין להם קובץ מקומי), לכן הם נלקחים מה-API החי + המטא-דאטה.
-    book_renames נבדק מול sources; generations/book_info/book_moves מול db_final; השאר מול final_canon.
+    book_renames נבדק מול sources; book_info/book_moves מול db_final; השאר מול final_canon.
     """
     def clean_titles(raws):
         return {c for c in (sanitize_title(r) for r in raws) if c}
@@ -650,8 +649,6 @@ def preflight_csv_inputs():
     for target in book_renames_follow.CSV_TARGETS:
         path = os.path.join(REPO_ROOT, target.path)
         if not os.path.exists(path):
-            if path == BOOK_INFO:
-                continue  # PR55 transition; mandatory in PR56.
             raise FileNotFoundError(path)
         if path == BOOK_INFO:
             with open(path, "rb") as handle:
@@ -862,7 +859,7 @@ def main():
     parser.add_argument(
         "--fix",
         action="store_true",
-        help="הסרת שורות יתומות דטרמיניסטיות מ-generations/book_info/book_moves וכפילויות מקור-ספריא",
+        help="הסרת שורות יתומות דטרמיניסטיות מ-book_info/book_moves וכפילויות מקור-ספריא",
     )
     parser.add_argument(
         "--rename-base",
@@ -935,17 +932,14 @@ def main():
                 (f"שורה {line_no} (שם מקור)", old, clean)
             )
 
-    # 2) generations.csv + book_info.csv + 4) book_moves.csv - עמודות "שם ספר"/"bookName"/"name". חייבים להתאים
+    # 2) book_info.csv + 4) book_moves.csv - עמודות "bookName"/"name". חייבים להתאים
     #    בדיוק ל-book.title שב-DB (db_final); ספר שאינו נארז (כגון שהוזז ל-extraBooks) ייתפס.
     #    ב--fix שורות יתומות מוסרות; במצב report-only הן מדווחות ומפילות.
     removed = []  # [(file_label, name, reason)]
     for file_label, path, col in (
-        ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
         ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
     ):
-        if path == BOOK_INFO and not os.path.exists(path):
-            continue
         if args.fix:
             removed.extend(
                 (file_label, name, "orphan")
@@ -1025,12 +1019,9 @@ def main():
         + [(f"שורה {line_no} (שם יעד)", new) for line_no, _old, new in load_rename_pairs()],
     )
     for file_label, path, col in (
-        ("ForDB/generations.csv", GENERATIONS, "שם ספר"),
         ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
     ):
-        if path == BOOK_INFO and not os.path.exists(path):
-            continue
         header, rows = read_csv_rows(path, has_header=True)
         c_idx = col_index(header, col)
         collect_spelling(

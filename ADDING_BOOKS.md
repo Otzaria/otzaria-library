@@ -75,8 +75,7 @@
 | --- | --- | --- |
 | `metadata.json` (שורש) | אובייקט דחוס אחד **בשורה**, `separators=(',',':')`, newline בסוף | **זה** מזין את טבלת המחברים (לא שורה 2 בקובץ) |
 | `ForDB/all_metadata.json` | `indent=2`, newline בסוף; שורת MoreBooks = `title`/`heAuthors`(רשימה)/`Sourcefolder` | קל לשכוח |
-| `ForDB/generations.csv` | **LF**, לא ה־CRLF של `csv.writer` | |
-| `ForDB/book_info.csv` | **LF**, כל שדה במירכאות (`csv.QUOTE_ALL`), ממוין לפי `bookName` ואז `authorName`, בלי BOM | נערך מדף "מידע על ספרים" באתר אוצריא, PR לכל עריכה, ועדיף לערוך דרכו ולא ידנית. `bookName` חייב להיות book.title בדיוק, כמו ב־generations |
+| `ForDB/book_info.csv` | **LF**, כל שדה במירכאות (`csv.QUOTE_ALL`), ממוין לפי `bookName` ואז `authorName`, בלי BOM | נערך מדף "מידע על ספרים" באתר אוצריא, PR לכל עריכה, ועדיף לערוך דרכו ולא ידנית. `bookName` חייב להיות book.title בדיוק. הוא מקור הדור (במקום `generations.csv` שהוסר) |
 
 פורמט אחר משכתב כל שורה בקובץ (`indent=1` הפך 8,415 שורות ל־109,516).
 
@@ -84,8 +83,9 @@
 # metadata.json
 f.write('[\n' + ',\n'.join(json.dumps(m, ensure_ascii=False, separators=(',', ':'))
                            for m in meta) + '\n]\n')
-# generations.csv
-csv.writer(f, lineterminator='\n').writerows(rows)
+# ForDB/book_info.csv: כותרת בלי מירכאות, שאר השורות QUOTE_ALL, ממוינות לפי (bookName, authorName)
+f.write(','.join(header) + '\n')
+csv.writer(f, quoting=csv.QUOTE_ALL, lineterminator='\n').writerows(sorted(rows, key=lambda r: (r[0], r[1])))
 ```
 
 לפני כתיבה: ודא round-trip זהה בית־בבית לקובץ הקיים.
@@ -201,7 +201,7 @@ SEFARIA_FETCH=0 python3 .github/scripts/_tmp_v.py; rm .github/scripts/_tmp_v.py
 
 ## רישום קנוני ויומן זהות
 
-כל כלי הייבוא כותבים `ForDB/book_info.csv` דרך `.github/scripts/book_info_writer.py`: מוסיפים זהויות `(bookName, authorName)` חסרות בלבד, משמרים דור/תת־דור/שנים ומחברים קיימים, וממיינים לפי ספר ומחבר. בשלב המעבר, אם קיים גם `generations.csv`, הוא מוקרן מתוך המקור החדש לפי רוב דור והמחבר הראשון בסדר הקנוני במקרה תיקו. אין לכתוב אליו בנפרד. מקור חדש חסר או פגום גורם לכשל לפני כתיבה.
+כל כלי הייבוא כותבים `ForDB/book_info.csv` דרך `.github/scripts/book_info_writer.py`: מוסיפים זהויות `(bookName, authorName)` חסרות בלבד, משמרים דור/תת־דור/שנים ומחברים קיימים, וממיינים לפי ספר ומחבר. `generations.csv` הוסר ואין לכתוב או ליצור אותו מחדש. מקור חדש חסר או פגום גורם לכשל לפני כתיבה.
 
 `ForDB/book_info_identity.json` הוא יומן מצטבר לאתר, ואינו חלק מארכיון ה־DB. `schemaVersion:1`, `events` עם `id` רציף החל מ־1. אירוע `rename` כולל `old` ו־`new`, כל אחד עם `bookName` ו־`authorName` מדויקים; אירוע `remove` כולל `old` ו־`reason`. `commit` מזהה את קומיט המקור (יכול להיות `null` באירוע אתר שמספק `changeSetId`). CI מוסיף אירוע לכל מחבר שהשם שלו יושר או רשומה שהוסרה, ומוסיף את היומן לאותו קומיט תיקון. לא מוחקים ולא מחליפים אירועים קיימים. האתר שומר את revision של בסיס ההצעה ומפעיל רק אירועים מאוחרים יותר; הסרה, מסלול עמום, או היעלמות ללא אירוע דורשים פתרון גלוי. אין להשתמש במיפוי היסטורי כדי להסיט עריכה חדשה על שם שהוחזר לשימוש.
 
