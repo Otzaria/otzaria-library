@@ -314,6 +314,7 @@ def build_lexicon(text, min_len=3):
 # ------------------------------------------------------------------- extract
 
 LTR = re.compile(r'[0-9A-Za-z]')
+MIRROR = str.maketrans('()[]{}', ')(][}{')
 
 
 def _order_chars(chars):
@@ -322,9 +323,11 @@ def _order_chars(chars):
     Character boxes are trustworthy even where MuPDF hands back a span whose
     own bbox is an aggregate, so reading right to left recovers the logical
     order for both the Unicode runs and the legacy ones it laid out as Latin.
-    Digits and Latin words run the other way and are flipped back.
+    Digits and Latin words run the other way and are flipped back. Brackets
+    carry their printed shape, so each one is mirrored to its logical pair.
     """
-    out = sorted(chars, key=lambda c: -c[0])
+    out = sorted(((c[0], c[1], c[2].translate(MIRROR)) + tuple(c[3:])
+                  for c in chars), key=lambda c: -c[0])
     i = 0
     while i < len(out):
         if LTR.match(out[i][2]):

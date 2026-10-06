@@ -31,7 +31,7 @@ EXTRA = re.compile('^(מילואים|השמטות|הוספות)\\s+ל?סימן\\
 BANNER = re.compile('^(מילואים|השמטות|הוספות)\\b')
 # the closing apparatus of a volume: indexes and bibliographies, not halacha
 TAIL = re.compile('^(מפתח|רשימת|תוכן|לוח)')
-MARKER = re.compile('^([א-ת]{1,4})\\((?:\\s|$)')
+MARKER = re.compile('^([א-ת]{1,4})\\)(?:\\s|$)')
 COL_SPLIT = 283.0
 MARKER_MIN_SIZE = 11.0
 
