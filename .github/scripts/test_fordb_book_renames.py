@@ -734,11 +734,31 @@ class SourceScopedTablesTest(FixtureTestCase):
         self.assertEqual(code, 1, output)
         self.assertIn(f"אין ספר כזה במקור {ONYOURWAY}", output)
 
-    def test_an_unknown_source_fails_in_both_files(self):
-        self.write_tables(protection=[["NoSuchSource", "", "1"]], banners=[["NoSuchSource", "", "x"]])
+    def test_a_source_outside_this_repo_only_warns(self):
+        # Private-repo sources join only at build time; the generator fails on a truly unknown one.
+        self.write_tables(protection=[["PrivateBooks", "ספר פרטי", "1"]], banners=[["PrivateBooks", "", "x"]])
         code, output = self.repo.run_validator()
-        self.assertEqual(code, 1, output)
-        self.assertEqual(output.count("sourceName אינו מקור נארז"), 2, output)
+        self.assertEqual(code, 0, output)
+        self.assertIn("::warning::ForDB/book_protection.csv", output)
+        self.assertEqual(output.count("אינו מקור במאגר זה"), 2, output)
+
+    def test_a_merged_companion_fails_and_names_the_base_book(self):
+        companion = f"הערות על {OTHER}"
+        self.repo.write({f"{RISHONIM}/{companion}.txt": book_text(companion)})
+        for protection, banners in (([["MoreBooks", companion, "1"]], []),
+                                    ([], [["MoreBooks", companion, "x"]])):
+            with self.subTest(protection=bool(protection)):
+                self.write_tables(protection=protection, banners=banners)
+                code, output = self.repo.run_validator()
+                self.assertEqual(code, 1, output)
+                self.assertIn(f"שהמחולל ממזג לספר '{OTHER}'", output)
+
+    def test_havrouta_hearot_stay_standalone_books(self):
+        havrouta = "הערות על חברותא על ברכות"
+        self.repo.write({f"{RISHONIM}/{havrouta}.txt": book_text(havrouta)})
+        self.write_tables(protection=[["MoreBooks", havrouta, "1"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
 
     def test_an_invalid_level_fails(self):
         self.write_tables(protection=[["MoreBooks", OTHER, "0"]])
