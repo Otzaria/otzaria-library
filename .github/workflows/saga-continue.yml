@@ -278,9 +278,12 @@ jobs:
           title="manual-generate-release correlation=$CORRELATION_ID"
           private_args=()
           if [ -n "$PRIVATE_REPO$PRIVATE_TAG$PRIVATE_ASSET_SHA" ]; then
-            [[ "$PRIVATE_REPO" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]
-            [[ "$PRIVATE_TAG" =~ ^[A-Za-z0-9._-]{1,100}$ ]]
-            [[ "$PRIVATE_ASSET_SHA" =~ ^[0-9a-f]{64}$ ]]
+            if ! [[ "$PRIVATE_REPO" =~ ^[A-Za-z0-9-]+/[A-Za-z0-9_.-]+$ \
+                && "$PRIVATE_TAG" =~ ^[A-Za-z0-9._-]{1,100}$ \
+                && "$PRIVATE_ASSET_SHA" =~ ^[0-9a-f]{64}$ ]]; then
+              echo "::error::PRIVATE_BOOKS_REPO/TAG/ASSET_SHA256 must be all set and valid, or all empty"
+              exit 1
+            fi
             private_args=(-f private_repo="$PRIVATE_REPO" -f private_tag="$PRIVATE_TAG"
               -f private_asset_sha256="$PRIVATE_ASSET_SHA")
           fi
