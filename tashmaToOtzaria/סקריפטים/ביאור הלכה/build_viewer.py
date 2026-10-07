@@ -42,7 +42,7 @@ OUT_LINKS = HERE / "shaar_links.json"
 OUT_INDEX = HERE / "viewer_index.json"
 
 PRELUDE_SIMANIM = {"הקדמה", "הקדמה להלכות שבת"}
-sh_pattern = re.compile(r"<@#שער הציון#([^#]+)#(.+?)[:.]?\s*@>", re.DOTALL)
+sh_pattern = re.compile(r"<@#שער הציון#([^#]+)#(.+?)\s*@>", re.DOTALL)
 HEB = re.compile(r"[א-ת]")
 
 # Some simanim lump a whole "קונטרס" into a single ס"ק in the Tashma source while
