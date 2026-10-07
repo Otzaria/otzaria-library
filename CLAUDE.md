@@ -121,9 +121,16 @@ CSV לפי RFC-4180 ב־UTF-8, עם שורת כותרת:
 | `book_protection.csv` | `sourceName,bookName,level` | `1` = בלי ייצוא לעריכה והגבלת העתקה; `2` = גם בלי ייצוא PDF והגבלת הדפסה |
 
 `sourceName` הוא שם תיקיית המקור העליונה (`KSK`, `National-LibraryToOtzaria`), כמו `source.name`
-ב־DB. `bookName` ריק = ברירת מחדל לכל ספרי המקור; שורה עם `bookName` (שם קובץ ה־`.txt` בלי סיומת)
-גוברת עליה. שורת ספר שלא נמצא: ב־`book_banners.csv` אזהרה, ב־`book_protection.csv` **כישלון בנייה**. שינוי שם של ספר מוגן
-לא מתעדכן כאן אוטומטית — צריך לעדכן את השורה ידנית.
+ב־DB. `bookName` ריק = ברירת מחדל לכל ספרי המקור; שורה עם `bookName` גוברת עליה. `bookName` הוא
+שם הספר הסופי ב־DB: איות `book.title` של שם קובץ ה־`.txt`, **אחרי** `book_renames.csv`.
+
+`validate_fordb_book_names.py` בודק כל שורה מול ספרי אותו מקור: בהגנה שורה שלא נמצאה מפילה את
+הבדיקה (וגם המחולל נכשל), בבאנר היא רק אזהרה. שינוי שם של קובץ ספר מתעדכן בשני הקבצים אוטומטית,
+רק בשורות של אותו מקור.
+
+ספרים ממאגר פרטי: `saga-continue.yml` מעביר ל־`manual-generate-release` את משתני המאגר
+`PRIVATE_BOOKS_REPO`, `PRIVATE_BOOKS_TAG` ו־`PRIVATE_BOOKS_ASSET_SHA256` (כולם או אף אחד). הם נקראים
+בזמן שלב S1 ואינם מקובעים ב־saga-state, כך שהרצה חוזרת של S1 לוקחת את ערכיהם העדכניים.
 
 ## שינוי שם של קובץ ספר קיים
 
@@ -131,8 +138,8 @@ CSV לפי RFC-4180 ב־UTF-8, עם שורת כותרת:
 שם. ב־push ל־main ה־CI (`validate-fordb-book-names.yml`, [fordb_book_renames.py](.github/scripts/fordb_book_renames.py))
 עוקב אחרי זה בעצמו: לכל קובץ `.txt` נארז ששונה בשמו מאז הריצה המוצלחת האחרונה, הוא
 מחליף את השם הישן בחדש ב־`book_info.csv` (כל השורות של הספר), `book_moves.csv`,
-`sefaria_metadata_changes.csv`, `ForDB/all_metadata.json`, `metadata.json`,
-`all_metadata_with_file_paths.json`, ובשורשי ה־links הנארזים (שם קובץ ה־`_links.json`,
+`sefaria_metadata_changes.csv`, `book_banners.csv` ו־`book_protection.csv` (רק באותו מקור),
+`ForDB/all_metadata.json`, `metadata.json`, `all_metadata_with_file_paths.json`, ובשורשי ה־links הנארזים (שם קובץ ה־`_links.json`,
 `path_2`, ו־`heRef_2` כשהוא מתחיל בשם). שינוי שמשנה רק גרשיים (`הבח` → `הב”ח`) מתוקן
 באיות ה־DB.
 
