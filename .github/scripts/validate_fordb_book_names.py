@@ -31,8 +31,9 @@ sefariaToOtzaria/.../otzaria/utils.py):
     "sefaria" היא שגיאה — שלב seed-המטא-דאטה (SeedAllMetadataPostProcess) מתאים לפי
     כותרת ודורס את book.sourceId מ-"Sefaria" ל-Dicta/וכו' (updateBookMetadata), וכך
     "אודות הספר" מציג מקור שגוי. מקורה בדרך כלל ברשומה כפולה (sefaria + לא-ספריא) במטא-דאטה.
-  * book_protection / book_banners: sourceName חייב להיות מקור נארז, ו-bookName (אם אינו ריק)
-    book.title סופי של ספר מאותו מקור. בהגנה זו שגיאה, בבאנר אזהרה.
+  * book_protection / book_banners: bookName (אם אינו ריק) חייב להיות book.title סופי של ספר
+    מאותו מקור - בהגנה שגיאה, בבאנר אזהרה - ולא 'הערות על X' שממוזג ל-X (שגיאה בשניהם).
+    sourceName שאינו מקור במאגר (מאגר פרטי) הוא אזהרה בלבד.
   * book_renames.csv: שם ה*מקור* (העמודה השמאלית) מול sources - הספר שמשנים חייב להתקיים
     (שינוי לא "יתום"). שם היעד אינו נבדק בנפרד.
   * כפילויות שם בתוך ה-ZIP: שני קבצי ספרים שונים עם אותו שם מנוקה בתיקיות הנארזות
@@ -331,29 +332,45 @@ def packaged_titles_by_source(rename_pairs):
     return by_source
 
 
+# HearotCompanionMerge.isMergeableCompanionTitle של המחולל: 'הערות על X' (חוץ מחברותא)
+# שמקושר מ-X ממוזג לתוכו כהערות שוליים, ואינו ספר נפרד ב-DB.
+COMPANION_PREFIX = "הערות על "
+HAVROUTA_COMPANION_PREFIX = "הערות על חברותא"
+
+
+def is_mergeable_companion_title(title):
+    return title.startswith(COMPANION_PREFIX) and not title.startswith(HAVROUTA_COMPANION_PREFIX)
+
+
 def check_source_scoped_rows(path, by_source, pending_renames, value_column=None):
     """
     בודק את שורות book_banners.csv / book_protection.csv. מחזיר
-    (שגיאות מקור/ערך, שורות ספר שלא נמצאו) - כל אחת [(מזהה, ערך, סיבה)].
-    bookName חייב להיות book.title הסופי של ספר *מאותו מקור*.
+    (שגיאות, שורות ספר שלא נמצאו, מקורות שאינם במאגר) - כל אחת [(מזהה, ערך, סיבה)].
+    bookName חייב להיות book.title הסופי של ספר *מאותו מקור*. מקור שאינו כאן עשוי
+    להגיע ממאגר פרטי בזמן הבנייה, ולכן אינו נבדק כאן (המחולל נכשל עליו בעצמו).
     """
     if not os.path.exists(path):
-        return [], []
+        return [], [], []
     header, rows = read_csv_rows(path, has_header=True)
     s_idx, b_idx = col_index(header, "sourceName"), col_index(header, "bookName")
     v_idx = col_index(header, value_column) if value_column else None
     sources = known_sources()
-    errors, unresolved = [], []
+    errors, unresolved, foreign = [], [], []
     for line_no, row in enumerate(rows, start=2):
         if not row:
             continue
         identifier = f"שורה {line_no}"
         source, name = row[s_idx], row[b_idx]
-        if source not in sources:
-            errors.append((identifier, source, "sourceName אינו מקור נארז"))
-            continue
         if v_idx is not None and not re.fullmatch(r"[1-9][0-9]*", row[v_idx]):
             errors.append((identifier, row[v_idx], f"{value_column} חייב להיות מספר שלם 1 ומעלה"))
+        if name and is_mergeable_companion_title(db_title(name)):
+            base = db_title(name)[len(COMPANION_PREFIX):]
+            errors.append((identifier, name, f"קובץ הערות נלווה שהמחולל ממזג לספר {base!r}; "
+                                             f"יש לכתוב את השורה לספר הבסיס"))
+            continue
+        if source not in sources:
+            foreign.append((identifier, source, "sourceName אינו מקור במאגר זה (מאגר פרטי?)"))
+            continue
         if not name:
             continue
         books = by_source.get(source, {})
@@ -368,7 +385,7 @@ def check_source_scoped_rows(path, by_source, pending_renames, value_column=None
             unresolved.append((identifier, name, f"אין ספר כזה במקור {source}"))
         elif name not in spellings:
             unresolved.append((identifier, name, f"האיות ב-DB: {sorted(spellings)[0]!r}"))
-    return errors, unresolved
+    return errors, unresolved, foreign
 
 
 def find_dead_renames(rename_pairs, db_raw_titles):
@@ -1127,14 +1144,17 @@ def main():
     #    שנופלת בשקט גרועה מבנייה שנכשלת, ולכן שם זו שגיאה; בבאנר — אזהרה בלבד.
     by_source = packaged_titles_by_source(rename_pairs)
     scoped = {}
-    p_errors, p_unresolved = check_source_scoped_rows(BOOK_PROTECTION, by_source, pending_renames, "level")
+    p_errors, p_unresolved, p_foreign = check_source_scoped_rows(
+        BOOK_PROTECTION, by_source, pending_renames, "level")
     if p_errors or p_unresolved:
         scoped["ForDB/book_protection.csv"] = p_errors + p_unresolved
-    b_errors, b_unresolved = check_source_scoped_rows(BOOK_BANNERS, by_source, pending_renames)
+    b_errors, b_unresolved, b_foreign = check_source_scoped_rows(BOOK_BANNERS, by_source, pending_renames)
     if b_errors:
         scoped["ForDB/book_banners.csv"] = b_errors
-    for identifier, name, reason in b_unresolved:
-        print(f"::warning::ForDB/book_banners.csv {identifier}: {name!r} — {reason}")
+    for file_label, items in (("ForDB/book_protection.csv", p_foreign),
+                              ("ForDB/book_banners.csv", b_unresolved + b_foreign)):
+        for identifier, value, reason in items:
+            print(f"::warning::{file_label} {identifier}: {value!r} — {reason}")
 
     print_rename_report(resolution, rename_plan, applied=args.fix)
     if args.fix:
