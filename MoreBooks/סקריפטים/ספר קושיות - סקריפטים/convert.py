@@ -27,9 +27,29 @@ def gematria(n):
 
 def norm(s): return re.sub(r'\s+', ' ', s)
 
+# NOTEREF field -> mark of the note it names, for fields saved without a result.
+# Only a blank field after a space lacks its number; others are stray leftovers.
+REFMARK = {}
+
+def note_ref_marks(body):
+    """_Ref bookmark name -> mark of the first note reference at/after its start."""
+    pending, marks, fn_no, en_no = [], {}, 0, 0
+    for x in body.iter():
+        if x.tag == W + 'bookmarkStart' and x.get(W + 'name', '').startswith('_Ref'):
+            pending.append(x.get(W + 'name'))
+        elif x.tag in (W + 'footnoteReference', W + 'endnoteReference'):
+            if x.tag == W + 'footnoteReference':
+                fn_no += 1; mark = str(fn_no)
+            else:
+                en_no += 1; mark = gematria(en_no)
+            for name in pending: marks.setdefault(name, mark)
+            pending = []
+    return marks
+
 def runs_of(p):
     """(kind, text, bold) in document order; kind: t / fn / en."""
     out = []
+    fld = None   # [instr, has_result] of the open field
     for r in p.iter(W + 'r'):
         rp = r.find(W + 'rPr')
         b = rp is not None and rp.find(W + 'b') is not None and \
@@ -40,6 +60,17 @@ def runs_of(p):
             elif x.tag == W + 'br': out.append(('t', ' ', b))
             elif x.tag == W + 'footnoteReference': out.append(('fn', x.get(W + 'id'), b))
             elif x.tag == W + 'endnoteReference': out.append(('en', x.get(W + 'id'), b))
+            elif x.tag == W + 'instrText' and fld: fld[0] += x.text or ''
+            elif x.tag == W + 'fldChar':
+                t = x.get(W + 'fldCharType')
+                if t == 'begin': fld = ['', False]
+                elif t == 'separate' and fld: fld[1] = True
+                elif t == 'end' and fld:
+                    m = re.match(r'\s*NOTEREF\s+(\S+)', fld[0])
+                    prev = ''.join(t for k, t, _ in out if k == 't')[-1:]
+                    if m and not fld[1] and prev.isspace():
+                        out.append(('t', REFMARK[m.group(1)], b))
+                    fld = None
     return out
 
 def render(items):
@@ -82,9 +113,10 @@ def notes_map(z, part, tag, reftag):
 def main():
     src, out = sys.argv[1], sys.argv[2]
     z = zipfile.ZipFile(src)
+    body = ET.fromstring(z.read('word/document.xml')).find(W + 'body')
+    REFMARK.update(note_ref_marks(body))
     fns = notes_map(z, 'footnotes', 'footnote', 'footnoteRef')
     ens = notes_map(z, 'endnotes', 'endnote', 'endnoteRef')
-    body = ET.fromstring(z.read('word/document.xml')).find(W + 'body')
     paras = [p for p in body.iter(W + 'p')]
     ptext = lambda p: norm(''.join(t for k, t, b in runs_of(p) if k == 't')).strip()
     assert ptext(paras[0]) == TITLE and ptext(paras[3]) == TITLE

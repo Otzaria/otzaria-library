@@ -8,6 +8,7 @@ vocabulary scores a candidate mapping, and hill-climbing on the score recovers
 the permutation.
 """
 import collections
+import os
 import random
 import re
 import sys
