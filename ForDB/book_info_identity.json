@@ -1,1 +1,19 @@
-{"schemaVersion": 1, "events": []}
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": 1,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגרות משה אורח חיים ה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אגרות משה אורח חיים ה",
+        "authorName": "ר' משה פיינשטיין"
+      },
+      "commit": null,
+      "changeSetId": "6ac64aa005621ef97d68df2a"
+    }
+  ]
+}
