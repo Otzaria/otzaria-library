@@ -268,10 +268,22 @@ jobs:
           OTZARIA_ASSET_SHA: ${{ steps.otzaria.outputs.asset_sha256 }}
           FORDB_TAG: ${{ steps.fordb.outputs.tag }}
           FORDB_ARCHIVE_SHA: ${{ steps.fordb.outputs.sha256 }}
+          # Optional private books release; all empty (the default) passes nothing.
+          PRIVATE_REPO: ${{ vars.PRIVATE_BOOKS_REPO }}
+          PRIVATE_TAG: ${{ vars.PRIVATE_BOOKS_TAG }}
+          PRIVATE_ASSET_SHA: ${{ vars.PRIVATE_BOOKS_ASSET_SHA256 }}
         shell: bash
         run: |
           set -euo pipefail
           title="manual-generate-release correlation=$CORRELATION_ID"
+          private_args=()
+          if [ -n "$PRIVATE_REPO$PRIVATE_TAG$PRIVATE_ASSET_SHA" ]; then
+            [[ "$PRIVATE_REPO" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]
+            [[ "$PRIVATE_TAG" =~ ^[A-Za-z0-9._-]{1,100}$ ]]
+            [[ "$PRIVATE_ASSET_SHA" =~ ^[0-9a-f]{64}$ ]]
+            private_args=(-f private_repo="$PRIVATE_REPO" -f private_tag="$PRIVATE_TAG"
+              -f private_asset_sha256="$PRIVATE_ASSET_SHA")
+          fi
           tool_ref="$(jq -r .seforim_tool_ref manual_links_sync.json)"
           [[ "$tool_ref" =~ ^refs/heads/[A-Za-z0-9._/-]+$ ]]
           workflow_ref="${tool_ref#refs/heads/}"
@@ -302,7 +314,7 @@ jobs:
             -f fordb_tag="$FORDB_TAG" -f fordb_archive_sha256="$FORDB_ARCHIVE_SHA" \
             -f expected_links_commit="$EXPECTED_COMMIT" -f otzaria_target_commit="$EXPECTED_COMMIT" \
             -f correlation_id="$CORRELATION_ID" -f saga_run_id="$SAGA_RUN_ID" \
-            -f saga_run_attempt="$SAGA_RUN_ATTEMPT"
+            -f saga_run_attempt="$SAGA_RUN_ATTEMPT" "${private_args[@]}"
           echo "Seforim child submission accepted; S1 complete."
       - name: Re-download authoritative Otzaria result for S2
         id: s2_otzaria
