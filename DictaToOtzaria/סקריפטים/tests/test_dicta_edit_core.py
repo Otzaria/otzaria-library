@@ -237,15 +237,35 @@ class Validate(unittest.TestCase):
 
 
 class ColonNewline(unittest.TestCase):
-    def test_body_only_not_quotes_not_inside_tags(self):
-        # הגרסה הקודמת שברה אחרי כל ':' + רווח, כולל וז"ל: ובתוך <b>
-        text = (H + "<h2>כותרת: משנה</h2>\nוהוא פשוט: ועוד קשה: וז\"ל: כך כתב\n"
+    def test_body_only_not_short_quotes_not_inside_tags(self):
+        # ציטוט קצר שנגמר (עכ"ל) והטקסט נמשך — באמצע משפט; לא בכותרת ולא בתוך <b>
+        text = (H + "<h2>כותרת: משנה</h2>\nוהוא פשוט: ועוד קשה: וז\"ל: אסור. עכ\"ל ומה שכתב\n"
                 "<b>מחצלת: עשויה</b> מחלף: סוף:")
         new, n = core.colon_newline(text)
         self.assertEqual(new.split("\n")[2:], [
-            "<h2>כותרת: משנה</h2>", "והוא פשוט:", "ועוד קשה:", "וז\"ל: כך כתב",
+            "<h2>כותרת: משנה</h2>", "והוא פשוט:", "ועוד קשה:", "וז\"ל: אסור. עכ\"ל ומה שכתב",
             "<b>מחצלת: עשויה</b> מחלף:", "סוף:"])
         self.assertEqual(n, 3)
+
+    def test_dibbur_opening_is_new_paragraph(self):
+        # ד"ה אחרי סוף עניין פותח פסקה; אחרי הפניה לדף או בסוגריים — המשך המשפט
+        self.assertTrue(core.colon_ends_matter("וזה ברור", 'ד"ה ומה שכתב'))
+        self.assertTrue(core.colon_ends_matter("ודו\"ק", '<b>בד"ה</b> אלא'))
+        self.assertFalse(core.colon_ends_matter("תוס' שם פ\"ה", 'ד"ה בעי כתבו'))
+        self.assertFalse(core.colon_ends_matter("מתוס' יומא (לב", 'ד"ה הוי) ועוד'))
+
+    def test_quote_intro_opening_a_paragraph(self):
+        # ז"ל לבדו אחרי שם הוא תואר כבוד; וז"ל: שאחריו ציטוט שלם — פסקה חדשה
+        self.assertTrue(core.colon_ends_matter('כדברי הב"י ז"ל', "ולענין הלכה"))
+        self.assertTrue(core.colon_ends_matter('וכתב וז"ל', "אסור להראות סכין לחכם ביום טוב"))
+        self.assertTrue(core.colon_ends_matter('וכתב וז"ל', "<b>ולענין</b> הלכה"))
+        self.assertFalse(core.colon_ends_matter('וכתב וז"ל', 'אסור. עכ"ל ומה שכתב'))
+
+    def test_open_parenthesis_must_close_right_away(self):
+        self.assertFalse(core.colon_ends_matter("כמו שכתבו התוס' (דף", 'פ"ו ע"א) בד"ה'))
+        self.assertTrue(core.colon_ends_matter("ובפסחים (הגה\"ה", "ולכאורה יש להוכיח"))
+        self.assertTrue(core.colon_ends_matter("(בס' אהל נפתלי דף מ\"א", "כג) בה' יתרת מעי"))
+        self.assertTrue(core.colon_ends_matter("(בס' אהל נפתלי דף מ\"א", "(ג) ולכאורה"))
 
     def test_daf_reference_not_split(self):
         # QA 6: "שבת קיט: ובגמ'" — הנקודותיים הן עמוד ב

@@ -109,8 +109,12 @@ class NewFormatSegmentation(unittest.TestCase):
 
     def test_colon_not_split_after_quote_intro_parens_or_inside_bold(self):
         # ": " שאינו סוף עניין נשאר באותה שורה (אותם כללים כמו colon_newline)
-        quote = new_page(("וכתב", "marked-paragraph"), ('וז"ל:',), ("אין",), ("לומר",))
-        self.assertEqual(DC.convert_pages([quote]), 'וכתב וז"ל: אין לומר\n')
+        quote = new_page(("וכתב", "marked-paragraph"), ('וז"ל:',), ("אין.",), ('עכ"ל',), ("ומה",))
+        self.assertEqual(DC.convert_pages([quote]), 'וכתב וז"ל: אין. עכ"ל ומה\n')
+        long_quote = new_page(("וכתב", "marked-paragraph"), ('וז"ל:',), ("אין",), ("לומר",))
+        self.assertEqual(DC.convert_pages([long_quote]), 'וכתב וז"ל:\nאין לומר\n')
+        dibbur = new_page(("ברור:", "marked-paragraph"), ('ד"ה',), ("ומה",))
+        self.assertEqual(DC.convert_pages([dibbur]), 'ברור:\nד"ה ומה\n')
         paren = new_page(("כדאיתא", "marked-paragraph"), ("(שבת",), ("קיט:",), ('ד"ה',), ("ומה)",))
         self.assertEqual(DC.convert_pages([paren]), 'כדאיתא (שבת קיט: ד"ה ומה)\n')
         bold = new_page(("מחצלת:", "bold", "marked-paragraph"), ("עשויה", "bold"), ("מחלף",))
