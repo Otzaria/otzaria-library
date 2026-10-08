@@ -446,13 +446,24 @@ def unmatched_close_tail(t):
     return t.endswith(")") and depth == -1
 
 
+def open_parens(t):
+    """עומק הסוגריים הפתוחים בסוף [t]; ")" יתום לפני כן לא סוגר "(" שבא אחריו."""
+    depth = 0
+    for ch in t:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(depth - 1, 0)
+    return depth
+
+
 def editor_comment(m, editor_notes, before):
     """הערת Word של העורך: הכותרת (שם + חותמת זמן) נמחקת, הגוף נשמר להערה נלווית
     ובמקומו סמן; ")" שסוגר סוגריים פתוחים בפסקה שלפניה ([before]) נשאר בטקסט."""
     body = m.group(1)
     tail = re.search(r"[\s.;,?!:]*\)\s*$", body)
     keep = ""
-    if tail and before.count("(") > before.count(")"):
+    if tail and open_parens(before):
         keep, body = re.sub(r"\s+", "", tail.group()), body[:tail.start()]
     segs = []
     for s in body.split("\r"):
@@ -481,8 +492,10 @@ def replace_editor_comments(text, editor_notes):
     for m in WORD_COMMENT_RE.finditer(text):
         out.append(text[pos:m.start()])
         done = "".join(out)
-        start = max(done.rfind("\n\n"), done.rfind("<p"), len(done) - 3000)
-        out.append(editor_comment(m, editor_notes, re.sub(r"<[^<>]*>", "", done[start:])))
+        start = max(done.rfind("\n\n"), done.rfind("<p"), len(done) - 3000, 0)
+        # ")" שבא מיד אחרי ההערה כבר סוגר בעצמו את מה שנפתח לפניה
+        closes = re.match(r"[\s)]*", re.sub(r"<[^<>]*>", "", text[m.end():m.end() + 200])).group()
+        out.append(editor_comment(m, editor_notes, re.sub(r"<[^<>]*>", "", done[start:]) + closes))
         pos = m.end()
     out.append(text[pos:])
     return "".join(out)
