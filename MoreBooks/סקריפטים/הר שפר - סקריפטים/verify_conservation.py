@@ -4,9 +4,12 @@ PDFPATH, OUTDIR = sys.argv[1], sys.argv[2]
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.argv = ["x", PDFPATH, os.path.join(OUTDIR, "events.json")]
 import extract_pdf as X, pymupdf
+from copyright_line import COPYRIGHT_LINE
 doc = pymupdf.open(X.PDF)
 inc = [p for p in range(1, len(doc)+1) if p not in X.SKIP]
 out_base = open(os.path.join(OUTDIR, "הר שפר.txt"), encoding="utf-8").read()
+assert out_base.count(COPYRIGHT_LINE) == 1, "שורת זכויות היוצרים חסרה"
+out_base = out_base.replace(COPYRIGHT_LINE, "")  # לא קיימת ב־PDF
 out_notes = open(os.path.join(OUTDIR, "הערות על הר שפר.txt"), encoding="utf-8").read()
 def toks(s):
     s = re.sub(r"<[^>]+>", " ", s)

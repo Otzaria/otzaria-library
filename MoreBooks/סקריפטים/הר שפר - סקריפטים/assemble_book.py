@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """events.json -> הר שפר.txt + הערות על הר שפר.txt + הר שפר_links.json"""
-import json, re, sys, collections
+import json, os, re, sys, collections
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from copyright_line import COPYRIGHT_LINE  # שורה 3 של הספר
 
 EV = sys.argv[1]
 OUTDIR = sys.argv[2]
@@ -139,6 +142,7 @@ def split_sig(text):
 # שער והקדשה
 add_line("h", f"<h1>{TITLE}</h1>")
 add_line("t", AUTHOR_LINE)
+add_line("t", COPYRIGHT_LINE)
 
 SEC_BIO, SEC_C1, SEC_C2, SEC_C3, SEC_B = "bio", "c1", "c2", "c3", "B"
 cur_sec = None
