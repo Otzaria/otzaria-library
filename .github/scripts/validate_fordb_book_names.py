@@ -32,7 +32,8 @@ sefariaToOtzaria/.../otzaria/utils.py):
     כותרת ודורס את book.sourceId מ-"Sefaria" ל-Dicta/וכו' (updateBookMetadata), וכך
     "אודות הספר" מציג מקור שגוי. מקורה בדרך כלל ברשומה כפולה (sefaria + לא-ספריא) במטא-דאטה.
   * book_protection / book_banners: bookName (אם אינו ריק) חייב להיות book.title סופי של ספר
-    מאותו מקור - בהגנה שגיאה, בבאנר אזהרה - ולא 'הערות על X' שממוזג ל-X (שגיאה בשניהם).
+    מאותו מקור - בהגנה שגיאה, בבאנר אזהרה. כותרת 'הערות על X' לבדה אינה מעידה על מיזוג;
+    ההכרעה מול הספרים שנותרו ב-DB נעשית במחולל אחרי המיזוג ושינויי השמות.
     sourceName שאינו מקור במאגר (מאגר פרטי) הוא אזהרה בלבד.
   * book_renames.csv: שם ה*מקור* (העמודה השמאלית) מול sources - הספר שמשנים חייב להתקיים
     (שינוי לא "יתום"). שם היעד אינו נבדק בנפרד.
@@ -332,22 +333,15 @@ def packaged_titles_by_source(rename_pairs):
     return by_source
 
 
-# HearotCompanionMerge.isMergeableCompanionTitle של המחולל: 'הערות על X' (חוץ מחברותא)
-# שמקושר מ-X ממוזג לתוכו כהערות שוליים, ואינו ספר נפרד ב-DB.
-COMPANION_PREFIX = "הערות על "
-HAVROUTA_COMPANION_PREFIX = "הערות על חברותא"
-
-
-def is_mergeable_companion_title(title):
-    return title.startswith(COMPANION_PREFIX) and not title.startswith(HAVROUTA_COMPANION_PREFIX)
-
-
 def check_source_scoped_rows(path, by_source, pending_renames, value_column=None):
     """
     בודק את שורות book_banners.csv / book_protection.csv. מחזיר
     (שגיאות, שורות ספר שלא נמצאו, מקורות שאינם במאגר) - כל אחת [(מזהה, ערך, סיבה)].
     bookName חייב להיות book.title הסופי של ספר *מאותו מקור*. מקור שאינו כאן עשוי
     להגיע ממאגר פרטי בזמן הבנייה, ולכן אינו נבדק כאן (המחולל נכשל עליו בעצמו).
+    קבצי 'הערות על X' עשויים להישאר ספרים עצמאיים: המחולל ממזג רק קישורים ותוכן בטוחים
+    ומלאים. בדיקה זו רואה שמות קבצים בלבד; SeedBookNotices בודק התאמה ל-DB הסופי
+    ונכשל על שורת הגנה ללא ספר, כולל קובץ הערות שמוזג (באנר ללא התאמה הוא אזהרה).
     """
     if not os.path.exists(path):
         return [], [], []
@@ -363,11 +357,6 @@ def check_source_scoped_rows(path, by_source, pending_renames, value_column=None
         source, name = row[s_idx], row[b_idx]
         if v_idx is not None and not re.fullmatch(r"[1-9][0-9]*", row[v_idx]):
             errors.append((identifier, row[v_idx], f"{value_column} חייב להיות מספר שלם 1 ומעלה"))
-        if name and is_mergeable_companion_title(db_title(name)):
-            base = db_title(name)[len(COMPANION_PREFIX):]
-            errors.append((identifier, name, f"קובץ הערות נלווה שהמחולל ממזג לספר {base!r}; "
-                                             f"יש לכתוב את השורה לספר הבסיס"))
-            continue
         if source not in sources:
             foreign.append((identifier, source, "sourceName אינו מקור במאגר זה (מאגר פרטי?)"))
             continue
