@@ -742,7 +742,9 @@ class SourceScopedTablesTest(FixtureTestCase):
         self.assertIn("::warning::ForDB/book_protection.csv", output)
         self.assertEqual(output.count("אינו מקור במאגר זה"), 2, output)
 
-    def test_a_merged_companion_fails_and_names_the_base_book(self):
+    def test_non_havrouta_hearot_stay_standalone_books(self):
+        # A packaged notes file and its base do not prove a safe, complete merge.
+        # The preflight must accept both notice tables; the generator resolves the final DB.
         companion = f"הערות על {OTHER}"
         self.repo.write({f"{RISHONIM}/{companion}.txt": book_text(companion)})
         for protection, banners in (([["MoreBooks", companion, "1"]], []),
@@ -750,8 +752,9 @@ class SourceScopedTablesTest(FixtureTestCase):
             with self.subTest(protection=bool(protection)):
                 self.write_tables(protection=protection, banners=banners)
                 code, output = self.repo.run_validator()
-                self.assertEqual(code, 1, output)
-                self.assertIn(f"שהמחולל ממזג לספר '{OTHER}'", output)
+                self.assertEqual(code, 0, output)
+                self.assertNotIn("::warning::ForDB/book_protection.csv", output)
+                self.assertNotIn("::warning::ForDB/book_banners.csv", output)
 
     def test_havrouta_hearot_stay_standalone_books(self):
         havrouta = "הערות על חברותא על ברכות"
