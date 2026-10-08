@@ -213,5 +213,30 @@ class GluedHeadings(unittest.TestCase):
         self.assertEqual(R.split_glued_headings([line], new)[0], [line])
 
 
+class Pictures(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        os.makedirs(os.path.join(self.tmp.name, 'Books'))
+        os.makedirs(os.path.join(self.tmp.name, 'Pics', 'book'))
+        with open(os.path.join(self.tmp.name, 'Pics', 'book', '6.JPG'), 'wb') as f:
+            f.write(b'SB{JJ')            # rule tokens inside the data must stay as they are
+        self.root, E.SRC_ROOT = E.SRC_ROOT, os.path.join(self.tmp.name, 'Books')
+
+    def tearDown(self):
+        E.SRC_ROOT = self.root
+        self.tmp.cleanup()
+
+    def lines(self, body):
+        return [l['html'] for l in E.convert('x.txt', text=source(body + '\nטקסט', '#rep={=<b>^^SB=('))[1]]
+
+    def test_source_picture_becomes_a_data_uri(self):
+        out = self.lines('<div align=center><img style="width:500;" src="../Pics/book/6.jpg"></div>')
+        self.assertEqual(out[0], '<img src="data:image/jpeg;base64,U0J7Sko=" style="max-width: 100%;"/>')
+
+    def test_missing_picture_is_dropped(self):
+        self.assertEqual(self.lines('<img src="../Pics/book/7.jpg">'), ['טקסט'])
+
+
 if __name__ == '__main__':
     unittest.main()

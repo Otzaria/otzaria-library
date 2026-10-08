@@ -20,6 +20,7 @@ Usage:
     python te_convert.py --src "<Torat Emet dir>" 042_IYUNIM/030_RavZilber1.txt --check
 """
 import argparse
+import base64
 import sys
 import html as html_mod
 import json
@@ -138,6 +139,50 @@ def apply_rules(text, rules, markers=True):
     return re.sub('[\U000F0000-\U000FFFFD]', lambda m: store[ord(m.group(0)) - PROTECT_BASE], text)
 
 
+# ---------------------------------------------------------------- pictures
+PIC_RE = re.compile(r'<img\b[^<>]*?\bsrc\s*=\s*["\']?\.\.[/\\]Pics[/\\]([^"\'\s<>]+)["\']?[^<>]*>', re.I)
+PIC_BASE = 0x100000    # plane 16: apart from PROTECT_BASE
+PIC_MIME = {'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'gif': 'image/gif'}
+
+
+def find_pic(rel):
+    """Path of Pics/<rel> next to the books directory, matching names case-insensitively
+    ('6.jpg' is 6.JPG on disk), or None."""
+    path = os.path.join(SRC_ROOT, '..', 'Pics')
+    for part in re.split(r'[/\\]', rel):
+        if not os.path.isdir(path):
+            return None
+        names = {n.lower(): n for n in os.listdir(path)}
+        if part.lower() not in names:
+            return None
+        path = os.path.join(path, names[part.lower()])
+    return path if os.path.isfile(path) else None
+
+
+def pic_tag(rel):
+    """The source picture as an inline data URI, or '' when it is missing."""
+    path = find_pic(rel)
+    mime = PIC_MIME.get(rel.rsplit('.', 1)[-1].lower())
+    if not path or not mime:
+        print(f'picture not found: Pics/{rel}', file=sys.stderr)
+        return ''
+    data = base64.b64encode(open(path, 'rb').read()).decode('ascii')
+    return f'<img src="data:{mime};base64,{data}" style="max-width: 100%;"/>'
+
+
+def hide_pics(line, pics):
+    """Pictures of the source line itself (not those a rule makes) -> placeholders, so
+    the rules cannot replace inside them; LineRenderer emits them as data-URI images."""
+    def sub(m):
+        pics.append(pic_tag(m.group(1)))
+        return chr(PIC_BASE + len(pics) - 1)
+    return PIC_RE.sub(sub, line)
+
+
+def show_pics(text):
+    return re.sub('[\U00100000-\U0010FFFD]', lambda m: f'<pic n={ord(m.group(0)) - PIC_BASE}>', text)
+
+
 # ---------------------------------------------------------------- tag sanitizing
 SIMPLE = {'b': 'b', 'strong': 'b', 'i': 'i', 'em': 'i', 'u': 'u', 'big': 'big', 'small': 'small',
           'sup': 'sup', 'sub': 'sub'}
@@ -186,7 +231,8 @@ class LineRenderer:
     rest of the book.
     """
 
-    def __init__(self, ignore=()):
+    def __init__(self, ignore=(), pics=()):
+        self.pics = pics       # the source's pictures, by the n of their <pic n=..> placeholder
         self.stack = []        # (tagname, [effects], (source line, tag index)) for every open source tag
         self.skip = 0          # inside <script>
         self.ignore = set(ignore)
@@ -234,6 +280,12 @@ class LineRenderer:
             if name in ('tex', 'teg'):
                 sync(self.dedupe(self.active()))
                 out.append(m.group(0))
+                continue
+            if name == 'pic':
+                pic = self.pics[int(attrs.split('=')[1])] if self.pics else ''
+                if pic:
+                    sync([])
+                    out.append(pic)
                 continue
             if name in VOID:
                 continue
@@ -322,6 +374,7 @@ def convert(rel, text=None, markers=False, levels=None, report=None):
         sigils = [c for c in levels if c in sigils] + [c for c in sigils if c not in levels]
     level_of = {c: i + 2 for i, c in enumerate(s for s in sigils if s != '!')}
     items = []                 # (source line, sigil or None, html after the rules)
+    pics = []
     for i, line in enumerate(body, start=body_start):
         line = line.strip()
         if not line or line.startswith('**INDEX_WRITE') or line.startswith('@PicWidth'):
@@ -330,7 +383,7 @@ def convert(rel, text=None, markers=False, levels=None, report=None):
         if m:
             items.append((i, m.group(1), apply_rules(m.group(2), rules, markers)))
         else:
-            items.append((i, None, apply_rules(line, rules, markers)))
+            items.append((i, None, show_pics(apply_rules(hide_pics(line, pics), rules, markers))))
     # first pass: find the source tags that have no closer. A heading is rendered on its
     # own, so nothing it opens or closes reaches the text around it. A tag still open
     # at a heading may only be closed by the first paragraph after it (a Chavruta quote
@@ -361,7 +414,7 @@ def convert(rel, text=None, markers=False, levels=None, report=None):
     if report is not None:
         report['unbalanced'] = sorted(unbalanced)
         report['carried'] = sorted((o[0] + 1, c + 1, n, e) for n, e, o, c in probe.closed if c > o[0])
-    rend = LineRenderer(ignore)
+    rend = LineRenderer(ignore, pics)
     out = []
     for i, sig, h in items:
         if sig:
