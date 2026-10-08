@@ -51,6 +51,8 @@ jobs:
             /MoreBooks/סקריפטים/
             /OnYourWayToOtzaria/סקריפטים/ובלכתך_בדרך.py
             /OnYourWayToOtzaria/סקריפטים/test_onyourway_headings.py
+            /OraytaToOtzaria/סקריפטים/orayta_convert.py
+            /OraytaToOtzaria/סקריפטים/test_orayta_convert.py
             /ToratEmetToOtzaria/סקריפטים/te_convert.py
             /ToratEmetToOtzaria/סקריפטים/te_reapply.py
             /ToratEmetToOtzaria/סקריפטים/test_te_reapply.py
@@ -115,6 +117,13 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
         run: python3 -m unittest -v test_install_paths
+
+      # ממיר אורייתא: סוגר ")" של הערות העורך (גמרא נוחה), טקסט סינתטי בלבד.
+      - name: Orayta converter suite
+        working-directory: OraytaToOtzaria/סקריפטים
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python3 -m unittest -v test_orayta_convert
 
       # כלי ההמרה של תורת אמת (te_convert / te_reapply): שורות ומקורות סינתטיים,
       # בלי קובצי המקור של תורת אמת.
