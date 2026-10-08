@@ -78,8 +78,8 @@ def wikitext_to_html(wikitext: str, start_heading_level: int = 2) -> str:
 
     # המרת קישורים פנימיים
     protected_text = re.sub(r'\[\[קטגוריה:.*?\]\]', '', protected_text)
-    # היעד לא יכול להכיל סוגריים, אחרת ההתאמה חוצה קישור בלי | ומוחקת טקסט עד ה-| הבא
-    protected_text = re.sub(r'\[\[([^\[\]|]*)\|(.*?)\]\]', r'\2', protected_text)
+    # היעד לא יכול להכיל "[" או "]]", אחרת ההתאמה חוצה קישור בלי | ומוחקת טקסט עד ה-| הבא
+    protected_text = re.sub(r'\[\[((?:[^\[\]|]|\](?!\]))*)\|(.*?)\]\]', r'\2', protected_text)
     protected_text = re.sub(r'\[\[([^\[\]]*?)\]\]', r'\1', protected_text)  # במקרה של לינק בלי |
     # to do: re.dotall
     # המרת טקסט מודגש ('''text''' -> <b>text</b>)

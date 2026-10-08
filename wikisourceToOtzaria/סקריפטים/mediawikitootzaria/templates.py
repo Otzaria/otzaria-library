@@ -158,8 +158,9 @@ def filter_templates(string: str, all_templates: list[str] | None = None, templa
                 template_str = convert_templates(str(template), template_dict)
             elif template_name in footnote_templates:
                 template_str = template_funcs.note_text(template, footnote_templates[template_name])
-            elif replacement_dict.get(template_name):
-                template_str = replacement_dict[template_name](template)
+            elif template_name in replacement_dict:
+                action = replacement_dict[template_name]
+                template_str = action(template) if action else ""
             else:
                 template_str = template_funcs.last_positional(template)
                 unmapped_templates[template_name] += 1
