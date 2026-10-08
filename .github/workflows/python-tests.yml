@@ -57,6 +57,8 @@ jobs:
             /ToratEmetToOtzaria/סקריפטים/te_reapply.py
             /ToratEmetToOtzaria/סקריפטים/test_te_reapply.py
             /pninimToOtzaria/סקריפטים/
+            /wikisourceToOtzaria/סקריפטים/mediawikitootzaria/
+            /wikisourceToOtzaria/סקריפטים/test_mediawikitootzaria.py
             /manual_links_sync.json
             /_insert_sfat_emet_links.py
             /manual_links_packaging.py
@@ -152,6 +154,16 @@ jobs:
           set -euo pipefail
           python3 -m pip install --quiet beautifulsoup4
           python3 -m unittest -v test_pninim_converters test_to_otzaria
+
+      # ממיר ויקיטקסט (ויקיטקסט וספרי ויקי יהודיים): טקסט סינתטי בלבד; wikiexpand מוחלף בבדיקה.
+      - name: Wiki converter suite
+        working-directory: wikisourceToOtzaria/סקריפטים
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet mwparserfromhell wikitextparser gematriapy requests
+          python3 -m unittest -v test_mediawikitootzaria
 
       # רשימה מפורשת ולא discover: test_validate_fordb_book_names ו-
       # test_validate_manual_links_refs יושבות באותה תיקייה ורצות ב-workflows אחרים.
