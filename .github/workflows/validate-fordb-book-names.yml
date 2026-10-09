@@ -175,6 +175,8 @@ jobs:
               "ForDB/sefaria_category_changes.csv",
               "ForDB/sefaria_metadata_changes.csv",
           }
+          # טבלאות book_banner / book_protection; קובץ חסר = אין טבלה.
+          optional = {"ForDB/book_banners.csv", "ForDB/book_protection.csv"}
           paths = sorted(
               (path for path in root.rglob("*") if path.name != ".DS_Store" and path.as_posix() != "ForDB/book_info_identity.json"),
               key=lambda path: path.as_posix().encode(),
@@ -182,9 +184,9 @@ jobs:
           if any(path.is_symlink() for path in paths):
               raise SystemExit("ForDB archive refuses symlinks")
           actual = {path.as_posix() for path in paths if path.is_file()}
-          if actual != expected:
+          if actual - optional != expected:
               missing = sorted(expected - actual)
-              unknown = sorted(actual - expected)
+              unknown = sorted(actual - expected - optional)
               raise SystemExit(
                   "ForDB consumer coverage is incomplete; "
                   f"missing={missing}, files without a runtime validator={unknown}"
