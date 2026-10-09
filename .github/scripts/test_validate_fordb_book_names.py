@@ -11,9 +11,12 @@ with an exact string equality.  These tests pin the two checks that close that
 gap, and run entirely offline: no Sefaria API, no seforim.db.
 """
 
+import csv
 import json
 import os
+import tempfile
 import unittest
+from unittest.mock import patch
 
 import validate_fordb_book_names as validator
 
@@ -192,6 +195,70 @@ class PendingRenameMapTest(unittest.TestCase):
 
     def test_nothing_is_mapped_once_the_fix_applied_the_renames(self):
         self.assertEqual(validator.pending_rename_map(self.resolution("א", "ב"), applied=True), {})
+
+
+class SourceScopedNoticeTest(unittest.TestCase):
+    # This non-Havrouta notes book also exists standalone in the published DB.
+    TITLE = "הערות על שיעורי הגרדש על בבא בתרא"
+    ROOT = "MoreBooks/ספרים/אוצריא/"
+
+    def books(self, titles, renames=()):
+        paths = [self.ROOT + title + ".txt" for title in titles]
+        with patch.object(validator, "list_tracked_paths", return_value=paths):
+            return validator.packaged_titles_by_source(renames)
+
+    def check_row(self, source, title, books, value_column=None, value=None):
+        column = value_column or "text"
+        if value is None:
+            value = "1" if value_column else "באנר"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "notice.csv")
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(["sourceName", "bookName", column])
+                writer.writerow([source, title, value])
+            return validator.check_source_scoped_rows(path, books, {}, value_column)
+
+    def test_standalone_notes_are_valid_for_both_notice_tables(self):
+        # Even the presence of the base file does not prove that links are complete
+        # or content is safe to merge. Only the generator can decide that.
+        books = self.books([self.TITLE, self.TITLE.removeprefix("הערות על ")])
+        for column in (None, "level"):
+            with self.subTest(column=column):
+                self.assertEqual(self.check_row("MoreBooks", self.TITLE, books, column), ([], [], []))
+
+    def test_final_title_may_start_with_notes_prefix_after_rename(self):
+        books = self.books(["ספר עצמאי"], [(2, "ספר עצמאי", self.TITLE)])
+        self.assertEqual(self.check_row("MoreBooks", self.TITLE, books, "level"), ([], [], []))
+
+    def test_private_source_notes_remain_a_warning(self):
+        errors, unresolved, foreign = self.check_row("PrivateBooks", self.TITLE, {}, "level")
+        self.assertEqual((errors, unresolved), ([], []))
+        self.assertEqual(len(foreign), 1)
+        self.assertEqual(foreign[0][1], "PrivateBooks")
+
+    def test_missing_wrong_source_and_inexact_notes_titles_are_unresolved(self):
+        punctuated = "הערות על פסקי תלמיד הרשב״א"
+        books = self.books([self.TITLE, punctuated])
+        cases = (
+            ("MoreBooks", "הערות על ספר שאינו קיים"),
+            ("KSK", self.TITLE),
+            ("MoreBooks", punctuated.replace("״", '"')),
+        )
+        for source, title in cases:
+            with self.subTest(source=source, title=title):
+                errors, unresolved, foreign = self.check_row(source, title, books, "level")
+                self.assertEqual((errors, foreign), ([], []))
+                self.assertEqual(len(unresolved), 1)
+                self.assertEqual(unresolved[0][1], title)
+
+    def test_standalone_notes_still_require_a_valid_protection_level(self):
+        errors, unresolved, foreign = self.check_row(
+            "MoreBooks", self.TITLE, self.books([self.TITLE]), "level", "0"
+        )
+        self.assertEqual((unresolved, foreign), ([], []))
+        self.assertEqual(len(errors), 1)
+        self.assertEqual(errors[0][1], "0")
 
 
 class RepositoryForDbTest(unittest.TestCase):

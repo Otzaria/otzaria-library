@@ -674,6 +674,121 @@ class RespellTest(FixtureTestCase):
         self.assertNotIn("[איות בלבד]", output)
 
 
+ONYOURWAY = "OnYourWayToOtzaria"
+
+
+def scoped_csv(header, rows):
+    buf = io.StringIO()
+    writer = csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n")
+    writer.writerow(header)
+    writer.writerows(rows)
+    return buf.getvalue()
+
+
+class SourceScopedTablesTest(FixtureTestCase):
+    """book_protection.csv / book_banners.csv: rows keyed by sourceName + bookName."""
+
+    def write_tables(self, protection=(), banners=(), renames=None):
+        files = {
+            "ForDB/book_protection.csv": scoped_csv(["sourceName", "bookName", "level"], protection),
+            "ForDB/book_banners.csv": scoped_csv(["sourceName", "bookName", "text"], banners),
+        }
+        if renames is not None:
+            files["ForDB/book_renames.csv"] = renames
+        self.repo.write(files)
+        return self.repo.commit("באנר והגנה")
+
+    def test_a_rename_follows_only_the_rows_of_its_own_source(self):
+        base = self.write_tables(
+            protection=[[ONYOURWAY, OLD, "1"], ["MoreBooks", OTHER, "1"]],
+            banners=[[ONYOURWAY, "", "שורה\nשנייה"], ["MoreBooks", OLD, "באנר"]],
+        )
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", base)
+        self.assertEqual(code, 0, output)
+        self.assertEqual(csv_rows(self.repo.read("ForDB/book_protection.csv"))[1:],
+                         [[ONYOURWAY, NEW, "1"], ["MoreBooks", OTHER, "1"]])
+        # Same title under another source is a different book: untouched, and only a warning.
+        self.assertEqual(csv_rows(self.repo.read("ForDB/book_banners.csv"))[1:],
+                         [[ONYOURWAY, "", "שורה\nשנייה"], ["MoreBooks", OLD, "באנר"]])
+        self.assertIn("::warning::ForDB/book_banners.csv", output)
+        self.assertIn("ForDB/book_protection.csv", self.repo.touched())
+        self.assertNotIn("ForDB/book_banners.csv", self.repo.touched())
+
+    def test_a_pull_request_checks_the_row_under_its_new_name(self):
+        base = self.write_tables(protection=[[ONYOURWAY, OLD, "1"]])
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--rename-base", base)
+        self.assertEqual(code, 0, output)
+
+    def test_valid_rows_and_source_defaults_pass(self):
+        self.write_tables(protection=[["KSK", "", "1"], ["MoreBooks", OTHER, "2"]],
+                          banners=[["MoreBooks", "", "טקסט [כאן](https://x/{title})"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+        self.assertNotIn("::warning::ForDB/book_banners.csv", output)
+
+    def test_a_protected_book_of_another_source_fails(self):
+        self.write_tables(protection=[[ONYOURWAY, OTHER, "1"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 1, output)
+        self.assertIn(f"אין ספר כזה במקור {ONYOURWAY}", output)
+
+    def test_a_source_outside_this_repo_only_warns(self):
+        # Private-repo sources join only at build time; the generator fails on a truly unknown one.
+        self.write_tables(protection=[["PrivateBooks", "ספר פרטי", "1"]], banners=[["PrivateBooks", "", "x"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+        self.assertIn("::warning::ForDB/book_protection.csv", output)
+        self.assertEqual(output.count("אינו מקור במאגר זה"), 2, output)
+
+    def test_non_havrouta_hearot_stay_standalone_books(self):
+        # A packaged notes file and its base do not prove a safe, complete merge.
+        # The preflight must accept both notice tables; the generator resolves the final DB.
+        companion = f"הערות על {OTHER}"
+        self.repo.write({f"{RISHONIM}/{companion}.txt": book_text(companion)})
+        for protection, banners in (([["MoreBooks", companion, "1"]], []),
+                                    ([], [["MoreBooks", companion, "x"]])):
+            with self.subTest(protection=bool(protection)):
+                self.write_tables(protection=protection, banners=banners)
+                code, output = self.repo.run_validator()
+                self.assertEqual(code, 0, output)
+                self.assertNotIn("::warning::ForDB/book_protection.csv", output)
+                self.assertNotIn("::warning::ForDB/book_banners.csv", output)
+
+    def test_havrouta_hearot_stay_standalone_books(self):
+        havrouta = "הערות על חברותא על ברכות"
+        self.repo.write({f"{RISHONIM}/{havrouta}.txt": book_text(havrouta)})
+        self.write_tables(protection=[["MoreBooks", havrouta, "1"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+
+    def test_an_invalid_level_fails(self):
+        self.write_tables(protection=[["MoreBooks", OTHER, "0"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 1, output)
+        self.assertIn("level חייב להיות", output)
+
+    def test_a_missing_banner_book_only_warns(self):
+        self.write_tables(banners=[["MoreBooks", "ספר שאינו קיים", "x"]])
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+        self.assertIn("::warning::ForDB/book_banners.csv", output)
+
+    def test_book_name_is_the_title_after_book_renames(self):
+        renames = "ספר ישן מספריא,ספר חדש מספריא\n" + f"{OTHER},{OTHER} מחודש\n"
+        self.write_tables(protection=[["MoreBooks", f"{OTHER} מחודש", "1"]], renames=renames)
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+        self.write_tables(protection=[["MoreBooks", OTHER, "1"]], renames=renames)
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 1, output)
+
+    def test_the_tables_are_optional(self):
+        code, output = self.repo.run_validator()
+        self.assertEqual(code, 0, output)
+
+
 class SparsePartialCloneTest(unittest.TestCase):
     """The workflow's checkout: blobless, sparse (ForDB + scripts only), history available.
 
