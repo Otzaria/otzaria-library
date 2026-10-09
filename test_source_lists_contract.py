@@ -1,12 +1,9 @@
-"""רשימות המקורות של שלב ה-prepare חייבות להתאים ל-BOOK_ROOTS.
+"""רשימת המקורות של שלב ה-prepare חייבת להתאים ל-BOOK_ROOTS.
 
-send_update/main.py (עדכוני ספריה.md) ו-sync_and_merge_folders.py (SourcesBooks.csv,
-library_csv/<ver>.csv ומונה הגרסה) מחזיקים כל אחד רשימת תיקיות משלו. מקור שנארז
-ל-otzaria_latest.zip אבל חסר באחת מהן נעלם מיומן השינויים: National-Library נוסף
-ב-813ada2c כשורה מוערת, נארז מ-7e11179f, ונשאר מוער כאן עד שהבדיקה הזו נוספה —
-ובגרסאות 150-151 ספריו אף הוכרזו כ"נמחקו", כי הועברו אליו ממקור שכן נצפה.
+sync_and_merge_folders.py (SourcesBooks.csv) מחזיק רשימת תיקיות משלו; מקור שנארז
+ל-otzaria_latest.zip אבל חסר בה נעלם מ-SourcesBooks.csv.
 
-שני הסקריפטים רצים בעת הייבוא, ולכן הרשימות נקראות ב-ast ולא ב-import.
+הסקריפט רץ בעת הייבוא, ולכן הרשימות נקראות ב-ast ולא ב-import.
 """
 
 import ast
@@ -45,9 +42,6 @@ class SourceListsMatchBookRootsTest(unittest.TestCase):
             sorted(set(BOOK_ROOTS) - EMPTY_SEFARIA_ROOTS),
             f"{script}: `folders` must list every BOOK_ROOTS entry (except the empty Sefaria roots)",
         )
-
-    def test_changelog_watches_every_packaged_root(self):
-        self.assert_matches_book_roots("send_update/main.py")
 
     def test_sources_books_csv_covers_every_packaged_root(self):
         self.assert_matches_book_roots("sync_and_merge_folders.py")

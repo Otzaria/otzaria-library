@@ -49,11 +49,9 @@ BeitAharonVeYisraelToOtzaria/ספרים/אוצריא
 (שם היא כוללת גם את `DictaToOtzaria/לא ערוך/`, שנכנס רק ל־zip הדיקטה). **אם משנים
 אחת — צריך לעדכן את השנייה.**
 
-יש עוד שני עותקים, בשלב ה־prepare: `folders` ב־`send_update/main.py` (יומן `עדכוני ספריה.md`)
-ו־`folders` + `mapping` ב־`sync_and_merge_folders.py` (`SourcesBooks.csv`, `library_csv/` ומונה
-הגרסה). מקור שחסר שם נארז כרגיל, אבל השינויים בו לא מופיעים ביומן. כך היה עם National-Library
-מיוני עד אוקטובר 2026. `test_source_lists_contract.py` אוכף ששתי הרשימות שוות ל־`BOOK_ROOTS`,
-חוץ משני שורשי ספריא הריקים.
+יש עוד עותק בשלב ה־prepare: `folders` + `mapping` ב־`sync_and_merge_folders.py` (`SourcesBooks.csv`).
+מקור שחסר שם נארז כרגיל, אבל ספריו לא מופיעים ב־`SourcesBooks.csv`.
+`test_source_lists_contract.py` אוכף שהרשימה שווה ל־`BOOK_ROOTS`, חוץ משני שורשי ספריא הריקים.
 
 ### מה *לא* נארז
 
@@ -62,7 +60,7 @@ BeitAharonVeYisraelToOtzaria/ספרים/אוצריא
 - כל `<source>/ספרים/<משהו שאינו אוצריא>/` — למשל `OraytaToOtzaria/ספרים/לא רלוונטי/`
 - `DictaToOtzaria/לא ערוך/` — נכנס רק ל־`otzaria_dicta_latest.zip`, לא לספרייה
 - `BeitAharonVeYisraelToOtzaria/ספרים/בהמתנה/` — ספרים ממתינים של מכון בית אהרן וישראל (לא רשומים במטא־דאטה)
-- כלי עבודה: `linker/`, `linker-eval/`, `metadata/`, `library_csv/`, `send_update/`, `סקריפטים שונות/`
+- כלי עבודה: `linker/`, `linker-eval/`, `metadata/`, `send_update/`, `סקריפטים שונות/`
 
 ## הקישורים: `links_roots`
 
