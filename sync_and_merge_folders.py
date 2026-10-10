@@ -1,5 +1,4 @@
 import csv
-import shutil
 from collections.abc import Generator
 from pathlib import Path
 
@@ -38,11 +37,6 @@ def get_files_list(folder_path: Path, target_folder_path: Path) -> Generator[lis
 
 
 target_folder = Path("אוצריא")
-more_books_folder_path = Path("MoreBooks/ספרים/אוצריא")
-ver_file_path = more_books_folder_path / "אודות התוכנה" / "גירסת ספריה.txt"
-with ver_file_path.open("r", encoding="utf-8") as f:
-    library_ver = int(f.read())
-
 folders = (
     "Ben-YehudaToOtzaria/ספרים/אוצריא",
     "DictaToOtzaria/ערוך/ספרים/אוצריא",
@@ -70,12 +64,11 @@ for folder in folders_path:
     for i in get_files_list(folder, target_folder):
         new_csv_content.append(i)
 
-library_csv_dir = Path("library_csv")
-csv_file_path = library_csv_dir / f"{library_ver}.csv"
 sources_books_file_path = Path("MoreBooks/ספרים/אוצריא") / "אודות התוכנה" / "SourcesBooks.csv"
 
-if csv_file_path.exists():
-    with csv_file_path.open("r", encoding="utf-8", newline="") as old_csvfile:
+# השוואה כקבוצה: סדר המעבר על התיקיות אינו יציב בין מכונות, ושינוי סדר בלבד אינו עדכון.
+if sources_books_file_path.exists():
+    with sources_books_file_path.open("r", encoding="utf-8", newline="") as old_csvfile:
         old_csv_reader = csv.reader(old_csvfile)
         old_csv_values = list(old_csv_reader)
         if all(row in old_csv_values for row in new_csv_content) and all(row in new_csv_content for row in old_csv_values):
@@ -84,10 +77,6 @@ if dif:
     with sources_books_file_path.open("w", encoding="utf-8") as new_csv_file:
         writer = csv.writer(new_csv_file)
         writer.writerows(new_csv_content)
-    shutil.copy(sources_books_file_path, library_csv_dir / f"{library_ver + 1}.csv")
-    sources_books_csv_target_path = library_csv_dir / f"{library_ver + 1}.csv"
-    with ver_file_path.open("w", encoding="utf-8") as f:
-        f.write(str(library_ver + 1))
 
 
 all_dicta_files = []
