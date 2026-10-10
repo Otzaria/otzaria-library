@@ -77,7 +77,7 @@ class ConvertOptions:
     heading_tag: str | None = "h2"
     # פיצול בתוך פסקה שדיקטה לא פיצלה (ר' README למדדים מול ספרים ערוכים):
     # אחרי מילה שמסתיימת בנקודותיים — "סוף עניין" בספרים הישנים — אבל לא אחרי מילה
-    # מודגשת, ולא בסוגריים/אחרי וז"ל:/בהפניה לעמוד ב (dicta_edit_core.colon_ends_matter).
+    # מודגשת, ולא באמצע משפט: סוגריים שנסגרים, ציטוט קצר, הפניה לעמוד ב (colon_ends_matter).
     split_colon: bool = True
     # לפני רצף מודגש שבא אחרי מילה לא־מודגשת המסתיימת בנקודה ("...ר"ת. <b>דין</b>").
     split_period_before_bold: bool = True
@@ -334,10 +334,12 @@ _TRAILING_PUNCT_RE = re.compile(r"^[\s.,:;!?)\]}'\"\u05f3\u05f4]*[.,:;!?)\]}][\s
 _END_PERIOD_RE = re.compile(r"\.\s*$")
 
 
-def _soft_break(prev: Token, cur: Token, opt: ConvertOptions, line_toks: Sequence[Token] = ()) -> bool:
+def _soft_break(prev: Token, cur: Token, opt: ConvertOptions, line_toks: Sequence[Token] = (),
+                ahead: Sequence[Token] = ()) -> bool:
     """שבירת שורה בתוך פסקה של דיקטה, לפי סימני פיסוק (לא לפי הדגשה לבדה).
 
-    line_toks: טוקני השורה הנוכחית עד prev (כולל), לבדיקת סוגריים/מבוא לציטוט/הפניה.
+    line_toks: טוקני השורה הנוכחית עד prev (כולל); ahead: הטוקנים מ־cur והלאה
+    (סוגריים שנסגרים, סוף ציטוט) — לפי colon_ends_matter.
     """
     if prev.heading:
         return False
@@ -345,7 +347,8 @@ def _soft_break(prev: Token, cur: Token, opt: ConvertOptions, line_toks: Sequenc
         if prev.bold:
             return False  # למה מודגשת ("<b>מחצלת:</b>") או באמצע רצף מודגש
         before = _END_COLON_RE.sub("", "".join(t.text for t in line_toks))
-        return colon_ends_matter(before, cur.text)
+        after = "".join(t.text for t in ahead) if ahead else cur.text
+        return colon_ends_matter(before, ("<b>" if cur.bold else "") + after)
     if (opt.split_period_before_bold and cur.bold and not prev.bold
             and _END_PERIOD_RE.search(prev.text)):
         return True
@@ -454,7 +457,7 @@ def _segment(toks: list[Token], fmt: str, opt: ConvertOptions) -> list[_Line]:
         elif is_head != cur.heading:
             # מעבר בין רצף כותרת לטקסט (בכל כיוון) = שורה חדשה
             new_line(is_head)
-        elif not is_head and last_word is not None and _soft_break(last_word, t, opt, cur.toks):
+        elif not is_head and last_word is not None and _soft_break(last_word, t, opt, cur.toks, toks[i:i + 40]):
             new_line(False)
         cur.toks.append(t)
         last_word = t

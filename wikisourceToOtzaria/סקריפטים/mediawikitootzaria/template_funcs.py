@@ -1,3 +1,5 @@
+import re
+
 from mwparserfromhell.nodes.template import Template
 
 
@@ -7,10 +9,6 @@ def remove(*args) -> str:
 
 def new_line(*args) -> str:
     return "\n"
-
-
-def space(*args) -> str:
-    return " "
 
 
 def bold(template: Template) -> str:
@@ -148,9 +146,21 @@ def mmq(template: Template) -> str:
 
 def note_text(template: Template, index: int = 0) -> str:
     params = positional(template)
-    return params[index] if len(params) > index else ""
+    if len(params) > index:
+        return params[index]
+    # "=" בטקסט ההערה הופך אותו לפרמטר בעל שם; הטקסט הוא הפרמטר כולו
+    raw = [str(p) for p in template.params]
+    return raw[index] if len(raw) > index else ""
 
 
 def margin_note(template: Template, index: int = 0) -> str:
-    text = note_text(template, index).strip()
-    return f"<small>[{text}]</small>" if text else ""
+    """כל פסקה בתג small משלה, אחרת process_body_html מאחד את הפסקאות לשורה אחת."""
+    # שבירת שורה בסוף פסקה ({{ש}} או <br>) מיותרת כשכל פסקה בשורה משלה
+    paragraphs = [re.sub(r"(?:\s*(?:<br\s*/?>|\{\{\s*ש\s*\}\}))+$", "", p.strip())
+                  for p in note_text(template, index).split("\n\n")]
+    paragraphs = [p for p in paragraphs if p]
+    if not paragraphs:
+        return ""
+    paragraphs[0] = "[" + paragraphs[0]
+    paragraphs[-1] += "]"
+    return "\n\n".join(f"<small>{p}</small>" for p in paragraphs)

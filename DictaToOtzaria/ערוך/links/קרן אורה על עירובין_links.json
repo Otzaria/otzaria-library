@@ -224,14 +224,6 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 49,
-    "line_index_2": 316,
-    "heRef_2": "עירובין יא., א",
-    "ref_2": "Eruvin 11a:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 50,
     "line_index_2": 316,
     "heRef_2": "עירובין יא., א",
@@ -249,6 +241,14 @@
   },
   {
     "line_index_1": 52,
+    "line_index_2": 316,
+    "heRef_2": "עירובין יא., א",
+    "ref_2": "Eruvin 11a:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 53,
     "line_index_2": 321,
     "heRef_2": "עירובין יא., ו",
     "ref_2": "Eruvin 11a:6",
@@ -256,7 +256,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 54,
+    "line_index_1": 55,
     "line_index_2": 350,
     "heRef_2": "עירובין יא:, טו",
     "ref_2": "Eruvin 11b:15",
@@ -264,7 +264,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 55,
+    "line_index_1": 56,
     "line_index_2": 362,
     "heRef_2": "עירובין יא:, כז",
     "ref_2": "Eruvin 11b:27",
@@ -272,7 +272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 56,
+    "line_index_1": 57,
     "line_index_2": 355,
     "heRef_2": "עירובין יא:, כ",
     "ref_2": "Eruvin 11b:20",
@@ -280,7 +280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 58,
+    "line_index_1": 59,
     "line_index_2": 391,
     "heRef_2": "עירובין יב:, ב",
     "ref_2": "Eruvin 12b:2",
@@ -288,7 +288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 59,
+    "line_index_1": 60,
     "line_index_2": 407,
     "heRef_2": "עירובין יב:, יח",
     "ref_2": "Eruvin 12b:18",
@@ -296,7 +296,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 61,
+    "line_index_1": 62,
     "line_index_2": 410,
     "heRef_2": "עירובין יג., א",
     "ref_2": "Eruvin 13a:1",
@@ -304,7 +304,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 62,
+    "line_index_1": 63,
     "line_index_2": 128,
     "heRef_2": "תוספות על עירובין יג., יט, א",
     "ref_2": "Tosafot on Eruvin 13a:19:1",
@@ -312,7 +312,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 63,
+    "line_index_1": 64,
     "line_index_2": 411,
     "heRef_2": "עירובין יג., ב",
     "ref_2": "Eruvin 13a:2",
@@ -320,19 +320,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 65,
+    "line_index_1": 66,
     "line_index_2": 131,
     "heRef_2": "תוספות על עירובין יג:, ז, א",
     "ref_2": "Tosafot on Eruvin 13b:7:1",
     "path_2": "תוספות על עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 67,
-    "line_index_2": 456,
-    "heRef_2": "עירובין יד., ז",
-    "ref_2": "Eruvin 14a:7",
-    "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
@@ -345,6 +337,14 @@
   },
   {
     "line_index_1": 69,
+    "line_index_2": 456,
+    "heRef_2": "עירובין יד., ז",
+    "ref_2": "Eruvin 14a:7",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 70,
     "line_index_2": 465,
     "heRef_2": "עירובין יד., טז",
     "ref_2": "Eruvin 14a:16",
@@ -352,7 +352,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 71,
+    "line_index_1": 72,
     "line_index_2": 490,
     "heRef_2": "עירובין יד:, יז",
     "ref_2": "Eruvin 14b:17",
@@ -360,7 +360,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 73,
+    "line_index_1": 74,
     "line_index_2": 144,
     "heRef_2": "תוספות על עירובין טו., יא, א",
     "ref_2": "Tosafot on Eruvin 15a:11:1",
@@ -368,7 +368,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 74,
+    "line_index_1": 75,
     "line_index_2": 506,
     "heRef_2": "עירובין טו., יב",
     "ref_2": "Eruvin 15a:12",
@@ -376,7 +376,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 77,
+    "line_index_1": 78,
     "line_index_2": 154,
     "heRef_2": "תוספות על עירובין טו:, יב, א",
     "ref_2": "Tosafot on Eruvin 15b:12:1",
@@ -384,7 +384,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 78,
+    "line_index_1": 79,
     "line_index_2": 155,
     "heRef_2": "תוספות על עירובין טו:, יט, א",
     "ref_2": "Tosafot on Eruvin 15b:19:1",
@@ -392,7 +392,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 80,
+    "line_index_1": 81,
     "line_index_2": 556,
     "heRef_2": "עירובין טז., יח",
     "ref_2": "Eruvin 16a:18",
@@ -400,7 +400,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 82,
+    "line_index_1": 83,
     "line_index_2": 563,
     "heRef_2": "עירובין טז:, ו",
     "ref_2": "Eruvin 16b:6",
@@ -408,18 +408,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 83,
+    "line_index_1": 84,
     "line_index_2": 570,
     "heRef_2": "עירובין טז:, יג",
     "ref_2": "Eruvin 16b:13",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 84,
-    "line_index_2": 568,
-    "heRef_2": "עירובין טז:, יא",
-    "ref_2": "Eruvin 16b:11",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -432,11 +424,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 87,
-    "line_index_2": 170,
-    "heRef_2": "תוספות על עירובין יז:, יא, א",
-    "ref_2": "Tosafot on Eruvin 17b:11:1",
-    "path_2": "תוספות על עירובין.txt",
+    "line_index_1": 86,
+    "line_index_2": 568,
+    "heRef_2": "עירובין טז:, יא",
+    "ref_2": "Eruvin 16b:11",
+    "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
@@ -448,7 +440,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 92,
+    "line_index_1": 89,
+    "line_index_2": 170,
+    "heRef_2": "תוספות על עירובין יז:, יא, א",
+    "ref_2": "Tosafot on Eruvin 17b:11:1",
+    "path_2": "תוספות על עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 93,
     "line_index_2": 173,
     "heRef_2": "תוספות על עירובין יז:, טז, ב",
     "ref_2": "Tosafot on Eruvin 17b:16:2",
@@ -456,18 +456,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 94,
+    "line_index_1": 95,
     "line_index_2": 632,
     "heRef_2": "עירובין יח., א",
     "ref_2": "Eruvin 18a:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 96,
-    "line_index_2": 702,
-    "heRef_2": "עירובין יט., כג",
-    "ref_2": "Eruvin 19a:23",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -480,7 +472,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 99,
+    "line_index_1": 98,
+    "line_index_2": 702,
+    "heRef_2": "עירובין יט., כג",
+    "ref_2": "Eruvin 19a:23",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 100,
     "line_index_2": 707,
     "heRef_2": "עירובין יט:, ד",
     "ref_2": "Eruvin 19b:4",
@@ -488,7 +488,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 100,
+    "line_index_1": 101,
     "line_index_2": 722,
     "heRef_2": "עירובין יט:, יט",
     "ref_2": "Eruvin 19b:19",
@@ -496,7 +496,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 101,
+    "line_index_1": 102,
     "line_index_2": 731,
     "heRef_2": "עירובין יט:, כח",
     "ref_2": "Eruvin 19b:28",
@@ -504,7 +504,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 103,
+    "line_index_1": 104,
     "line_index_2": 738,
     "heRef_2": "עירובין כ., ד",
     "ref_2": "Eruvin 20a:4",
@@ -512,7 +512,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 104,
+    "line_index_1": 105,
     "line_index_2": 742,
     "heRef_2": "עירובין כ., ח",
     "ref_2": "Eruvin 20a:8",
@@ -520,7 +520,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 105,
+    "line_index_1": 106,
     "line_index_2": 743,
     "heRef_2": "עירובין כ., ט",
     "ref_2": "Eruvin 20a:9",
@@ -528,7 +528,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 106,
+    "line_index_1": 107,
     "line_index_2": 746,
     "heRef_2": "עירובין כ., יב",
     "ref_2": "Eruvin 20a:12",
@@ -536,7 +536,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 107,
+    "line_index_1": 108,
     "line_index_2": 752,
     "heRef_2": "עירובין כ., יח",
     "ref_2": "Eruvin 20a:18",
@@ -544,18 +544,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 109,
+    "line_index_1": 110,
     "line_index_2": 756,
     "heRef_2": "עירובין כ:, ב",
     "ref_2": "Eruvin 20b:2",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 111,
-    "line_index_2": 780,
-    "heRef_2": "עירובין כא., ג",
-    "ref_2": "Eruvin 21a:3",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -568,7 +560,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 114,
+    "line_index_1": 113,
+    "line_index_2": 780,
+    "heRef_2": "עירובין כא., ג",
+    "ref_2": "Eruvin 21a:3",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 115,
     "line_index_2": 833,
     "heRef_2": "עירובין כב., י",
     "ref_2": "Eruvin 22a:10",
@@ -576,19 +576,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 116,
+    "line_index_1": 117,
     "line_index_2": 230,
     "heRef_2": "תוספות על עירובין כב:, א, ב",
     "ref_2": "Tosafot on Eruvin 22b:1:2",
     "path_2": "תוספות על עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 117,
-    "line_index_2": 853,
-    "heRef_2": "עירובין כב:, א",
-    "ref_2": "Eruvin 22b:1",
-    "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
@@ -600,7 +592,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 120,
+    "line_index_1": 119,
+    "line_index_2": 853,
+    "heRef_2": "עירובין כב:, א",
+    "ref_2": "Eruvin 22b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 121,
     "line_index_2": 880,
     "heRef_2": "עירובין כג., ה",
     "ref_2": "Eruvin 23a:5",
@@ -608,7 +608,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 122,
+    "line_index_1": 123,
     "line_index_2": 893,
     "heRef_2": "עירובין כג:, א",
     "ref_2": "Eruvin 23b:1",
@@ -616,7 +616,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 123,
+    "line_index_1": 124,
     "line_index_2": 901,
     "heRef_2": "עירובין כג:, ט",
     "ref_2": "Eruvin 23b:9",
@@ -624,7 +624,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 124,
+    "line_index_1": 125,
     "line_index_2": 249,
     "heRef_2": "תוספות על עירובין כג:, ו, א",
     "ref_2": "Tosafot on Eruvin 23b:6:1",
@@ -632,7 +632,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 125,
+    "line_index_1": 126,
     "line_index_2": 901,
     "heRef_2": "עירובין כג:, ט",
     "ref_2": "Eruvin 23b:9",
@@ -640,7 +640,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 128,
+    "line_index_1": 129,
     "line_index_2": 912,
     "heRef_2": "עירובין כד., ב",
     "ref_2": "Eruvin 24a:2",
@@ -648,7 +648,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 129,
+    "line_index_1": 130,
     "line_index_2": 929,
     "heRef_2": "עירובין כד., יט",
     "ref_2": "Eruvin 24a:19",
@@ -656,7 +656,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 131,
+    "line_index_1": 133,
     "line_index_2": 262,
     "heRef_2": "תוספות על עירובין כד:, ד, א",
     "ref_2": "Tosafot on Eruvin 24b:4:1",
@@ -664,7 +664,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 133,
+    "line_index_1": 135,
     "line_index_2": 945,
     "heRef_2": "עירובין כה., ג",
     "ref_2": "Eruvin 25a:3",
@@ -672,7 +672,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 134,
+    "line_index_1": 136,
     "line_index_2": 958,
     "heRef_2": "עירובין כה., טז",
     "ref_2": "Eruvin 25a:16",
@@ -680,7 +680,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 136,
+    "line_index_1": 138,
     "line_index_2": 970,
     "heRef_2": "עירובין כה:, א",
     "ref_2": "Eruvin 25b:1",
@@ -688,7 +688,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 137,
+    "line_index_1": 139,
     "line_index_2": 278,
     "heRef_2": "תוספות על עירובין כה:, ג, א",
     "ref_2": "Tosafot on Eruvin 25b:3:1",
@@ -696,7 +696,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 138,
+    "line_index_1": 140,
     "line_index_2": 279,
     "heRef_2": "תוספות על עירובין כה:, ה, א",
     "ref_2": "Tosafot on Eruvin 25b:5:1",
@@ -704,7 +704,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 139,
+    "line_index_1": 141,
     "line_index_2": 974,
     "heRef_2": "עירובין כה:, ה",
     "ref_2": "Eruvin 25b:5",
@@ -712,7 +712,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 141,
+    "line_index_1": 143,
     "line_index_2": 1000,
     "heRef_2": "עירובין כו:, ג",
     "ref_2": "Eruvin 26b:3",
@@ -720,7 +720,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 142,
+    "line_index_1": 144,
     "line_index_2": 1012,
     "heRef_2": "עירובין כו:, טו",
     "ref_2": "Eruvin 26b:15",
@@ -728,7 +728,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 146,
+    "line_index_1": 148,
     "line_index_2": 1015,
     "heRef_2": "עירובין כו:, יח",
     "ref_2": "Eruvin 26b:18",
@@ -736,7 +736,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 147,
+    "line_index_1": 149,
     "line_index_2": 291,
     "heRef_2": "תוספות על עירובין כו:, כ, א",
     "ref_2": "Tosafot on Eruvin 26b:20:1",
@@ -744,7 +744,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 149,
+    "line_index_1": 151,
     "line_index_2": 1033,
     "heRef_2": "עירובין כז., טו",
     "ref_2": "Eruvin 27a:15",
@@ -752,15 +752,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 151,
-    "line_index_2": 1037,
-    "heRef_2": "עירובין כז:, ג",
-    "ref_2": "Eruvin 27b:3",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 152,
+    "line_index_1": 153,
     "line_index_2": 1037,
     "heRef_2": "עירובין כז:, ג",
     "ref_2": "Eruvin 27b:3",
@@ -769,6 +761,14 @@
   },
   {
     "line_index_1": 154,
+    "line_index_2": 1037,
+    "heRef_2": "עירובין כז:, ג",
+    "ref_2": "Eruvin 27b:3",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 156,
     "line_index_2": 1061,
     "heRef_2": "עירובין כח., ח",
     "ref_2": "Eruvin 28a:8",
@@ -776,7 +776,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 155,
+    "line_index_1": 157,
     "line_index_2": 1066,
     "heRef_2": "עירובין כח., יג",
     "ref_2": "Eruvin 28a:13",
@@ -784,15 +784,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 156,
-    "line_index_2": 1064,
-    "heRef_2": "עירובין כח., יא",
-    "ref_2": "Eruvin 28a:11",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 157,
+    "line_index_1": 158,
     "line_index_2": 1064,
     "heRef_2": "עירובין כח., יא",
     "ref_2": "Eruvin 28a:11",
@@ -801,6 +793,14 @@
   },
   {
     "line_index_1": 159,
+    "line_index_2": 1064,
+    "heRef_2": "עירובין כח., יא",
+    "ref_2": "Eruvin 28a:11",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 161,
     "line_index_2": 1084,
     "heRef_2": "עירובין כח:, טז",
     "ref_2": "Eruvin 28b:16",
@@ -808,23 +808,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 161,
-    "line_index_2": 1102,
-    "heRef_2": "עירובין כט., ט",
-    "ref_2": "Eruvin 29a:9",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 162,
-    "line_index_2": 1102,
-    "heRef_2": "עירובין כט., ט",
-    "ref_2": "Eruvin 29a:9",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 163,
+    "line_index_2": 1102,
+    "heRef_2": "עירובין כט., ט",
+    "ref_2": "Eruvin 29a:9",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 164,
+    "line_index_2": 1102,
+    "heRef_2": "עירובין כט., ט",
+    "ref_2": "Eruvin 29a:9",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 165,
     "line_index_2": 1111,
     "heRef_2": "עירובין כט., יח",
     "ref_2": "Eruvin 29a:18",
@@ -832,7 +832,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 165,
+    "line_index_1": 167,
     "line_index_2": 1114,
     "heRef_2": "עירובין כט:, א",
     "ref_2": "Eruvin 29b:1",
@@ -840,7 +840,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 166,
+    "line_index_1": 168,
     "line_index_2": 1117,
     "heRef_2": "עירובין כט:, ד",
     "ref_2": "Eruvin 29b:4",
@@ -848,7 +848,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 167,
+    "line_index_1": 169,
     "line_index_2": 1121,
     "heRef_2": "עירובין כט:, ח",
     "ref_2": "Eruvin 29b:8",
@@ -856,7 +856,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 169,
+    "line_index_1": 171,
     "line_index_2": 1148,
     "heRef_2": "עירובין ל., יט",
     "ref_2": "Eruvin 30a:19",
@@ -864,7 +864,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 170,
+    "line_index_1": 172,
     "line_index_2": 1137,
     "heRef_2": "עירובין ל., ח",
     "ref_2": "Eruvin 30a:8",
@@ -872,15 +872,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 171,
-    "line_index_2": 1141,
-    "heRef_2": "עירובין ל., יב",
-    "ref_2": "Eruvin 30a:12",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 172,
+    "line_index_1": 173,
     "line_index_2": 1141,
     "heRef_2": "עירובין ל., יב",
     "ref_2": "Eruvin 30a:12",
@@ -889,6 +881,14 @@
   },
   {
     "line_index_1": 174,
+    "line_index_2": 1141,
+    "heRef_2": "עירובין ל., יב",
+    "ref_2": "Eruvin 30a:12",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 176,
     "line_index_2": 1154,
     "heRef_2": "עירובין ל:, ג",
     "ref_2": "Eruvin 30b:3",
@@ -896,7 +896,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 175,
+    "line_index_1": 177,
     "line_index_2": 1155,
     "heRef_2": "עירובין ל:, ד",
     "ref_2": "Eruvin 30b:4",
@@ -904,7 +904,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 176,
+    "line_index_1": 178,
     "line_index_2": 1158,
     "heRef_2": "עירובין ל:, ז",
     "ref_2": "Eruvin 30b:7",
@@ -912,7 +912,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 177,
+    "line_index_1": 179,
     "line_index_2": 334,
     "heRef_2": "תוספות על עירובין ל:, יא, א",
     "ref_2": "Tosafot on Eruvin 30b:11:1",
@@ -920,7 +920,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 178,
+    "line_index_1": 180,
     "line_index_2": 1163,
     "heRef_2": "עירובין ל:, יב",
     "ref_2": "Eruvin 30b:12",
@@ -928,7 +928,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 179,
+    "line_index_1": 181,
     "line_index_2": 1166,
     "heRef_2": "עירובין ל:, טו",
     "ref_2": "Eruvin 30b:15",
@@ -936,7 +936,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 180,
+    "line_index_1": 182,
     "line_index_2": 1167,
     "heRef_2": "עירובין ל:, טז",
     "ref_2": "Eruvin 30b:16",
@@ -944,7 +944,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 182,
+    "line_index_1": 184,
     "line_index_2": 1198,
     "heRef_2": "עירובין לא:, יד",
     "ref_2": "Eruvin 31b:14",
@@ -952,7 +952,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 184,
+    "line_index_1": 186,
     "line_index_2": 1206,
     "heRef_2": "עירובין לב., א",
     "ref_2": "Eruvin 32a:1",
@@ -960,7 +960,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 185,
+    "line_index_1": 187,
     "line_index_2": 355,
     "heRef_2": "תוספות על עירובין לב., ט, ב",
     "ref_2": "Tosafot on Eruvin 32a:9:2",
@@ -968,7 +968,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 187,
+    "line_index_1": 189,
     "line_index_2": 357,
     "heRef_2": "תוספות על עירובין לב:, ב, א",
     "ref_2": "Tosafot on Eruvin 32b:2:1",
@@ -976,7 +976,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 189,
+    "line_index_1": 191,
     "line_index_2": 1234,
     "heRef_2": "עירובין לג., א",
     "ref_2": "Eruvin 33a:1",
@@ -984,7 +984,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 190,
+    "line_index_1": 192,
     "line_index_2": 1241,
     "heRef_2": "עירובין לג., ח",
     "ref_2": "Eruvin 33a:8",
@@ -992,23 +992,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 191,
-    "line_index_2": 1238,
-    "heRef_2": "עירובין לג., ה",
-    "ref_2": "Eruvin 33a:5",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 192,
-    "line_index_2": 1238,
-    "heRef_2": "עירובין לג., ה",
-    "ref_2": "Eruvin 33a:5",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 193,
+    "line_index_2": 1238,
+    "heRef_2": "עירובין לג., ה",
+    "ref_2": "Eruvin 33a:5",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 194,
+    "line_index_2": 1238,
+    "heRef_2": "עירובין לג., ה",
+    "ref_2": "Eruvin 33a:5",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 195,
     "line_index_2": 1569,
     "ref_2": "Rashi on Eruvin 33a:6:3",
     "heRef_2": "רש\"י על עירובין לג., ו, ג",
@@ -1016,27 +1016,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 194,
+    "line_index_1": 196,
     "line_index_2": 366,
     "heRef_2": "תוספות על עירובין לג., ז, א",
     "ref_2": "Tosafot on Eruvin 33a:7:1",
     "path_2": "תוספות על עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 196,
-    "line_index_2": 1243,
-    "heRef_2": "עירובין לג:, א",
-    "ref_2": "Eruvin 33b:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 197,
-    "line_index_2": 1243,
-    "heRef_2": "עירובין לג:, א",
-    "ref_2": "Eruvin 33b:1",
-    "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
@@ -1049,6 +1033,22 @@
   },
   {
     "line_index_1": 199,
+    "line_index_2": 1243,
+    "heRef_2": "עירובין לג:, א",
+    "ref_2": "Eruvin 33b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 200,
+    "line_index_2": 1243,
+    "heRef_2": "עירובין לג:, א",
+    "ref_2": "Eruvin 33b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 201,
     "line_index_2": 1250,
     "heRef_2": "עירובין לג:, ח",
     "ref_2": "Eruvin 33b:8",
@@ -1056,7 +1056,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 200,
+    "line_index_1": 202,
     "line_index_2": 372,
     "heRef_2": "תוספות על עירובין לג:, ט, א",
     "ref_2": "Tosafot on Eruvin 33b:9:1",
@@ -1064,7 +1064,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 202,
+    "line_index_1": 204,
     "line_index_2": 376,
     "heRef_2": "תוספות על עירובין לד., ב, א",
     "ref_2": "Tosafot on Eruvin 34a:2:1",
@@ -1072,7 +1072,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 203,
+    "line_index_1": 205,
     "line_index_2": 1255,
     "heRef_2": "עירובין לד., ג",
     "ref_2": "Eruvin 34a:3",
@@ -1080,23 +1080,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 205,
-    "line_index_2": 381,
-    "heRef_2": "תוספות על עירובין לד:, ב, א",
-    "ref_2": "Tosafot on Eruvin 34b:2:1",
-    "path_2": "תוספות על עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 206,
-    "line_index_2": 381,
-    "heRef_2": "תוספות על עירובין לד:, ב, א",
-    "ref_2": "Tosafot on Eruvin 34b:2:1",
-    "path_2": "תוספות על עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 207,
+    "line_index_2": 381,
+    "heRef_2": "תוספות על עירובין לד:, ב, א",
+    "ref_2": "Tosafot on Eruvin 34b:2:1",
+    "path_2": "תוספות על עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 208,
+    "line_index_2": 381,
+    "heRef_2": "תוספות על עירובין לד:, ב, א",
+    "ref_2": "Tosafot on Eruvin 34b:2:1",
+    "path_2": "תוספות על עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 209,
     "line_index_2": 1262,
     "heRef_2": "עירובין לד:, ב",
     "ref_2": "Eruvin 34b:2",
@@ -1104,7 +1104,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 208,
+    "line_index_1": 210,
     "line_index_2": 1270,
     "heRef_2": "עירובין לד:, י",
     "ref_2": "Eruvin 34b:10",
@@ -1112,7 +1112,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 209,
+    "line_index_1": 211,
     "line_index_2": 1274,
     "heRef_2": "עירובין לד:, יד",
     "ref_2": "Eruvin 34b:14",
@@ -1120,7 +1120,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 213,
+    "line_index_1": 215,
     "line_index_2": 388,
     "heRef_2": "תוספות על עירובין לה., א, ב",
     "ref_2": "Tosafot on Eruvin 35a:1:2",
@@ -1128,7 +1128,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 214,
+    "line_index_1": 216,
     "line_index_2": 1287,
     "heRef_2": "עירובין לה., ח",
     "ref_2": "Eruvin 35a:8",
@@ -1136,7 +1136,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 215,
+    "line_index_1": 217,
     "line_index_2": 1298,
     "heRef_2": "עירובין לה., יט",
     "ref_2": "Eruvin 35a:19",
@@ -1144,7 +1144,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 217,
+    "line_index_1": 219,
     "line_index_2": 1302,
     "heRef_2": "עירובין לה:, ב",
     "ref_2": "Eruvin 35b:2",
@@ -1152,15 +1152,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 219,
-    "line_index_2": 1315,
-    "heRef_2": "עירובין לו., א",
-    "ref_2": "Eruvin 36a:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 220,
+    "line_index_1": 221,
     "line_index_2": 1315,
     "heRef_2": "עירובין לו., א",
     "ref_2": "Eruvin 36a:1",
@@ -1169,14 +1161,14 @@
   },
   {
     "line_index_1": 222,
-    "line_index_2": 1337,
-    "heRef_2": "עירובין לו:, ד",
-    "ref_2": "Eruvin 36b:4",
+    "line_index_2": 1315,
+    "heRef_2": "עירובין לו., א",
+    "ref_2": "Eruvin 36a:1",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 223,
+    "line_index_1": 224,
     "line_index_2": 1337,
     "heRef_2": "עירובין לו:, ד",
     "ref_2": "Eruvin 36b:4",
@@ -1185,6 +1177,14 @@
   },
   {
     "line_index_1": 225,
+    "line_index_2": 1337,
+    "heRef_2": "עירובין לו:, ד",
+    "ref_2": "Eruvin 36b:4",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 227,
     "line_index_2": 420,
     "heRef_2": "תוספות על עירובין לז., ה, א",
     "ref_2": "Tosafot on Eruvin 37a:5:1",
@@ -1192,7 +1192,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 227,
+    "line_index_1": 229,
     "line_index_2": 1364,
     "heRef_2": "עירובין לז:, י",
     "ref_2": "Eruvin 37b:10",
@@ -1200,7 +1200,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 229,
+    "line_index_1": 231,
     "line_index_2": 1391,
     "heRef_2": "עירובין לח., טו",
     "ref_2": "Eruvin 38a:15",
@@ -1208,7 +1208,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 230,
+    "line_index_1": 232,
     "line_index_2": 1386,
     "heRef_2": "עירובין לח., י",
     "ref_2": "Eruvin 38a:10",
@@ -1216,7 +1216,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 232,
+    "line_index_1": 234,
     "line_index_2": 1406,
     "heRef_2": "עירובין לח:, יד",
     "ref_2": "Eruvin 38b:14",
@@ -1224,15 +1224,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 233,
-    "line_index_2": 1407,
-    "heRef_2": "עירובין לח:, טו",
-    "ref_2": "Eruvin 38b:15",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 234,
+    "line_index_1": 235,
     "line_index_2": 1407,
     "heRef_2": "עירובין לח:, טו",
     "ref_2": "Eruvin 38b:15",
@@ -1241,6 +1233,14 @@
   },
   {
     "line_index_1": 236,
+    "line_index_2": 1407,
+    "heRef_2": "עירובין לח:, טו",
+    "ref_2": "Eruvin 38b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 238,
     "line_index_2": 1423,
     "heRef_2": "עירובין לט., ח",
     "ref_2": "Eruvin 39a:8",
@@ -1248,7 +1248,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 237,
+    "line_index_1": 239,
     "line_index_2": 441,
     "heRef_2": "תוספות על עירובין לט., יב, א",
     "ref_2": "Tosafot on Eruvin 39a:12:1",
@@ -1256,7 +1256,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 239,
+    "line_index_1": 241,
     "line_index_2": 1430,
     "heRef_2": "עירובין לט:, א",
     "ref_2": "Eruvin 39b:1",
@@ -1264,7 +1264,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 240,
+    "line_index_1": 242,
     "line_index_2": 1433,
     "heRef_2": "עירובין לט:, ד",
     "ref_2": "Eruvin 39b:4",
@@ -1272,7 +1272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 242,
+    "line_index_1": 244,
     "line_index_2": 1455,
     "heRef_2": "עירובין מ., יג",
     "ref_2": "Eruvin 40a:13",
@@ -1280,7 +1280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 244,
+    "line_index_1": 246,
     "line_index_2": 455,
     "heRef_2": "תוספות על עירובין מא., ה, א",
     "ref_2": "Tosafot on Eruvin 41a:5:1",
@@ -1288,7 +1288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 246,
+    "line_index_1": 248,
     "line_index_2": 1494,
     "heRef_2": "עירובין מא:, א",
     "ref_2": "Eruvin 41b:1",
@@ -1296,7 +1296,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 250,
+    "line_index_1": 252,
     "line_index_2": 1498,
     "heRef_2": "עירובין מא:, ה",
     "ref_2": "Eruvin 41b:5",
@@ -1304,26 +1304,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 251,
+    "line_index_1": 253,
     "line_index_2": 1521,
     "heRef_2": "עירובין מא:, כח",
     "ref_2": "Eruvin 41b:28",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 252,
-    "line_index_2": 1513,
-    "heRef_2": "עירובין מא:, כ",
-    "ref_2": "Eruvin 41b:20",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 253,
-    "line_index_2": 1513,
-    "heRef_2": "עירובין מא:, כ",
-    "ref_2": "Eruvin 41b:20",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -1337,14 +1321,22 @@
   },
   {
     "line_index_1": 255,
-    "line_index_2": 1519,
-    "heRef_2": "עירובין מא:, כו",
-    "ref_2": "Eruvin 41b:26",
+    "line_index_2": 1513,
+    "heRef_2": "עירובין מא:, כ",
+    "ref_2": "Eruvin 41b:20",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 256,
+    "line_index_2": 1513,
+    "heRef_2": "עירובין מא:, כ",
+    "ref_2": "Eruvin 41b:20",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 257,
     "line_index_2": 1519,
     "heRef_2": "עירובין מא:, כו",
     "ref_2": "Eruvin 41b:26",
@@ -1353,6 +1345,14 @@
   },
   {
     "line_index_1": 258,
+    "line_index_2": 1519,
+    "heRef_2": "עירובין מא:, כו",
+    "ref_2": "Eruvin 41b:26",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 260,
     "line_index_2": 479,
     "heRef_2": "תוספות על עירובין מג., ה, א",
     "ref_2": "Tosafot on Eruvin 43a:5:1",
@@ -1360,15 +1360,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 259,
-    "line_index_2": 1571,
-    "heRef_2": "עירובין מג., ט",
-    "ref_2": "Eruvin 43a:9",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 260,
+    "line_index_1": 261,
     "line_index_2": 1571,
     "heRef_2": "עירובין מג., ט",
     "ref_2": "Eruvin 43a:9",
@@ -1377,6 +1369,14 @@
   },
   {
     "line_index_1": 262,
+    "line_index_2": 1571,
+    "heRef_2": "עירובין מג., ט",
+    "ref_2": "Eruvin 43a:9",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 264,
     "line_index_2": 1606,
     "heRef_2": "עירובין מד., ד",
     "ref_2": "Eruvin 44a:4",
@@ -1384,7 +1384,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 264,
+    "line_index_1": 266,
     "line_index_2": 1626,
     "heRef_2": "עירובין מד:, ח",
     "ref_2": "Eruvin 44b:8",
@@ -1392,7 +1392,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 265,
+    "line_index_1": 267,
     "line_index_2": 1632,
     "heRef_2": "עירובין מד:, יד",
     "ref_2": "Eruvin 44b:14",
@@ -1400,7 +1400,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 267,
+    "line_index_1": 269,
     "line_index_2": 1638,
     "heRef_2": "עירובין מה., ג",
     "ref_2": "Eruvin 45a:3",
@@ -1408,7 +1408,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 268,
+    "line_index_1": 270,
     "line_index_2": 1640,
     "heRef_2": "עירובין מה., ה",
     "ref_2": "Eruvin 45a:5",
@@ -1416,7 +1416,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 269,
+    "line_index_1": 271,
     "line_index_2": 1655,
     "heRef_2": "עירובין מה., כ",
     "ref_2": "Eruvin 45a:20",
@@ -1424,7 +1424,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 270,
+    "line_index_1": 272,
     "line_index_2": 1659,
     "heRef_2": "עירובין מה., כד",
     "ref_2": "Eruvin 45a:24",
@@ -1432,23 +1432,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 273,
-    "line_index_2": 1678,
-    "heRef_2": "עירובין מה:, טו",
-    "ref_2": "Eruvin 45b:15",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 274,
-    "line_index_2": 1678,
-    "heRef_2": "עירובין מה:, טו",
-    "ref_2": "Eruvin 45b:15",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 275,
+    "line_index_2": 1678,
+    "heRef_2": "עירובין מה:, טו",
+    "ref_2": "Eruvin 45b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 276,
+    "line_index_2": 1678,
+    "heRef_2": "עירובין מה:, טו",
+    "ref_2": "Eruvin 45b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 277,
     "line_index_2": 1683,
     "heRef_2": "עירובין מה:, כ",
     "ref_2": "Eruvin 45b:20",
@@ -1456,26 +1456,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 277,
+    "line_index_1": 279,
     "line_index_2": 1696,
     "heRef_2": "עירובין מו., י",
     "ref_2": "Eruvin 46a:10",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 281,
-    "line_index_2": 1708,
-    "heRef_2": "עירובין מו:, א",
-    "ref_2": "Eruvin 46b:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 282,
-    "line_index_2": 1708,
-    "heRef_2": "עירובין מו:, א",
-    "ref_2": "Eruvin 46b:1",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -1496,7 +1480,23 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 285,
+    "line_index_2": 1708,
+    "heRef_2": "עירובין מו:, א",
+    "ref_2": "Eruvin 46b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 286,
+    "line_index_2": 1708,
+    "heRef_2": "עירובין מו:, א",
+    "ref_2": "Eruvin 46b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 288,
     "line_index_2": 1780,
     "heRef_2": "עירובין מח., יא",
     "ref_2": "Eruvin 48a:11",
@@ -1504,7 +1504,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 287,
+    "line_index_1": 289,
     "line_index_2": 1781,
     "heRef_2": "עירובין מח., יב",
     "ref_2": "Eruvin 48a:12",
@@ -1512,7 +1512,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 288,
+    "line_index_1": 290,
     "line_index_2": 1784,
     "heRef_2": "עירובין מח., טו",
     "ref_2": "Eruvin 48a:15",
@@ -1520,7 +1520,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 290,
+    "line_index_1": 292,
     "line_index_2": 530,
     "heRef_2": "תוספות על עירובין מח:, ג, א",
     "ref_2": "Tosafot on Eruvin 48b:3:1",
@@ -1528,7 +1528,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 291,
+    "line_index_1": 293,
     "line_index_2": 1803,
     "heRef_2": "עירובין מח:, ח",
     "ref_2": "Eruvin 48b:8",
@@ -1536,7 +1536,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 293,
+    "line_index_1": 295,
     "line_index_2": 1824,
     "heRef_2": "עירובין מט., יט",
     "ref_2": "Eruvin 49a:19",
@@ -1544,7 +1544,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 295,
+    "line_index_1": 297,
     "line_index_2": 1833,
     "heRef_2": "עירובין מט:, ב",
     "ref_2": "Eruvin 49b:2",
@@ -1552,7 +1552,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 296,
+    "line_index_1": 298,
     "line_index_2": 541,
     "heRef_2": "תוספות על עירובין מט:, ה, א",
     "ref_2": "Tosafot on Eruvin 49b:5:1",
@@ -1560,15 +1560,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 297,
-    "line_index_2": 1842,
-    "heRef_2": "עירובין מט:, יא",
-    "ref_2": "Eruvin 49b:11",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 298,
+    "line_index_1": 299,
     "line_index_2": 1842,
     "heRef_2": "עירובין מט:, יא",
     "ref_2": "Eruvin 49b:11",
@@ -1577,6 +1569,14 @@
   },
   {
     "line_index_1": 300,
+    "line_index_2": 1842,
+    "heRef_2": "עירובין מט:, יא",
+    "ref_2": "Eruvin 49b:11",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 302,
     "line_index_2": 546,
     "heRef_2": "תוספות על עירובין נ., ח, א",
     "ref_2": "Tosafot on Eruvin 50a:8:1",
@@ -1584,7 +1584,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 302,
+    "line_index_1": 304,
     "line_index_2": 1866,
     "heRef_2": "עירובין נ:, ד",
     "ref_2": "Eruvin 50b:4",
@@ -1592,7 +1592,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 304,
+    "line_index_1": 306,
     "line_index_2": 1880,
     "heRef_2": "עירובין נא., א",
     "ref_2": "Eruvin 51a:1",
@@ -1600,7 +1600,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 306,
+    "line_index_1": 308,
     "line_index_2": 1916,
     "heRef_2": "עירובין נב., ג",
     "ref_2": "Eruvin 52a:3",
@@ -1608,7 +1608,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 307,
+    "line_index_1": 309,
     "line_index_2": 1919,
     "heRef_2": "עירובין נב., ו",
     "ref_2": "Eruvin 52a:6",
@@ -1616,7 +1616,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 309,
+    "line_index_1": 311,
     "line_index_2": 1937,
     "heRef_2": "עירובין נב:, ו",
     "ref_2": "Eruvin 52b:6",
@@ -1624,7 +1624,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 314,
+    "line_index_1": 316,
     "line_index_2": 579,
     "heRef_2": "תוספות על עירובין נה., י, א",
     "ref_2": "Tosafot on Eruvin 55a:10:1",
@@ -1632,15 +1632,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 316,
-    "line_index_2": 2068,
-    "heRef_2": "עירובין נה:, א",
-    "ref_2": "Eruvin 55b:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 317,
+    "line_index_1": 318,
     "line_index_2": 2068,
     "heRef_2": "עירובין נה:, א",
     "ref_2": "Eruvin 55b:1",
@@ -1649,6 +1641,14 @@
   },
   {
     "line_index_1": 319,
+    "line_index_2": 2068,
+    "heRef_2": "עירובין נה:, א",
+    "ref_2": "Eruvin 55b:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 321,
     "line_index_2": 2131,
     "heRef_2": "עירובין נז., טו",
     "ref_2": "Eruvin 57a:15",
@@ -1656,7 +1656,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 320,
+    "line_index_1": 322,
     "line_index_2": 2129,
     "heRef_2": "עירובין נז., יג",
     "ref_2": "Eruvin 57a:13",
@@ -1664,7 +1664,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 322,
+    "line_index_1": 324,
     "line_index_2": 2141,
     "heRef_2": "עירובין נז:, ו",
     "ref_2": "Eruvin 57b:6",
@@ -1672,7 +1672,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 323,
+    "line_index_1": 325,
     "line_index_2": 601,
     "heRef_2": "תוספות על עירובין נז:, יב, א",
     "ref_2": "Tosafot on Eruvin 57b:12:1",
@@ -1680,15 +1680,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 325,
-    "line_index_2": 2168,
-    "heRef_2": "עירובין נח., טז",
-    "ref_2": "Eruvin 58a:16",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 326,
+    "line_index_1": 327,
     "line_index_2": 2168,
     "heRef_2": "עירובין נח., טז",
     "ref_2": "Eruvin 58a:16",
@@ -1697,6 +1689,14 @@
   },
   {
     "line_index_1": 328,
+    "line_index_2": 2168,
+    "heRef_2": "עירובין נח., טז",
+    "ref_2": "Eruvin 58a:16",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 330,
     "line_index_2": 2180,
     "heRef_2": "עירובין נח:, יא",
     "ref_2": "Eruvin 58b:11",
@@ -1704,7 +1704,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 330,
+    "line_index_1": 332,
     "line_index_2": 2184,
     "heRef_2": "עירובין נט., א",
     "ref_2": "Eruvin 59a:1",
@@ -1712,7 +1712,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 331,
+    "line_index_1": 333,
     "line_index_2": 2186,
     "heRef_2": "עירובין נט., ג",
     "ref_2": "Eruvin 59a:3",
@@ -1720,7 +1720,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 332,
+    "line_index_1": 334,
     "line_index_2": 2189,
     "heRef_2": "עירובין נט., ו",
     "ref_2": "Eruvin 59a:6",
@@ -1728,7 +1728,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 334,
+    "line_index_1": 336,
     "line_index_2": 2858,
     "ref_2": "Rashi on Eruvin 59a:10:2",
     "heRef_2": "רש\"י על עירובין נט., י, ב",
@@ -1736,7 +1736,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 336,
+    "line_index_1": 338,
     "line_index_2": 2198,
     "heRef_2": "עירובין נט:, ג",
     "ref_2": "Eruvin 59b:3",
@@ -1744,7 +1744,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 338,
+    "line_index_1": 340,
     "line_index_2": 2229,
     "heRef_2": "עירובין ס., יח",
     "ref_2": "Eruvin 60a:18",
@@ -1752,7 +1752,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 340,
+    "line_index_1": 342,
     "line_index_2": 637,
     "heRef_2": "תוספות על עירובין ס:, ח, א",
     "ref_2": "Tosafot on Eruvin 60b:8:1",
@@ -1760,7 +1760,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 342,
+    "line_index_1": 344,
     "line_index_2": 2254,
     "heRef_2": "עירובין סא., ט",
     "ref_2": "Eruvin 61a:9",
@@ -1768,7 +1768,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 343,
+    "line_index_1": 345,
     "line_index_2": 640,
     "heRef_2": "תוספות על עירובין סא., יב, א",
     "ref_2": "Tosafot on Eruvin 61a:12:1",
@@ -1776,7 +1776,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 344,
+    "line_index_1": 346,
     "line_index_2": 2253,
     "heRef_2": "עירובין סא., ח",
     "ref_2": "Eruvin 61a:8",
@@ -1784,7 +1784,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 345,
+    "line_index_1": 347,
     "line_index_2": 2266,
     "heRef_2": "עירובין סא., כא",
     "ref_2": "Eruvin 61a:21",
@@ -1792,7 +1792,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 346,
+    "line_index_1": 348,
     "line_index_2": 2249,
     "heRef_2": "עירובין סא., ד",
     "ref_2": "Eruvin 61a:4",
@@ -1800,7 +1800,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 348,
+    "line_index_1": 350,
     "line_index_2": 2272,
     "heRef_2": "עירובין סא:, ג",
     "ref_2": "Eruvin 61b:3",
@@ -1808,7 +1808,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 353,
+    "line_index_1": 356,
     "line_index_2": 2285,
     "heRef_2": "עירובין סב., א",
     "ref_2": "Eruvin 62a:1",
@@ -1816,7 +1816,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 355,
+    "line_index_1": 358,
     "line_index_2": 2301,
     "heRef_2": "עירובין סב:, א",
     "ref_2": "Eruvin 62b:1",
@@ -1824,7 +1824,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 357,
+    "line_index_1": 360,
     "line_index_2": 2326,
     "heRef_2": "עירובין סג., יב",
     "ref_2": "Eruvin 63a:12",
@@ -1832,7 +1832,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 359,
+    "line_index_1": 362,
     "line_index_2": 2352,
     "heRef_2": "עירובין סג:, יא",
     "ref_2": "Eruvin 63b:11",
@@ -1840,7 +1840,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 360,
+    "line_index_1": 363,
     "line_index_2": 666,
     "heRef_2": "תוספות על עירובין סג:, יב, א",
     "ref_2": "Tosafot on Eruvin 63b:12:1",
@@ -1848,7 +1848,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 363,
+    "line_index_1": 366,
     "line_index_2": 2363,
     "heRef_2": "עירובין סד., ו",
     "ref_2": "Eruvin 64a:6",
@@ -1856,7 +1856,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 364,
+    "line_index_1": 367,
     "line_index_2": 670,
     "heRef_2": "תוספות על עירובין סד., ט, א",
     "ref_2": "Tosafot on Eruvin 64a:9:1",
@@ -1864,7 +1864,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 366,
+    "line_index_1": 369,
     "line_index_2": 674,
     "heRef_2": "תוספות על עירובין סד:, ח, ב",
     "ref_2": "Tosafot on Eruvin 64b:8:2",
@@ -1872,34 +1872,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 368,
+    "line_index_1": 371,
     "line_index_2": 2417,
     "heRef_2": "עירובין סה:, ג",
     "ref_2": "Eruvin 65b:3",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 369,
-    "line_index_2": 2429,
-    "heRef_2": "עירובין סה:, טו",
-    "ref_2": "Eruvin 65b:15",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 370,
-    "line_index_2": 2429,
-    "heRef_2": "עירובין סה:, טו",
-    "ref_2": "Eruvin 65b:15",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 371,
-    "line_index_2": 2429,
-    "heRef_2": "עירובין סה:, טו",
-    "ref_2": "Eruvin 65b:15",
     "path_2": "עירובין.txt",
     "Conection Type": "source"
   },
@@ -1912,7 +1888,31 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 373,
+    "line_index_2": 2429,
+    "heRef_2": "עירובין סה:, טו",
+    "ref_2": "Eruvin 65b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 374,
+    "line_index_2": 2429,
+    "heRef_2": "עירובין סה:, טו",
+    "ref_2": "Eruvin 65b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 375,
+    "line_index_2": 2429,
+    "heRef_2": "עירובין סה:, טו",
+    "ref_2": "Eruvin 65b:15",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 378,
     "line_index_2": 2437,
     "heRef_2": "עירובין סו., א",
     "ref_2": "Eruvin 66a:1",
@@ -1920,7 +1920,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 378,
+    "line_index_1": 382,
     "line_index_2": 2464,
     "heRef_2": "עירובין סז., א",
     "ref_2": "Eruvin 67a:1",
@@ -1928,7 +1928,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 379,
+    "line_index_1": 383,
     "line_index_2": 2465,
     "heRef_2": "עירובין סז., ב",
     "ref_2": "Eruvin 67a:2",
@@ -1936,7 +1936,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 380,
+    "line_index_1": 384,
     "line_index_2": 2471,
     "heRef_2": "עירובין סז., ח",
     "ref_2": "Eruvin 67a:8",
@@ -1944,7 +1944,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 382,
+    "line_index_1": 386,
     "line_index_2": 2479,
     "heRef_2": "עירובין סז:, א",
     "ref_2": "Eruvin 67b:1",
@@ -1952,7 +1952,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 384,
+    "line_index_1": 388,
     "line_index_2": 2502,
     "heRef_2": "עירובין סח., ד",
     "ref_2": "Eruvin 68a:4",
@@ -1960,7 +1960,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 385,
+    "line_index_1": 389,
     "line_index_2": 2504,
     "heRef_2": "עירובין סח., ו",
     "ref_2": "Eruvin 68a:6",
@@ -1968,7 +1968,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 387,
+    "line_index_1": 391,
     "line_index_2": 2515,
     "heRef_2": "עירובין סח:, א",
     "ref_2": "Eruvin 68b:1",
@@ -1976,7 +1976,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 388,
+    "line_index_1": 392,
     "line_index_2": 2524,
     "heRef_2": "עירובין סח:, י",
     "ref_2": "Eruvin 68b:10",
@@ -1984,7 +1984,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 389,
+    "line_index_1": 393,
     "line_index_2": 2526,
     "heRef_2": "עירובין סח:, יב",
     "ref_2": "Eruvin 68b:12",
@@ -1992,7 +1992,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 390,
+    "line_index_1": 394,
     "line_index_2": 2527,
     "heRef_2": "עירובין סח:, יג",
     "ref_2": "Eruvin 68b:13",
@@ -2000,7 +2000,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 392,
+    "line_index_1": 396,
     "line_index_2": 2535,
     "heRef_2": "עירובין סט., ב",
     "ref_2": "Eruvin 69a:2",
@@ -2008,7 +2008,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 393,
+    "line_index_1": 397,
     "line_index_2": 729,
     "heRef_2": "תוספות על עירובין סט., ו, א",
     "ref_2": "Tosafot on Eruvin 69a:6:1",
@@ -2016,7 +2016,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 396,
+    "line_index_1": 400,
     "line_index_2": 2562,
     "heRef_2": "עירובין סט:, יז",
     "ref_2": "Eruvin 69b:17",
@@ -2024,7 +2024,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 397,
+    "line_index_1": 401,
     "line_index_2": 2555,
     "heRef_2": "עירובין סט:, י",
     "ref_2": "Eruvin 69b:10",
@@ -2032,7 +2032,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 398,
+    "line_index_1": 402,
     "line_index_2": 2564,
     "heRef_2": "עירובין סט:, יט",
     "ref_2": "Eruvin 69b:19",
@@ -2040,7 +2040,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 400,
+    "line_index_1": 404,
     "line_index_2": 737,
     "heRef_2": "תוספות על עירובין ע., כא, א",
     "ref_2": "Tosafot on Eruvin 70a:21:1",
@@ -2048,7 +2048,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 401,
+    "line_index_1": 405,
     "line_index_2": 737,
     "heRef_2": "תוספות על עירובין ע., כא, א",
     "ref_2": "Tosafot on Eruvin 70a:21:1",
@@ -2056,7 +2056,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 403,
+    "line_index_1": 407,
     "line_index_2": 736,
     "heRef_2": "תוספות על עירובין ע., ח, א",
     "ref_2": "Tosafot on Eruvin 70a:8:1",
@@ -2064,7 +2064,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 404,
+    "line_index_1": 408,
     "line_index_2": 2570,
     "heRef_2": "עירובין ע., ג",
     "ref_2": "Eruvin 70a:3",
@@ -2072,7 +2072,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 406,
+    "line_index_1": 411,
     "line_index_2": 2613,
     "heRef_2": "עירובין עא., י",
     "ref_2": "Eruvin 71a:10",
@@ -2080,7 +2080,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 407,
+    "line_index_1": 412,
     "line_index_2": 2616,
     "heRef_2": "עירובין עא., יג",
     "ref_2": "Eruvin 71a:13",
@@ -2088,7 +2088,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 408,
+    "line_index_1": 413,
     "line_index_2": 748,
     "heRef_2": "תוספות על עירובין עא., טז, א",
     "ref_2": "Tosafot on Eruvin 71a:16:1",
@@ -2096,7 +2096,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 410,
+    "line_index_1": 415,
     "line_index_2": 2636,
     "heRef_2": "עירובין עא:, יב",
     "ref_2": "Eruvin 71b:12",
@@ -2104,7 +2104,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 411,
+    "line_index_1": 416,
     "line_index_2": 2636,
     "heRef_2": "עירובין עא:, יב",
     "ref_2": "Eruvin 71b:12",
@@ -2112,7 +2112,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 413,
+    "line_index_1": 418,
     "line_index_2": 2642,
     "heRef_2": "עירובין עב., ה",
     "ref_2": "Eruvin 72a:5",
@@ -2120,7 +2120,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 414,
+    "line_index_1": 419,
     "line_index_2": 759,
     "heRef_2": "תוספות על עירובין עב., ו, א",
     "ref_2": "Tosafot on Eruvin 72a:6:1",
@@ -2128,7 +2128,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 416,
+    "line_index_1": 421,
     "line_index_2": 2654,
     "heRef_2": "עירובין עב:, ח",
     "ref_2": "Eruvin 72b:8",
@@ -2136,7 +2136,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 417,
+    "line_index_1": 422,
     "line_index_2": 2654,
     "heRef_2": "עירובין עב:, ח",
     "ref_2": "Eruvin 72b:8",
@@ -2144,7 +2144,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 418,
+    "line_index_1": 423,
     "line_index_2": 2654,
     "heRef_2": "עירובין עב:, ח",
     "ref_2": "Eruvin 72b:8",
@@ -2152,7 +2152,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 419,
+    "line_index_1": 424,
     "line_index_2": 2661,
     "heRef_2": "עירובין עב:, טו",
     "ref_2": "Eruvin 72b:15",
@@ -2160,7 +2160,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 421,
+    "line_index_1": 426,
     "line_index_2": 2673,
     "heRef_2": "עירובין עג., ח",
     "ref_2": "Eruvin 73a:8",
@@ -2168,7 +2168,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 423,
+    "line_index_1": 428,
     "line_index_2": 780,
     "heRef_2": "תוספות על עירובין עד., א, א",
     "ref_2": "Tosafot on Eruvin 74a:1:1",
@@ -2176,7 +2176,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 424,
+    "line_index_1": 429,
     "line_index_2": 2707,
     "heRef_2": "עירובין עד., ד",
     "ref_2": "Eruvin 74a:4",
@@ -2184,7 +2184,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 426,
+    "line_index_1": 431,
     "line_index_2": 2714,
     "heRef_2": "עירובין עד:, ב",
     "ref_2": "Eruvin 74b:2",
@@ -2192,7 +2192,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 427,
+    "line_index_1": 432,
     "line_index_2": 2716,
     "heRef_2": "עירובין עד:, ד",
     "ref_2": "Eruvin 74b:4",
@@ -2200,7 +2200,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 429,
+    "line_index_1": 434,
     "line_index_2": 2722,
     "heRef_2": "עירובין עה., ב",
     "ref_2": "Eruvin 75a:2",
@@ -2208,7 +2208,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 430,
+    "line_index_1": 436,
     "line_index_2": 2735,
     "heRef_2": "עירובין עה., טו",
     "ref_2": "Eruvin 75a:15",
@@ -2216,7 +2216,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 433,
+    "line_index_1": 439,
     "line_index_2": 797,
     "heRef_2": "תוספות על עירובין עו., א, ב",
     "ref_2": "Tosafot on Eruvin 76a:1:2",
@@ -2224,7 +2224,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 438,
+    "line_index_1": 444,
     "line_index_2": 2777,
     "heRef_2": "עירובין עו:, א",
     "ref_2": "Eruvin 76b:1",
@@ -2232,7 +2232,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 439,
+    "line_index_1": 445,
     "line_index_2": 2790,
     "heRef_2": "עירובין עו:, יד",
     "ref_2": "Eruvin 76b:14",
@@ -2240,7 +2240,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 441,
+    "line_index_1": 447,
     "line_index_2": 808,
     "heRef_2": "תוספות על עירובין עז., ו, ב",
     "ref_2": "Tosafot on Eruvin 77a:6:2",
@@ -2248,7 +2248,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 442,
+    "line_index_1": 448,
     "line_index_2": 2801,
     "heRef_2": "עירובין עז., ט",
     "ref_2": "Eruvin 77a:9",
@@ -2256,7 +2256,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 443,
+    "line_index_1": 449,
     "line_index_2": 2804,
     "heRef_2": "עירובין עז., יב",
     "ref_2": "Eruvin 77a:12",
@@ -2264,7 +2264,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 445,
+    "line_index_1": 451,
     "line_index_2": 2819,
     "heRef_2": "עירובין עז:, ח",
     "ref_2": "Eruvin 77b:8",
@@ -2272,7 +2272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 447,
+    "line_index_1": 453,
     "line_index_2": 2825,
     "heRef_2": "עירובין עח., ג",
     "ref_2": "Eruvin 78a:3",
@@ -2280,7 +2280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 448,
+    "line_index_1": 454,
     "line_index_2": 2834,
     "heRef_2": "עירובין עח., יב",
     "ref_2": "Eruvin 78a:12",
@@ -2288,7 +2288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 449,
+    "line_index_1": 455,
     "line_index_2": 2842,
     "heRef_2": "עירובין עח., כ",
     "ref_2": "Eruvin 78a:20",
@@ -2296,7 +2296,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 451,
+    "line_index_1": 457,
     "line_index_2": 2846,
     "heRef_2": "עירובין עח:, א",
     "ref_2": "Eruvin 78b:1",
@@ -2304,7 +2304,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 452,
+    "line_index_1": 458,
     "line_index_2": 2852,
     "heRef_2": "עירובין עח:, ז",
     "ref_2": "Eruvin 78b:7",
@@ -2312,7 +2312,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 453,
+    "line_index_1": 459,
     "line_index_2": 2859,
     "heRef_2": "עירובין עח:, יד",
     "ref_2": "Eruvin 78b:14",
@@ -2320,7 +2320,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 454,
+    "line_index_1": 460,
     "line_index_2": 2860,
     "heRef_2": "עירובין עח:, טו",
     "ref_2": "Eruvin 78b:15",
@@ -2328,7 +2328,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 456,
+    "line_index_1": 462,
     "line_index_2": 2871,
     "heRef_2": "עירובין עט., ו",
     "ref_2": "Eruvin 79a:6",
@@ -2336,7 +2336,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 457,
+    "line_index_1": 463,
     "line_index_2": 2874,
     "heRef_2": "עירובין עט., ט",
     "ref_2": "Eruvin 79a:9",
@@ -2344,7 +2344,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 459,
+    "line_index_1": 465,
     "line_index_2": 835,
     "heRef_2": "תוספות על עירובין עט:, א, א",
     "ref_2": "Tosafot on Eruvin 79b:1:1",
@@ -2352,7 +2352,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 460,
+    "line_index_1": 466,
     "line_index_2": 2890,
     "heRef_2": "עירובין עט:, ו",
     "ref_2": "Eruvin 79b:6",
@@ -2360,7 +2360,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 461,
+    "line_index_1": 467,
     "line_index_2": 2890,
     "heRef_2": "עירובין עט:, ו",
     "ref_2": "Eruvin 79b:6",
@@ -2368,7 +2368,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 462,
+    "line_index_1": 468,
     "line_index_2": 839,
     "heRef_2": "תוספות על עירובין עט:, י, א",
     "ref_2": "Tosafot on Eruvin 79b:10:1",
@@ -2376,7 +2376,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 465,
+    "line_index_1": 471,
     "line_index_2": 2908,
     "heRef_2": "עירובין פ., ה",
     "ref_2": "Eruvin 80a:5",
@@ -2384,7 +2384,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 466,
+    "line_index_1": 472,
     "line_index_2": 2908,
     "heRef_2": "עירובין פ., ה",
     "ref_2": "Eruvin 80a:5",
@@ -2392,7 +2392,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 468,
+    "line_index_1": 474,
     "line_index_2": 2930,
     "heRef_2": "עירובין פ:, א",
     "ref_2": "Eruvin 80b:1",
@@ -2400,7 +2400,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 469,
+    "line_index_1": 475,
     "line_index_2": 2934,
     "heRef_2": "עירובין פ:, ה",
     "ref_2": "Eruvin 80b:5",
@@ -2408,7 +2408,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 470,
+    "line_index_1": 476,
     "line_index_2": 2937,
     "heRef_2": "עירובין פ:, ח",
     "ref_2": "Eruvin 80b:8",
@@ -2416,7 +2416,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 471,
+    "line_index_1": 477,
     "line_index_2": 853,
     "heRef_2": "תוספות על עירובין פ:, יח, א",
     "ref_2": "Tosafot on Eruvin 80b:18:1",
@@ -2424,7 +2424,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 473,
+    "line_index_1": 479,
     "line_index_2": 2950,
     "heRef_2": "עירובין פא., א",
     "ref_2": "Eruvin 81a:1",
@@ -2432,7 +2432,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 474,
+    "line_index_1": 480,
     "line_index_2": 2954,
     "heRef_2": "עירובין פא., ה",
     "ref_2": "Eruvin 81a:5",
@@ -2440,7 +2440,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 475,
+    "line_index_1": 481,
     "line_index_2": 2962,
     "heRef_2": "עירובין פא., יג",
     "ref_2": "Eruvin 81a:13",
@@ -2448,7 +2448,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 476,
+    "line_index_1": 482,
     "line_index_2": 2962,
     "heRef_2": "עירובין פא., יג",
     "ref_2": "Eruvin 81a:13",
@@ -2456,7 +2456,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 477,
+    "line_index_1": 483,
     "line_index_2": 2966,
     "heRef_2": "עירובין פא., יז",
     "ref_2": "Eruvin 81a:17",
@@ -2464,7 +2464,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 481,
+    "line_index_1": 487,
     "line_index_2": 2952,
     "heRef_2": "עירובין פא., ג",
     "ref_2": "Eruvin 81a:3",
@@ -2472,7 +2472,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 482,
+    "line_index_1": 488,
     "line_index_2": 2952,
     "heRef_2": "עירובין פא., ג",
     "ref_2": "Eruvin 81a:3",
@@ -2480,7 +2480,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 484,
+    "line_index_1": 490,
     "line_index_2": 2969,
     "heRef_2": "עירובין פא:, א",
     "ref_2": "Eruvin 81b:1",
@@ -2488,7 +2488,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 486,
+    "line_index_1": 492,
     "line_index_2": 3058,
     "heRef_2": "עירובין פג:, ג",
     "ref_2": "Eruvin 83b:3",
@@ -2496,7 +2496,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 488,
+    "line_index_1": 494,
     "line_index_2": 3934,
     "ref_2": "Rashi on Eruvin 83b:4:1",
     "heRef_2": "רש\"י על עירובין פג:, ד, א",
@@ -2504,7 +2504,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 489,
+    "line_index_1": 495,
     "line_index_2": 3062,
     "heRef_2": "עירובין פג:, ז",
     "ref_2": "Eruvin 83b:7",
@@ -2512,7 +2512,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 492,
+    "line_index_1": 498,
     "line_index_2": 891,
     "heRef_2": "תוספות על עירובין פד., ה, א",
     "ref_2": "Tosafot on Eruvin 84a:5:1",
@@ -2520,7 +2520,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 493,
+    "line_index_1": 499,
     "line_index_2": 3956,
     "ref_2": "Rashi on Eruvin 84a:5:4",
     "heRef_2": "רש\"י על עירובין פד., ה, ד",
@@ -2528,7 +2528,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 494,
+    "line_index_1": 500,
     "line_index_2": 3086,
     "heRef_2": "עירובין פד., יז",
     "ref_2": "Eruvin 84a:17",
@@ -2536,7 +2536,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 496,
+    "line_index_1": 502,
     "line_index_2": 3090,
     "heRef_2": "עירובין פד:, ג",
     "ref_2": "Eruvin 84b:3",
@@ -2544,7 +2544,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 498,
+    "line_index_1": 504,
     "line_index_2": 3096,
     "heRef_2": "עירובין פה., א",
     "ref_2": "Eruvin 85a:1",
@@ -2552,7 +2552,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 499,
+    "line_index_1": 505,
     "line_index_2": 3103,
     "heRef_2": "עירובין פה., ח",
     "ref_2": "Eruvin 85a:8",
@@ -2560,7 +2560,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 500,
+    "line_index_1": 506,
     "line_index_2": 902,
     "heRef_2": "תוספות על עירובין פה., ח, א",
     "ref_2": "Tosafot on Eruvin 85a:8:1",
@@ -2568,7 +2568,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 502,
+    "line_index_1": 508,
     "line_index_2": 3109,
     "heRef_2": "עירובין פה:, ה",
     "ref_2": "Eruvin 85b:5",
@@ -2576,7 +2576,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 504,
+    "line_index_1": 510,
     "line_index_2": 3128,
     "heRef_2": "עירובין פו., ד",
     "ref_2": "Eruvin 86a:4",
@@ -2584,7 +2584,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 505,
+    "line_index_1": 511,
     "line_index_2": 3136,
     "heRef_2": "עירובין פו., יב",
     "ref_2": "Eruvin 86a:12",
@@ -2592,7 +2592,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 506,
+    "line_index_1": 512,
     "line_index_2": 913,
     "heRef_2": "תוספות על עירובין פו., טז, ב",
     "ref_2": "Tosafot on Eruvin 86a:16:2",
@@ -2600,7 +2600,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 510,
+    "line_index_1": 516,
     "line_index_2": 918,
     "heRef_2": "תוספות על עירובין פו:, יד, א",
     "ref_2": "Tosafot on Eruvin 86b:14:1",
@@ -2608,7 +2608,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 512,
+    "line_index_1": 518,
     "line_index_2": 3165,
     "heRef_2": "עירובין פז., ט",
     "ref_2": "Eruvin 87a:9",
@@ -2616,7 +2616,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 513,
+    "line_index_1": 519,
     "line_index_2": 3165,
     "heRef_2": "עירובין פז., ט",
     "ref_2": "Eruvin 87a:9",
@@ -2624,7 +2624,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 515,
+    "line_index_1": 521,
     "line_index_2": 930,
     "heRef_2": "תוספות על עירובין פח., ה, א",
     "ref_2": "Tosafot on Eruvin 88a:5:1",
@@ -2632,7 +2632,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 516,
+    "line_index_1": 522,
     "line_index_2": 3209,
     "heRef_2": "עירובין פח., יא",
     "ref_2": "Eruvin 88a:11",
@@ -2640,7 +2640,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 518,
+    "line_index_1": 524,
     "line_index_2": 936,
     "heRef_2": "תוספות על עירובין פט., א, א",
     "ref_2": "Tosafot on Eruvin 89a:1:1",
@@ -2648,7 +2648,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 522,
+    "line_index_1": 528,
     "line_index_2": 3246,
     "heRef_2": "עירובין פט., ג",
     "ref_2": "Eruvin 89a:3",
@@ -2656,7 +2656,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 523,
+    "line_index_1": 529,
     "line_index_2": 940,
     "heRef_2": "תוספות על עירובין פט., טו, א",
     "ref_2": "Tosafot on Eruvin 89a:15:1",
@@ -2664,7 +2664,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 525,
+    "line_index_1": 531,
     "line_index_2": 3262,
     "heRef_2": "עירובין פט:, א",
     "ref_2": "Eruvin 89b:1",
@@ -2672,7 +2672,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 527,
+    "line_index_1": 533,
     "line_index_2": 3276,
     "heRef_2": "עירובין צ., א",
     "ref_2": "Eruvin 90a:1",
@@ -2680,7 +2680,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 530,
+    "line_index_1": 536,
     "line_index_2": 3294,
     "heRef_2": "עירובין צ:, ז",
     "ref_2": "Eruvin 90b:7",
@@ -2688,7 +2688,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 532,
+    "line_index_1": 538,
     "line_index_2": 967,
     "heRef_2": "תוספות על עירובין צב., א, א",
     "ref_2": "Tosafot on Eruvin 92a:1:1",
@@ -2696,7 +2696,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 533,
+    "line_index_1": 539,
     "line_index_2": 969,
     "heRef_2": "תוספות על עירובין צב., ז, א",
     "ref_2": "Tosafot on Eruvin 92a:7:1",
@@ -2704,7 +2704,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 534,
+    "line_index_1": 540,
     "line_index_2": 3327,
     "heRef_2": "עירובין צב., א",
     "ref_2": "Eruvin 92a:1",
@@ -2712,7 +2712,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 536,
+    "line_index_1": 542,
     "line_index_2": 3345,
     "heRef_2": "עירובין צב:, ה",
     "ref_2": "Eruvin 92b:5",
@@ -2720,7 +2720,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 538,
+    "line_index_1": 544,
     "line_index_2": 983,
     "heRef_2": "תוספות על עירובין צג:, א, א",
     "ref_2": "Tosafot on Eruvin 93b:1:1",
@@ -2728,7 +2728,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 539,
+    "line_index_1": 545,
     "line_index_2": 985,
     "heRef_2": "תוספות על עירובין צג:, ט, א",
     "ref_2": "Tosafot on Eruvin 93b:9:1",
@@ -2736,7 +2736,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 540,
+    "line_index_1": 546,
     "line_index_2": 987,
     "heRef_2": "תוספות על עירובין צג:, יג, א",
     "ref_2": "Tosafot on Eruvin 93b:13:1",
@@ -2744,7 +2744,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 542,
+    "line_index_1": 548,
     "line_index_2": 3392,
     "heRef_2": "עירובין צד., ח",
     "ref_2": "Eruvin 94a:8",
@@ -2752,7 +2752,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 543,
+    "line_index_1": 549,
     "line_index_2": 993,
     "heRef_2": "תוספות על עירובין צד., כד, א",
     "ref_2": "Tosafot on Eruvin 94a:24:1",
@@ -2760,7 +2760,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 545,
+    "line_index_1": 551,
     "line_index_2": 3412,
     "heRef_2": "עירובין צד:, ב",
     "ref_2": "Eruvin 94b:2",
@@ -2768,23 +2768,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 547,
-    "line_index_2": 3428,
-    "heRef_2": "עירובין צה., א",
-    "ref_2": "Eruvin 95a:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 548,
-    "line_index_2": 3428,
-    "heRef_2": "עירובין צה., א",
-    "ref_2": "Eruvin 95a:1",
-    "path_2": "עירובין.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 553,
+    "line_index_2": 3428,
+    "heRef_2": "עירובין צה., א",
+    "ref_2": "Eruvin 95a:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 554,
+    "line_index_2": 3428,
+    "heRef_2": "עירובין צה., א",
+    "ref_2": "Eruvin 95a:1",
+    "path_2": "עירובין.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 559,
     "line_index_2": 3455,
     "heRef_2": "עירובין צה:, ד",
     "ref_2": "Eruvin 95b:4",
@@ -2792,7 +2792,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 554,
+    "line_index_1": 560,
     "line_index_2": 3459,
     "heRef_2": "עירובין צה:, ח",
     "ref_2": "Eruvin 95b:8",
@@ -2800,7 +2800,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 556,
+    "line_index_1": 562,
     "line_index_2": 1016,
     "heRef_2": "תוספות על עירובין צו., ו, ב",
     "ref_2": "Tosafot on Eruvin 96a:6:2",
@@ -2808,7 +2808,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 557,
+    "line_index_1": 563,
     "line_index_2": 3485,
     "heRef_2": "עירובין צו., יא",
     "ref_2": "Eruvin 96a:11",
@@ -2816,7 +2816,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 558,
+    "line_index_1": 564,
     "line_index_2": 3487,
     "heRef_2": "עירובין צו., יג",
     "ref_2": "Eruvin 96a:13",
@@ -2824,7 +2824,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 560,
+    "line_index_1": 566,
     "line_index_2": 1022,
     "heRef_2": "תוספות על עירובין צו:, ה, א",
     "ref_2": "Tosafot on Eruvin 96b:5:1",
@@ -2832,7 +2832,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 561,
+    "line_index_1": 567,
     "line_index_2": 3501,
     "heRef_2": "עירובין צו:, יב",
     "ref_2": "Eruvin 96b:12",
@@ -2840,7 +2840,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 563,
+    "line_index_1": 569,
     "line_index_2": 3525,
     "heRef_2": "עירובין צז:, א",
     "ref_2": "Eruvin 97b:1",
@@ -2848,7 +2848,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 564,
+    "line_index_1": 570,
     "line_index_2": 3529,
     "heRef_2": "עירובין צז:, ה",
     "ref_2": "Eruvin 97b:5",
@@ -2856,7 +2856,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 565,
+    "line_index_1": 571,
     "line_index_2": 3529,
     "heRef_2": "עירובין צז:, ה",
     "ref_2": "Eruvin 97b:5",
@@ -2864,7 +2864,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 566,
+    "line_index_1": 572,
     "line_index_2": 3529,
     "heRef_2": "עירובין צז:, ה",
     "ref_2": "Eruvin 97b:5",
@@ -2872,7 +2872,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 568,
+    "line_index_1": 574,
     "line_index_2": 1040,
     "heRef_2": "תוספות על עירובין צח., ה, א",
     "ref_2": "Tosafot on Eruvin 98a:5:1",
@@ -2880,7 +2880,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 569,
+    "line_index_1": 575,
     "line_index_2": 3554,
     "heRef_2": "עירובין צח., ח",
     "ref_2": "Eruvin 98a:8",
@@ -2888,7 +2888,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 571,
+    "line_index_1": 577,
     "line_index_2": 1046,
     "heRef_2": "תוספות על עירובין צח:, ד, א",
     "ref_2": "Tosafot on Eruvin 98b:4:1",
@@ -2896,7 +2896,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 572,
+    "line_index_1": 578,
     "line_index_2": 3573,
     "heRef_2": "עירובין צח:, ט",
     "ref_2": "Eruvin 98b:9",
@@ -2904,7 +2904,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 574,
+    "line_index_1": 580,
     "line_index_2": 1052,
     "heRef_2": "תוספות על עירובין צט., א, א",
     "ref_2": "Tosafot on Eruvin 99a:1:1",
@@ -2912,7 +2912,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 575,
+    "line_index_1": 581,
     "line_index_2": 1054,
     "heRef_2": "תוספות על עירובין צט., ח, א",
     "ref_2": "Tosafot on Eruvin 99a:8:1",
@@ -2920,7 +2920,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 576,
+    "line_index_1": 582,
     "line_index_2": 3582,
     "heRef_2": "עירובין צט., א",
     "ref_2": "Eruvin 99a:1",
@@ -2928,7 +2928,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 577,
+    "line_index_1": 583,
     "line_index_2": 3599,
     "heRef_2": "עירובין צט., יח",
     "ref_2": "Eruvin 99a:18",
@@ -2936,7 +2936,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 579,
+    "line_index_1": 585,
     "line_index_2": 3607,
     "heRef_2": "עירובין צט:, ג",
     "ref_2": "Eruvin 99b:3",
@@ -2944,7 +2944,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 580,
+    "line_index_1": 586,
     "line_index_2": 3609,
     "heRef_2": "עירובין צט:, ה",
     "ref_2": "Eruvin 99b:5",
@@ -2952,7 +2952,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 581,
+    "line_index_1": 587,
     "line_index_2": 3618,
     "heRef_2": "עירובין צט:, יד",
     "ref_2": "Eruvin 99b:14",
@@ -2960,7 +2960,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 582,
+    "line_index_1": 588,
     "line_index_2": 3619,
     "heRef_2": "עירובין צט:, טו",
     "ref_2": "Eruvin 99b:15",
@@ -2968,7 +2968,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 583,
+    "line_index_1": 589,
     "line_index_2": 4722,
     "ref_2": "Rashi on Eruvin 99b:22:1",
     "heRef_2": "רש\"י על עירובין צט:, כב, א",
@@ -2976,7 +2976,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 585,
+    "line_index_1": 591,
     "line_index_2": 1064,
     "heRef_2": "תוספות על עירובין ק., יז, א",
     "ref_2": "Tosafot on Eruvin 100a:17:1",
@@ -2984,7 +2984,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 586,
+    "line_index_1": 592,
     "line_index_2": 1065,
     "heRef_2": "תוספות על עירובין ק., יז, ב",
     "ref_2": "Tosafot on Eruvin 100a:17:2",
@@ -2992,7 +2992,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 588,
+    "line_index_1": 594,
     "line_index_2": 3665,
     "heRef_2": "עירובין ק:, יג",
     "ref_2": "Eruvin 100b:13",
@@ -3000,7 +3000,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 589,
+    "line_index_1": 595,
     "line_index_2": 3665,
     "heRef_2": "עירובין ק:, יג",
     "ref_2": "Eruvin 100b:13",
@@ -3008,7 +3008,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 591,
+    "line_index_1": 597,
     "line_index_2": 3701,
     "heRef_2": "עירובין קא:, ב",
     "ref_2": "Eruvin 101b:2",
@@ -3016,7 +3016,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 593,
+    "line_index_1": 599,
     "line_index_2": 3716,
     "heRef_2": "עירובין קב., א",
     "ref_2": "Eruvin 102a:1",
@@ -3024,7 +3024,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 594,
+    "line_index_1": 600,
     "line_index_2": 1083,
     "heRef_2": "תוספות על עירובין קב., יח, א",
     "ref_2": "Tosafot on Eruvin 102a:18:1",
@@ -3032,7 +3032,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 596,
+    "line_index_1": 602,
     "line_index_2": 3737,
     "heRef_2": "עירובין קב:, א",
     "ref_2": "Eruvin 102b:1",
@@ -3040,7 +3040,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 597,
+    "line_index_1": 603,
     "line_index_2": 1088,
     "heRef_2": "תוספות על עירובין קב:, ט, א",
     "ref_2": "Tosafot on Eruvin 102b:9:1",
@@ -3048,7 +3048,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 598,
+    "line_index_1": 604,
     "line_index_2": 3750,
     "heRef_2": "עירובין קב:, יד",
     "ref_2": "Eruvin 102b:14",
@@ -3056,7 +3056,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 600,
+    "line_index_1": 606,
     "line_index_2": 3763,
     "heRef_2": "עירובין קג., ז",
     "ref_2": "Eruvin 103a:7",
@@ -3064,7 +3064,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 601,
+    "line_index_1": 607,
     "line_index_2": 3775,
     "heRef_2": "עירובין קג., יט",
     "ref_2": "Eruvin 103a:19",
@@ -3072,7 +3072,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 602,
+    "line_index_1": 608,
     "line_index_2": 3775,
     "heRef_2": "עירובין קג., יט",
     "ref_2": "Eruvin 103a:19",
@@ -3080,7 +3080,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 605,
+    "line_index_1": 611,
     "line_index_2": 3798,
     "heRef_2": "עירובין קד., א",
     "ref_2": "Eruvin 104a:1",
@@ -3088,7 +3088,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 607,
+    "line_index_1": 613,
     "line_index_2": 3835,
     "heRef_2": "עירובין קד:, יא",
     "ref_2": "Eruvin 104b:11",
@@ -3096,7 +3096,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 609,
+    "line_index_1": 615,
     "line_index_2": 5080,
     "ref_2": "Rashi on Eruvin 105a:10:1",
     "heRef_2": "רש\"י על עירובין קה., י, א",

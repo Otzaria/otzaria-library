@@ -1064,14 +1064,6 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 177,
-    "line_index_2": 687,
-    "heRef_2": "סוטה יט., ז",
-    "ref_2": "Sotah 19a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 178,
     "line_index_2": 687,
     "heRef_2": "סוטה יט., ז",
@@ -1080,10 +1072,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 180,
-    "line_index_2": 697,
-    "heRef_2": "סוטה יט:, א",
-    "ref_2": "Sotah 19b:1",
+    "line_index_1": 179,
+    "line_index_2": 687,
+    "heRef_2": "סוטה יט., ז",
+    "ref_2": "Sotah 19a:7",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -1104,10 +1096,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 184,
-    "line_index_2": 713,
-    "heRef_2": "סוטה כ., ג",
-    "ref_2": "Sotah 20a:3",
+    "line_index_1": 183,
+    "line_index_2": 697,
+    "heRef_2": "סוטה יט:, א",
+    "ref_2": "Sotah 19b:1",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -1120,26 +1112,18 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 187,
-    "line_index_2": 177,
-    "heRef_2": "תוספות על סוטה כ:, ג, א",
-    "ref_2": "Tosafot on Sotah 20b:3:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 188,
-    "line_index_2": 735,
-    "heRef_2": "סוטה כ:, ז",
-    "ref_2": "Sotah 20b:7",
+    "line_index_1": 186,
+    "line_index_2": 713,
+    "heRef_2": "סוטה כ., ג",
+    "ref_2": "Sotah 20a:3",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 189,
-    "line_index_2": 179,
-    "heRef_2": "תוספות על סוטה כ:, יא, א",
-    "ref_2": "Tosafot on Sotah 20b:11:1",
+    "line_index_2": 177,
+    "heRef_2": "תוספות על סוטה כ:, ג, א",
+    "ref_2": "Tosafot on Sotah 20b:3:1",
     "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
@@ -1153,6 +1137,14 @@
   },
   {
     "line_index_1": 191,
+    "line_index_2": 179,
+    "heRef_2": "תוספות על סוטה כ:, יא, א",
+    "ref_2": "Tosafot on Sotah 20b:11:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 192,
     "line_index_2": 735,
     "heRef_2": "סוטה כ:, ז",
     "ref_2": "Sotah 20b:7",
@@ -1161,14 +1153,14 @@
   },
   {
     "line_index_1": 193,
-    "line_index_2": 749,
-    "heRef_2": "סוטה כא., ה",
-    "ref_2": "Sotah 21a:5",
+    "line_index_2": 735,
+    "heRef_2": "סוטה כ:, ז",
+    "ref_2": "Sotah 20b:7",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 194,
+    "line_index_1": 195,
     "line_index_2": 749,
     "heRef_2": "סוטה כא., ה",
     "ref_2": "Sotah 21a:5",
@@ -1177,6 +1169,14 @@
   },
   {
     "line_index_1": 196,
+    "line_index_2": 749,
+    "heRef_2": "סוטה כא., ה",
+    "ref_2": "Sotah 21a:5",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 198,
     "line_index_2": 189,
     "heRef_2": "תוספות על סוטה כא:, ז, א",
     "ref_2": "Tosafot on Sotah 21b:7:1",
@@ -1184,7 +1184,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 197,
+    "line_index_1": 199,
     "line_index_2": 763,
     "heRef_2": "סוטה כא:, א",
     "ref_2": "Sotah 21b:1",
@@ -1192,7 +1192,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 199,
+    "line_index_1": 201,
     "line_index_2": 774,
     "heRef_2": "סוטה כב., ב",
     "ref_2": "Sotah 22a:2",
@@ -1200,15 +1200,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 201,
-    "line_index_2": 199,
-    "heRef_2": "תוספות על סוטה כב:, ח, א",
-    "ref_2": "Tosafot on Sotah 22b:8:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 202,
+    "line_index_1": 203,
     "line_index_2": 199,
     "heRef_2": "תוספות על סוטה כב:, ח, א",
     "ref_2": "Tosafot on Sotah 22b:8:1",
@@ -1217,26 +1209,18 @@
   },
   {
     "line_index_1": 204,
-    "line_index_2": 203,
-    "heRef_2": "תוספות על סוטה כג., ב, א",
-    "ref_2": "Tosafot on Sotah 23a:2:1",
+    "line_index_2": 199,
+    "heRef_2": "תוספות על סוטה כב:, ח, א",
+    "ref_2": "Tosafot on Sotah 22b:8:1",
     "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 205,
-    "line_index_2": 797,
-    "heRef_2": "סוטה כג., ב",
-    "ref_2": "Sotah 23a:2",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 206,
-    "line_index_2": 797,
-    "heRef_2": "סוטה כג., ב",
-    "ref_2": "Sotah 23a:2",
-    "path_2": "סוטה.txt",
+    "line_index_2": 203,
+    "heRef_2": "תוספות על סוטה כג., ב, א",
+    "ref_2": "Tosafot on Sotah 23a:2:1",
+    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1257,6 +1241,22 @@
   },
   {
     "line_index_1": 209,
+    "line_index_2": 797,
+    "heRef_2": "סוטה כג., ב",
+    "ref_2": "Sotah 23a:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 210,
+    "line_index_2": 797,
+    "heRef_2": "סוטה כג., ב",
+    "ref_2": "Sotah 23a:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 211,
     "line_index_2": 205,
     "heRef_2": "תוספות על סוטה כג., ח, א",
     "ref_2": "Tosafot on Sotah 23a:8:1",
@@ -1264,7 +1264,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 211,
+    "line_index_1": 213,
     "line_index_2": 208,
     "heRef_2": "תוספות על סוטה כג:, ב, א",
     "ref_2": "Tosafot on Sotah 23b:2:1",
@@ -1272,7 +1272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 212,
+    "line_index_1": 214,
     "line_index_2": 209,
     "heRef_2": "תוספות על סוטה כג:, ו, א",
     "ref_2": "Tosafot on Sotah 23b:6:1",
@@ -1280,7 +1280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 213,
+    "line_index_1": 215,
     "line_index_2": 1242,
     "ref_2": "Rashi on Sotah 23b:10:1",
     "heRef_2": "רש\"י על סוטה כג:, י, א",
@@ -1288,7 +1288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 215,
+    "line_index_1": 217,
     "line_index_2": 215,
     "heRef_2": "תוספות על סוטה כג:, טו, א",
     "ref_2": "Tosafot on Sotah 23b:15:1",
@@ -1296,7 +1296,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 216,
+    "line_index_1": 218,
     "line_index_2": 815,
     "heRef_2": "סוטה כג:, י",
     "ref_2": "Sotah 23b:10",
@@ -1304,35 +1304,19 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 218,
+    "line_index_1": 220,
     "line_index_2": 824,
     "heRef_2": "סוטה כד., ג",
     "ref_2": "Sotah 24a:3",
     "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 219,
-    "line_index_2": 220,
-    "heRef_2": "תוספות על סוטה כד., ז, א",
-    "ref_2": "Tosafot on Sotah 24a:7:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 220,
-    "line_index_2": 220,
-    "heRef_2": "תוספות על סוטה כד., ז, א",
-    "ref_2": "Tosafot on Sotah 24a:7:1",
-    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 221,
-    "line_index_2": 824,
-    "heRef_2": "סוטה כד., ג",
-    "ref_2": "Sotah 24a:3",
-    "path_2": "סוטה.txt",
+    "line_index_2": 220,
+    "heRef_2": "תוספות על סוטה כד., ז, א",
+    "ref_2": "Tosafot on Sotah 24a:7:1",
+    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1345,10 +1329,10 @@
   },
   {
     "line_index_1": 223,
-    "line_index_2": 220,
-    "heRef_2": "תוספות על סוטה כד., ז, א",
-    "ref_2": "Tosafot on Sotah 24a:7:1",
-    "path_2": "תוספות על סוטה.txt",
+    "line_index_2": 824,
+    "heRef_2": "סוטה כד., ג",
+    "ref_2": "Sotah 24a:3",
+    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1361,6 +1345,22 @@
   },
   {
     "line_index_1": 225,
+    "line_index_2": 220,
+    "heRef_2": "תוספות על סוטה כד., ז, א",
+    "ref_2": "Tosafot on Sotah 24a:7:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 226,
+    "line_index_2": 220,
+    "heRef_2": "תוספות על סוטה כד., ז, א",
+    "ref_2": "Tosafot on Sotah 24a:7:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 227,
     "line_index_2": 834,
     "heRef_2": "סוטה כד., יג",
     "ref_2": "Sotah 24a:13",
@@ -1368,42 +1368,26 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 228,
-    "line_index_2": 840,
-    "heRef_2": "סוטה כד:, ג",
-    "ref_2": "Sotah 24b:3",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 229,
-    "line_index_2": 840,
-    "heRef_2": "סוטה כד:, ג",
-    "ref_2": "Sotah 24b:3",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 230,
-    "line_index_2": 842,
-    "heRef_2": "סוטה כד:, ה",
-    "ref_2": "Sotah 24b:5",
+    "line_index_2": 840,
+    "heRef_2": "סוטה כד:, ג",
+    "ref_2": "Sotah 24b:3",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 231,
-    "line_index_2": 843,
-    "heRef_2": "סוטה כד:, ו",
-    "ref_2": "Sotah 24b:6",
+    "line_index_2": 840,
+    "heRef_2": "סוטה כד:, ג",
+    "ref_2": "Sotah 24b:3",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 232,
-    "line_index_2": 843,
-    "heRef_2": "סוטה כד:, ו",
-    "ref_2": "Sotah 24b:6",
+    "line_index_2": 842,
+    "heRef_2": "סוטה כד:, ה",
+    "ref_2": "Sotah 24b:5",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -1425,6 +1409,22 @@
   },
   {
     "line_index_1": 235,
+    "line_index_2": 843,
+    "heRef_2": "סוטה כד:, ו",
+    "ref_2": "Sotah 24b:6",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 236,
+    "line_index_2": 843,
+    "heRef_2": "סוטה כד:, ו",
+    "ref_2": "Sotah 24b:6",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 237,
     "line_index_2": 227,
     "heRef_2": "תוספות על סוטה כד:, ו, ב",
     "ref_2": "Tosafot on Sotah 24b:6:2",
@@ -1432,7 +1432,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 237,
+    "line_index_1": 239,
     "line_index_2": 847,
     "heRef_2": "סוטה כה., ג",
     "ref_2": "Sotah 25a:3",
@@ -1440,26 +1440,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 238,
+    "line_index_1": 240,
     "line_index_2": 851,
     "heRef_2": "סוטה כה., ז",
     "ref_2": "Sotah 25a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 240,
-    "line_index_2": 856,
-    "heRef_2": "סוטה כה., יב",
-    "ref_2": "Sotah 25a:12",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 241,
-    "line_index_2": 856,
-    "heRef_2": "סוטה כה., יב",
-    "ref_2": "Sotah 25a:12",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -1473,6 +1457,22 @@
   },
   {
     "line_index_1": 243,
+    "line_index_2": 856,
+    "heRef_2": "סוטה כה., יב",
+    "ref_2": "Sotah 25a:12",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 244,
+    "line_index_2": 856,
+    "heRef_2": "סוטה כה., יב",
+    "ref_2": "Sotah 25a:12",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 245,
     "line_index_2": 862,
     "heRef_2": "סוטה כה., יח",
     "ref_2": "Sotah 25a:18",
@@ -1480,15 +1480,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 244,
-    "line_index_2": 866,
-    "heRef_2": "סוטה כה., כב",
-    "ref_2": "Sotah 25a:22",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 245,
+    "line_index_1": 246,
     "line_index_2": 866,
     "heRef_2": "סוטה כה., כב",
     "ref_2": "Sotah 25a:22",
@@ -1497,14 +1489,14 @@
   },
   {
     "line_index_1": 247,
-    "line_index_2": 868,
-    "heRef_2": "סוטה כה:, א",
-    "ref_2": "Sotah 25b:1",
+    "line_index_2": 866,
+    "heRef_2": "סוטה כה., כב",
+    "ref_2": "Sotah 25a:22",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 248,
+    "line_index_1": 249,
     "line_index_2": 868,
     "heRef_2": "סוטה כה:, א",
     "ref_2": "Sotah 25b:1",
@@ -1513,6 +1505,14 @@
   },
   {
     "line_index_1": 250,
+    "line_index_2": 868,
+    "heRef_2": "סוטה כה:, א",
+    "ref_2": "Sotah 25b:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 252,
     "line_index_2": 1330,
     "ref_2": "Rashi on Sotah 26a:6:1",
     "heRef_2": "רש\"י על סוטה כו., ו, א",
@@ -1520,27 +1520,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 251,
+    "line_index_1": 253,
     "line_index_2": 236,
     "heRef_2": "תוספות על סוטה כו., ב, א",
     "ref_2": "Tosafot on Sotah 26a:2:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 252,
-    "line_index_2": 878,
-    "heRef_2": "סוטה כו., ו",
-    "ref_2": "Sotah 26a:6",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 253,
-    "line_index_2": 878,
-    "heRef_2": "סוטה כו., ו",
-    "ref_2": "Sotah 26a:6",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1569,6 +1553,22 @@
   },
   {
     "line_index_1": 257,
+    "line_index_2": 878,
+    "heRef_2": "סוטה כו., ו",
+    "ref_2": "Sotah 26a:6",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 258,
+    "line_index_2": 878,
+    "heRef_2": "סוטה כו., ו",
+    "ref_2": "Sotah 26a:6",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 259,
     "line_index_2": 882,
     "heRef_2": "סוטה כו., י",
     "ref_2": "Sotah 26a:10",
@@ -1576,7 +1576,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 258,
+    "line_index_1": 260,
     "line_index_2": 239,
     "heRef_2": "תוספות על סוטה כו., ז, א",
     "ref_2": "Tosafot on Sotah 26a:7:1",
@@ -1584,31 +1584,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 259,
+    "line_index_1": 261,
     "line_index_2": 239,
     "heRef_2": "תוספות על סוטה כו., ז, א",
     "ref_2": "Tosafot on Sotah 26a:7:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 262,
-    "line_index_2": 890,
-    "heRef_2": "סוטה כו:, א",
-    "ref_2": "Sotah 26b:1",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 264,
-    "line_index_2": 890,
-    "heRef_2": "סוטה כו:, א",
-    "ref_2": "Sotah 26b:1",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 265,
     "line_index_2": 890,
     "heRef_2": "סוטה כו:, א",
     "ref_2": "Sotah 26b:1",
@@ -1649,26 +1633,26 @@
   },
   {
     "line_index_1": 270,
-    "line_index_2": 248,
-    "heRef_2": "תוספות על סוטה כו:, ט, א",
-    "ref_2": "Tosafot on Sotah 26b:9:1",
-    "path_2": "תוספות על סוטה.txt",
+    "line_index_2": 890,
+    "heRef_2": "סוטה כו:, א",
+    "ref_2": "Sotah 26b:1",
+    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 271,
-    "line_index_2": 903,
-    "heRef_2": "סוטה כו:, יד",
-    "ref_2": "Sotah 26b:14",
+    "line_index_2": 890,
+    "heRef_2": "סוטה כו:, א",
+    "ref_2": "Sotah 26b:1",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 272,
-    "line_index_2": 903,
-    "heRef_2": "סוטה כו:, יד",
-    "ref_2": "Sotah 26b:14",
-    "path_2": "סוטה.txt",
+    "line_index_2": 248,
+    "heRef_2": "תוספות על סוטה כו:, ט, א",
+    "ref_2": "Tosafot on Sotah 26b:9:1",
+    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1680,7 +1664,23 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 274,
+    "line_index_2": 903,
+    "heRef_2": "סוטה כו:, יד",
+    "ref_2": "Sotah 26b:14",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 275,
+    "line_index_2": 903,
+    "heRef_2": "סוטה כו:, יד",
+    "ref_2": "Sotah 26b:14",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 277,
     "line_index_2": 1368,
     "ref_2": "Rashi on Sotah 27a:1:2",
     "heRef_2": "רש\"י על סוטה כז., א, ב",
@@ -1688,7 +1688,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 276,
+    "line_index_1": 278,
     "line_index_2": 908,
     "heRef_2": "סוטה כז., א",
     "ref_2": "Sotah 27a:1",
@@ -1696,23 +1696,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 277,
-    "line_index_2": 253,
-    "heRef_2": "תוספות על סוטה כז., ד, א",
-    "ref_2": "Tosafot on Sotah 27a:4:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 278,
-    "line_index_2": 253,
-    "heRef_2": "תוספות על סוטה כז., ד, א",
-    "ref_2": "Tosafot on Sotah 27a:4:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 279,
+    "line_index_2": 253,
+    "heRef_2": "תוספות על סוטה כז., ד, א",
+    "ref_2": "Tosafot on Sotah 27a:4:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 280,
+    "line_index_2": 253,
+    "heRef_2": "תוספות על סוטה כז., ד, א",
+    "ref_2": "Tosafot on Sotah 27a:4:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 281,
     "line_index_2": 910,
     "heRef_2": "סוטה כז., ג",
     "ref_2": "Sotah 27a:3",
@@ -1720,7 +1720,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 280,
+    "line_index_1": 282,
     "line_index_2": 915,
     "heRef_2": "סוטה כז., ח",
     "ref_2": "Sotah 27a:8",
@@ -1728,7 +1728,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 281,
+    "line_index_1": 283,
     "line_index_2": 255,
     "heRef_2": "תוספות על סוטה כז., ז, א",
     "ref_2": "Tosafot on Sotah 27a:7:1",
@@ -1736,7 +1736,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 282,
+    "line_index_1": 284,
     "line_index_2": 257,
     "heRef_2": "תוספות על סוטה כז., י, ב",
     "ref_2": "Tosafot on Sotah 27a:10:2",
@@ -1744,27 +1744,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 285,
+    "line_index_1": 287,
     "line_index_2": 259,
     "heRef_2": "תוספות על סוטה כז:, ג, א",
     "ref_2": "Tosafot on Sotah 27b:3:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 286,
-    "line_index_2": 921,
-    "heRef_2": "סוטה כז:, ג",
-    "ref_2": "Sotah 27b:3",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 287,
-    "line_index_2": 921,
-    "heRef_2": "סוטה כז:, ג",
-    "ref_2": "Sotah 27b:3",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1784,23 +1768,39 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 291,
-    "line_index_2": 935,
-    "heRef_2": "סוטה כח., א",
-    "ref_2": "Sotah 28a:1",
+    "line_index_1": 290,
+    "line_index_2": 921,
+    "heRef_2": "סוטה כז:, ג",
+    "ref_2": "Sotah 27b:3",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 292,
-    "line_index_2": 935,
-    "heRef_2": "סוטה כח., א",
-    "ref_2": "Sotah 28a:1",
+    "line_index_1": 291,
+    "line_index_2": 921,
+    "heRef_2": "סוטה כז:, ג",
+    "ref_2": "Sotah 27b:3",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 293,
+    "line_index_2": 935,
+    "heRef_2": "סוטה כח., א",
+    "ref_2": "Sotah 28a:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 294,
+    "line_index_2": 935,
+    "heRef_2": "סוטה כח., א",
+    "ref_2": "Sotah 28a:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 295,
     "line_index_2": 263,
     "heRef_2": "תוספות על סוטה כח., כא, א",
     "ref_2": "Tosafot on Sotah 28a:21:1",
@@ -1808,23 +1808,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 294,
-    "line_index_2": 264,
-    "heRef_2": "תוספות על סוטה כח., כב, א",
-    "ref_2": "Tosafot on Sotah 28a:22:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 295,
-    "line_index_2": 264,
-    "heRef_2": "תוספות על סוטה כח., כב, א",
-    "ref_2": "Tosafot on Sotah 28a:22:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 296,
+    "line_index_2": 264,
+    "heRef_2": "תוספות על סוטה כח., כב, א",
+    "ref_2": "Tosafot on Sotah 28a:22:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 297,
+    "line_index_2": 264,
+    "heRef_2": "תוספות על סוטה כח., כב, א",
+    "ref_2": "Tosafot on Sotah 28a:22:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 298,
     "line_index_2": 935,
     "heRef_2": "סוטה כח., א",
     "ref_2": "Sotah 28a:1",
@@ -1832,35 +1832,19 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 298,
-    "line_index_2": 266,
-    "heRef_2": "תוספות על סוטה כח:, ד, א",
-    "ref_2": "Tosafot on Sotah 28b:4:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 299,
-    "line_index_2": 266,
-    "heRef_2": "תוספות על סוטה כח:, ד, א",
-    "ref_2": "Tosafot on Sotah 28b:4:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 300,
-    "line_index_2": 958,
-    "heRef_2": "סוטה כח:, א",
-    "ref_2": "Sotah 28b:1",
-    "path_2": "סוטה.txt",
+    "line_index_2": 266,
+    "heRef_2": "תוספות על סוטה כח:, ד, א",
+    "ref_2": "Tosafot on Sotah 28b:4:1",
+    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 301,
-    "line_index_2": 958,
-    "heRef_2": "סוטה כח:, א",
-    "ref_2": "Sotah 28b:1",
-    "path_2": "סוטה.txt",
+    "line_index_2": 266,
+    "heRef_2": "תוספות על סוטה כח:, ד, א",
+    "ref_2": "Tosafot on Sotah 28b:4:1",
+    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -1881,14 +1865,22 @@
   },
   {
     "line_index_1": 304,
-    "line_index_2": 267,
-    "heRef_2": "תוספות על סוטה כח:, ד, ב",
-    "ref_2": "Tosafot on Sotah 28b:4:2",
-    "path_2": "תוספות על סוטה.txt",
+    "line_index_2": 958,
+    "heRef_2": "סוטה כח:, א",
+    "ref_2": "Sotah 28b:1",
+    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 305,
+    "line_index_2": 958,
+    "heRef_2": "סוטה כח:, א",
+    "ref_2": "Sotah 28b:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 306,
     "line_index_2": 267,
     "heRef_2": "תוספות על סוטה כח:, ד, ב",
     "ref_2": "Tosafot on Sotah 28b:4:2",
@@ -1896,7 +1888,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 306,
+    "line_index_1": 307,
+    "line_index_2": 267,
+    "heRef_2": "תוספות על סוטה כח:, ד, ב",
+    "ref_2": "Tosafot on Sotah 28b:4:2",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 308,
     "line_index_2": 268,
     "heRef_2": "תוספות על סוטה כח:, ו, א",
     "ref_2": "Tosafot on Sotah 28b:6:1",
@@ -1904,7 +1904,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 308,
+    "line_index_1": 310,
     "line_index_2": 270,
     "heRef_2": "תוספות על סוטה כט., א, א",
     "ref_2": "Tosafot on Sotah 29a:1:1",
@@ -1912,23 +1912,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 309,
-    "line_index_2": 973,
-    "heRef_2": "סוטה כט., ט",
-    "ref_2": "Sotah 29a:9",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 310,
-    "line_index_2": 973,
-    "heRef_2": "סוטה כט., ט",
-    "ref_2": "Sotah 29a:9",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 311,
+    "line_index_2": 973,
+    "heRef_2": "סוטה כט., ט",
+    "ref_2": "Sotah 29a:9",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 312,
+    "line_index_2": 973,
+    "heRef_2": "סוטה כט., ט",
+    "ref_2": "Sotah 29a:9",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 313,
     "line_index_2": 976,
     "heRef_2": "סוטה כט., יב",
     "ref_2": "Sotah 29a:12",
@@ -1936,7 +1936,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 313,
+    "line_index_1": 315,
     "line_index_2": 985,
     "heRef_2": "סוטה כט:, ג",
     "ref_2": "Sotah 29b:3",
@@ -1944,7 +1944,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 314,
+    "line_index_1": 316,
     "line_index_2": 1469,
     "ref_2": "Rashi on Sotah 29b:10:4",
     "heRef_2": "רש\"י על סוטה כט:, י, ד",
@@ -1952,15 +1952,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 315,
-    "line_index_2": 992,
-    "heRef_2": "סוטה כט:, י",
-    "ref_2": "Sotah 29b:10",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 316,
+    "line_index_1": 317,
     "line_index_2": 992,
     "heRef_2": "סוטה כט:, י",
     "ref_2": "Sotah 29b:10",
@@ -1969,6 +1961,14 @@
   },
   {
     "line_index_1": 318,
+    "line_index_2": 992,
+    "heRef_2": "סוטה כט:, י",
+    "ref_2": "Sotah 29b:10",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 320,
     "line_index_2": 1480,
     "ref_2": "Rashi on Sotah 30a:1:1",
     "heRef_2": "רש\"י על סוטה ל., א, א",
@@ -1976,19 +1976,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 319,
+    "line_index_1": 321,
     "line_index_2": 1002,
     "heRef_2": "סוטה ל., א",
     "ref_2": "Sotah 30a:1",
     "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 320,
-    "line_index_2": 273,
-    "heRef_2": "תוספות על סוטה ל., א, א",
-    "ref_2": "Tosafot on Sotah 30a:1:1",
-    "path_2": "תוספות על סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -2000,7 +1992,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 323,
+    "line_index_1": 324,
+    "line_index_2": 273,
+    "heRef_2": "תוספות על סוטה ל., א, א",
+    "ref_2": "Tosafot on Sotah 30a:1:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 325,
     "line_index_2": 1005,
     "heRef_2": "סוטה ל., ד",
     "ref_2": "Sotah 30a:4",
@@ -2008,7 +2008,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 324,
+    "line_index_1": 326,
     "line_index_2": 1011,
     "heRef_2": "סוטה ל., י",
     "ref_2": "Sotah 30a:10",
@@ -2016,7 +2016,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 326,
+    "line_index_1": 328,
     "line_index_2": 1019,
     "heRef_2": "סוטה ל:, ג",
     "ref_2": "Sotah 30b:3",
@@ -2024,7 +2024,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 327,
+    "line_index_1": 329,
     "line_index_2": 1026,
     "heRef_2": "סוטה ל:, י",
     "ref_2": "Sotah 30b:10",
@@ -2032,26 +2032,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 328,
+    "line_index_1": 330,
     "line_index_2": 1026,
     "heRef_2": "סוטה ל:, י",
     "ref_2": "Sotah 30b:10",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 331,
-    "line_index_2": 1048,
-    "heRef_2": "סוטה לא., יד",
-    "ref_2": "Sotah 31a:14",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 332,
-    "line_index_2": 1048,
-    "heRef_2": "סוטה לא., יד",
-    "ref_2": "Sotah 31a:14",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2081,17 +2065,17 @@
   },
   {
     "line_index_1": 336,
-    "line_index_2": 1050,
-    "heRef_2": "סוטה לא., טז",
-    "ref_2": "Sotah 31a:16",
+    "line_index_2": 1048,
+    "heRef_2": "סוטה לא., יד",
+    "ref_2": "Sotah 31a:14",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 337,
-    "line_index_2": 1050,
-    "heRef_2": "סוטה לא., טז",
-    "ref_2": "Sotah 31a:16",
+    "line_index_2": 1048,
+    "heRef_2": "סוטה לא., יד",
+    "ref_2": "Sotah 31a:14",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2112,7 +2096,23 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 340,
+    "line_index_2": 1050,
+    "heRef_2": "סוטה לא., טז",
+    "ref_2": "Sotah 31a:16",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 341,
+    "line_index_2": 1050,
+    "heRef_2": "סוטה לא., טז",
+    "ref_2": "Sotah 31a:16",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 343,
     "line_index_2": 1072,
     "heRef_2": "סוטה לא:, יז",
     "ref_2": "Sotah 31b:17",
@@ -2120,7 +2120,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 342,
+    "line_index_1": 344,
     "line_index_2": 283,
     "heRef_2": "תוספות על סוטה לא:, טז, א",
     "ref_2": "Tosafot on Sotah 31b:16:1",
@@ -2128,7 +2128,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 343,
+    "line_index_1": 345,
     "line_index_2": 1071,
     "heRef_2": "סוטה לא:, טז",
     "ref_2": "Sotah 31b:16",
@@ -2136,7 +2136,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 344,
+    "line_index_1": 346,
     "line_index_2": 284,
     "heRef_2": "תוספות על סוטה לא:, יז, א",
     "ref_2": "Tosafot on Sotah 31b:17:1",
@@ -2144,7 +2144,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 346,
+    "line_index_1": 348,
     "line_index_2": 286,
     "heRef_2": "תוספות על סוטה לב., ג, א",
     "ref_2": "Tosafot on Sotah 32a:3:1",
@@ -2152,15 +2152,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 347,
-    "line_index_2": 1079,
-    "heRef_2": "סוטה לב., ג",
-    "ref_2": "Sotah 32a:3",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 348,
+    "line_index_1": 349,
     "line_index_2": 1079,
     "heRef_2": "סוטה לב., ג",
     "ref_2": "Sotah 32a:3",
@@ -2169,14 +2161,6 @@
   },
   {
     "line_index_1": 350,
-    "line_index_2": 287,
-    "heRef_2": "תוספות על סוטה לב., ה, א",
-    "ref_2": "Tosafot on Sotah 32a:5:1",
-    "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 351,
     "line_index_2": 1079,
     "heRef_2": "סוטה לב., ג",
     "ref_2": "Sotah 32a:3",
@@ -2185,6 +2169,14 @@
   },
   {
     "line_index_1": 352,
+    "line_index_2": 287,
+    "heRef_2": "תוספות על סוטה לב., ה, א",
+    "ref_2": "Tosafot on Sotah 32a:5:1",
+    "path_2": "תוספות על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 353,
     "line_index_2": 1079,
     "heRef_2": "סוטה לב., ג",
     "ref_2": "Sotah 32a:3",
@@ -2193,6 +2185,14 @@
   },
   {
     "line_index_1": 354,
+    "line_index_2": 1079,
+    "heRef_2": "סוטה לב., ג",
+    "ref_2": "Sotah 32a:3",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 356,
     "line_index_2": 292,
     "heRef_2": "תוספות על סוטה לב:, כג, א",
     "ref_2": "Tosafot on Sotah 32b:23:1",
@@ -2200,27 +2200,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 355,
+    "line_index_1": 357,
     "line_index_2": 293,
     "heRef_2": "תוספות על סוטה לב:, כד, א",
     "ref_2": "Tosafot on Sotah 32b:24:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 357,
-    "line_index_2": 1119,
-    "heRef_2": "סוטה לג., ג",
-    "ref_2": "Sotah 33a:3",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 358,
-    "line_index_2": 1119,
-    "heRef_2": "סוטה לג., ג",
-    "ref_2": "Sotah 33a:3",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -2241,6 +2225,22 @@
   },
   {
     "line_index_1": 361,
+    "line_index_2": 1119,
+    "heRef_2": "סוטה לג., ג",
+    "ref_2": "Sotah 33a:3",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 362,
+    "line_index_2": 1119,
+    "heRef_2": "סוטה לג., ג",
+    "ref_2": "Sotah 33a:3",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 363,
     "line_index_2": 1122,
     "heRef_2": "סוטה לג., ו",
     "ref_2": "Sotah 33a:6",
@@ -2248,7 +2248,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 362,
+    "line_index_1": 364,
     "line_index_2": 296,
     "heRef_2": "תוספות על סוטה לג., י, א",
     "ref_2": "Tosafot on Sotah 33a:10:1",
@@ -2256,7 +2256,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 363,
+    "line_index_1": 365,
     "line_index_2": 1126,
     "heRef_2": "סוטה לג., י",
     "ref_2": "Sotah 33a:10",
@@ -2264,7 +2264,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 364,
+    "line_index_1": 366,
     "line_index_2": 1128,
     "heRef_2": "סוטה לג., יב",
     "ref_2": "Sotah 33a:12",
@@ -2272,7 +2272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 365,
+    "line_index_1": 367,
     "line_index_2": 299,
     "heRef_2": "תוספות על סוטה לג., יג, א",
     "ref_2": "Tosafot on Sotah 33a:13:1",
@@ -2280,7 +2280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 368,
+    "line_index_1": 370,
     "line_index_2": 1644,
     "ref_2": "Rashi on Sotah 33b:10:2",
     "heRef_2": "רש\"י על סוטה לג:, י, ב",
@@ -2288,7 +2288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 369,
+    "line_index_1": 371,
     "line_index_2": 303,
     "heRef_2": "תוספות על סוטה לג:, ה, א",
     "ref_2": "Tosafot on Sotah 33b:5:1",
@@ -2296,23 +2296,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 371,
-    "line_index_2": 1150,
-    "heRef_2": "סוטה לד., ד",
-    "ref_2": "Sotah 34a:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 372,
-    "line_index_2": 1150,
-    "heRef_2": "סוטה לד., ד",
-    "ref_2": "Sotah 34a:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 373,
+    "line_index_2": 1150,
+    "heRef_2": "סוטה לד., ד",
+    "ref_2": "Sotah 34a:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 374,
+    "line_index_2": 1150,
+    "heRef_2": "סוטה לד., ד",
+    "ref_2": "Sotah 34a:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 375,
     "line_index_2": 307,
     "heRef_2": "תוספות על סוטה לד., ה, א",
     "ref_2": "Tosafot on Sotah 34a:5:1",
@@ -2320,7 +2320,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 375,
+    "line_index_1": 377,
     "line_index_2": 1163,
     "heRef_2": "סוטה לד:, ה",
     "ref_2": "Sotah 34b:5",
@@ -2328,7 +2328,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 377,
+    "line_index_1": 379,
     "line_index_2": 1203,
     "heRef_2": "סוטה לה:, ו",
     "ref_2": "Sotah 35b:6",
@@ -2336,7 +2336,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 378,
+    "line_index_1": 380,
     "line_index_2": 321,
     "heRef_2": "תוספות על סוטה לה:, ט, א",
     "ref_2": "Tosafot on Sotah 35b:9:1",
@@ -2344,7 +2344,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 379,
+    "line_index_1": 381,
     "line_index_2": 322,
     "heRef_2": "תוספות על סוטה לה:, יג, א",
     "ref_2": "Tosafot on Sotah 35b:13:1",
@@ -2352,7 +2352,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 380,
+    "line_index_1": 382,
     "line_index_2": 1210,
     "heRef_2": "סוטה לה:, יג",
     "ref_2": "Sotah 35b:13",
@@ -2360,27 +2360,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 382,
+    "line_index_1": 384,
     "line_index_2": 324,
     "heRef_2": "תוספות על סוטה לו., א, א",
     "ref_2": "Tosafot on Sotah 36a:1:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 383,
-    "line_index_2": 1222,
-    "heRef_2": "סוטה לו., יא",
-    "ref_2": "Sotah 36a:11",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 384,
-    "line_index_2": 1222,
-    "heRef_2": "סוטה לו., יא",
-    "ref_2": "Sotah 36a:11",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -2392,7 +2376,23 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 386,
+    "line_index_2": 1222,
+    "heRef_2": "סוטה לו., יא",
+    "ref_2": "Sotah 36a:11",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 387,
+    "line_index_2": 1222,
+    "heRef_2": "סוטה לו., יא",
+    "ref_2": "Sotah 36a:11",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 389,
     "line_index_2": 1230,
     "heRef_2": "סוטה לו:, ד",
     "ref_2": "Sotah 36b:4",
@@ -2400,27 +2400,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 389,
+    "line_index_1": 391,
     "line_index_2": 338,
     "heRef_2": "תוספות על סוטה לז:, ג, א",
     "ref_2": "Tosafot on Sotah 37b:3:1",
     "path_2": "תוספות על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 402,
-    "line_index_2": 1281,
-    "heRef_2": "סוטה לח., ה",
-    "ref_2": "Sotah 38a:5",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 403,
-    "line_index_2": 1281,
-    "heRef_2": "סוטה לח., ה",
-    "ref_2": "Sotah 38a:5",
-    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -2433,6 +2417,22 @@
   },
   {
     "line_index_1": 405,
+    "line_index_2": 1281,
+    "heRef_2": "סוטה לח., ה",
+    "ref_2": "Sotah 38a:5",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 406,
+    "line_index_2": 1281,
+    "heRef_2": "סוטה לח., ה",
+    "ref_2": "Sotah 38a:5",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 407,
     "line_index_2": 1291,
     "heRef_2": "סוטה לח., טו",
     "ref_2": "Sotah 38a:15",
@@ -2440,7 +2440,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 406,
+    "line_index_1": 408,
     "line_index_2": 1283,
     "heRef_2": "סוטה לח., ז",
     "ref_2": "Sotah 38a:7",
@@ -2448,15 +2448,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 408,
-    "line_index_2": 1299,
-    "heRef_2": "סוטה לח:, ז",
-    "ref_2": "Sotah 38b:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 409,
+    "line_index_1": 410,
     "line_index_2": 1299,
     "heRef_2": "סוטה לח:, ז",
     "ref_2": "Sotah 38b:7",
@@ -2465,6 +2457,14 @@
   },
   {
     "line_index_1": 411,
+    "line_index_2": 1299,
+    "heRef_2": "סוטה לח:, ז",
+    "ref_2": "Sotah 38b:7",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 413,
     "line_index_2": 1316,
     "heRef_2": "סוטה לט., ב",
     "ref_2": "Sotah 39a:2",
@@ -2472,7 +2472,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 412,
+    "line_index_1": 414,
     "line_index_2": 360,
     "heRef_2": "תוספות על סוטה לט., ג, א",
     "ref_2": "Tosafot on Sotah 39a:3:1",
@@ -2480,7 +2480,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 413,
+    "line_index_1": 415,
     "line_index_2": 1317,
     "heRef_2": "סוטה לט., ג",
     "ref_2": "Sotah 39a:3",
@@ -2488,7 +2488,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 415,
+    "line_index_1": 417,
     "line_index_2": 363,
     "heRef_2": "תוספות על סוטה לט:, ב, א",
     "ref_2": "Tosafot on Sotah 39b:2:1",
@@ -2496,7 +2496,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 416,
+    "line_index_1": 418,
     "line_index_2": 1331,
     "heRef_2": "סוטה לט:, י",
     "ref_2": "Sotah 39b:10",
@@ -2504,7 +2504,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 417,
+    "line_index_1": 419,
     "line_index_2": 1332,
     "heRef_2": "סוטה לט:, יא",
     "ref_2": "Sotah 39b:11",
@@ -2512,7 +2512,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 418,
+    "line_index_1": 420,
     "line_index_2": 1334,
     "heRef_2": "סוטה לט:, יג",
     "ref_2": "Sotah 39b:13",
@@ -2520,7 +2520,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 419,
+    "line_index_1": 421,
     "line_index_2": 1334,
     "heRef_2": "סוטה לט:, יג",
     "ref_2": "Sotah 39b:13",
@@ -2528,7 +2528,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 423,
+    "line_index_1": 425,
     "line_index_2": 367,
     "heRef_2": "תוספות על סוטה מ., א, א",
     "ref_2": "Tosafot on Sotah 40a:1:1",
@@ -2536,7 +2536,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 424,
+    "line_index_1": 426,
     "line_index_2": 1346,
     "heRef_2": "סוטה מ., יא",
     "ref_2": "Sotah 40a:11",
@@ -2544,23 +2544,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 426,
-    "line_index_2": 1356,
-    "heRef_2": "סוטה מ:, ד",
-    "ref_2": "Sotah 40b:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 427,
-    "line_index_2": 1356,
-    "heRef_2": "סוטה מ:, ד",
-    "ref_2": "Sotah 40b:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 428,
+    "line_index_2": 1356,
+    "heRef_2": "סוטה מ:, ד",
+    "ref_2": "Sotah 40b:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 429,
+    "line_index_2": 1356,
+    "heRef_2": "סוטה מ:, ד",
+    "ref_2": "Sotah 40b:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 430,
     "line_index_2": 1360,
     "heRef_2": "סוטה מ:, ח",
     "ref_2": "Sotah 40b:8",
@@ -2568,23 +2568,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 430,
-    "line_index_2": 1370,
-    "heRef_2": "סוטה מא., ז",
-    "ref_2": "Sotah 41a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 431,
-    "line_index_2": 1370,
-    "heRef_2": "סוטה מא., ז",
-    "ref_2": "Sotah 41a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 432,
+    "line_index_2": 1370,
+    "heRef_2": "סוטה מא., ז",
+    "ref_2": "Sotah 41a:7",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 433,
+    "line_index_2": 1370,
+    "heRef_2": "סוטה מא., ז",
+    "ref_2": "Sotah 41a:7",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 434,
     "line_index_2": 1373,
     "heRef_2": "סוטה מא., י",
     "ref_2": "Sotah 41a:10",
@@ -2592,23 +2592,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 433,
-    "line_index_2": 1966,
-    "ref_2": "Rashi on Sotah 41a:14:2",
-    "heRef_2": "רש\"י על סוטה מא., יד, ב",
-    "path_2": "רש\"י על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 434,
-    "line_index_2": 1966,
-    "ref_2": "Rashi on Sotah 41a:14:2",
-    "heRef_2": "רש\"י על סוטה מא., יד, ב",
-    "path_2": "רש\"י על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 435,
+    "line_index_2": 1966,
+    "ref_2": "Rashi on Sotah 41a:14:2",
+    "heRef_2": "רש\"י על סוטה מא., יד, ב",
+    "path_2": "רש\"י על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 436,
+    "line_index_2": 1966,
+    "ref_2": "Rashi on Sotah 41a:14:2",
+    "heRef_2": "רש\"י על סוטה מא., יד, ב",
+    "path_2": "רש\"י על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 437,
     "line_index_2": 1381,
     "heRef_2": "סוטה מא., יח",
     "ref_2": "Sotah 41a:18",
@@ -2616,7 +2616,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 437,
+    "line_index_1": 439,
     "line_index_2": 380,
     "heRef_2": "תוספות על סוטה מא:, ה, א",
     "ref_2": "Tosafot on Sotah 41b:5:1",
@@ -2624,7 +2624,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 438,
+    "line_index_1": 440,
     "line_index_2": 1390,
     "heRef_2": "סוטה מא:, א",
     "ref_2": "Sotah 41b:1",
@@ -2632,23 +2632,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 439,
-    "line_index_2": 1400,
-    "heRef_2": "סוטה מא:, יא",
-    "ref_2": "Sotah 41b:11",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 440,
-    "line_index_2": 1400,
-    "heRef_2": "סוטה מא:, יא",
-    "ref_2": "Sotah 41b:11",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 441,
+    "line_index_2": 1400,
+    "heRef_2": "סוטה מא:, יא",
+    "ref_2": "Sotah 41b:11",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 442,
+    "line_index_2": 1400,
+    "heRef_2": "סוטה מא:, יא",
+    "ref_2": "Sotah 41b:11",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 443,
     "line_index_2": 382,
     "heRef_2": "תוספות על סוטה מא:, טו, א",
     "ref_2": "Tosafot on Sotah 41b:15:1",
@@ -2656,7 +2656,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 444,
+    "line_index_1": 446,
     "line_index_2": 385,
     "heRef_2": "תוספות על סוטה מב., יב, א",
     "ref_2": "Tosafot on Sotah 42a:12:1",
@@ -2664,15 +2664,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 445,
-    "line_index_2": 1406,
-    "heRef_2": "סוטה מב., א",
-    "ref_2": "Sotah 42a:1",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 446,
+    "line_index_1": 447,
     "line_index_2": 1406,
     "heRef_2": "סוטה מב., א",
     "ref_2": "Sotah 42a:1",
@@ -2681,17 +2673,9 @@
   },
   {
     "line_index_1": 448,
-    "line_index_2": 1424,
-    "heRef_2": "סוטה מב:, ב",
-    "ref_2": "Sotah 42b:2",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 449,
-    "line_index_2": 1424,
-    "heRef_2": "סוטה מב:, ב",
-    "ref_2": "Sotah 42b:2",
+    "line_index_2": 1406,
+    "heRef_2": "סוטה מב., א",
+    "ref_2": "Sotah 42a:1",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2705,6 +2689,22 @@
   },
   {
     "line_index_1": 451,
+    "line_index_2": 1424,
+    "heRef_2": "סוטה מב:, ב",
+    "ref_2": "Sotah 42b:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 452,
+    "line_index_2": 1424,
+    "heRef_2": "סוטה מב:, ב",
+    "ref_2": "Sotah 42b:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 453,
     "line_index_2": 389,
     "heRef_2": "תוספות על סוטה מב:, טו, א",
     "ref_2": "Tosafot on Sotah 42b:15:1",
@@ -2712,7 +2712,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 452,
+    "line_index_1": 454,
     "line_index_2": 1437,
     "heRef_2": "סוטה מב:, טו",
     "ref_2": "Sotah 42b:15",
@@ -2720,7 +2720,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 454,
+    "line_index_1": 456,
     "line_index_2": 1442,
     "heRef_2": "סוטה מג., ד",
     "ref_2": "Sotah 43a:4",
@@ -2728,7 +2728,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 455,
+    "line_index_1": 457,
     "line_index_2": 1448,
     "heRef_2": "סוטה מג., י",
     "ref_2": "Sotah 43a:10",
@@ -2736,42 +2736,26 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 456,
-    "line_index_2": 1445,
-    "heRef_2": "סוטה מג., ז",
-    "ref_2": "Sotah 43a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 457,
-    "line_index_2": 1445,
-    "heRef_2": "סוטה מג., ז",
-    "ref_2": "Sotah 43a:7",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 458,
-    "line_index_2": 1451,
-    "heRef_2": "סוטה מג., יג",
-    "ref_2": "Sotah 43a:13",
+    "line_index_2": 1445,
+    "heRef_2": "סוטה מג., ז",
+    "ref_2": "Sotah 43a:7",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 459,
+    "line_index_2": 1445,
+    "heRef_2": "סוטה מג., ז",
+    "ref_2": "Sotah 43a:7",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 460,
-    "line_index_2": 1456,
-    "heRef_2": "סוטה מג:, ד",
-    "ref_2": "Sotah 43b:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 461,
-    "line_index_2": 1456,
-    "heRef_2": "סוטה מג:, ד",
-    "ref_2": "Sotah 43b:4",
+    "line_index_2": 1451,
+    "heRef_2": "סוטה מג., יג",
+    "ref_2": "Sotah 43a:13",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2793,14 +2777,22 @@
   },
   {
     "line_index_1": 464,
-    "line_index_2": 1459,
-    "heRef_2": "סוטה מג:, ז",
-    "ref_2": "Sotah 43b:7",
+    "line_index_2": 1456,
+    "heRef_2": "סוטה מג:, ד",
+    "ref_2": "Sotah 43b:4",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 465,
+    "line_index_2": 1456,
+    "heRef_2": "סוטה מג:, ד",
+    "ref_2": "Sotah 43b:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 466,
     "line_index_2": 1459,
     "heRef_2": "סוטה מג:, ז",
     "ref_2": "Sotah 43b:7",
@@ -2808,7 +2800,15 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 466,
+    "line_index_1": 467,
+    "line_index_2": 1459,
+    "heRef_2": "סוטה מג:, ז",
+    "ref_2": "Sotah 43b:7",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 468,
     "line_index_2": 1462,
     "heRef_2": "סוטה מג:, י",
     "ref_2": "Sotah 43b:10",
@@ -2816,26 +2816,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 467,
+    "line_index_1": 469,
     "line_index_2": 1464,
     "heRef_2": "סוטה מג:, יב",
     "ref_2": "Sotah 43b:12",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 468,
-    "line_index_2": 1465,
-    "heRef_2": "סוטה מג:, יג",
-    "ref_2": "Sotah 43b:13",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 469,
-    "line_index_2": 1465,
-    "heRef_2": "סוטה מג:, יג",
-    "ref_2": "Sotah 43b:13",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2849,22 +2833,6 @@
   },
   {
     "line_index_1": 471,
-    "line_index_2": 2108,
-    "ref_2": "Rashi on Sotah 43b:14:3",
-    "heRef_2": "רש\"י על סוטה מג:, יד, ג",
-    "path_2": "רש\"י על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 472,
-    "line_index_2": 2116,
-    "ref_2": "Rashi on Sotah 43b:18:1",
-    "heRef_2": "רש\"י על סוטה מג:, יח, א",
-    "path_2": "רש\"י על סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 473,
     "line_index_2": 1465,
     "heRef_2": "סוטה מג:, יג",
     "ref_2": "Sotah 43b:13",
@@ -2872,34 +2840,50 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 475,
-    "line_index_2": 1474,
-    "heRef_2": "סוטה מד., ב",
-    "ref_2": "Sotah 44a:2",
+    "line_index_1": 472,
+    "line_index_2": 1465,
+    "heRef_2": "סוטה מג:, יג",
+    "ref_2": "Sotah 43b:13",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 476,
-    "line_index_2": 1474,
-    "heRef_2": "סוטה מד., ב",
-    "ref_2": "Sotah 44a:2",
+    "line_index_1": 473,
+    "line_index_2": 2108,
+    "ref_2": "Rashi on Sotah 43b:14:3",
+    "heRef_2": "רש\"י על סוטה מג:, יד, ג",
+    "path_2": "רש\"י על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 474,
+    "line_index_2": 2116,
+    "ref_2": "Rashi on Sotah 43b:18:1",
+    "heRef_2": "רש\"י על סוטה מג:, יח, א",
+    "path_2": "רש\"י על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 475,
+    "line_index_2": 1465,
+    "heRef_2": "סוטה מג:, יג",
+    "ref_2": "Sotah 43b:13",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 477,
-    "line_index_2": 1475,
-    "heRef_2": "סוטה מד., ג",
-    "ref_2": "Sotah 44a:3",
+    "line_index_2": 1474,
+    "heRef_2": "סוטה מד., ב",
+    "ref_2": "Sotah 44a:2",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 478,
-    "line_index_2": 1475,
-    "heRef_2": "סוטה מד., ג",
-    "ref_2": "Sotah 44a:3",
+    "line_index_2": 1474,
+    "heRef_2": "סוטה מד., ב",
+    "ref_2": "Sotah 44a:2",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2913,6 +2897,22 @@
   },
   {
     "line_index_1": 480,
+    "line_index_2": 1475,
+    "heRef_2": "סוטה מד., ג",
+    "ref_2": "Sotah 44a:3",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 481,
+    "line_index_2": 1475,
+    "heRef_2": "סוטה מד., ג",
+    "ref_2": "Sotah 44a:3",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 482,
     "line_index_2": 1478,
     "heRef_2": "סוטה מד., ו",
     "ref_2": "Sotah 44a:6",
@@ -2920,7 +2920,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 481,
+    "line_index_1": 483,
     "line_index_2": 1479,
     "heRef_2": "סוטה מד., ז",
     "ref_2": "Sotah 44a:7",
@@ -2928,15 +2928,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 482,
-    "line_index_2": 1481,
-    "heRef_2": "סוטה מד., ט",
-    "ref_2": "Sotah 44a:9",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 483,
+    "line_index_1": 484,
     "line_index_2": 1481,
     "heRef_2": "סוטה מד., ט",
     "ref_2": "Sotah 44a:9",
@@ -2945,17 +2937,9 @@
   },
   {
     "line_index_1": 485,
-    "line_index_2": 1490,
-    "heRef_2": "סוטה מד:, ד",
-    "ref_2": "Sotah 44b:4",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 486,
-    "line_index_2": 1490,
-    "heRef_2": "סוטה מד:, ד",
-    "ref_2": "Sotah 44b:4",
+    "line_index_2": 1481,
+    "heRef_2": "סוטה מד., ט",
+    "ref_2": "Sotah 44a:9",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -2985,6 +2969,22 @@
   },
   {
     "line_index_1": 490,
+    "line_index_2": 1490,
+    "heRef_2": "סוטה מד:, ד",
+    "ref_2": "Sotah 44b:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 491,
+    "line_index_2": 1490,
+    "heRef_2": "סוטה מד:, ד",
+    "ref_2": "Sotah 44b:4",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 492,
     "line_index_2": 1493,
     "heRef_2": "סוטה מד:, ז",
     "ref_2": "Sotah 44b:7",
@@ -2992,23 +2992,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 493,
-    "line_index_2": 1507,
-    "heRef_2": "סוטה מה., א",
-    "ref_2": "Sotah 45a:1",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 494,
-    "line_index_2": 1507,
-    "heRef_2": "סוטה מה., א",
-    "ref_2": "Sotah 45a:1",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 495,
+    "line_index_2": 1507,
+    "heRef_2": "סוטה מה., א",
+    "ref_2": "Sotah 45a:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 496,
+    "line_index_2": 1507,
+    "heRef_2": "סוטה מה., א",
+    "ref_2": "Sotah 45a:1",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 497,
     "line_index_2": 1517,
     "heRef_2": "סוטה מה., יא",
     "ref_2": "Sotah 45a:11",
@@ -3016,7 +3016,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 496,
+    "line_index_1": 498,
     "line_index_2": 1522,
     "heRef_2": "סוטה מה., טז",
     "ref_2": "Sotah 45a:16",
@@ -3024,34 +3024,18 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 497,
-    "line_index_2": 1526,
-    "heRef_2": "סוטה מה., כ",
-    "ref_2": "Sotah 45a:20",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 498,
-    "line_index_2": 1526,
-    "heRef_2": "סוטה מה., כ",
-    "ref_2": "Sotah 45a:20",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 499,
-    "line_index_2": 1530,
-    "heRef_2": "סוטה מה., כד",
-    "ref_2": "Sotah 45a:24",
+    "line_index_2": 1526,
+    "heRef_2": "סוטה מה., כ",
+    "ref_2": "Sotah 45a:20",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 500,
-    "line_index_2": 1530,
-    "heRef_2": "סוטה מה., כד",
-    "ref_2": "Sotah 45a:24",
+    "line_index_2": 1526,
+    "heRef_2": "סוטה מה., כ",
+    "ref_2": "Sotah 45a:20",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -3064,18 +3048,18 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 503,
-    "line_index_2": 1541,
-    "heRef_2": "סוטה מה:, ח",
-    "ref_2": "Sotah 45b:8",
+    "line_index_1": 502,
+    "line_index_2": 1530,
+    "heRef_2": "סוטה מה., כד",
+    "ref_2": "Sotah 45a:24",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
-    "line_index_1": 504,
-    "line_index_2": 1541,
-    "heRef_2": "סוטה מה:, ח",
-    "ref_2": "Sotah 45b:8",
+    "line_index_1": 503,
+    "line_index_2": 1530,
+    "heRef_2": "סוטה מה., כד",
+    "ref_2": "Sotah 45a:24",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -3089,6 +3073,22 @@
   },
   {
     "line_index_1": 506,
+    "line_index_2": 1541,
+    "heRef_2": "סוטה מה:, ח",
+    "ref_2": "Sotah 45b:8",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 507,
+    "line_index_2": 1541,
+    "heRef_2": "סוטה מה:, ח",
+    "ref_2": "Sotah 45b:8",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 508,
     "line_index_2": 1543,
     "heRef_2": "סוטה מה:, י",
     "ref_2": "Sotah 45b:10",
@@ -3096,7 +3096,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 507,
+    "line_index_1": 509,
     "line_index_2": 1546,
     "heRef_2": "סוטה מה:, יג",
     "ref_2": "Sotah 45b:13",
@@ -3104,27 +3104,11 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 509,
-    "line_index_2": 1556,
-    "heRef_2": "סוטה מו., ב",
-    "ref_2": "Sotah 46a:2",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 510,
-    "line_index_2": 1556,
-    "heRef_2": "סוטה מו., ב",
-    "ref_2": "Sotah 46a:2",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 511,
-    "line_index_2": 2246,
-    "ref_2": "Rashi on Sotah 46a:2:1",
-    "heRef_2": "רש\"י על סוטה מו., ב, א",
-    "path_2": "רש\"י על סוטה.txt",
+    "line_index_2": 1556,
+    "heRef_2": "סוטה מו., ב",
+    "ref_2": "Sotah 46a:2",
+    "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
@@ -3137,6 +3121,22 @@
   },
   {
     "line_index_1": 513,
+    "line_index_2": 2246,
+    "ref_2": "Rashi on Sotah 46a:2:1",
+    "heRef_2": "רש\"י על סוטה מו., ב, א",
+    "path_2": "רש\"י על סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 514,
+    "line_index_2": 1556,
+    "heRef_2": "סוטה מו., ב",
+    "ref_2": "Sotah 46a:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 515,
     "line_index_2": 1564,
     "heRef_2": "סוטה מו., י",
     "ref_2": "Sotah 46a:10",
@@ -3144,7 +3144,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 514,
+    "line_index_1": 516,
     "line_index_2": 1569,
     "heRef_2": "סוטה מו., טו",
     "ref_2": "Sotah 46a:15",
@@ -3152,26 +3152,10 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 515,
+    "line_index_1": 517,
     "line_index_2": 1577,
     "heRef_2": "סוטה מו., כג",
     "ref_2": "Sotah 46a:23",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 517,
-    "line_index_2": 1580,
-    "heRef_2": "סוטה מו:, ב",
-    "ref_2": "Sotah 46b:2",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 518,
-    "line_index_2": 1580,
-    "heRef_2": "סוטה מו:, ב",
-    "ref_2": "Sotah 46b:2",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -3185,6 +3169,22 @@
   },
   {
     "line_index_1": 520,
+    "line_index_2": 1580,
+    "heRef_2": "סוטה מו:, ב",
+    "ref_2": "Sotah 46b:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 521,
+    "line_index_2": 1580,
+    "heRef_2": "סוטה מו:, ב",
+    "ref_2": "Sotah 46b:2",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 522,
     "line_index_2": 1585,
     "heRef_2": "סוטה מו:, ז",
     "ref_2": "Sotah 46b:7",
@@ -3192,23 +3192,23 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 521,
-    "line_index_2": 1588,
-    "heRef_2": "סוטה מו:, י",
-    "ref_2": "Sotah 46b:10",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 522,
-    "line_index_2": 1588,
-    "heRef_2": "סוטה מו:, י",
-    "ref_2": "Sotah 46b:10",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 523,
+    "line_index_2": 1588,
+    "heRef_2": "סוטה מו:, י",
+    "ref_2": "Sotah 46b:10",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 524,
+    "line_index_2": 1588,
+    "heRef_2": "סוטה מו:, י",
+    "ref_2": "Sotah 46b:10",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 525,
     "line_index_2": 1592,
     "heRef_2": "סוטה מו:, יד",
     "ref_2": "Sotah 46b:14",
@@ -3216,15 +3216,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 524,
-    "line_index_2": 1600,
-    "heRef_2": "סוטה מו:, כב",
-    "ref_2": "Sotah 46b:22",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 525,
+    "line_index_1": 526,
     "line_index_2": 1600,
     "heRef_2": "סוטה מו:, כב",
     "ref_2": "Sotah 46b:22",
@@ -3233,17 +3225,9 @@
   },
   {
     "line_index_1": 527,
-    "line_index_2": 1619,
-    "heRef_2": "סוטה מז., טז",
-    "ref_2": "Sotah 47a:16",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 528,
-    "line_index_2": 1619,
-    "heRef_2": "סוטה מז., טז",
-    "ref_2": "Sotah 47a:16",
+    "line_index_2": 1600,
+    "heRef_2": "סוטה מו:, כב",
+    "ref_2": "Sotah 46b:22",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -3265,6 +3249,22 @@
   },
   {
     "line_index_1": 531,
+    "line_index_2": 1619,
+    "heRef_2": "סוטה מז., טז",
+    "ref_2": "Sotah 47a:16",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 532,
+    "line_index_2": 1619,
+    "heRef_2": "סוטה מז., טז",
+    "ref_2": "Sotah 47a:16",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 533,
     "line_index_2": 1620,
     "heRef_2": "סוטה מז., יז",
     "ref_2": "Sotah 47a:17",
@@ -3272,7 +3272,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 533,
+    "line_index_1": 535,
     "line_index_2": 1629,
     "heRef_2": "סוטה מז:, ה",
     "ref_2": "Sotah 47b:5",
@@ -3280,7 +3280,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 534,
+    "line_index_1": 536,
     "line_index_2": 1633,
     "heRef_2": "סוטה מז:, ט",
     "ref_2": "Sotah 47b:9",
@@ -3288,7 +3288,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 536,
+    "line_index_1": 538,
     "line_index_2": 1650,
     "heRef_2": "סוטה מח., ב",
     "ref_2": "Sotah 48a:2",
@@ -3296,7 +3296,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 537,
+    "line_index_1": 539,
     "line_index_2": 1651,
     "heRef_2": "סוטה מח., ג",
     "ref_2": "Sotah 48a:3",
@@ -3304,7 +3304,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 539,
+    "line_index_1": 541,
     "line_index_2": 1681,
     "heRef_2": "סוטה מח:, י",
     "ref_2": "Sotah 48b:10",
@@ -3312,34 +3312,18 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 540,
-    "line_index_2": 1683,
-    "heRef_2": "סוטה מח:, יב",
-    "ref_2": "Sotah 48b:12",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
-    "line_index_1": 541,
-    "line_index_2": 1683,
-    "heRef_2": "סוטה מח:, יב",
-    "ref_2": "Sotah 48b:12",
-    "path_2": "סוטה.txt",
-    "Conection Type": "source"
-  },
-  {
     "line_index_1": 542,
-    "line_index_2": 1686,
-    "heRef_2": "סוטה מח:, טו",
-    "ref_2": "Sotah 48b:15",
+    "line_index_2": 1683,
+    "heRef_2": "סוטה מח:, יב",
+    "ref_2": "Sotah 48b:12",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
   {
     "line_index_1": 543,
-    "line_index_2": 1686,
-    "heRef_2": "סוטה מח:, טו",
-    "ref_2": "Sotah 48b:15",
+    "line_index_2": 1683,
+    "heRef_2": "סוטה מח:, יב",
+    "ref_2": "Sotah 48b:12",
     "path_2": "סוטה.txt",
     "Conection Type": "source"
   },
@@ -3360,7 +3344,23 @@
     "Conection Type": "source"
   },
   {
+    "line_index_1": 546,
+    "line_index_2": 1686,
+    "heRef_2": "סוטה מח:, טו",
+    "ref_2": "Sotah 48b:15",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
     "line_index_1": 547,
+    "line_index_2": 1686,
+    "heRef_2": "סוטה מח:, טו",
+    "ref_2": "Sotah 48b:15",
+    "path_2": "סוטה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 549,
     "line_index_2": 1700,
     "heRef_2": "סוטה מט., ח",
     "ref_2": "Sotah 49a:8",
@@ -3368,7 +3368,7 @@
     "Conection Type": "source"
   },
   {
-    "line_index_1": 548,
+    "line_index_1": 550,
     "line_index_2": 1700,
     "heRef_2": "סוטה מט., ח",
     "ref_2": "Sotah 49a:8",

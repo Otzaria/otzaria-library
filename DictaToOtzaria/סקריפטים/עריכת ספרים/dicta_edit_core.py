@@ -616,8 +616,10 @@ def _heading_number(h: str) -> str:
 # 9. נקודותיים ורווח → ירידת שורה
 # ---------------------------------------------------------------------------
 
-_QUOTE_INTRO = {'וז"ל', 'ז"ל', "וזל\"ה", "וזה לשונו", "וזו לשונו", "ולשונו",
-                "וזלה\"ק", 'וז"ל'}
+# בלי ז"ל לבדו: אחרי שם ("הרמב"ם ז"ל:") הוא תואר כבוד, לא מבוא לציטוט
+_QUOTE_INTRO = {'וז"ל', "וזל\"ה", "וזה לשונו", "וזו לשונו", "ולשונו", "וזלה\"ק"}
+# סוף ציטוט קצר שנמשך באותה פסקה ("וז"ל: אסור. עכ"ל ומה ש...")
+_QUOTE_END = re.compile(r'עכ"ל|עכ"ד|עד כאן לשונו')  # לא ע"כ: גם "על כרחך"
 
 
 _HEB_ONLY = re.compile(r"[^א-ת]")
@@ -645,15 +647,13 @@ def _is_daf_number(w: str) -> bool:
     return bool(c) and len(c) <= 4 and 0 < _NUMBER_FORMS.get(c, 0) <= 200
 
 
-def _is_daf_reference(prev_words: list[str], next_word: str = "") -> bool:
+def _is_daf_reference(prev_words: list[str]) -> bool:
     """הנקודותיים שאחרי המילים האלה הן סימן עמוד ב של הפניה, לא סוף עניין.
 
     "שבת קיט:" / "בב"ק כ"ה:" / "בבא מציעא ל:" / "דף ל"ג:" / "בדף ה':" / "בד' כא:" /
-    "כ"ה ע"ב:" / "ע"ב:" / "דף ה' עמוד ב:" / "...: ד"ה" (דיבור המתחיל אחרי הנקודותיים).
+    "כ"ה ע"ב:" / "ע"ב:" / "דף ה' עמוד ב:".
     אחרי סוגר ("(שבת קיט):") הנקודותיים הן סוף משפט — נשבר.
     """
-    if _HEB_ONLY.sub("", next_word) in _DH_KEYS and re.search(r"[\"'״׳]", next_word):
-        return True
     if not prev_words:
         return False
     last = prev_words[-1]
@@ -685,27 +685,39 @@ def _is_daf_reference(prev_words: list[str], next_word: str = "") -> bool:
     return False
 
 
+# סמן סעיף בתחילת פסקה: "(ג)", "ג)", "[ג]"
+_ITEM_START = re.compile(r"^(?:\([א-ת]{1,3}['\"׳״]?\)|[א-ת]{1,3}\)|\[[א-ת]{1,3}['\"׳״]?\])(?:\s|$)")
+
+
 def colon_ends_matter(before: str, after: str) -> bool:
     """האם `:` שבין before (עד הנקודותיים, בלעדיהן) ל־after היא סוף עניין שמותר לשבור אחריה.
 
-    לא בתוך תג פתוח (<b>…: …</b>), לא בתוך סוגריים קצרים, לא אחרי מבוא לציטוט (וז"ל:),
-    ולא בהפניה לעמוד ב ("שבת קיט: ובגמ'"). משמש גם את dicta_convert וגם את איחוד השורות.
+    לא שוברים (באמצע משפט) רק בתוך תג פתוח, בסוגריים קצרים שנסגרים מיד ב־after,
+    אחרי וז"ל: כשהציטוט נגמר מיד (עכ"ל) והטקסט נמשך, ובהפניה לעמוד ב ("שבת קיט: ובגמ'").
+    after שפותח במודגש, בסמן סעיף או בד"ה (שלא אחרי הפניה) — פסקה חדשה.
+    משמש את colon_newline, את dicta_convert ואת איחוד השורות (בספק — שוברים).
     """
-    depth = len(re.findall(r"<(?:b|big|small|i)>", before)) - \
-        len(re.findall(r"</(?:b|big|small|i)>", before))
+    depth = len(re.findall(r"<(?:b|big|small|i)>", before)) -         len(re.findall(r"</(?:b|big|small|i)>", before))
     if depth > 0:
         return False
+    if after.lstrip().startswith("<b>"):
+        return True
     plain = re.sub(r"<[^>]+>", "", before)
     prev_words = plain.split()
+    rest = re.sub(r"<[^>]+>", "", after).lstrip()
+    if _ITEM_START.match(rest):
+        return True
     op = plain.rfind("(")
     if op > max(plain.rfind(")"), plain.rfind("]")) and len(plain) - op <= 40:
-        return False  # בתוך סוגריים קצרים — "(שבת קיט: ד"ה …)" הוא הפניה
+        close, reopen = rest.find(")"), rest.find("(")
+        if 0 <= close <= 40 and (reopen < 0 or close < reopen):
+            return False  # "(שבת קיט: ד"ה ומה)" — הפניה בתוך סוגריים
+    if _is_daf_reference(prev_words):
+        return False  # "שבת קיט: ובגמ'" / "תוס' שם פ"ה: ד"ה" — עמוד ב, לא סוף עניין
     if prev_words and (prev_words[-1] in _QUOTE_INTRO or
                        " ".join(prev_words[-2:]) in _QUOTE_INTRO):
-        return False
-    nxt = re.sub(r"<[^>]+>", "", after).split()
-    if _is_daf_reference(prev_words, nxt[0] if nxt else ""):
-        return False  # "שבת קיט: ובגמ'" — הנקודותיים הן עמוד ב, לא סוף עניין
+        m = _QUOTE_END.search(rest[:80])
+        return not (m and rest[m.end():].strip(" .:"))
     return True
 
 
