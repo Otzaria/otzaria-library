@@ -53,5 +53,24 @@ class HeadingLevelsTest(unittest.TestCase):
         self.assertEqual(hs, [(2, "P1"), (2, "Inner"), (2, "P2")])
 
 
+class NormalizeCharsTest(unittest.TestCase):
+    A, B = "\N{HEBREW LETTER AYIN}", "\N{HEBREW LETTER SHIN}"
+
+    def test_gershayim(self):
+        self.assertEqual(conv.normalize_chars(self.A + "''" + self.B), self.A + '"' + self.B)
+        self.assertEqual(conv.normalize_chars(self.A + "'' " + self.B), self.A + "'' " + self.B)
+
+    def test_invisibles_and_spaces(self):
+        s = self.A + "\N{LEFT-TO-RIGHT MARK}\x9f\N{ZERO WIDTH JOINER}" + self.B + "\N{NO-BREAK SPACE} \t" + self.A
+        self.assertEqual(conv.normalize_chars(s), self.A + self.B + " " + self.A)
+
+    def test_zwj_before_a_point_kept(self):
+        s = "\N{HEBREW LETTER VAV}\N{ZERO WIDTH JOINER}\N{HEBREW POINT HOLAM}"
+        self.assertEqual(conv.normalize_chars(s), s)
+
+    def test_newlines_kept(self):
+        self.assertEqual(conv.normalize_chars("a\nb"), "a\nb")
+
+
 if __name__ == "__main__":
     unittest.main()

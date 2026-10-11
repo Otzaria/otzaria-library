@@ -125,11 +125,14 @@ _INVISIBLE_RE = re.compile(
 # רווחים מיוחדים → רווח רגיל (לא \n: הוא נושא מידע בפורמט הישן)
 _SPACE_LIKE_RE = re.compile("[\t  -   　]")
 
+# '' בין שתי אותיות הוא גרשיים (ע''ש); אחרי מילה הוא סוגר ציטוט (וכו'') ונשאר
+_GERSHAYIM_PAIR_RE = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+
 
 def _clean_chars(s: str) -> str:
     s = _INVISIBLE_RE.sub("", s)
     s = _SPACE_LIKE_RE.sub(" ", s)
-    return s
+    return _GERSHAYIM_PAIR_RE.sub('"', s)
 
 
 def _escape_text(s: str) -> str:

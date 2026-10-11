@@ -157,6 +157,11 @@ class NewFormatSegmentation(unittest.TestCase):
         page = new_page(("א‏ב", "marked-paragraph"), ("ג ד",))
         self.assertEqual(DC.convert_pages([page]), "אב ג ד\n")
 
+    def test_double_apostrophe_between_letters_is_gershayim(self):
+        a, b = "\N{HEBREW LETTER AYIN}", "\N{HEBREW LETTER SHIN}"
+        page = new_page((a + "''" + b, "marked-paragraph"), (a + "''",))
+        self.assertEqual(DC.convert_pages([page]), a + '"' + b + " " + a + "''\n")
+
     def test_header_lines_strip_display_name(self):
         page = new_page(("טקסט", "marked-paragraph"))
         out = DC.convert_pages([page], {"displayName": "שם הספר  ", "author": " מחבר "})

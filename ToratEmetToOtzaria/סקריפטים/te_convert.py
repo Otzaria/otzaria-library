@@ -316,8 +316,20 @@ class LineRenderer:
         return out
 
 
+# '' between two Hebrew letters is gershayim (ע''ש -> ע"ש); after a word it closes a quote (וכו'')
+GERSHAYIM_PAIR_RE = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+# junk invisibles: bidi marks, BOM, zero-width space, soft hyphen, controls.
+# ZWJ/ZWNJ survive only before a point (vav+ZWJ+holam renders holam haser)
+INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u2069\u00ad\x00-\x08\x0b-\x1f\x7f-\x9f]"
+                          "|[\u200c\u200d](?![\u05b0-\u05c7])")
+ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
+SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
+
+
 def tidy(s):
-    s = re.sub(r'_nbsp;?|&nbsp;', ' ', s).replace('\xa0', ' ')
+    s = re.sub(r'_nbsp;?|&nbsp;', ' ', s)
+    s = SPACE_RUN_RE.sub(' ', INVISIBLE_RE.sub('', s))
+    s = GERSHAYIM_PAIR_RE.sub('"', s)
     # drop empty elements and <br> at the edges of the line
     prev = None
     while prev != s:

@@ -10,6 +10,20 @@ t_dict = {1:"אונקלוס",2:'תרגום ירושלמי',3:'רש"י',4:'רמב
 
 TEXT_LT = "\ue000"
 
+# '' between two Hebrew letters is gershayim (ע''ש -> ע"ש); after a word it closes a quote (וכו'')
+GERSHAYIM_PAIR_RE = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+# junk invisibles: bidi marks, BOM, zero-width space, soft hyphen, controls.
+# ZWJ/ZWNJ survive only before a point (vav+ZWJ+holam renders holam haser)
+INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u2069\u00ad\x00-\x08\x0b-\x1f\x7f-\x9f]"
+                          "|[\u200c\u200d](?![\u05b0-\u05c7])")
+ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
+SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
+
+
+def normalize_chars(text):
+    text = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", text))
+    return GERSHAYIM_PAIR_RE.sub('"', text)
+
 def adjust_html_tag_spaces(html):
     start_pattern = r'(<[^/<>]+?>)([ ]+)' 
     end_pattern = r'([ ]+)(</[^<>]+?>)' 
@@ -162,7 +176,7 @@ def convert_file(file_path, target_file, file_name):
     fix_xml, title = process_body_xml(content)
     fix_spaces = adjust_html_tag_spaces(fix_xml).splitlines()
     output_text = [f"<h1>{title}</h1>" if title else f"<h1>{file_name}</h1>", ""] + [line.strip() for line in fix_spaces if check_line(line)]
-    join_lines = html_module.unescape("\n".join(output_text)).replace(TEXT_LT, "&lt;")
+    join_lines = normalize_chars(html_module.unescape("\n".join(output_text))).replace(TEXT_LT, "&lt;")
     with open(target_file, "w", encoding = "utf-8") as output:
         output.write(join_lines)
 

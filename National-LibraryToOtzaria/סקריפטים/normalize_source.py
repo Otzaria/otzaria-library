@@ -15,6 +15,9 @@ import re
 
 _NEWLINES = re.compile(r'[\r\n  ]+')
 
+# '' בין שתי אותיות הוא גרשיים (ע''ש); אחרי מילה הוא סוגר ציטוט (וכו'') ונשאר
+_GERSHAYIM_PAIR = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+
 
 def _replace_newlines(m: re.Match) -> str:
     s = m.string
@@ -28,4 +31,4 @@ def _replace_newlines(m: re.Match) -> str:
 def normalize_source_html(raw: str | None) -> str:
     if not raw:
         return ''
-    return _NEWLINES.sub(_replace_newlines, raw)
+    return _GERSHAYIM_PAIR.sub('"', _NEWLINES.sub(_replace_newlines, raw))
