@@ -127,12 +127,34 @@ _SPACE_LIKE_RE = re.compile("[\t  -   　]")
 
 # '' בין שתי אותיות הוא גרשיים (ע''ש); אחרי מילה הוא סוגר ציטוט (וכו'') ונשאר
 _GERSHAYIM_PAIR_RE = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+# ...חוץ ממירכאה פותחת שדבוקה לאות שימוש (ש''אין אב'') ונסגרת בהמשך השורה
+_QUOTE_PREFIX_RE = re.compile(r"(?<![א-ת֑-ׇ])(?:[בדהוכלמש][֑-ׇ]*){1,3}")
+_QUOTE_WORD_RE = re.compile(r"(?:[א-ת][֑-ׇ]*){2}")
+_QUOTE_CLOSE_RE = re.compile(r"(?<=[א-ת֑-ׇ.,;:!?])''(?![א-ת'])")
+
+
+def _opens_quote(s, start, end):
+    if not _QUOTE_WORD_RE.match(s, end):
+        return False
+    if not any(m.end() == start for m in _QUOTE_PREFIX_RE.finditer(s, max(0, start - 16), start)):
+        return False
+    stop = s.find("\n", end)
+    for m in re.finditer("''", s[end:] if stop < 0 else s[end:stop]):
+        p = end + m.start()
+        if _GERSHAYIM_PAIR_RE.match(s, p):
+            continue
+        return bool(_QUOTE_CLOSE_RE.match(s, p))
+    return False
+
+
+def _gershayim(s):
+    return _GERSHAYIM_PAIR_RE.sub(lambda m: m.group() if _opens_quote(s, m.start(), m.end()) else '"', s)
 
 
 def _clean_chars(s: str) -> str:
     s = _INVISIBLE_RE.sub("", s)
     s = _SPACE_LIKE_RE.sub(" ", s)
-    return _GERSHAYIM_PAIR_RE.sub('"', s)
+    return _gershayim(s)
 
 
 def _escape_text(s: str) -> str:

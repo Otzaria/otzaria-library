@@ -60,6 +60,10 @@ class NormalizeCharsTest(unittest.TestCase):
         self.assertEqual(conv.normalize_chars(self.A + "''" + self.B), self.A + '"' + self.B)
         self.assertEqual(conv.normalize_chars(self.A + "'' " + self.B), self.A + "'' " + self.B)
 
+    def test_opening_quote_after_a_prefix_letter_is_kept(self):
+        q = "\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}''"
+        self.assertEqual(conv.normalize_chars(q), q)
+
     def test_invisibles_and_spaces(self):
         s = self.A + "\N{LEFT-TO-RIGHT MARK}\x9f\N{ZERO WIDTH JOINER}" + self.B + "\N{NO-BREAK SPACE} \t" + self.A
         self.assertEqual(conv.normalize_chars(s), self.A + self.B + " " + self.A)

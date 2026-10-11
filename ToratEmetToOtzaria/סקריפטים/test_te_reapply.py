@@ -265,6 +265,10 @@ class Normalization(unittest.TestCase):
     def test_double_apostrophe_after_a_word_is_a_closing_quote(self):
         self.assertEqual(E.tidy(self.A + "'' " + self.B), self.A + "'' " + self.B)
 
+    def test_opening_quote_after_a_prefix_letter_is_kept(self):
+        q = "\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}'', " + self.A + "''" + self.B
+        self.assertEqual(E.tidy(q), q[:-3] + '"' + self.B)
+
     def test_junk_invisibles_removed_zwj_kept_before_a_point(self):
         self.assertEqual(E.tidy(self.A + '\N{RIGHT-TO-LEFT MARK}\N{ZERO WIDTH SPACE}' + self.B), self.A + self.B)
         self.assertEqual(E.tidy(self.A + '\N{ZERO WIDTH JOINER}' + self.B), self.A + self.B)

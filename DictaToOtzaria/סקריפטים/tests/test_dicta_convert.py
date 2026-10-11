@@ -162,6 +162,10 @@ class NewFormatSegmentation(unittest.TestCase):
         page = new_page((a + "''" + b, "marked-paragraph"), (a + "''",))
         self.assertEqual(DC.convert_pages([page]), a + '"' + b + " " + a + "''\n")
 
+    def test_opening_quote_after_a_prefix_letter_is_kept(self):
+        q = "\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}''"
+        self.assertEqual(DC.convert_pages([new_page((q, "marked-paragraph"))]), q + "\n")
+
     def test_header_lines_strip_display_name(self):
         page = new_page(("טקסט", "marked-paragraph"))
         out = DC.convert_pages([page], {"displayName": "שם הספר  ", "author": " מחבר "})
