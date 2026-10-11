@@ -63,7 +63,13 @@ PICS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "books", "Pi
 IMG_MIME = {".png": "png", ".jpg": "jpeg", ".jpeg": "jpeg", ".gif": "gif", ".bmp": "bmp"}
 TAG_ALIASES = {"strong": "b", "em": "i", "font": "span"}
 
-INVISIBLE = dict.fromkeys(map(ord, "‎‏‪‫‬‭‮﻿­"))
+# תווים בלתי נראים בלי משמעות: כיווניות, BOM, רוחב־אפס, מקף רך, תווי בקרה.
+# ZWJ/ZWNJ נשמרים רק לפני ניקוד: ו+ZWJ+חולם = חולם חסר
+INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u2069\u00ad\x00-\x08\x0b-\x1f\x7f-\x9f]"
+                          "|[\u200c\u200d](?![\u05b0-\u05c7])")
+# רצף רווחים שיש בו רווח לא סטנדרטי (טאב, NBSP, EM SPACE...) הופך לרווח אחד
+ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
+SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
 
 TAG_RE = re.compile(r"<(/?)([A-Za-z][A-Za-z0-9]*)((?:\s+[^<>]*?)?)\s*(/?)>")
 ATTR_RE = re.compile(r"""([A-Za-z_:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))""")
@@ -338,7 +344,7 @@ def clean_line(s):
 
 
 def norm_chars(s):
-    s = s.translate(INVISIBLE).replace(" ", " ")
+    s = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", s))
     return "".join(unicodedata.normalize("NFKD", c) if 0xFB1D <= ord(c) <= 0xFB4F else c for c in s)
 
 

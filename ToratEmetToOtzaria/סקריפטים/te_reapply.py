@@ -871,7 +871,7 @@ def main():
             if len(rep['format']) > 10:
                 print(f'  FORMATTING: ... {len(rep["format"]) - 10} more')
         if a.write and not bad and not rep['format'] and text != raw:
-            open(path, 'w', encoding='utf-8').write(text)
+            open(path, 'w', encoding='utf-8', newline='\n').write(text)
     print('totals:', dict(total.most_common(25)))
     sys.exit(1 if failed else 0)
 

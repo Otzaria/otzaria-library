@@ -43,6 +43,43 @@ IMAGE_NAME_RE = re.compile(r"^\S+\.(?:png|jpe?g|gif|svg|webp)$", re.I)
 ENTITY_RE = re.compile(r"&(?=#?[A-Za-z0-9]+;)")
 
 
+# '' between two Hebrew letters is gershayim (ע''ש -> ע"ש); after a word it closes a quote (וכו'')
+GERSHAYIM_PAIR_RE = re.compile(r"(?<=[\u05d0-\u05ea\u0591-\u05c7])''(?=[\u05d0-\u05ea])")
+# ...unless it opens a quote glued to a prefix letter (ש''אין אב'') that closes later in the line
+QUOTE_PREFIX_RE = re.compile(r"(?<![א-ת֑-ׇ])(?:[בדהוכלמש][֑-ׇ]*){1,3}")
+QUOTE_WORD_RE = re.compile(r"(?:[א-ת][֑-ׇ]*){2}")
+QUOTE_CLOSE_RE = re.compile(r"(?<=[א-ת֑-ׇ.,;:!?])''(?![א-ת'])")
+
+
+def opens_quote(s, start, end):
+    if not QUOTE_WORD_RE.match(s, end):
+        return False
+    if not any(m.end() == start for m in QUOTE_PREFIX_RE.finditer(s, max(0, start - 16), start)):
+        return False
+    stop = s.find("\n", end)
+    for m in re.finditer("''", s[end:] if stop < 0 else s[end:stop]):
+        p = end + m.start()
+        if GERSHAYIM_PAIR_RE.match(s, p):
+            continue
+        return bool(QUOTE_CLOSE_RE.match(s, p))
+    return False
+
+
+def gershayim(s):
+    return GERSHAYIM_PAIR_RE.sub(lambda m: m.group() if opens_quote(s, m.start(), m.end()) else '"', s)
+# junk invisibles: bidi marks, BOM, zero-width space, soft hyphen, controls.
+# ZWJ/ZWNJ survive only before a point (vav+ZWJ+holam renders holam haser)
+INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u2069\u00ad\x00-\x08\x0b-\x1f\x7f-\x9f]"
+                          "|[\u200c\u200d](?![\u05b0-\u05c7])")
+ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
+SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
+
+
+def normalize_chars(text: str) -> str:
+    text = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", text))
+    return gershayim(text)
+
+
 def escape_text(text: str) -> str:
     return ENTITY_RE.sub("&amp;", text).replace("<", "&lt;").replace(">", "&gt;")
 
@@ -212,7 +249,7 @@ def convert_line_markers(line: str, footnote_numbers: dict[str, int] | None = No
     parser = _LineConverter(footnote_numbers)
     parser.feed(line)
     parser.close()
-    return parser.result(), parser.markers
+    return normalize_chars(parser.result()), parser.markers
 
 
 def convert_line(line: str, footnote_numbers: dict[str, int] | None = None) -> str:

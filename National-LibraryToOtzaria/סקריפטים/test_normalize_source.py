@@ -9,6 +9,9 @@ from normalize_source import normalize_source_html
 
 
 CASES = [
+    ('\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}''', '\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}'''),
+    # '' בין אותיות = גרשיים; אחרי מילה = סוגר ציטוט
+    ('\N{HEBREW LETTER AYIN}\'\'\N{HEBREW LETTER SHIN} \N{HEBREW LETTER AYIN}\'\'', '\N{HEBREW LETTER AYIN}"\N{HEBREW LETTER SHIN} \N{HEBREW LETTER AYIN}\'\''),
     # שבירת שורה אמיתית בתוך טקסט
     ('אתכם\nשרבנו מביא', 'אתכם שרבנו מביא'),
     ('בשכר,\nנותן לו', 'בשכר, נותן לו'),

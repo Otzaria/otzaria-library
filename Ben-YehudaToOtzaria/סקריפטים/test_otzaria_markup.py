@@ -18,6 +18,11 @@ LINE_CASES = [
     ('<br/>', ''),
     # headings lose their id
     ('<h2 id="x1">Title</h2>', '<h2>Title</h2>'),
+    # gershayim, junk invisibles and odd spaces are normalized
+    ('<p>\N{HEBREW LETTER AYIN}\'\'\N{HEBREW LETTER SHIN} \N{HEBREW LETTER AYIN}\'\'</p>', '\N{HEBREW LETTER AYIN}"\N{HEBREW LETTER SHIN} \N{HEBREW LETTER AYIN}\'\''),
+    ('<p>\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}''</p>', '\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}'''),
+    ('<p>a\N{EN SPACE}\N{EM SPACE} b\N{RIGHT-TO-LEFT MARK}c&nbsp;d</p>', 'a bc d'),
+    ('<p>\N{HEBREW LETTER VAV}\N{ZERO WIDTH JOINER}\N{HEBREW POINT HOLAM}</p>', '\N{HEBREW LETTER VAV}\N{ZERO WIDTH JOINER}\N{HEBREW POINT HOLAM}'),
     # styled footnote marker -> bare <sup>, which is not an RTL box
     ('<p>word<sup style="color: #2563eb; font-weight: bold;">12</sup>.</p>', 'word<sup>12</sup>.'),
     # a paragraph split across two lines by hand: each half is balanced on its own

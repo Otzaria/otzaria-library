@@ -238,5 +238,46 @@ class Pictures(unittest.TestCase):
         self.assertEqual(self.lines('<img src="../Pics/book/7.jpg">'), ['טקסט'])
 
 
+class NoteMarkers(unittest.TestCase):
+    RULES = ("#rep=[[[=<small><sup>(^^]]]=)</sup></small>"
+             "#rep12={{=<small> <script>ExpandCollapse(false, '*');</script> </small><small>"
+             "#rep13=}}=</small><small>_nbsp;  <script>ExpandCollapseEnd();</script> _nbsp; </small>")
+
+    def test_marker_is_glued_to_its_collapsible_note(self):
+        # וביום השבת: '[[[א]]] {{הערה}}' - the source's space must not reach the book
+        text = source('$ שם\nמחבר\nלבשל [[[א]]] {{הערה}} באור\n', self.RULES)
+        _, lines = E.convert('x.txt', text=text)
+        self.assertEqual(lines[-1]['html'], 'לבשל <small><sup>(א)</sup>הערה</small> באור')
+
+    def test_marker_before_text_keeps_its_space(self):
+        text = source('$ שם\nמחבר\nלבשל [[[א]]] באור\n', self.RULES)
+        _, lines = E.convert('x.txt', text=text)
+        self.assertEqual(lines[-1]['html'], 'לבשל <small><sup>(א)</sup></small> באור')
+
+
+class Normalization(unittest.TestCase):
+    """te_convert.tidy: gershayim, junk invisibles and odd spaces."""
+    A, B = '\N{HEBREW LETTER AYIN}', '\N{HEBREW LETTER SHIN}'
+
+    def test_double_apostrophe_between_letters_is_gershayim(self):
+        self.assertEqual(E.tidy(self.A + "''" + self.B), self.A + '"' + self.B)
+
+    def test_double_apostrophe_after_a_word_is_a_closing_quote(self):
+        self.assertEqual(E.tidy(self.A + "'' " + self.B), self.A + "'' " + self.B)
+
+    def test_opening_quote_after_a_prefix_letter_is_kept(self):
+        q = "\N{HEBREW LETTER SHIN}''\N{HEBREW LETTER RESH}\N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH} \N{HEBREW LETTER AYIN}\N{HEBREW LETTER RESH}'', " + self.A + "''" + self.B
+        self.assertEqual(E.tidy(q), q[:-3] + '"' + self.B)
+
+    def test_junk_invisibles_removed_zwj_kept_before_a_point(self):
+        self.assertEqual(E.tidy(self.A + '\N{RIGHT-TO-LEFT MARK}\N{ZERO WIDTH SPACE}' + self.B), self.A + self.B)
+        self.assertEqual(E.tidy(self.A + '\N{ZERO WIDTH JOINER}' + self.B), self.A + self.B)
+        zwj = '\N{HEBREW LETTER VAV}\N{ZERO WIDTH JOINER}\N{HEBREW POINT HOLAM}'
+        self.assertEqual(E.tidy(zwj), zwj)
+
+    def test_odd_spaces_become_one_space(self):
+        self.assertEqual(E.tidy(self.A + '\N{NO-BREAK SPACE}\N{EM SPACE} \t' + self.B), self.A + ' ' + self.B)
+
+
 if __name__ == '__main__':
     unittest.main()

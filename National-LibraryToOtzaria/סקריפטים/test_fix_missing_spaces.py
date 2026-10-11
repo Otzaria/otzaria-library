@@ -16,6 +16,10 @@ CASES_CHANGED = [
     ('<br/><b>ב</b>וכמה', '<br/><b>ב</b> וכמה'),
     ('<h4><b>א</b>כל', '<h4><b>א</b> כל'),
     ('<b>א</b>מצרים', '<b>א</b> מצרים'),
+    ('<i>דשן</i><i>המזבח', '<i>דשן</i> <i>המזבח'),
+    ("<b>וכו'.</b><i>ואשר", "<b>וכו'.</b> <i>ואשר"),
+    ('<br/><b>[ו]</b><b>האוכל', '<br/><b>[ו]</b> <b>האוכל'),
+    ('<span style="color:#999">*)</span><span style="color:#999">וכן', '<span style="color:#999">*)</span> <span style="color:#999">וכן'),
 ]
 
 CASES_UNCHANGED = [
@@ -24,6 +28,8 @@ CASES_UNCHANGED = [
     '<b>שלום </b>וישע',
     '<b></b>מילה',
     '<b>text</b>מילה',
+    '<small>עיין [</small><small>פרשה',
+    'ו<i>אמר</i><i>ו',
 ]
 
 

@@ -9,6 +9,8 @@
 * תוכן של אות עברית אחת מקבל רווח רק כשהתג נפתח אחרי <br/>, תג סוגר אחר
   או תחילת שורה (סימון הלכה) — אות בודדת באמצע משפט היא אקרוסטיכון
   (<b>מ</b>מצרים) ואסור לפצל אותו.
+* גם כשמיד אחרי התג הסוגר נפתח תג נוסף (<i>דשן</i><i>המזבח): במקור יש שבירת שורה
+  בין שני הקטעים, ו-normalize_source מוחק שבירה שצמודה לתג.
 * תגים שנפתחים באמצע מילה (אות עברית צמודה לפני התג הפותח) לא נוגעים בהם.
 """
 
@@ -19,10 +21,13 @@ from pathlib import Path
 HEB = r'א-ת'
 TAGS = ['b', 'i', 'small', 'span']
 
-# <tag ...>inner</tag>letter — ללא רווח לפני התג הסוגר
+OPEN_TAGS = r'(?:<(?:' + '|'.join(TAGS) + r')(?:\s[^>]*)?>)*'
+
+# <tag ...>inner</tag>[<tag2 ...>]letter — ללא רווח לפני התג הסוגר. הבדיקה שהתג לא נפתח באמצע מילה
+# היא lookbehind ולא תו נצרך, כדי ששרשרת <i>א</i><i>ב</i><i>ג תיתפס כולה.
 PAT = re.compile(
-    r'(?P<prefix>^|.)(?P<open><(?P<tag>' + '|'.join(TAGS) + r')(?:\s[^>]*)?>)'
-    r'(?P<inner>[^<]*[^<\s])(?P<close></(?P=tag)>)(?=[' + HEB + r'])',
+    r'(?<![' + HEB + r'])(?P<open><(?P<tag>' + '|'.join(TAGS) + r')(?:\s[^>]*)?>)'
+    r'(?P<inner>[^<]*[^<\s(\[{])(?P<close></(?P=tag)>)(?=' + OPEN_TAGS + r'[' + HEB + r'])',
     re.MULTILINE,
 )
 
@@ -34,9 +39,8 @@ def fix_text(text: str) -> tuple[str, int]:
 
     def repl(m: re.Match) -> str:
         nonlocal count
-        prefix, inner = m.group('prefix'), m.group('inner')
-        # תג שנפתח באמצע מילה — לא נוגעים
-        if re.match(r'[' + HEB + r']', prefix):
+        inner = m.group('inner')
+        if inner[-1] in '([':
             return m.group(0)
         letters = re.sub(r'[^' + HEB + r']', '', inner)
         if len(letters) >= 2:
@@ -55,7 +59,7 @@ def fix_text(text: str) -> tuple[str, int]:
         if not ok:
             return m.group(0)
         count += 1
-        return f"{prefix}{m.group('open')}{inner}{m.group('close')} "
+        return f"{m.group('open')}{inner}{m.group('close')} "
 
     return PAT.sub(repl, text), count
 
