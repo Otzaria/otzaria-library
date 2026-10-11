@@ -954,6 +954,20 @@
         "authorName": "מהרש\"א"
       },
       "commit": "3e74fb12842122af805a52e3a854250a12c6b68c"
+    },
+    {
+      "id": 74,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבני נזר חושן משפט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבני נזר חושן משפט",
+        "authorName": "ר' אברהם בורנשטיין"
+      },
+      "commit": null,
+      "changeSetId": "6acb785fb9775d9e1a5c7271"
     }
   ]
 }
