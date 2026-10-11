@@ -75,6 +75,9 @@ class NormalizeCharsTest(unittest.TestCase):
     def test_newlines_kept(self):
         self.assertEqual(conv.normalize_chars("a\nb"), "a\nb")
 
+    def test_symbol_font_arrow_mapped(self):
+        self.assertEqual(conv.normalize_chars("a. \uf0ac b"), "a. \u2190 b")
+
 
 if __name__ == "__main__":
     unittest.main()

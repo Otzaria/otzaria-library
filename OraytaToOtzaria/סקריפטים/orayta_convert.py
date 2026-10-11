@@ -71,6 +71,9 @@ INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u
 ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
 SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
 
+# תווי גופן Symbol ש-Word מקודד באזור הפרטי (F000+קוד): מופיעים במקור כתיבה ריקה
+SYMBOL_FONT = {0xF0AC: "\u2190", 0xF047: "\u0393"}
+
 TAG_RE = re.compile(r"<(/?)([A-Za-z][A-Za-z0-9]*)((?:\s+[^<>]*?)?)\s*(/?)>")
 ATTR_RE = re.compile(r"""([A-Za-z_:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))""")
 
@@ -344,7 +347,7 @@ def clean_line(s):
 
 
 def norm_chars(s):
-    s = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", s))
+    s = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", s)).translate(SYMBOL_FONT)
     return "".join(unicodedata.normalize("NFKD", c) if 0xFB1D <= ord(c) <= 0xFB4F else c for c in s)
 
 

@@ -42,8 +42,12 @@ ODD_SPACE = "\t\u00a0\u2000-\u200a\u202f\u205f\u3000"
 SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
 
 
+# תו גופן Symbol מ-Word (F000+קוד): חץ שמאלה, אחרת נראה כריבוע ריק
+SYMBOL_FONT = {0xF0AC: "\u2190"}
+
+
 def normalize_chars(text):
-    text = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", text))
+    text = SPACE_RUN_RE.sub(" ", INVISIBLE_RE.sub("", text)).translate(SYMBOL_FONT)
     return gershayim(text)
 
 def adjust_html_tag_spaces(html):

@@ -43,6 +43,9 @@ class NormCharsTest(unittest.TestCase):
         s = "\N{HEBREW LETTER VAV}\N{ZERO WIDTH JOINER}\N{HEBREW POINT HOLAM}"
         self.assertEqual(norm_chars(s), s)
 
+    def test_symbol_font_private_use_mapped(self):
+        self.assertEqual(norm_chars("a. \uf0acb \uf047,"), "a. \u2190b \u0393,")
+
     def test_odd_spaces_collapse_to_one_space(self):
         self.assertEqual(norm_chars("a\N{EM SPACE}\N{EM SPACE} b\tc\N{NO-BREAK SPACE}d"), "a b c d")
         self.assertEqual(norm_chars("a  b"), "a  b")
