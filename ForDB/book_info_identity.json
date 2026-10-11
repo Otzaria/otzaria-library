@@ -954,6 +954,20 @@
         "authorName": "מהרש\"א"
       },
       "commit": "3e74fb12842122af805a52e3a854250a12c6b68c"
+    },
+    {
+      "id": 74,
+      "kind": "rename",
+      "old": {
+        "bookName": "מקדש דוד חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מקדש דוד חלק ג",
+        "authorName": "הרב דוד רפפורט"
+      },
+      "commit": null,
+      "changeSetId": "6acb7b4bb9775d9e1a5c731a"
     }
   ]
 }
