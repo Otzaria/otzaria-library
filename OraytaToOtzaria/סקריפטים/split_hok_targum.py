@@ -61,6 +61,14 @@ JOINS = (
     "לבית|ש מעון",  # במדבר כה, יד
     "מ עברא|לירדנא",  # "מעבר לירדן"
     "בשמיא|מ לעלא",  # דברים ד, לט "בשמים ממעל"
+    "במימ רא",  # דברים: "במימרא" שנשברה כבר באוריתא
+    # שברים ישנים במקור (רווח ממש, לא <j>):
+    "עמ לק",  # שמות יז, טז
+    "דמ צרים",  # שמות כ, ב
+    "תשבעו ן",  # ויקרא כו, כו
+    "וס רכיכון",  # דברים לא, כח
+    "ואמ לל",  # דברים לא, כח
+    "בשמ יא",  # דברים לג, כו
 )
 
 
@@ -176,6 +184,7 @@ def apply_joins(line: str, specs: tuple[str, ...] = JOINS) -> tuple[str, int]:
 class Splitter:
     def __init__(self, parts: dict[str, tuple[str, ...]], real: set[str], te: TeIndex | None = None):
         self.parts = {k: v for k, v in parts.items() if k not in real and v not in DENIED}
+        self.real = real
         self.ambiguous = {k: v for k, v in parts.items() if k in real}
         self.te = te
         self.added = 0
@@ -197,15 +206,29 @@ class Splitter:
         cuts = [sum(len(p) for p in pieces[:i]) for i in range(1, len(pieces))]
         return bool(found) and all(q + c in self.te.breaks for q in found for c in cuts)
 
+    def _fragment(self, words: list[re.Match], i: int) -> bool:
+        """האם המילה היא שבר של מילה שכבר שבורה (יחד עם שכנתה היא מילה בתורת אמת) - לא מפצלים אותה שוב."""
+        key = skel(words[i].group())
+        prev = words[i - 1] if i and words[i - 1].end() + 1 == words[i].start() else None
+        nxt = words[i + 1] if i + 1 < len(words) and words[i].end() + 1 == words[i + 1].start() else None
+        return bool(
+            prev and prev.string[prev.end()] == " " and skel(prev.group()) + key in self.real
+            or nxt and nxt.string[words[i].end()] == " " and key + skel(nxt.group()) in self.real)
+
     def line(self, line: str) -> str:
         line, removed = apply_joins(line)
         self.removed += removed
         starts = [m.start() for m in LETTER.finditer(line)]
         flat = "".join(line[i] for i in starts)
 
+        words = list(WORD.finditer(line))
+        index = {m.start(): i for i, m in enumerate(words)}
+
         def replace(m: re.Match) -> str:
             word = m.group()
             key = skel(word)
+            if self._fragment(words, index[m.start()]):
+                return word
             pieces = self.parts.get(key)
             if pieces is None and key in self.ambiguous:
                 if self._separate_in_te(flat, bisect.bisect_left(starts, m.start()), key, self.ambiguous[key]):
@@ -218,7 +241,11 @@ class Splitter:
             self.added += len(pieces) - 1
             return split_word(word, tuple(len(p) for p in pieces))
 
-        return WORD.sub(replace, line)
+        line = WORD.sub(replace, line)
+        # שוב אחרי הפיצול: מילה מחוברת לשכנתה מתפצלת לפי <j> שגוי בתורת אמת ורק אז JOINS תופס.
+        line, removed = apply_joins(line)
+        self.removed += removed
+        return line
 
 
 @functools.lru_cache(maxsize=None)

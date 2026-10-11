@@ -3,7 +3,10 @@ closes a parenthesis that the text opened and does not close by itself."""
 import re
 import unittest
 
-from orayta_convert import norm_chars, replace_editor_comments, text_escape
+from unittest import mock
+
+import split_hok_targum
+from orayta_convert import hok_targum_spaces, norm_chars, replace_editor_comments, text_escape
 
 
 def comment(body):
@@ -53,6 +56,24 @@ class NormCharsTest(unittest.TestCase):
     def test_double_apostrophe_becomes_gershayim(self):
         self.assertEqual(text_escape("\N{HEBREW LETTER AYIN}''\N{HEBREW LETTER SHIN}"),
                          '\N{HEBREW LETTER AYIN}"\N{HEBREW LETTER SHIN}')
+
+
+class HokTargumSpacesTest(unittest.TestCase):
+    """המרת חק לישראל מחזירה את רווחי התרגום (split_hok_targum), ושאר הספרים לא."""
+
+    def test_hok_books_go_through_splitter(self):
+        fake = mock.Mock()
+        fake.line.side_effect = lambda l: l + "!"
+        with mock.patch.object(split_hok_targum, "splitter_for", return_value=fake) as factory:
+            out = hok_targum_spaces("books/005_mprsi_mkra/20_hok_lisral/y_hok20.obk", ["a", "b"])
+        factory.assert_called_once_with(split_hok_targum.VOLUMES[1])
+        self.assertEqual(out, ["a!", "b!"])
+
+    def test_other_books_untouched(self):
+        with mock.patch.object(split_hok_targum, "splitter_for") as factory:
+            out = hok_targum_spaces("books/001_mkra/01_torh/a01_Genesis.obk", ["a"])
+        factory.assert_not_called()
+        self.assertEqual(out, ["a"])
 
 
 if __name__ == "__main__":

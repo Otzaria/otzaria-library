@@ -791,7 +791,22 @@ def convert(obk_path, gmara_daf_level=None):
         body = render_section(["<br>".join(fix_text(s) for s in editor_notes[idx])])[0]
         # אותו סמן כמו בגוף: בבניית המסד ההערה נשתלת במקום <sup>(א)</sup> שבשורה
         editor_lines.append((n, f"<sup>({gematria(k)})</sup> {body}"))
+    out = hok_targum_spaces(obk_path, out)
     return title, out, conf, editor_lines
+
+
+HOK_RE = re.compile(r"y_hok([1-5])\d\.obk$", re.I)
+
+
+def hok_targum_spaces(obk_path, lines):
+    """חק לישראל: אוריתא השמיטה את מפרידי המילים (<j>) של תורת אמת בתרגום - מחזירים את הרווחים."""
+    m = HOK_RE.search(os.path.basename(obk_path))
+    if not m:
+        return lines
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import split_hok_targum
+    sp = split_hok_targum.splitter_for(split_hok_targum.VOLUMES[int(m.group(1)) - 1])
+    return [sp.line(l) for l in lines]
 
 
 GEMATRIA = [(400, "ת"), (300, "ש"), (200, "ר"), (100, "ק"), (90, "צ"), (80, "פ"), (70, "ע"), (60, "ס"),
