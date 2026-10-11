@@ -25,6 +25,9 @@
   בכל קובץ links ששדה path_2 שלו מצביע עליו (בשורשי ה-links שארוזים). שתי שורות שלכל אחת
   קישור תלוי-טקסט משלה (line_index_1) לא מאוחדות - אחרת ייווצר קישור כפול לאותה שורה.
   ספרים שכותרותיהם תוקנו ביד (HAND_HEADINGS) מקבלים איחוד שורות בלבד, בלי תיקוני כותרות.
+  גולמי מ-dbs-raw (--raw-map) הוא ניחוש לפי רוחב שורת הדפוס, ולכן שורת כותרת קצרה שאינה
+  מודגשת כולה לא מאוחדת עם שורה שנפתחת ב-<b> (סימן תחילת פסקה של דיקטה) - אחרת שם תשובה,
+  נושא או פתיח של רשימה ("על שבעה דרכים" + "האחד") נבלעים בגוף.
 
 מה לא מתוקן (רק מדווח): כותרות שהמשכן בגוף בלי עד בגולמי, כותרת שנוצרה מחתיכת שורת גוף,
 שורות לא-מסתיימות שאין להן עד בגולמי, אובדן מילה ראשונה בכותרות, `&amp;`.
@@ -68,6 +71,18 @@ def terminated(line):
 
 def is_body(line):
     return bool(line.strip()) and not line.startswith('<h')
+
+
+PAGE_MARK = re.compile(r'<b>\[דף [^\]]*\]</b>')
+TITLE_MAX = 60
+
+
+def title_before_para(cur, nxt):
+    """cur שורת כותרת קצרה (בלי סימון עמוד) שאינה מודגשת כולה, ו-nxt נפתחת ב-<b>."""
+    rest = PAGE_MARK.sub('', cur).strip()
+    if not nxt.startswith('<b>') or len(plain(rest)) > TITLE_MAX:
+        return False
+    return not re.fullmatch(r'<b>[^<]*</b>', rest)
 
 
 # ------------------------------------------------------------- DBS as raw
@@ -425,8 +440,10 @@ def fix_brackets(t):
 
 
 # --------------------------------------------------------------- main logic
-def process(path, ri, apply, pinned=frozenset(), block_merge=False, fix_headings=True):
-    """pinned: שורות (0-based) עם קישור תלוי-טקסט משלהן; block_merge: לא לאחד כלל (שם ספר לא חד-ערכי)."""
+def process(path, ri, apply, pinned=frozenset(), block_merge=False, fix_headings=True,
+            guess_raw=False):
+    """pinned: שורות (0-based) עם קישור תלוי-טקסט משלהן; block_merge: לא לאחד כלל (שם ספר לא חד-ערכי);
+    guess_raw: הגולמי נבנה ב-dbs-raw, אז שורת כותרת לא מאוחדת עם פסקה שאחריה."""
     full = os.path.join(REPO, path)
     src = open(full, encoding='utf-8', newline='').read()
     L = src.split('\n')
@@ -532,6 +549,9 @@ def process(path, ri, apply, pinned=frozenset(), block_merge=False, fix_headings
                 break
             j = ri.joined(toks(cur), toks(nxt)) if ri else 'noraw'
             blocked = block_merge or (cur_pinned and i in pinned)
+            if j == 'join' and guess_raw and title_before_para(cur, nxt):
+                note('b_title_before_para', i - 1, plain(cur)[-25:] + ' || ' + plain(nxt)[:25])
+                break
             if j == 'join' and not re.search(r'\S[-־]$', cur.rstrip()) and not blocked:
                 note('b_broken_fixable', i - 1, plain(cur)[-25:] + ' || ' + plain(nxt)[:25])
                 cur = cur.rstrip() + ' ' + nxt.lstrip()
@@ -566,7 +586,7 @@ def main():
         return dbs_raw(sys.argv[2], sys.argv[3])
     ap = argparse.ArgumentParser()
     ap.add_argument('mode', choices=['scan', 'fix'])
-    ap.add_argument('--commit', nargs='+', default=DEFAULT_COMMITS)
+    ap.add_argument('--commit', nargs='+')
     ap.add_argument('--raw-map', help='JSON {נתיב ספר: קובץ גולמי}; מעבד רק את הספרים האלה, עם הגולמי הזה')
     ap.add_argument('--out', default='dbs_breaks_report.json')
     ap.add_argument('--exclude', nargs='*', default=[])
@@ -574,8 +594,16 @@ def main():
                     help='ספרים שמקבלים איחוד שורות בלבד, בלי תיקוני כותרות')
     a = ap.parse_args()
     apply = a.mode == 'fix'
+    if a.raw_map and a.commit:
+        ap.error('--raw-map בוחר את הספרים בעצמו; אין לצרף --commit')
     raw_map = json.load(open(a.raw_map, encoding='utf-8')) if a.raw_map else None
-    books = list(raw_map) if raw_map else books_of_commits(a.commit, a.exclude)
+    if raw_map:
+        raw_map = {p: r for p, r in raw_map.items() if not any(e in p for e in a.exclude)}
+        names = collections.Counter(os.path.basename(p) for p in raw_map)
+        dup = sorted(n for n, c in names.items() if c > 1)
+        if dup:
+            sys.exit('--raw-map: שם קובץ מופיע ביותר מספר אחד: %s' % ', '.join(dup))
+    books = list(raw_map) if raw_map else books_of_commits(a.commit or DEFAULT_COMMITS, a.exclude)
     raws = {os.path.basename(p): [raw_map[p]] for p in raw_map} if raw_map else raw_files()
     allraw = [f for v in raws.values() for f in v]
     cache = {}
@@ -591,7 +619,7 @@ def main():
         files = lidx.get(title, [])
         ambiguous = bool(files) and titles[title] > 1
         r = process(p, ri, apply, pinned_lines(title), block_merge=ambiguous,
-                    fix_headings=not any(h in p for h in a.hand_headings))
+                    fix_headings=not any(h in p for h in a.hand_headings), guess_raw=bool(raw_map))
         linemap = r.pop('linemap')
         r['raw'] = os.path.relpath(rp, REPO) if rp else None
         r['links_files'] = files

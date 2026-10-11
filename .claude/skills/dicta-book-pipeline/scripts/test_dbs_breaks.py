@@ -39,13 +39,13 @@ class ShiftLinksText(unittest.TestCase):
 
 
 class ProcessMerge(unittest.TestCase):
-    def run_process(self, lines, pinned=frozenset()):
+    def run_process(self, lines, pinned=frozenset(), guess_raw=False):
         with tempfile.TemporaryDirectory() as d:
             old = D.REPO
             D.REPO = d
             try:
                 open(os.path.join(d, 'b.txt'), 'w', encoding='utf-8').write('\n'.join(lines))
-                r = D.process('b.txt', FakeRaw(), True, pinned)
+                r = D.process('b.txt', FakeRaw(), True, pinned, guess_raw=guess_raw)
                 return open(os.path.join(d, 'b.txt'), encoding='utf-8').read().split('\n'), r
             finally:
                 D.REPO = old
@@ -59,6 +59,16 @@ class ProcessMerge(unittest.TestCase):
         out, r = self.run_process(['<h1>ס</h1>', 'אחת שתיים', 'שלוש ארבע.'], pinned={1, 2})
         self.assertEqual(out, ['<h1>ס</h1>', 'אחת שתיים', 'שלוש ארבע.'])
         self.assertEqual(r['merged'], 0)
+
+    def test_guessed_raw_keeps_title_lines(self):
+        lines = ['<h1>ס</h1>', 'שאלה לרבינו', '<b>כיון</b> דקיימא לן.',
+                 '<b>[דף נב טור ד]</b> קיום על שבעה דרכים', '<b>האחד</b> אם העדים.',
+                 "<b>מעלה ב'</b>", '<b>מן</b> הזאב ולמעלה.']
+        out, r = self.run_process(lines, guess_raw=True)
+        self.assertEqual(out, lines[:5] + ["<b>מעלה ב'</b> <b>מן</b> הזאב ולמעלה."])
+        self.assertEqual(r['stats']['b_title_before_para'], 2)
+        out, r = self.run_process(lines)
+        self.assertEqual(r['merged'], 3)
 
 
 class DbsParagraphs(unittest.TestCase):
