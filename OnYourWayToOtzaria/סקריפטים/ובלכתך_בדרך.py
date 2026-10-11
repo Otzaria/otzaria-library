@@ -61,6 +61,41 @@ def adjust_html_tag_spaces(html):
 
     return html
 
+_WORD_CHAR = re.compile(r"[\w\u0591-\u05f4'\"]")
+
+
+def _orient_brackets(text, open_ch, close_ch):
+    # Each bracket's role comes from its neighbours; between two words it closes the open pair.
+    chars = list(text)
+    depth = 0
+    for i, ch in enumerate(text):
+        if ch not in (open_ch, close_ch):
+            continue
+        before = i > 0 and bool(_WORD_CHAR.match(text[i - 1]))
+        after = i + 1 < len(text) and bool(_WORD_CHAR.match(text[i + 1]))
+        opening = after if before != after else depth == 0
+        depth = depth + 1 if opening else max(depth - 1, 0)
+        chars[i] = open_ch if opening else close_ch
+    return "".join(chars)
+
+
+def fix_mirrored_brackets(soup):
+    """Some sources store brackets mirrored (")x(" for "(x)"); reorient them in such books."""
+    strings = soup.find_all(string=True)
+    text = "".join(strings)
+    for open_ch, close_ch in ("()", "[]"):
+        opener = r"(?:^|(?<=[^\w\u0591-\u05f4'\"])){}(?=[\w\u0591-\u05f4'\"])"
+        mirrored = len(re.findall(opener.format(re.escape(close_ch)), text))
+        if mirrored > len(re.findall(opener.format(re.escape(open_ch)), text)):
+            text = _orient_brackets(text, open_ch, close_ch)
+    pos = 0
+    for string in strings:
+        new = text[pos:pos + len(string)]
+        pos += len(string)
+        if new != string:
+            string.replace_with(new)
+
+
 def check_line(line):
     return re.search(r"[a-zA-Zא-ת0-9]+", line)
 
@@ -77,6 +112,7 @@ def process_body_xml(xml_content):
     # '<' של טקסט מסומן לפני הוספת הכותרות, כדי שלא יפוענח בסוף לתג גולמי
     for text in soup.find_all(string=lambda t: "<" in t):
         text.replace_with(text.replace("<", TEXT_LT))
+    fix_mirrored_brackets(soup)
     for tag in soup.find_all():
         if tag.name:
             if tag.name.lower() in ('html', "body", "d" , "iri", "pid", "qm", "rb", "sp", "tf", "col3", "f", "a"):

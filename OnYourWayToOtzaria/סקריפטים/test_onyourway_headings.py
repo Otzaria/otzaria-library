@@ -1,4 +1,4 @@
-"""Heading levels in the OnYourWay converter (book/chap/p -> h1/h2/h3).
+"""OnYourWay converter: heading levels (book/chap/p -> h1/h2/h3) and mirrored brackets.
 
 A first chap named like the book is skipped (it would duplicate h1), and the
 p headings inside it are promoted to h2 so they don't jump from h1 to h3.
@@ -74,6 +74,32 @@ class NormalizeCharsTest(unittest.TestCase):
 
     def test_newlines_kept(self):
         self.assertEqual(conv.normalize_chars("a\nb"), "a\nb")
+
+
+def body(xml):
+    html, _ = conv.process_body_xml(xml)
+    return re.sub(r"<[^>]+>", "", html_module.unescape(html)).split()
+
+
+class MirroredBracketsTest(unittest.TestCase):
+    # Some sources store every bracket mirrored: "]\u05d0[" for "[\u05d0]".
+    def test_mirrored_book_is_reoriented(self):
+        words = body('<book n="B"><p>\u05d0 ]\u05d1[ \u05d2 )\u05d3 \u05d4( \u05d5 )\u05d6(:</p></book>')
+        self.assertEqual(" ".join(words),
+                         "\u05d0 [\u05d1] \u05d2 (\u05d3 \u05d4) \u05d5 (\u05d6):")
+
+    def test_correct_pairs_in_mirrored_book_are_kept(self):
+        words = body('<book n="B"><p>)\u05d0( )\u05d1( \u05d2 (\u05d3)</p></book>')
+        self.assertEqual(" ".join(words), "(\u05d0) (\u05d1) \u05d2 (\u05d3)")
+
+    def test_pair_split_by_inline_tag(self):
+        words = body('<book n="B"><p>)\u05d0 <b>\u05d1</b>( )\u05d2(</p></book>')
+        self.assertEqual(" ".join(words), "(\u05d0 \u05d1) (\u05d2)")
+
+    def test_regular_book_is_untouched(self):
+        text = "\u05d0 (\u05d1) \u05d2) \u05d3 [\u05d4] )\u05d5("
+        words = body('<book n="B"><p>' + text + '</p></book>')
+        self.assertEqual(" ".join(words), text)
 
 
 if __name__ == "__main__":
