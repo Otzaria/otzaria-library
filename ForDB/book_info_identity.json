@@ -954,6 +954,20 @@
         "authorName": "מהרש\"א"
       },
       "commit": "3e74fb12842122af805a52e3a854250a12c6b68c"
+    },
+    {
+      "id": 74,
+      "kind": "rename",
+      "old": {
+        "bookName": "אתוון דאורייתא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אתוון דאורייתא",
+        "authorName": "רבי יוסף ב\"ר יהודה ענגיל זצ\"ל"
+      },
+      "commit": null,
+      "changeSetId": "6acb7a78b9775d9e1a5c72f1"
     }
   ]
 }
