@@ -10,6 +10,8 @@
 שימוש:
   dbs_breaks.py scan  [--commit b9ce756e 0e63b8bb] [--out report.json]
   dbs_breaks.py fix   [--commit b9ce756e 0e63b8bb] [--out report.json]    (כותב לקבצים!)
+  dbs_breaks.py dbs-raw UNITS.jsonl OUT.txt    (גולמי מפענוח COR של DBS, לספרים בלי ייצוא)
+  dbs_breaks.py fix --raw-map map.json         (רק הספרים שבמפה, כל אחד עם הגולמי שלו)
 ברירת המחדל: שני קומיטי ההעתקה של DBS - b9ce756e ("הוספת ספרים מדיקטה") ו-0e63b8bb
 ("תיקון ספרים מ'דיקטה>לא ערוך'"). שניהם שומרים את שבירות הדפוס.
 
@@ -66,6 +68,43 @@ def terminated(line):
 
 def is_body(line):
     return bool(line.strip()) and not line.startswith('<h')
+
+
+# ------------------------------------------------------------- DBS as raw
+BLOCK_MARK = '\x01'
+
+
+def wrap_threshold(lines):
+    """אורך שורה שמתחתיו שבירה ב-COR היא סוף פסקה ולא גלישה (אותו כלל כמו dbs_otzaria.py)."""
+    lengths = sorted(len(l.replace(BLOCK_MARK, '').strip()) for l in lines if l.strip())
+    if len(lengths) < 20:
+        return 56
+    return max(20, min(56, lengths[int(len(lengths) * 0.9)] - 6))
+
+
+def dbs_paragraphs(units):
+    """units: טקסטים של יחידות COR (שורות דפוס) -> שורה לכל פסקה, כמו ייצוא גולמי.
+    פסקה נגמרת בסימן 0xFE (BLOCK_MARK), בשורה קצרה מרוחב הגלישה, או בסוף יחידה."""
+    th = wrap_threshold([l for u in units for l in u.split('\n')])
+    out = []
+    for u in units:
+        buf = []
+        for raw in u.split('\n'):
+            line = raw.replace(BLOCK_MARK, '').strip()
+            if line:
+                buf.append(line)
+            if buf and (BLOCK_MARK in raw or not line or len(line) < th):
+                out.append(' '.join(buf))
+                buf = []
+        if buf:
+            out.append(' '.join(buf))
+    return out
+
+
+def dbs_raw(jsonl, out):
+    """units.jsonl של dbs_text.py --source cor -> קובץ גולמי (שורה לכל פסקה)."""
+    units = [json.loads(l)['text'] for l in open(jsonl, encoding='utf-8') if l.strip()]
+    open(out, 'w', encoding='utf-8').write('\n'.join(dbs_paragraphs(units)) + '\n')
 
 
 # ---------------------------------------------------------------- raw index
@@ -521,17 +560,23 @@ def process(path, ri, apply, pinned=frozenset(), block_merge=False, fix_headings
 
 
 def main():
+    if sys.argv[1:2] == ['dbs-raw']:
+        if len(sys.argv) != 4:
+            sys.exit('usage: dbs_breaks.py dbs-raw UNITS.jsonl OUT.txt')
+        return dbs_raw(sys.argv[2], sys.argv[3])
     ap = argparse.ArgumentParser()
     ap.add_argument('mode', choices=['scan', 'fix'])
     ap.add_argument('--commit', nargs='+', default=DEFAULT_COMMITS)
+    ap.add_argument('--raw-map', help='JSON {נתיב ספר: קובץ גולמי}; מעבד רק את הספרים האלה, עם הגולמי הזה')
     ap.add_argument('--out', default='dbs_breaks_report.json')
     ap.add_argument('--exclude', nargs='*', default=[])
     ap.add_argument('--hand-headings', nargs='*', default=HAND_HEADINGS,
                     help='ספרים שמקבלים איחוד שורות בלבד, בלי תיקוני כותרות')
     a = ap.parse_args()
     apply = a.mode == 'fix'
-    books = books_of_commits(a.commit, a.exclude)
-    raws = raw_files()
+    raw_map = json.load(open(a.raw_map, encoding='utf-8')) if a.raw_map else None
+    books = list(raw_map) if raw_map else books_of_commits(a.commit, a.exclude)
+    raws = {os.path.basename(p): [raw_map[p]] for p in raw_map} if raw_map else raw_files()
     allraw = [f for v in raws.values() for f in v]
     cache = {}
     lidx = links_index()

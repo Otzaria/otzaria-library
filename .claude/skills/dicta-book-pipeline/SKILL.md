@@ -357,7 +357,7 @@ curl -s -X PUT "https://otzaria.org/api/admin/uploads/batch-update-book-status" 
 - [scripts/pdf_to_pages.py](scripts/pdf_to_pages.py) — pdftoppm wrapper
 - [scripts/ocr_batch.py](scripts/ocr_batch.py) — שליחת עמודים במקביל ל‑OCR
 - [scripts/diff_texts.py](scripts/diff_texts.py) — השוואה fuzzy
-- [scripts/dbs_breaks.py](scripts/dbs_breaks.py) — איחוד שבירות הדפוס בספרי DBS לפי הגולמי, עם הזזת links
+- [scripts/dbs_breaks.py](scripts/dbs_breaks.py) — איחוד שבירות הדפוס בספרי DBS לפי הגולמי, עם הזזת links; לספר בלי ייצוא גולמי: `dbs-raw` הופך פענוח COR של DBS (units.jsonl) לגולמי, ו‑`--raw-map` מצמיד אותו לספר
 - [scripts/colon_breaks.py](scripts/colon_breaks.py) — איחוד שבירות אחרי ": " שאינו סוף עניין, לפי ה‑zip של דיקטה, עם הזזת links
 
 הסקריפטים תומכים ב‑`--json` להוצאת פלט שמיש לעיבוד שלך.

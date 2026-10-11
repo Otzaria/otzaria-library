@@ -61,5 +61,31 @@ class ProcessMerge(unittest.TestCase):
         self.assertEqual(r['merged'], 0)
 
 
+class DbsParagraphs(unittest.TestCase):
+    """שורות COR הן שורות דפוס; פסקה נגמרת בשורה קצרה, בסימן 0xFE או בסוף יחידה."""
+
+    def test_wrap_lines_join_short_line_ends(self):
+        wide = 'א' * 60
+        unit = '\n'.join([wide, wide, 'סוף', wide, 'קצר'])
+        self.assertEqual(D.dbs_paragraphs([unit, 'יחידה']),
+                         [' '.join([wide, wide, 'סוף']), wide + ' קצר', 'יחידה'])
+
+    def test_block_mark_ends_wide_line(self):
+        wide = 'ב' * 60
+        unit = '\n'.join([wide + D.BLOCK_MARK, wide, 'ג'])
+        self.assertEqual(D.dbs_paragraphs([unit]), [wide, wide + ' ג'])
+
+    def test_witness_joins_across_wrap_only(self):
+        wide = ' '.join(['מילה%d' % i for i in range(12)])
+        unit = '\n'.join([wide + ' אחת שתיים שלוש', 'ארבע חמש שש ' + wide, 'קצר כאן',
+                          'שבע שמונה תשע'])
+        with tempfile.TemporaryDirectory() as d:
+            rp = os.path.join(d, 'raw.txt')
+            open(rp, 'w', encoding='utf-8').write('\n'.join(D.dbs_paragraphs([unit])))
+            ri = D.RawIndex(rp)
+        self.assertEqual(ri.joined(['אחת', 'שתיים', 'שלוש'], ['ארבע', 'חמש', 'שש']), 'join')
+        self.assertEqual(ri.joined(['מילה11', 'קצר', 'כאן'], ['שבע', 'שמונה', 'תשע']), 'break')
+
+
 if __name__ == '__main__':
     unittest.main()
