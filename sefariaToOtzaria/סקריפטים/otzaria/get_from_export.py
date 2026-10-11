@@ -1,6 +1,9 @@
+import re
 from pathlib import Path
 
 from .utils import has_value, read_json, to_daf, to_eng_daf, to_gematria
+
+NIKUD = r"[֑-ׇ]*"
 
 
 class Book:
@@ -25,6 +28,27 @@ class Book:
         self.text = read_json(text_file_path)
         self.schema = read_json(schema_file_path)
         self.he_title = he_title
+        self.same_tractate_ref = self.get_same_tractate_ref(Path(schema_file_path))
+
+    def get_same_tractate_ref(self, schema_file_path: Path) -> re.Pattern | None:
+        # בפירושי הבבלי ספריא הוסיפה את שם המסכת עצמה אחרי לקמן/לעיל, שאינו בדפוס וילנא.
+        base_titles = self.schema.get("base_text_titles") or []
+        if len(base_titles) != 1:
+            return None
+        base_schema_path = schema_file_path.parent / f"{base_titles[0].replace(' ', '_')}.json"
+        if not base_schema_path.exists():
+            return None
+        base_schema = read_json(base_schema_path)
+        tractate = base_schema.get("heTitle")
+        if base_schema.get("categories", [])[:2] != ["Talmud", "Bavli"] or not tractate:
+            return None
+        chars = {" ": r"\s+", '"': '["״]', "״": '["״]', "'": "['׳]", "׳": "['׳]"}
+        name = NIKUD.join(chars.get(c, re.escape(c)) for c in re.sub(NIKUD, "", tractate))
+        words = "|".join(NIKUD.join(word) for word in ("לקמן", "לעיל"))
+        return re.compile(rf"\(({words}){NIKUD}\s+{name}{NIKUD}(?=\s)")
+
+    def drop_same_tractate_name(self, text: str) -> str:
+        return self.same_tractate_ref.sub(r"(\1", text) if self.same_tractate_ref else text
 
     def get_metadata(self) -> tuple[dict, list[str]]:
         era_dict = {
@@ -199,7 +223,7 @@ class Book:
             anchor_ref_address = f"{ref} {":".join(anchor_ref)}"
             he_ref = f"{heb_title} {"&&&".join(heb_anchor_ref)}"
             if text.strip():
-                self.book_content.append(f"{letter}{text.strip().replace("\n", "<br>")}" + "\n")
+                self.book_content.append(f"{letter}{self.drop_same_tractate_name(text.strip()).replace("\n", "<br>")}" + "\n")
                 if anchor_ref_address == "Genesis 1:1":
                     print(f"{len(self.book_content)}")
                     print(f"{self.book_content=}")

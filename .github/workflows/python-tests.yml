@@ -62,6 +62,8 @@ jobs:
             /wikisourceToOtzaria/סקריפטים/demo_part_2.py
             /Ben-YehudaToOtzaria/סקריפטים/otzaria_markup.py
             /Ben-YehudaToOtzaria/סקריפטים/split_footnotes.py
+            /sefariaToOtzaria/סקריפטים/otzaria/
+            /sefariaToOtzaria/סקריפטים/test_get_from_export.py
             /manual_links_sync.json
             /post_convert_fixes.py
             /*/post_convert_fixes.tsv
@@ -144,6 +146,16 @@ jobs:
           set -euo pipefail
           python3 -m pip install --quiet beautifulsoup4 lxml
           python3 -m unittest -v test_onyourway_headings
+
+      # ממיר ספריא (get_from_export): סכמות וטקסט סינתטיים.
+      - name: Sefaria converter suite
+        working-directory: sefariaToOtzaria/סקריפטים
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet beautifulsoup4 python_hebrew_numbers
+          python3 -m unittest -v test_get_from_export
 
       # ממיר ויקיטקסט (ויקיטקסט וספרי ויקי יהודיים): טקסט סינתטי בלבד; wikiexpand מוחלף בבדיקה.
       - name: Wiki converter suite
