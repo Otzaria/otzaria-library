@@ -173,7 +173,12 @@ jobs:
               "ForDB/sefaria_metadata_changes.csv",
           }
           # טבלאות book_banner / book_protection; קובץ חסר = אין טבלה.
-          optional = {"ForDB/book_banners.csv", "ForDB/book_protection.csv"}
+          # divine_name_overrides: קובץ חסר = בתנ"ך רק שם הוי"ה מסומן כקודש.
+          optional = {
+              "ForDB/book_banners.csv",
+              "ForDB/book_protection.csv",
+              "ForDB/divine_name_overrides.csv",
+          }
           paths = sorted(
               (path for path in root.rglob("*") if path.name != ".DS_Store" and path.as_posix() != "ForDB/book_info_identity.json"),
               key=lambda path: path.as_posix().encode(),

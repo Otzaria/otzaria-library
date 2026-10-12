@@ -261,6 +261,80 @@ class SourceScopedNoticeTest(unittest.TestCase):
         self.assertEqual(errors[0][1], "0")
 
 
+class DivineNameOverridesTest(unittest.TestCase):
+    """divine_name_overrides.csv must be read exactly as DivineNameOverrides.parse reads it:
+    one row the generator does not understand makes it drop the whole list."""
+
+    HEADER = ["ref", "kind", "decision", "source", "note"]
+
+    def check(self, rows, header=None):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "divine_name_overrides.csv")
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle, quoting=csv.QUOTE_ALL, lineterminator="\r\n")
+                writer.writerow(header or self.HEADER)
+                writer.writerows(rows)
+            return validator.check_divine_name_overrides(path)
+
+    def reasons(self, rows, header=None):
+        return [reason for _identifier, _value, reason in self.check(rows, header)]
+
+    def test_the_committed_list_is_understood(self):
+        self.assertTrue(os.path.exists(validator.DIVINE_NAME_OVERRIDES))
+        self.assertEqual(validator.check_divine_name_overrides(validator.DIVINE_NAME_OVERRIDES), [])
+
+    def test_a_missing_file_is_not_an_error(self):
+        self.assertEqual(validator.check_divine_name_overrides("/nonexistent/divine.csv"), [])
+
+    def test_valid_rows_of_every_ref_form(self):
+        rows = [
+            ["שמות 3:14", "EHYEH", "sacred", "", "הערה"],
+            ["בראשית 19:18", "adnut", "Sacred", "", "הערה"],
+            ["בראשית 19:1-38", "*", "profane", "", "הערה"],
+            ["שופטים 17:1-18:31", "*", "profane", "", "הערה"],
+            [" דברי הימים א 20:8 ", " EL ", " profane ", "", "הערה"],
+        ]
+        self.assertEqual(self.check(rows), [])
+
+    def test_ref_must_name_a_tanach_book_and_a_forward_range(self):
+        for ref in ("שמות 3", "שמות פרק 3:14", "בבא קמא 3:14", "שמות 0:1",
+                    "שמות 3:14-2", "שמות 3:14-2:1", "שמות ٣:١٤"):
+            with self.subTest(ref=ref):
+                self.assertEqual(len(self.check([[ref, "EL", "profane", "", "הערה"]])), 1)
+
+    def test_kind_and_decision_must_be_known(self):
+        cases = (
+            (["שמות 3:14", "HVYH", "profane", "", "הערה"], "הרשימה אינה משנה סוג שם זה"),
+            (["שמות 3:14", "YAH", "profane", "", "הערה"], "הרשימה אינה משנה סוג שם זה"),
+            (["שמות 3:14", "ELOKIM", "profane", "", "הערה"], "kind אינו מוכר"),
+            (["שמות 3:14", "EL", "holy", "", "הערה"], "decision חייב להיות sacred או profane"),
+        )
+        for row, reason in cases:
+            with self.subTest(row=row):
+                self.assertEqual(self.reasons([row]), [reason])
+
+    def test_sacred_is_one_verse_and_one_kind(self):
+        for ref, kind in (("שמות 3:14-15", "EHYEH"), ("שמות 3:14", "*")):
+            with self.subTest(ref=ref, kind=kind):
+                self.assertEqual(self.reasons([[ref, kind, "sacred", "", "הערה"]]),
+                                 ["שורת sacred היא פסוק אחד וסוג שם אחד"])
+
+    def test_note_and_field_count_are_required(self):
+        self.assertEqual(self.reasons([["שמות 32:1", "ELOHIM", "profane", "", " "]]), ["note חובה"])
+        self.assertEqual(len(self.check([["שמות 32:1", "ELOHIM", "profane", ""]])), 1)
+
+    def test_header_must_match(self):
+        self.assertEqual(len(self.check([], header=["ref", "kind", "decision", "note"])), 1)
+
+    def test_repeated_or_contradicting_sacred_entries(self):
+        sacred = ["בראשית 19:18", "ADNUT", "sacred", "", "הערה"]
+        self.assertEqual(len(self.check([sacred, sacred])), 1)
+        profane = ["בראשית 19:18", "ADNUT", "profane", "", "הערה"]
+        self.assertEqual(self.reasons([sacred, profane]), ["אותו פסוק וסוג גם sacred וגם profane"])
+        # A sacred verse inside a profane range is the intended exception, not a conflict.
+        self.assertEqual(self.check([sacred, ["בראשית 19:1-38", "*", "profane", "", "הערה"]]), [])
+
+
 class RepositoryForDbTest(unittest.TestCase):
     """The committed ForDB inputs, against the committed book tree."""
 
