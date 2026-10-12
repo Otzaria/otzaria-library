@@ -293,6 +293,10 @@ class DivineNameOverridesTest(unittest.TestCase):
             ["בראשית 19:1-38", "*", "profane", "", "הערה"],
             ["שופטים 17:1-18:31", "*", "profane", "", "הערה"],
             [" דברי הימים א 20:8 ", " EL ", " profane ", "", "הערה"],
+            ["תהילים 68:19", "YAH", "sacred", "", "הערה"],
+            ["איוב 3:4", "ELOAH", "sacred", "", "הערה"],
+            ["עמוס 9:5", "TZEVAOT", "sacred", "", "הערה"],
+            ["ישעיהו 44:8", "ELOAH", "profane", "", "הערה"],
         ]
         self.assertEqual(self.check(rows), [])
 
@@ -305,7 +309,6 @@ class DivineNameOverridesTest(unittest.TestCase):
     def test_kind_and_decision_must_be_known(self):
         cases = (
             (["שמות 3:14", "HVYH", "profane", "", "הערה"], "הרשימה אינה משנה סוג שם זה"),
-            (["שמות 3:14", "YAH", "profane", "", "הערה"], "הרשימה אינה משנה סוג שם זה"),
             (["שמות 3:14", "ELOKIM", "profane", "", "הערה"], "kind אינו מוכר"),
             (["שמות 3:14", "EL", "holy", "", "הערה"], "decision חייב להיות sacred או profane"),
         )

@@ -383,8 +383,8 @@ def check_source_scoped_rows(path, by_source, pending_renames, value_column=None
 
 # חייבים להיות זהים ל-DivineNameOverrides.kt ול-TANACH_TITLES שב-SeforimLibrary.
 DIVINE_NAME_HEADER = ["ref", "kind", "decision", "source", "note"]
-DIVINE_NAME_KINDS = {"ADNUT", "EL", "ELOAH", "ELOHIM", "EHYEH", "SHADDAI", "TZEVAOT"}
-DIVINE_NAME_NEVER_OVERRIDDEN = {"HVYH", "YAH"}
+DIVINE_NAME_KINDS = {"ADNUT", "EL", "ELOAH", "ELOHIM", "EHYEH", "SHADDAI", "TZEVAOT", "YAH"}
+DIVINE_NAME_NEVER_OVERRIDDEN = {"HVYH"}
 DIVINE_NAME_DECISIONS = {"SACRED", "PROFANE"}
 TANACH_TITLES = frozenset((
     "בראשית", "שמות", "ויקרא", "במדבר", "דברים",
