@@ -48623,6 +48623,20 @@
       },
       "commit": null,
       "changeSetId": "0de3baaf4e9e29a35f0f6e6d"
+    },
+    {
+      "id": 3479,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגרת הקדש",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אגרת הקדש",
+        "authorName": "רבי שניאור זלמן מליאדי - בעל התניא ושלחן ערוך הרב, אדמו\"ר הזקן"
+      },
+      "commit": null,
+      "changeSetId": "6ad1f4bcb9775d9e1a5d862b"
     }
   ]
 }
