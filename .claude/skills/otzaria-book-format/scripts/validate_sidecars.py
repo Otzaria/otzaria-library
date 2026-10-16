@@ -22,6 +22,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 HEADING_RE = re.compile(r"^\s*<\s*h[1-6]\b", re.I)
+# HearotCompanionMerge.isMergeableCompanionTitle: רק השם הזה ממוזג לספר הבסיס.
+COMPANION_PREFIX = "הערות על "
 REQUIRED = {"line_index_1", "line_index_2", "heRef_2", "path_2", "Conection Type"}
 # "source" = the canonical value of a links file named after the CITING book: the
 # generator flips the pair into base→מפרש order and stores it as COMMENTARY
@@ -199,7 +201,44 @@ def check_links(path: Path, book: Path | None, target: Path | None,
         seen.add(key)
         prev_key = key
 
+    check_companion_merge(path, data, book, src_lines, target, tgt_lines)
     print(f"{path.name}: {len(data)} רשומות")
+
+
+def _target_title(entry: dict) -> str:
+    title = str(entry.get("path_2", "")).replace("\\", "/").rsplit("/", 1)[-1]
+    return title[:-4] if title.endswith(".txt") else title
+
+
+def check_companion_merge(path: Path, data: list, book: Path | None, src_lines: list[str] | None,
+                          target: Path | None, tgt_lines: list[str] | None) -> None:
+    """חוזה המיזוג של HearotCompanionMerge (ADDING_BOOKS.md סעיף 3): כישלון משאיר את
+    ספר ההערות עצמאי, בשקט, והסמנים בגוף הספר לא מציגים את ההערה בריחוף."""
+    notes = [e for e in data if isinstance(e, dict)
+             and normalize_ctype(e.get("Conection Type")) in {"footnotes", "footnote"}]
+    for title in sorted({_target_title(e) for e in notes}):
+        if title and not title.startswith(COMPANION_PREFIX):
+            warn(f"{path.name}: ספר ההערות {title!r} אינו מתחיל ב-'{COMPANION_PREFIX}' — "
+                 f"הוא לא ימוזג לספר הבסיס ויישאר ספר עצמאי")
+    if tgt_lines is not None and target is not None:
+        own = [e for e in notes if _target_title(e) == target.stem]
+        if own:
+            linked = {e.get("line_index_2") for e in own}
+            unlinked = [i for i, l in enumerate(tgt_lines, 1)
+                        if i not in linked and l.strip() and not HEADING_RE.match(l)]
+            if unlinked:
+                err(f"{target.name}: {len(unlinked)} שורות בלי קישור (הראשונה: {unlinked[0]}) — "
+                    f"המיזוג נפסל לכל הכרך. שורת קרדיט/זכויות שייכת לספר הבסיס")
+            for i in sorted(x for x in linked if isinstance(x, int) and 1 <= x <= len(tgt_lines)):
+                if re.search(r"<i[\s>]|</i>", tgt_lines[i - 1]):
+                    err(f"{target.name}: שורה {i} — <i> בגוף ההערה פוסל את המיזוג")
+                    break
+    if src_lines is not None and book is not None:
+        for e in notes:
+            li = e.get("line_index_1")
+            if isinstance(li, int) and 1 <= li <= len(src_lines) and 'class="footnote' in src_lines[li - 1]:
+                err(f"{book.name}: שורה {li} כבר נושאת הערות inline — המיזוג נפסל")
+                break
 
 
 def check_alt_toc(path: Path, book: Path | None) -> None:

@@ -54,7 +54,8 @@ class ValidateSidecarsTypeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp, "X_links.json")
             p.write_text(json.dumps([{"line_index_1": 1, "line_index_2": 1, "heRef_2": "x",
-                                      "path_2": "Y.txt", "Conection Type": ctype}]), encoding="utf-8")
+                                      "path_2": "הערות על X.txt", "Conection Type": ctype}]),
+                         encoding="utf-8")
             validate_sidecars.check_links(p, None, None, None)
         return list(validate_sidecars.errors), list(validate_sidecars.warnings)
 
@@ -70,6 +71,45 @@ class ValidateSidecarsTypeTests(unittest.TestCase):
             self.assertEqual(len(errors), 1, ctype)
         errors, warnings = self.check("no_such_type")
         self.assertEqual((len(errors), len(warnings)), (0, 1))
+
+
+class CompanionMergeContractTests(unittest.TestCase):
+    """issue otzaria-library#200: a broken contract left the notes standalone, silently."""
+
+    def run_check(self, notes_name, notes_lines, base_line="a<sup>1</sup> b"):
+        validate_sidecars.errors.clear()
+        validate_sidecars.warnings.clear()
+        with tempfile.TemporaryDirectory() as tmp:
+            book = Path(tmp, "X.txt")
+            book.write_text("<h1>X</h1>\n" + base_line, encoding="utf-8")
+            target = Path(tmp, notes_name + ".txt")
+            target.write_text("\n".join(notes_lines), encoding="utf-8")
+            links = Path(tmp, "X_links.json")
+            links.write_text(json.dumps([{"line_index_1": 2, "line_index_2": 2, "heRef_2": "x",
+                                          "path_2": target.name, "Conection Type": "footnotes"}]),
+                             encoding="utf-8")
+            validate_sidecars.check_links(links, book, target, None)
+        return list(validate_sidecars.errors), list(validate_sidecars.warnings)
+
+    def test_valid_pair_passes(self):
+        self.assertEqual(self.run_check("הערות על X", ["<h1>הערות על X</h1>", "<sup>1</sup> n"]), ([], []))
+
+    def test_other_name_warns(self):
+        _, warnings = self.run_check("הערות במספרים על X", ["<h1>T</h1>", "<sup>1</sup> n"])
+        self.assertEqual(len(warnings), 1)
+
+    def test_unlinked_credit_line_fails(self):
+        errors, _ = self.run_check("הערות על X", ["<h1>T</h1>", "<sup>1</sup> n", "© credit"])
+        self.assertEqual(len(errors), 1)
+
+    def test_italic_note_fails(self):
+        errors, _ = self.run_check("הערות על X", ["<h1>T</h1>", "<sup>1</sup> <i>n</i>"])
+        self.assertEqual(len(errors), 1)
+
+    def test_base_with_inline_footnotes_fails(self):
+        errors, _ = self.run_check("הערות על X", ["<h1>T</h1>", "<sup>1</sup> n"],
+                                   base_line='a<sup class="footnote-marker">1</sup><i class="footnote">n</i>')
+        self.assertEqual(len(errors), 1)
 
 
 # Characters Kotlin's String.trim() removes (Character.isWhitespace || isSpaceChar),
