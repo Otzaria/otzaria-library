@@ -31,6 +31,12 @@ sefariaToOtzaria/.../otzaria/utils.py):
     "sefaria" היא שגיאה — שלב seed-המטא-דאטה (SeedAllMetadataPostProcess) מתאים לפי
     כותרת ודורס את book.sourceId מ-"Sefaria" ל-Dicta/וכו' (updateBookMetadata), וכך
     "אודות הספר" מציג מקור שגוי. מקורה בדרך כלל ברשומה כפולה (sefaria + לא-ספריא) במטא-דאטה.
+  * book_protection / book_banners: bookName (אם אינו ריק) חייב להיות book.title סופי של ספר
+    מאותו מקור - בהגנה שגיאה, בבאנר אזהרה. כותרת 'הערות על X' לבדה אינה מעידה על מיזוג;
+    ההכרעה מול הספרים שנותרו ב-DB נעשית במחולל אחרי המיזוג ושינויי השמות.
+    sourceName שאינו מקור במאגר (מאגר פרטי) הוא אזהרה בלבד.
+  * divine_name_overrides: כל שורה חייבת להיות מובנת כמו ב-DivineNameOverrides.parse,
+    כי שורה אחת שאינה מובנת גורמת למחולל להתעלם מכל הרשימה (בתנ"ך: שם הוי"ה בלבד).
   * book_renames.csv: שם ה*מקור* (העמודה השמאלית) מול sources - הספר שמשנים חייב להתקיים
     (שינוי לא "יתום"). שם היעד אינו נבדק בנפרד.
   * כפילויות שם בתוך ה-ZIP: שני קבצי ספרים שונים עם אותו שם מנוקה בתיקיות הנארזות
@@ -91,6 +97,11 @@ BOOK_INFO = os.path.join(FORDB, "book_info.csv")
 SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
 BOOK_MOVES = os.path.join(FORDB, "book_moves.csv")
 FORDB_METADATA = os.path.join(FORDB, "all_metadata.json")
+# באנר / הגנה לפי sourceName + bookName (ריק = כל ספרי המקור). שניהם אופציונליים.
+BOOK_BANNERS = os.path.join(FORDB, "book_banners.csv")
+BOOK_PROTECTION = os.path.join(FORDB, "book_protection.csv")
+# פסוקים שבהם שם הוא קודש/חול, לטבלת line_divine_name. אופציונלי.
+DIVINE_NAME_OVERRIDES = os.path.join(FORDB, "divine_name_overrides.csv")
 
 # דוח --fix עבור ה-workflow: נכתב רק כאשר הוסר משהו בפועל.
 REMOVED_REPORT = os.path.join(REPO_ROOT, "fordb_removed.json")
@@ -295,6 +306,171 @@ def find_spelling_drift(entries, packaged):
         if raw != expected:
             drift.append((identifier, raw, expected))
     return drift
+
+
+def known_sources():
+    """שמות המקורות שספריהם מגיעים ל-DB (התיקייה העליונה של כל שורש נארז)."""
+    return {p.split("/", 1)[0] for p in DB_BOOK_PREFIXES}
+
+
+def packaged_titles_by_source(rename_pairs):
+    """
+    sourceName -> {מפתח מנוקה: {איות book.title סופי}} לספרים הנארזים של כל מקור.
+    הכותרת הסופית היא db_title של שם הקובץ, אחרי book_renames.csv (כמו renameBookTitle).
+    """
+    renamed = {}
+    for _line, old, new in rename_pairs:
+        if sanitize_title(old):
+            renamed.setdefault(sanitize_title(old), set()).add(new)
+    by_source = {}
+    for p in list_tracked_paths():
+        norm = (p or "").replace("\\", "/")
+        if not any(norm.startswith(prefix) for prefix in DB_BOOK_PREFIXES):
+            continue
+        base, ext = os.path.splitext(norm.rsplit("/", 1)[-1])
+        if ext.lower() not in DB_BOOK_EXTS:
+            continue
+        title = db_title(base)
+        bucket = by_source.setdefault(book_renames_follow.source_of(norm), {})
+        for final in renamed.get(sanitize_title(title), {title}):
+            bucket.setdefault(sanitize_title(final), set()).add(final)
+    return by_source
+
+
+def check_source_scoped_rows(path, by_source, pending_renames, value_column=None):
+    """
+    בודק את שורות book_banners.csv / book_protection.csv. מחזיר
+    (שגיאות, שורות ספר שלא נמצאו, מקורות שאינם במאגר) - כל אחת [(מזהה, ערך, סיבה)].
+    bookName חייב להיות book.title הסופי של ספר *מאותו מקור*. מקור שאינו כאן עשוי
+    להגיע ממאגר פרטי בזמן הבנייה, ולכן אינו נבדק כאן (המחולל נכשל עליו בעצמו).
+    קבצי 'הערות על X' עשויים להישאר ספרים עצמאיים: המחולל ממזג רק קישורים ותוכן בטוחים
+    ומלאים. בדיקה זו רואה שמות קבצים בלבד; SeedBookNotices בודק התאמה ל-DB הסופי
+    ונכשל על שורת הגנה ללא ספר, כולל קובץ הערות שמוזג (באנר ללא התאמה הוא אזהרה).
+    """
+    if not os.path.exists(path):
+        return [], [], []
+    header, rows = read_csv_rows(path, has_header=True)
+    s_idx, b_idx = col_index(header, "sourceName"), col_index(header, "bookName")
+    v_idx = col_index(header, value_column) if value_column else None
+    sources = known_sources()
+    errors, unresolved, foreign = [], [], []
+    for line_no, row in enumerate(rows, start=2):
+        if not row:
+            continue
+        identifier = f"שורה {line_no}"
+        source, name = row[s_idx], row[b_idx]
+        if v_idx is not None and not re.fullmatch(r"[1-9][0-9]*", row[v_idx]):
+            errors.append((identifier, row[v_idx], f"{value_column} חייב להיות מספר שלם 1 ומעלה"))
+        if source not in sources:
+            foreign.append((identifier, source, "sourceName אינו מקור במאגר זה (מאגר פרטי?)"))
+            continue
+        if not name:
+            continue
+        books = by_source.get(source, {})
+        key = sanitize_title(name)
+        if key in pending_renames:
+            # שינוי-שם בטווח שטרם אומת: ה-auto-fix ב-main יחליף את השם בשורה.
+            if pending_renames[key] not in books:
+                unresolved.append((identifier, name, f"אין ספר כזה במקור {source}"))
+            continue
+        spellings = books.get(key)
+        if not spellings:
+            unresolved.append((identifier, name, f"אין ספר כזה במקור {source}"))
+        elif name not in spellings:
+            unresolved.append((identifier, name, f"האיות ב-DB: {sorted(spellings)[0]!r}"))
+    return errors, unresolved, foreign
+
+
+# חייבים להיות זהים ל-DivineNameOverrides.kt ול-TANACH_TITLES שב-SeforimLibrary.
+DIVINE_NAME_HEADER = ["ref", "kind", "decision", "source", "note"]
+DIVINE_NAME_KINDS = {"ADNUT", "EL", "ELOAH", "ELOHIM", "EHYEH", "SHADDAI", "TZEVAOT", "YAH"}
+DIVINE_NAME_NEVER_OVERRIDDEN = {"HVYH"}
+DIVINE_NAME_DECISIONS = {"SACRED", "PROFANE"}
+TANACH_TITLES = frozenset((
+    "בראשית", "שמות", "ויקרא", "במדבר", "דברים",
+    "יהושע", "שופטים", "שמואל א", "שמואל ב", "מלכים א", "מלכים ב",
+    "ישעיהו", "ירמיהו", "יחזקאל", "הושע", "יואל", "עמוס", "עובדיה", "יונה", "מיכה",
+    "נחום", "חבקוק", "צפניה", "חגי", "זכריה", "מלאכי",
+    "רות", "תהילים", "איוב", "משלי", "שיר השירים", "קהלת", "איכה", "אסתר",
+    "דניאל", "עזרא", "נחמיה", "דברי הימים א", "דברי הימים ב",
+))
+# re.ASCII: \s ו-\d של java.util.regex אינם תופסים רווח או ספרה שאינם ASCII.
+DIVINE_NAME_REF = re.compile(r"(.+?)\s+(\d+):(\d+)(?:\s*-\s*(?:(\d+):)?(\d+))?", re.ASCII)
+
+
+def parse_divine_name_ref(ref):
+    """'שמות 22:7-8' -> ((ספר, פרק, פסוק), (ספר, פרק, פסוק)), או None כמו parseRef ב-Kotlin."""
+    m = DIVINE_NAME_REF.fullmatch(ref.strip())
+    if not m or m.group(1).strip() not in TANACH_TITLES:
+        return None
+    book, chapter, verse = m.group(1).strip(), int(m.group(2)), int(m.group(3))
+    start = (book, chapter, verse)
+    if m.group(5) is None:
+        end = start
+    else:
+        end = (book, chapter if m.group(4) is None else int(m.group(4)), int(m.group(5)))
+    if chapter < 1 or verse < 1 or end[1:] < start[1:]:
+        return None
+    return start, end
+
+
+def check_divine_name_overrides(path):
+    """
+    בודק את divine_name_overrides.csv כמו DivineNameOverrides.parse ומחזיר [(מזהה, ערך, סיבה)].
+    כל בעיה היא שגיאה: המחולל מתעלם מהרשימה *כולה* אם שורה אחת אינה מובנת.
+    """
+    if not os.path.exists(path):
+        return []
+    header, rows = read_csv_rows(path, has_header=True)
+    if header is None or [h.strip() for h in header] != DIVINE_NAME_HEADER:
+        return [("כותרת", header, "הכותרת חייבת להיות " + ",".join(DIVINE_NAME_HEADER))]
+    errors, entries = [], []
+    for line_no, row in enumerate(rows, start=2):
+        if not row:
+            continue
+        identifier = f"שורה {line_no}"
+        if len(row) != len(DIVINE_NAME_HEADER):
+            errors.append((identifier, row, f"{len(row)} שדות במקום {len(DIVINE_NAME_HEADER)}"))
+            continue
+        ref, kind, decision, _source, note = row
+        verses = parse_divine_name_ref(ref)
+        if verses is None:
+            errors.append((identifier, ref, "ref חייב להיות '<ספר תנ״ך> פרק:פסוק[-פסוק|-פרק:פסוק]'"))
+            continue
+        kind = kind.strip().upper()
+        if kind in DIVINE_NAME_NEVER_OVERRIDDEN:
+            errors.append((identifier, row[1], "הרשימה אינה משנה סוג שם זה"))
+            continue
+        if kind != "*" and kind not in DIVINE_NAME_KINDS:
+            errors.append((identifier, row[1], "kind אינו מוכר"))
+            continue
+        decision = decision.strip().upper()
+        if decision not in DIVINE_NAME_DECISIONS:
+            errors.append((identifier, row[2], "decision חייב להיות sacred או profane"))
+            continue
+        if decision == "SACRED" and (kind == "*" or verses[0] != verses[1]):
+            errors.append((identifier, ref, "שורת sacred היא פסוק אחד וסוג שם אחד"))
+            continue
+        if not note.strip():
+            errors.append((identifier, ref, "note חובה"))
+            continue
+        entries.append((identifier, verses, kind, decision))
+    first_sacred = {}
+    for identifier, verses, kind, decision in entries:
+        if decision != "SACRED":
+            continue
+        key = (verses[0], kind)
+        if key in first_sacred:
+            errors.append((identifier, row_ref(verses[0]), f"sacred כפול ({first_sacred[key]})"))
+        first_sacred.setdefault(key, identifier)
+        if any(d == "PROFANE" and v == verses and k == kind for _i, v, k, d in entries):
+            errors.append((identifier, row_ref(verses[0]), "אותו פסוק וסוג גם sacred וגם profane"))
+    return errors
+
+
+def row_ref(verse):
+    book, chapter, number = verse
+    return f"{book} {chapter}:{number}"
 
 
 def find_dead_renames(rename_pairs, db_raw_titles):
@@ -693,12 +869,16 @@ def preflight_csv_inputs():
     for target in book_renames_follow.CSV_TARGETS:
         path = os.path.join(REPO_ROOT, target.path)
         if not os.path.exists(path):
+            if target.source_column is not None:
+                continue  # book_banners / book_protection אופציונליים
             raise FileNotFoundError(path)
         if path == BOOK_INFO:
             with open(path, "rb") as handle:
                 validate_book_info(handle.read())
         header, rows = read_csv_rows(path, True)
         col_index(header, target.column)
+        if target.source_column is not None:
+            col_index(header, target.source_column)
         if path == BOOK_INFO and header != ["bookName", "authorName", "generationName",
                                            "subGenerationName", "startYear", "endYear"]:
             raise ValueError("book_info.csv must have the supported six-column header")
@@ -1088,6 +1268,25 @@ def main():
         db_raw_titles |= set(live_titles)
     dead_renames = find_dead_renames(rename_pairs, db_raw_titles)
 
+    # 9) באנר והגנה: כל שורת ספר חייבת להצביע על ספר קיים *של אותו מקור*. הגנה
+    #    שנופלת בשקט גרועה מבנייה שנכשלת, ולכן שם זו שגיאה; בבאנר — אזהרה בלבד.
+    by_source = packaged_titles_by_source(rename_pairs)
+    scoped = {}
+    p_errors, p_unresolved, p_foreign = check_source_scoped_rows(
+        BOOK_PROTECTION, by_source, pending_renames, "level")
+    if p_errors or p_unresolved:
+        scoped["ForDB/book_protection.csv"] = p_errors + p_unresolved
+    b_errors, b_unresolved, b_foreign = check_source_scoped_rows(BOOK_BANNERS, by_source, pending_renames)
+    if b_errors:
+        scoped["ForDB/book_banners.csv"] = b_errors
+    for file_label, items in (("ForDB/book_protection.csv", p_foreign),
+                              ("ForDB/book_banners.csv", b_unresolved + b_foreign)):
+        for identifier, value, reason in items:
+            print(f"::warning::{file_label} {identifier}: {value!r} — {reason}")
+
+    # 10) קודש/חול של שמות: שורה אחת שאינה מובנת מבטלת במחולל את הרשימה כולה.
+    divine = check_divine_name_overrides(DIVINE_NAME_OVERRIDES)
+
     print_rename_report(resolution, rename_plan, applied=args.fix)
     if args.fix:
         record_identity_changes(identities_before, identity_ledger, resolution, removed, rename_plan)
@@ -1106,6 +1305,8 @@ def main():
         and not spelling
         and not dead_renames
         and not held_referenced
+        and not scoped
+        and not divine
     ):
         print(
             "\n✅ כל שמות הספרים ב-ForDB קיימים ברשימת הספרים הקנונית, מאויתים כפי שייכתבו "
@@ -1160,6 +1361,20 @@ def main():
         print("   יש לתקן את שם המקור לאיות האמיתי, או להסיר את השורה אם השינוי כבר לא רצוי:\n")
         for line_no, old, new, actual in dead_renames:
             print(f"     - שורה {line_no}: {old!r} -> {new!r};  הכותרת בפועל: {actual!r}")
+        print()
+
+    if scoped:
+        print("\n❌ שורות באנר/הגנה שאינן תקינות (bookName = book.title הסופי של ספר מאותו מקור):\n")
+        for file_label in sorted(scoped):
+            print(f"  📄 {file_label} ({len(scoped[file_label])}):")
+            for identifier, value, reason in scoped[file_label]:
+                print(f"     - {identifier}: {value!r} — {reason}")
+            print()
+
+    if divine:
+        print(f"\n❌ {len(divine)} בעיות ב-ForDB/divine_name_overrides.csv; המחולל יתעלם מכל הרשימה:\n")
+        for identifier, value, reason in divine:
+            print(f"     - {identifier}: {value!r} — {reason}")
         print()
 
     if held_referenced:

@@ -11,9 +11,12 @@ with an exact string equality.  These tests pin the two checks that close that
 gap, and run entirely offline: no Sefaria API, no seforim.db.
 """
 
+import csv
 import json
 import os
+import tempfile
 import unittest
+from unittest.mock import patch
 
 import validate_fordb_book_names as validator
 
@@ -192,6 +195,147 @@ class PendingRenameMapTest(unittest.TestCase):
 
     def test_nothing_is_mapped_once_the_fix_applied_the_renames(self):
         self.assertEqual(validator.pending_rename_map(self.resolution("א", "ב"), applied=True), {})
+
+
+class SourceScopedNoticeTest(unittest.TestCase):
+    # This non-Havrouta notes book also exists standalone in the published DB.
+    TITLE = "הערות על שיעורי הגרדש על בבא בתרא"
+    ROOT = "MoreBooks/ספרים/אוצריא/"
+
+    def books(self, titles, renames=()):
+        paths = [self.ROOT + title + ".txt" for title in titles]
+        with patch.object(validator, "list_tracked_paths", return_value=paths):
+            return validator.packaged_titles_by_source(renames)
+
+    def check_row(self, source, title, books, value_column=None, value=None):
+        column = value_column or "text"
+        if value is None:
+            value = "1" if value_column else "באנר"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "notice.csv")
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(["sourceName", "bookName", column])
+                writer.writerow([source, title, value])
+            return validator.check_source_scoped_rows(path, books, {}, value_column)
+
+    def test_standalone_notes_are_valid_for_both_notice_tables(self):
+        # Even the presence of the base file does not prove that links are complete
+        # or content is safe to merge. Only the generator can decide that.
+        books = self.books([self.TITLE, self.TITLE.removeprefix("הערות על ")])
+        for column in (None, "level"):
+            with self.subTest(column=column):
+                self.assertEqual(self.check_row("MoreBooks", self.TITLE, books, column), ([], [], []))
+
+    def test_final_title_may_start_with_notes_prefix_after_rename(self):
+        books = self.books(["ספר עצמאי"], [(2, "ספר עצמאי", self.TITLE)])
+        self.assertEqual(self.check_row("MoreBooks", self.TITLE, books, "level"), ([], [], []))
+
+    def test_private_source_notes_remain_a_warning(self):
+        errors, unresolved, foreign = self.check_row("PrivateBooks", self.TITLE, {}, "level")
+        self.assertEqual((errors, unresolved), ([], []))
+        self.assertEqual(len(foreign), 1)
+        self.assertEqual(foreign[0][1], "PrivateBooks")
+
+    def test_missing_wrong_source_and_inexact_notes_titles_are_unresolved(self):
+        punctuated = "הערות על פסקי תלמיד הרשב״א"
+        books = self.books([self.TITLE, punctuated])
+        cases = (
+            ("MoreBooks", "הערות על ספר שאינו קיים"),
+            ("KSK", self.TITLE),
+            ("MoreBooks", punctuated.replace("״", '"')),
+        )
+        for source, title in cases:
+            with self.subTest(source=source, title=title):
+                errors, unresolved, foreign = self.check_row(source, title, books, "level")
+                self.assertEqual((errors, foreign), ([], []))
+                self.assertEqual(len(unresolved), 1)
+                self.assertEqual(unresolved[0][1], title)
+
+    def test_standalone_notes_still_require_a_valid_protection_level(self):
+        errors, unresolved, foreign = self.check_row(
+            "MoreBooks", self.TITLE, self.books([self.TITLE]), "level", "0"
+        )
+        self.assertEqual((unresolved, foreign), ([], []))
+        self.assertEqual(len(errors), 1)
+        self.assertEqual(errors[0][1], "0")
+
+
+class DivineNameOverridesTest(unittest.TestCase):
+    """divine_name_overrides.csv must be read exactly as DivineNameOverrides.parse reads it:
+    one row the generator does not understand makes it drop the whole list."""
+
+    HEADER = ["ref", "kind", "decision", "source", "note"]
+
+    def check(self, rows, header=None):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "divine_name_overrides.csv")
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle, quoting=csv.QUOTE_ALL, lineterminator="\r\n")
+                writer.writerow(header or self.HEADER)
+                writer.writerows(rows)
+            return validator.check_divine_name_overrides(path)
+
+    def reasons(self, rows, header=None):
+        return [reason for _identifier, _value, reason in self.check(rows, header)]
+
+    def test_the_committed_list_is_understood(self):
+        self.assertTrue(os.path.exists(validator.DIVINE_NAME_OVERRIDES))
+        self.assertEqual(validator.check_divine_name_overrides(validator.DIVINE_NAME_OVERRIDES), [])
+
+    def test_a_missing_file_is_not_an_error(self):
+        self.assertEqual(validator.check_divine_name_overrides("/nonexistent/divine.csv"), [])
+
+    def test_valid_rows_of_every_ref_form(self):
+        rows = [
+            ["שמות 3:14", "EHYEH", "sacred", "", "הערה"],
+            ["בראשית 19:18", "adnut", "Sacred", "", "הערה"],
+            ["בראשית 19:1-38", "*", "profane", "", "הערה"],
+            ["שופטים 17:1-18:31", "*", "profane", "", "הערה"],
+            [" דברי הימים א 20:8 ", " EL ", " profane ", "", "הערה"],
+            ["תהילים 68:19", "YAH", "sacred", "", "הערה"],
+            ["איוב 3:4", "ELOAH", "sacred", "", "הערה"],
+            ["עמוס 9:5", "TZEVAOT", "sacred", "", "הערה"],
+            ["ישעיהו 44:8", "ELOAH", "profane", "", "הערה"],
+        ]
+        self.assertEqual(self.check(rows), [])
+
+    def test_ref_must_name_a_tanach_book_and_a_forward_range(self):
+        for ref in ("שמות 3", "שמות פרק 3:14", "בבא קמא 3:14", "שמות 0:1",
+                    "שמות 3:14-2", "שמות 3:14-2:1", "שמות ٣:١٤"):
+            with self.subTest(ref=ref):
+                self.assertEqual(len(self.check([[ref, "EL", "profane", "", "הערה"]])), 1)
+
+    def test_kind_and_decision_must_be_known(self):
+        cases = (
+            (["שמות 3:14", "HVYH", "profane", "", "הערה"], "הרשימה אינה משנה סוג שם זה"),
+            (["שמות 3:14", "ELOKIM", "profane", "", "הערה"], "kind אינו מוכר"),
+            (["שמות 3:14", "EL", "holy", "", "הערה"], "decision חייב להיות sacred או profane"),
+        )
+        for row, reason in cases:
+            with self.subTest(row=row):
+                self.assertEqual(self.reasons([row]), [reason])
+
+    def test_sacred_is_one_verse_and_one_kind(self):
+        for ref, kind in (("שמות 3:14-15", "EHYEH"), ("שמות 3:14", "*")):
+            with self.subTest(ref=ref, kind=kind):
+                self.assertEqual(self.reasons([[ref, kind, "sacred", "", "הערה"]]),
+                                 ["שורת sacred היא פסוק אחד וסוג שם אחד"])
+
+    def test_note_and_field_count_are_required(self):
+        self.assertEqual(self.reasons([["שמות 32:1", "ELOHIM", "profane", "", " "]]), ["note חובה"])
+        self.assertEqual(len(self.check([["שמות 32:1", "ELOHIM", "profane", ""]])), 1)
+
+    def test_header_must_match(self):
+        self.assertEqual(len(self.check([], header=["ref", "kind", "decision", "note"])), 1)
+
+    def test_repeated_or_contradicting_sacred_entries(self):
+        sacred = ["בראשית 19:18", "ADNUT", "sacred", "", "הערה"]
+        self.assertEqual(len(self.check([sacred, sacred])), 1)
+        profane = ["בראשית 19:18", "ADNUT", "profane", "", "הערה"]
+        self.assertEqual(self.reasons([sacred, profane]), ["אותו פסוק וסוג גם sacred וגם profane"])
+        # A sacred verse inside a profane range is the intended exception, not a conflict.
+        self.assertEqual(self.check([sacred, ["בראשית 19:1-38", "*", "profane", "", "הערה"]]), [])
 
 
 class RepositoryForDbTest(unittest.TestCase):

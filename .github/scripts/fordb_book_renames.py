@@ -428,6 +428,13 @@ class CsvTarget:
     column: str
     spelling: str  # "db" = איות book.title (db_title); "raw" = שם הקובץ כלשונו
     drop_superseded: bool  # שורה לשם החדש כבר קיימת: למחוק את הישנה (כמו יתומה)
+    # עמודת מקור (תיקייה עליונה): השורה שייכת רק לספר של אותו מקור. קובץ כזה אופציונלי.
+    source_column: str = None
+
+
+def source_of(path):
+    """שם המקור של נתיב ספר: התיקייה העליונה, כמו source.name ב-DB."""
+    return path.replace("\\", "/").split("/", 1)[0]
 
 
 @dataclass(frozen=True)
@@ -446,11 +453,14 @@ class JsonTarget:
 #   ForDB/all_metadata.json  - SeedAllMetadata (שנת/מקום דפוס), לפי title.
 #   metadata.json            - Generator.loadMetadata (מחבר, תיאור), לפי שם הקובץ הגולמי.
 #   all_metadata_with_file_paths.json - הרשימה הקנונית של המאמת עצמו (לא מגיע ל-DB).
+#   book_banners / book_protection - טבלאות book_banner / book_protection, לפי מקור + bookName.
 # קבצי *_links.json בשורשי ה-links הנארזים מטופלים בנפרד (plan_links).
 CSV_TARGETS = (
     CsvTarget("ForDB/book_info.csv", "bookName", "db", True),
     CsvTarget("ForDB/book_moves.csv", "name", "db", True),
     CsvTarget("ForDB/sefaria_metadata_changes.csv", "title", "db", False),
+    CsvTarget("ForDB/book_banners.csv", "bookName", "db", False, "sourceName"),
+    CsvTarget("ForDB/book_protection.csv", "bookName", "db", False, "sourceName"),
 )
 JSON_TARGETS = (
     JsonTarget("ForDB/all_metadata.json", "title", "db"),
@@ -638,6 +648,16 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
         values = [_csv_value(text, f[col]) for _s, _e, f in records[1:] if len(f) > col]
         values = set(values)
         keyed_values = {key(v) for v in values}
+        source_col = None
+        values_by_source = {}
+        if target.source_column is not None:
+            if target.source_column not in header:
+                raise EditVerificationError(f"{target.path}: אין עמודה '{target.source_column}'")
+            source_col = header.index(target.source_column)
+            for _s, _e, f in records[1:]:
+                if len(f) > max(col, source_col):
+                    values_by_source.setdefault(_csv_value(text, f[source_col]), set()).add(
+                        _csv_value(text, f[col]))
         author_col = header.index("authorName") if target.path == "ForDB/book_info.csv" else None
         identities = {
             (key(_csv_value(text, f[col])), _csv_value(text, f[author_col]))
@@ -668,7 +688,16 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
             new_value = _title_for(rename, target.spelling, db_title)
             if old_value == new_value:
                 continue
-            conflict = _conflicts(rename, new_value, values, key, keyed_values)
+            if source_col is not None:
+                row_source = _csv_value(text, fields[source_col]) if len(fields) > source_col else ""
+                if row_source != source_of(rename.old_path):
+                    continue  # אותו שם בספר של מקור אחר
+                if source_of(rename.new_path) != row_source:
+                    plan.blocked[rid] = f"{target.path}: הספר עבר מהמקור {row_source!r} למקור אחר"
+                    continue
+                conflict = _conflicts(rename, new_value, values_by_source.get(row_source, set()), key)
+            else:
+                conflict = _conflicts(rename, new_value, values, key, keyed_values)
             if author_col is not None:
                 author = _csv_value(text, fields[author_col])
                 conflict = ((new_value, author) in exact_identities if rename.respell
