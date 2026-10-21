@@ -48665,6 +48665,20 @@
       },
       "commit": null,
       "changeSetId": "b16a48f3dc4f310cad1168db"
+    },
+    {
+      "id": 3482,
+      "kind": "rename",
+      "old": {
+        "bookName": "בראשית",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בראשית",
+        "authorName": "משה רבנו"
+      },
+      "commit": null,
+      "changeSetId": "6ad9083b2917198d739916de"
     }
   ]
 }
