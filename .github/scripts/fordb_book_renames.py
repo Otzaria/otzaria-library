@@ -430,6 +430,7 @@ class CsvTarget:
     drop_superseded: bool  # שורה לשם החדש כבר קיימת: למחוק את הישנה (כמו יתומה)
     # עמודת מקור (תיקייה עליונה): השורה שייכת רק לספר של אותו מקור. קובץ כזה אופציונלי.
     source_column: str = None
+    optional: bool = False  # קובץ שהיעדרו תקין גם בלי עמודת מקור
 
 
 def source_of(path):
@@ -454,10 +455,12 @@ class JsonTarget:
 #   metadata.json            - Generator.loadMetadata (מחבר, תיאור), לפי שם הקובץ הגולמי.
 #   all_metadata_with_file_paths.json - הרשימה הקנונית של המאמת עצמו (לא מגיע ל-DB).
 #   book_banners / book_protection - טבלאות book_banner / book_protection, לפי מקור + bookName.
+#   commentator_collective_titles - SeedCollectiveTitles (book.collectiveTitleHe/En), לפי book.title.
 # קבצי *_links.json בשורשי ה-links הנארזים מטופלים בנפרד (plan_links).
 CSV_TARGETS = (
     CsvTarget("ForDB/book_info.csv", "bookName", "db", True),
     CsvTarget("ForDB/book_moves.csv", "name", "db", True),
+    CsvTarget("ForDB/commentator_collective_titles.csv", "bookName", "db", True, optional=True),
     CsvTarget("ForDB/sefaria_metadata_changes.csv", "title", "db", False),
     CsvTarget("ForDB/book_banners.csv", "bookName", "db", False, "sourceName"),
     CsvTarget("ForDB/book_protection.csv", "bookName", "db", False, "sourceName"),

@@ -99,6 +99,7 @@ BOOK_RENAMES = os.path.join(FORDB, "book_renames.csv")
 BOOK_INFO = os.path.join(FORDB, "book_info.csv")
 SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
 BOOK_MOVES = os.path.join(FORDB, "book_moves.csv")
+COMMENTATOR_TITLES = os.path.join(FORDB, "commentator_collective_titles.csv")
 FORDB_METADATA = os.path.join(FORDB, "all_metadata.json")
 # באנר / הגנה לפי sourceName + bookName (ריק = כל ספרי המקור). שניהם אופציונליים.
 BOOK_BANNERS = os.path.join(FORDB, "book_banners.csv")
@@ -914,8 +915,8 @@ def preflight_csv_inputs():
     for target in book_renames_follow.CSV_TARGETS:
         path = os.path.join(REPO_ROOT, target.path)
         if not os.path.exists(path):
-            if target.source_column is not None:
-                continue  # book_banners / book_protection אופציונליים
+            if target.source_column is not None or target.optional:
+                continue  # book_banners / book_protection / commentator_collective_titles אופציונליים
             raise FileNotFoundError(path)
         if path == BOOK_INFO:
             with open(path, "rb") as handle:
@@ -1209,7 +1210,10 @@ def main():
     for file_label, path, col in (
         ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
+        ("ForDB/commentator_collective_titles.csv", COMMENTATOR_TITLES, "bookName"),
     ):
+        if not os.path.exists(path):
+            continue  # commentator_collective_titles.csv אופציונלי
         if args.fix:
             removed.extend(
                 (file_label, name, "orphan")
@@ -1291,7 +1295,10 @@ def main():
     for file_label, path, col in (
         ("ForDB/book_info.csv", BOOK_INFO, "bookName"),
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
+        ("ForDB/commentator_collective_titles.csv", COMMENTATOR_TITLES, "bookName"),
     ):
+        if not os.path.exists(path):
+            continue
         header, rows = read_csv_rows(path, has_header=True)
         c_idx = col_index(header, col)
         collect_spelling(

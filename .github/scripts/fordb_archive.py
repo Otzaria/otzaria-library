@@ -38,6 +38,8 @@ SHIPPED = frozenset({
     "ForDB/book_renames.csv",
     "ForDB/category_moves.csv",
     "ForDB/category_renames.csv",
+    # שם המפרש כישות (book.collectiveTitleHe/En) לספרים שאינם מספריא; קובץ חסר = אין מילוי.
+    "ForDB/commentator_collective_titles.csv",
     # קודש/חול בתנ"ך ל-line_divine_name; קובץ חסר מפיל את הבנייה.
     "ForDB/divine_name_overrides.csv",
     "ForDB/sefaria_author_changes.csv",

@@ -261,6 +261,36 @@ class SourceScopedNoticeTest(unittest.TestCase):
         self.assertEqual(errors[0][1], "0")
 
 
+class OptionalCommentatorTitlesTest(unittest.TestCase):
+    PATH = "ForDB/commentator_collective_titles.csv"
+    HEADERS = {
+        "ForDB/book_info.csv": "bookName,authorName,generationName,subGenerationName,startYear,endYear",
+        "ForDB/book_moves.csv": "name,Source path,Destination path",
+        "ForDB/sefaria_metadata_changes.csv": "categoryPath,title,author,heShortDesc,heDesc,heDescNew",
+    }
+
+    def preflight(self, files):
+        with tempfile.TemporaryDirectory() as root:
+            os.makedirs(os.path.join(root, "ForDB"))
+            for name, header in files.items():
+                with open(os.path.join(root, name), "w", encoding="utf-8", newline="") as handle:
+                    handle.write(header + "\n")
+            book_info = os.path.join(root, "ForDB/book_info.csv")
+            with patch.object(validator, "REPO_ROOT", root), patch.object(validator, "BOOK_INFO", book_info):
+                validator.preflight_csv_inputs()
+
+    def test_the_file_is_an_optional_rename_target(self):
+        targets = {t.path: t for t in validator.book_renames_follow.CSV_TARGETS}
+        self.assertTrue(targets[self.PATH].optional)
+        self.assertFalse(targets["ForDB/book_info.csv"].optional)
+
+    def test_a_missing_file_passes_preflight_but_a_missing_required_one_fails(self):
+        self.preflight(self.HEADERS)
+        self.preflight({**self.HEADERS, self.PATH: "bookName,collectiveTitleHe,collectiveTitleEn"})
+        with self.assertRaises(FileNotFoundError):
+            self.preflight({k: v for k, v in self.HEADERS.items() if k != "ForDB/book_moves.csv"})
+
+
 class CategoryDescriptionPathsTest(unittest.TestCase):
     """A shelf row is read after category_renames.csv: a path that still carries a renamed
     (merged-away) category title, or the same path twice, aborts SeedAllMetadata mid-build."""
