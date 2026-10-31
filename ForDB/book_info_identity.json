@@ -84806,6 +84806,20 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "נפש החיים",
+        "authorName": "חיים איצקוביץ"
+      },
+      "new": {
+        "bookName": "נפש החיים",
+        "authorName": "הרב חיים וואלאזינער (איצקוביץ)"
+      },
+      "commit": null,
+      "changeSetId": "6ae67bcf381b972f0a9266f2"
     }
   ]
 }
