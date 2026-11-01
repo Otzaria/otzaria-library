@@ -141,19 +141,35 @@
   "src": "030_BAVLI/23_MAS_BATRA/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על בבא בתרא.txt": {
-  "src": "030_BAVLI/23_MAS_BATRA/HavTempNotes.txt"
+  "src": "030_BAVLI/23_MAS_BATRA/HavTempNotes.txt",
+  "keep": [
+   [1248, "ערב [כלומר - אותו מל"],
+   [1772, "התנינם הגדלים\" הקרי"],
+   [2110, "נאי]: \"ושׂם דרך אראנ"],
+   [2755, "כתב, \"הפחות שבלשונות"],
+   [2808, "(היינו, אחי המת). ו"],
+   [2858, "יורש את אמו כמו את"],
+   [2887, "אדם, כמו קרח. ולא כי"],
+   [3202, "דאי אפשר לזכות לאדם"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על בבא מציעא.txt": {
   "src": "030_BAVLI/22_MAS_METSIA/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על בבא מציעא.txt": {
-  "src": "030_BAVLI/22_MAS_METSIA/HavTempNotes.txt"
+  "src": "030_BAVLI/22_MAS_METSIA/HavTempNotes.txt",
+  "keep": [
+   [2425, "ע\"א ד\"ה אשח)"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על בבא קמא.txt": {
   "src": "030_BAVLI/21_MAS_KAMA/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על בבא קמא.txt": {
-  "src": "030_BAVLI/21_MAS_KAMA/HavTempNotes.txt"
+  "src": "030_BAVLI/21_MAS_KAMA/HavTempNotes.txt",
+  "keep": [
+   [2726, "יפטר, נמצא - שלא מתק"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על ביצה.txt": {
   "src": "030_BAVLI/09_MAS_BEITSA/HavTempNoNotes.txt"
@@ -271,13 +287,19 @@
   "src": "030_BAVLI/39_MAS_NIDA/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על נדה.txt": {
-  "src": "030_BAVLI/39_MAS_NIDA/HavTempNotes.txt"
+  "src": "030_BAVLI/39_MAS_NIDA/HavTempNotes.txt",
+  "keep": [
+   [1086, "א הטעם שהחיות שבהם מ"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על נדרים.txt": {
   "src": "030_BAVLI/16_MAS_NEDARIM/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על נדרים.txt": {
-  "src": "030_BAVLI/16_MAS_NEDARIM/HavTempNotes.txt"
+  "src": "030_BAVLI/16_MAS_NEDARIM/HavTempNotes.txt",
+  "keep": [
+   [718, "ישוט של למטה, גם תנא"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על נזיר.txt": {
   "src": "030_BAVLI/17_MAS_NAZIR/HavTempNoNotes.txt"
@@ -301,7 +323,10 @@
   "src": "030_BAVLI/24_MAS_SANHEDRIN/HavTempNoNotes.txt"
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על סנהדרין.txt": {
-  "src": "030_BAVLI/24_MAS_SANHEDRIN/HavTempNotes.txt"
+  "src": "030_BAVLI/24_MAS_SANHEDRIN/HavTempNotes.txt",
+  "keep": [
+   [1273, "\" היינו לרעים שבך."]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על עבודה זרה.txt": {
   "src": "030_BAVLI/27_MAS_AVODA_ZARA/HavTempNoNotes.txt"
@@ -352,7 +377,12 @@
   ]
  },
  "תלמוד בבלי/ספרות עזר/הערות על ביאור חברותא/הערות על חברותא על שבת.txt": {
-  "src": "030_BAVLI/02_MAS_SHABAT/HavTempNotes.txt"
+  "src": "030_BAVLI/02_MAS_SHABAT/HavTempNotes.txt",
+  "keep": [
+   [586, "ונה כאן לביצה ממש, א"],
+   [608, "ו היינו מזכויותיו, מ"],
+   [1107, "רש כל כך למה מחוברת"]
+  ]
  },
  "תלמוד בבלי/ספרות עזר/ביאור חברותא/חברותא על שקלים.txt": {
   "src": "030_BAVLI/05_MAS_SHKALIM/HavTempNoNotes.txt"

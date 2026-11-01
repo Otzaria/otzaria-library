@@ -344,6 +344,61 @@ def opens_quote(s, start, end):
 
 def gershayim(s):
     return GERSHAYIM_PAIR_RE.sub(lambda m: m.group() if opens_quote(s, m.start(), m.end()) else '"', s)
+
+
+# What the sources get wrong in every book, whatever their rules (te_tidy.py applies it to the
+# library's books as well, so that a book converted again and a book tidied agree):
+#   * a quotation mark typed as two apostrophes (''כל בו'', ה''' = ה' and a closing ");
+#   * a space before a comma, semicolon, colon or full stop (תלך ; ומה), or on its wrong side
+#     (עשרה ,מכל);
+#   * a bold word cut by its own gershayim or geresh (<b>הריטב</b>"<b>א</b>, <b>רש</b>"י);
+#   * bold on punctuation alone (<b>;</b>, <b>?!</b>, and every quotation mark of the Taanit notes);
+#   * two bold runs with only a space between them (<b>עין</b> <b>יעקב</b>). The bold label at the
+#     head of a line (<b>(12)</b>, <b>(3א)</b>; <b>12.</b> <b>א.</b> as the source writes it) and a
+#     note number anywhere stay runs of their own: the notes' merge reads them as the marker.
+TAG_OR_TEXT_RE = re.compile(r'(<[^<>]*>)')
+QUOTE_AFTER_GERESH_RE = re.compile(r"(?<=[א-ת֑-ׇ])'''")
+SPLIT_QUOTE_RE = re.compile(r"(?<!')'(</?b>)'(?!')")     # '<b>'שכיר</b> -> "<b>שכיר</b>
+SPACE_BEFORE_PUNCT_RE = re.compile(r'(?<=[א-ת֑-ׇ"\')\]]) +(?=(?:[,;:]|\.(?!\.))(?:\s|"|$))')
+SPACE_AFTER_PUNCT_RE = re.compile(r'(?<=[א-ת֑-ׇ"\')]) ([,;:])(?=[א-ת])')
+GERESH_CUT_RE = re.compile(r'(?<=[א-ת])</b>(["\'])<b>(?=[א-ת])')
+ABBREVIATION_TAIL_RE = re.compile(r'(?<=[א-ת]{2})</b>(["\'][א-ת]{1,2})(?![א-ת"\'])')
+LONE_MARK_RE = re.compile(r'(?<!</b>)<b>((?: ?["\'״;,.:!?()])+)</b>(?!<b>)')
+NOTE_NUMBER_RUN_RE = re.compile(r'^(?:<tex[^<>]*>)*<b>(?:<tex[^<>]*>)*(?:\([^()<>]*\)|[0-9א-ת*]{1,6}\.)(?:<tex[^<>]*>)*</b>'
+                                r'|<b>\(\*?\d+[א-ת*]?\)</b>')
+HELD_RE = re.compile('\x00([0-9]+)\x01')
+HEADING_EDGE_RE = re.compile(r'(<h[1-6][^<>]*>)\s+|\s+(</h[1-6]>)')
+
+
+def in_text(f, s):
+    return ''.join(p if p.startswith('<') else f(p) for p in TAG_OR_TEXT_RE.split(s))
+
+
+def marks(s):
+    prev = None
+    while prev != s:   # unbolding a mark can bring two apostrophes or a space and a mark together
+        prev, s = s, marks_once(s)
+    return s
+
+
+def marks_once(s):
+    s = SPLIT_QUOTE_RE.sub(r'"\1', s)
+    s = in_text(lambda t: QUOTE_AFTER_GERESH_RE.sub('\'"', t).replace("''", '"'), s)
+    s = GERESH_CUT_RE.sub(r'\1', s)
+    s = ABBREVIATION_TAIL_RE.sub(r'\1</b>', s)
+    s = LONE_MARK_RE.sub(r'\1', s)
+    held = []
+
+    def hold(m):
+        held.append(m.group())
+        return '\x00%d\x01' % (len(held) - 1)
+    s = NOTE_NUMBER_RUN_RE.sub(hold, s).replace('</b> <b>', ' ')
+    s = HELD_RE.sub(lambda m: held[int(m.group(1))], s)
+    # last: the space before a mark that was bold alone is in the text only now
+    s = in_text(lambda t: SPACE_BEFORE_PUNCT_RE.sub('', SPACE_AFTER_PUNCT_RE.sub(r'\1 ', t)), s)
+    return HEADING_EDGE_RE.sub(lambda m: m.group(1) or m.group(2), s)
+
+
 # junk invisibles: bidi marks, BOM, zero-width space, soft hyphen, controls.
 # ZWJ/ZWNJ survive only before a point (vav+ZWJ+holam renders holam haser)
 INVISIBLE_RE = re.compile("[\ufeff\u200b\u200e\u200f\u202a-\u202e\u2060\u2066-\u2069\u00ad\x00-\x08\x0b-\x1f\x7f-\x9f]"
@@ -353,6 +408,13 @@ SPACE_RUN_RE = re.compile(f"[ {ODD_SPACE}]*[{ODD_SPACE}][ {ODD_SPACE}]*")
 
 
 def tidy(s):
+    prev = None
+    while prev != s:   # marks() can leave an empty tag, and the tidy below a mark to unbold
+        prev, s = s, tidy_once(s)
+    return s
+
+
+def tidy_once(s):
     s = re.sub(r'_nbsp;?|&nbsp;', ' ', s)
     s = SPACE_RUN_RE.sub(' ', INVISIBLE_RE.sub('', s))
     s = gershayim(s)
@@ -370,7 +432,7 @@ def tidy(s):
         prev = s
         s = re.sub(r'(<(?!/)[^<>]+>)( +)', r'\2\1', s)
         s = re.sub(r'( +)(</[^<>]+>)', r'\2\1', s)
-    s = re.sub(r' {2,}', ' ', s).strip()
+    s = re.sub(r' {2,}', ' ', marks(s)).strip()
     return s
 
 

@@ -477,6 +477,13 @@ def html_escape(c):
 
 def tidy(s):
     prev = None
+    while prev != s:   # marks() can leave an empty tag, and the tidy below a mark to unbold
+        prev, s = s, tidy_once(s)
+    return s
+
+
+def tidy_once(s):
+    prev = None
     while prev != s:
         prev = s
         s = re.sub(r'<(b|i|u|big|small|sup|sub)>(\s*)</\1>', r'\2', s)
@@ -486,7 +493,7 @@ def tidy(s):
         prev = s
         s = re.sub(r'(<(?:b|i|u|big|small|sup|sub)>)( +)', r'\2\1', s)
         s = re.sub(r'( +)(</(?:b|i|u|big|small|sup|sub)>)', r'\2\1', s)
-    s = re.sub(r' {2,}', ' ', s)
+    s = re.sub(r' {2,}', ' ', E.marks(s))
     return s.strip()
 
 
