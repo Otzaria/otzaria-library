@@ -1,44 +1,64 @@
 [
     {
-        "he_authors": null,
-        "en_authors": null,
-        "he_title": "פניני הלכה, אמונה ומצוותיה",
-        "en_title": "Peninei Halakhah, Emunah Umitzvoteha",
-        "heDesc": "",
-        "enDesc": "*Peninei Halakhah* is a contemporary, easily accessible, and thorough presentation of practical halakhah, written in modern Hebrew by Rabbi Eliezer Melamed, rosh yeshiva and rabbi of the community of Har Berakhah. Consisting of 22 volumes and expanding, it includes a range of sources, explanations of the spiritual foundations of laws, differences between Ashkenazi and Sephardi practice, and footnotes at the end of every chapter with elaborations and additional sources. The work is popular in Israel, where it is often used as the standard halakhah textbook in religious Zionist schools, and in Jewish communities throughout the world. This volume discusses the topic of faith and its commandments.\n",
-        "heShortDesc": "",
-        "enShortDesc": "",
+        "he_authors": "מיכל טיקוצ'ינסקי",
+        "en_authors": "Michal Tikochinsky",
+        "he_title": "חיים היא; הלכה ונשים בצומתי חיים",
+        "en_title": "She Is Life; Halakha and Women at Life's Crossroads",
+        "heDesc": "*חיים היא: חיים והלכה בצומתי החיים* הוא ספר מאת הרבנית ד\"ר מיכל טיקוצ'ינסקי אשר מזמין את הקוראים למסע אל תוך שאלות הלכתיות עכשוויות הנוגעות למעמדן של נשים בדורנו. בעידן של שינויים מואצים בתפיסת התפקידים המגדריים ובמעמד האישה, נוצרת תנועה מתמדת בין השאיפה למענה הלכתי לשאלות ההווה לבין מחויבות למסורת הפסיקה. הספר מתמודד עם מטוטלת החיים הזאת, ומציע דיון על קו התפר שבין המציאות המשתנה לבין חיי ההלכה.",
+        "enDesc": "*She is Life: Women and Halakhah at Life’s Crossroads* is a contemporary work by Rabbanit Dr. Michal Tikochinsky addressing questions about women in Jewish law. The work delicately navigates the intersection between changing realities and loyalty to traditional halakhah. ",
+        "heShortDesc": "ספר בן זמננו מאת הרבנית ד\"ר מיכל טיקוצ'ינסקי על שאלות הלכתיות עכשוויות הנוגעות למעמדן של נשים ",
+        "enShortDesc": "Contemporary work by Rabbanit Dr. Michal Tikochinsky addressing questions about women in Jewish law\n",
         "he_categories": [
             "הלכה",
-            "ספרות מודרנית",
-            "פניני הלכה"
+            "ספרות מודרנית"
         ],
         "en_categories": [
             "Halakhah",
-            "Modern",
-            "Peninei Halakhah"
+            "Modern"
         ],
         "he_era": null,
         "language": "he"
     },
     {
-        "he_authors": "אליעזר מלמד",
-        "en_authors": "Eliezer Melamed",
-        "he_title": "פניני הלכה, גיור",
-        "en_title": "Peninei Halakhah, Giyur",
-        "heDesc": "",
-        "enDesc": "*Peninei Halakhah* is a contemporary, easily accessible, and thorough presentation of practical halakhah, written in modern Hebrew by Rabbi Eliezer Melamed, rosh yeshiva and rabbi of the community of Har Berakhah. Consisting of 22 volumes and expanding, it includes a range of sources, explanations of the spiritual foundations of laws, differences between Ashkenazi and Sephardi practice, and footnotes at the end of every chapter with elaborations and additional sources. The work is popular in Israel, where it is often used as the standard halakhah textbook in religious Zionist schools, and in Jewish communities throughout the world. This volume discusses laws relating to conversion to Judaism.\n",
-        "heShortDesc": "",
-        "enShortDesc": "Conversion to Judaism",
+        "he_authors": "יונתן זקס",
+        "en_authors": "Jonathan Sacks",
+        "he_title": "לחגוג את החיים; למצוא את האושר במקומות מפתיעים",
+        "en_title": "Celebrating Life; Finding Happiness in Unexpected Places",
+        "heDesc": "לחגוג את החיים: למצוא את האושר במקומות מפתיעים הוא ספר מאת הרב יונתן זקס שראה אור לראשונה בשנת 2000. בעקבות האובדן הכואב של אביו, יצא הרב זקס למסע אישי עמוק של גילוי מחודש של החיים עצמם. בתוך האבל הוא ביקש ללמוד לא רק כיצד לשרוד - אלא כיצד לחגוג את החיים באופן רענן, רווי השראה ומשמעות. מתוך מסעו הפרטי נולד הספר הזה, המבוסס בחלקו על טוריו הפופולריים של הרב זקס בעיתון ה\"טיימס\" הלונדוני.",
+        "enDesc": "Published in 2000 following the loss of Rabbi Jonathan Sacks’s father, *Celebrating Life: Finding Happiness in Unexpected Places* documents Sacks’s journey to celebrate life and discover happiness in new ways – through family, community, friendship, responsibilities, and a renewed relationship with God. Drawn in part from his columns in *The Times* newspaper, *Celebrating Life* is meant to be a work for people of all faiths and those of none.\n",
+        "heShortDesc": "חיבור מראשית המאה ה־21, העוסק בחיפושיו של הרב יונתן זקס אחר דרכים לחגוג את החיים בעקבות מות אביו",
+        "enShortDesc": "Early 21st-century work exploring R. Jonathan Sacks’s search for ways to celebrate life following his father’s death\n",
         "he_categories": [
-            "הלכה",
+            "מחשבת ישראל",
             "ספרות מודרנית",
-            "פניני הלכה"
+            "הרב לורד יונתן זקס"
         ],
         "en_categories": [
-            "Halakhah",
+            "Jewish Thought",
             "Modern",
-            "Peninei Halakhah"
+            "Rabbi Lord Jonathan Sacks"
+        ],
+        "he_era": null,
+        "language": "he"
+    },
+    {
+        "he_authors": "יונתן זקס",
+        "en_authors": "Jonathan Sacks",
+        "he_title": "עשרה נתיבים אל ה'; בתוך מרוץ החיים למצוא קרבת אלוהים",
+        "en_title": "Ten Paths to God",
+        "heDesc": "*עשרה נתיבים אל ה'* הוא חיבור קצר מאת הרב יונתן זקס, המבקש להציע הדרכה בהתמודדות עם שאלות יסוד שאדם עשוי לשאול את עצמו, כגון: \"מי אני?\", \"לשם מה אני כאן?\" ו\"כיצד עליי לחיות?\". החיבור מציג מבחר של מקורות שנבחרו כנקודות מוצא להתבוננות אישית ולהגות. כל מקור מציע נתיב לחיים מלאים ורוחניים יותר.",
+        "enDesc": "*Ten Paths to God* is a short work by Rabbi Jonathan Sacks that offers guidance on fundamental questions people may ask themselves, such as “Who am I?”, “Why am I here?”, and “How should I live?” The work presents a selection of texts carefully chosen as starting points for personal reflection and meditation. Each text offers a path toward a more fulfilled and spiritual life.",
+        "heShortDesc": "חיבור קצר בן זמננו מאת הרב יונתן זקס, המציג אוסף מקורות להתבוננות אישית ולהגות",
+        "enShortDesc": "\nShort work by R. Jonathan Sacks presenting a collection of texts for personal reflection and meditation\n",
+        "he_categories": [
+            "מחשבת ישראל",
+            "ספרות מודרנית",
+            "הרב לורד יונתן זקס"
+        ],
+        "en_categories": [
+            "Jewish Thought",
+            "Modern",
+            "Rabbi Lord Jonathan Sacks"
         ],
         "he_era": null,
         "language": "he"
