@@ -185,9 +185,9 @@ jobs:
           set -euo pipefail
           [ -n "$GH_TOKEN" ] || { echo "::error::PIPELINE_TOKEN secret is empty or missing on this repo"; exit 1; }
           # Workflow handoffs are pre-releases and do not contain a database.
-          # Validate only against the newest final Seforim DB release.
-          LIB_TAG=$(gh release list -R Otzaria/SeforimLibrary --exclude-pre-releases \
-            --exclude-drafts -L1 --json tagName -q '.[0].tagName')
+          # Validate only against the newest final release that carries a DB
+          # (final vector QA releases do not).
+          LIB_TAG=$(bash .github/scripts/select_released_db_tag.sh seforim-tool)
           test -n "$LIB_TAG"
           echo "Dry-running against SeforimLibrary release $LIB_TAG"
           # Schema-qualified names and split archives follow the producer's contract.

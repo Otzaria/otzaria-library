@@ -287,8 +287,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          LIB_TAG=$(gh release list -R Otzaria/SeforimLibrary --exclude-pre-releases \
-            --exclude-drafts -L1 --json tagName -q '.[0].tagName')
+          # הראשון מבין ה-release הסופיים שבאמת נושא DB (release סופי של וקטורים אינו נושא).
+          LIB_TAG=$(bash .github/scripts/select_released_db_tag.sh seforim-tool)
           test -n "$LIB_TAG"
           echo "Validating every ForDB input against SeforimLibrary release $LIB_TAG"
 

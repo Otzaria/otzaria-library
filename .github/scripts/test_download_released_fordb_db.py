@@ -26,11 +26,14 @@ import json, os, pathlib, shutil, sys
 args = sys.argv[1:]
 root = pathlib.Path(os.environ["FIXTURE_RELEASE"])
 if args[:2] == ["release", "list"]:
-    print("v-fixture")
+    print(os.environ.get("FIXTURE_TAGS", "v-fixture"))
 elif args[:2] == ["release", "view"]:
-    print((root / "release.json").read_text())
+    per_tag = root / ("view-" + args[2] + ".json")
+    print((per_tag if per_tag.is_file() else root / "release.json").read_text())
 elif args[:2] == ["release", "download"]:
     name = args[args.index("-p") + 1]
+    if args[2] in os.environ.get("FIXTURE_EMPTY_TAGS", "").split():
+        sys.exit("no assets match the file pattern")
     dest = pathlib.Path(args[args.index("-D") + 1])
     with open(os.environ["FIXTURE_LOG"], "a") as log:
         log.write(name + "\n")
@@ -66,7 +69,8 @@ class ReleasedForDbDownloadTest(unittest.TestCase):
         gh.chmod(0o755)
         scripts = self.root / ".github/scripts"
         scripts.mkdir(parents=True)
-        (scripts / "download_released_fordb_db.sh").symlink_to(SCRIPTS / "download_released_fordb_db.sh")
+        for helper in ("download_released_fordb_db.sh", "select_released_db_tag.sh"):
+            (scripts / helper).symlink_to(SCRIPTS / helper)
         (self.root / "seforim-tool").symlink_to(TOOL, target_is_directory=True)
         self.env = dict(os.environ, PATH=f"{bin_dir}{os.pathsep}{os.environ['PATH']}",
                         GH_TOKEN="fixture", FIXTURE_RELEASE=str(self.release),
@@ -143,6 +147,38 @@ class ReleasedForDbDownloadTest(unittest.TestCase):
                         path.unlink()
                     self.publish(schema, split)
                     self.run_workflows(True)
+
+    def publish_vectors_release_first(self):
+        """A final vectors QA release is newer than the DB release and has no DB asset."""
+        self.publish()
+        self.write_json("view-vectors-qa.json", {"assets": [
+            {"name": "gates.json"}, {"name": "validation.json"},
+            {"name": "otzaria-vectors-0e87cbd9-v35-base.oxv.zst"}]})
+        self.env["FIXTURE_TAGS"] = "vectors-qa\nv-fixture"
+        self.env["FIXTURE_EMPTY_TAGS"] = "vectors-qa"
+
+    def test_final_release_without_a_db_is_skipped(self):
+        self.publish_vectors_release_first()
+        self.run_workflows(True)
+
+    def test_selector_skips_releases_missing_any_required_asset(self):
+        self.publish()
+        names = {"build_provenance.json", "seforim.db.buildstate.zst", self.name}
+        for missing in sorted(names):
+            self.write_json(f"view-no-{missing}.json", {"assets": [
+                {"name": n} for n in sorted(names - {missing})]})
+        self.env["FIXTURE_TAGS"] = "\n".join([f"no-{m}" for m in sorted(names)] + ["v-fixture"])
+        result = subprocess.run(["bash", str(SCRIPTS / "select_released_db_tag.sh"), str(TOOL)],
+                                env=self.env, text=True, capture_output=True, timeout=20)
+        self.assertEqual((result.returncode, result.stdout.strip()), (0, "v-fixture"), result.stderr)
+
+    def test_selector_fails_when_no_release_has_a_db(self):
+        self.publish_vectors_release_first()
+        self.env["FIXTURE_TAGS"] = "vectors-qa"
+        result = subprocess.run(["bash", str(SCRIPTS / "select_released_db_tag.sh"), str(TOOL)],
+                                env=self.env, text=True, capture_output=True, timeout=20)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(result.stdout, "")
 
     def test_highest_schema_wins_over_compatibility_archive(self):
         self.publish()

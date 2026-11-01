@@ -114,8 +114,8 @@ jobs:
             [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]
             [[ "$(sha256sum "$4/$3" | cut -d' ' -f1)" == "${digest#sha256:}" ]]
           }
-          lib_tag=$(gh release list -R Otzaria/SeforimLibrary --exclude-pre-releases --exclude-drafts \
-            -L1 --json tagName -q '.[0].tagName')
+          # ה-release הסופי הראשון שנושא DB: release סופי של וקטורים (vectors-qa*) אינו נושא.
+          lib_tag=$(bash .github/scripts/select_released_db_tag.sh seforim-tool)
           test -n "$lib_tag"
           download Otzaria/SeforimLibrary "$lib_tag" build_provenance.json "$WORK"
           built_export=$(jq -r '.sefaria_tag' "$WORK/build_provenance.json")
