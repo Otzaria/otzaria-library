@@ -10,14 +10,12 @@ import sys
 SOURCE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SOURCE_DIR.parent))
 
-from bs4 import BeautifulSoup, Tag
 from gematriapy import gematria
 from pyluach import dates
 
 import post_convert_fixes
-import fix_marker_breaks
-import fix_missing_spaces
 import normalize_source
+from span_styles import NOTES_IN_Z, all_span_classes, apply_span_styles
 
 
 @dataclass
@@ -160,72 +158,6 @@ SWAPPED_FIELDS = ("AuthorName", "PrintYear", "PrintYearDesc", "MefareshTypeDesc"
 
 def sanitize_filename(filename: str) -> str:
     return re.sub(r'[\\/:*"?<>|\u200E\u200F\u202A\u202B\u202C\u202D\u202E]', '', filename).replace('_', ' ')
-
-
-# כל מחלקות ה-span שנראו בפועל (לדיווח בסוף הריצה); apply_span_styles ממלא אותה
-all_span_classes = set()
-
-
-CLASS_STYLE = {
-    "B": {"tag": "b"},
-    "Z": {"tag": "i"},
-    "S": {"tag": "small"},
-    "H": {"tag": "span", "style": "color:#1B1464"},
-    "N": {"tag": "span", "style": "color:#999"},
-    "R": {"tag": "span", "style": "color:#999"},
-}
-
-
-COLOR_PRIORITY = ("H", "N", "R")
-TAG_PRIORITY = ("B", "Z", "S")
-
-
-def _wrappers_for(seen: set) -> list:
-    wrappers = []
-    for c in COLOR_PRIORITY:
-        if c in seen:
-            wrappers.append(("span", CLASS_STYLE[c]["style"]))
-            break
-    wrappers.extend(
-        (CLASS_STYLE[c]["tag"], None) for c in TAG_PRIORITY if c in seen
-    )
-    return wrappers
-
-
-def _set_outer(span: Tag, name: str, style: str | None) -> None:
-    span.name = name
-    del span["class"]
-    if style:
-        span["style"] = style
-    elif "style" in span.attrs:
-        del span["style"]
-
-
-def apply_span_styles(html: str) -> str:
-    soup = BeautifulSoup(html, "html.parser")
-    for span in soup.find_all("span"):
-        classes = span.get("class") or []
-        all_span_classes.update(classes)
-        seen = {c for c in classes if c in CLASS_STYLE}
-        if not seen:
-            span.unwrap()
-            continue
-        wrappers = _wrappers_for(seen)
-        _set_outer(span, *wrappers[0])
-        current = span
-        for name, style in wrappers[1:]:
-            new_tag = soup.new_tag(name)
-            if style:
-                new_tag["style"] = style
-            new_tag.extend([child.extract() for child in list(current.contents)])
-            current.append(new_tag)
-            current = new_tag
-    result = str(soup).replace("\n", " ")
-    result = re.sub(r'(\s*<br\s*/?>)+\s*$', '', result).strip()
-    # בנתוני המקור כותרת הסימן דבוקה לגוף הקטע (otzaria-library#38)
-    result = fix_marker_breaks.fix_text(result)[0]
-    # בנתוני המקור המילה שאחרי קטע מעוצב דבוקה לתג הסוגר (otzaria/otzaria#1068)
-    return fix_missing_spaces.fix_text(result)[0]
 
 
 input_path = Path(os.environ.get("RAMBAM_OUTPUT_JSON", r"C:\Users\Otzaria\Desktop\rambam\output.json"))
@@ -396,6 +328,7 @@ for code_mefaresh_id, mef_entry in all_mef.items():
         mef_file_path = extra_books_mef_path / mef_path
     mef_file_path.parent.mkdir(exist_ok=True, parents=True)
     lines = 0
+    notes_in_z = mef_entry_metadata.get("MefareshDesc") in NOTES_IN_Z
     dict_links = []
     with mef_file_path.open("w", encoding="utf-8") as f:
         f.write(f"<h1>{mef_entry_metadata.get("MefareshDesc", "")}</h1>\n")
@@ -419,7 +352,7 @@ for code_mefaresh_id, mef_entry in all_mef.items():
                         f.write(f"<h5>{ot.strip()}</h5>\n")
                         lines += 1
                         for text in texts:
-                            f.write(f"{apply_span_styles(text).strip()}\n")
+                            f.write(f"{apply_span_styles(text, notes_in_z).strip()}\n")
                             lines += 1
                             otzaria_line = otzaria_hierarchy[otzaria_book_name][otzaria_halachot][otzaria_perek].get(otzaria_ot)
                             if not otzaria_line:

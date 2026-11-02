@@ -29,9 +29,12 @@ jobs:
           sparse-checkout: |
             /National-LibraryToOtzaria/סקריפטים/fix_marker_breaks.py
             /National-LibraryToOtzaria/סקריפטים/fix_missing_spaces.py
+            /National-LibraryToOtzaria/סקריפטים/italic_quotes_to_bold.py
             /National-LibraryToOtzaria/סקריפטים/normalize_source.py
+            /National-LibraryToOtzaria/סקריפטים/span_styles.py
             /National-LibraryToOtzaria/סקריפטים/test_fix_marker_breaks.py
             /National-LibraryToOtzaria/סקריפטים/test_fix_missing_spaces.py
+            /National-LibraryToOtzaria/סקריפטים/test_italic_quotes_to_bold.py
             /National-LibraryToOtzaria/סקריפטים/test_normalize_source.py
           sparse-checkout-cone-mode: false
 
@@ -40,9 +43,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: python3 -m pip install beautifulsoup4
+
       - name: Run normalizer tests
         working-directory: National-LibraryToOtzaria/סקריפטים
         run: |
           python3 test_fix_marker_breaks.py
           python3 test_fix_missing_spaces.py
           python3 test_normalize_source.py
+          python3 test_italic_quotes_to_bold.py
