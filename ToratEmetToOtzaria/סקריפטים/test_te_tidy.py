@@ -23,6 +23,14 @@ class Marks(unittest.TestCase):
         self.assertEqual(E.marks('כי שמא תלך ; ומה ששנינו. וכו\' :'), 'כי שמא תלך; ומה ששנינו. וכו\':')
         self.assertEqual(E.marks('המתנה ... ועוד'), 'המתנה ... ועוד')
 
+    def test_geresh_and_closing_quotation_mark_in_the_right_order(self):
+        self.assertEqual(E.marks('"והא לא ידע וכו"\'. ו<b>הכתיב "ויבן מזבח לה"</b>\', ועוד "אמר ה</b>"\'?'),
+                         '"והא לא ידע וכו\'". ו<b>הכתיב "ויבן מזבח לה\'"</b>, ועוד "אמר ה\'"</b>?')
+
+    def test_punctuation_typed_twice(self):
+        self.assertEqual(E.marks('אם כן,, בזמן. <b>אינו חייב</b>,, עד. וכו\'... "השור יסקל:: או בן יגח"'),
+                         'אם כן, בזמן. <b>אינו חייב</b>, עד. וכו\'... "השור יסקל:: או בן יגח"')
+
     def test_space_on_the_wrong_side_of_a_comma(self):
         self.assertEqual(E.marks('מספר עשרה ,מכל מקום (שם שם ,יג)'), 'מספר עשרה, מכל מקום (שם שם, יג)')
 
@@ -49,6 +57,18 @@ class Marks(unittest.TestCase):
         for s in ('<b>(12)</b> <b>עין</b> כתב', '<b>(3א)</b> <b>רש"י</b> כתב', '<b>(*216)</b> <b>צל"ח</b>',
                   'כתב <b>עין</b> <b>(12)</b> ועוד', '<b>(סימן בא"ש)</b> <b>מתניתין</b>'):
             self.assertEqual(E.marks(s), s)
+
+    def test_a_quotation_mark_follows_the_words_around_it(self):
+        for s, want in (('<b>הקשה ב</b>"<b>קצות החושן</b>" [לד ב]', '<b>הקשה ב"קצות החושן"</b> [לד ב]'),
+                        ('<b>"ואלה</b>" הוא', '"<b>ואלה</b>" הוא'),
+                        ('כתב "<b>וכלה מכפר"</b>. ודרשינן', 'כתב "<b>וכלה מכפר</b>". ודרשינן'),
+                        ('<b>דכי נמי אמר "תנו</b>" <b>שייך</b>', '<b>דכי נמי אמר "תנו" שייך</b>'),
+                        ('<b>משום</b> "<b>שאני אומר</b>" <b>כתובין</b>', '<b>משום "שאני אומר" כתובין</b>'),
+                        ('"<b>תנו</b>" <b>נותנין</b>', '"<b>תנו</b>" <b>נותנין</b>'),
+                        ('ב"<b>חזון איש</b>" כתב', 'ב"<b>חזון איש</b>" כתב'),
+                        ('<b>רש"י</b>" כתב', '<b>רש"י</b>" כתב')):
+            self.assertEqual(E.marks(s), want)
+            self.assertEqual(E.marks(want), want)
 
     def test_mid_line_parentheses_are_joined(self):
         self.assertEqual(E.marks('ועוד <b>(אסורין)</b> <b>לעולם</b>'), 'ועוד <b>(אסורין) לעולם</b>')

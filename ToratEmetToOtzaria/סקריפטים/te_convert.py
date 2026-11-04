@@ -349,6 +349,8 @@ def gershayim(s):
 # What the sources get wrong in every book, whatever their rules (te_tidy.py applies it to the
 # library's books as well, so that a book converted again and a book tidied agree):
 #   * a quotation mark typed as two apostrophes (''כל בו'', ה''' = ה' and a closing ");
+#   * a geresh and a closing quotation mark in the wrong order (וכו"' -> וכו'", ה"' -> ה'");
+#   * a comma typed twice (אם כן,, בזמן);
 #   * a space before a comma, semicolon, colon or full stop (תלך ; ומה), or on its wrong side
 #     (עשרה ,מכל);
 #   * a bold word cut by its own gershayim or geresh (<b>הריטב</b>"<b>א</b>, <b>רש</b>"י);
@@ -359,10 +361,21 @@ def gershayim(s):
 TAG_OR_TEXT_RE = re.compile(r'(<[^<>]*>)')
 QUOTE_AFTER_GERESH_RE = re.compile(r"(?<=[א-ת֑-ׇ])'''")
 SPLIT_QUOTE_RE = re.compile(r"(?<!')'(</?b>)'(?!')")     # '<b>'שכיר</b> -> "<b>שכיר</b>
+DOUBLED_PUNCT_RE = re.compile(r'(?<!,),,(?!,)')     # אם כן,, בזמן (a double colon, שנא::, is the sources' own sign: kept)
 SPACE_BEFORE_PUNCT_RE = re.compile(r'(?<=[א-ת֑-ׇ"\')\]]) +(?=(?:[,;:]|\.(?!\.))(?:\s|"|$))')
 SPACE_AFTER_PUNCT_RE = re.compile(r'(?<=[א-ת֑-ׇ"\')]) ([,;:])(?=[א-ת])')
+CLOSING_ORDER_RE = re.compile(r'(?<=[א-ת])((?:</b>)?)"((?:</b>)?)\'(?![א-ת\'"])')   # וכו"' -> וכו'" (1,300, all in the sources)
 GERESH_CUT_RE = re.compile(r'(?<=[א-ת])</b>(["\'])<b>(?=[א-ת])')
 ABBREVIATION_TAIL_RE = re.compile(r'(?<=[א-ת]{2})</b>(["\'][א-ת]{1,2})(?![א-ת"\'])')
+# A quotation mark carries no bold of its own: the sources bold every mark (Taanit notes) or none
+# (all the others) whatever the words around it are. It follows the words:
+#   <b>הקשה ב</b>"<b>קצות החושן</b>"  -> <b>הקשה ב"קצות החושן"</b>   (opened inside a bold phrase)
+#   <b>"ואלה</b>"  ->  "<b>ואלה</b>"                                  (a bold word between plain marks)
+#   <b>אמר</b> "<b>תנו</b>" <b>שייך</b>  ->  <b>אמר "תנו" שייך</b>
+OPEN_IN_BOLD_RE = re.compile(r'<b>([^<>"]*)"([^<>"]*)</b>"(?![א-ת"\'])')
+PREFIX_TAIL_RE = re.compile(r'(?:^|[^א-ת])[ובהכלמשד]{0,3}$')
+MARK_BETWEEN_BOLD_RE = re.compile(r'</b>( ?["\'])<b>')
+BOLD_WORD_IN_MARKS_RE = re.compile(r'<b>"([^<>"]+)</b>"(?![א-ת"\'])|"<b>([^<>"]+)"</b>')
 LONE_MARK_RE = re.compile(r'(?<!</b>)<b>((?: ?["\'״;,.:!?()])+)</b>(?!<b>)')
 NOTE_NUMBER_RUN_RE = re.compile(r'^(?:<tex[^<>]*>)*<b>(?:<tex[^<>]*>)*(?:\([^()<>]*\)|[0-9א-ת*]{1,6}\.)(?:<tex[^<>]*>)*</b>'
                                 r'|<b>\(\*?\d+[א-ת*]?\)</b>')
@@ -381,21 +394,32 @@ def marks(s):
     return s
 
 
+def pull_closing_mark(m):
+    before, after = m.group(1), m.group(2)
+    if before and PREFIX_TAIL_RE.search(before) and re.match(r'[א-ת]', after):
+        return '<b>%s"%s"</b>' % (before, after)
+    return m.group()
+
+
 def marks_once(s):
     s = SPLIT_QUOTE_RE.sub(r'"\1', s)
     s = in_text(lambda t: QUOTE_AFTER_GERESH_RE.sub('\'"', t).replace("''", '"'), s)
+    s = CLOSING_ORDER_RE.sub(lambda m: '\'"' + m.group(1) + m.group(2), s)
     s = GERESH_CUT_RE.sub(r'\1', s)
     s = ABBREVIATION_TAIL_RE.sub(r'\1</b>', s)
     s = LONE_MARK_RE.sub(r'\1', s)
+    s = BOLD_WORD_IN_MARKS_RE.sub(lambda m: '"<b>%s</b>"' % (m.group(1) or m.group(2)), s)
+    s = OPEN_IN_BOLD_RE.sub(pull_closing_mark, s)
     held = []
 
     def hold(m):
         held.append(m.group())
         return '\x00%d\x01' % (len(held) - 1)
-    s = NOTE_NUMBER_RUN_RE.sub(hold, s).replace('</b> <b>', ' ')
+    s = NOTE_NUMBER_RUN_RE.sub(hold, s)
+    s = MARK_BETWEEN_BOLD_RE.sub(r'\1', s).replace('</b> <b>', ' ')
     s = HELD_RE.sub(lambda m: held[int(m.group(1))], s)
     # last: the space before a mark that was bold alone is in the text only now
-    s = in_text(lambda t: SPACE_BEFORE_PUNCT_RE.sub('', SPACE_AFTER_PUNCT_RE.sub(r'\1 ', t)), s)
+    s = in_text(lambda t: SPACE_BEFORE_PUNCT_RE.sub('', SPACE_AFTER_PUNCT_RE.sub(r'\1 ', DOUBLED_PUNCT_RE.sub(',', t))), s)
     return HEADING_EDGE_RE.sub(lambda m: m.group(1) or m.group(2), s)
 
 
