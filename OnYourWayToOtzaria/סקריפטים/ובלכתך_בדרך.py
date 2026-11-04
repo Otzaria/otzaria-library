@@ -109,10 +109,13 @@ def check_line(line):
     return re.search(r"[a-zA-Zא-ת0-9]+", line)
 
 HEADING_LINE_RE = re.compile(r"^<h(\d)>(.*)</h\1>$")
+ANY_HEADING_RE = re.compile(r"^<h([1-6])\b[^>]*>.*</h\1>$", re.I)
 
 
 def _heading_key(line):
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", line)).strip().rstrip(":.").strip()
+    # <br> נשאר גבול במפתח, כדי ש-"A<br/>B" לא ייחשב חזרה על הכותרת "AB"
+    line = re.sub(r"<[^>]+>", "", re.sub(r"<br\b[^>]*>", "\n", line, flags=re.I))
+    return re.sub(r"\s*\n\s*", "\n", re.sub(r"[^\S\n]+", " ", line)).strip().rstrip(":.").strip()
 
 
 def drop_heading_echo(text):
@@ -121,7 +124,7 @@ def drop_heading_echo(text):
     for line in text.split("\n"):
         prev = HEADING_LINE_RE.match(out[-1]) if out else None
         key = _heading_key(prev.group(2)) if prev else ""
-        if key and not HEADING_LINE_RE.match(line) and _heading_key(line) == key:
+        if key and not ANY_HEADING_RE.match(line) and _heading_key(line) == key:
             continue
         out.append(line)
     return "\n".join(out)
