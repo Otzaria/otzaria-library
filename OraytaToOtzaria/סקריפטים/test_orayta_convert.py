@@ -6,7 +6,7 @@ import unittest
 from unittest import mock
 
 import split_hok_targum
-from orayta_convert import hok_targum_spaces, norm_chars, replace_editor_comments, text_escape
+from orayta_convert import fix_text, hok_targum_spaces, norm_chars, replace_editor_comments, text_escape
 
 
 def comment(body):
@@ -74,6 +74,24 @@ class HokTargumSpacesTest(unittest.TestCase):
             out = hok_targum_spaces("books/001_mkra/01_torh/a01_Genesis.obk", ["a"])
         factory.assert_not_called()
         self.assertEqual(out, ["a"])
+
+
+class DotBeforeQuestionMarkTest(unittest.TestCase):
+    """בתורת אמת סימן שאלה נכתב ". <QM>": נקודה + סימון הם סימן שאלה אחד, לא נקודה וסימן שאלה."""
+
+    def test_dot_before_qm_collapses_into_one_question_mark(self):
+        self.assertEqual(fix_text("\u05de\u05d0\u05d9 \u05d8\u05e2\u05de\u05d0. <QM> \u05de\u05e9\u05d5\u05dd"),
+                         "\u05de\u05d0\u05d9 \u05d8\u05e2\u05de\u05d0? \u05de\u05e9\u05d5\u05dd")
+
+    def test_dot_or_comma_after_qm_is_dropped_too(self):
+        self.assertEqual(fix_text("\u05d0\u05d1\u05d2. <QM>. \u05d3\u05d4\u05d5"), "\u05d0\u05d1\u05d2? \u05d3\u05d4\u05d5")
+        self.assertEqual(fix_text("\u05d0\u05d1\u05d2. <QM>, \u05d3\u05d4\u05d5"), "\u05d0\u05d1\u05d2? \u05d3\u05d4\u05d5")
+
+    def test_qm_without_dot_unchanged(self):
+        self.assertEqual(fix_text("\u05db\u05d9\u05e6\u05d3<QM>\u05b4 \u05e0\u05d9\u05e4"), "\u05db\u05d9\u05e6\u05d3? \u05e0\u05d9\u05e4")
+
+    def test_literal_dot_question_mark_is_not_touched(self):
+        self.assertEqual(fix_text("\u05d0\u05d1\u05d2. ? \u05d3"), "\u05d0\u05d1\u05d2. ? \u05d3")
 
 
 if __name__ == "__main__":
