@@ -79,6 +79,21 @@ class NormalizeCharsTest(unittest.TestCase):
         self.assertEqual(conv.normalize_chars("a. \uf0ac b"), "a. \u2190 b")
 
 
+class HeadingEchoTest(unittest.TestCase):
+    # A chap body that opens with the chap name would show the heading twice.
+    def test_body_line_repeating_heading_is_dropped(self):
+        self.assertEqual(conv.drop_heading_echo("<h2>C1</h2>\nC1:\nx"), "<h2>C1</h2>\nx")
+        self.assertEqual(conv.drop_heading_echo("<h3>P1</h3>\n<b>P1.</b>\nx"), "<h3>P1</h3>\nx")
+
+    def test_body_line_that_only_starts_with_heading_is_kept(self):
+        text = "<h2>C1</h2>\nC1 and more:\nx"
+        self.assertEqual(conv.drop_heading_echo(text), text)
+
+    def test_consecutive_headings_are_kept(self):
+        text = "<h2>C1</h2>\n<h3>C1</h3>\nx"
+        self.assertEqual(conv.drop_heading_echo(text), text)
+
+
 def body(xml):
     html, _ = conv.process_body_xml(xml)
     return re.sub(r"<[^>]+>", "", html_module.unescape(html)).split()

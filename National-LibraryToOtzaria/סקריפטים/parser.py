@@ -272,7 +272,10 @@ for book in data:
                         mh_logical_unit_text = clean_hidden_chars(normalize_source.normalize_source_html(raw_text))
                         file_name = text.get("FileName")
                         division_detail_id = text.get("DivisionDetailId")
-                        all_mef[code_mefaresh_id][book["Desc"]][halachot["Desc"]][perek["Desc"]][ot["Desc"]].append(mh_logical_unit_text)
+                        ot_texts = all_mef[code_mefaresh_id][book["Desc"]][halachot["Desc"]][perek["Desc"]][ot["Desc"]]
+                        # האתר מחזיר לפעמים את אותו קטע פעמיים לאותה אות של אותו מפרש (למשל רדב"ז, כלאים פ"י א)
+                        if mh_logical_unit_text not in ot_texts:
+                            ot_texts.append(mh_logical_unit_text)
                     if code_mefaresh_id in dict_all:
                         existing_entry = dict_all[code_mefaresh_id]
                         assert existing_entry == mef_entry, f"Conflict for CodeMefareshId {code_mefaresh_id}"

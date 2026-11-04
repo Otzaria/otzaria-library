@@ -108,6 +108,25 @@ def fix_mirrored_brackets(soup):
 def check_line(line):
     return re.search(r"[a-zA-Zא-ת0-9]+", line)
 
+HEADING_LINE_RE = re.compile(r"^<h(\d)>(.*)</h\1>$")
+
+
+def _heading_key(line):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", line)).strip().rstrip(":.").strip()
+
+
+def drop_heading_echo(text):
+    # גוף הפרק נפתח לפעמים בשם הפרק עצמו (n של chap); הכותרת נשארת בשביל תוכן העניינים
+    out = []
+    for line in text.split("\n"):
+        prev = HEADING_LINE_RE.match(out[-1]) if out else None
+        key = _heading_key(prev.group(2)) if prev else ""
+        if key and not HEADING_LINE_RE.match(line) and _heading_key(line) == key:
+            continue
+        out.append(line)
+    return "\n".join(out)
+
+
 def process_body_xml(xml_content):
     title = None
     first_chap = False
@@ -244,6 +263,7 @@ def convert_file(file_path, target_file, file_name):
     fix_spaces = adjust_html_tag_spaces(fix_xml).splitlines()
     output_text = [f"<h1>{title}</h1>" if title else f"<h1>{file_name}</h1>", ""] + [line.strip() for line in fix_spaces if check_line(line)]
     join_lines = normalize_chars(html_module.unescape("\n".join(output_text))).replace(TEXT_LT, "&lt;")
+    join_lines = drop_heading_echo(join_lines)
     book = os.path.splitext(os.path.basename(target_file))[0]
     join_lines = post_convert_fixes.apply_book(SOURCE_DIR, book, join_lines)
     with open(target_file, "w", encoding = "utf-8") as output:
