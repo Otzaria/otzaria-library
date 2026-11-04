@@ -31,6 +31,23 @@ class Marks(unittest.TestCase):
         self.assertEqual(E.marks('אם כן,, בזמן. <b>אינו חייב</b>,, עד. וכו\'... "השור יסקל:: או בן יגח"'),
                          'אם כן, בזמן. <b>אינו חייב</b>, עד. וכו\'... "השור יסקל:: או בן יגח"')
 
+    def test_two_quotation_marks_for_one(self):
+        self.assertEqual(E.marks('הרשב""ם ור""ה ו<b>ב""עד</b> ""פתחו ושלום"". ושלום"" ,'),
+                         'הרשב"ם ור"ה ו<b>ב"עד</b> "פתחו ושלום". ושלום" ,'.replace('" ,', '",'))
+        # a closing mark and an opening one with no space (המתים""תמים) are left; וכו"" is וכו'"
+        self.assertEqual(E.marks('אל המתים""תמים תהיה'), 'אל המתים""תמים תהיה')
+        self.assertEqual(E.marks('ארור אשר ילמד</b> וכו"", ולשונו'), 'ארור אשר ילמד</b> וכו\'", ולשונו')
+
+    def test_glued_marks(self):
+        self.assertEqual(E.marks('<b>ומה?</b>והרי הקב"ה!מה ו(35)</small>,<b>אמר</b> "כבוד"?על'),
+                         '<b>ומה?</b> והרי הקב"ה! מה ו(35)</small>, <b>אמר</b> "כבוד"? על')
+        # a mark that stands for a lost letter is left alone
+        for s in ('ניגשים ????? אל ה\'', 'וש?ם', 'חסר טקסט !!!'):
+            self.assertEqual(E.marks(s), s)
+
+    def test_curly_gershayim(self):
+        self.assertEqual(E.marks('אע”ג וכמ”ש'), 'אע"ג וכמ"ש')
+
     def test_space_on_the_wrong_side_of_a_comma(self):
         self.assertEqual(E.marks('מספר עשרה ,מכל מקום (שם שם ,יג)'), 'מספר עשרה, מכל מקום (שם שם, יג)')
 

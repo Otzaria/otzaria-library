@@ -351,6 +351,8 @@ def gershayim(s):
 #   * a quotation mark typed as two apostrophes (''כל בו'', ה''' = ה' and a closing ");
 #   * a geresh and a closing quotation mark in the wrong order (וכו"' -> וכו'", ה"' -> ה'");
 #   * a comma typed twice (אם כן,, בזמן);
+#   * a ? or ! glued to the next word (ובכן?</b>והרי) or a punctuation mark glued to a note number's tag;
+#   * two quotation marks for one (רשב""ם, ""פתחו) and a curly one for a gershayim (רש”י);
 #   * a space before a comma, semicolon, colon or full stop (תלך ; ומה), or on its wrong side
 #     (עשרה ,מכל);
 #   * a bold word cut by its own gershayim or geresh (<b>הריטב</b>"<b>א</b>, <b>רש</b>"י);
@@ -381,6 +383,40 @@ NOTE_NUMBER_RUN_RE = re.compile(r'^(?:<tex[^<>]*>)*<b>(?:<tex[^<>]*>)*(?:\([^()<
                                 r'|<b>\(\*?\d+[א-ת*]?\)</b>')
 HELD_RE = re.compile('\x00([0-9]+)\x01')
 HEADING_EDGE_RE = re.compile(r'(<h[1-6][^<>]*>)\s+|\s+(</h[1-6]>)')
+# A ? or ! glued to the next word, and a comma glued to a note number's closing tag: the sources type
+# them without the space (ו<b>ובכן?</b>והרי, (35)</small>,<b>, הקב"ה!מה). All of them are in the sources.
+GLUED_MARK_CLOSE_RE = re.compile(r'(?<=[א-ת"\')\]])([?!]{1,2})(?!\1)((?:</(?:b|small|big|i)>)+)(?=[א-ת])')   # ?</b>והרי -> ?</b> והרי
+GLUED_MARK_OPEN_RE = re.compile(r'(?<=[א-ת"\')\]])([?!]{1,2})(?!\1)((?:<(?:b|small|big|i)>)+)(?=[א-ת])')     # ?<b>והרי -> ? <b>והרי
+GLUED_BANG_RE = re.compile(r'(?<=[א-ת"\')\]])(!{1,2})(?=[א-ת])')
+GLUED_NOTE_PUNCT_RE = re.compile(r'(\)(?:</small>)+)([,.;:!?]+)(?=<b>|[א-ת])')
+GLUED_QMARK_RE = re.compile(r'(?<=["\')\]])(\?{1,2})(?=[א-ת])')
+
+
+def glued_marks(s):
+    s = GLUED_MARK_CLOSE_RE.sub(r'\1\2 ', s)
+    s = GLUED_MARK_OPEN_RE.sub(r'\1 \2', s)
+    s = GLUED_BANG_RE.sub(r'\1 ', s)
+    s = GLUED_NOTE_PUNCT_RE.sub(r'\1\2 ', s)
+    return GLUED_QMARK_RE.sub(r'\1 ', s)
+# Two quotation marks typed for one (רשב""ם, ב""עד, ""פתחו, שלום"" ). A closing mark and an opening
+# one with no space between them (המתים""תמים) are not touched: a letter before and after both.
+DOUBLE_QUOTE_RES = (
+    re.compile(r'(?<=[א-ת])""(?=[א-ת](?![א-ת]))'),                      # רשב""ם, רש""י, ר""ה
+    re.compile(r'(?<![א-ת])([בכלמהשו])""(?=[א-ת]{2})'),                  # ב""עד -> ב"עד
+    re.compile(r'(?<=[ (\[>])""(?=[א-ת])'),                             # ""פתחו
+    re.compile(r'(?<=[א-ת.,!?)\]])""(?=[ ,.;:!?)\]<]|$)'),             # שלום"" ,
+)
+ETC_DOUBLE_RE = re.compile(r'(?<![א-ת])(וכו)""(?!["\'א-ת])')   # וכו"", with the geresh typed as a quotation mark (Sotah notes)
+CURLY_GERSHAYIM_RE = re.compile(r'(?<=[א-ת])”(?=[א-ת])')                 # רש”י (שות גם אני אודך)
+
+
+def double_quote(t):
+    t = ETC_DOUBLE_RE.sub('\\1\'"', t)
+    t = DOUBLE_QUOTE_RES[0].sub('"', t)
+    t = DOUBLE_QUOTE_RES[1].sub(r'\1"', t)
+    t = DOUBLE_QUOTE_RES[2].sub('"', t)
+    t = DOUBLE_QUOTE_RES[3].sub('"', t)
+    return CURLY_GERSHAYIM_RE.sub('"', t)
 
 
 def in_text(f, s):
@@ -419,7 +455,8 @@ def marks_once(s):
     s = MARK_BETWEEN_BOLD_RE.sub(r'\1', s).replace('</b> <b>', ' ')
     s = HELD_RE.sub(lambda m: held[int(m.group(1))], s)
     # last: the space before a mark that was bold alone is in the text only now
-    s = in_text(lambda t: SPACE_BEFORE_PUNCT_RE.sub('', SPACE_AFTER_PUNCT_RE.sub(r'\1 ', DOUBLED_PUNCT_RE.sub(',', t))), s)
+    s = in_text(lambda t: SPACE_BEFORE_PUNCT_RE.sub('', SPACE_AFTER_PUNCT_RE.sub(r'\1 ', DOUBLED_PUNCT_RE.sub(',', double_quote(t)))), s)
+    s = glued_marks(s)
     return HEADING_EDGE_RE.sub(lambda m: m.group(1) or m.group(2), s)
 
 
