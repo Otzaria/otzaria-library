@@ -84806,6 +84806,20 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבני מילואים א - ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבני מילואים א - ב",
+        "authorName": "ר' אריה ליב הכהן"
+      },
+      "commit": null,
+      "changeSetId": "6aeb3c9bb29cb6b885e2f5cc"
     }
   ]
 }
