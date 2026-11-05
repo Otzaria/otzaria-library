@@ -5,6 +5,8 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup, Tag
 
+from aspaklaria_fixes import fix_page
+
 
 def fix_text(text: str) -> str:
     if not text:
@@ -16,6 +18,7 @@ def fix_text(text: str) -> str:
 
 
 content = ""
+pages = {}
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
@@ -77,6 +80,9 @@ for link in links:
                 if text_node:
                     page_lines.append(text_node)
 
+        page_name = fix_text(page.text)
+        pages[page_name] = page_lines
+        page_lines = fix_page(page_name, page_lines, pages)
         content += "\n".join(page_lines) + "\n"
 
 content = re.sub(r"\n{2,}", "\n", content).strip()
