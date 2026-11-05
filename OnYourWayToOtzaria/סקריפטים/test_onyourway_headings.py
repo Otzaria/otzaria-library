@@ -7,6 +7,7 @@ import html as html_module
 import importlib.util
 import os
 import re
+import tempfile
 import unittest
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -92,6 +93,31 @@ class HeadingEchoTest(unittest.TestCase):
     def test_consecutive_headings_are_kept(self):
         text = "<h2>C1</h2>\n<h3>C1</h3>\nx"
         self.assertEqual(conv.drop_heading_echo(text), text)
+
+
+def convert(xml):
+    with tempfile.TemporaryDirectory() as tmp:
+        src, out = os.path.join(tmp, "in.txt"), os.path.join(tmp, "Book.txt")
+        with open(src, "w", encoding="utf-8") as f:
+            f.write(xml)
+        conv.convert_file(src, out, "Book")
+        with open(out, encoding="utf-8") as f:
+            return f.read().split("\n")
+
+
+class HeadingEchoConvertTest(unittest.TestCase):
+    def test_real_echo_is_dropped(self):
+        self.assertEqual(convert('<book n="Book"><chap n="A">\nA:\nBody\n</chap></book>'),
+                         ["<h1>Book</h1>", "", "<h2>A</h2>", "Body"])
+
+    def test_heading_with_attributes_is_kept(self):
+        lines = convert('<book n="Book"><chap n="A">\n<h3 data-toc="none">A</h3>\nBody\n</chap></book>')
+        self.assertIn('<h3 data-toc="none">A</h3>', lines)
+        self.assertEqual(lines[-1], "Body")
+
+    def test_line_break_is_not_joined_into_the_heading(self):
+        lines = convert('<book n="Book"><chap n="AB">\nA<br/>B\nBody\n</chap></book>')
+        self.assertEqual(lines, ["<h1>Book</h1>", "", "<h2>AB</h2>", "A<br/>B", "Body"])
 
 
 def body(xml):
