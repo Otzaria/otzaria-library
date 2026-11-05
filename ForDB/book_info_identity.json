@@ -84806,6 +84806,20 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "ביאור הגרא על תקוני הזהר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ביאור הגרא על תקוני הזהר",
+        "authorName": "הגר\"א"
+      },
+      "commit": null,
+      "changeSetId": "6aec3744b29cb6b885e34018"
     }
   ]
 }
