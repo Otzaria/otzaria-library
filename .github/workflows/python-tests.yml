@@ -65,6 +65,8 @@ jobs:
             /Ben-YehudaToOtzaria/סקריפטים/split_footnotes.py
             /sefariaToOtzaria/סקריפטים/otzaria/
             /sefariaToOtzaria/סקריפטים/test_get_from_export.py
+            /סקריפטים שונות/aspaklaria_fixes.py
+            /סקריפטים שונות/test_aspaklaria_fixes.py
             /manual_links_sync.json
             /post_convert_fixes.py
             /*/post_convert_fixes.tsv
@@ -157,6 +159,13 @@ jobs:
           set -euo pipefail
           python3 -m pip install --quiet beautifulsoup4 python_hebrew_numbers
           python3 -m unittest -v test_get_from_export
+
+      # ייבוא אספקלריה: הגושים שהודבקו באתר בערכים הלא נכונים. שורות סינתטיות.
+      - name: Aspaklaria import fixes suite
+        working-directory: סקריפטים שונות
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python3 -m unittest -v test_aspaklaria_fixes
 
       # Validate failures before writing any book, companion notes or links.
       - name: Post-conversion output safety suite
