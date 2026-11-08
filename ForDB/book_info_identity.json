@@ -84806,6 +84806,20 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "אחיעזר חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אחיעזר חלק ג",
+        "authorName": "הגאון רבי חיים עוזר גורדז'ינסקי"
+      },
+      "commit": null,
+      "changeSetId": "6af0fc4783a61cf29bdbac7b"
     }
   ]
 }
