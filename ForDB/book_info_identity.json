@@ -84806,6 +84806,20 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית הלוי חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית הלוי חלק ב",
+        "authorName": "רבי יוסף דב בער הלוי סולובייצ'יק (סולובייצ'יג)"
+      },
+      "commit": null,
+      "changeSetId": "6af0ff2483a61cf29bdbae9f"
     }
   ]
 }
