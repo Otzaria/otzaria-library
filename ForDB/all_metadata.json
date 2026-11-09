@@ -34974,32 +34974,6 @@
   },
   {
     "heAuthors": [
-      "רבי יוסף זונדל הוטנר"
-    ],
-    "title": "חבל יוסף (אולם המשפט) חלק ב",
-    "enTitle": "Hevel Yosef Olam haMisphat part 2",
-    "authors": [
-      "Yosef Zundel ben Hayim Hutner"
-    ],
-    "pubDate": [
-      1880
-    ],
-    "pubDateHeb": [
-      "ה׳תר״מ"
-    ],
-    "pubPlaceStringEn": "Warsaw",
-    "pubPlaceStringHe": "ורשה",
-    "heCategories": [
-      "הלכה ומנהג"
-    ],
-    "categories": [
-      "Halakha and Minhaggim"
-    ],
-    "publisher": "ספריית דיקטה",
-    "Sourcefolder": "Dicta"
-  },
-  {
-    "heAuthors": [
       "רבי יעקב גזונדהייט"
     ],
     "title": "תפארת יעקב חושן משפט חלק א",
@@ -44151,58 +44125,96 @@
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T2 על שולחן ערוך חושן משפט",
+    "heAuthors": [
+      "רבי יוסף זונדל הוטנר"
+    ],
+    "title": "אולם המשפט",
+    "enTitle": "Hevel Yosef Olam haMisphat part 2",
+    "authors": [
+      "Yosef Zundel ben Hayim Hutner"
+    ],
+    "pubDate": [
+      1880
+    ],
+    "pubDateHeb": [
+      "ה׳תר״מ"
+    ],
+    "pubPlaceStringEn": "Warsaw",
+    "pubPlaceStringHe": "ורשה",
+    "heCategories": [
+      "הלכה ומנהג"
+    ],
+    "categories": [
+      "Halakha and Minhaggim"
+    ],
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "MoreBooks"
+  },
+  {
+    "title": "מאזנים למשפט",
     "heAuthors": [],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T3 על שולחן ערוך חושן משפט",
+    "title": "שושנת יעקב",
     "heAuthors": [],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T4 על שולחן ערוך חושן משפט",
+    "title": "דברי המשפט",
     "heAuthors": [],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T5 על שולחן ערוך חושן משפט",
+    "title": "ישועת ישראל, חידושים",
     "heAuthors": [],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T6 על שולחן ערוך חושן משפט",
+    "title": "ישועת ישראל, ביאורים",
     "heAuthors": [],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T7 על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "אבני חושן",
+    "heAuthors": [
+      "רבי שלמה רייזנר"
+    ],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T8 על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "פעמוני זהב חושן משפט",
+    "heAuthors": [
+      "רבי רפאל אנקאווא"
+    ],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T8A על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "אלפי מנשה",
+    "heAuthors": [
+      "רבי מנשה איכנשטין"
+    ],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T9 על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "ערך שי",
+    "heAuthors": [
+      "רבי שלמה יהודה טבק"
+    ],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T10 על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "ישועות יעקב",
+    "heAuthors": [
+      "רבי יעקב משולם אורנשטיין"
+    ],
     "Sourcefolder": "MoreBooks"
   },
   {
-    "title": "מפרש T11 על שולחן ערוך חושן משפט",
-    "heAuthors": [],
+    "title": "בית יעקב על חושן משפט",
+    "heAuthors": [
+      "רבי יעקב טובטשנסקי"
+    ],
     "Sourcefolder": "MoreBooks"
   }
 ]
