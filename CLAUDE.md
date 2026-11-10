@@ -55,7 +55,8 @@ BeitAharonVeYisraelToOtzaria/ספרים/אוצריא
 
 ### מה *לא* נארז
 
-- `extraBooks/`, `docxToOtzaria/`, `MoreBooks/ספרים/` שאינו תחת `אוצריא/`
+- `extraBooks/`, `MoreBooks/ספרים/` שאינו תחת `אוצריא/`
+- תבנית Word וכלי תיקון שכבת הטקסט של PDF עברו ל־[book-sources](https://github.com/Otzaria/book-sources/blob/main/docs/MIGRATION_MANUAL_TOOLS.md); קובצי הספרים נשארים כאן
 - כל `<source>/ספרים/<משהו שאינו אוצריא>/` — למשל `OraytaToOtzaria/ספרים/לא רלוונטי/`
 - `DictaToOtzaria/לא ערוך/` — נכנס רק ל־`otzaria_dicta_latest.zip`, לא לספרייה
 - `BeitAharonVeYisraelToOtzaria/ספרים/בהמתנה/` — ספרים ממתינים של מכון בית אהרן וישראל (לא רשומים במטא־דאטה)
