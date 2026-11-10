@@ -15,7 +15,8 @@ name: Python tests
 #     test_check_author_mirrors.py, test_fordb_archive.py — גם הן באותו צעד self-test.
 #   .github/scripts/test_validate_manual_links_refs.py — כבר שער PR ב-validate-manual-links-refs.yml.
 #   .github/scripts/test_check_sefaria_shadowed_books.py — self-test ב-validate-sefaria-shadowed-books.yml.
-#   National-LibraryToOtzaria/סקריפטים/test_*.py — כבר שער PR ב-validate-national-library-normalizers.yml.
+#   בדיקות הספרייה הלאומית עברו ל-Otzaria/book-sources:
+#     .github/workflows/national-library-source-tools.yml.
 #   ממיר הוויקי (mediawikitootzaria, demo_part_2.py) ובדיקותיו — הועברו ל-Otzaria/book-sources
 #     (wikisourceToOtzaria/סקריפטים) ורצים שם ב-wiki-sources-weekly.yml, מול post_convert_fixes.py שכאן.
 
