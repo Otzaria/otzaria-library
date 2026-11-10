@@ -84806,6 +84806,258 @@
         "authorName": "רבנו יעקב ב\"ר חננאל סקילי"
       },
       "commit": "a2f03756460ad3b3e67596cd3ca4e0fce46bc3ee"
+    },
+    {
+      "id": 6262,
+      "kind": "rename",
+      "old": {
+        "bookName": "אורחות צדיקים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אורחות צדיקים",
+        "authorName": "אחד מחכמי אשכנז"
+      },
+      "commit": null,
+      "changeSetId": "6af0fd7e83a61cf29bdbad1a"
+    },
+    {
+      "id": 6263,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגרא דפרקא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אגרא דפרקא",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב"
+      },
+      "commit": null,
+      "changeSetId": "6aeb9e25b29cb6b885e32133"
+    },
+    {
+      "id": 6264,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגלי טל",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אגלי טל",
+        "authorName": "רבי אברהם בורנשטיין מסוכטשוב"
+      },
+      "commit": null,
+      "changeSetId": "6aeb3cebb29cb6b885e2f5dd"
+    },
+    {
+      "id": 6265,
+      "kind": "rename",
+      "old": {
+        "bookName": "אחיעזר חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אחיעזר חלק ג",
+        "authorName": "רבי חיים עוזר גרודזינסקי"
+      },
+      "commit": null,
+      "changeSetId": "6af0fc4783a61cf29bdbac7b"
+    },
+    {
+      "id": 6266,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - ו",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - ו",
+        "authorName": "הרב איתמר שוורץ"
+      },
+      "commit": null,
+      "changeSetId": "6af1003e83a61cf29bdbb059"
+    },
+    {
+      "id": 6267,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - ט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - ט",
+        "authorName": "הרב איתמר שוורץ [מהקלטות]"
+      },
+      "commit": null,
+      "changeSetId": "6af1002f83a61cf29bdbb058"
+    },
+    {
+      "id": 6268,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - ד",
+        "authorName": "הרב איתמר שוורץ"
+      },
+      "commit": null,
+      "changeSetId": "6af1002083a61cf29bdbb04a"
+    },
+    {
+      "id": 6269,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - ג",
+        "authorName": "הרב איתמר שוורץ"
+      },
+      "commit": null,
+      "changeSetId": "6af1001183a61cf29bdbb036"
+    },
+    {
+      "id": 6270,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית הלוי חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית הלוי חלק ג",
+        "authorName": "רבי יוסף דוב הלוי סולובייצ'יק מבריסק"
+      },
+      "commit": null,
+      "changeSetId": "6af0ff3283a61cf29bdbaeac"
+    },
+    {
+      "id": 6271,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית הלוי חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית הלוי חלק ב",
+        "authorName": "רבי יוסף דוב הלוי סולובייצ'יק מבריסק"
+      },
+      "commit": null,
+      "changeSetId": "6af0ff2483a61cf29bdbae9f"
+    },
+    {
+      "id": 6272,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית הלוי חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית הלוי חלק א",
+        "authorName": "רבי יוסף דוב הלוי סולובייצ'יק מבריסק"
+      },
+      "commit": null,
+      "changeSetId": "6af0fefa83a61cf29bdbae73"
+    },
+    {
+      "id": 6273,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - ב",
+        "authorName": "הרב איתמר שוורץ"
+      },
+      "commit": null,
+      "changeSetId": "6af1004d83a61cf29bdbb068"
+    },
+    {
+      "id": 6274,
+      "kind": "rename",
+      "old": {
+        "bookName": "בלבבי משכן אבנה - א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בלבבי משכן אבנה - א",
+        "authorName": "הרב איתמר שוורץ"
+      },
+      "commit": null,
+      "changeSetId": "6af1000083a61cf29bdbb01d"
+    },
+    {
+      "id": 6275,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבני מילואים א - ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבני מילואים א - ב",
+        "authorName": "רבי אריה לייב הכהן הלר [בעל הקצות]"
+      },
+      "commit": null,
+      "changeSetId": "6aeb3c9bb29cb6b885e2f5cc"
+    },
+    {
+      "id": 6276,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית הלוי על מצות הביטחון",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית הלוי על מצות הביטחון",
+        "authorName": "רבי יוסף דוב הלוי סולובייצ'יק מבריסק"
+      },
+      "commit": null,
+      "changeSetId": "6af0ff4283a61cf29bdbaec1"
+    },
+    {
+      "id": 6277,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על בבא בתרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על בבא בתרא",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": null,
+      "changeSetId": "6aed920b3cbc08d9e57dd298"
+    },
+    {
+      "id": 6278,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרשת הרמבן (תורת ה' תמימה)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דרשת הרמבן (תורת ה' תמימה)",
+        "authorName": "רבנו משה ב\"ר נחמן [הרמב\"ן]"
+      },
+      "commit": null,
+      "changeSetId": "6aec37a1b29cb6b885e340c0"
+    },
+    {
+      "id": 6279,
+      "kind": "rename",
+      "old": {
+        "bookName": "ביאור הגרא על תקוני הזהר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ביאור הגרא על תקוני הזהר",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "commit": null,
+      "changeSetId": "6aec3744b29cb6b885e34018"
     }
   ]
 }
