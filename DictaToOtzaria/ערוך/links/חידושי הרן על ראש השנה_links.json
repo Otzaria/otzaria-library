@@ -1,0 +1,930 @@
+[
+  {
+    "line_index_1": 5,
+    "line_index_2": 3,
+    "heRef_2": "ראש השנה ב., א",
+    "ref_2": "Rosh Hashanah 2a:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 7,
+    "line_index_2": 7,
+    "heRef_2": "ראש השנה ב., ה",
+    "ref_2": "Rosh Hashanah 2a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 8,
+    "line_index_2": 8,
+    "heRef_2": "ראש השנה ב., ו",
+    "ref_2": "Rosh Hashanah 2a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 12,
+    "line_index_2": 17,
+    "heRef_2": "ראש השנה ב:, ו",
+    "ref_2": "Rosh Hashanah 2b:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 13,
+    "line_index_2": 18,
+    "heRef_2": "ראש השנה ב:, ז",
+    "ref_2": "Rosh Hashanah 2b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 15,
+    "line_index_2": 31,
+    "heRef_2": "ראש השנה ג., ו",
+    "ref_2": "Rosh Hashanah 3a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 16,
+    "line_index_2": 32,
+    "heRef_2": "ראש השנה ג., ז",
+    "ref_2": "Rosh Hashanah 3a:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 17,
+    "line_index_2": 33,
+    "heRef_2": "ראש השנה ג., ח",
+    "ref_2": "Rosh Hashanah 3a:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 19,
+    "line_index_2": 40,
+    "heRef_2": "ראש השנה ג., טו",
+    "ref_2": "Rosh Hashanah 3a:15",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 21,
+    "line_index_2": 51,
+    "heRef_2": "ראש השנה ג:, ט",
+    "ref_2": "Rosh Hashanah 3b:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 28,
+    "line_index_2": 72,
+    "heRef_2": "ראש השנה ד:, א",
+    "ref_2": "Rosh Hashanah 4b:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 30,
+    "line_index_2": 82,
+    "heRef_2": "ראש השנה ד:, יא",
+    "ref_2": "Rosh Hashanah 4b:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 34,
+    "line_index_2": 93,
+    "heRef_2": "ראש השנה ה., ה",
+    "ref_2": "Rosh Hashanah 5a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 37,
+    "line_index_2": 110,
+    "heRef_2": "ראש השנה ה:, יב",
+    "ref_2": "Rosh Hashanah 5b:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 38,
+    "line_index_2": 111,
+    "heRef_2": "ראש השנה ה:, יג",
+    "ref_2": "Rosh Hashanah 5b:13",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 39,
+    "line_index_2": 112,
+    "heRef_2": "ראש השנה ה:, יד",
+    "ref_2": "Rosh Hashanah 5b:14",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 43,
+    "line_index_2": 122,
+    "heRef_2": "ראש השנה ו., ז",
+    "ref_2": "Rosh Hashanah 6a:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 47,
+    "line_index_2": 141,
+    "heRef_2": "ראש השנה ו:, ו",
+    "ref_2": "Rosh Hashanah 6b:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 48,
+    "line_index_2": 142,
+    "heRef_2": "ראש השנה ו:, ז",
+    "ref_2": "Rosh Hashanah 6b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 49,
+    "line_index_2": 144,
+    "heRef_2": "ראש השנה ו:, ט",
+    "ref_2": "Rosh Hashanah 6b:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 50,
+    "line_index_2": 151,
+    "heRef_2": "ראש השנה ו:, טז",
+    "ref_2": "Rosh Hashanah 6b:16",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 53,
+    "line_index_2": 157,
+    "heRef_2": "ראש השנה ז., ג",
+    "ref_2": "Rosh Hashanah 7a:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 54,
+    "line_index_2": 159,
+    "heRef_2": "ראש השנה ז., ה",
+    "ref_2": "Rosh Hashanah 7a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 57,
+    "line_index_2": 190,
+    "heRef_2": "ראש השנה ז:, יד",
+    "ref_2": "Rosh Hashanah 7b:14",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 58,
+    "line_index_2": 191,
+    "heRef_2": "ראש השנה ז:, טו",
+    "ref_2": "Rosh Hashanah 7b:15",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 65,
+    "line_index_2": 222,
+    "heRef_2": "ראש השנה ח:, י",
+    "ref_2": "Rosh Hashanah 8b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 67,
+    "line_index_2": 226,
+    "heRef_2": "ראש השנה ט., א",
+    "ref_2": "Rosh Hashanah 9a:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 69,
+    "line_index_2": 228,
+    "heRef_2": "ראש השנה ט., ג",
+    "ref_2": "Rosh Hashanah 9a:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 70,
+    "line_index_2": 230,
+    "heRef_2": "ראש השנה ט., ה",
+    "ref_2": "Rosh Hashanah 9a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 73,
+    "line_index_2": 238,
+    "heRef_2": "ראש השנה ט:, ד",
+    "ref_2": "Rosh Hashanah 9b:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 76,
+    "line_index_2": 244,
+    "heRef_2": "ראש השנה ט:, י",
+    "ref_2": "Rosh Hashanah 9b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 78,
+    "line_index_2": 249,
+    "heRef_2": "ראש השנה י., א",
+    "ref_2": "Rosh Hashanah 10a:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 84,
+    "line_index_2": 293,
+    "heRef_2": "ראש השנה יא:, ז",
+    "ref_2": "Rosh Hashanah 11b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 90,
+    "line_index_2": 313,
+    "heRef_2": "ראש השנה יב:, ח",
+    "ref_2": "Rosh Hashanah 12b:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 91,
+    "line_index_2": 315,
+    "heRef_2": "ראש השנה יב:, י",
+    "ref_2": "Rosh Hashanah 12b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 96,
+    "line_index_2": 323,
+    "heRef_2": "ראש השנה יג., ד",
+    "ref_2": "Rosh Hashanah 13a:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 97,
+    "line_index_2": 326,
+    "heRef_2": "ראש השנה יג., ז",
+    "ref_2": "Rosh Hashanah 13a:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 98,
+    "line_index_2": 327,
+    "heRef_2": "ראש השנה יג., ח",
+    "ref_2": "Rosh Hashanah 13a:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 103,
+    "line_index_2": 364,
+    "heRef_2": "ראש השנה יד:, ג",
+    "ref_2": "Rosh Hashanah 14b:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 106,
+    "line_index_2": 384,
+    "heRef_2": "ראש השנה טו., יא",
+    "ref_2": "Rosh Hashanah 15a:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 110,
+    "line_index_2": 402,
+    "heRef_2": "ראש השנה טז., א",
+    "ref_2": "Rosh Hashanah 16a:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 111,
+    "line_index_2": 407,
+    "heRef_2": "ראש השנה טז., ו",
+    "ref_2": "Rosh Hashanah 16a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 112,
+    "line_index_2": 414,
+    "heRef_2": "ראש השנה טז., יג",
+    "ref_2": "Rosh Hashanah 16a:13",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 113,
+    "line_index_2": 417,
+    "heRef_2": "ראש השנה טז., טז",
+    "ref_2": "Rosh Hashanah 16a:16",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 114,
+    "line_index_2": 418,
+    "heRef_2": "ראש השנה טז., יז",
+    "ref_2": "Rosh Hashanah 16a:17",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 116,
+    "line_index_2": 421,
+    "heRef_2": "ראש השנה טז:, ב",
+    "ref_2": "Rosh Hashanah 16b:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 120,
+    "line_index_2": 480,
+    "heRef_2": "ראש השנה יח., ח",
+    "ref_2": "Rosh Hashanah 18a:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 121,
+    "line_index_2": 485,
+    "heRef_2": "ראש השנה יח., יג",
+    "ref_2": "Rosh Hashanah 18a:13",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 123,
+    "line_index_2": 492,
+    "heRef_2": "ראש השנה יח:, ב",
+    "ref_2": "Rosh Hashanah 18b:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 124,
+    "line_index_2": 493,
+    "heRef_2": "ראש השנה יח:, ג",
+    "ref_2": "Rosh Hashanah 18b:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 125,
+    "line_index_2": 494,
+    "heRef_2": "ראש השנה יח:, ד",
+    "ref_2": "Rosh Hashanah 18b:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 126,
+    "line_index_2": 502,
+    "heRef_2": "ראש השנה יח:, יב",
+    "ref_2": "Rosh Hashanah 18b:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 130,
+    "line_index_2": 519,
+    "heRef_2": "ראש השנה יט:, ג",
+    "ref_2": "Rosh Hashanah 19b:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 131,
+    "line_index_2": 521,
+    "heRef_2": "ראש השנה יט:, ה",
+    "ref_2": "Rosh Hashanah 19b:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 132,
+    "line_index_2": 522,
+    "heRef_2": "ראש השנה יט:, ו",
+    "ref_2": "Rosh Hashanah 19b:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 133,
+    "line_index_2": 524,
+    "heRef_2": "ראש השנה יט:, ח",
+    "ref_2": "Rosh Hashanah 19b:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 134,
+    "line_index_2": 527,
+    "heRef_2": "ראש השנה יט:, יא",
+    "ref_2": "Rosh Hashanah 19b:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 137,
+    "line_index_2": 542,
+    "heRef_2": "ראש השנה כ., ט",
+    "ref_2": "Rosh Hashanah 20a:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 138,
+    "line_index_2": 544,
+    "heRef_2": "ראש השנה כ., יא",
+    "ref_2": "Rosh Hashanah 20a:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 139,
+    "line_index_2": 545,
+    "heRef_2": "ראש השנה כ., יב",
+    "ref_2": "Rosh Hashanah 20a:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 140,
+    "line_index_2": 551,
+    "heRef_2": "ראש השנה כ., יח",
+    "ref_2": "Rosh Hashanah 20a:18",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 145,
+    "line_index_2": 578,
+    "heRef_2": "ראש השנה כא., ח",
+    "ref_2": "Rosh Hashanah 21a:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 147,
+    "line_index_2": 582,
+    "heRef_2": "ראש השנה כא:, א",
+    "ref_2": "Rosh Hashanah 21b:1",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 148,
+    "line_index_2": 584,
+    "heRef_2": "ראש השנה כא:, ג",
+    "ref_2": "Rosh Hashanah 21b:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 150,
+    "line_index_2": 588,
+    "heRef_2": "ראש השנה כא:, ז",
+    "ref_2": "Rosh Hashanah 21b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 152,
+    "line_index_2": 604,
+    "heRef_2": "ראש השנה כב., ט",
+    "ref_2": "Rosh Hashanah 22a:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 153,
+    "line_index_2": 607,
+    "heRef_2": "ראש השנה כב., יב",
+    "ref_2": "Rosh Hashanah 22a:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 160,
+    "line_index_2": 631,
+    "heRef_2": "ראש השנה כג., ד",
+    "ref_2": "Rosh Hashanah 23a:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 161,
+    "line_index_2": 633,
+    "heRef_2": "ראש השנה כג., ו",
+    "ref_2": "Rosh Hashanah 23a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 164,
+    "line_index_2": 649,
+    "heRef_2": "ראש השנה כג:, ז",
+    "ref_2": "Rosh Hashanah 23b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 166,
+    "line_index_2": 661,
+    "heRef_2": "ראש השנה כד., ד",
+    "ref_2": "Rosh Hashanah 24a:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 167,
+    "line_index_2": 663,
+    "heRef_2": "ראש השנה כד., ו",
+    "ref_2": "Rosh Hashanah 24a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 180,
+    "line_index_2": 732,
+    "heRef_2": "ראש השנה כו., ב",
+    "ref_2": "Rosh Hashanah 26a:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 181,
+    "line_index_2": 733,
+    "heRef_2": "ראש השנה כו., ג",
+    "ref_2": "Rosh Hashanah 26a:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 184,
+    "line_index_2": 748,
+    "heRef_2": "ראש השנה כו., יח",
+    "ref_2": "Rosh Hashanah 26a:18",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 192,
+    "line_index_2": 762,
+    "heRef_2": "ראש השנה כו:, י",
+    "ref_2": "Rosh Hashanah 26b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 195,
+    "line_index_2": 768,
+    "heRef_2": "ראש השנה כז., ג",
+    "ref_2": "Rosh Hashanah 27a:3",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 196,
+    "line_index_2": 770,
+    "heRef_2": "ראש השנה כז., ה",
+    "ref_2": "Rosh Hashanah 27a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 197,
+    "line_index_2": 777,
+    "heRef_2": "ראש השנה כז., יב",
+    "ref_2": "Rosh Hashanah 27a:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 198,
+    "line_index_2": 780,
+    "heRef_2": "ראש השנה כז., טו",
+    "ref_2": "Rosh Hashanah 27a:15",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 199,
+    "line_index_2": 783,
+    "heRef_2": "ראש השנה כז., יח",
+    "ref_2": "Rosh Hashanah 27a:18",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 203,
+    "line_index_2": 788,
+    "heRef_2": "ראש השנה כז:, ד",
+    "ref_2": "Rosh Hashanah 27b:4",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 204,
+    "line_index_2": 790,
+    "heRef_2": "ראש השנה כז:, ו",
+    "ref_2": "Rosh Hashanah 27b:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 205,
+    "line_index_2": 790,
+    "heRef_2": "ראש השנה כז:, ו",
+    "ref_2": "Rosh Hashanah 27b:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 206,
+    "line_index_2": 791,
+    "heRef_2": "ראש השנה כז:, ז",
+    "ref_2": "Rosh Hashanah 27b:7",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 207,
+    "line_index_2": 792,
+    "heRef_2": "ראש השנה כז:, ח",
+    "ref_2": "Rosh Hashanah 27b:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 209,
+    "line_index_2": 794,
+    "heRef_2": "ראש השנה כז:, י",
+    "ref_2": "Rosh Hashanah 27b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 210,
+    "line_index_2": 795,
+    "heRef_2": "ראש השנה כז:, יא",
+    "ref_2": "Rosh Hashanah 27b:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 211,
+    "line_index_2": 786,
+    "heRef_2": "ראש השנה כז:, ב",
+    "ref_2": "Rosh Hashanah 27b:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 212,
+    "line_index_2": 786,
+    "heRef_2": "ראש השנה כז:, ב",
+    "ref_2": "Rosh Hashanah 27b:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 213,
+    "line_index_2": 798,
+    "heRef_2": "ראש השנה כז:, יד",
+    "ref_2": "Rosh Hashanah 27b:14",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 215,
+    "line_index_2": 812,
+    "heRef_2": "ראש השנה כח., י",
+    "ref_2": "Rosh Hashanah 28a:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 216,
+    "line_index_2": 813,
+    "heRef_2": "ראש השנה כח., יא",
+    "ref_2": "Rosh Hashanah 28a:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 217,
+    "line_index_2": 818,
+    "heRef_2": "ראש השנה כח., טז",
+    "ref_2": "Rosh Hashanah 28a:16",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 227,
+    "line_index_2": 871,
+    "heRef_2": "ראש השנה כט:, ה",
+    "ref_2": "Rosh Hashanah 29b:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 228,
+    "line_index_2": 875,
+    "heRef_2": "ראש השנה כט:, ט",
+    "ref_2": "Rosh Hashanah 29b:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 229,
+    "line_index_2": 875,
+    "heRef_2": "ראש השנה כט:, ט",
+    "ref_2": "Rosh Hashanah 29b:9",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 230,
+    "line_index_2": 876,
+    "heRef_2": "ראש השנה כט:, י",
+    "ref_2": "Rosh Hashanah 29b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 231,
+    "line_index_2": 880,
+    "heRef_2": "ראש השנה כט:, יד",
+    "ref_2": "Rosh Hashanah 29b:14",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 234,
+    "line_index_2": 895,
+    "heRef_2": "ראש השנה ל., יב",
+    "ref_2": "Rosh Hashanah 30a:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 240,
+    "line_index_2": 955,
+    "heRef_2": "ראש השנה לא:, יא",
+    "ref_2": "Rosh Hashanah 31b:11",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 242,
+    "line_index_2": 964,
+    "heRef_2": "ראש השנה לב., ב",
+    "ref_2": "Rosh Hashanah 32a:2",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 243,
+    "line_index_2": 967,
+    "heRef_2": "ראש השנה לב., ה",
+    "ref_2": "Rosh Hashanah 32a:5",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 245,
+    "line_index_2": 983,
+    "heRef_2": "ראש השנה לב., כא",
+    "ref_2": "Rosh Hashanah 32a:21",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 247,
+    "line_index_2": 998,
+    "heRef_2": "ראש השנה לב:, יב",
+    "ref_2": "Rosh Hashanah 32b:12",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 248,
+    "line_index_2": 1000,
+    "heRef_2": "ראש השנה לב:, יד",
+    "ref_2": "Rosh Hashanah 32b:14",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 249,
+    "line_index_2": 1007,
+    "heRef_2": "ראש השנה לב:, כא",
+    "ref_2": "Rosh Hashanah 32b:21",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 250,
+    "line_index_2": 1011,
+    "heRef_2": "ראש השנה לב:, כה",
+    "ref_2": "Rosh Hashanah 32b:25",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 253,
+    "line_index_2": 1019,
+    "heRef_2": "ראש השנה לג., ו",
+    "ref_2": "Rosh Hashanah 33a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 256,
+    "line_index_2": 1021,
+    "heRef_2": "ראש השנה לג., ח",
+    "ref_2": "Rosh Hashanah 33a:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 260,
+    "line_index_2": 1031,
+    "heRef_2": "ראש השנה לג:, ח",
+    "ref_2": "Rosh Hashanah 33b:8",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 261,
+    "line_index_2": 1033,
+    "heRef_2": "ראש השנה לג:, י",
+    "ref_2": "Rosh Hashanah 33b:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 266,
+    "line_index_2": 1044,
+    "heRef_2": "ראש השנה לד., ו",
+    "ref_2": "Rosh Hashanah 34a:6",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 267,
+    "line_index_2": 1048,
+    "heRef_2": "ראש השנה לד., י",
+    "ref_2": "Rosh Hashanah 34a:10",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 268,
+    "line_index_2": 1051,
+    "heRef_2": "ראש השנה לד., יג",
+    "ref_2": "Rosh Hashanah 34a:13",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 269,
+    "line_index_2": 1058,
+    "heRef_2": "ראש השנה לד., כ",
+    "ref_2": "Rosh Hashanah 34a:20",
+    "path_2": "ראש השנה.txt",
+    "Conection Type": "source"
+  }
+]
