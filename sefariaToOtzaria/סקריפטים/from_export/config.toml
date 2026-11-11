@@ -8,8 +8,8 @@ books_metadata_file_path = "../books_metadata.json"
 folder_metadata_file_path = "../folder_metadata.json"
 folder_name_replacements_file_path = "תיקיות.csv"
 file_name_replacements_file_path = "ספרים.csv"
-old_books_path = "../../../extraBooks/SefariaToOtzria/sefaria_export/ספרים/אוצריא"
-api_books_path = "../../../extraBooks/SefariaToOtzria/sefaria_api/ספרים/אוצריא"
+old_books_path = "../../../../extra_books/sefariaToOtzaria/sefaria_export/ספרים/אוצריא"
+api_books_path = "../../../../extra_books/sefariaToOtzaria/sefaria_api/ספרים/אוצריא"
 delete_api_files = false
 
 [sefaria]

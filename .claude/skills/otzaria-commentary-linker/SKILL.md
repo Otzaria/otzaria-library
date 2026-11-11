@@ -368,8 +368,8 @@ lookups, and fall back to the full repo docs (or re-read them) whenever you're u
 rule rather than guessing — guessing against these is how silent breakage happens.
 
 **Finding the citing and target books.** Search under any `*/ספרים/אוצריא/**` tree for
-`<title>.txt` (`find <repo root> -iname "<title>.txt"`). Sefaria-sourced books typically live
-under `extraBooks/SefariaToOtzria/sefaria_export/...`; Otzaria-native books live under the
+`<title>.txt` (`find <repo root> -iname "<title>.txt"`). Sefaria-sourced books have no local file
+here (old exports are in the private sibling repo `../extra_books/sefariaToOtzaria/`); Otzaria-native books live under the
 various `*ToOtzaria/.../ספרים/אוצריא/...` trees. If the physical file exists, you can derive
 `line_index` and `heRef` yourself with no DB query needed for the common case (see criterion
 3) — just keep the indexing straight: the `_links.json` file always uses **1-based** physical

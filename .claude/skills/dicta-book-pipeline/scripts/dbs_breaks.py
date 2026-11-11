@@ -4,7 +4,7 @@
 רקע: קבצי DBS שהועתקו כמו שהם ל-DictaToOtzaria/ערוך (קומיט "הוספת ספרים מדיקטה")
 שומרים שבירת שורות של הדפוס: משפט נקטע באמצע ונמשך בשורה הבאה, וכותרות (h) נחתכות
 באורך קבוע (~47 תווים) או שהמשכן נשאר בשורה נפרדת. הגרסה הגולמית של אותו ספר
-(extraBooks/דיקטה או DictaToOtzaria/לא ערוך) משמשת כ"עד": אם בגולמי שני קצוות
+(../extra_books/DictaToOtzaria או DictaToOtzaria/לא ערוך) משמשת כ"עד": אם בגולמי שני קצוות
 שורה DBS עומדים באותה שורה - השבירה מלאכותית.
 
 שימוש:
@@ -39,7 +39,8 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..'))
 DEFAULT_COMMITS = ['b9ce756e', '0e63b8bb']
 # כותרות הספרים האלה תוקנו ביד ב-08f86912; תיקוני הכותרות האוטומטיים עלולים לדרוס אותן
 HAND_HEADINGS = ['אורח משפט', 'עט סופר', 'משמרת אלעזר', 'אלפי מנשה', 'תבואות השדה', 'העיטור']
-RAW_DIRS = ['extraBooks/דיקטה', 'DictaToOtzaria/לא ערוך']
+# העותק הגולמי של ספרים שנערכו — בריפו הפרטי Otzaria/extra_books, משוכפל ליד המאגר הזה
+RAW_DIRS = ['../extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות', 'DictaToOtzaria/לא ערוך']
 EDITED_PREFIX = 'DictaToOtzaria/ערוך/ספרים/'
 OWN_LINKS_ROOT = 'DictaToOtzaria/ערוך/links'
 DEPENDENT_TYPES = {'source', 'commentary', 'super_commentary', 'supercommentary', 'targum',

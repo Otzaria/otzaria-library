@@ -525,13 +525,14 @@ class QaFixesTest(unittest.TestCase):
 
     def test_best_match_prefers_content_then_path(self):
         orig = SY.read_repo_text
-        texts = {"extraBooks/דיקטה/א/סדר נשים/X.txt": BODY * 3, "extraBooks/דיקטה/X.txt": BODY * 2 + OTHER,
-                 "extraBooks/דיקטה/ב/X.txt": OTHER * 3}
+        E = SY.EXTRA
+        texts = {f"{E}/א/סדר נשים/X.txt": BODY * 3, f"{E}/X.txt": BODY * 2 + OTHER,
+                 f"{E}/ב/X.txt": OTHER * 3}
         SY.read_repo_text = texts.get
         try:
             self.assertEqual(SY.best_match(BODY * 3, list(texts), "DictaToOtzaria/ערוך/ספרים/אוצריא/א/סדר נשים/X.txt"),
-                             "extraBooks/דיקטה/א/סדר נשים/X.txt")
-            self.assertIsNone(SY.best_match(BODY * 3, ["extraBooks/דיקטה/ב/X.txt"], "x/X.txt"))
+                             f"{E}/א/סדר נשים/X.txt")
+            self.assertIsNone(SY.best_match(BODY * 3, [f"{E}/ב/X.txt"], "x/X.txt"))
         finally:
             SY.read_repo_text = orig
 
@@ -549,6 +550,25 @@ class QaFixesTest(unittest.TestCase):
         self.assertEqual(SY.slot_of(f"{SY.ERUKH_UNSORTED}/x/a.txt"), "unsorted")
         self.assertEqual(SY.slot_of(f"{SY.RAW}/x/a.txt"), "raw")
         self.assertEqual(SY.slot_of(f"{SY.EXTRA}/x/a.txt"), "extra")
+
+    def test_extra_books_paths_live_in_the_sibling_repo(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            lib, extra = os.path.join(tmp, "lib"), os.path.join(tmp, "extra")
+            for d in (lib, extra):
+                subprocess.run(["git", "init", "-q", d], check=True)
+            rel = SY.EXTRA[len(SY.XB):] + "/א/X.txt"
+            os.makedirs(os.path.dirname(os.path.join(extra, rel)))
+            Path(extra, rel).write_text(BODY, encoding="utf-8")
+            Path(lib, "a.txt").write_text(BODY, encoding="utf-8")
+            with patch.object(SY, "REPO", lib), patch.dict(os.environ, {"DICTA_EXTRA_REPO": extra}):
+                self.assertEqual(SY.abs_path(SY.EXTRA + "/א/X.txt"), os.path.join(extra, rel))
+                self.assertEqual(SY.abs_path("a.txt"), os.path.join(lib, "a.txt"))
+                self.assertEqual(SY.repo_files(), sorted(["a.txt", SY.EXTRA + "/א/X.txt"]))
+                self.assertEqual(SY.read_repo_text(SY.EXTRA + "/א/X.txt"), BODY)
+                self.assertEqual(SY.slot_of(SY.EXTRA + "/א/X.txt"), "extra")
+            with patch.object(SY, "REPO", lib), patch.dict(os.environ, {"DICTA_EXTRA_REPO": os.path.join(tmp, "none")}):
+                self.assertEqual(SY.repo_files(), ["a.txt"])  # בלי עותק של extra_books — רק המאגר
 
     def test_best_match_raw_prefers_raw_copy(self):
         orig = SY.read_repo_text

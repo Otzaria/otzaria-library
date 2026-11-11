@@ -19,7 +19,7 @@
 | עובר | לא בטוח | DictaToOtzaria/ערוך/ספרים/לא ממויין/<קטגוריה של דיקטה>/ — לא נארז, בלי מרשמים |
 | נכשל | בטוח | DictaToOtzaria/לא ערוך/ספרים/אוצריא/<נתיב> |
 | נכשל | לא בטוח | DictaToOtzaria/לא ערוך/ספרים/אוצריא/לא ממויין/<קטגוריה>/ |
-שם זהה לספר ספריא/נארז: חפיפה ≥50% → extraBooks/דיקטה (לא נארז); בלי חפיפה → לא ערוך + needs-human.
+שם זהה לספר ספריא/נארז: חפיפה ≥50% → extra_books/DictaToOtzaria (ריפו פרטי, לא נארז); בלי חפיפה → לא ערוך + needs-human.
 ספר ערוך קיים לעולם אינו נדרס (עמודים חדשים מדווחים בלבד). ספר גולמי שהשתנה — המרה מחדש
 והעברת התיקונים שנעשו בו ב־git (dicta_replay).
 """
@@ -70,8 +70,12 @@ ERUKH = "DictaToOtzaria/ערוך/ספרים/אוצריא"
 ERUKH_UNSORTED = "DictaToOtzaria/ערוך/ספרים/לא ממויין"
 RAW = "DictaToOtzaria/לא ערוך/ספרים/אוצריא"
 RAW_UNSORTED = RAW + "/לא ממויין"
-EXTRA = "extraBooks/דיקטה"
-SEFARIA_COPIES = ("extraBooks/SefariaToOtzria/", "sefariaToOtzaria/")
+# חומר שאינו מועמד לספרייה (עותק גולמי של ספר שנערך, כפילויות, ספרים שהוצאו) — בריפו הפרטי
+# Otzaria/extra_books. במצב ובאינדקס הוא נרשם עם הקידומת XB; abs_path מתרגם לתיקייה בדיסק:
+# DICTA_EXTRA_REPO (ב־CI), או extra_books שליד המאגר הזה.
+XB = "extra_books/"
+EXTRA = XB + "DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא"
+SEFARIA_COPIES = (XB + "sefariaToOtzaria/", "sefariaToOtzaria/")
 SEFARIA_TITLES = ".github/data/sefaria_he_titles.txt"
 
 # סטטוסים במצב
@@ -145,19 +149,46 @@ def title_key(name: str) -> str:
     return re.sub(r"[ \t\n\x0b\f\r]+", " ", s).strip()
 
 
-def run_git(*args, check=True, binary=False):
-    r = subprocess.run(["git", "-c", "core.quotepath=off", "-C", REPO, *args], capture_output=True)
+def extra_repo() -> str:
+    """שורש העותק המקומי של Otzaria/extra_books (נקבע בזמן הקריאה — הבדיקות מחליפות את REPO)."""
+    return os.path.abspath(os.environ.get("DICTA_EXTRA_REPO") or os.path.join(REPO, "..", "extra_books"))
+
+
+def abs_path(path: str) -> str:
+    """נתיב מהמצב/האינדקס → נתיב בדיסק: XB… בריפו extra_books, כל השאר במאגר הזה."""
+    if path.startswith(XB):
+        return os.path.join(extra_repo(), path[len(XB):])
+    return os.path.join(REPO, path)
+
+
+def run_git(*args, check=True, binary=False, repo=None):
+    r = subprocess.run(["git", "-c", "core.quotepath=off", "-C", repo or REPO, *args], capture_output=True)
     if check and r.returncode:
         raise RuntimeError(f"git {' '.join(args)}: {r.stderr.decode('utf-8', 'replace')[:300]}")
     return r.stdout if binary else r.stdout.decode("utf-8", "replace")
 
 
+def git_show_head(path: str) -> str:
+    """גרסת HEAD של קובץ, בריפו שהנתיב שייך אליו (RuntimeError אם אינו קיים)."""
+    if path.startswith(XB):
+        return run_git("show", f"HEAD:{path[len(XB):]}", repo=extra_repo())
+    return run_git("show", f"HEAD:{path}")
+
+
+def _git_files(repo: str) -> list[str]:
+    cached = set(run_git("ls-files", "-z", repo=repo).split("\0"))
+    others = set(run_git("ls-files", "-z", "--others", "--exclude-standard", repo=repo).split("\0"))
+    deleted = set(run_git("ls-files", "-z", "--deleted", repo=repo).split("\0"))
+    return [p for p in (cached | others) - deleted if p]
+
+
 def repo_files() -> list[str]:
-    """הקבצים במאגר: ה־index (כולל sparse) + חדשים לא־עקובים, בלי מה שנמחק בעץ העבודה."""
-    cached = set(run_git("ls-files", "-z").split("\0"))
-    others = set(run_git("ls-files", "-z", "--others", "--exclude-standard").split("\0"))
-    deleted = set(run_git("ls-files", "-z", "--deleted").split("\0"))
-    return sorted(p for p in (cached | others) - deleted if p)
+    """הקבצים במאגר: ה־index (כולל sparse) + חדשים לא־עקובים, בלי מה שנמחק בעץ העבודה.
+    ועוד קובצי extra_books (עם הקידומת XB) כשהריפו הזה נמצא במקומו."""
+    files = _git_files(REPO)
+    if os.path.isdir(os.path.join(extra_repo(), ".git")):
+        files += [XB + p for p in _git_files(extra_repo())]
+    return sorted(files)
 
 
 def packaged_roots() -> tuple[str, ...]:
@@ -554,11 +585,11 @@ class RepoIndex:
 
 
 def read_repo_text(path: str) -> str | None:
-    full = os.path.join(REPO, path)
+    full = abs_path(path)
     if os.path.exists(full):
         return read_text(full)
     try:  # sparse / blobless: git מושך את ה־blob לפי דרישה
-        return run_git("show", f"HEAD:{path}")
+        return git_show_head(path)
     except RuntimeError:
         return None
 
@@ -1016,8 +1047,12 @@ class Importer:
             r = subprocess.run(shlex.split(self.a.claim_cmd) + [rel], cwd=REPO, capture_output=True, text=True)
             if r.returncode:
                 raise PermissionError(f"claim refused for {rel}: {r.stdout.strip()} {r.stderr.strip()}")
-        root = self.sandbox or REPO
-        full = os.path.join(root, rel)
+        if self.sandbox:
+            full = os.path.join(self.sandbox, rel)
+        else:
+            if rel.startswith(XB) and not os.path.isdir(os.path.join(extra_repo(), ".git")):
+                raise FileNotFoundError(f"{rel}: no extra_books clone at {extra_repo()} (set DICTA_EXTRA_REPO)")
+            full = abs_path(rel)
         os.makedirs(os.path.dirname(full), exist_ok=True)
         write_atomic(full, text)
         self.touched.add(rel)
@@ -1087,7 +1122,7 @@ class Importer:
     # ---- עזרים ----
     def path_taken(self, path: str) -> bool:
         """תפוס: נכתב בריצה הזו, קיים בעץ העבודה, או עקוב ב־git (גם מחוץ ל־sparse)."""
-        return path in self.taken or path in self.idx.file_set or os.path.exists(os.path.join(REPO, path))
+        return path in self.taken or path in self.idx.file_set or os.path.exists(abs_path(path))
 
     def same_text_as(self, fn: str, sig: str) -> str | None:
         """ספר אחר במצב שה־text_sig שלו זהה (DESIGN §3) — אותו טקסט בשני fileName."""
@@ -1211,7 +1246,7 @@ class Importer:
         if ent["repo"]["status"] not in (RAW_S, NEEDS_HUMAN, PARTIAL):
             self.summary["skipped (state changed since the plan)"].append((fn, ent["repo"]["status"]))
             return
-        raws = [p for p in ent["repo"].get("raw", []) if os.path.exists(os.path.join(REPO, p))]
+        raws = [p for p in ent["repo"].get("raw", []) if os.path.exists(abs_path(p))]
         if len(raws) != 1:
             self.summary["needs-human"].append((fn, f"reconvert: {len(raws)} raw files"))
             return
@@ -1228,7 +1263,7 @@ class Importer:
         new_pages = expand(remote["pages"])
         res, src = self.convert(data, book, order, book_name=os.path.splitext(os.path.basename(path))[0])
         gate = dicta_gate.evaluate(res.text, src, source_is_html=True)
-        head = read_text(os.path.join(REPO, path))
+        head = read_text(abs_path(path))
         base = first_blob(path) or head
         fixes, fst = dicta_replay.extract(base, head)
         text, ast = dicta_replay.apply(fixes, res.text)
@@ -1388,7 +1423,7 @@ def sefaria_titles() -> set[str]:
 
 def _head_text(path: str) -> str | None:
     try:
-        return run_git("show", f"HEAD:{path}")
+        return git_show_head(path)
     except RuntimeError:
         return None
 
@@ -1407,9 +1442,9 @@ def slot_of(path: str) -> str:
 def cmd_reconcile(a) -> int:
     """מיישר את המצב לשינויים ידניים במאגר. כל התאמה נבדקת לפי תוכן — לא לפי שם הקובץ בלבד:
     * קובץ שנעלם: מועמד באותו שם נקבל רק אם תוכנו הוא של הקובץ הישן (גרסת HEAD); לגולמי עדיף
-      עותק גולמי (extraBooks/דיקטה), לערוך — קובץ בעץ הערוך.
-    * כל נתיב נרשם במקום שמתאים למיקומו (ערוך → edited, extraBooks → extra ...).
-    * ספר גולמי שעובד (הנוהג: ערוך חדש + הגולמי ל־extraBooks/דיקטה): הקובץ הערוך נמצא לפי שם, ואם
+      עותק גולמי (extra_books/DictaToOtzaria), לערוך — קובץ בעץ הערוך.
+    * כל נתיב נרשם במקום שמתאים למיקומו (ערוך → edited, extra_books → extra ...).
+    * ספר גולמי שעובד (הנוהג: ערוך חדש + הגולמי ל־extra_books): הקובץ הערוך נמצא לפי שם, ואם
       שמו שונה — לפי טביעת התוכן מבין קובצי הערוך שאינם שייכים לשום ספר במצב; אז נכתבים המרשמים.
     * pending_pr: הקבצים הגיעו ל־main → הדגל יורד."""
     st = load_state(a.state) if getattr(a, "state", None) else load_state()
@@ -1437,11 +1472,11 @@ def cmd_reconcile(a) -> int:
         paths = []
         for k in ("edited", "unsorted", "raw", "extra"):
             for p in r.get(k, []):
-                if p in fset or os.path.exists(os.path.join(REPO, p)):
+                if p in fset or os.path.exists(abs_path(p)):
                     paths.append(p)
                     continue
                 cands = [c for c in by_base.get(os.path.basename(p), [])
-                         if (c.startswith("DictaToOtzaria/") or c.startswith(EXTRA)) and c not in referenced]
+                         if c.startswith(("DictaToOtzaria/", XB + "DictaToOtzaria/")) and c not in referenced]
                 best = best_match(_head_text(p), cands, p, prefer_edited=k in ("edited", "unsorted"))
                 if best:
                     paths.append(best)
@@ -1466,7 +1501,7 @@ def cmd_reconcile(a) -> int:
         promoted = [p for p in r.get("edited", []) if p not in known_edited
                     and r["status"] in (RAW_S, NEEDS_HUMAN, EDITED_UNSORTED)]
         if r["status"] in (RAW_S, NEEDS_HUMAN) and not r.get("raw") and r.get("extra") and not promoted:
-            # הגולמי יצא מ"לא ערוך" אל extraBooks — חיפוש הערוך: לפי שם, ואז לפי תוכן
+            # הגולמי יצא מ"לא ערוך" אל extra_books — חיפוש הערוך: לפי שם, ואז לפי תוכן
             raw_text = next((t_ for t_ in (read_repo_text(q) for q in r["extra"]) if t_), None)
             by_name = [c for q in r["extra"] for c in by_base.get(os.path.basename(q), []) if c.startswith(ERUKH + "/")]
             hits = [c for c in by_name if same_book(raw_text, read_repo_text(c))]
@@ -1565,11 +1600,11 @@ def cmd_verify_raw(a) -> int:
     for fn, v in sorted(st["books"].items()):
         if v["repo"]["status"] != RAW_S:
             continue
-        raws = [p for p in v["repo"].get("raw", []) if os.path.exists(os.path.join(REPO, p))]
+        raws = [p for p in v["repo"].get("raw", []) if os.path.exists(abs_path(p))]
         zp = os.path.join(a.zip_cache, fn + ".zip")
         if not raws or not os.path.exists(zp):
             continue
-        text = "\n".join(read_text(os.path.join(REPO, p)) for p in raws)
+        text = "\n".join(read_text(abs_path(p)) for p in raws)
         miss = missing_pages(read_bytes(zp), text)
         imp = v["repo"].setdefault("import", {})
         imp["zip_md5"] = None if miss else v["remote"]["zip_md5"]
@@ -1605,7 +1640,7 @@ def area_of(p: str, roots) -> str:
         return "raw"
     if p.startswith(SEFARIA_COPIES):
         return "sefaria"
-    if p.startswith("extraBooks/"):
+    if p.startswith(XB):
         return "extra"
     if is_packaged(p, roots):
         return "packaged"
@@ -1614,7 +1649,7 @@ def area_of(p: str, roots) -> str:
 
 def _fp_file(path):
     try:
-        t = read_text(os.path.join(REPO, path))
+        t = read_text(abs_path(path))
     except OSError:
         return path, None, 0
     g = dicta_fp.fingerprint(t)

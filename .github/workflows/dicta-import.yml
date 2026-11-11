@@ -6,13 +6,16 @@ name: Dicta import
 #   import  — הורדה (עד max_books), המרה (dicta_convert), שער איכות (dicta_gate), מיקום (dicta_place),
 #             כפילויות/שמות/קישורים, כתיבה. ספר ערוך קיים לעולם אינו נדרס.
 # ספר שנכנס לספרייה הנארזת (DictaToOtzaria/ערוך/ספרים/אוצריא + מרשמים) → כל הריצה נפתחת כ-PR
-# (promote=pr, ברירת המחדל). ריצה בלי תוספת לספרייה (לא ערוך / ערוך/ספרים/לא ממויין / extraBooks/דיקטה /
-# קובצי המצב) נדחפת ישר ל-main.
-# הדחיפה ב-PIPELINE_TOKEN: דחיפה ב-GITHUB_TOKEN לא מפעילה את validate-fordb-book-names / python-tests.
+# (promote=pr, ברירת המחדל). ריצה בלי תוספת לספרייה (לא ערוך / ערוך/ספרים/לא ממויין / קובצי המצב) נדחפת
+# ישר ל-main.
+# מה שאינו מועמד לספרייה — העותק הגולמי של ספר שנערך, וכפילות של ספר נארז / ספריא — נכתב לריפו הפרטי
+# Otzaria/extra_books (DictaToOtzaria/גולמי ערוכים וכפילויות/) ונדחף לשם לפני הספרייה, כי קובץ המצב מפנה אליו.
+# הדחיפה ב-PIPELINE_TOKEN: דחיפה ב-GITHUB_TOKEN לא מפעילה את validate-fordb-book-names / python-tests,
+# ואין לו גישה ל-extra_books. הטוקן צריך הרשאת כתיבה (Contents: write) לשני הריפואים.
 
 on:
   schedule:
-    - cron: '0 3 2 * *'          # היום השני בחודש; monthly_update.yml (ספריא) נשאר ביום הראשון
+    - cron: '0 3 2 * *'          # היום השני בחודש
   workflow_dispatch:
     inputs:
       max_books:
@@ -128,6 +131,19 @@ jobs:
             /manual_links_packaging.py
           sparse-checkout-cone-mode: false
           token: ${{ secrets.PIPELINE_TOKEN }}
+      # הריפו הפרטי extra_books, מחוץ לעץ העבודה של הספרייה (dicta_sync קורא את DICTA_EXTRA_REPO).
+      # blobless + sparse: רק DictaToOtzaria; עותקי ספריא לבדיקת כפילות נמשכים לפי דרישה (git show).
+      - name: Clone extra_books
+        env:
+          TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+        run: |
+          set -euo pipefail
+          X="$RUNNER_TEMP/extra_books"
+          git clone -q --filter=blob:none --no-checkout --depth 1 \
+            "https://x-access-token:${TOKEN}@github.com/Otzaria/extra_books.git" "$X"
+          git -C "$X" sparse-checkout set --no-cone '/DictaToOtzaria/'
+          git -C "$X" checkout -q
+          echo "DICTA_EXTRA_REPO=$X" >> "$GITHUB_ENV"
       - uses: actions/download-artifact@v7
         with:
           name: dicta-plan
@@ -167,8 +183,8 @@ jobs:
         run: |
           set -euo pipefail
           git add --sparse -A -- DictaToOtzaria metadata.json ForDB all_metadata_with_file_paths.json
-          # extraBooks/דיקטה מחוץ ל-sparse: בלי קובץ חדש שם, pathspec שלו נכשל ב-"did not match any files"
-          if [ -d "extraBooks/דיקטה" ]; then git add --sparse -A -- "extraBooks/דיקטה"; fi
+          git -C "$DICTA_EXTRA_REPO" add --sparse -A -- DictaToOtzaria
+          # כל כתיבה ל-extra_books נרשמת גם בקובץ המצב, ולכן "אין שינוי בספרייה" = אין שינוי בכלל
           if git diff --cached --quiet; then echo "changes=false" >> "$GITHUB_OUTPUT"; exit 0; fi
           echo "changes=true" >> "$GITHUB_OUTPUT"
           library=false
@@ -190,19 +206,26 @@ jobs:
           LIBRARY: ${{ steps.stage.outputs.library }}
         run: |
           set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
           msg="דיקטה: ייבוא $(date -u +%Y-%m-%d)"
+          for r in . "$DICTA_EXTRA_REPO"; do
+            git -C "$r" config user.name 'github-actions[bot]'
+            git -C "$r" config user.email 'github-actions[bot]@users.noreply.github.com'
+          done
           lib=("DictaToOtzaria/ערוך/ספרים/אוצריא" metadata.json ForDB all_metadata_with_file_paths.json)
-          push_main() {
+          push_main() {  # $1 = הריפו (ברירת מחדל: הספרייה)
             for i in 1 2 3; do
-              if git pull -q --rebase origin main && git push origin HEAD:main; then return 0; fi
+              if git -C "${1:-.}" pull -q --rebase origin main && git -C "${1:-.}" push -q origin HEAD:main; then return 0; fi
               sleep $((i * 15))
             done
             return 1
           }
+          # 0) extra_books קודם: קובץ המצב שבספרייה מפנה לקבצים האלה
+          if ! git -C "$DICTA_EXTRA_REPO" diff --cached --quiet; then
+            git -C "$DICTA_EXTRA_REPO" commit -q -m "$msg"
+            push_main "$DICTA_EXTRA_REPO"
+          fi
           if [ "$LIBRARY" = true ] && [ "$PROMOTE" = pr ]; then
-            # 1) החלק הישיר (לא ערוך, ערוך/ספרים/לא ממויין, extraBooks/דיקטה, קובצי המצב) — ל-main.
+            # 1) החלק הישיר (לא ערוך, ערוך/ספרים/לא ממויין, קובצי המצב) — ל-main.
             #    ספר ב-PR מסומן pending_pr במצב, ולכן detect לא יתכנן אותו שוב עד שה-PR ימוזג.
             git restore --staged -- "${lib[@]}"
             git stash push -q --include-untracked -- "${lib[@]}"
