@@ -1,13 +1,5 @@
-# תיקון שכבת הטקסט בקובצי ה־PDF של התלמוד הבבלי
+# Manual conversion tools moved
 
-`fix_pdf_text_layer.py` מתקן, במקום, קובצי PDF שהטקסט שלהם יוצא שבור בחילוץ (בחיפוש, בהעתקה ובאינדוקס). התצוגה לא משתנה. הכלי נוגע רק במה שהוא מזהה כשבור:
+The PDF text-layer repair scripts and their original README now live in [Otzaria/book-sources](https://github.com/Otzaria/book-sources/tree/main/%D7%A1%D7%A7%D7%A8%D7%99%D7%A4%D7%98%D7%99%D7%9D%20%D7%A9%D7%95%D7%A0%D7%95%D7%AA/pdf-text-layer).
 
-1. **גופנים בלי מיפוי אותיות** (`fix_tounicode.py`): גופנים ישנים כמו `Rashi_rc_Fix_Shas`, `Vilna` ו־`GHodes_Shas` חושפים עברית כתווים לטיניים (קידוד Windows-1255 או Mac Roman), או בשמות גליפים שרירותיים. הכלי מוסיף להם ToUnicode נכון. המיפוי של `GHodes_Shas` זוהה ידנית, לפי ציור כל גליף.
-2. **סדר מילים הפוך** (`fix_word_order.py`): שורה שמצוירת כפקודה אחת מימין לשמאל יוצאת ב־PDFium עם המילים הפוכות. הכלי מצייר מחדש את אותם גליפים, באותם מיקומים, כך שהחילוץ יוצא בסדר הנכון.
-
-```
-pip install pikepdf fonttools
-python fix_pdf_text_layer.py "MoreBooks/ספרים/אוצריא/תלמוד בבלי"
-```
-
-לפני commit: השוו רינדור של כל קובץ שהשתנה, לפני ואחרי (למשל עם PyMuPDF). בתיקון המקורי לא השתנה אף פיקסל.
+See the [migration and usage guide](https://github.com/Otzaria/book-sources/blob/main/docs/MIGRATION_MANUAL_TOOLS.md). Pass an explicit PDF or folder path in your otzaria-library checkout; review generated changes there. No PDFs or release outputs moved.
