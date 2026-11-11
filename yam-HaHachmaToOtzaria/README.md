@@ -45,20 +45,20 @@
 
 * **כותרות באמצע שורה** — `<hN>` שנדבק לסוף פסקה או שנשאר לו טקסט אחריו. אוצריא
   מזהה כותרת רק בתחילת שורה, וטקסט שאחרי `</hN>` נבלע לשם הכותרת בתוכן העניינים.
-  תיקון: [scripts/split_inline_headings.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/split_inline_headings.py).
+  תיקון: [scripts/split_inline_headings.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/split_inline_headings.py).
 * **כותרות תלושות** — מילה או אות שהיא חלק מהמשפט וקיבלה `<hN>` רק כי בדפוס היא
-  הודפסה בשורה נפרדת. תיקון: [scripts/unwrap_stray_headings.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/unwrap_stray_headings.py).
+  הודפסה בשורה נפרדת. תיקון: [scripts/unwrap_stray_headings.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/unwrap_stray_headings.py).
 
 שני הכלים משנים **חלוקת שורות ותגים בלבד** — לא מילה מלשון הספר.
 
 * **שורות דפוס במקום פסקאות** — `חזון איש חושן משפט, נזיקין` (נמשך בספטמבר 2026)
   הגיע כ-OCR גולמי: שורה לכל שורת דפוס, ובליקוטים גם סימני עמוד, כותרות רצות ומילות
-  קישור. תיקון: [scripts/chazon_ish_nezikin_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/chazon_ish_nezikin_reflow.py)
+  קישור. תיקון: [scripts/chazon_ish_nezikin_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/chazon_ish_nezikin_reflow.py)
   (57 אלף שורות → 5,320, עם בדיקת שימור טקסט). נשמר בשם `חזון איש, חושן משפט נזיקין`,
   כדי להתיישר עם שאר כרכי חזון איש שב-MoreBooks, שבאותה תיקייה.
 * **טקסט גולמי בלי תגים** (נמשכו באוקטובר 2026):
   * `שדי חמד כללים מערכת ע` — `כלל X)` בתחילת שורה במקום `<h3>`. תיקון:
-    [scripts/shdei_chemed_raw_kelalim.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/shdei_chemed_raw_kelalim.py)
+    [scripts/shdei_chemed_raw_kelalim.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/shdei_chemed_raw_kelalim.py)
     (`<h1>`/`<h2>`/`<h3>` כמו במערכות נ ו-ס, מספרי כללים מנורמלים בכותרת בלבד).
     אותו סקריפט הוסב גם למערכות פ, צ, ק, ר, ש, ת, ל (נמשכו באוקטובר 2026): `יו"ד` כמספר 10,
     כללים מעל 99 (ש מסתיימת בכלל ק), `[כלל X)]` בסוגריים מרובעים, והערת עורך
@@ -66,7 +66,7 @@
   * `שדי חמד כללים מערכת ל` — אותו סקריפט. הרצף במקור קטוע: אחרי כלל לה בא כלל ס"ג, ובהמשך
     חסרים גם כלל קג וכלל קמב (115 כללים בקובץ). זה מצב המקור, ולא הושלם כלום.
   * `ספר המנהיג` (`הלכה/ראשונים`) — OCR של דפוס בשורות של כ־75 תווים, בלי תגים. תיקון:
-    [scripts/hamanhig_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/hamanhig_reflow.py) (8,228 שורות → 757, עם
+    [scripts/hamanhig_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/hamanhig_reflow.py) (8,228 שורות → 757, עם
     בדיקת שימור טקסט): `<h2>` לכותרות החלקים (`דיני תפלה`, `הלכות שבת` וכו' — 27), פסקה חדשה
     בכל סעיף ממוספר (`א)`) ואחרי שורה קצרה שנגמרת בנקודה/נקודתיים. נמחקו 65 שורות: רעש של
     הסריקה (`Digitized by Google`, פיסוק וספרות בודדים) ו־8 סמני עמוד רצים (`[המנהיג] ב 2`);
@@ -81,7 +81,7 @@
     ההפניות `(א)` ורשימות המקורות), ובכרך שמות תוקן שוב ב־`6131106` (5.11.2026); הספרייה מחזיקה את הנוסח
     המתוקן, תחת השמות `ילקוט מעם לועז - <חומש>`.
     עדיין טקסט גולמי בשורות דפוס של כ־65 תווים, בלי תגים. תיקון:
-    [scripts/meam_loez_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/meam_loez_reflow.py) (12–47 אלף שורות → 1,439–4,037 לכרך,
+    [scripts/meam_loez_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/meam_loez_reflow.py) (12–47 אלף שורות → 1,439–4,037 לכרך,
     עם בדיקת שימור טקסט): `<h2>` לפרשה ו־`<h3>` ל־`פרק X`; פסקה חדשה אחרי שורה קצרה (<56 תווים)
     שנגמרת בסימן סוף משפט ואחרי פסוק מצוטט שנגמר ב־`(א, א)` (ובפסקה שעברה 2,000 תווים — גם אחרי
     שורה של פחות מ־64 תווים); ברשימות `מקורות:` שנשארו (בעיקר בכרך שמות) כל פריט `(א) …` בשורה נפרדת.
@@ -96,20 +96,20 @@
     וכותרת עמוד ששובשה מעבר לצורות המוכרות נשארה בטקסט.
   * `שות ושב הכהן` (`שות/אחרונים`) — כבר מתויג (`<h1>`, `<h2>סימן …`, מילה ראשונה של כל פסקה
     ב־`<b>`) אבל בשורות דפוס של כ־50 תווים. תיקון:
-    [scripts/vesheiv_hakohen_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/vesheiv_hakohen_reflow.py) (40,174 שורות → 1,449;
+    [scripts/vesheiv_hakohen_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/vesheiv_hakohen_reflow.py) (40,174 שורות → 1,449;
     פסקה חדשה בכל שורה שנפתחת ב־`<b>`; הכותרת `<h2>סימן פא` שנקטעה במקור בשורה אחת
     אוחדה). המקור לא מציין מחבר; נרשם רבי רפאל כהן (1722–1803, אב״ד אלטונה), לפי רשומת הספרייה של פרינסטון
     על ההדפסה החוזרת של דפוס אלטונה תקנ״ב, ובאישור.
   * `פחד יצחק חלק ט` — OCR בשורות דפוס, בלי סימון פסקה. תיקון:
-    [scripts/pachad_yitzchak_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_reflow.py)
+    [scripts/pachad_yitzchak_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_reflow.py)
     (7,414 שורות → 1,321 פסקאות, עם בדיקת שימור טקסט). אין כותרות לערכים, כי גבול
     המילה הראשית אינו מסומן בטקסט. לפניו
-    [scripts/pachad_yitzchak_ocr_fix.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_ocr_fix.py) מתקן מול
+    [scripts/pachad_yitzchak_ocr_fix.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_ocr_fix.py) מתקן מול
     הסריקה (HebrewBooks 20343) 910 טעויות OCR (בעיקר ר→ד, ב→כ, ם→ס) ו־49 שורות סיום
     שהוצבו אחרי תחילת הערך הבא, ומסיר ניקוד שהוא כתמי דיו. הרצה:
     `pachad_yitzchak_ocr_fix.py RAW.txt OUT.txt` (מריץ את ה־reflow בעצמו).
   * `פחד יצחק חלק י` (אותיות ק–ר; נמשך בנובמבר 2026; שורה 1 במקור `פחד יצחק אות ק`) — OCR בשורות
-    דפוס בלי סימון פסקה. תיקון: [scripts/pachad_yitzchak_yod_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_yod_reflow.py)
+    דפוס בלי סימון פסקה. תיקון: [scripts/pachad_yitzchak_yod_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/pachad_yitzchak_yod_reflow.py)
     (14,752 שורות → 1,304, עם בדיקת שימור טקסט): נמחקו 107 מספרי עמוד (אות־מספר לבדה, לפי רצף
     העמודים) ו־21 שורות זבל של OCR; פסקה חדשה בכל `אות X.` ואחרי שורה קצרה שנגמרת בנקודה/נקודתיים.
     להבדיל מחלק ט, שגיאות ה־OCR לא תוקנו מול הסריקה (HebrewBooks חסום לגישה אוטומטית).
@@ -117,19 +117,19 @@
   * `דברי אמת (דרשות)` (`תנך/דרשות ודרושים`; בתיקיית השורש של המקור, בלי קטגוריה; נמשך בנובמבר 2026) —
     חמש עשרה דרשות (ה'תק"ג–ה'תק"י לערך) ב־OCR בשורות דפוס, בלי שער ובלי מחבר במקור; המחבר (רבי יצחק בן דוד מקושטנטינא, המוזכר בנודע ביהודה סימן ע"ב) נוסף לפי דיווח משתמש. **אינו ספר
     `דברי אמת` של החוזה מלובלין שבספריא** (שם אחר, ה־`(דרשות)` מבחין). תיקון:
-    [scripts/divrei_emet_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/divrei_emet_reflow.py) (10,226 שורות → 302): `<h2>` לכל
+    [scripts/divrei_emet_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/divrei_emet_reflow.py) (10,226 שורות → 302): `<h2>` לכל
     דרוש (מיקומי הכותרות קבועים בסקריפט, כי ה־OCR שיבש חלק מהן ולדרוש השישי אין כותרת מספרית),
     נמחקו קווי הפרדה וסימני עמוד שבורים (22 שורות), פסקה חדשה אחרי שורה קצרה שנגמרת בנקודה/נקודתיים.
     **המחבר לא זוהה** — שורה 2 ריקה ו־`author` ריק; כדאי לזהות (בדרשות נזכרים מהר"ר חיים אבולעפיא
     ומהר"ר חיים ן' עטר, והגביר דוד זונאנא).
   * `הגהות רבי העשיל על הסמג` — שורות דפוס בלי סימון הגהות. תיקון:
-    [scripts/heshil_semag_reflow.py](https://github.com/Otzaria/book-sources/tree/main/yam-HaHachmaToOtzaria/סקריפטים/heshil_semag_reflow.py) (1,188 שורות → פסקאות
+    [scripts/heshil_semag_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/heshil_semag_reflow.py) (1,188 שורות → פסקאות
     לפי `. שם ` / `. דף ` ושורה קצרה שנגמרת בנקודה; שתי כותרות החלק ל־`<h2>`; הוסרו
     כותרות עמוד רצות; עם בדיקת שימור טקסט). גבולות ההגהות אינם מסומנים במקור, ולכן
     החלוקה משוערת.
 * `הליכות עולם - כללי הגמרא` (`ספרות עזר/כללי השס`) — מעמוד 198 ועד הסוף (כ־1,600 מתוך 1,805
   שורות) כל פסקה שבורה במקור לשורות של כ־75–80 תווים, וסוף הפסקה הוא שורה קצרה; תחילת הספר
-  כבר שורה־לפסקה. תיקון: `halichot_olam_reflow.py` (בריפו [book-sources](https://github.com/Otzaria/book-sources), `yam-HaHachmaToOtzaria/סקריפטים/`)
+  כבר שורה־לפסקה. תיקון: [halichot_olam_reflow.py](https://github.com/Otzaria/book-sources/blob/main/yam-HaHachmaToOtzaria/סקריפטים/halichot_olam_reflow.py)
   (1,805 שורות → 590). השורות מתחברות כשהמילה הבאה לא הייתה נכנסת בשורה ושהשורה אינה נגמרת
   בסימן סיום; 63 הזוגות שבהם שורה מלאה נגמרת בנקודה (סוף משפט או סוף פסקה?) הוכרעו אחד־אחד
   לפי התוכן — 17 חוברו, 46 נשארו נפרדים (רשימות כללים, דורות, פריטים ממוספרים, תבליטים).
