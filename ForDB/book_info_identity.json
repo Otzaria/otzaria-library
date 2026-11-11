@@ -85058,6 +85058,253 @@
       },
       "commit": null,
       "changeSetId": "6aec3744b29cb6b885e34018"
+    },
+    {
+      "id": 6280,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על בבא מציעא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על בבא מציעא",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6281,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על בבא קמא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על בבא קמא",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6282,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על ביצה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על ביצה",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6283,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על ברכות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על ברכות",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6284,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על גיטין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על גיטין",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6285,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על הוריות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על הוריות",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6286,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על זבים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על זבים",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6287,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על מגילה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על מגילה",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6288,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על סוכה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על סוכה",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6289,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על עבודה זרה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על עבודה זרה",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6290,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על עירובין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על עירובין",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6291,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על פסחים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על פסחים",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6292,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על קידושין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על קידושין",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6293,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על ראש השנה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על ראש השנה",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6294,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על שבועות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על שבועות",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6295,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבן העוזר על שבת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבן העוזר על שבת",
+        "authorName": "רבי בנימין עוזר הכהן"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6296,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגרא דפרקא",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב"
+      },
+      "new": {
+        "bookName": "אגרא דפרקא",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב [בעל ה'בני יששכר']"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6297,
+      "kind": "rename",
+      "old": {
+        "bookName": "דברים נחמדים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דברים נחמדים",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב [בעל ה'בני יששכר']"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
+    },
+    {
+      "id": 6298,
+      "kind": "rename",
+      "old": {
+        "bookName": "והיה ברכה",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב"
+      },
+      "new": {
+        "bookName": "והיה ברכה",
+        "authorName": "רבי צבי אלימלך שפירא מדינוב [בעל ה'בני יששכר']"
+      },
+      "commit": "a40f52ea8ad93920a13072f64b196fd10f5a5a6f"
     }
   ]
 }
