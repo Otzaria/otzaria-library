@@ -43,7 +43,9 @@ permissions:
 jobs:
   detect:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # בנייה מלאה של אינדקס הטביעות (כשאין מטמון) לוקחת יותר מ-20 דקות. ב-20 הריצה נקטעה לפני שמירת
+    # המטמון, ולכן גם הריצה הבאה בנתה מאפס ונקטעה (2026-11-02, 2026-11-11).
+    timeout-minutes: 60
     outputs:
       work: ${{ steps.plan.outputs.work }}
     steps:
