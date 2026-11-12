@@ -22,7 +22,7 @@
 | `ForDB/book_moves.csv` | `name,Source path,Destination path` — **רק לספרי ספריא**. |
 | `ForDB/category_renames.csv` | `שם ישן,שם חדש` לקטגוריות. |
 | `ForDB/category_moves.csv` | `Source path,Destination parent path`. |
-| `ForDB/book_info.csv` | `bookName,authorName,generationName,subGenerationName,startYear,endYear`. |
+| `ForDB/book_info.csv` | `bookName,authorName,generationName,subGenerationName,startYear,endYear`, ואפשר גם `topics,pubDate,pubPlace,description,proofread` אחריהן (ר' `ForDB/README.md`). |
 | `ForDB/sefaria_metadata_changes.csv` | **הדרך היחידה של תיאור ספר ל־DB — לכל ספר**, גם ממקורות אוצריא (למרות השם). ר' "תיאור הספר" בסעיף 2. |
 | `ForDB/sefaria_category_changes.csv` | דריסת תיאורי קטגוריות של ספריא. |
 | `SourcesBooks.csv` | אינוונטר: `שם הקובץ,נתיב הקובץ,תיקיית המקור,מספר שורות`. |
@@ -172,6 +172,6 @@ python .github/scripts/validate_fordb_book_names.py --fix    # רק תיקוני
 
 ### רישום מידע קנוני
 
-`book_info.csv` מכיל שש עמודות ושורה לכל `(bookName,authorName)`. סדר קנוני: שם ספר ואז מחבר; LF וכל שדה נתון מצוטט. דורות נתמכים: תורה שבכתב, חז"ל, ראשונים, אחרונים, מחברי זמננו. שדות לא ידועים ריקים. אין להשתמש בשנות הדפוס בתור שנות חיי המחבר.
+`book_info.csv` מכיל 6 עמודות או 11 (עם שדות ההרחבה, ר' `ForDB/README.md`) ושורה לכל `(bookName,authorName)`. סדר קנוני: שם ספר ואז מחבר; LF וכל שדה נתון מצוטט. דורות נתמכים: תורה שבכתב, חז"ל, ראשונים, אחרונים, מחברי זמננו. שדות לא ידועים ריקים. אין להשתמש בשנות הדפוס בתור שנות חיי המחבר.
 
 `make_metadata.py --title "שם" --author "מחבר" --generation אחרונים --book-info-csv /path/ForDB/book_info.csv` מוסיף רק זהויות חסרות ומשמר כל מחבר, דור ושנים קיימים. `--sub-generation`, `--start-year`, `--end-year` מיועדים לערכים ידועים. קובץ הדורות הישן הוסר; אין ליצור אותו מחדש.
