@@ -290,6 +290,13 @@ class OptionalCommentatorTitlesTest(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             self.preflight({k: v for k, v in self.HEADERS.items() if k != "ForDB/book_moves.csv"})
 
+    def test_book_info_accepts_six_or_eleven_columns_only(self):
+        extended = self.HEADERS["ForDB/book_info.csv"] + ",topics,pubDate,pubPlace,description,proofread"
+        self.preflight({**self.HEADERS, "ForDB/book_info.csv": extended})
+        for header in (extended + ",extra", self.HEADERS["ForDB/book_info.csv"] + ",topics"):
+            with self.subTest(header=header), self.assertRaises(ValueError):
+                self.preflight({**self.HEADERS, "ForDB/book_info.csv": header})
+
 
 class CategoryDescriptionPathsTest(unittest.TestCase):
     """A shelf row is read after category_renames.csv: a path that still carries a renamed

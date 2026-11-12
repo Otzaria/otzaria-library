@@ -31,7 +31,7 @@ SHIPPED = frozenset({
     "ForDB/all_metadata.json",
     # טבלאות banner / book_banner / book_protection; קובץ חסר מפיל את הבנייה.
     "ForDB/book_banners.csv",
-    # מידע על ספרים מהאתר; מקור הדור של seedGenerations (במקום generations.csv).
+    # מידע על ספרים מהאתר: הדור (seedGenerations), ובכותרת של 11 עמודות גם נושאים, דפוס ותיאור.
     "ForDB/book_info.csv",
     "ForDB/book_moves.csv",
     "ForDB/book_protection.csv",
