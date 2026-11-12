@@ -96,7 +96,7 @@ jobs:
           PYTHONIOENCODING: "utf-8"
         run: |
           set -euo pipefail
-          python3 -m unittest test_validate_fordb_book_names test_fordb_book_renames test_book_info_writer test_library_tree test_check_author_mirrors test_check_locked_metadata test_update_locked_metadata test_follow_lock_renames test_fordb_archive -v
+          python3 -m unittest test_validate_fordb_book_names test_fordb_book_renames test_book_info_writer test_book_info_contract test_library_tree test_check_author_mirrors test_check_locked_metadata test_update_locked_metadata test_follow_lock_renames test_fordb_archive -v
 
       # שינויי-שם נעקבים מהקומיט האחרון שהזרימה הזו אימתה *בהצלחה*, לא רק מ-
       # github.event.before: ריצה שנכשלה (למשל כשה-push של ה-auto-fix הפסיד במרוץ, כמו

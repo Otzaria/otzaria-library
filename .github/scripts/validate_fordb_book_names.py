@@ -81,7 +81,7 @@ import subprocess
 import sys
 import urllib.request
 
-from book_info_contract import validate_book_info
+from book_info_contract import HEADERS, validate_book_info
 import fordb_book_renames as book_renames_follow
 
 # ---------------------------------------------------------------------------
@@ -925,9 +925,8 @@ def preflight_csv_inputs():
         col_index(header, target.column)
         if target.source_column is not None:
             col_index(header, target.source_column)
-        if path == BOOK_INFO and header != ["bookName", "authorName", "generationName",
-                                           "subGenerationName", "startYear", "endYear"]:
-            raise ValueError("book_info.csv must have the supported six-column header")
+        if path == BOOK_INFO and header not in HEADERS:
+            raise ValueError("book_info.csv must have the six-column or eleven-column header")
         for idx, row in enumerate(rows, start=2):
             if row and len(row) != len(header):
                 raise ValueError(f"{path}: record {idx}: expected {len(header)} columns")

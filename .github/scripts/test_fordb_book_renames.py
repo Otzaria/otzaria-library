@@ -609,6 +609,39 @@ class BookInfoIdentityRegressionTest(FixtureTestCase):
         self.assertIn("append-only", output)
         self.assertEqual({str(path.relative_to(clone)): path.read_bytes() for path in (clone / "ForDB").iterdir()}, before)
 
+    def extend_book_info(self, extensions):
+        """book_info.csv in eleven columns; extensions: bookName -> the five extension values."""
+        rows = csv_rows(self.repo.read("ForDB/book_info.csv"))
+        buf = io.StringIO(newline="")
+        csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n").writerows(
+            row + list(extensions.get(row[0], [""] * 5)) for row in rows[1:])
+        header = rows[0] + ["topics", "pubDate", "pubPlace", "description", "proofread"]
+        source = ",".join(header) + "\n" + buf.getvalue()
+        self.repo.write({"ForDB/book_info.csv": source})
+        return source
+
+    def test_extension_fields_follow_the_rename_of_an_eleven_column_file(self):
+        fields = ["חסידות", 'תרפ"ה', "ורשה", "שורה\nשנייה", "1"]
+        self.extend_book_info({OLD: fields})
+        self.repo.commit("eleven columns")
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertEqual(code, 0, output)
+        actual = csv_rows(self.repo.read("ForDB/book_info.csv"))
+        self.assertEqual(len(actual[0]), 11)
+        self.assertEqual([r[6:] for r in actual if r[0] == NEW], [fields, fields])
+
+    def test_a_rename_onto_a_book_with_other_extension_fields_is_blocked(self):
+        source = self.repo.read("ForDB/book_info.csv") + f'"{NEW}","מחבר אחר","אחרונים","","",""\n'
+        self.repo.write({"ForDB/book_info.csv": source})
+        source = self.extend_book_info({OLD: ["חסידות", "", "", "", ""], NEW: ["מוסר", "", "", "", ""]})
+        self.repo.commit("conflicting book fields")
+        rename_incident(self.repo)
+        code, output = self.repo.run_validator("--fix", "--rename-base", self.repo.base)
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("conflicting book metadata", output)
+        self.assertEqual(self.repo.read("ForDB/book_info.csv"), source)
+
     def test_multiline_author_survives_orphan_pruning_byte_for_byte(self):
         for newline in ("\n", "\r", "\r\n"):
             with self.subTest(newline=newline):

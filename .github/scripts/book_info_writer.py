@@ -1,7 +1,9 @@
 """Canonical additive registration for packaged books, shared by every importer.
 
 Existing (bookName, authorName) rows are authoritative, including blank values.
-Registration never replaces their generation, subgeneration or years. Missing
+Registration never replaces their generation, subgeneration or years, and keeps
+the file's six- or eleven-column header; a new row copies its book's extension
+fields (blank for a new book). Missing
 book_info is an error: creating an empty source would hide the legacy catalogue.
 """
 import csv
@@ -11,7 +13,7 @@ import tempfile
 from pathlib import Path
 
 from fordb_book_renames import _split_bom, _csv_value, csv_records, EditVerificationError
-from book_info_contract import HEADER, GENERATIONS, validate_book_info
+from book_info_contract import HEADER, HEADERS, GENERATIONS, validate_book_info
 
 
 def encode_rows(rows):
@@ -34,17 +36,19 @@ def plan_registration(repo, entries):
         tokens = csv_records(text)
     except EditVerificationError as error:
         raise ValueError(str(error)) from error
-    if not parsed or parsed[0] != HEADER:
-        raise ValueError(f'{path}: expected supported six-column header')
+    if not parsed or parsed[0] not in HEADERS:
+        raise ValueError(f'{path}: expected the six-column or eleven-column header')
+    width = len(parsed[0])
     rows = [r for r in parsed[1:] if r]
-    if any(len(r) != len(HEADER) for r in rows):
+    if any(len(r) != width for r in rows):
         raise ValueError(f'{path}: wrong record width')
     if len({tuple(r[:2]) for r in rows}) != len(rows):
         raise ValueError(f'{path}: duplicate book/author identity')
     # Preserve original record bytes, including quoted linebreaks and years.
     original = {tuple(_csv_value(text, f) for f in fields[:2]): text[start:end]
-                for start, end, fields in tokens[1:] if len(fields) == len(HEADER)}
+                for start, end, fields in tokens[1:] if len(fields) == width}
     identities = {tuple(r[:2]) for r in rows}
+    extensions = {r[0]: r[len(HEADER):] for r in rows}
     titles = {r[0] for r in rows}
     requested_titles = set()
     for entry in entries:
@@ -57,7 +61,7 @@ def plan_registration(repo, entries):
         identity = tuple(row[:2])
         if identity in identities or (not row[1] and row[0] in titles):
             continue
-        rows.append(row)
+        rows.append(row + extensions.get(row[0], [''] * (width - len(HEADER))))
         identities.add(identity)
         titles.add(row[0])
     rows.sort(key=lambda r: (r[0], r[1]))

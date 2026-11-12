@@ -433,6 +433,11 @@ class CsvTarget:
     optional: bool = False  # קובץ שהיעדרו תקין גם בלי עמודת מקור
 
 
+def book_info_extension():
+    from book_info_contract import EXTENSION  # book_info_contract מייבא את המודול הזה
+    return EXTENSION
+
+
 def source_of(path):
     """שם המקור של נתיב ספר: התיקייה העליונה, כמו source.name ב-DB."""
     return path.replace("\\", "/").split("/", 1)[0]
@@ -675,6 +680,9 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
         }
         identity_rows = {}
         exact_identity_rows = {}
+        # שדות ההרחבה שייכים לספר: שם יעד עם ערכים אחרים בשורות של מחבר אחר חוסם.
+        extension_cols = [header.index(c) for c in book_info_extension() if c in header] if author_col is not None else []
+        book_extensions, exact_book_extensions = {}, {}
         if author_col is not None:
             for _start, _end, fields in records[1:]:
                 if len(fields) != len(header):
@@ -682,6 +690,9 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
                 row = [_csv_value(text, f) for f in fields]
                 identity_rows.setdefault((key(row[col]), row[author_col]), []).append(row)
                 exact_identity_rows.setdefault((row[col], row[author_col]), []).append(row)
+                extension = tuple(row[i] for i in extension_cols)
+                book_extensions.setdefault(key(row[col]), set()).add(extension)
+                exact_book_extensions.setdefault(row[col], set()).add(extension)
         edits, drop = {}, []
         for idx, (_s, _e, fields) in enumerate(records[1:], start=1):
             if len(fields) <= col:
@@ -706,6 +717,12 @@ def _plan_once(repo, renames, db_title, key, db_prefixes, links_roots):
                 conflict = _conflicts(rename, new_value, values, key, keyed_values)
             if author_col is not None:
                 author = _csv_value(text, fields[author_col])
+                extension = tuple(_csv_value(text, fields[i]) for i in extension_cols)
+                existing = (exact_book_extensions.get(new_value, set()) if rename.respell
+                            else book_extensions.get(key(new_value), set()))
+                if existing - {extension}:
+                    plan.blocked[rid] = f"{target.path}: conflicting book metadata at {new_value!r}"
+                    continue
                 conflict = ((new_value, author) in exact_identities if rename.respell
                             else (key(new_value), author) in identities)
                 if conflict:

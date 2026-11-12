@@ -6,6 +6,7 @@ import subprocess
 import tempfile
 import unittest
 
+from book_info_contract import EXTENDED_HEADER
 from book_info_writer import HEADER, encode_rows
 import check_author_mirrors as mirrors
 
@@ -30,11 +31,11 @@ class Repo:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')
 
-    def state(self, metadata, fordb, book_info, books, canonical=()):
+    def state(self, metadata, fordb, book_info, books, canonical=(), header=HEADER):
         self.write('metadata.json', '[\n' + ',\n'.join(
             json.dumps(m, ensure_ascii=False, separators=(',', ':')) for m in metadata) + '\n]\n')
         self.write('ForDB/all_metadata.json', json.dumps(fordb, ensure_ascii=False, indent=2) + '\n')
-        self.write('ForDB/book_info.csv', encode_rows([HEADER, *book_info]))
+        self.write('ForDB/book_info.csv', encode_rows([header, *book_info]))
         self.write('all_metadata_with_file_paths.json', json.dumps(list(canonical), ensure_ascii=False) + '\n')
         for path in books:
             self.write(path, 'כותרת\nמחבר\n')
@@ -88,6 +89,12 @@ class AuthorMirrorsTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(out.count('::warning file='), 3)
         self.assertIn('ForDB/all_metadata.json: 2, ForDB/book_info.csv: 1', out)
+
+    def test_an_eleven_column_book_info_is_read_by_its_base_columns(self):
+        metadata = [{'title': 'א', 'author': 'רבי משה סופר'}]
+        book_info = [['א', 'משה סופר', 'אחרונים', '', '', '', 'הלכה', '', '', 'תיאור\nבשתי שורות', '1']]
+        self.repo.state(metadata, [], book_info, [DICTA + 'א.txt'], header=EXTENDED_HEADER)
+        self.assertEqual(self.repo.find(), [('ForDB/book_info.csv', 'א', 'משה סופר', 'רבי משה סופר')])
 
     def test_a_record_of_another_source_is_another_book(self):
         # רשומת דיקטה ישנה בשם שהספר הנארז שלו הוא עכשיו של מקור אחר
