@@ -1,0 +1,4818 @@
+[
+  {
+    "line_index_1": 4,
+    "heRef_2": "שבת י., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 205,
+    "ref_2": "Shabbat 10a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 5,
+    "heRef_2": "שבת י., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 205,
+    "ref_2": "Shabbat 10a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 6,
+    "heRef_2": "שבת י., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 207,
+    "ref_2": "Shabbat 10a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 7,
+    "heRef_2": "שבת י., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 207,
+    "ref_2": "Shabbat 10a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 10,
+    "heRef_2": "שבת י:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 219,
+    "ref_2": "Shabbat 10b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 11,
+    "heRef_2": "שבת י:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 219,
+    "ref_2": "Shabbat 10b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 12,
+    "heRef_2": "שבת י:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 219,
+    "ref_2": "Shabbat 10b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 13,
+    "heRef_2": "שבת י:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 220,
+    "ref_2": "Shabbat 10b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 14,
+    "heRef_2": "שבת י:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 221,
+    "ref_2": "Shabbat 10b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 15,
+    "heRef_2": "שבת י:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 221,
+    "ref_2": "Shabbat 10b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 16,
+    "heRef_2": "שבת י:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 221,
+    "ref_2": "Shabbat 10b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 17,
+    "heRef_2": "שבת י:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 221,
+    "ref_2": "Shabbat 10b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 18,
+    "heRef_2": "שבת יא., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 226,
+    "ref_2": "Shabbat 11a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 19,
+    "heRef_2": "שבת יא., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 226,
+    "ref_2": "Shabbat 11a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 21,
+    "heRef_2": "שבת יא., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 225,
+    "ref_2": "Shabbat 11a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 22,
+    "heRef_2": "שבת יא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 228,
+    "ref_2": "Shabbat 11a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 23,
+    "heRef_2": "שבת יא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 228,
+    "ref_2": "Shabbat 11a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 24,
+    "heRef_2": "שבת יא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 228,
+    "ref_2": "Shabbat 11a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 25,
+    "heRef_2": "שבת יא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 228,
+    "ref_2": "Shabbat 11a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 26,
+    "heRef_2": "שבת יא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 228,
+    "ref_2": "Shabbat 11a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 28,
+    "heRef_2": "שבת יב:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 264,
+    "ref_2": "Shabbat 12b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 29,
+    "heRef_2": "שבת יב:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 264,
+    "ref_2": "Shabbat 12b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 30,
+    "heRef_2": "שבת יב:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 264,
+    "ref_2": "Shabbat 12b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 32,
+    "heRef_2": "שבת יג., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 282,
+    "ref_2": "Shabbat 13a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 33,
+    "heRef_2": "שבת יג., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 282,
+    "ref_2": "Shabbat 13a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 35,
+    "heRef_2": "שבת יג:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 290,
+    "ref_2": "Shabbat 13b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 36,
+    "heRef_2": "שבת יג:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 290,
+    "ref_2": "Shabbat 13b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 38,
+    "heRef_2": "שבת יד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 302,
+    "ref_2": "Shabbat 14a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 39,
+    "heRef_2": "שבת יד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 302,
+    "ref_2": "Shabbat 14a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 40,
+    "heRef_2": "שבת יד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 302,
+    "ref_2": "Shabbat 14a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 41,
+    "heRef_2": "שבת יד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 302,
+    "ref_2": "Shabbat 14a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 44,
+    "heRef_2": "שבת כא:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 452,
+    "ref_2": "Shabbat 21b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 45,
+    "heRef_2": "שבת כא:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 452,
+    "ref_2": "Shabbat 21b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 46,
+    "heRef_2": "שבת כא:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 452,
+    "ref_2": "Shabbat 21b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 47,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 48,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 49,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 50,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 51,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 52,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 53,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 54,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 55,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 56,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 57,
+    "heRef_2": "שבת כא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 456,
+    "ref_2": "Shabbat 21b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 59,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 60,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 61,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 62,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 63,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 64,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 65,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 66,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 67,
+    "heRef_2": "שבת כג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 494,
+    "ref_2": "Shabbat 23b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 68,
+    "heRef_2": "שבת כג:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 495,
+    "ref_2": "Shabbat 23b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 69,
+    "heRef_2": "שבת כג:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 495,
+    "ref_2": "Shabbat 23b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 70,
+    "heRef_2": "שבת כג:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 495,
+    "ref_2": "Shabbat 23b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 71,
+    "heRef_2": "שבת כג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 496,
+    "ref_2": "Shabbat 23b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 72,
+    "heRef_2": "שבת כג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 496,
+    "ref_2": "Shabbat 23b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 73,
+    "heRef_2": "שבת כג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 496,
+    "ref_2": "Shabbat 23b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 75,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 76,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 77,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 78,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 79,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 80,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 81,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 82,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 83,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 84,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 85,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 86,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 87,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 88,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 89,
+    "heRef_2": "שבת כה:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 530,
+    "ref_2": "Shabbat 25b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 91,
+    "heRef_2": "שבת כח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 589,
+    "ref_2": "Shabbat 28b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 92,
+    "heRef_2": "שבת כח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 589,
+    "ref_2": "Shabbat 28b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 93,
+    "heRef_2": "שבת כח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 589,
+    "ref_2": "Shabbat 28b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 94,
+    "heRef_2": "שבת כח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 589,
+    "ref_2": "Shabbat 28b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 95,
+    "heRef_2": "שבת כח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 589,
+    "ref_2": "Shabbat 28b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 97,
+    "heRef_2": "שבת ל., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 622,
+    "ref_2": "Shabbat 30a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 98,
+    "heRef_2": "שבת ל., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 622,
+    "ref_2": "Shabbat 30a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 99,
+    "heRef_2": "שבת ל., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 622,
+    "ref_2": "Shabbat 30a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 100,
+    "heRef_2": "שבת ל., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 622,
+    "ref_2": "Shabbat 30a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 101,
+    "heRef_2": "שבת ל., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 623,
+    "ref_2": "Shabbat 30a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 102,
+    "heRef_2": "שבת ל., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 623,
+    "ref_2": "Shabbat 30a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 103,
+    "heRef_2": "שבת ל., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 623,
+    "ref_2": "Shabbat 30a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 104,
+    "heRef_2": "שבת ל., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 625,
+    "ref_2": "Shabbat 30a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 105,
+    "heRef_2": "שבת ל., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 625,
+    "ref_2": "Shabbat 30a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 106,
+    "heRef_2": "שבת ל., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 626,
+    "ref_2": "Shabbat 30a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 107,
+    "heRef_2": "שבת ל., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 626,
+    "ref_2": "Shabbat 30a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 108,
+    "heRef_2": "שבת ל., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 626,
+    "ref_2": "Shabbat 30a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 109,
+    "heRef_2": "שבת ל., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 626,
+    "ref_2": "Shabbat 30a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 111,
+    "heRef_2": "שבת ל., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 627,
+    "ref_2": "Shabbat 30a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 112,
+    "heRef_2": "שבת ל., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 627,
+    "ref_2": "Shabbat 30a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 113,
+    "heRef_2": "שבת ל., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 627,
+    "ref_2": "Shabbat 30a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 114,
+    "heRef_2": "שבת ל., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 627,
+    "ref_2": "Shabbat 30a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 118,
+    "heRef_2": "שבת ל:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 631,
+    "ref_2": "Shabbat 30b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 119,
+    "heRef_2": "שבת ל:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 631,
+    "ref_2": "Shabbat 30b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 121,
+    "heRef_2": "שבת ל:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 632,
+    "ref_2": "Shabbat 30b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 122,
+    "heRef_2": "שבת ל:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 632,
+    "ref_2": "Shabbat 30b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 124,
+    "heRef_2": "שבת ל:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 633,
+    "ref_2": "Shabbat 30b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 125,
+    "heRef_2": "שבת ל:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 633,
+    "ref_2": "Shabbat 30b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 126,
+    "heRef_2": "שבת ל:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 634,
+    "ref_2": "Shabbat 30b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 127,
+    "heRef_2": "שבת ל:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 634,
+    "ref_2": "Shabbat 30b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 128,
+    "heRef_2": "שבת ל:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 634,
+    "ref_2": "Shabbat 30b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 129,
+    "heRef_2": "שבת ל:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 636,
+    "ref_2": "Shabbat 30b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 130,
+    "heRef_2": "שבת ל:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 636,
+    "ref_2": "Shabbat 30b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 131,
+    "heRef_2": "שבת ל:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 636,
+    "ref_2": "Shabbat 30b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 132,
+    "heRef_2": "שבת ל:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 636,
+    "ref_2": "Shabbat 30b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 133,
+    "heRef_2": "שבת ל:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 637,
+    "ref_2": "Shabbat 30b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 135,
+    "heRef_2": "שבת לא., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 643,
+    "ref_2": "Shabbat 31a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 136,
+    "heRef_2": "שבת לא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 646,
+    "ref_2": "Shabbat 31a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 137,
+    "heRef_2": "שבת לא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 646,
+    "ref_2": "Shabbat 31a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 138,
+    "heRef_2": "שבת לא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 646,
+    "ref_2": "Shabbat 31a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 139,
+    "heRef_2": "שבת לא., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 651,
+    "ref_2": "Shabbat 31a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 140,
+    "heRef_2": "שבת לא., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 651,
+    "ref_2": "Shabbat 31a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 141,
+    "heRef_2": "שבת לא., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 652,
+    "ref_2": "Shabbat 31a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 142,
+    "heRef_2": "שבת לא., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 652,
+    "ref_2": "Shabbat 31a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 143,
+    "heRef_2": "שבת לא., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 652,
+    "ref_2": "Shabbat 31a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 144,
+    "heRef_2": "שבת לא:, א",
+    "path_2": "שבת.txt",
+    "line_index_2": 656,
+    "ref_2": "Shabbat 31b:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 145,
+    "heRef_2": "שבת לא:, א",
+    "path_2": "שבת.txt",
+    "line_index_2": 656,
+    "ref_2": "Shabbat 31b:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 152,
+    "heRef_2": "שבת לא:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 658,
+    "ref_2": "Shabbat 31b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 153,
+    "heRef_2": "שבת לא:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 658,
+    "ref_2": "Shabbat 31b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 154,
+    "heRef_2": "שבת לא:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 658,
+    "ref_2": "Shabbat 31b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 155,
+    "heRef_2": "שבת לא:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 658,
+    "ref_2": "Shabbat 31b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 156,
+    "heRef_2": "שבת לא:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 659,
+    "ref_2": "Shabbat 31b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 157,
+    "heRef_2": "שבת לא:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 659,
+    "ref_2": "Shabbat 31b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 158,
+    "heRef_2": "שבת לא:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 660,
+    "ref_2": "Shabbat 31b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 159,
+    "heRef_2": "שבת לא:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 660,
+    "ref_2": "Shabbat 31b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 160,
+    "heRef_2": "שבת לא:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 660,
+    "ref_2": "Shabbat 31b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 161,
+    "heRef_2": "שבת לא:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 664,
+    "ref_2": "Shabbat 31b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 162,
+    "heRef_2": "שבת לב., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 667,
+    "ref_2": "Shabbat 32a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 164,
+    "heRef_2": "שבת לב., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 670,
+    "ref_2": "Shabbat 32a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 165,
+    "heRef_2": "שבת לב., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 670,
+    "ref_2": "Shabbat 32a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 166,
+    "heRef_2": "שבת לב., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 671,
+    "ref_2": "Shabbat 32a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 167,
+    "heRef_2": "שבת לב., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 672,
+    "ref_2": "Shabbat 32a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 168,
+    "heRef_2": "שבת לב., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 673,
+    "ref_2": "Shabbat 32a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 169,
+    "heRef_2": "שבת לב., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 674,
+    "ref_2": "Shabbat 32a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 170,
+    "heRef_2": "שבת לב., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 674,
+    "ref_2": "Shabbat 32a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 171,
+    "heRef_2": "שבת לב., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 674,
+    "ref_2": "Shabbat 32a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 172,
+    "heRef_2": "שבת לב., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 675,
+    "ref_2": "Shabbat 32a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 173,
+    "heRef_2": "שבת לב., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 675,
+    "ref_2": "Shabbat 32a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 175,
+    "heRef_2": "שבת לב:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 680,
+    "ref_2": "Shabbat 32b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 176,
+    "heRef_2": "שבת לב:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 680,
+    "ref_2": "Shabbat 32b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 177,
+    "heRef_2": "שבת לב:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 680,
+    "ref_2": "Shabbat 32b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 178,
+    "heRef_2": "שבת לב:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 681,
+    "ref_2": "Shabbat 32b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 179,
+    "heRef_2": "שבת לב:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 681,
+    "ref_2": "Shabbat 32b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 180,
+    "heRef_2": "שבת לב:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 683,
+    "ref_2": "Shabbat 32b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 181,
+    "heRef_2": "שבת לב:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 683,
+    "ref_2": "Shabbat 32b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 182,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 183,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 184,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 185,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 186,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 187,
+    "heRef_2": "שבת לב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 684,
+    "ref_2": "Shabbat 32b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 188,
+    "heRef_2": "שבת לב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 685,
+    "ref_2": "Shabbat 32b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 189,
+    "heRef_2": "שבת לב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 685,
+    "ref_2": "Shabbat 32b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 190,
+    "heRef_2": "שבת לב:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 686,
+    "ref_2": "Shabbat 32b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 192,
+    "heRef_2": "שבת לג., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 688,
+    "ref_2": "Shabbat 33a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 193,
+    "heRef_2": "שבת לג., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 689,
+    "ref_2": "Shabbat 33a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 194,
+    "heRef_2": "שבת לג., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 689,
+    "ref_2": "Shabbat 33a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 195,
+    "heRef_2": "שבת לג., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 689,
+    "ref_2": "Shabbat 33a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 196,
+    "heRef_2": "שבת לג., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 690,
+    "ref_2": "Shabbat 33a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 197,
+    "heRef_2": "שבת לג., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 690,
+    "ref_2": "Shabbat 33a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 198,
+    "heRef_2": "שבת לג., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 691,
+    "ref_2": "Shabbat 33a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 199,
+    "heRef_2": "שבת לג., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 692,
+    "ref_2": "Shabbat 33a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 200,
+    "heRef_2": "שבת לג., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 692,
+    "ref_2": "Shabbat 33a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 201,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 203,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 204,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 205,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 206,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 207,
+    "heRef_2": "שבת לג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 696,
+    "ref_2": "Shabbat 33a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 202,
+    "heRef_2": "שבת לג., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 695,
+    "ref_2": "Shabbat 33a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 208,
+    "heRef_2": "שבת לג., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 697,
+    "ref_2": "Shabbat 33a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 209,
+    "heRef_2": "שבת לג., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 700,
+    "ref_2": "Shabbat 33a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 210,
+    "heRef_2": "שבת לג., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 700,
+    "ref_2": "Shabbat 33a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 211,
+    "heRef_2": "שבת לג., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 700,
+    "ref_2": "Shabbat 33a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 213,
+    "heRef_2": "שבת לג:, א",
+    "path_2": "שבת.txt",
+    "line_index_2": 703,
+    "ref_2": "Shabbat 33b:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 214,
+    "heRef_2": "שבת לג:, א",
+    "path_2": "שבת.txt",
+    "line_index_2": 703,
+    "ref_2": "Shabbat 33b:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 215,
+    "heRef_2": "שבת לג:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 704,
+    "ref_2": "Shabbat 33b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 216,
+    "heRef_2": "שבת לג:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 704,
+    "ref_2": "Shabbat 33b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 217,
+    "heRef_2": "שבת לג:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 704,
+    "ref_2": "Shabbat 33b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 218,
+    "heRef_2": "שבת לג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 706,
+    "ref_2": "Shabbat 33b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 219,
+    "heRef_2": "שבת לג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 708,
+    "ref_2": "Shabbat 33b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 220,
+    "heRef_2": "שבת לג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 708,
+    "ref_2": "Shabbat 33b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 221,
+    "heRef_2": "שבת לג:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 708,
+    "ref_2": "Shabbat 33b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 222,
+    "heRef_2": "שבת לג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 712,
+    "ref_2": "Shabbat 33b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 223,
+    "heRef_2": "שבת לג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 712,
+    "ref_2": "Shabbat 33b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 224,
+    "heRef_2": "שבת לג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 712,
+    "ref_2": "Shabbat 33b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 226,
+    "heRef_2": "שבת לד., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 714,
+    "ref_2": "Shabbat 34a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 227,
+    "heRef_2": "שבת לד., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 715,
+    "ref_2": "Shabbat 34a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 230,
+    "heRef_2": "שבת נג:, יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1189,
+    "ref_2": "Shabbat 53b:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 231,
+    "heRef_2": "שבת נג:, יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1189,
+    "ref_2": "Shabbat 53b:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 232,
+    "heRef_2": "שבת נג:, יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1189,
+    "ref_2": "Shabbat 53b:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 233,
+    "heRef_2": "שבת נג:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1190,
+    "ref_2": "Shabbat 53b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 234,
+    "heRef_2": "שבת נג:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1190,
+    "ref_2": "Shabbat 53b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 235,
+    "heRef_2": "שבת נג:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1191,
+    "ref_2": "Shabbat 53b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 236,
+    "heRef_2": "שבת נג:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1191,
+    "ref_2": "Shabbat 53b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 237,
+    "heRef_2": "שבת נג:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1191,
+    "ref_2": "Shabbat 53b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 239,
+    "heRef_2": "שבת נה., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 1246,
+    "ref_2": "Shabbat 55a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 240,
+    "heRef_2": "שבת נה., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 1246,
+    "ref_2": "Shabbat 55a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 241,
+    "heRef_2": "שבת נה., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 1246,
+    "ref_2": "Shabbat 55a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 242,
+    "heRef_2": "שבת נה., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1247,
+    "ref_2": "Shabbat 55a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 243,
+    "heRef_2": "שבת נה., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 1251,
+    "ref_2": "Shabbat 55a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 244,
+    "heRef_2": "שבת נה., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 1251,
+    "ref_2": "Shabbat 55a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 245,
+    "heRef_2": "שבת נה., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 1251,
+    "ref_2": "Shabbat 55a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 246,
+    "heRef_2": "שבת נה., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 1251,
+    "ref_2": "Shabbat 55a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 247,
+    "heRef_2": "שבת נה., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 1251,
+    "ref_2": "Shabbat 55a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 248,
+    "heRef_2": "שבת נה., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1252,
+    "ref_2": "Shabbat 55a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 249,
+    "heRef_2": "שבת נה., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1252,
+    "ref_2": "Shabbat 55a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 250,
+    "heRef_2": "שבת נה., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1252,
+    "ref_2": "Shabbat 55a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 251,
+    "heRef_2": "שבת נה., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 1253,
+    "ref_2": "Shabbat 55a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 252,
+    "heRef_2": "שבת נה., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 1253,
+    "ref_2": "Shabbat 55a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 253,
+    "heRef_2": "שבת נה., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 1253,
+    "ref_2": "Shabbat 55a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 254,
+    "heRef_2": "שבת נה., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1254,
+    "ref_2": "Shabbat 55a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 255,
+    "heRef_2": "שבת נה., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1254,
+    "ref_2": "Shabbat 55a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 257,
+    "heRef_2": "שבת נה:, א",
+    "path_2": "שבת.txt",
+    "line_index_2": 1261,
+    "ref_2": "Shabbat 55b:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 258,
+    "heRef_2": "שבת נה:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1263,
+    "ref_2": "Shabbat 55b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 259,
+    "heRef_2": "שבת נה:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1263,
+    "ref_2": "Shabbat 55b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 260,
+    "heRef_2": "שבת נה:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1263,
+    "ref_2": "Shabbat 55b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 261,
+    "heRef_2": "שבת נה:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1263,
+    "ref_2": "Shabbat 55b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 262,
+    "heRef_2": "שבת נה:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1263,
+    "ref_2": "Shabbat 55b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 263,
+    "heRef_2": "שבת נה:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1266,
+    "ref_2": "Shabbat 55b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 264,
+    "heRef_2": "שבת נה:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1268,
+    "ref_2": "Shabbat 55b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 265,
+    "heRef_2": "שבת נה:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1268,
+    "ref_2": "Shabbat 55b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 269,
+    "heRef_2": "שבת נה:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1273,
+    "ref_2": "Shabbat 55b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 270,
+    "heRef_2": "שבת נה:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1278,
+    "ref_2": "Shabbat 55b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 271,
+    "heRef_2": "שבת נה:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1278,
+    "ref_2": "Shabbat 55b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 273,
+    "heRef_2": "שבת נו., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1284,
+    "ref_2": "Shabbat 56a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 274,
+    "heRef_2": "שבת נו., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1285,
+    "ref_2": "Shabbat 56a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 275,
+    "heRef_2": "שבת נו., טז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1297,
+    "ref_2": "Shabbat 56a:16",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 277,
+    "heRef_2": "שבת נו:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1302,
+    "ref_2": "Shabbat 56b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 278,
+    "heRef_2": "שבת נו:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1302,
+    "ref_2": "Shabbat 56b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 279,
+    "heRef_2": "שבת נו:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1302,
+    "ref_2": "Shabbat 56b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 280,
+    "heRef_2": "שבת נו:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1302,
+    "ref_2": "Shabbat 56b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 281,
+    "heRef_2": "שבת נו:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 1302,
+    "ref_2": "Shabbat 56b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 283,
+    "heRef_2": "שבת נו:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1313,
+    "ref_2": "Shabbat 56b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 284,
+    "heRef_2": "שבת נו:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1313,
+    "ref_2": "Shabbat 56b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 285,
+    "heRef_2": "שבת נו:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1313,
+    "ref_2": "Shabbat 56b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 286,
+    "heRef_2": "שבת נו:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1317,
+    "ref_2": "Shabbat 56b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 287,
+    "heRef_2": "שבת נו:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1317,
+    "ref_2": "Shabbat 56b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 288,
+    "heRef_2": "שבת נו:, יט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1317,
+    "ref_2": "Shabbat 56b:19",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 291,
+    "heRef_2": "שבת סא., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 1463,
+    "ref_2": "Shabbat 61a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 293,
+    "heRef_2": "שבת סב:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1524,
+    "ref_2": "Shabbat 62b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 294,
+    "heRef_2": "שבת סב:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1524,
+    "ref_2": "Shabbat 62b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 295,
+    "heRef_2": "שבת סב:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1524,
+    "ref_2": "Shabbat 62b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 297,
+    "heRef_2": "שבת סג., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1546,
+    "ref_2": "Shabbat 63a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 298,
+    "heRef_2": "שבת סג., יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1546,
+    "ref_2": "Shabbat 63a:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 299,
+    "heRef_2": "שבת סג., טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1550,
+    "ref_2": "Shabbat 63a:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 300,
+    "heRef_2": "שבת סג., יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1552,
+    "ref_2": "Shabbat 63a:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 301,
+    "heRef_2": "שבת סג., יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1552,
+    "ref_2": "Shabbat 63a:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 302,
+    "heRef_2": "שבת סג., יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1552,
+    "ref_2": "Shabbat 63a:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 303,
+    "heRef_2": "שבת סג., יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1552,
+    "ref_2": "Shabbat 63a:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 304,
+    "heRef_2": "שבת סג., יז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1552,
+    "ref_2": "Shabbat 63a:17",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 305,
+    "heRef_2": "שבת סג., יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1553,
+    "ref_2": "Shabbat 63a:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 306,
+    "heRef_2": "שבת סג., כג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1558,
+    "ref_2": "Shabbat 63a:23",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 307,
+    "heRef_2": "שבת סג., כג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1558,
+    "ref_2": "Shabbat 63a:23",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 308,
+    "heRef_2": "שבת סג., כג",
+    "path_2": "שבת.txt",
+    "line_index_2": 1558,
+    "ref_2": "Shabbat 63a:23",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 309,
+    "heRef_2": "שבת סג., כ",
+    "path_2": "שבת.txt",
+    "line_index_2": 1555,
+    "ref_2": "Shabbat 63a:20",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 310,
+    "heRef_2": "שבת סג., כא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1556,
+    "ref_2": "Shabbat 63a:21",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 311,
+    "heRef_2": "שבת סג., כא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1556,
+    "ref_2": "Shabbat 63a:21",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 312,
+    "heRef_2": "שבת סג., כא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1556,
+    "ref_2": "Shabbat 63a:21",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 313,
+    "heRef_2": "שבת סג., כא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1556,
+    "ref_2": "Shabbat 63a:21",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 314,
+    "heRef_2": "שבת סג., כא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1556,
+    "ref_2": "Shabbat 63a:21",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 315,
+    "heRef_2": "שבת סג., כה",
+    "path_2": "שבת.txt",
+    "line_index_2": 1560,
+    "ref_2": "Shabbat 63a:25",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 316,
+    "heRef_2": "שבת סג., כו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1561,
+    "ref_2": "Shabbat 63a:26",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 317,
+    "heRef_2": "שבת סג., כו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1561,
+    "ref_2": "Shabbat 63a:26",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 318,
+    "heRef_2": "שבת סג., כו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1561,
+    "ref_2": "Shabbat 63a:26",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 319,
+    "heRef_2": "שבת סג., כז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1562,
+    "ref_2": "Shabbat 63a:27",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 320,
+    "heRef_2": "שבת סג., כז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1562,
+    "ref_2": "Shabbat 63a:27",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 321,
+    "heRef_2": "שבת סג., כח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1563,
+    "ref_2": "Shabbat 63a:28",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 322,
+    "heRef_2": "שבת סג., כח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1563,
+    "ref_2": "Shabbat 63a:28",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 323,
+    "heRef_2": "שבת סג., כח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1563,
+    "ref_2": "Shabbat 63a:28",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 325,
+    "heRef_2": "שבת סד:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 1612,
+    "ref_2": "Shabbat 64b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 327,
+    "heRef_2": "שבת סז:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1736,
+    "ref_2": "Shabbat 67b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 330,
+    "heRef_2": "שבת עז:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1914,
+    "ref_2": "Shabbat 77b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 331,
+    "heRef_2": "שבת עז:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 1914,
+    "ref_2": "Shabbat 77b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 332,
+    "heRef_2": "שבת עז:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 1915,
+    "ref_2": "Shabbat 77b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 333,
+    "heRef_2": "שבת עז:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1916,
+    "ref_2": "Shabbat 77b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 334,
+    "heRef_2": "שבת עז:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1916,
+    "ref_2": "Shabbat 77b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 335,
+    "heRef_2": "שבת עז:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1916,
+    "ref_2": "Shabbat 77b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 336,
+    "heRef_2": "שבת עז:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 1916,
+    "ref_2": "Shabbat 77b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 337,
+    "heRef_2": "שבת עז:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 1917,
+    "ref_2": "Shabbat 77b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 338,
+    "heRef_2": "שבת עז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1919,
+    "ref_2": "Shabbat 77b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 339,
+    "heRef_2": "שבת עז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1919,
+    "ref_2": "Shabbat 77b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 340,
+    "heRef_2": "שבת עז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1919,
+    "ref_2": "Shabbat 77b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 341,
+    "heRef_2": "שבת עז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 1919,
+    "ref_2": "Shabbat 77b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 344,
+    "heRef_2": "שבת פג:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2030,
+    "ref_2": "Shabbat 83b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 345,
+    "heRef_2": "שבת פג:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2030,
+    "ref_2": "Shabbat 83b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 346,
+    "heRef_2": "שבת פג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2037,
+    "ref_2": "Shabbat 83b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 347,
+    "heRef_2": "שבת פג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2037,
+    "ref_2": "Shabbat 83b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 350,
+    "heRef_2": "שבת פז., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2080,
+    "ref_2": "Shabbat 87a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 351,
+    "heRef_2": "שבת פז., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2083,
+    "ref_2": "Shabbat 87a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 353,
+    "heRef_2": "שבת פז:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2091,
+    "ref_2": "Shabbat 87b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 355,
+    "heRef_2": "שבת פח., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2097,
+    "ref_2": "Shabbat 88a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 356,
+    "heRef_2": "שבת פח., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2098,
+    "ref_2": "Shabbat 88a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 357,
+    "heRef_2": "שבת פח., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2100,
+    "ref_2": "Shabbat 88a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 358,
+    "heRef_2": "שבת פח., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2101,
+    "ref_2": "Shabbat 88a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 360,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 361,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 365,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 366,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 367,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 368,
+    "heRef_2": "שבת פח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2105,
+    "ref_2": "Shabbat 88b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 370,
+    "heRef_2": "שבת פח:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2106,
+    "ref_2": "Shabbat 88b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 371,
+    "heRef_2": "שבת פח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2107,
+    "ref_2": "Shabbat 88b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 372,
+    "heRef_2": "שבת פח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2107,
+    "ref_2": "Shabbat 88b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 373,
+    "heRef_2": "שבת פח:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2108,
+    "ref_2": "Shabbat 88b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 374,
+    "heRef_2": "שבת פח:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2109,
+    "ref_2": "Shabbat 88b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 376,
+    "heRef_2": "שבת פח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2110,
+    "ref_2": "Shabbat 88b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 377,
+    "heRef_2": "שבת פט., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2115,
+    "ref_2": "Shabbat 89a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 378,
+    "heRef_2": "שבת פט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2117,
+    "ref_2": "Shabbat 89a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 379,
+    "heRef_2": "שבת פט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2118,
+    "ref_2": "Shabbat 89a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 380,
+    "heRef_2": "שבת פט., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2119,
+    "ref_2": "Shabbat 89a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 381,
+    "heRef_2": "שבת פט., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2119,
+    "ref_2": "Shabbat 89a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 382,
+    "heRef_2": "שבת פט:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2122,
+    "ref_2": "Shabbat 89b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 383,
+    "heRef_2": "שבת פט:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2122,
+    "ref_2": "Shabbat 89b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 384,
+    "heRef_2": "שבת פט:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2122,
+    "ref_2": "Shabbat 89b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 385,
+    "heRef_2": "שבת פט:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2124,
+    "ref_2": "Shabbat 89b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 386,
+    "heRef_2": "שבת פט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2126,
+    "ref_2": "Shabbat 89b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 389,
+    "heRef_2": "שבת צב., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2179,
+    "ref_2": "Shabbat 92a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 390,
+    "heRef_2": "שבת צב., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2179,
+    "ref_2": "Shabbat 92a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 393,
+    "heRef_2": "שבת צז., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2277,
+    "ref_2": "Shabbat 97a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 394,
+    "heRef_2": "שבת צז., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2279,
+    "ref_2": "Shabbat 97a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 396,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 397,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 398,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 399,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 400,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 401,
+    "heRef_2": "שבת צט., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2328,
+    "ref_2": "Shabbat 99a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 404,
+    "heRef_2": "שבת קג:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2443,
+    "ref_2": "Shabbat 103b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 406,
+    "heRef_2": "שבת קד., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2450,
+    "ref_2": "Shabbat 104a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 407,
+    "heRef_2": "שבת קד., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2450,
+    "ref_2": "Shabbat 104a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 408,
+    "heRef_2": "שבת קד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2454,
+    "ref_2": "Shabbat 104a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 409,
+    "heRef_2": "שבת קד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2454,
+    "ref_2": "Shabbat 104a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 410,
+    "heRef_2": "שבת קד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2454,
+    "ref_2": "Shabbat 104a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 411,
+    "heRef_2": "שבת קד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2454,
+    "ref_2": "Shabbat 104a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 412,
+    "heRef_2": "שבת קד., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2455,
+    "ref_2": "Shabbat 104a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 413,
+    "heRef_2": "שבת קד., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2455,
+    "ref_2": "Shabbat 104a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 415,
+    "heRef_2": "שבת קה., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2474,
+    "ref_2": "Shabbat 105a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 416,
+    "heRef_2": "שבת קה., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2475,
+    "ref_2": "Shabbat 105a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 417,
+    "heRef_2": "שבת קה., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2476,
+    "ref_2": "Shabbat 105a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 418,
+    "heRef_2": "שבת קה., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2476,
+    "ref_2": "Shabbat 105a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 419,
+    "heRef_2": "שבת קה., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2476,
+    "ref_2": "Shabbat 105a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 422,
+    "heRef_2": "שבת קה:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2496,
+    "ref_2": "Shabbat 105b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 423,
+    "heRef_2": "שבת קה:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2496,
+    "ref_2": "Shabbat 105b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 424,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 425,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 426,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 427,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 428,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 429,
+    "heRef_2": "שבת קה:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2498,
+    "ref_2": "Shabbat 105b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 430,
+    "heRef_2": "שבת קו., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2502,
+    "ref_2": "Shabbat 106a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 431,
+    "heRef_2": "שבת קו., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2502,
+    "ref_2": "Shabbat 106a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 434,
+    "heRef_2": "שבת קח., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2549,
+    "ref_2": "Shabbat 108a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 435,
+    "heRef_2": "שבת קח., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2555,
+    "ref_2": "Shabbat 108a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 436,
+    "heRef_2": "שבת קח., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2555,
+    "ref_2": "Shabbat 108a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 439,
+    "heRef_2": "שבת קיג., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2669,
+    "ref_2": "Shabbat 113a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 440,
+    "heRef_2": "שבת קיג., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2669,
+    "ref_2": "Shabbat 113a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 441,
+    "heRef_2": "שבת קיג., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2669,
+    "ref_2": "Shabbat 113a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 443,
+    "heRef_2": "שבת קיג:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2672,
+    "ref_2": "Shabbat 113b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 445,
+    "heRef_2": "שבת קיג:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2673,
+    "ref_2": "Shabbat 113b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 446,
+    "heRef_2": "שבת קיג:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2674,
+    "ref_2": "Shabbat 113b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 447,
+    "heRef_2": "שבת קיג:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2679,
+    "ref_2": "Shabbat 113b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 448,
+    "heRef_2": "שבת קיג:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2679,
+    "ref_2": "Shabbat 113b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 449,
+    "heRef_2": "שבת קיג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2680,
+    "ref_2": "Shabbat 113b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 450,
+    "heRef_2": "שבת קיג:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2680,
+    "ref_2": "Shabbat 113b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 451,
+    "heRef_2": "שבת קיג:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2681,
+    "ref_2": "Shabbat 113b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 452,
+    "heRef_2": "שבת קיג:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2681,
+    "ref_2": "Shabbat 113b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 453,
+    "heRef_2": "שבת קיג:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2681,
+    "ref_2": "Shabbat 113b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 454,
+    "heRef_2": "שבת קיג:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2683,
+    "ref_2": "Shabbat 113b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 455,
+    "heRef_2": "שבת קיג:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2683,
+    "ref_2": "Shabbat 113b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 457,
+    "heRef_2": "שבת קיד., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 2686,
+    "ref_2": "Shabbat 114a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 458,
+    "heRef_2": "שבת קיד., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2692,
+    "ref_2": "Shabbat 114a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 459,
+    "heRef_2": "שבת קיד., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2692,
+    "ref_2": "Shabbat 114a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 460,
+    "heRef_2": "שבת קיד., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2693,
+    "ref_2": "Shabbat 114a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 464,
+    "heRef_2": "שבת קטז., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2725,
+    "ref_2": "Shabbat 116a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 465,
+    "heRef_2": "שבת קטז., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2733,
+    "ref_2": "Shabbat 116a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 470,
+    "heRef_2": "שבת קטז., י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2733,
+    "ref_2": "Shabbat 116a:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 467,
+    "heRef_2": "שבת קטז:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2737,
+    "ref_2": "Shabbat 116b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 468,
+    "heRef_2": "שבת קטז:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2737,
+    "ref_2": "Shabbat 116b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 469,
+    "heRef_2": "שבת קטז:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2737,
+    "ref_2": "Shabbat 116b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 472,
+    "heRef_2": "שבת קיז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2764,
+    "ref_2": "Shabbat 117b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 473,
+    "heRef_2": "שבת קיז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2764,
+    "ref_2": "Shabbat 117b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 474,
+    "heRef_2": "שבת קיז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2764,
+    "ref_2": "Shabbat 117b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 475,
+    "heRef_2": "שבת קיז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2764,
+    "ref_2": "Shabbat 117b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 477,
+    "heRef_2": "שבת קיח., ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2772,
+    "ref_2": "Shabbat 118a:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 478,
+    "heRef_2": "שבת קיח., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2773,
+    "ref_2": "Shabbat 118a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 479,
+    "heRef_2": "שבת קיח., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2773,
+    "ref_2": "Shabbat 118a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 480,
+    "heRef_2": "שבת קיח., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2773,
+    "ref_2": "Shabbat 118a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 481,
+    "heRef_2": "שבת קיח., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2773,
+    "ref_2": "Shabbat 118a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 483,
+    "heRef_2": "שבת קיח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2776,
+    "ref_2": "Shabbat 118b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 484,
+    "heRef_2": "שבת קיח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2776,
+    "ref_2": "Shabbat 118b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 485,
+    "heRef_2": "שבת קיח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2776,
+    "ref_2": "Shabbat 118b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 486,
+    "heRef_2": "שבת קיח:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2776,
+    "ref_2": "Shabbat 118b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 487,
+    "heRef_2": "שבת קיח:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2777,
+    "ref_2": "Shabbat 118b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 488,
+    "heRef_2": "שבת קיח:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2777,
+    "ref_2": "Shabbat 118b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 489,
+    "heRef_2": "שבת קיח:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2777,
+    "ref_2": "Shabbat 118b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 490,
+    "heRef_2": "שבת קיח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2778,
+    "ref_2": "Shabbat 118b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 491,
+    "heRef_2": "שבת קיח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2778,
+    "ref_2": "Shabbat 118b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 492,
+    "heRef_2": "שבת קיח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2778,
+    "ref_2": "Shabbat 118b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 493,
+    "heRef_2": "שבת קיח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2778,
+    "ref_2": "Shabbat 118b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 494,
+    "heRef_2": "שבת קיח:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 2778,
+    "ref_2": "Shabbat 118b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 499,
+    "heRef_2": "שבת קיח:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2779,
+    "ref_2": "Shabbat 118b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 500,
+    "heRef_2": "שבת קיח:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2779,
+    "ref_2": "Shabbat 118b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 501,
+    "heRef_2": "שבת קיח:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2780,
+    "ref_2": "Shabbat 118b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 502,
+    "heRef_2": "שבת קיח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2781,
+    "ref_2": "Shabbat 118b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 504,
+    "heRef_2": "שבת קיח:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 2781,
+    "ref_2": "Shabbat 118b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 505,
+    "heRef_2": "שבת קיח:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2782,
+    "ref_2": "Shabbat 118b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 506,
+    "heRef_2": "שבת קיח:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2782,
+    "ref_2": "Shabbat 118b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 507,
+    "heRef_2": "שבת קיח:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2785,
+    "ref_2": "Shabbat 118b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 508,
+    "heRef_2": "שבת קיח:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2785,
+    "ref_2": "Shabbat 118b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 509,
+    "heRef_2": "שבת קיח:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2785,
+    "ref_2": "Shabbat 118b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 510,
+    "heRef_2": "שבת קיח:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2786,
+    "ref_2": "Shabbat 118b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 511,
+    "heRef_2": "שבת קיח:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2786,
+    "ref_2": "Shabbat 118b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 512,
+    "heRef_2": "שבת קיח:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2786,
+    "ref_2": "Shabbat 118b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 513,
+    "heRef_2": "שבת קיח:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2787,
+    "ref_2": "Shabbat 118b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 517,
+    "heRef_2": "שבת קיט., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 2791,
+    "ref_2": "Shabbat 119a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 518,
+    "heRef_2": "שבת קיט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2794,
+    "ref_2": "Shabbat 119a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 522,
+    "heRef_2": "שבת קיט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2794,
+    "ref_2": "Shabbat 119a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 523,
+    "heRef_2": "שבת קיט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2794,
+    "ref_2": "Shabbat 119a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 524,
+    "heRef_2": "שבת קיט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2794,
+    "ref_2": "Shabbat 119a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 525,
+    "heRef_2": "שבת קיט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2795,
+    "ref_2": "Shabbat 119a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 526,
+    "heRef_2": "שבת קיט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2795,
+    "ref_2": "Shabbat 119a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 527,
+    "heRef_2": "שבת קיט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2795,
+    "ref_2": "Shabbat 119a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 528,
+    "heRef_2": "שבת קיט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2795,
+    "ref_2": "Shabbat 119a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 529,
+    "heRef_2": "שבת קיט., ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2795,
+    "ref_2": "Shabbat 119a:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 530,
+    "heRef_2": "שבת קיט., ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2797,
+    "ref_2": "Shabbat 119a:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 534,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 535,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 536,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 537,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 538,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 539,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 540,
+    "heRef_2": "שבת קיט:, ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 2802,
+    "ref_2": "Shabbat 119b:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 541,
+    "heRef_2": "שבת קיט:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2804,
+    "ref_2": "Shabbat 119b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 542,
+    "heRef_2": "שבת קיט:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2804,
+    "ref_2": "Shabbat 119b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 543,
+    "heRef_2": "שבת קיט:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2804,
+    "ref_2": "Shabbat 119b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 544,
+    "heRef_2": "שבת קיט:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2804,
+    "ref_2": "Shabbat 119b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 545,
+    "heRef_2": "שבת קיט:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 2804,
+    "ref_2": "Shabbat 119b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 546,
+    "heRef_2": "שבת קיט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2805,
+    "ref_2": "Shabbat 119b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 547,
+    "heRef_2": "שבת קיט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2805,
+    "ref_2": "Shabbat 119b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 548,
+    "heRef_2": "שבת קיט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 2805,
+    "ref_2": "Shabbat 119b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 549,
+    "heRef_2": "שבת קיט:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2807,
+    "ref_2": "Shabbat 119b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 550,
+    "heRef_2": "שבת קיט:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2807,
+    "ref_2": "Shabbat 119b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 551,
+    "heRef_2": "שבת קיט:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2807,
+    "ref_2": "Shabbat 119b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 552,
+    "heRef_2": "שבת קיט:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 2807,
+    "ref_2": "Shabbat 119b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 553,
+    "heRef_2": "שבת קיט:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2808,
+    "ref_2": "Shabbat 119b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 554,
+    "heRef_2": "שבת קיט:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2808,
+    "ref_2": "Shabbat 119b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 555,
+    "heRef_2": "שבת קיט:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2808,
+    "ref_2": "Shabbat 119b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 556,
+    "heRef_2": "שבת קיט:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2808,
+    "ref_2": "Shabbat 119b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 557,
+    "heRef_2": "שבת קיט:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 2808,
+    "ref_2": "Shabbat 119b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 558,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 559,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 560,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 561,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 562,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 563,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 564,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 565,
+    "heRef_2": "שבת קיט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 2809,
+    "ref_2": "Shabbat 119b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 566,
+    "heRef_2": "שבת קיט:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 2810,
+    "ref_2": "Shabbat 119b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 569,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 570,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 571,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 572,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 573,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 574,
+    "heRef_2": "שבת קכז., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3043,
+    "ref_2": "Shabbat 127a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 575,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 576,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 577,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 578,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 579,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 581,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 582,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 583,
+    "heRef_2": "שבת קכז., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3044,
+    "ref_2": "Shabbat 127a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 585,
+    "heRef_2": "שבת קכט:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3147,
+    "ref_2": "Shabbat 129b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 586,
+    "heRef_2": "שבת קכט:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3147,
+    "ref_2": "Shabbat 129b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 589,
+    "heRef_2": "שבת קלז:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3434,
+    "ref_2": "Shabbat 137b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 590,
+    "heRef_2": "שבת קלז:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3434,
+    "ref_2": "Shabbat 137b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 591,
+    "heRef_2": "שבת קלז:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3434,
+    "ref_2": "Shabbat 137b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 593,
+    "heRef_2": "שבת קל., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3172,
+    "ref_2": "Shabbat 130a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 594,
+    "heRef_2": "שבת קל., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3172,
+    "ref_2": "Shabbat 130a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 595,
+    "heRef_2": "שבת קל., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3172,
+    "ref_2": "Shabbat 130a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 596,
+    "heRef_2": "שבת קל., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3173,
+    "ref_2": "Shabbat 130a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 597,
+    "heRef_2": "שבת קל., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3173,
+    "ref_2": "Shabbat 130a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 599,
+    "heRef_2": "שבת קלג:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3286,
+    "ref_2": "Shabbat 133b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 605,
+    "heRef_2": "שבת קלט., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3484,
+    "ref_2": "Shabbat 139a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 606,
+    "heRef_2": "שבת קלט., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3484,
+    "ref_2": "Shabbat 139a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 607,
+    "heRef_2": "שבת קלט., ג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3485,
+    "ref_2": "Shabbat 139a:3",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 608,
+    "heRef_2": "שבת קלט., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3486,
+    "ref_2": "Shabbat 139a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 609,
+    "heRef_2": "שבת קלט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3487,
+    "ref_2": "Shabbat 139a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 610,
+    "heRef_2": "שבת קלט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3487,
+    "ref_2": "Shabbat 139a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 611,
+    "heRef_2": "שבת קלט., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3487,
+    "ref_2": "Shabbat 139a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 614,
+    "heRef_2": "שבת קלט., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3491,
+    "ref_2": "Shabbat 139a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 615,
+    "heRef_2": "שבת קלט., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3494,
+    "ref_2": "Shabbat 139a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 616,
+    "heRef_2": "שבת קלט., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3494,
+    "ref_2": "Shabbat 139a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 617,
+    "heRef_2": "שבת קלט., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3496,
+    "ref_2": "Shabbat 139a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 618,
+    "heRef_2": "שבת קלט., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3496,
+    "ref_2": "Shabbat 139a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 620,
+    "heRef_2": "שבת קמ:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3555,
+    "ref_2": "Shabbat 140b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 621,
+    "heRef_2": "שבת קמ:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3555,
+    "ref_2": "Shabbat 140b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 622,
+    "heRef_2": "שבת קמ:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3555,
+    "ref_2": "Shabbat 140b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 623,
+    "heRef_2": "שבת קמ:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3557,
+    "ref_2": "Shabbat 140b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 624,
+    "heRef_2": "שבת קמ:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3557,
+    "ref_2": "Shabbat 140b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 625,
+    "heRef_2": "שבת קמ:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3558,
+    "ref_2": "Shabbat 140b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 626,
+    "heRef_2": "שבת קמ:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3559,
+    "ref_2": "Shabbat 140b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 627,
+    "heRef_2": "שבת קמ:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3559,
+    "ref_2": "Shabbat 140b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 628,
+    "heRef_2": "שבת קמ:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 3560,
+    "ref_2": "Shabbat 140b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 631,
+    "heRef_2": "שבת קמ:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3563,
+    "ref_2": "Shabbat 140b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 632,
+    "heRef_2": "שבת קמ:, יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3564,
+    "ref_2": "Shabbat 140b:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 633,
+    "heRef_2": "שבת קמ:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3568,
+    "ref_2": "Shabbat 140b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 634,
+    "heRef_2": "שבת קמ:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3568,
+    "ref_2": "Shabbat 140b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 635,
+    "heRef_2": "שבת קמ:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3568,
+    "ref_2": "Shabbat 140b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 636,
+    "heRef_2": "שבת קמ:, יח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3568,
+    "ref_2": "Shabbat 140b:18",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 639,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 640,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 641,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 642,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 643,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 644,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 645,
+    "heRef_2": "שבת קמה:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3741,
+    "ref_2": "Shabbat 145b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 647,
+    "heRef_2": "שבת קמה:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3745,
+    "ref_2": "Shabbat 145b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 648,
+    "heRef_2": "שבת קמה:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3745,
+    "ref_2": "Shabbat 145b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 649,
+    "heRef_2": "שבת קמה:, טז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3746,
+    "ref_2": "Shabbat 145b:16",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 651,
+    "heRef_2": "שבת קמז:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 3800,
+    "ref_2": "Shabbat 147b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 652,
+    "heRef_2": "שבת קמז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3801,
+    "ref_2": "Shabbat 147b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 653,
+    "heRef_2": "שבת קמז:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3801,
+    "ref_2": "Shabbat 147b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 654,
+    "heRef_2": "שבת קמז:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3802,
+    "ref_2": "Shabbat 147b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 657,
+    "heRef_2": "שבת קמט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3858,
+    "ref_2": "Shabbat 149b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 658,
+    "heRef_2": "שבת קמט:, ו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3858,
+    "ref_2": "Shabbat 149b:6",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 659,
+    "heRef_2": "שבת קמט:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 3862,
+    "ref_2": "Shabbat 149b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 660,
+    "heRef_2": "שבת קמט:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3863,
+    "ref_2": "Shabbat 149b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 661,
+    "heRef_2": "שבת קמט:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3864,
+    "ref_2": "Shabbat 149b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 662,
+    "heRef_2": "שבת קמט:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3865,
+    "ref_2": "Shabbat 149b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 663,
+    "heRef_2": "שבת קמט:, יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3866,
+    "ref_2": "Shabbat 149b:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 664,
+    "heRef_2": "שבת קמט:, טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3867,
+    "ref_2": "Shabbat 149b:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 665,
+    "heRef_2": "שבת קנ., א",
+    "path_2": "שבת.txt",
+    "line_index_2": 3869,
+    "ref_2": "Shabbat 150a:1",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 669,
+    "heRef_2": "שבת קנא:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3912,
+    "ref_2": "Shabbat 151b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 670,
+    "heRef_2": "שבת קנא:, ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3912,
+    "ref_2": "Shabbat 151b:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 671,
+    "heRef_2": "שבת קנא:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3913,
+    "ref_2": "Shabbat 151b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 672,
+    "heRef_2": "שבת קנא:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3913,
+    "ref_2": "Shabbat 151b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 673,
+    "heRef_2": "שבת קנא:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3917,
+    "ref_2": "Shabbat 151b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 674,
+    "heRef_2": "שבת קנא:, ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3917,
+    "ref_2": "Shabbat 151b:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 675,
+    "heRef_2": "שבת קנא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 3918,
+    "ref_2": "Shabbat 151b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 676,
+    "heRef_2": "שבת קנא:, י",
+    "path_2": "שבת.txt",
+    "line_index_2": 3918,
+    "ref_2": "Shabbat 151b:10",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 677,
+    "heRef_2": "שבת קנא:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3919,
+    "ref_2": "Shabbat 151b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 678,
+    "heRef_2": "שבת קנא:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3919,
+    "ref_2": "Shabbat 151b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 679,
+    "heRef_2": "שבת קנא:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3921,
+    "ref_2": "Shabbat 151b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 680,
+    "heRef_2": "שבת קנא:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3921,
+    "ref_2": "Shabbat 151b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 681,
+    "heRef_2": "שבת קנא:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3921,
+    "ref_2": "Shabbat 151b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 682,
+    "heRef_2": "שבת קנא:, יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3922,
+    "ref_2": "Shabbat 151b:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 683,
+    "heRef_2": "שבת קנא:, יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3922,
+    "ref_2": "Shabbat 151b:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 686,
+    "heRef_2": "שבת קנב., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3938,
+    "ref_2": "Shabbat 152a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 687,
+    "heRef_2": "שבת קנב., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3938,
+    "ref_2": "Shabbat 152a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 688,
+    "heRef_2": "שבת קנב., יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3938,
+    "ref_2": "Shabbat 152a:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 689,
+    "heRef_2": "שבת קנב., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3939,
+    "ref_2": "Shabbat 152a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 690,
+    "heRef_2": "שבת קנב., יד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3940,
+    "ref_2": "Shabbat 152a:14",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 691,
+    "heRef_2": "שבת קנב., טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3941,
+    "ref_2": "Shabbat 152a:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 692,
+    "heRef_2": "שבת קנב., טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3941,
+    "ref_2": "Shabbat 152a:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 693,
+    "heRef_2": "שבת קנב., טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3941,
+    "ref_2": "Shabbat 152a:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 694,
+    "heRef_2": "שבת קנב., טו",
+    "path_2": "שבת.txt",
+    "line_index_2": 3941,
+    "ref_2": "Shabbat 152a:15",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 695,
+    "heRef_2": "שבת קנב., טז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3942,
+    "ref_2": "Shabbat 152a:16",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 697,
+    "heRef_2": "שבת קנב:, ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3945,
+    "ref_2": "Shabbat 152b:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 698,
+    "heRef_2": "שבת קנב:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3948,
+    "ref_2": "Shabbat 152b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 699,
+    "heRef_2": "שבת קנב:, ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3948,
+    "ref_2": "Shabbat 152b:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 700,
+    "heRef_2": "שבת קנב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3950,
+    "ref_2": "Shabbat 152b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 701,
+    "heRef_2": "שבת קנב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3950,
+    "ref_2": "Shabbat 152b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 702,
+    "heRef_2": "שבת קנב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3950,
+    "ref_2": "Shabbat 152b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 703,
+    "heRef_2": "שבת קנב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3950,
+    "ref_2": "Shabbat 152b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 704,
+    "heRef_2": "שבת קנב:, ז",
+    "path_2": "שבת.txt",
+    "line_index_2": 3950,
+    "ref_2": "Shabbat 152b:7",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 705,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 706,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 707,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 708,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 709,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 710,
+    "heRef_2": "שבת קנב:, ח",
+    "path_2": "שבת.txt",
+    "line_index_2": 3951,
+    "ref_2": "Shabbat 152b:8",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 712,
+    "heRef_2": "שבת קנב:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3954,
+    "ref_2": "Shabbat 152b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 713,
+    "heRef_2": "שבת קנב:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3954,
+    "ref_2": "Shabbat 152b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 714,
+    "heRef_2": "שבת קנב:, יא",
+    "path_2": "שבת.txt",
+    "line_index_2": 3954,
+    "ref_2": "Shabbat 152b:11",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 715,
+    "heRef_2": "שבת קנב:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3955,
+    "ref_2": "Shabbat 152b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 716,
+    "heRef_2": "שבת קנב:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3955,
+    "ref_2": "Shabbat 152b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 717,
+    "heRef_2": "שבת קנב:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3955,
+    "ref_2": "Shabbat 152b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 718,
+    "heRef_2": "שבת קנב:, יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 3956,
+    "ref_2": "Shabbat 152b:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 720,
+    "heRef_2": "שבת קנג., ב",
+    "path_2": "שבת.txt",
+    "line_index_2": 3959,
+    "ref_2": "Shabbat 153a:2",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 721,
+    "heRef_2": "שבת קנג., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3961,
+    "ref_2": "Shabbat 153a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 722,
+    "heRef_2": "שבת קנג., ד",
+    "path_2": "שבת.txt",
+    "line_index_2": 3961,
+    "ref_2": "Shabbat 153a:4",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 723,
+    "heRef_2": "שבת קנג., ה",
+    "path_2": "שבת.txt",
+    "line_index_2": 3962,
+    "ref_2": "Shabbat 153a:5",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 727,
+    "heRef_2": "שבת קנג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3966,
+    "ref_2": "Shabbat 153a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 728,
+    "heRef_2": "שבת קנג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3966,
+    "ref_2": "Shabbat 153a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 729,
+    "heRef_2": "שבת קנג., ט",
+    "path_2": "שבת.txt",
+    "line_index_2": 3966,
+    "ref_2": "Shabbat 153a:9",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 734,
+    "heRef_2": "שבת קנה:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 4043,
+    "ref_2": "Shabbat 155b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 735,
+    "heRef_2": "שבת קנה:, יב",
+    "path_2": "שבת.txt",
+    "line_index_2": 4043,
+    "ref_2": "Shabbat 155b:12",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 738,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 739,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 740,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 741,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 742,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 743,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 744,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 745,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  },
+  {
+    "line_index_1": 746,
+    "heRef_2": "שבת קנו., יג",
+    "path_2": "שבת.txt",
+    "line_index_2": 4061,
+    "ref_2": "Shabbat 156a:13",
+    "Conection Type": "source"
+  }
+]
