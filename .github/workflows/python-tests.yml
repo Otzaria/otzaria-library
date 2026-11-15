@@ -17,6 +17,8 @@ name: Python tests
 #   .github/scripts/test_check_sefaria_shadowed_books.py — self-test ב-validate-sefaria-shadowed-books.yml.
 #   בדיקות הספרייה הלאומית עברו ל-Otzaria/book-sources:
 #     .github/workflows/national-library-source-tools.yml.
+#   כלי תורת אמת (te_convert, te_reapply, te_tidy, te_restore_notes) ובדיקותיהם — הועברו ל-Otzaria/book-sources
+#     (ToratEmetToOtzaria/סקריפטים) ורצים שם ב-torat-emet-source-tools.yml, מול post_convert_fixes.py שכאן.
 #   ממיר הוויקי (mediawikitootzaria, demo_part_2.py) ובדיקותיו — הועברו ל-Otzaria/book-sources
 #     (wikisourceToOtzaria/סקריפטים) ורצים שם ב-wiki-sources-weekly.yml, מול post_convert_fixes.py שכאן.
 
@@ -53,9 +55,6 @@ jobs:
             /.claude/skills/otzaria-commentary-linker-qa/scripts/
             /.claude/skills/otzaria-book-format/scripts/
             /DictaToOtzaria/סקריפטים/
-            /ToratEmetToOtzaria/סקריפטים/te_convert.py
-            /ToratEmetToOtzaria/סקריפטים/te_reapply.py
-            /ToratEmetToOtzaria/סקריפטים/test_te_reapply.py
             /sefariaToOtzaria/סקריפטים/otzaria/
             /sefariaToOtzaria/סקריפטים/test_get_from_export.py
             /manual_links_sync.json
@@ -118,14 +117,6 @@ jobs:
       # ממיר אורייתא ובדיקותיו עברו ל-Otzaria/book-sources (OraytaToOtzaria/סקריפטים)
       # ורצים שם ב-orayta-converter.yml, מול post_convert_fixes.py וה-TSV שכאן.
 
-      # כלי ההמרה של תורת אמת (te_convert / te_reapply): שורות ומקורות סינתטיים,
-      # בלי קובצי המקור של תורת אמת.
-      - name: Torat Emet tools suite
-        working-directory: ToratEmetToOtzaria/סקריפטים
-        env:
-          PYTHONIOENCODING: utf-8
-        run: python3 -m unittest -v test_te_reapply
-
       # ממיר ובלכתך בדרך ובדיקותיו עברו ל-Otzaria/book-sources (OnYourWayToOtzaria/סקריפטים)
       # ורצים שם ב-onyourway-converter.yml, מול post_convert_fixes.py וה-TSV שכאן.
 
@@ -141,13 +132,6 @@ jobs:
 
       # ייבוא אספקלריה (test_aspaklaria_fixes) עבר עם "סקריפטים שונות" ל-Otzaria/book-sources
       # ורץ שם ב-misc-scripts-tests.yml.
-
-      # Validate failures before writing any book, companion notes or links.
-      - name: Post-conversion output safety suite
-        working-directory: .github/scripts
-        env:
-          PYTHONIOENCODING: utf-8
-        run: python3 -m unittest -v test_post_convert_writes
 
       # רשימה מפורשת ולא discover: test_validate_fordb_book_names ו-
       # test_validate_manual_links_refs יושבות באותה תיקייה ורצות ב-workflows אחרים.
