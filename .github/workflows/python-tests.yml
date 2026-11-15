@@ -53,10 +53,6 @@ jobs:
             /.claude/skills/otzaria-commentary-linker-qa/scripts/
             /.claude/skills/otzaria-book-format/scripts/
             /DictaToOtzaria/סקריפטים/
-            /OraytaToOtzaria/סקריפטים/orayta_convert.py
-            /OraytaToOtzaria/סקריפטים/test_orayta_convert.py
-            /OraytaToOtzaria/סקריפטים/split_hok_targum.py
-            /OraytaToOtzaria/סקריפטים/test_split_hok_targum.py
             /ToratEmetToOtzaria/סקריפטים/te_convert.py
             /ToratEmetToOtzaria/סקריפטים/te_reapply.py
             /ToratEmetToOtzaria/סקריפטים/test_te_reapply.py
@@ -119,13 +115,8 @@ jobs:
           set -euo pipefail
           python3 -m unittest discover -v -s "DictaToOtzaria/סקריפטים/tests"
 
-      # ממיר אורייתא: סוגר ")" של הערות העורך (גמרא נוחה), ופיצול מילים מחוברות
-      # בתרגום חק לישראל (מקום הרווח בין הניקוד). טקסט סינתטי בלבד.
-      - name: Orayta converter suite
-        working-directory: OraytaToOtzaria/סקריפטים
-        env:
-          PYTHONIOENCODING: utf-8
-        run: python3 -m unittest -v test_orayta_convert test_split_hok_targum
+      # ממיר אורייתא ובדיקותיו עברו ל-Otzaria/book-sources (OraytaToOtzaria/סקריפטים)
+      # ורצים שם ב-orayta-converter.yml, מול post_convert_fixes.py וה-TSV שכאן.
 
       # כלי ההמרה של תורת אמת (te_convert / te_reapply): שורות ומקורות סינתטיים,
       # בלי קובצי המקור של תורת אמת.
