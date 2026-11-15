@@ -1,6 +1,7 @@
 name: Dicta import
 
-# ייבוא חודשי מספריית דיקטה (DictaToOtzaria/סקריפטים/dicta_sync.py; מסמך: README שם).
+# ייבוא חודשי מספריית דיקטה (dicta_sync.py; מסמך: README שם). הקוד ב־Otzaria/book-sources
+# (DictaToOtzaria/סקריפטים); קובצי המצב שלו (dicta_state.json, dicta_pages.json) נשארו כאן, באותה תיקייה.
 #   detect  — books.json + HEAD לכל zip (ה-ETag הוא MD5 של ה-zip) מול dicta_state.json → plan.json.
 #             בלי נעילה ובלי הורדת ספרים; יוצא מוקדם כשאין עבודה.
 #   import  — הורדה (עד max_books), המרה (dicta_convert), שער איכות (dicta_gate), מיקום (dicta_place),
@@ -11,13 +12,18 @@ name: Dicta import
 # מה שאינו מועמד לספרייה — העותק הגולמי של ספר שנערך, וכפילות של ספר נארז / ספריא — נכתב לריפו הפרטי
 # Otzaria/extra_books (DictaToOtzaria/גולמי ערוכים וכפילויות/) ונדחף לשם לפני הספרייה, כי קובץ המצב מפנה אליו.
 # הדחיפה ב-PIPELINE_TOKEN: דחיפה ב-GITHUB_TOKEN לא מפעילה את validate-fordb-book-names / python-tests,
-# ואין לו גישה ל-extra_books. הטוקן צריך הרשאת כתיבה (Contents: write) לשני הריפואים.
+# ואין לו גישה ל-extra_books. הטוקן צריך הרשאת כתיבה (Contents: write) לשני הריפואים,
+# והרשאת קריאה (Contents: read) ל-Otzaria/book-sources, שממנו נלקחים הסקריפטים.
 
 on:
   schedule:
     - cron: '0 3 2 * *'          # היום השני בחודש
   workflow_dispatch:
     inputs:
+      preflight_only:
+        description: verify PIPELINE_TOKEN can read the source tools, without running an import
+        type: boolean
+        default: false
       max_books:
         description: max books to download/convert in this run
         required: false
@@ -40,14 +46,46 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  BOOK_SOURCES_REPO: Otzaria/book-sources
+  DICTA_TOOLS_DIR: DictaToOtzaria/סקריפטים
+
 jobs:
+  preflight:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.preflight_only == true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Verify read access to the private source tools
+        env:
+          TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          set -euo pipefail
+          if [ -z "$TOKEN" ]; then
+            echo "::error::PIPELINE_TOKEN is required to read ${BOOK_SOURCES_REPO}"
+            exit 1
+          fi
+          PROBE=$(mktemp -d "$RUNNER_TEMP/dicta-tools-preflight.XXXXXX")
+          trap 'rm -rf "$PROBE"' EXIT
+          git clone -q --filter=blob:none --no-checkout --depth 1 \
+            "https://x-access-token:${TOKEN}@github.com/${BOOK_SOURCES_REPO}.git" "$PROBE"
+          git -C "$PROBE" sparse-checkout set --no-cone "/${DICTA_TOOLS_DIR}/"
+          git -C "$PROBE" checkout -q --detach HEAD
+          git -C "$PROBE" remote set-url origin "https://github.com/${BOOK_SOURCES_REPO}.git"
+          test -f "$PROBE/$DICTA_TOOLS_DIR/dicta_sync.py"
+          echo "PIPELINE_TOKEN read access verified: ${BOOK_SOURCES_REPO}@$(git -C "$PROBE" rev-parse HEAD)"
+
   detect:
+    if: ${{ inputs.preflight_only != true }}
     runs-on: ubuntu-24.04
     # בנייה מלאה של אינדקס הטביעות (כשאין מטמון) לוקחת יותר מ-20 דקות. ב-20 הריצה נקטעה לפני שמירת
     # המטמון, ולכן גם הריצה הבאה בנתה מאפס ונקטעה (2026-11-02, 2026-11-11).
     timeout-minutes: 60
     outputs:
       work: ${{ steps.plan.outputs.work }}
+      tools_sha: ${{ steps.tools.outputs.sha }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -62,13 +100,51 @@ jobs:
             /manual_links_packaging.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
+      # הקוד (dicta_sync ושאר הסקריפטים, הבדיקות ונתוני הקלט הקבועים) ב־Otzaria/book-sources (פרטי);
+      # קובצי המצב (dicta_state.json, dicta_pages.json) נשארו כאן ב־DictaToOtzaria/סקריפטים ומחויבים כאן.
+      # מחוץ לעץ העבודה של הספרייה, כדי ש־git add לא יראה אותו. REPO_ROOT = הספרייה (docs/MIGRATION_DICTA.md שם).
+      - name: Clone the Dicta tools from book-sources
+        id: tools
+        env:
+          TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+          TOOLS_SHA: ''
+        run: |
+          set -euo pipefail
+          if [ -z "$TOKEN" ]; then
+            echo "::error::PIPELINE_TOKEN חסר — הוא נדרש לקריאת ${BOOK_SOURCES_REPO} (סקריפטי דיקטה)"
+            exit 1
+          fi
+          B="$RUNNER_TEMP/book-sources"
+          if ! git clone -q --filter=blob:none --no-checkout --depth 1 \
+              "https://x-access-token:${TOKEN}@github.com/${BOOK_SOURCES_REPO}.git" "$B"; then
+            echo "::error::אין גישה ל־${BOOK_SOURCES_REPO} עם PIPELINE_TOKEN (נדרש Contents: read)"
+            exit 1
+          fi
+          if [ -n "$TOOLS_SHA" ] && [ "$(git -C "$B" rev-parse HEAD)" != "$TOOLS_SHA" ]; then
+            git -C "$B" fetch -q --depth 1 --filter=blob:none origin "$TOOLS_SHA"
+          fi
+          git -C "$B" sparse-checkout set --no-cone "/${DICTA_TOOLS_DIR}/"
+          git -C "$B" checkout -q --detach "${TOOLS_SHA:-HEAD}"
+          git -C "$B" remote set-url origin "https://github.com/${BOOK_SOURCES_REPO}.git"
+          T="$B/$DICTA_TOOLS_DIR"
+          if [ ! -f "$T/dicta_sync.py" ]; then
+            echo "::error::${DICTA_TOOLS_DIR}/dicta_sync.py לא נמצא ב־${BOOK_SOURCES_REPO}@$(git -C "$B" rev-parse HEAD)"
+            exit 1
+          fi
+          sha=$(git -C "$B" rev-parse HEAD)
+          {
+            echo "DICTA_TOOLS=$T"
+            echo "REPO_ROOT=$GITHUB_WORKSPACE"
+          } >> "$GITHUB_ENV"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "סקריפטי דיקטה: ${BOOK_SOURCES_REPO}@${sha}" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       # כפילות תוכן של ספר חדש מול כל הספרייה (גם בשם אחר): אינדקס טביעות של הספרים הנארזים ב-HEAD.
       # נבנה כאן — מחוץ לנעילת הכתיבה — ומתעדכן לפי blob sha (רק ספרים ששונו נמשכים, במנות). המטמון
       # נשמר בכל ריצה במפתח חדש ונטען לפי הקידומת; אם GitHub פינה אותו (7 ימים בלי שימוש) — בנייה מלאה
-      # (~2.7GB blobs, ~15 דקות), עדיין בלי לעכב כותבים אחרים. ספרי ספריא: sefaria_fp.dat המחויב.
+      # (~2.7GB blobs, ~15 דקות), עדיין בלי לעכב כותבים אחרים. ספרי ספריא: sefaria_fp.dat המחויב ב-book-sources.
       - name: Restore the library fingerprint index
         uses: actions/cache/restore@v5
         with:
@@ -78,7 +154,7 @@ jobs:
       - name: Update the library fingerprint index
         env:
           PYTHONIOENCODING: utf-8
-        run: python3 DictaToOtzaria/סקריפטים/dicta_sync.py fp-index --library "$RUNNER_TEMP/fp/library_fp.dat"
+        run: python3 "$DICTA_TOOLS/dicta_sync.py" fp-index --library "$RUNNER_TEMP/fp/library_fp.dat"
       - name: Save the library fingerprint index
         uses: actions/cache/save@v5
         with:
@@ -91,7 +167,7 @@ jobs:
           MAX_BOOKS: ${{ inputs.max_books || '40' }}
         run: |
           set -euo pipefail
-          python3 dicta_sync.py detect --check-pages --out "$RUNNER_TEMP/plan.json" --max-books "$MAX_BOOKS"
+          python3 "$DICTA_TOOLS/dicta_sync.py" detect --check-pages --out "$RUNNER_TEMP/plan.json" --max-books "$MAX_BOOKS"
           work=$(python3 -c "import json,sys; print('true' if json.load(open(sys.argv[1]))['items'] else 'false')" "$RUNNER_TEMP/plan.json")
           echo "work=$work" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v6
@@ -146,6 +222,42 @@ jobs:
           git -C "$X" sparse-checkout set --no-cone '/DictaToOtzaria/'
           git -C "$X" checkout -q
           echo "DICTA_EXTRA_REPO=$X" >> "$GITHUB_ENV"
+      # הקוד (dicta_sync ושאר הסקריפטים, הבדיקות ונתוני הקלט הקבועים) ב־Otzaria/book-sources (פרטי);
+      # קובצי המצב (dicta_state.json, dicta_pages.json) נשארו כאן ב־DictaToOtzaria/סקריפטים ומחויבים כאן.
+      # מחוץ לעץ העבודה של הספרייה, כדי ש־git add לא יראה אותו. REPO_ROOT = הספרייה (docs/MIGRATION_DICTA.md שם).
+      - name: Clone the Dicta tools from book-sources
+        env:
+          TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+          TOOLS_SHA: ${{ needs.detect.outputs.tools_sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "$TOKEN" ]; then
+            echo "::error::PIPELINE_TOKEN חסר — הוא נדרש לקריאת ${BOOK_SOURCES_REPO} (סקריפטי דיקטה)"
+            exit 1
+          fi
+          B="$RUNNER_TEMP/book-sources"
+          if ! git clone -q --filter=blob:none --no-checkout --depth 1 \
+              "https://x-access-token:${TOKEN}@github.com/${BOOK_SOURCES_REPO}.git" "$B"; then
+            echo "::error::אין גישה ל־${BOOK_SOURCES_REPO} עם PIPELINE_TOKEN (נדרש Contents: read)"
+            exit 1
+          fi
+          if [ -n "$TOOLS_SHA" ] && [ "$(git -C "$B" rev-parse HEAD)" != "$TOOLS_SHA" ]; then
+            git -C "$B" fetch -q --depth 1 --filter=blob:none origin "$TOOLS_SHA"
+          fi
+          git -C "$B" sparse-checkout set --no-cone "/${DICTA_TOOLS_DIR}/"
+          git -C "$B" checkout -q --detach "${TOOLS_SHA:-HEAD}"
+          git -C "$B" remote set-url origin "https://github.com/${BOOK_SOURCES_REPO}.git"
+          T="$B/$DICTA_TOOLS_DIR"
+          if [ ! -f "$T/dicta_sync.py" ]; then
+            echo "::error::${DICTA_TOOLS_DIR}/dicta_sync.py לא נמצא ב־${BOOK_SOURCES_REPO}@$(git -C "$B" rev-parse HEAD)"
+            exit 1
+          fi
+          sha=$(git -C "$B" rev-parse HEAD)
+          {
+            echo "DICTA_TOOLS=$T"
+            echo "REPO_ROOT=$GITHUB_WORKSPACE"
+          } >> "$GITHUB_ENV"
+          echo "סקריפטי דיקטה: ${BOOK_SOURCES_REPO}@${sha}" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/download-artifact@v7
         with:
           name: dicta-plan
@@ -153,11 +265,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python3 -m pip install --quiet -r DictaToOtzaria/סקריפטים/requirements.txt
+      - run: python3 -m pip install --quiet -r "$DICTA_TOOLS/requirements.txt"
       - name: Self-test
         env:
           PYTHONIOENCODING: utf-8
-        run: python3 -m unittest discover -s "DictaToOtzaria/סקריפטים/tests"
+        run: python3 -m unittest discover -s "$DICTA_TOOLS/tests"
       - name: Reconcile human moves, then import
         working-directory: DictaToOtzaria/סקריפטים
         env:
@@ -171,10 +283,10 @@ jobs:
                 --time-budget 5400)
           [ "$NO_PROMOTE" = true ] && args+=(--no-promote)
           if [ "$DRY" = true ]; then
-            python3 dicta_sync.py import "${args[@]}" --dry-run "$RUNNER_TEMP/dry"
+            python3 "$DICTA_TOOLS/dicta_sync.py" import "${args[@]}" --dry-run "$RUNNER_TEMP/dry"
           else
-            python3 dicta_sync.py reconcile
-            python3 dicta_sync.py import "${args[@]}"
+            python3 "$DICTA_TOOLS/dicta_sync.py" reconcile
+            python3 "$DICTA_TOOLS/dicta_sync.py" import "${args[@]}"
           fi
       - name: Stage and gate
         if: ${{ !inputs.dry_run }}
@@ -199,7 +311,7 @@ jobs:
           echo "library=$library" >> "$GITHUB_OUTPUT"
           # מגן קישורים: קובץ נארז ששמו משתתף בקישורים ידניים אסור לו להשתנות בריצה אוטומטית
           git -c core.quotepath=off diff --cached --name-only -z --diff-filter=M -- 'DictaToOtzaria/ערוך/ספרים/אוצריא/' \
-            | xargs -0 -r python3 DictaToOtzaria/סקריפטים/dicta_sync.py links-guard
+            | xargs -0 -r python3 "$DICTA_TOOLS/dicta_sync.py" links-guard
       - name: Commit, then push or open a PR
         if: ${{ !inputs.dry_run && steps.stage.outputs.changes == 'true' }}
         env:

@@ -29,9 +29,14 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import dbs_breaks as D  # noqa: E402
 
+# קובץ המצב נשאר בספרייה; הקוד (dicta_convert, dicta_edit_core) עבר ל־Otzaria/book-sources:
+# DICTA_TOOLS, או עותק book-sources שליד הספרייה.
 SCRIPTS = os.path.join(D.REPO, 'DictaToOtzaria', 'סקריפטים')
-sys.path.insert(0, os.path.join(SCRIPTS, 'עריכת ספרים'))
-sys.path.insert(0, SCRIPTS)
+TOOLS = os.environ.get('DICTA_TOOLS') or os.path.join(os.path.dirname(D.REPO), 'book-sources', 'DictaToOtzaria', 'סקריפטים')
+if not os.path.isfile(os.path.join(TOOLS, 'dicta_convert.py')):
+    sys.exit(f'colon_breaks: dicta_convert.py לא נמצא ב־{TOOLS}. הגדירו DICTA_TOOLS=<book-sources>/DictaToOtzaria/סקריפטים')
+sys.path.insert(0, os.path.join(TOOLS, 'עריכת ספרים'))
+sys.path.insert(0, TOOLS)
 from dicta_edit_core import colon_ends_matter  # noqa: E402
 
 END_COLON = re.compile(r':\s*$')

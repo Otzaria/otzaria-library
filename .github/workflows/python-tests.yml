@@ -54,7 +54,6 @@ jobs:
             /.claude/skills/otzaria-db-ingestion-audit/scripts/
             /.claude/skills/otzaria-commentary-linker-qa/scripts/
             /.claude/skills/otzaria-book-format/scripts/
-            /DictaToOtzaria/סקריפטים/
             /sefariaToOtzaria/סקריפטים/otzaria/
             /sefariaToOtzaria/סקריפטים/test_get_from_export.py
             /manual_links_sync.json
@@ -105,14 +104,8 @@ jobs:
           (cd .claude/skills/otzaria-db-linker/scripts && python3 -m unittest -v test_insert_commentary_link)
           (cd .claude/skills/otzaria-db-ingestion-audit/scripts && python3 -m unittest -v test_audit_ingestion)
 
-      # ממיר דיקטה, כלי העריכה, וזרימת הייבוא החודשית (dicta_sync / dicta-import.yml).
-      # offline; קוראת את manual_links_sync.json ואת רשימות השורשים הנארזים.
-      - name: Dicta import suites
-        env:
-          PYTHONIOENCODING: utf-8
-        run: |
-          set -euo pipefail
-          python3 -m unittest discover -v -s "DictaToOtzaria/סקריפטים/tests"
+      # בדיקות ממיר דיקטה, כלי העריכה וזרימת הייבוא (dicta_sync) עברו ל-Otzaria/book-sources
+      # (DictaToOtzaria/סקריפטים) ורצות שם ב-dicta-source-tools.yml, מול צ'ק-אאוט של הספרייה הזו.
 
       # ממיר אורייתא ובדיקותיו עברו ל-Otzaria/book-sources (OraytaToOtzaria/סקריפטים)
       # ורצים שם ב-orayta-converter.yml, מול post_convert_fixes.py וה-TSV שכאן.

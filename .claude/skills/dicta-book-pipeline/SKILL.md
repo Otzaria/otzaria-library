@@ -5,7 +5,7 @@ description: Use when the user asks to process a Dicta book — identify heading
 
 # Dicta Book Processing Pipeline
 
-You are running a multi-stage pipeline on top of the deterministic Dicta import described in [DictaToOtzaria/סקריפטים/README.md](../../../DictaToOtzaria/סקריפטים/README.md) (conversion `dicta_convert.py` + cleaning `dicta_clean.py`, already implemented as CLIs). **Your job is the AI-judgment passes**: header identification, OCR comparison, and final QA.
+You are running a multi-stage pipeline on top of the deterministic Dicta import described in `DictaToOtzaria/סקריפטים/README.md` of [Otzaria/book-sources](https://github.com/Otzaria/book-sources/blob/main/DictaToOtzaria/%D7%A1%D7%A7%D7%A8%D7%99%D7%A4%D7%98%D7%99%D7%9D/README.md) — the scripts moved there; run them with `REPO_ROOT=<this library>` (conversion `dicta_convert.py` + cleaning `dicta_clean.py`, already implemented as CLIs). **Your job is the AI-judgment passes**: header identification, OCR comparison, and final QA.
 
 ## שפת התגובה (חובה)
 
