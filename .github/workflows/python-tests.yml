@@ -62,8 +62,6 @@ jobs:
             /ToratEmetToOtzaria/סקריפטים/te_convert.py
             /ToratEmetToOtzaria/סקריפטים/te_reapply.py
             /ToratEmetToOtzaria/סקריפטים/test_te_reapply.py
-            /Ben-YehudaToOtzaria/סקריפטים/otzaria_markup.py
-            /Ben-YehudaToOtzaria/סקריפטים/split_footnotes.py
             /sefariaToOtzaria/סקריפטים/otzaria/
             /sefariaToOtzaria/סקריפטים/test_get_from_export.py
             /manual_links_sync.json
