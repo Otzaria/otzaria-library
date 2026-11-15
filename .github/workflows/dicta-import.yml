@@ -20,6 +20,10 @@ on:
     - cron: '0 3 2 * *'          # היום השני בחודש
   workflow_dispatch:
     inputs:
+      preflight_only:
+        description: verify PIPELINE_TOKEN can read the source tools, without running an import
+        type: boolean
+        default: false
       max_books:
         description: max books to download/convert in this run
         required: false
@@ -47,7 +51,34 @@ env:
   DICTA_TOOLS_DIR: DictaToOtzaria/סקריפטים
 
 jobs:
+  preflight:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.preflight_only == true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Verify read access to the private source tools
+        env:
+          TOKEN: ${{ secrets.PIPELINE_TOKEN }}
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          set -euo pipefail
+          if [ -z "$TOKEN" ]; then
+            echo "::error::PIPELINE_TOKEN is required to read ${BOOK_SOURCES_REPO}"
+            exit 1
+          fi
+          PROBE=$(mktemp -d "$RUNNER_TEMP/dicta-tools-preflight.XXXXXX")
+          trap 'rm -rf "$PROBE"' EXIT
+          git clone -q --filter=blob:none --no-checkout --depth 1 \
+            "https://x-access-token:${TOKEN}@github.com/${BOOK_SOURCES_REPO}.git" "$PROBE"
+          git -C "$PROBE" sparse-checkout set --no-cone "/${DICTA_TOOLS_DIR}/"
+          git -C "$PROBE" checkout -q --detach HEAD
+          git -C "$PROBE" remote set-url origin "https://github.com/${BOOK_SOURCES_REPO}.git"
+          test -f "$PROBE/$DICTA_TOOLS_DIR/dicta_sync.py"
+          echo "PIPELINE_TOKEN read access verified: ${BOOK_SOURCES_REPO}@$(git -C "$PROBE" rev-parse HEAD)"
+
   detect:
+    if: ${{ inputs.preflight_only != true }}
     runs-on: ubuntu-24.04
     # בנייה מלאה של אינדקס הטביעות (כשאין מטמון) לוקחת יותר מ-20 דקות. ב-20 הריצה נקטעה לפני שמירת
     # המטמון, ולכן גם הריצה הבאה בנתה מאפס ונקטעה (2026-11-02, 2026-11-11).
