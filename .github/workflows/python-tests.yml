@@ -53,8 +53,6 @@ jobs:
             /.claude/skills/otzaria-commentary-linker-qa/scripts/
             /.claude/skills/otzaria-book-format/scripts/
             /DictaToOtzaria/סקריפטים/
-            /OnYourWayToOtzaria/סקריפטים/ובלכתך_בדרך.py
-            /OnYourWayToOtzaria/סקריפטים/test_onyourway_headings.py
             /OraytaToOtzaria/סקריפטים/orayta_convert.py
             /OraytaToOtzaria/סקריפטים/test_orayta_convert.py
             /OraytaToOtzaria/סקריפטים/split_hok_targum.py
@@ -137,15 +135,8 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: python3 -m unittest -v test_te_reapply
 
-      # ממיר ובלכתך בדרך: רמות הכותרות (book/chap/p), על XML סינתטי.
-      - name: OnYourWay converter suite
-        working-directory: OnYourWayToOtzaria/סקריפטים
-        env:
-          PYTHONIOENCODING: utf-8
-        run: |
-          set -euo pipefail
-          python3 -m pip install --quiet beautifulsoup4 lxml
-          python3 -m unittest -v test_onyourway_headings
+      # ממיר ובלכתך בדרך ובדיקותיו עברו ל-Otzaria/book-sources (OnYourWayToOtzaria/סקריפטים)
+      # ורצים שם ב-onyourway-converter.yml, מול post_convert_fixes.py וה-TSV שכאן.
 
       # ממיר ספריא (get_from_export): סכמות וטקסט סינתטיים.
       - name: Sefaria converter suite

@@ -22,12 +22,12 @@ def converter(source, filename, name):
 
 
 TE = converter("ToratEmetToOtzaria", "te_convert.py", "te_write_test")
-OY = converter("OnYourWayToOtzaria", "ובלכתך_בדרך.py", "oy_write_test")
 OR = converter("OraytaToOtzaria", "orayta_convert.py", "or_write_test")
 # The Ben-Yehuda converter (split_footnotes.write_book) moved to Otzaria/book-sources with its
 # own copy of these checks: Ben-YehudaToOtzaria/סקריפטים/test_library_paths.py.
 # The wiki converter (demo_part_2.write_book) moved to Otzaria/book-sources with its
 # own copy of these checks: wikisourceToOtzaria/סקריפטים/test_demo_part_2_writes.py.
+# So did the OnYourWay converter (ובלכתך_בדרך.py): OnYourWayToOtzaria/סקריפטים/test_onyourway_library_root.py.
 
 
 class OutputSafetyTest(unittest.TestCase):
@@ -61,19 +61,13 @@ class OutputSafetyTest(unittest.TestCase):
                 "te_convert.py", source.name, "--src", str(self.root), "-o", str(self.book)]):
             TE.main()
 
-    def onyourway(self, text):
-        source = self.root / "input.xml"
-        source.write_text(f'<book n="ספר"><chap n="א"><p>{text}</p></chap></book>', encoding="utf-8")
-        with patch.object(OY, "SOURCE_DIR", str(self.source)):
-            OY.convert_file(str(source), str(self.book), "ספר")
-
     def grouped(self, module, text="עוגן", notes="עוגן"):
         with patch.object(OR, "SOURCE_DIR", str(self.source)):
             OR.write_book(str(self.book), ["<h1>ספר</h1>", text], [(2, notes)], str(self.links_dir))
 
     def test_single_book_errors_preserve_existing_output(self):
         self.rules("ספר")
-        for writer in (self.torat_emet, self.onyourway):
+        for writer in (self.torat_emet,):
             for text in ("טקסט אחר", "עוגן עוגן"):
                 with self.subTest(writer=writer.__name__, text=text), self.assertRaises(P.PostConvertFixError):
                     writer(text)
@@ -82,14 +76,14 @@ class OutputSafetyTest(unittest.TestCase):
     def test_single_book_errors_do_not_create_output(self):
         self.book.unlink()
         self.rules("ספר")
-        for writer in (self.torat_emet, self.onyourway):
+        for writer in (self.torat_emet,):
             with self.subTest(writer=writer.__name__), self.assertRaises(P.PostConvertFixError):
                 writer("טקסט אחר")
             self.assertFalse(self.book.exists())
 
     def test_single_book_success_writes_corrected_text(self):
         self.rules("ספר")
-        for writer in (self.torat_emet, self.onyourway):
+        for writer in (self.torat_emet,):
             with self.subTest(writer=writer.__name__):
                 writer("עוגן")
                 self.assertIn("מתוקן", self.book.read_text(encoding="utf-8"))
