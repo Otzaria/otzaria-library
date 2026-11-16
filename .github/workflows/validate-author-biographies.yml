@@ -3,7 +3,7 @@ name: Validate author biography links
 on:
   pull_request:
     paths: &inputs
-      - ForDB/author_biographies.json
+      - author_biographies.json
       - ForDB/sefaria_author_changes.csv
       - metadata.json
       - .github/scripts/validate_author_biographies.py
@@ -25,7 +25,7 @@ jobs:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /ForDB/author_biographies.json
+            /author_biographies.json
             /ForDB/sefaria_author_changes.csv
             /metadata.json
             /.github/scripts/validate_author_biographies.py

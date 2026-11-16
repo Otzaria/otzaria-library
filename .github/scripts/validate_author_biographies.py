@@ -39,7 +39,7 @@ def read_catalog_names(root):
 
 
 def validate(root, bundle_path):
-    path = root / "ForDB/author_biographies.json"
+    path = root / "author_biographies.json"
     mapping = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object)
     if type(mapping.get("version")) is not int or mapping["version"] != 1 or not isinstance(mapping.get("authors"), dict):
         raise ValueError(f"Unsupported mapping format: {path}")
