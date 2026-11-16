@@ -1,0 +1,37 @@
+name: Validate author biography links
+
+on:
+  pull_request:
+    paths: &inputs
+      - ForDB/author_biographies.json
+      - ForDB/sefaria_author_changes.csv
+      - metadata.json
+      - .github/scripts/validate_author_biographies.py
+      - .github/workflows/validate-author-biographies.yml
+  push:
+    branches: [main]
+    paths: *inputs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /ForDB/author_biographies.json
+            /ForDB/sefaria_author_changes.csv
+            /metadata.json
+            /.github/scripts/validate_author_biographies.py
+      - name: Validate against the released biographies bundle
+        run: |
+          curl -fsSL --retry 3 --max-time 90 \
+            -o "$RUNNER_TEMP/biographies-app.json.gz" \
+            https://github.com/Otzaria/toldot-gedolei-yisrael/releases/latest/download/biographies-app.json.gz
+          python3 .github/scripts/validate_author_biographies.py "$RUNNER_TEMP/biographies-app.json.gz"
