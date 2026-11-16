@@ -85318,6 +85318,32 @@
         "authorName": "רבי ישראל איסר וולף"
       },
       "commit": "894af36523c8828d5bf7571cc29293837c3f8644"
+    },
+    {
+      "id": 6300,
+      "kind": "rename",
+      "old": {
+        "bookName": "פסקי הראש על יומא",
+        "authorName": "רבנו אשר ב\"ר יחיאל"
+      },
+      "new": {
+        "bookName": "פסקי הרא\"ש על יומא",
+        "authorName": "רבנו אשר ב\"ר יחיאל"
+      },
+      "commit": "2357d444bffa34d3b4ac8074344edfbf6bc01afb"
+    },
+    {
+      "id": 6301,
+      "kind": "rename",
+      "old": {
+        "bookName": "פסקי הראש על מנחות",
+        "authorName": "רבנו אשר ב\"ר יחיאל"
+      },
+      "new": {
+        "bookName": "פסקי הרא\"ש על מנחות",
+        "authorName": "רבנו אשר ב\"ר יחיאל"
+      },
+      "commit": "2357d444bffa34d3b4ac8074344edfbf6bc01afb"
     }
   ]
 }
