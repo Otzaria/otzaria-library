@@ -10,6 +10,7 @@
 | תיאור המדף | `ForDB/sefaria_category_changes.csv`: `heShortDescNew` (קצר), `heDescNew` (ארוך) | |
 | דור ושנים; נושאים, דפוס ורקע הספר | `ForDB/book_info.csv` | נערך מדף "מידע על ספרים" באתר. העמודות: [מידע על ספרים](#מידע-על-ספרים-book_infocsv) |
 | שם המפרש כישות (`collectiveTitleHe`/`En`), ספר שאינו מספריא | `ForDB/commentator_collective_titles.csv`: `bookName,collectiveTitleHe,collectiveTitleEn` | ממלא רק ערך ריק במסד; ספר ספריא מקבל את הערך מספריא |
+| תוכן עניינים מסמנים שבתוך הטקסט (`[רמז X]` באמצע פסקה) | `ForDB/inline_marker_alt_toc.csv`: `bookName,marker,structureKey,structureHeTitle,groupBy` | כל סמן הופך לערך בלשונית "כותרות", מקובץ תחת כותרות תוכן העניינים עד הכותרת העמוקה שמתחילה ב־`groupBy` (`פרק`; ריק = רשימה שטוחה). מחליף מבנה קיים באותו `structureKey`, גם של ספריא. הטקסט לא משתנה |
 
 בספר של המאגר:
 
