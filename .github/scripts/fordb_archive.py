@@ -42,6 +42,8 @@ SHIPPED = frozenset({
     "ForDB/commentator_collective_titles.csv",
     # קודש/חול בתנ"ך ל-line_divine_name; קובץ חסר מפיל את הבנייה.
     "ForDB/divine_name_overrides.csv",
+    # תוכן עניינים חלופי מסמנים שבתוך הטקסט ([רמז X]); קובץ חסר = אין כללים.
+    "ForDB/inline_marker_alt_toc.csv",
     "ForDB/sefaria_author_changes.csv",
     "ForDB/sefaria_category_changes.csv",
     "ForDB/sefaria_metadata_changes.csv",
