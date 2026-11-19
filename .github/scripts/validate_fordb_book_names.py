@@ -101,6 +101,7 @@ SEFARIA_CHANGES = os.path.join(FORDB, "sefaria_metadata_changes.csv")
 BOOK_MOVES = os.path.join(FORDB, "book_moves.csv")
 COMMENTATOR_TITLES = os.path.join(FORDB, "commentator_collective_titles.csv")
 INLINE_MARKER_ALT_TOC = os.path.join(FORDB, "inline_marker_alt_toc.csv")
+GEMARA_DAF_ALT_TOC = os.path.join(FORDB, "gemara_daf_alt_toc.csv")
 FORDB_METADATA = os.path.join(FORDB, "all_metadata.json")
 # באנר / הגנה לפי sourceName + bookName (ריק = כל ספרי המקור). שניהם אופציונליים.
 BOOK_BANNERS = os.path.join(FORDB, "book_banners.csv")
@@ -1212,9 +1213,10 @@ def main():
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
         ("ForDB/commentator_collective_titles.csv", COMMENTATOR_TITLES, "bookName"),
         ("ForDB/inline_marker_alt_toc.csv", INLINE_MARKER_ALT_TOC, "bookName"),
+        ("ForDB/gemara_daf_alt_toc.csv", GEMARA_DAF_ALT_TOC, "bookName"),
     ):
         if not os.path.exists(path):
-            continue  # commentator_collective_titles.csv ו-inline_marker_alt_toc.csv אופציונליים
+            continue  # commentator_collective_titles.csv וקבצי ה-alt_toc אופציונליים
         if args.fix:
             removed.extend(
                 (file_label, name, "orphan")
@@ -1298,6 +1300,7 @@ def main():
         ("ForDB/book_moves.csv", BOOK_MOVES, "name"),
         ("ForDB/commentator_collective_titles.csv", COMMENTATOR_TITLES, "bookName"),
         ("ForDB/inline_marker_alt_toc.csv", INLINE_MARKER_ALT_TOC, "bookName"),
+        ("ForDB/gemara_daf_alt_toc.csv", GEMARA_DAF_ALT_TOC, "bookName"),
     ):
         if not os.path.exists(path):
             continue

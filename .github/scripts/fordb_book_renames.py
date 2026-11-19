@@ -461,12 +461,14 @@ class JsonTarget:
 #   all_metadata_with_file_paths.json - הרשימה הקנונית של המאמת עצמו (לא מגיע ל-DB).
 #   book_banners / book_protection - טבלאות book_banner / book_protection, לפי מקור + bookName.
 #   commentator_collective_titles - SeedCollectiveTitles (book.collectiveTitleHe/En), לפי book.title.
+#   gemara_daf_alt_toc          - buildGemaraDafAltToc (תוכן עניינים לפי דפי הגמרא), לפי book.title.
 #   inline_marker_alt_toc       - buildInlineMarkerAltToc (תוכן עניינים מסמנים בטקסט), לפי book.title.
 # קבצי *_links.json בשורשי ה-links הנארזים מטופלים בנפרד (plan_links).
 CSV_TARGETS = (
     CsvTarget("ForDB/book_info.csv", "bookName", "db", True),
     CsvTarget("ForDB/book_moves.csv", "name", "db", True),
     CsvTarget("ForDB/commentator_collective_titles.csv", "bookName", "db", True, optional=True),
+    CsvTarget("ForDB/gemara_daf_alt_toc.csv", "bookName", "db", True, optional=True),
     CsvTarget("ForDB/inline_marker_alt_toc.csv", "bookName", "db", True, optional=True),
     CsvTarget("ForDB/sefaria_metadata_changes.csv", "title", "db", False),
     CsvTarget("ForDB/book_banners.csv", "bookName", "db", False, "sourceName"),
