@@ -395,6 +395,12 @@ jobs:
                 done < <(jq -r '.links_roots[] | select(.expected_state == "present") | .path' "$worktree/manual_links_sync.json")
               fi
               cp "$output/manual_links_lineage.json" "$worktree/manual_links_lineage.json"
+              # Segment fingerprints of every linked Sefaria ref: the next refresh fails on a
+              # re-segmentation instead of silently retargeting.  A same-tag re-dispatch can pin
+              # a tool from before them, which writes none.
+              if [[ -f "$output/manual_links_ref_fingerprints.json" ]]; then
+                cp "$output/manual_links_ref_fingerprints.json" "$worktree/manual_links_ref_fingerprints.json"
+              fi
             fi
 
             # This gate reports the packaging collisions and the flattening result;
@@ -428,7 +434,8 @@ jobs:
           for command in (["git", "diff", "--name-only", "-z"], ["git", "ls-files", "--others", "--exclude-standard", "-z"]):
               raw = subprocess.check_output(command, cwd=root)
               changed.update(item.decode("utf-8") for item in raw.split(b"\0") if item)
-          forbidden = sorted(path for path in changed if path != "manual_links_lineage.json" and not path.startswith(allowed_roots))
+          state_files = {"manual_links_lineage.json", "manual_links_ref_fingerprints.json"}
+          forbidden = sorted(path for path in changed if path not in state_files and not path.startswith(allowed_roots))
           if forbidden:
               raise SystemExit(f"updater changed paths outside the strict allowlist: {forbidden}")
           PY
@@ -443,7 +450,11 @@ jobs:
             fi
             git -C "$worktree" config user.name github-actions[bot]
             git -C "$worktree" config user.email github-actions[bot]@users.noreply.github.com
-            git -C "$worktree" add -- manual_links_lineage.json ${roots[@]+"${roots[@]}"}
+            state_files=(manual_links_lineage.json)
+            if [[ -f "$worktree/manual_links_ref_fingerprints.json" ]]; then
+              state_files+=(manual_links_ref_fingerprints.json)
+            fi
+            git -C "$worktree" add -- "${state_files[@]}" ${roots[@]+"${roots[@]}"}
             python3 - "$worktree" <<'PY'
           import json
           import subprocess
@@ -455,7 +466,8 @@ jobs:
           prefixes = tuple(entry["path"] + "/" for entry in config["links_roots"])
           raw = subprocess.check_output(["git", "diff", "--cached", "--name-only", "-z"], cwd=root)
           paths = [item.decode("utf-8") for item in raw.split(b"\0") if item]
-          forbidden = [path for path in paths if path != "manual_links_lineage.json" and not path.startswith(prefixes)]
+          state_files = {"manual_links_lineage.json", "manual_links_ref_fingerprints.json"}
+          forbidden = [path for path in paths if path not in state_files and not path.startswith(prefixes)]
           if forbidden:
               raise SystemExit(f"staged paths outside strict allowlist: {forbidden}")
           PY

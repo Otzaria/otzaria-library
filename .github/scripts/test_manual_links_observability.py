@@ -487,7 +487,8 @@ class SyncWorkflowContractTest(unittest.TestCase):
         """NOOP-1 may only remove work: same file, same content, same message."""
         body = step_body(REFRESH_STEP)
         self.assertIn('cp "$output/manual_links_lineage.json" "$worktree/manual_links_lineage.json"', body)
-        self.assertIn('git -C "$worktree" add -- manual_links_lineage.json ${roots[@]+"${roots[@]}"}', body)
+        self.assertIn('state_files=(manual_links_lineage.json)', body)
+        self.assertIn('git -C "$worktree" add -- "${state_files[@]}" ${roots[@]+"${roots[@]}"}', body)
         self.assertIn('message="chore(manual-links): sync Sefaria $SEFARIA_TAG"', body)
         self.assertIn('[[ "$MODE" == refresh ]] || message="chore(manual-links): migrate lineage at Sefaria $SEFARIA_TAG"', body)
         self.assertIn('if ! git -C "$worktree" diff --cached --quiet; then', body)
