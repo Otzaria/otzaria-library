@@ -441,17 +441,21 @@ for saga_run in $RUNS; do
     SUPERSEDED=$((SUPERSEDED+1))
     continue
   fi
-  if ! contract_relation=$(gh api "repos/$REPO/compare/$STATE_CONTRACT_COMMIT...$saga_head" --jq .status); then
+  # Reversed on purpose: GitHub diffs from the merge base to the second commit,
+  # so contract...head diffs the whole book corpus since the contract and fails
+  # with HTTP 422 ("diff is taking too long"), while head...contract is empty
+  # whenever the contract is an ancestor.  The statuses swap accordingly.
+  if ! contract_relation=$(gh api "repos/$REPO/compare/$saga_head...$STATE_CONTRACT_COMMIT" --jq .status); then
     echo "::error::$SAGA_REF: cannot establish its saga-state contract ancestry"
     FAILURES=$((FAILURES+1)); continue
   fi
   case "$contract_relation" in
-    identical|ahead) ;;
-    behind|diverged)
-      echo "legacy saga=$saga_run is outside the durable saga-state lineage ($contract_relation); skipped"
+    identical|behind) ;;
+    ahead|diverged)
+      echo "legacy saga=$saga_run is outside the durable saga-state lineage (head...contract: $contract_relation); skipped"
       continue ;;
     *)
-      echo "::error::$SAGA_REF: head is not on the durable saga-state lineage ($contract_relation)"
+      echo "::error::$SAGA_REF: head is not on the durable saga-state lineage (head...contract: $contract_relation)"
       FAILURES=$((FAILURES+1)); continue ;;
   esac
   correlation_sha=$(printf '%s' "$corr" | sha256sum | cut -d' ' -f1)

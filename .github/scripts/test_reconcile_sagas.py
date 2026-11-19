@@ -132,7 +132,7 @@ CORR = {
 }
 
 
-def fake_gh(listing, roots, completed):
+def fake_gh(listing, roots, completed, compare=None):
     """`gh` for one end-to-end tick.  `listing` is the root ids in the order the
     API hands them over, `roots` maps a root id to (attempt start, cycle), and
     `completed` is the cycles that have a successful S2 continuation.  Anything
@@ -154,6 +154,10 @@ def fake_gh(listing, roots, completed):
         out.append("      *%s*) printf '999\\n' ;;" % CORR[cycle])
     out.append("      *) printf '' ;;")
     out.append("    esac ;;")
+    if compare is not None:
+        # Only the head-first form answers: contract...head 422s on the real corpus.
+        head, status = compare
+        out.append("  *compare/%s...*) printf '%s\\n' ;;" % (head, status))
     out.append('  *) echo "unexpected gh call: $*" >&2; exit 99 ;;')
     out.append("esac")
     return "\n".join(out) + "\n"
@@ -612,7 +616,7 @@ class ReconcileSagasContractTest(unittest.TestCase):
         loop = SCRIPT.read_text(encoding="utf-8").split("for saga_run in $RUNS; do", 1)[1]
         corr = "corr=${saga_title#sync-manual-links correlation=}"
         completion = 'completion_title="saga-continue stage=seforim-published correlation=$corr"'
-        compare = 'gh api "repos/$REPO/compare/$STATE_CONTRACT_COMMIT...$saga_head"'
+        compare = 'gh api "repos/$REPO/compare/$saga_head...$STATE_CONTRACT_COMMIT"'
         download = 'gh release download "$release_tag"'
         self.assertLess(loop.index(corr), loop.index(completion))
         self.assertLess(loop.index(completion), loop.index(compare))
@@ -696,6 +700,31 @@ class ReconcileSagasContractTest(unittest.TestCase):
         # Not silenced: it reached the real reconciliation path and failed there.
         self.assertIn("cannot establish its saga-state contract ancestry", out)
         self.assertEqual(code, 1, out)
+
+    def contract_tick(self, status):
+        return self.run_tick(
+            fake_gh(
+                [300, 200],
+                {300: ("2026-09-12T09:00:00Z", CYCLE_OLD),
+                 200: ("2026-09-10T18:15:38Z", CYCLE_NEW)},
+                [CYCLE_OLD],
+                compare=(("200" * 14)[:40], status),
+            )
+        )
+
+    def test_a_head_descending_from_the_contract_passes_the_ancestry_gate(self):
+        """19/11: contract...head on the corpus repo failed with HTTP 422 ("diff is
+        taking too long"); head...contract is empty and reports `behind`."""
+        code, out = self.contract_tick("behind")
+        self.assertNotIn("cannot establish its saga-state contract ancestry", out)
+        self.assertIn("cannot download its saga-state release", out)
+        self.assertEqual(code, 1, out)
+
+    def test_a_head_before_the_contract_is_a_skipped_legacy_saga(self):
+        code, out = self.contract_tick("ahead")
+        self.assertIn("legacy saga=200 is outside the durable saga-state lineage", out)
+        self.assertNotIn("::error::", out)
+        self.assertEqual(code, 0, out)
 
     def test_every_saga_annotation_names_its_root_run(self):
         """Diagnosis must not require reconstructing loop order from the log."""
