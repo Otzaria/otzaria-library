@@ -159,10 +159,22 @@ class SagaWorkflowContractTest(unittest.TestCase):
         lineage_case = reconciler.split("  case \"$contract_relation\" in\n", 1)[1].split(
             "  esac\n", 1
         )[0]
-        self.assertIn("behind|diverged)", lineage_case)
+        # The compare runs head...contract (contract...head diffs the whole
+        # corpus and GitHub fails it with HTTP 422), so the statuses are
+        # swapped: the contract being "behind" the head means on-lineage.
+        self.assertIn(
+            'compare/$saga_head...$STATE_CONTRACT_COMMIT',
+            reconciler,
+        )
+        self.assertNotIn(
+            'compare/$STATE_CONTRACT_COMMIT...$saga_head',
+            reconciler,
+        )
+        self.assertIn("identical|behind) ;;", lineage_case)
+        self.assertIn("ahead|diverged)", lineage_case)
         self.assertIn("outside the durable saga-state lineage", lineage_case)
         self.assertLess(
-            lineage_case.index("behind|diverged)"),
+            lineage_case.index("ahead|diverged)"),
             lineage_case.index("*)"),
             "rewritten historical roots must be skipped before the error fallback",
         )
