@@ -72,7 +72,11 @@ class FirstHeadingTest(unittest.TestCase):
         self.assertEqual('שו"ת באר מרדכי', self.heading(line))
 
     def test_maqaf_whitespace_and_escaped_ampersand(self):
-        self.assertEqual("בית־אל".replace("־", " ") + " &amp; עוד", self.heading("<H1>  בית־אל  & עוד </H1>"))
+        self.assertEqual("בית־אל".replace("־", " ") + "&nbsp; &amp; עוד", self.heading("<H1>  בית־אל  & עוד </H1>"))
+
+    def test_a_no_break_space_stays_an_entity_as_jsoup_writes_it(self):
+        self.assertEqual('שו"ת&nbsp;באר מרדכי', self.heading("<h1>שו&quot;ת&nbsp;באר  מרדכי</h1>"))
+        self.assertEqual("אב", self.heading("<h1>א<iframe>x<b>y</b></iframe>ב</h1>"))
 
     def test_only_the_first_ten_lines_and_level_one(self):
         self.assertIsNone(self.heading("<h2>שו\"ת</h2>\n" + "שורה\n" * 9 + "<h1>מאוחר</h1>"))
@@ -134,6 +138,14 @@ class HeadReaderTest(unittest.TestCase):
         self.assertEqual([16, 128], [size for _url, size in calls])
         self.assertTrue(calls[0][0].startswith("https://raw.githubusercontent.com/owner/repo/c0ffee/MoreBooks/"))
 
+    def test_a_blob_no_source_can_read_fails_instead_of_passing_as_the_stem(self):
+        reader = bdt.HeadReader(self.root, cache_path=self.cache)
+        reader._read_local = lambda oids: oids
+        reader._read_http = lambda ref, blobs, wanted, oids: oids
+        reader._read_git = lambda oids: None
+        with self.assertRaises(RuntimeError):
+            reader.headings("HEAD", [self.path])
+
     def test_a_source_whose_tree_holds_another_blob_is_not_asked(self):
         reader = bdt.HeadReader(self.root, cache_path=self.cache, fetch_range=lambda url, size: self.fail(url))
         blobs = bdt.tree_blobs(self.root, "HEAD")
@@ -165,6 +177,17 @@ class AcronymsFileTest(unittest.TestCase):
         for word in self.AMBIGUOUS:
             with self.subTest(word=word):
                 self.assertNotIn(word, bare)
+
+    def test_a_bom_is_ignored_and_an_empty_list_fails_like_the_generator(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "a.txt")
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write("﻿# הערה\n\n שו״ת \n")
+            self.assertEqual("שו״ת א", bdt.BookDisplayTitles.from_file(path).display_title("שות א", None))
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write("﻿# הערה בלבד\n")
+            with self.assertRaises(ValueError):
+                bdt.BookDisplayTitles.from_file(path)
 
     def test_it_ships_at_the_root_of_the_fordb_archive(self):
         import fordb_archive

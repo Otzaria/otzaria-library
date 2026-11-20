@@ -22,6 +22,7 @@ import os
 import re
 import subprocess
 import sys
+import threading
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -117,8 +118,12 @@ class BookDisplayTitles:
     @classmethod
     def from_file(cls, path):
         with open(path, encoding="utf-8") as handle:
-            lines = [line.strip() for line in handle.read().splitlines()]
-        return cls(line for line in lines if line and not line.startswith("#"))
+            lines = [line.removeprefix("﻿").strip() for line in handle.read().splitlines()]
+        acronyms = [line for line in lines if line and not line.startswith("#")]
+        # BookDisplayTitles.parse: an empty list fails, as the file cannot mean none.
+        if not acronyms:
+            raise ValueError(f"{path} lists no acronyms")
+        return cls(acronyms)
 
     def display_title(self, stem_title, first_heading):
         heading = normalize(first_heading) if first_heading is not None else ""
@@ -185,17 +190,21 @@ def strip_footnotes(line):
     return _MARKER.sub("", "".join(out))
 
 
+# Elements whose content Jsoup.clean drops along with the tag.
+_RAW_TEXT_TAGS = ("script", "style", "iframe", "noembed", "noframes", "xmp")
+
+
 class _TextOnly(html.parser.HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.parts, self._skip = [], 0
 
     def handle_starttag(self, tag, attrs):
-        if tag in ("script", "style"):
+        if tag in _RAW_TEXT_TAGS:
             self._skip += 1
 
     def handle_endtag(self, tag):
-        if tag in ("script", "style") and self._skip:
+        if tag in _RAW_TEXT_TAGS and self._skip:
             self._skip -= 1
 
     def handle_data(self, data):
@@ -203,7 +212,7 @@ class _TextOnly(html.parser.HTMLParser):
             self.parts.append(data)
 
 
-_JSOUP_PRETTY_WHITE = re.compile(r"[ \t\n\f\r\xa0]+")
+_JSOUP_PRETTY_WHITE = re.compile(r"[ \t\n\f\r]+")
 _NIKUD_TEAMIM = re.compile("[֑-ׇֽׁׂ]")
 
 
@@ -212,9 +221,9 @@ def clean_html(text):
     parser = _TextOnly()
     parser.feed(text)
     parser.close()
-    # Jsoup's pretty printer collapses whitespace (no-break space too) and escapes & < >.
+    # Jsoup's pretty printer collapses ASCII whitespace only, and writes a no-break space as &nbsp;.
     plain = _JSOUP_PRETTY_WHITE.sub(" ", "".join(parser.parts))
-    plain = plain.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    plain = plain.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\xa0", "&nbsp;")
     plain = ASCII_WHITESPACE_RUN.sub(" ", _kotlin_trim(plain))
     return _NIKUD_TEAMIM.sub("", plain.replace("־", " "))
 
@@ -260,7 +269,7 @@ def _heading_is_settled(data, complete):
 # --- Reading the first lines of book blobs ---
 
 _GITHUB_REMOTE = re.compile(r"github\.com[:/]+([^/]+/[^/]+?)(?:\.git)?/?$")
-CACHE_VERSION = 1
+CACHE_VERSION = 2
 RANGE_START = 16384
 MAX_WORKERS = 16
 
@@ -336,6 +345,10 @@ class HeadReader:
             self._read_git(missing)
         if self.stats["local"] or self.stats["http"] or self.stats["git"]:
             self._save_cache()
+        # An unread book would silently fall back to its stem title, which the generator rejects.
+        unread = sorted(p for p, oid in wanted.items() if oid not in self.cache)
+        if unread:
+            raise RuntimeError(f"Could not read the first lines of {len(unread)} book file(s), e.g. {unread[0]}")
         return {p: self.cache.get(oid) for p, oid in wanted.items()}
 
     def _remember(self, oid, data, complete):
@@ -345,20 +358,30 @@ class HeadReader:
         return settled
 
     def _read_local(self, oids):
+        # Streamed one blob at a time: in a full clone the books total several GB.
         env = dict(os.environ, GIT_NO_LAZY_FETCH="1")
-        out = _git(self.repo, "cat-file", "--batch", data=("\n".join(oids) + "\n").encode(), env=env)
-        data, at, left = out.stdout, 0, []
-        for oid in oids:
-            end = data.index(b"\n", at)
-            header = data[at:end].split(b" ")
-            at = end + 1
-            if len(header) != 3:
-                left.append(oid)
-                continue
-            size = int(header[2])
-            self._remember(oid, data[at:at + size], True)
-            self.stats["local"] += 1
-            at += size + 1
+        proc = subprocess.Popen(["git", "-C", self.repo, "cat-file", "--batch"],
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE, env=env)
+
+        def feed():
+            with proc.stdin:
+                proc.stdin.write(("\n".join(oids) + "\n").encode())
+
+        writer = threading.Thread(target=feed, daemon=True)
+        writer.start()
+        left = []
+        with proc.stdout:
+            for oid in oids:
+                header = proc.stdout.readline().split(b" ")
+                if len(header) != 3:
+                    left.append(oid)
+                    continue
+                data = proc.stdout.read(int(header[2]))
+                proc.stdout.read(1)
+                self._remember(oid, data, True)
+                self.stats["local"] += 1
+        writer.join()
+        proc.wait()
         return left
 
     def _http_sources(self, ref, blobs):
