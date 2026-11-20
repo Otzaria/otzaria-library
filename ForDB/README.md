@@ -12,6 +12,7 @@
 | שם המפרש כישות (`collectiveTitleHe`/`En`), ספר שאינו מספריא | `ForDB/commentator_collective_titles.csv`: `bookName,collectiveTitleHe,collectiveTitleEn` | ממלא רק ערך ריק במסד; ספר ספריא מקבל את הערך מספריא |
 | תוכן עניינים לפי דפי הגמרא, בספר שמסודר לפי פרקים (רי"ף) | `ForDB/gemara_daf_alt_toc.csv`: `bookName,structureKey,structureHeTitle` | ניווט לפי דפי הגמרא (ולא לפי דפי הספר) בלשונית "כותרות", תחת `structureHeTitle` (`דפי הגמרא`). מחליף מבנה קיים באותו `structureKey`. הטקסט לא משתנה |
 | תוכן עניינים מסמנים שבתוך הטקסט (`[רמז X]` באמצע פסקה) | `ForDB/inline_marker_alt_toc.csv`: `bookName,marker,structureKey,structureHeTitle,groupBy` | כל סמן הופך לערך בלשונית "כותרות", מקובץ תחת כותרות תוכן העניינים עד הכותרת העמוקה שמתחילה ב־`groupBy` (`פרק`; ריק = רשימה שטוחה). מחליף מבנה קיים באותו `structureKey`, גם של ספריא. הטקסט לא משתנה |
+| גרשיים בשם ספר של המאגר, כששם הקובץ אינו יכול להכיל אותם (`שות` ← `שו״ת`) | `ForDB/title_acronyms.txt`: ראש תיבות אחד בשורה, עם `״` לפני האות האחרונה; שורה שמתחילה ב־`#` היא הערה | נקרא בגזירת שם הספר ב־SeforimLibrary (`BookDisplayTitles`) ובמאמת. אסור להוסיף מילה דו־משמעית, שיכולה להיות גם מילה רגילה («שבות», «דעת») |
 
 בספר של המאגר:
 
