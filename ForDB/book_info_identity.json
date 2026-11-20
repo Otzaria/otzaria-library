@@ -85344,6 +85344,4621 @@
         "authorName": "רבנו אשר ב\"ר יחיאל"
       },
       "commit": "2357d444bffa34d3b4ac8074344edfbf6bc01afb"
+    },
+    {
+      "id": 6302,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבני אפוד על אהע מילואים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבני אפוד על אה״ע מילואים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6303,
+      "kind": "rename",
+      "old": {
+        "bookName": "אבני האפוד על אהע",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אבני האפוד על אה״ע",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6304,
+      "kind": "rename",
+      "old": {
+        "bookName": "אברהם יגל (על התנך)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אברהם יגל (על התנ״ך)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6305,
+      "kind": "rename",
+      "old": {
+        "bookName": "אגרת אל הרמבן מרבי אברהם גאון",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אגרת אל הרמב״ן מרבי אברהם גאון",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6306,
+      "kind": "rename",
+      "old": {
+        "bookName": "אוצר המלך על הקדמת הרמבם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אוצר המלך על הקדמת הרמב״ם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6307,
+      "kind": "rename",
+      "old": {
+        "bookName": "אור הישר (תנך)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אור הישר (תנ״ך)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6308,
+      "kind": "rename",
+      "old": {
+        "bookName": "איגרת הקודש להרמבן",
+        "authorName": "רבנו משה ב\"ר נחמן [הרמב\"ן]"
+      },
+      "new": {
+        "bookName": "איגרת הקודש להרמב״ן",
+        "authorName": "רבנו משה ב\"ר נחמן [הרמב\"ן]"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6309,
+      "kind": "rename",
+      "old": {
+        "bookName": "אמרי בינה (שות)",
+        "authorName": "רבי יחיאל הלוי רוזנפלד"
+      },
+      "new": {
+        "bookName": "אמרי בינה (שו״ת)",
+        "authorName": "רבי יחיאל הלוי רוזנפלד"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6310,
+      "kind": "rename",
+      "old": {
+        "bookName": "אמרי בינה הוספות בסוף השות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אמרי בינה הוספות בסוף השו״ת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6311,
+      "kind": "rename",
+      "old": {
+        "bookName": "אריה דבי עילאי (שס)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "אריה דבי עילאי (ש״ס)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6312,
+      "kind": "rename",
+      "old": {
+        "bookName": "באורי הגרא על משנה מסכת מדות",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "new": {
+        "bookName": "באורי הגר״א על משנה מסכת מדות",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6313,
+      "kind": "rename",
+      "old": {
+        "bookName": "באורי הגרא על משנה מסכת קנים",
+        "authorName": "רבי אליהו בן שלמה זלמן מווילנה"
+      },
+      "new": {
+        "bookName": "באורי הגר״א על משנה מסכת קנים",
+        "authorName": "רבי אליהו בן שלמה זלמן מווילנה"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6314,
+      "kind": "rename",
+      "old": {
+        "bookName": "באורי הגרא על משנה מסכת תמיד",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "new": {
+        "bookName": "באורי הגר״א על משנה מסכת תמיד",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6315,
+      "kind": "rename",
+      "old": {
+        "bookName": "באורי מהראי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "באורי מהרא״י",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6316,
+      "kind": "rename",
+      "old": {
+        "bookName": "באר יצחק עהת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "באר יצחק עה״ת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6317,
+      "kind": "rename",
+      "old": {
+        "bookName": "באר משה (כריף)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "באר משה (כרי״ף)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6318,
+      "kind": "rename",
+      "old": {
+        "bookName": "ביאור הגרא על תיקונים מזוהר חדש - דפוס וילנא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ביאור הגר״א על תיקונים מזוהר חדש - דפוס וילנא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6319,
+      "kind": "rename",
+      "old": {
+        "bookName": "ביאור הגרא על תקוני הזהר",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "new": {
+        "bookName": "ביאור הגר״א על תקוני הזהר",
+        "authorName": "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6320,
+      "kind": "rename",
+      "old": {
+        "bookName": "בית רידבז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בית רידב״ז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6321,
+      "kind": "rename",
+      "old": {
+        "bookName": "בקע לגולגולת (התנך)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בקע לגולגולת (התנ״ך)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6322,
+      "kind": "rename",
+      "old": {
+        "bookName": "בקע לגולגולת (שס)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "בקע לגולגולת (ש״ס)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6323,
+      "kind": "rename",
+      "old": {
+        "bookName": "ברכת רצה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ברכת רצ״ה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6324,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס כללים הערות וביאורים על ירושלמי מועד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס כללים הערות וביאורים על ירושלמי מועד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6325,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על אבות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על אבות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6326,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על בבא בתרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על בבא בתרא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6327,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על בבא מציעא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על בבא מציעא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6328,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על בבא קמא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על בבא קמא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6329,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ביצה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ביצה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6330,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על גיטין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על גיטין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6331,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על הוריות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על הוריות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6332,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על יבמות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על יבמות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6333,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על יומא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על יומא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6334,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי בבא בתרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי בבא בתרא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6335,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי בבא מציעא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי בבא מציעא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6336,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי בבא קמא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי בבא קמא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6337,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי ביצה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי ביצה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6338,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי גיטין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי גיטין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6339,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי הוריות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי הוריות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6340,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי חגיגה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי חגיגה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6341,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי יבמות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי יבמות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6342,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי יומא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי יומא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6343,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי כתובות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי כתובות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6344,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי מגילה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי מגילה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6345,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי מועד קטן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי מועד קטן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6346,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי מכות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי מכות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6347,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי נדרים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי נדרים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6348,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי נזיר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי נזיר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6349,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי סוטה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי סוטה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6350,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי סוכה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי סוכה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6351,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי סנהדרין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי סנהדרין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6352,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי עבודה זרה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי עבודה זרה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6353,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי עירובין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי עירובין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6354,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי פסחים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי פסחים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6355,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי קידושין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי קידושין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6356,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי ראש השנה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי ראש השנה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6357,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי שבועות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי שבועות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6358,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי שבת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי שבת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6359,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי שקלים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי שקלים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6360,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ירושלמי תענית",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ירושלמי תענית",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6361,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על כתובות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על כתובות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6362,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על מגילה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על מגילה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6363,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על מועד קטן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על מועד קטן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6364,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על מכות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על מכות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6365,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על נדרים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על נדרים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6366,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על נזיר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על נזיר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6367,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על סוטה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על סוטה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6368,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על סוכה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על סוכה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6369,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על סנהדרין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על סנהדרין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6370,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על עבודה זרה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על עבודה זרה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6371,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על עדיות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על עדיות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6372,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על עירובין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על עירובין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6373,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על פסחים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על פסחים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6374,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על קידושין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על קידושין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6375,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על ראש השנה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על ראש השנה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6376,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על שבועות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על שבועות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6377,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על שבת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על שבת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6378,
+      "kind": "rename",
+      "old": {
+        "bookName": "גליוני השס על תענית",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "גליוני הש״ס על תענית",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6379,
+      "kind": "rename",
+      "old": {
+        "bookName": "דברי מהריא חלק א",
+        "authorName": "רבי יהודה אסאד"
+      },
+      "new": {
+        "bookName": "דברי מהרי״א חלק א",
+        "authorName": "רבי יהודה אסאד"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6380,
+      "kind": "rename",
+      "old": {
+        "bookName": "דברי מהריא חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דברי מהרי״א חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6381,
+      "kind": "rename",
+      "old": {
+        "bookName": "דברי שאול עהת ומגילות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דברי שאול עה״ת ומגילות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6382,
+      "kind": "rename",
+      "old": {
+        "bookName": "דברי תורה בשם המגיד לרמחל",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דברי תורה בשם המגיד לרמח״ל",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6383,
+      "kind": "rename",
+      "old": {
+        "bookName": "דבש תמר - א (שס)",
+        "authorName": "רבי דוד טיטלבוים"
+      },
+      "new": {
+        "bookName": "דבש תמר - א (ש״ס)",
+        "authorName": "רבי דוד טיטלבוים"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6384,
+      "kind": "rename",
+      "old": {
+        "bookName": "דבש תמר - ב (פירוש המשניות להרמבם)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דבש תמר - ב (פירוש המשניות להרמב״ם)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6385,
+      "kind": "rename",
+      "old": {
+        "bookName": "דבש תמר - ב (ראש)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דבש תמר - ב (רא״ש)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6386,
+      "kind": "rename",
+      "old": {
+        "bookName": "דבש תמר - ב (ריף)",
+        "authorName": "רבי דוד טיטלבוים"
+      },
+      "new": {
+        "bookName": "דבש תמר - ב (רי״ף)",
+        "authorName": "רבי דוד טיטלבוים"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6387,
+      "kind": "rename",
+      "old": {
+        "bookName": "דעת תורה על שולחן ערוך יוד חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דעת תורה על שולחן ערוך יו״ד חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6388,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרוש וחידוש על השס חלק שני",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דרוש וחידוש על הש״ס חלק שני",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6389,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרוש וחידוש על השס חלק שני מערכות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דרוש וחידוש על הש״ס חלק שני מערכות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6390,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרושי הצלח",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "דרושי הצל״ח",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6391,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרשות תלמיד הראש",
+        "authorName": "תלמיד הרא\"ש"
+      },
+      "new": {
+        "bookName": "דרשות תלמיד הרא״ש",
+        "authorName": "תלמיד הרא\"ש"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6392,
+      "kind": "rename",
+      "old": {
+        "bookName": "דרשת הרמבן (תורת ה' תמימה)",
+        "authorName": "רבנו משה ב\"ר נחמן [הרמב\"ן]"
+      },
+      "new": {
+        "bookName": "דרשת הרמב״ן (תורת ה' תמימה)",
+        "authorName": "רבנו משה ב\"ר נחמן [הרמב\"ן]"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6393,
+      "kind": "rename",
+      "old": {
+        "bookName": "האמונה והבטחון מיוחס לרמבן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "האמונה והבטחון מיוחס לרמב״ן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6394,
+      "kind": "rename",
+      "old": {
+        "bookName": "הגהות רבי העשיל על הסמג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "הגהות רבי העשיל על הסמ״ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6395,
+      "kind": "rename",
+      "old": {
+        "bookName": "הלכות בכורות וחלה להרמבן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "הלכות בכורות וחלה להרמב״ן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6396,
+      "kind": "rename",
+      "old": {
+        "bookName": "הלכות ברכות להריטבא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "הלכות ברכות להריטב״א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6397,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על בבא בתרא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על בבא בתרא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6398,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על בבא מציעא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על בבא מציעא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6399,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על בבא קמא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על בבא קמא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6400,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על ביצה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על ביצה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6401,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על גיטין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על גיטין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6402,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על כתובות",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על כתובות",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6403,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על נדה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על נדה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6404,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על פסחים",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על פסחים",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6405,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על קידושין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על קידושין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6406,
+      "kind": "rename",
+      "old": {
+        "bookName": "הערות על חידושי הלכות מהרם חריף על שבת",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "הערות על חידושי הלכות מהר״ם חריף על שבת",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6407,
+      "kind": "rename",
+      "old": {
+        "bookName": "הקדמת הרמבם למסכת מנחות",
+        "authorName": "משה בן מימון (רמב\"ם)"
+      },
+      "new": {
+        "bookName": "הקדמת הרמב״ם למסכת מנחות",
+        "authorName": "משה בן מימון (רמב\"ם)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6408,
+      "kind": "rename",
+      "old": {
+        "bookName": "השמטות הריטבא על יבמות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "השמטות הריטב״א על יבמות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6409,
+      "kind": "rename",
+      "old": {
+        "bookName": "חדושי רעא על תלמוד בבלי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חדושי רע״א על תלמוד בבלי",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6410,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על בבא בתרא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על בבא בתרא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6411,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על בבא מציעא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על בבא מציעא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6412,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על בבא קמא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על בבא קמא",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6413,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על ביצה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על ביצה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6414,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על גיטין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על גיטין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6415,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על כתובות",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על כתובות",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6416,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על נדה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על נדה",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6417,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על פסחים",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על פסחים",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6418,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על קידושין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על קידושין",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6419,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הלכות מהרם חריף על שבת",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "new": {
+        "bookName": "חידושי הלכות מהר״ם חריף על שבת",
+        "authorName": "רבי משה ברנדס (מהר\"ם חריף)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6420,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי המהריט על כתובות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי המהרי״ט על כתובות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6421,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי המהריט על קידושין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי המהרי״ט על קידושין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6422,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי המהריט על שבת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי המהרי״ט על שבת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6423,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הראבד על עבודה זרה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הראב״ד על עבודה זרה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6424,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרדד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הרד״ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6425,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הריטבא סוכה מכתב יד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הריטב״א סוכה מכתב יד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6426,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרימ על שולחן ערוך אבן העזר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הרי״מ על שולחן ערוך אבן העזר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6427,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרימ על שולחן ערוך חושן משפט חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הרי״מ על שולחן ערוך חושן משפט חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6428,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרימ על שולחן ערוך חושן משפט חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הרי״מ על שולחן ערוך חושן משפט חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6429,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן (מיוחס לו) על שבת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן (מיוחס לו) על שבת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6430,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן על בבא מציעא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן על בבא מציעא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6431,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן על מגילה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן על מגילה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6432,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן על עבודה זרה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן על עבודה זרה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6433,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן על ראש השנה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן על ראש השנה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6434,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי הרן על שבת [מיוחס להריטבא]",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי הר״ן על שבת [מיוחס להריטב״א]",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6435,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהראך",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרא״ך",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6436,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהראך חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרא״ך חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6437,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהראך חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרא״ך חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6438,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהראל על השס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרא״ל על הש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6439,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהראל על שחיטה וטריפות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרא״ל על שחיטה וטריפות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6440,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהריא על כתובות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרי״א על כתובות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6441,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהריו וידקר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חידושי מהרי״ו וידקר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6442,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהרשדם חלק א",
+        "authorName": "רבי דוד שלמה מרגליות"
+      },
+      "new": {
+        "bookName": "חידושי מהרשד״ם חלק א",
+        "authorName": "רבי דוד שלמה מרגליות"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6443,
+      "kind": "rename",
+      "old": {
+        "bookName": "חידושי מהרשדם חלק ב",
+        "authorName": "רבי דוד שלמה מרגליות"
+      },
+      "new": {
+        "bookName": "חידושי מהרשד״ם חלק ב",
+        "authorName": "רבי דוד שלמה מרגליות"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6444,
+      "kind": "rename",
+      "old": {
+        "bookName": "חלקו של יוסף (שס)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חלקו של יוסף (ש״ס)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6445,
+      "kind": "rename",
+      "old": {
+        "bookName": "חפץ חיים על הרמבם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "חפץ חיים על הרמב״ם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6446,
+      "kind": "rename",
+      "old": {
+        "bookName": "יד יעבץ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "יד יעב״ץ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6447,
+      "kind": "rename",
+      "old": {
+        "bookName": "ילקוט הגרשוני על השס חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ילקוט הגרשוני על הש״ס חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6448,
+      "kind": "rename",
+      "old": {
+        "bookName": "ילקוט הגרשוני על השס חלק ג",
+        "authorName": "רבי גרשון שטרן"
+      },
+      "new": {
+        "bookName": "ילקוט הגרשוני על הש״ס חלק ג",
+        "authorName": "רבי גרשון שטרן"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6449,
+      "kind": "rename",
+      "old": {
+        "bookName": "ימי מוהרנת חלק ראשון",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ימי מוהרנ״ת חלק ראשון",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6450,
+      "kind": "rename",
+      "old": {
+        "bookName": "ימי מוהרנת חלק שני",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ימי מוהרנ״ת חלק שני",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6451,
+      "kind": "rename",
+      "old": {
+        "bookName": "ישועות יעקב עהת",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ישועות יעקב עה״ת",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6452,
+      "kind": "rename",
+      "old": {
+        "bookName": "ישמח משה על השס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ישמח משה על הש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6453,
+      "kind": "rename",
+      "old": {
+        "bookName": "ישמח משה על נך",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ישמח משה על נ״ך",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6454,
+      "kind": "rename",
+      "old": {
+        "bookName": "ישמח משה על תפלות יוט וליקוטים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ישמח משה על תפלות יו״ט וליקוטים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6455,
+      "kind": "rename",
+      "old": {
+        "bookName": "כבוד יוט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "כבוד יו״ט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6456,
+      "kind": "rename",
+      "old": {
+        "bookName": "כתבי הרמבם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "כתבי הרמב״ם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6457,
+      "kind": "rename",
+      "old": {
+        "bookName": "כתבי קודש על השס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "כתבי קודש על הש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6458,
+      "kind": "rename",
+      "old": {
+        "bookName": "לבושי מרדכי (שוע) חלק ד",
+        "authorName": "רבי מרדכי יהודה ליב וינקלר"
+      },
+      "new": {
+        "bookName": "לבושי מרדכי (שו״ע) חלק ד",
+        "authorName": "רבי מרדכי יהודה ליב וינקלר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6459,
+      "kind": "rename",
+      "old": {
+        "bookName": "לי לישועה (על התנך)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "לי לישועה (על התנ״ך)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6460,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטי השס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטי הש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6461,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטי מהריח חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטי מהרי״ח חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6462,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטי מהריל על התורה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטי מהרי״ל על התורה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6463,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטי מהריל על כתובות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטי מהרי״ל על כתובות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6464,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטי מהריל על קידושין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטי מהרי״ל על קידושין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6465,
+      "kind": "rename",
+      "old": {
+        "bookName": "ליקוטים מכתבי הרמחל זל",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ליקוטים מכתבי הרמח״ל ז״ל",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6466,
+      "kind": "rename",
+      "old": {
+        "bookName": "לשונות הרמבם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "לשונות הרמב״ם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6467,
+      "kind": "rename",
+      "old": {
+        "bookName": "מביט חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מבי״ט חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6468,
+      "kind": "rename",
+      "old": {
+        "bookName": "מביט חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מבי״ט חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6469,
+      "kind": "rename",
+      "old": {
+        "bookName": "מביט חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מבי״ט חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6470,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהריא הלוי חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהרי״א הלוי חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6471,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהריא הלוי חלק ב",
+        "authorName": "רבי יצחק אהרן איטינגא"
+      },
+      "new": {
+        "bookName": "מהרי״א הלוי חלק ב",
+        "authorName": "רבי יצחק אהרן איטינגא"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6472,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהריט אלגאזי על הלכות בכורות וחלה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהרי״ט אלגאזי על הלכות בכורות וחלה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6473,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהריל (מנהגים)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהרי״ל (מנהגים)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6474,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם חלאווה על פסחים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם חלאווה על פסחים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6475,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם לובלין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם לובלין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6476,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק אבן העזר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק אבן העזר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6477,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק אורח חיים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק אורח חיים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6478,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק חושן משפט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק חושן משפט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6479,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק יורה דעה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק יורה דעה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6480,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק על התורה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק על התורה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6481,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק תריג מצות חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק תרי״ג מצות חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6482,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרם שיק תריג מצות חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ם שיק תרי״ג מצות חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6483,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרש חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ש חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6484,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרש חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ש חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6485,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרש חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ש חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6486,
+      "kind": "rename",
+      "old": {
+        "bookName": "מהרש חלק ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מהר״ש חלק ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6487,
+      "kind": "rename",
+      "old": {
+        "bookName": "מסעי הירח ומאמריו",
+        "authorName": "רחמים יוסף חיים אופלטקא (הרי\"ח טוב)"
+      },
+      "new": {
+        "bookName": "מסעי היר״ח ומאמריו",
+        "authorName": "רחמים יוסף חיים אופלטקא (הרי\"ח טוב)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6488,
+      "kind": "rename",
+      "old": {
+        "bookName": "מפתח ענייני התנך",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מפתח ענייני התנ״ך",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6489,
+      "kind": "rename",
+      "old": {
+        "bookName": "משנה למלך אחרון (הרמבם)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "משנה למלך אחרון (הרמב״ם)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6490,
+      "kind": "rename",
+      "old": {
+        "bookName": "נימוקי הגריב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "נימוקי הגרי״ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6491,
+      "kind": "rename",
+      "old": {
+        "bookName": "נפש חיה על השס",
+        "authorName": "רבי חיים אלעזר וקס"
+      },
+      "new": {
+        "bookName": "נפש חיה על הש״ס",
+        "authorName": "רבי חיים אלעזר וקס"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6492,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר אותיות הנוח (תרגום ראבע)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר אותיות הנוח (תרגום ראב״ע)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6493,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר אותיות הנוח (תרגום רמבג)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר אותיות הנוח (תרגום רמב״ג)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6494,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר הנקוד (תרגום ראבע, מהדורת דוקעס)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר הנקוד (תרגום ראב״ע, מהדורת דוקעס)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6495,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר הנקוד (תרגום ראבע, מהדורת נוט)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר הנקוד (תרגום ראב״ע, מהדורת נוט)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6496,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר השרשים לרדק",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ספר השרשים לרד״ק",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6497,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר פעלי הכפל (תרגום ראבע)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר פעלי הכפל (תרגום ראב״ע)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6498,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר פעלי הכפל (תרגום רמבג)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "new": {
+        "bookName": "ספר פעלי הכפל (תרגום רמב״ג)",
+        "authorName": "רבי יהודה חיוג'"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6499,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספר שער הניקוד וסוד החשמל",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ספר שער הניקוד וסוד החשמ״ל",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6500,
+      "kind": "rename",
+      "old": {
+        "bookName": "ספרא דצניעותא עם ביאור הגרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ספרא דצניעותא עם ביאור הגר״א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6501,
+      "kind": "rename",
+      "old": {
+        "bookName": "עיקרי הדט יורה דעה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "עיקרי הד״ט יורה דעה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6502,
+      "kind": "rename",
+      "old": {
+        "bookName": "ערוגת הבושם על אוח",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ערוגת הבושם על או״ח",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6503,
+      "kind": "rename",
+      "old": {
+        "bookName": "ערך שי שס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ערך שי ש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6504,
+      "kind": "rename",
+      "old": {
+        "bookName": "עשרה פרקים לרמחל - כללות האילן הקדוש",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "עשרה פרקים לרמח״ל - כללות האילן הקדוש",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6505,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הגרא על מגלת אסתר על דרך הפשט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הגר״א על מגלת אסתר על דרך הפשט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6506,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הגרא על מגלת אסתר על דרך הרמז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הגר״א על מגלת אסתר על דרך הרמז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6507,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הגרא על משלי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הגר״א על משלי",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6508,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הגרא על שיר השירים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הגר״א על שיר השירים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6509,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הראש על זבים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הרא״ש על זבים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6510,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הראש על מדות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הרא״ש על מדות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6511,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הראש על קינים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הרא״ש על קינים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6512,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הרי דמן עכו לספר יצירה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הר״י דמן עכו לספר יצירה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6513,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש הרמק לספר יצירה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש הרמ״ק לספר יצירה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6514,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש לב נתיבות מקבלת הגאונים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש ל״ב נתיבות מקבלת הגאונים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6515,
+      "kind": "rename",
+      "old": {
+        "bookName": "פירוש רי סגי נהור לספר יצירה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "פירוש ר״י סגי נהור לספר יצירה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6516,
+      "kind": "rename",
+      "old": {
+        "bookName": "קדושת יוט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קדושת יו״ט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6517,
+      "kind": "rename",
+      "old": {
+        "bookName": "קול בוכים על מגילת איכה (עם פירוש קינת הסתרים)",
+        "authorName": "רבי אברהם גלאנטי"
+      },
+      "new": {
+        "bookName": "קול בוכים על מגילת איכה (עם פירוש ״קינת הסתרים״)",
+        "authorName": "רבי אברהם גלאנטי"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6518,
+      "kind": "rename",
+      "old": {
+        "bookName": "קיצור שע ילקוט יוסף החדש - אבן העזר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קיצור ש״ע ילקוט יוסף החדש - אבן העזר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6519,
+      "kind": "rename",
+      "old": {
+        "bookName": "קיצור שע ילקוט יוסף החדש - אורח חיים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קיצור ש״ע ילקוט יוסף החדש - אורח חיים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6520,
+      "kind": "rename",
+      "old": {
+        "bookName": "קיצור שע ילקוט יוסף החדש - חושן משפט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קיצור ש״ע ילקוט יוסף החדש - חושן משפט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6521,
+      "kind": "rename",
+      "old": {
+        "bookName": "קיצור שע ילקוט יוסף החדש - יורה דעה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קיצור ש״ע ילקוט יוסף החדש - יורה דעה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6522,
+      "kind": "rename",
+      "old": {
+        "bookName": "קלח פתחי חכמה - הפתחים בלבד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "קל״ח פתחי חכמה - הפתחים בלבד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6523,
+      "kind": "rename",
+      "old": {
+        "bookName": "רדבז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "רדב״ז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6524,
+      "kind": "rename",
+      "old": {
+        "bookName": "רדך",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "רד״ך",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6525,
+      "kind": "rename",
+      "old": {
+        "bookName": "ריבבן על שקלים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ריבב״ן על שקלים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6526,
+      "kind": "rename",
+      "old": {
+        "bookName": "ריטבא על גיטין",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "ריטב״א על גיטין",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6527,
+      "kind": "rename",
+      "old": {
+        "bookName": "שביתת יוט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שביתת יו״ט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6528,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות אבן שתיה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת אבן שתיה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6529,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות אבני חפץ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת אבני חפץ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6530,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות אור המאיר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת אור המאיר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6531,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות אות לטובה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת אות לטובה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6532,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות איתן האזרחי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת איתן האזרחי",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6533,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ביכורי אברהם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ביכורי אברהם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6534,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות בית דוד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת בית דוד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6535,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות בכל דרכיך דעהו",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת בכל דרכיך דעהו",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6536,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות בענייני קבלה",
+        "authorName": "רבי משה די ליאון"
+      },
+      "new": {
+        "bookName": "שו״ת בענייני קבלה",
+        "authorName": "רבי משה די ליאון"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6537,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ברוך השם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ברוך השם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6538,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ברית עולם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ברית עולם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6539,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות גם אני אודך - א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת גם אני אודך - א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6540,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות גם אני אודך - ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת גם אני אודך - ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6541,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות גם אני אודך - ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת גם אני אודך - ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6542,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי יוסף",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי יוסף",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6543,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי יחזקאל",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי יחזקאל",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6544,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי מלכיאל חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי מלכיאל חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6545,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי מלכיאל חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי מלכיאל חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6546,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי מלכיאל חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי מלכיאל חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6547,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי מלכיאל חלק ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי מלכיאל חלק ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6548,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דברי מלכיאל חלק ה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דברי מלכיאל חלק ה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6549,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות די השב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת די השב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6550,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות דרכי שלום",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת דרכי שלום",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6551,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות האדמור הזקן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת האדמו״ר הזקן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6552,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות הרדד אבן העזר א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת הרד״ד אבן העזר א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6553,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות הרדד אורח חיים א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת הרד״ד אורח חיים א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6554,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות הריף",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת הרי״ף",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6555,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות הרשבא - הגהות הגראש וסרמן",
+        "authorName": "רבי אלחנן בונים וסרמן"
+      },
+      "new": {
+        "bookName": "שו״ת הרשב״א - הגהות הגרא״ש וסרמן",
+        "authorName": "רבי אלחנן בונים וסרמן"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6556,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ושב הכהן",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ושב הכהן",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6557,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות זכרון יהודה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת זכרון יהודה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6558,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות זרח השלום",
+        "authorName": "רבי זרחיה גוטה"
+      },
+      "new": {
+        "bookName": "שו״ת זרח השלום",
+        "authorName": "רבי זרחיה גוטה"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6559,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות חזון למועד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת חזון למועד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6560,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות חיים ביד",
+        "authorName": "רבי חיים ב\"ר יעקב פלאג'י [החבי\"ף]"
+      },
+      "new": {
+        "bookName": "שו״ת חיים ביד",
+        "authorName": "רבי חיים ב\"ר יעקב פלאג'י [החבי\"ף]"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6561,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ישועות יעקב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ישועות יעקב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6562,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ישועות מלכו",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ישועות מלכו",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6563,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות לבוש מרדכי",
+        "authorName": "רבי משה מרדכי אפשטיין"
+      },
+      "new": {
+        "bookName": "שו״ת לבוש מרדכי",
+        "authorName": "רבי משה מרדכי אפשטיין"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6564,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מבעל טיב גיטין חלק א",
+        "authorName": "רבי צבי הירש הלר"
+      },
+      "new": {
+        "bookName": "שו״ת מבעל טיב גיטין חלק א",
+        "authorName": "רבי צבי הירש הלר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6565,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהראל צינץ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהרא״ל צינץ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6566,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהראפ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהרא״פ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6567,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהראש",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהרא״ש",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6568,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרי אשכנזי",
+        "authorName": "רבי יואל אשכנזי"
+      },
+      "new": {
+        "bookName": "שו״ת מהר״י אשכנזי",
+        "authorName": "רבי יואל אשכנזי"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6569,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרי בן לב חלק ב",
+        "authorName": "רבי יוסף בן דוד אבן לב"
+      },
+      "new": {
+        "bookName": "שו״ת מהר״י בן לב חלק ב",
+        "authorName": "רבי יוסף בן דוד אבן לב"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6570,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרי ברונא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״י ברונא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6571,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרי מינץ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״י מינץ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6572,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרם אלשיך",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״ם אלשיך",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6573,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרם בן חביב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״ם בן חביב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6574,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרם מינץ",
+        "authorName": "רבי משה הלוי מינץ"
+      },
+      "new": {
+        "bookName": "שו״ת מהר״ם מינץ",
+        "authorName": "רבי משה הלוי מינץ"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6575,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרמ אלשקר",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״מ אלשקר",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6576,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרף",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״ף",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6577,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרש אלפנדרי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהר״ש אלפנדרי",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6578,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרשם חלק ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהרש״ם חלק ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6579,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מהרשם חלק ה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מהרש״ם חלק ה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6580,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מוהרץ",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מוהר״ץ",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6581,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מוצל מאש (רבי יעקב אלפנדרי)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מוצל מאש (רבי יעקב אלפנדרי)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6582,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מנחת שי חלק ב",
+        "authorName": "רבי שמואל יצחק שור"
+      },
+      "new": {
+        "bookName": "שו״ת מנחת שי חלק ב",
+        "authorName": "רבי שמואל יצחק שור"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6583,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות מר ואהלות",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת מר ואהלות",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6584,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6585,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6586,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6587,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6588,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6589,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ו",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ו",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6590,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6591,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ח",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ח",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6592,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק ט",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק ט",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6593,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק טו",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק טו",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6594,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק טז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק טז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6595,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק י",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק י",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6596,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק יא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק יא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6597,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק יב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק יב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6598,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק יג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק יג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6599,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק יד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק יד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6600,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות משנה הלכות חלק יז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת משנה הלכות חלק יז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6601,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות נשאל דוד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת נשאל דוד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6602,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות עונג יום טוב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת עונג יום טוב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6603,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות עטרת חכמים חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת עטרת חכמים חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6604,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות עטרת חכמים חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת עטרת חכמים חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6605,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות עצי ברושים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת עצי ברושים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6606,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות פאר הדור",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת פאר הדור",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6607,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות פרחי כהונה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת פרחי כהונה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6608,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות פרי הארץ חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת פרי הארץ חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6609,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות פרי עץ חיים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת פרי עץ חיים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6610,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות ר' יהושע הנגיד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת ר' יהושע הנגיד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6611,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבז אורח חיים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת רב״ז אורח חיים",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6612,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבז יורה דעה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת רב״ז יורה דעה",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6613,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבי אליהו מזרחי (ראם)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת רבי אליהו מזרחי (רא״ם)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6614,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבי יצחק הלוי מקושטא",
+        "authorName": "רבי יצחק הלוי מקושטא"
+      },
+      "new": {
+        "bookName": "שו״ת רבי יצחק הלוי מקושטא",
+        "authorName": "רבי יצחק הלוי מקושטא"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6615,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבי משולם איגרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת רבי משולם איגרא",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6616,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבי שלמה ברוך",
+        "authorName": "רבי שלמה ברוך"
+      },
+      "new": {
+        "bookName": "שו״ת רבי שלמה ברוך",
+        "authorName": "רבי שלמה ברוך"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6617,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רבינו בצלאל אשכנזי",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת רבינו בצלאל אשכנזי",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6618,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות רשבן אורח חיים",
+        "authorName": "רבי שלמה צבי שיק"
+      },
+      "new": {
+        "bookName": "שו״ת רשב״ן אורח חיים",
+        "authorName": "רבי שלמה צבי שיק"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6619,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבות יעקב חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שבות יעקב חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6620,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבות יעקב חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שבות יעקב חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6621,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבות יעקב חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שבות יעקב חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6622,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק א",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק א",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6623,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ב",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ב",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6624,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ג",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ג",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6625,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ד",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ד",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6626,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ה",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ה",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6627,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ו",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ו",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6628,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ז",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ז",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6629,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ח",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ח",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6630,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק ט",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק ט",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6631,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק י",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק י",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6632,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט הלוי חלק יא",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "new": {
+        "bookName": "שו״ת שבט הלוי חלק יא",
+        "authorName": "הרב שמואל הלוי ואזנר"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6633,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט סופר חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שבט סופר חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6634,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שבט סופר חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שבט סופר חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6635,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שואל ונשאל חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שואל ונשאל חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6636,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות שתי הלחם",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת שתי הלחם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6637,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות תעלומות לב חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת תעלומות לב חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6638,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות תעלומות לב חלק ב",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת תעלומות לב חלק ב",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6639,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות תעלומות לב חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת תעלומות לב חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6640,
+      "kind": "rename",
+      "old": {
+        "bookName": "שות תעלומות לב חלק ד",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שו״ת תעלומות לב חלק ד",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6641,
+      "kind": "rename",
+      "old": {
+        "bookName": "שיעור הרמבם מגניזת קהיר",
+        "authorName": "משה בן מימון (רמב\"ם)"
+      },
+      "new": {
+        "bookName": "שיעור הרמב״ם מגניזת קהיר",
+        "authorName": "משה בן מימון (רמב\"ם)"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6642,
+      "kind": "rename",
+      "old": {
+        "bookName": "שלמי תודה (שוע)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "שלמי תודה (שו״ע)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6643,
+      "kind": "rename",
+      "old": {
+        "bookName": "שרח - ליקוטים מפי רסג והוספות",
+        "authorName": "רב סעדיה גאון"
+      },
+      "new": {
+        "bookName": "שרח - ליקוטים מפי רס״ג והוספות",
+        "authorName": "רב סעדיה גאון"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6644,
+      "kind": "rename",
+      "old": {
+        "bookName": "תוספות הראש על גיטין",
+        "authorName": "רבינו אשר בן יחיאל"
+      },
+      "new": {
+        "bookName": "תוספות הרא״ש על גיטין",
+        "authorName": "רבינו אשר בן יחיאל"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6645,
+      "kind": "rename",
+      "old": {
+        "bookName": "תחבולה מהראבע",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תחבולה מהראב״ע",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6646,
+      "kind": "rename",
+      "old": {
+        "bookName": "תפארת מנחם על שס",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תפארת מנחם על ש״ס",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6647,
+      "kind": "rename",
+      "old": {
+        "bookName": "תפסיר רסג למגילת אסתר",
+        "authorName": "רב סעדיה גאון"
+      },
+      "new": {
+        "bookName": "תפסיר רס״ג למגילת אסתר",
+        "authorName": "רב סעדיה גאון"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6648,
+      "kind": "rename",
+      "old": {
+        "bookName": "תקוני הזהר מסודר על פי הגרא",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תקוני הזהר מסודר על פי הגר״א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6649,
+      "kind": "rename",
+      "old": {
+        "bookName": "תרגום ותפסיר רסג",
+        "authorName": "רב סעדיה גאון"
+      },
+      "new": {
+        "bookName": "תרגום ותפסיר רס״ג",
+        "authorName": "רב סעדיה גאון"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6650,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשובות הראם חלק א",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תשובות הרא״ם חלק א",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6651,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשובות הראם חלק ג",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תשובות הרא״ם חלק ג",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6652,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשובות הרדבז חלק ז",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תשובות הרדב״ז חלק ז",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6653,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשובות מהרים",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תשובות מהרי״ם",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6654,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשובת הגאונים (מהרל, והרב יעקב בן הרב יצחק הלוי פולק)",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "תשובת הגאונים (מהר״ל, והרב יעקב בן הרב יצחק הלוי פולק)",
+        "authorName": ""
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6655,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשורת שי מהדורא קמא",
+        "authorName": "רבי שלמה יהודה טבק"
+      },
+      "new": {
+        "bookName": "תשורת ש״י מהדורא קמא",
+        "authorName": "רבי שלמה יהודה טבק"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
+    },
+    {
+      "id": 6656,
+      "kind": "rename",
+      "old": {
+        "bookName": "תשורת שי מהדורא תנינא",
+        "authorName": "רבי שלמה יהודה טבק"
+      },
+      "new": {
+        "bookName": "תשורת ש״י מהדורא תנינא",
+        "authorName": "רבי שלמה יהודה טבק"
+      },
+      "commit": "404d64fff67c10aedec55861d88d146c1781aa25"
     }
   ]
 }
