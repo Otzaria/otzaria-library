@@ -12,7 +12,7 @@ all_metadata_with_file_paths.json, ו־`authorName` ב־ForDB/book_info.csv, ה�
 סיכום. בלי בסיס מסומנים הראשונים בלבד. קריסה של הבדיקה עצמה היא כשל (exit 2), לא אזהרה.
 
 ספר של המאגר = קובץ ‎.txt‎ בשורש ספרים נארז (DB_BOOK_PREFIXES) בעץ של --rev. רשומת העתק נבדקת
-רק כשהכותר שלה הוא שם הקובץ (או איות ה־DB שלו) *וגם* תיקיית המקור שלה (Sourcefolder) היא של
+רק כשהכותר שלה הוא שם הקובץ (או איות ה־DB שלו, או שם התצוגה עם הגרשיים) *וגם* תיקיית המקור שלה (Sourcefolder) היא של
 אותו ספר: רשומה ישנה של ספר אחר באותו שם (למשל רשומת דיקטה של ספר שהקובץ הנארז שלו הוא ספר
 אחר) אינה נבדקת מולו. ב־metadata.json נלקחת הרשומה *האחרונה* לכל כותר, בהתאמה מדויקת, כמו
 `associateBy { it.title }` במחולל. ספר שכותרו הוא גם כותר של ספר ספריא אינו נבדק. ב־book_info.csv
@@ -28,6 +28,7 @@ import re
 import subprocess
 import sys
 
+import book_display_titles
 from validate_fordb_book_names import DB_BOOK_PREFIXES, db_title
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -84,6 +85,13 @@ class Snapshot:
         text = self.text(rel)
         return None if text is None else json.loads(text)
 
+    def display_titles(self):
+        """שם קובץ -> book.title (עם הגרשיים שהמחולל מחזיר), לכל ספר נארז."""
+        tree = _git(self.root, "ls-tree", "-r", "-z", "--name-only", "--full-tree", self.rev).decode("utf-8")
+        paths = [p for p in tree.split("\0") if p.endswith(".txt") and p.startswith(DB_BOOK_PREFIXES)]
+        titles = book_display_titles.display_titles(self.root, self.rev, paths)
+        return {path.rsplit("/", 1)[-1][:-4]: title for path, title in titles.items()}
+
     def books(self):
         """שם קובץ -> מפתח מקור, לכל ספר נארז; שם שיש לו יותר מקובץ אחד אינו נבדק."""
         tree = _git(self.root, "ls-tree", "-r", "-z", "--name-only", "--full-tree", self.rev).decode("utf-8")
@@ -106,11 +114,12 @@ def find_mismatches(snap):
     for r in canonical:
         if r.get("Sourcefolder") == "sefaria" and isinstance(r.get("title"), str):
             sefaria_titles |= {r["title"], db_title(r["title"])}
-    by_title = {}  # כותר בעותק (שם הקובץ או איות ה־DB) -> (שם הקובץ, מפתח מקור)
+    by_title = {}  # כותר בעותק (שם הקובץ, איות ה־DB או שם התצוגה) -> (שם הקובץ, מפתח מקור)
+    display = snap.display_titles()
     for stem, source in snap.books().items():
         if not meta.get(stem) or db_title(stem) in sefaria_titles:
             continue
-        for title in {stem, db_title(stem)}:
+        for title in {stem, db_title(stem), display.get(stem, stem)}:
             by_title[title] = (stem, source)
 
     def same(left, right):

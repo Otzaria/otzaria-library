@@ -9,7 +9,7 @@ name: Python tests
 # מה לא רץ כאן ולמה:
 #   .github/scripts/test_validate_fordb_book_names.py — רץ ב-validate-fordb-book-names.yml,
 #     ה-job היחיד שכבר מושך את ForDB מ-LFS (RepositoryForDbTest קורא את ה-CSV-ים).
-#   .github/scripts/test_fordb_book_renames.py — רץ לצידה, באותו צעד self-test.
+#   .github/scripts/test_fordb_book_renames.py, test_book_display_titles.py — רצות לצידה, באותו צעד self-test.
 #   .github/scripts/test_library_tree.py — גם הוא באותו צעד self-test.
 #   .github/scripts/test_check_locked_metadata.py, test_update_locked_metadata.py, test_follow_lock_renames.py,
 #     test_check_author_mirrors.py, test_fordb_archive.py — גם הן באותו צעד self-test.
