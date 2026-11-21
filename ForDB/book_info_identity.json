@@ -85344,6 +85344,20 @@
         "authorName": "רבנו אשר ב\"ר יחיאל"
       },
       "commit": "2357d444bffa34d3b4ac8074344edfbf6bc01afb"
+    },
+    {
+      "id": 6302,
+      "kind": "rename",
+      "old": {
+        "bookName": "מאמר דבר תורה",
+        "authorName": ""
+      },
+      "new": {
+        "bookName": "מאמר דבר תורה",
+        "authorName": "רבי אליקים געציל לוויטאן - המגיד מבריסק"
+      },
+      "commit": null,
+      "changeSetId": "6b020b9173254e78d6614842"
     }
   ]
 }
