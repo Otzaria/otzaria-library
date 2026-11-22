@@ -50,7 +50,8 @@ sefariaToOtzaria/.../otzaria/utils.py):
     book.title בהשוואת מחרוזות מדויקת, ו-book.title של ספר אוצריא נגזר מ-
     normalizeHebrewLabel של Generator.kt - הממירה מרכאות לגרשיים ואינה מוחקת אותן.
     לכן 'הגהות הב"ח על מסכת ברכות' עבר את כל הבדיקות ובכל זאת דולג בשקט. כל שם
-    ForDB שמזהה קובץ ספר נארז יחיד חייב להיות מאויית בדיוק כמו db_title שלו.
+    ForDB שמזהה קובץ ספר נארז יחיד חייב להיות מאויית בדיוק כמו book.title שלו: db_title של
+    שם הקובץ עם הגרשיים שהמחולל מחזיר מה-<h1> ומ-ForDB/title_acronyms.txt (book_display_titles).
     ForDB/sefaria_metadata_changes.csv מוחרג: שמותיו הם כותרות ספריא שעשויות
     להתנגש במרחב המנוקה עם קובץ אוצריא ולהיות שני ספרים נפרדים ב-DB.
   * שינויי-שם מתים: שורת book_renames שגם המקור וגם היעד שלה אינם book.title קיים,
@@ -82,6 +83,7 @@ import sys
 import urllib.request
 
 from book_info_contract import HEADERS, validate_book_info
+import book_display_titles
 import fordb_book_renames as book_renames_follow
 
 # ---------------------------------------------------------------------------
@@ -273,6 +275,37 @@ DB_BOOK_PREFIXES = tuple(p for p in SAME_ZIP_PREFIXES)
 DB_BOOK_EXTS = (".txt",)
 
 
+_BOOK_TITLES = {}
+
+
+def packaged_book_titles(paths):
+    """נתיב -> book.title לנתיבי ספרים ב-DB (TREE_REF): שם התצוגה של המחולל, כולל הגרשיים
+    שהוא מחזיר מה-<h1> של הספר ומ-ForDB/title_acronyms.txt. נתיב שאינו בעץ אינו מוחזר."""
+    wanted = [
+        p for p in dict.fromkeys(paths)
+        if p not in _BOOK_TITLES and p.startswith(DB_BOOK_PREFIXES) and p.lower().endswith(DB_BOOK_EXTS)
+    ]
+    if wanted:
+        reader = book_display_titles.HeadReader(REPO_ROOT)
+        _BOOK_TITLES.update(book_display_titles.display_titles(REPO_ROOT, TREE_REF, wanted, reader))
+        if reader.stats["local"] or reader.stats["http"] or reader.stats["git"]:
+            print(f"[canonical] כותרות <h1> של {len(wanted)} קבצי ספרים: {reader.stats}")
+    return {p: _BOOK_TITLES[p] for p in paths if p in _BOOK_TITLES}
+
+
+_PATHS_BY_STEM = {}
+
+
+def book_title_for_stem(stem):
+    """book.title של קובץ ספר לפי שם הקובץ: שם התצוגה כשהשם שייך לקובץ נארז יחיד, אחרת db_title."""
+    if TREE_REF not in _PATHS_BY_STEM:
+        by_stem = _PATHS_BY_STEM[TREE_REF] = {}
+        for p in filter(None, list_tracked_paths()):
+            by_stem.setdefault(os.path.splitext(p.rsplit("/", 1)[-1])[0], []).append(p)
+    titles = set(packaged_book_titles(_PATHS_BY_STEM[TREE_REF].get(stem, [])).values())
+    return titles.pop() if len(titles) == 1 else db_title(stem)
+
+
 def packaged_db_titles():
     """
     ממפה מפתח-התאמה (sanitize_title של שם הקובץ) -> קבוצת שמות ה-DB (db_title)
@@ -280,10 +313,11 @@ def packaged_db_titles():
     דו-משמעי ואינו נבדק (הכפילות עצמה נתפסת ב-find_packaged_duplicates).
     """
     titles = {}
-    for p in list_tracked_paths():
-        if not p:
+    paths = [(p or "").replace("\\", "/") for p in list_tracked_paths()]
+    book_titles = packaged_book_titles(paths)
+    for norm in paths:
+        if not norm:
             continue
-        norm = p.replace("\\", "/")
         if not any(norm.startswith(prefix) for prefix in DB_BOOK_PREFIXES):
             continue
         base, ext = os.path.splitext(norm.rsplit("/", 1)[-1])
@@ -291,7 +325,7 @@ def packaged_db_titles():
             continue
         key = sanitize_title(base)
         if key:
-            titles.setdefault(key, set()).add(db_title(base))
+            titles.setdefault(key, set()).add(book_titles.get(norm) or db_title(base))
     return titles
 
 
@@ -332,14 +366,15 @@ def packaged_titles_by_source(rename_pairs):
         if sanitize_title(old):
             renamed.setdefault(sanitize_title(old), set()).add(new)
     by_source = {}
-    for p in list_tracked_paths():
-        norm = (p or "").replace("\\", "/")
+    paths = [(p or "").replace("\\", "/") for p in list_tracked_paths()]
+    book_titles = packaged_book_titles(paths)
+    for norm in paths:
         if not any(norm.startswith(prefix) for prefix in DB_BOOK_PREFIXES):
             continue
         base, ext = os.path.splitext(norm.rsplit("/", 1)[-1])
         if ext.lower() not in DB_BOOK_EXTS:
             continue
-        title = db_title(base)
+        title = book_titles.get(norm) or db_title(base)
         bucket = by_source.setdefault(book_renames_follow.source_of(norm), {})
         for final in renamed.get(sanitize_title(title), {title}):
             bucket.setdefault(sanitize_title(final), set()).add(final)
@@ -886,16 +921,16 @@ def record_identity_changes(before, ledger, resolution, removed, plan):
     base revision; historical mappings must never redirect a newly reused key.
     """
     after = book_info_identities()
-    matcher = book_renames_follow._Matcher(resolution.renames, sanitize_title, db_title)
+    matcher = book_renames_follow._Matcher(resolution.renames, sanitize_title, book_title_for_stem)
     orphan_titles = {name for path, name, reason in removed if path == "ForDB/book_info.csv" and reason == "orphan"}
     source_head = book_renames_follow._git(REPO_ROOT, "rev-parse", "HEAD").stdout.decode().strip()
     changed = False
     for title, author in sorted(before - after):
         old = {"bookName": title, "authorName": author}
         hit = matcher.find(title)
-        if hit and (db_title(hit[1].new_title), author) in after:
+        if hit and (book_title_for_stem(hit[1].new_title), author) in after:
             event = {"kind": "rename", "old": old,
-                     "new": {"bookName": db_title(hit[1].new_title), "authorName": author},
+                     "new": {"bookName": book_title_for_stem(hit[1].new_title), "authorName": author},
                      "commit": hit[1].commit if re.fullmatch(r"[0-9a-f]{40}", hit[1].commit) else source_head}
         elif title in orphan_titles:
             event = {"kind": "remove", "old": old, "reason": "orphan", "commit": source_head}
@@ -997,7 +1032,7 @@ def follow_book_renames(bases, db_final, srename, apply):
         sanitize_title,
         is_live_key,
         rename_keys,
-        db_title=db_title,
+        db_title=book_title_for_stem,
         is_live_spelling=is_live_spelling,
     )
     print(
@@ -1013,7 +1048,7 @@ def follow_book_renames(bases, db_final, srename, apply):
         )
     if resolution.renames:
         plan = book_renames_follow.plan_renames(
-            REPO_ROOT, resolution.renames, db_title, sanitize_title, DB_BOOK_PREFIXES, roots
+            REPO_ROOT, resolution.renames, book_title_for_stem, sanitize_title, DB_BOOK_PREFIXES, roots
         )
         for key, reason in plan.blocked.items():
             rename = resolution.renames.pop(key)

@@ -83,6 +83,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      # כותרות ה-<h1> של קבצי הספרים (שם התצוגה, book_display_titles.py) לפי מזהה blob:
+      # בלי המטמון נקראות כ-2,800 התחלות קבצים ב-HTTP Range בכל ריצה.
+      - name: Restore the book heading cache
+        uses: actions/cache@v4
+        with:
+          path: .git/otzaria-book-heads.json
+          key: otzaria-book-heads-${{ github.run_id }}
+          restore-keys: otzaria-book-heads-
+
       # בדיקות ה-offline של המאמת עצמו (db_title, find_spelling_drift,
       # find_dead_renames) מול קבצי ForDB ועץ הספרים המחויב — שניות ספורות, אותו
       # runner, ללא רשת וללא seforim.db. רצות לפני הכלי כדי שבאג במאמת ייפול כאן.
@@ -96,7 +105,7 @@ jobs:
           PYTHONIOENCODING: "utf-8"
         run: |
           set -euo pipefail
-          python3 -m unittest test_validate_fordb_book_names test_fordb_book_renames test_book_info_writer test_book_info_contract test_library_tree test_check_author_mirrors test_check_locked_metadata test_update_locked_metadata test_follow_lock_renames test_fordb_archive -v
+          python3 -m unittest test_validate_fordb_book_names test_book_display_titles test_fordb_book_renames test_book_info_writer test_book_info_contract test_library_tree test_check_author_mirrors test_check_locked_metadata test_update_locked_metadata test_follow_lock_renames test_fordb_archive -v
 
       # שינויי-שם נעקבים מהקומיט האחרון שהזרימה הזו אימתה *בהצלחה*, לא רק מ-
       # github.event.before: ריצה שנכשלה (למשל כשה-push של ה-auto-fix הפסיד במרוץ, כמו

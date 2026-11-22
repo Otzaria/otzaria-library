@@ -49,6 +49,8 @@ SHIPPED = frozenset({
     "ForDB/sefaria_author_changes.csv",
     "ForDB/sefaria_category_changes.csv",
     "ForDB/sefaria_metadata_changes.csv",
+    # ראשי התיבות שמקבלים גרשיים בשם ספר מאוצריא (BookDisplayTitles); גם המאמת קורא אותו.
+    "ForDB/title_acronyms.txt",
 })
 NOT_SHIPPED = frozenset({
     # יומן הזהות של האתר; נבדק במאמת ואינו נצרך בבנייה.

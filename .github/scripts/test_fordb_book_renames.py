@@ -155,7 +155,7 @@ class FixtureRepo:
         os.makedirs(root)
         self.git("init", "-q", "-b", "main")
         files = dict(base_files())
-        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py", "book_info_contract.py"):
+        for name in ("validate_fordb_book_names.py", "fordb_book_renames.py", "book_info_contract.py", "book_display_titles.py"):
             with open(os.path.join(SCRIPTS, name), encoding="utf-8") as handle:
                 files[f".github/scripts/{name}"] = handle.read()
         self.write(files)

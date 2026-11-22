@@ -79,6 +79,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      # כותרות ה-<h1> של קבצי הספרים (שם התצוגה, book_display_titles.py) לפי מזהה blob:
+      # בלי המטמון נקראות כ-2,800 התחלות קבצים ב-HTTP Range בכל ריצה.
+      - name: Restore the book heading cache
+        uses: actions/cache@v4
+        with:
+          path: .git/otzaria-book-heads.json
+          key: otzaria-book-heads-${{ github.run_id }}
+          restore-keys: otzaria-book-heads-
+
       # Publish gate: the atomic pointer must only advance to validation-passing content. Run
       # the report-only validator BEFORE packaging — if it fails (exit 1 = ForDB names
       # need a fix; exit 2 = Sefaria fetch failed), we do NOT publish, so a bad ForDB push
