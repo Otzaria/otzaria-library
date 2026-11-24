@@ -82,6 +82,44 @@ class LoadAndFile(unittest.TestCase):
         self.assertFalse(P.apply_file(self.src, path))
         self.assertEqual(P.check(self.src), [])
 
+    def test_check_includes_unsorted_books(self):
+        self.write_tsv("ספר\tלךאלא\tלך אלא\t\n")
+        books = os.path.join(self.src, "ספרים", "לא ממויין", "מקרא")
+        os.makedirs(books)
+        path = os.path.join(books, "ספר.txt")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("נותן לךאלא יאמר")
+        self.assertEqual(len(P.check(self.src)), 1)
+        self.assertTrue(P.apply_file(self.src, path))
+        self.assertEqual(P.check(self.src), [])
+
+    def test_check_excludes_irrelevant_books(self):
+        self.write_tsv("ספר\tלךאלא\tלך אלא\t\n")
+        books = os.path.join(self.src, "ספרים", "לא רלוונטי", "מקרא")
+        os.makedirs(books)
+        path = os.path.join(books, "ספר.txt")
+        with open(path, "w", encoding="utf-8") as f:
+            # If this excluded copy were scanned, the already-fixed text would
+            # make check() pass and conceal the missing real source book.
+            f.write("נותן לך אלא יאמר")
+        self.assertEqual(
+            P.check(self.src),
+            [f"{os.path.join(self.src, P.FILE_NAME)}:2: הספר 'ספר' נמצא 0 פעמים במקור"],
+        )
+
+    def test_books_roots_are_an_explicit_allowlist(self):
+        expected = [
+            os.path.join(self.src, "ספרים", "אוצריא"),
+            os.path.join(self.src, "ספרים", "לא ממויין"),
+            os.path.join(self.src, "ערוך", "ספרים", "אוצריא"),
+            os.path.join(self.src, "ערוך", "ספרים", "לא ממויין"),
+        ]
+        for root in expected:
+            os.makedirs(root)
+        os.makedirs(os.path.join(self.src, "ספרים", "לא רלוונטי"))
+        os.makedirs(os.path.join(self.src, "ערוך", "ספרים", "לא רלוונטי"))
+        self.assertEqual(P.books_root(self.src), expected)
+
 
 class SourceFiles(unittest.TestCase):
     def test_every_source_file_loads(self):
@@ -90,6 +128,15 @@ class SourceFiles(unittest.TestCase):
             with self.subTest(path=path):
                 fixes = P.load(path)
                 self.assertTrue(fixes)
+
+    def test_jeremiah_fix_targets_the_packaged_orayta_copy(self):
+        source = os.path.join(REPO, "OraytaToOtzaria")
+        packaged = os.path.join(source, "ספרים", "אוצריא", "מקרא", "נביאים", "ירמיה.txt")
+        excluded = os.path.join(source, "ספרים", "לא ממויין", "מקרא", "נביאים", "ירמיה.txt")
+        self.assertTrue(os.path.isfile(packaged))
+        self.assertFalse(os.path.exists(excluded))
+        self.assertIn("ירמיה", P.fixes_for_source(source))
+        self.assertEqual(P.check(source), [])
 
 
 if __name__ == "__main__":

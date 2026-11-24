@@ -159,8 +159,14 @@ def apply_file(source_dir: str, path: str) -> bool:
 
 
 def books_root(source_dir: str) -> list[str]:
-    """תיקיות הספרים הנארזות של המקור."""
-    roots = [os.path.join(source_dir, "ספרים", "אוצריא"), os.path.join(source_dir, "ערוך", "ספרים", "אוצריא")]
+    """תיקיות ספרים שמותר לבדוק במקור; חומר שסומן «לא רלוונטי» אינו מקור."""
+    roots = [
+        os.path.join(source_dir, "ספרים", kind)
+        for kind in ("אוצריא", "לא ממויין")
+    ] + [
+        os.path.join(source_dir, "ערוך", "ספרים", kind)
+        for kind in ("אוצריא", "לא ממויין")
+    ]
     return [r for r in roots if os.path.isdir(r)]
 
 

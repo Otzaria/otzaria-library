@@ -159,6 +159,9 @@ class ManualLinksPackagingTest(unittest.TestCase):
             (links / "one_links.json").write_text("[]", encoding="utf-8")
             (root / "MoreBooks" / "alt_toc").mkdir(parents=True)
             (root / "MoreBooks" / "alt_toc" / "one_alt_toc.json").write_text("[]", encoding="utf-8")
+            jeremiah = root / "OraytaToOtzaria" / "ספרים" / "אוצריא" / "מקרא" / "נביאים" / "ירמיה.txt"
+            jeremiah.parent.mkdir(parents=True)
+            jeremiah.write_text("פרק ל מסתיים בפסוק כה\nפרק לא מתחיל במצא חן\n", encoding="utf-8")
             config = self.write_config(root, [{"path": "source-links", "expected_state": "present"}])
             source_hash, packaged_hash, _ = packaging.tree_hashes(root, config)
             config_hash = packaging.sha256_file(root / packaging.CONFIG_NAME)
@@ -192,8 +195,13 @@ class ManualLinksPackagingTest(unittest.TestCase):
             with zipfile.ZipFile(output) as archive:
                 self.assertIn("links/one_links.json", archive.namelist())
                 self.assertIn("alt_toc/one_alt_toc.json", archive.namelist())
+                self.assertEqual(
+                    archive.read("אוצריא/מקרא/נביאים/ירמיה.txt").decode("utf-8"),
+                    jeremiah.read_text(encoding="utf-8"),
+                )
                 files_manifest = json.loads(archive.read("files_manifest.json"))
                 self.assertIn("MoreBooks/alt_toc/one_alt_toc.json", files_manifest)
+                self.assertIn("OraytaToOtzaria/ספרים/אוצריא/מקרא/נביאים/ירמיה.txt", files_manifest)
                 self.assertIn(packaging.CONFIG_NAME, archive.namelist())
                 self.assertIn(packaging.LINEAGE_NAME, archive.namelist())
                 self.assertIn(packaging.TOOLCHAIN_NAME, archive.namelist())
