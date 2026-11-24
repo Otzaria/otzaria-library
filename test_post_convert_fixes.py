@@ -2,6 +2,7 @@
 
 import glob
 import os
+import subprocess
 import tempfile
 import unittest
 
@@ -133,9 +134,36 @@ class SourceFiles(unittest.TestCase):
         source = os.path.join(REPO, "OraytaToOtzaria")
         packaged = os.path.join(source, "ספרים", "אוצריא", "מקרא", "נביאים", "ירמיה.txt")
         excluded = os.path.join(source, "ספרים", "לא ממויין", "מקרא", "נביאים", "ירמיה.txt")
-        self.assertTrue(os.path.isfile(packaged))
-        self.assertFalse(os.path.exists(excluded))
+        tracked = subprocess.run(
+            [
+                "git",
+                "-C",
+                REPO,
+                "ls-tree",
+                "-rz",
+                "--name-only",
+                "HEAD",
+                "--",
+                "OraytaToOtzaria/ספרים",
+            ],
+            check=True,
+            capture_output=True,
+        ).stdout.split(b"\0")
+        tracked = {path.decode("utf-8") for path in tracked if path}
+        packaged_rel = os.path.relpath(packaged, REPO).replace(os.sep, "/")
+        excluded_rel = os.path.relpath(excluded, REPO).replace(os.sep, "/")
+        self.assertIn(packaged_rel, tracked)
+        self.assertNotIn(excluded_rel, tracked)
         self.assertIn("ירמיה", P.fixes_for_source(source))
+        if not os.path.isfile(packaged):
+            sparse = subprocess.run(
+                ["git", "-C", REPO, "config", "--bool", "core.sparseCheckout"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+            self.assertEqual(sparse, "true")
+            return
         self.assertEqual(P.check(source), [])
 
 
