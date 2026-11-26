@@ -11310,9 +11310,9 @@
   },
   {
     "heAuthors": [
-      "רבי דוד דוב ב\"ר אהרן אריה יהודה יעקב מייזליש"
+      "רבי דוד דוב מייזליש"
     ],
-    "title": "אור דוד",
+    "title": "אור דוד על אסתר",
     "enTitle": "Ohr David",
     "authors": [
       "David Dov Meisels"
@@ -15316,9 +15316,9 @@
   },
   {
     "heAuthors": [
-      "ר' צבי הירש לוין"
+      "רבי צבי הירש לוין"
     ],
-    "title": "תפארת בנים (על הרמבם)",
+    "title": "תפארת בנים",
     "enTitle": "Tiferes Banim (Rambam)",
     "authors": [
       "Rabbi Hirschel Levin"
@@ -45056,5 +45056,45 @@
       "רבי דוד יהודה ליב זאלצער"
     ],
     "Sourcefolder": "MoreBooks"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על אורח חיים",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על יורה דעה",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על חושן משפט",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+    ],
+    "title": "אדרת אליהו על נביאים כתובים",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
+  },
+  {
+    "heAuthors": [
+      "רבי מנשה איכנשטין"
+    ],
+    "title": "אלפי מנשה על התורה",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta"
   }
 ]

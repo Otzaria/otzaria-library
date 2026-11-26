@@ -384411,9 +384411,9 @@
   },
   {
     "heAuthors": [
-      "מייזלש, דוד דוב בן אהרן אריה יהודה יעקב"
+      "רבי דוד דוב מייזליש"
     ],
-    "title": "אור דוד",
+    "title": "אור דוד על אסתר",
     "enTitle": "Ohr David",
     "authors": [
       "David Dov Meisels"
@@ -384434,7 +384434,7 @@
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta",
-    "file_path": null
+    "file_path": "תנך\\אחרונים\\אור דוד על אסתר.txt"
   },
   {
     "heAuthors": [
@@ -388814,9 +388814,9 @@
   },
   {
     "heAuthors": [
-      "ר' צבי הירש לוין "
+      "רבי צבי הירש לוין"
     ],
-    "title": "תפארת בנים (על הרמבם)",
+    "title": "תפארת בנים",
     "enTitle": "Tiferes Banim (Rambam)",
     "authors": [
       "Rabbi Hirschel Levin"
@@ -388837,7 +388837,7 @@
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta",
-    "file_path": null
+    "file_path": "הלכה\\משנה תורה\\מפרשים\\תפארת בנים.txt"
   },
   {
     "heAuthors": [
@@ -389917,7 +389917,7 @@
     ],
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta",
-    "file_path": null
+    "file_path": "תנך\\אחרונים\\ויזרע יצחק.txt"
   },
   {
     "heAuthors": [
@@ -411060,5 +411060,50 @@
     "publisher": "ספריית דיקטה",
     "Sourcefolder": "Dicta",
     "file_path": "שות\\אחרונים\\אחיעזר\\אחיעזר (יוד).txt"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על אורח חיים",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta",
+    "file_path": "הלכה\\שולחן ערוך\\מפרשים\\לי לישועה\\לי לישועה על אורח חיים.txt"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על יורה דעה",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta",
+    "file_path": "הלכה\\שולחן ערוך\\מפרשים\\לי לישועה\\לי לישועה על יורה דעה.txt"
+  },
+  {
+    "heAuthors": [
+      "רבי ישועה ב\"ר יצחק הלוי"
+    ],
+    "title": "לי לישועה על חושן משפט",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta",
+    "file_path": "הלכה\\שולחן ערוך\\מפרשים\\לי לישועה\\לי לישועה על חושן משפט.txt"
+  },
+  {
+    "heAuthors": [
+      "רבנו אליהו [הגר\"א] ב\"ר שלמה זלמן מווילנה"
+    ],
+    "title": "אדרת אליהו על נביאים כתובים",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta",
+    "file_path": "תנך\\אחרונים\\אדרת אליהו על נביאים כתובים.txt"
+  },
+  {
+    "heAuthors": [
+      "רבי מנשה איכנשטין"
+    ],
+    "title": "אלפי מנשה על התורה",
+    "publisher": "ספריית דיקטה",
+    "Sourcefolder": "Dicta",
+    "file_path": "תנך\\אחרונים\\אלפי מנשה על התורה.txt"
   }
 ]
