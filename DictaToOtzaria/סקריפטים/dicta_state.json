@@ -27018,16 +27018,18 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים חושן משפט.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים חושן משפט.txt"
+    ],
     "import": {
      "zip_md5": "9482c81291254b3ab0909e1fedc2d1a7"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים חושן משפט.txt"
-    ],
-    "reason": "raw 100%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (839383c70); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -27053,16 +27055,18 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים אבן העזר.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים אבן העזר.txt"
+    ],
     "import": {
      "zip_md5": "003819a346ef7b417dec627603e417db"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/מנחת פתים/מנחת פתים אבן העזר.txt"
-    ],
-    "reason": "raw 99%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (839383c70); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
