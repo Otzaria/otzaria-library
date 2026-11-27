@@ -1537,7 +1537,7 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/חסידות/ספרי חסידות נוספים/עמודיה שבעה.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/קבלה/ספרי קבלה נוספים/עמודיה שבעה.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/דרשות ודרושים/עמודיה שבעה.txt"
@@ -7841,15 +7841,14 @@
    },
    "repo": {
     "dup": [],
-    "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/ברכת ראש נזיר.txt"
-    ],
+    "edited": [],
     "extra": [
-     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תלמוד בבלי/אחרונים/ברכת ראש נזיר.txt"
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תלמוד בבלי/אחרונים/ברכת ראש נזיר.txt",
+     "extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/ברכת ראש נזיר.txt"
     ],
     "raw": [],
-    "reason": "extra 100%, edited 99%",
-    "status": "edited",
+    "reason": "edited copy moved out of the library to extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/ברכת ראש נזיר.txt",
+    "status": "extra-only",
     "unsorted": []
    }
   },
@@ -8390,7 +8389,7 @@
     "dup": [],
     "edited": [
      "DictaToOtzaria/ערוך/ספרים/אוצריא/סדר התפילה/הגדה/מפרשים/ברית שלום על הגדה של פסח.txt",
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/ברית שלום על חמשה מגילות.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/ברית שלום על חמש מגילות.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תנך/אחרונים/ברית שלום (מגילות הגדה של פסח).txt"
@@ -8430,7 +8429,8 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/בית פנחס (יבמות, מכות).txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/בית פנחס/בית פנחס על יבמות.txt",
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/בית פנחס/בית פנחס על מכות.txt"
     ],
     "extra": [],
     "import": {
@@ -8451,7 +8451,6 @@
     },
     "raw": [],
     "status": "edited",
-    "suggested": "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/בית פנחס (יבמות, מכות).txt",
     "unsorted": []
    }
   },
@@ -10740,15 +10739,14 @@
     "dup": [
      "extra_books/sefariaToOtzaria/sefaria_api/ספרים/לא ממויין/תשפו/ניסן/הלכה/ספרי מצוות/דרך פקודך/דרך פקודך.txt"
     ],
-    "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/מערכות ועניינים/דרך פקודיך.txt"
-    ],
+    "edited": [],
     "extra": [
-     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/ספרי מצוות/דרך פקודיך.txt"
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/ספרי מצוות/דרך פקודיך.txt",
+     "extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/הלכה/מערכות ועניינים/דרך פקודיך.txt"
     ],
     "raw": [],
-    "reason": "extra 99%, edited 98%, sefaria 94%",
-    "status": "edited",
+    "reason": "edited copy moved out of the library to extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/הלכה/מערכות ועניינים/דרך פקודיך.txt",
+    "status": "extra-only",
     "unsorted": []
    }
   },
@@ -13148,7 +13146,6 @@
      "why": "new in books.json",
      "zip_md5": "9f2e95c2009b3bf2e54f5d4a5441f1d5"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -13300,7 +13297,6 @@
      "why": "new in books.json",
      "zip_md5": "180fe41bd1bc0f92b3f3f203489dac36"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -16208,15 +16204,14 @@
    },
    "repo": {
     "dup": [],
-    "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/הר שפר.txt"
-    ],
+    "edited": [],
     "extra": [
-     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תלמוד בבלי/אחרונים/הר שפר.txt"
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תלמוד בבלי/אחרונים/הר שפר.txt",
+     "extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/הר שפר.txt"
     ],
     "raw": [],
-    "reason": "extra 100%, edited 98%",
-    "status": "edited",
+    "reason": "edited copy moved out of the library to extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/הר שפר.txt",
+    "status": "extra-only",
     "unsorted": []
    }
   },
@@ -16608,15 +16603,14 @@
    },
    "repo": {
     "dup": [],
-    "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/חבל יוסף/חבל יוסף (אולם המשפט) חלק ב.txt"
-    ],
+    "edited": [],
     "extra": [
-     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/חבל יוסף/חבל יוסף (אולם המשפט) חלק ב.txt"
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/חבל יוסף/חבל יוסף (אולם המשפט) חלק ב.txt",
+     "extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/חבל יוסף (אולם המשפט) חלק ב.txt"
     ],
     "raw": [],
-    "reason": "extra 99%, edited 98%",
-    "status": "edited",
+    "reason": "edited copy moved out of the library to extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/חבל יוסף (אולם המשפט) חלק ב.txt",
+    "status": "extra-only",
     "unsorted": []
    }
   },
@@ -17521,7 +17515,6 @@
      "why": "new in books.json",
      "zip_md5": "8028be7f6bac91ac7c4156a762906a0f"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -20903,13 +20896,13 @@
    },
    "repo": {
     "dup": [],
-    "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/קובץ הערות.txt"
+    "edited": [],
+    "extra": [
+     "extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/קובץ הערות.txt"
     ],
-    "extra": [],
     "raw": [],
-    "reason": "edited 99%",
-    "status": "edited",
+    "reason": "edited copy moved out of the library to extra_books/DictaToOtzaria/ערוכים שהוצאו מהספרייה/ספרים/אוצריא/תלמוד בבלי/אחרונים/קובץ הערות.txt",
+    "status": "extra-only",
     "unsorted": []
    }
   },
@@ -21404,7 +21397,6 @@
      "why": "new in books.json",
      "zip_md5": "6904ff2b2bf33f305a42c436f2061efd"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -21716,7 +21708,6 @@
      "why": "new in books.json",
      "zip_md5": "e33595e28826a652e9b79ff2194630a4"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -29550,7 +29541,6 @@
      "why": "new in books.json",
      "zip_md5": "52f6899d4be1465babf611305e9b5815"
     },
-    "pending_pr": "2026-10-28",
     "raw": [],
     "status": "edited",
     "unsorted": []
@@ -36199,7 +36189,7 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/שער המשפט חלק א.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/שער משפט חלק א.txt"
     ],
     "extra": [],
     "import": {
@@ -36215,7 +36205,7 @@
     },
     "raw": [],
     "status": "edited",
-    "suggested": "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/שער המשפט חלק א.txt",
+    "suggested": "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/שער משפט חלק א.txt",
     "unsorted": []
    }
   },
@@ -39132,7 +39122,7 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/תבואות השדה/תבואות השדה חלק א.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/מערכות ועניינים/תבואות השדה/תבואות השדה חלק א.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/לא ממויין/תשפו/אדר/תלמוד ומפרשיו/תבואות השדה חלק א.txt"
@@ -39167,7 +39157,7 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/תבואות השדה/תבואות השדה חלק ב.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/מערכות ועניינים/תבואות השדה/תבואות השדה חלק ב.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/שות/אחרונים/תבואות השדה חלק ב.txt"
@@ -39207,7 +39197,7 @@
      "zip_md5": "f1939f4da004e18c2a7b0182a00dd98b"
     },
     "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/תבואות השדה/תבואות השדה חלק ד.txt"
+     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/מערכות ועניינים/תבואות השדה/תבואות השדה חלק ד.txt"
     ],
     "reason": "raw 99%",
     "status": "raw",
@@ -39293,7 +39283,7 @@
      "zip_md5": "12929f94cfce1e247e924f24f87aac17"
     },
     "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/תבואות השדה/תבואות השדה חלק ו.txt"
+     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/מערכות ועניינים/תבואות השדה/תבואות השדה חלק ו.txt"
     ],
     "reason": "raw 99%",
     "status": "raw",
@@ -41498,7 +41488,7 @@
    "repo": {
     "dup": [],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/ציון לנפש חיה/צלח ביצה.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תלמוד בבלי/אחרונים/ציון לנפש חיה/ציון לנפש חיה ביצה.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/לא ממויין/תשפו/אדר/תלמוד ומפרשיו/צלח ביצה.txt"
@@ -42637,7 +42627,7 @@
      "National-LibraryToOtzaria/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/יד יצחק.txt"
     ],
     "edited": [
-     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/יד יצחק - א.txt"
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/דרשות ודרושים/יד יצחק - א.txt"
     ],
     "extra": [
      "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/יד יצחק - א.txt"
