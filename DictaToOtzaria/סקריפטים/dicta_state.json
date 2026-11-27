@@ -745,16 +745,18 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/אדרת אליהו על נביאים כתובים.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תנך/אחרונים/אדרת אליהו/אדרת אליהו על נביאים כתובים.txt"
+    ],
     "import": {
      "zip_md5": "c6946625acbd947217869985a1702c43"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/תנך/אחרונים/אדרת אליהו/אדרת אליהו על נביאים כתובים.txt"
-    ],
-    "reason": "raw 99%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -1311,8 +1313,12 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/אלפי מנשה על התורה.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/לא ממויין/חסידות/אלפי מנשה עהת.txt"
+    ],
     "import": {
      "date": "2026-09-30",
      "flagged": 9224,
@@ -1345,10 +1351,9 @@
      "why": "zip lacks 181 of 182 pages listed in pages.json (raw)",
      "zip_md5": "cae878683286d1d90a888de6de2449f0"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/לא ממויין/חסידות/אלפי מנשה עהת.txt"
-    ],
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -22849,16 +22854,20 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/לי לישועה/לי לישועה על אורח חיים.txt",
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/לי לישועה/לי לישועה על חושן משפט.txt",
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/לי לישועה/לי לישועה על יורה דעה.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/לי לישועה (על השוע).txt"
+    ],
     "import": {
      "zip_md5": "3f8af8c848fc05babf3b8f2702bbecfb"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/שולחן ערוך/מפרשים/לי לישועה (על השוע).txt"
-    ],
-    "reason": "raw 99%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -30148,16 +30157,18 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/אור דוד על אסתר.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תנך/אחרונים/אור דוד.txt"
+    ],
     "import": {
      "zip_md5": "26faacd172582caebe421b71be7c17b0"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/תנך/אחרונים/אור דוד.txt"
-    ],
-    "reason": "raw 99%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -39309,13 +39320,15 @@
     "dup": [
      "National-LibraryToOtzaria/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/תירוש ויצהר.txt"
     ],
-    "edited": [],
-    "extra": [],
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/תפארת בנים (על הרמבם).txt"
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/תפארת בנים.txt"
     ],
-    "reason": "raw 100%, packaged 54%",
-    "status": "dup-packaged",
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/הלכה/משנה תורה/מפרשים/תפארת בנים (על הרמבם).txt"
+    ],
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
@@ -41939,8 +41952,12 @@
    },
    "repo": {
     "dup": [],
-    "edited": [],
-    "extra": [],
+    "edited": [
+     "DictaToOtzaria/ערוך/ספרים/אוצריא/תנך/אחרונים/ויזרע יצחק.txt"
+    ],
+    "extra": [
+     "extra_books/DictaToOtzaria/גולמי ערוכים וכפילויות/ספרים/אוצריא/תנך/אחרונים/ויזרע יצחק.txt"
+    ],
     "import": {
      "date": "2026-09-30",
      "flagged": 4520,
@@ -41967,11 +41984,9 @@
      "why": "raw file behind the zip (missing pages [48])",
      "zip_md5": "afcdf7072b140a40610691a88ac06c99"
     },
-    "raw": [
-     "DictaToOtzaria/לא ערוך/ספרים/אוצריא/תנך/אחרונים/ויזרע יצחק.txt"
-    ],
-    "reason": "raw 98%",
-    "status": "raw",
+    "raw": [],
+    "reason": "manual edit (16e147e01); raw moved to extra_books",
+    "status": "edited",
     "unsorted": []
    }
   },
